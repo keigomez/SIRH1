@@ -1,0 +1,213 @@
+﻿@model SIRH.Web.ViewModels.FormularioBorradorAccionPersonalVM
+@{
+    ViewBag.Title = "Editar";
+    Layout = "~/Views/Shared/BorradorAccionPersonal.cshtml";
+}
+
+<center><h2>Asignar Borrador de Acción de Personal</h2></center>
+@{
+    if (Model.Error != null)
+    {
+        <div class="card">
+            <h5 class="card-header">Detalles</h5>
+            <div class="card-body">
+                <div class="alert alert-danger" role="alert">
+                    El Borrador no pudo ser cargada debido al siguiente error:
+                    <b>@Html.AttributeEncode(Model.Error.MensajeError)</b>
+                    Si conoce la causa de este error, por favor inténtelo de nuevo.
+                    De lo contrario le invitamos a ponerse en contacto con nuestro equipo de soporte, mediante el sistema de <a href="http://sisrh.mopt.go.cr:83/" target="_blank">Ayuda y Soporte</a>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        using (Html.BeginForm())
+        {
+            Html.ValidationSummary(true);
+            <div class="card">
+                <h5 class="card-header">Borrador # @Model.Borrador.IdEntidad</h5>
+                <div class="card-body">
+                    <table class="table table-hover">
+                        @if (Model.Detalle != null)
+                        {
+                            <tr>
+                                <td><b>@Html.Label("Funcionario")</b></td>
+                                <td>
+                                    @Html.DisplayFor(model => model.Funcionario.Cedula) - @Model.Funcionario.Nombre @Model.Funcionario.PrimerApellido @Model.Funcionario.SegundoApellido
+                                    @Html.HiddenFor(model => model.Funcionario.Cedula) 
+                                    @Html.HiddenFor(model => model.Funcionario.Nombre) 
+                                    @Html.HiddenFor(model => model.Funcionario.PrimerApellido) 
+                                    @Html.HiddenFor(model => model.Funcionario.SegundoApellido) 
+                                </td>
+                            </tr>
+                        }
+                        <tr>
+                            <td><b>@Html.LabelFor(model => model.Borrador.IdEntidad)</b></td>
+                            <td>
+                                @Html.DisplayFor(model => model.Borrador.IdEntidad)
+                                @Html.HiddenFor(model => model.Borrador.IdEntidad)
+                                @Html.HiddenFor(model => model.Borrador.ObsJustificacion)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>@Html.LabelFor(model => model.Borrador.NumOficio)</b></td>
+                            <td>
+                                @Html.DisplayFor(model => model.Borrador.NumOficio)
+                                @Html.HiddenFor(model => model.Borrador.NumOficio)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>@Html.LabelFor(model => model.Borrador.EstadoBorrador.DesEstadoBorrador)</b></td>
+                            <td>
+                                @Html.DisplayFor(model => model.Estado.DesEstadoBorrador)
+                                @Html.HiddenFor(model => model.Estado.IdEntidad)
+                                @Html.HiddenFor(model => model.Estado.DesEstadoBorrador)
+                            </td>
+                        </tr> 
+                        @if (Model.Detalle != null)
+                        {
+                            <tr>
+                                <td><b>@Html.LabelFor(model => model.TipoSeleccionado)</b></td>
+                                <td>
+                                    @Html.DisplayFor(model => model.TipoAccion.DesTipoAccion)
+                                    @Html.HiddenFor(model => model.TipoAccion.IdEntidad)
+                                    @Html.HiddenFor(model => model.TipoAccion.DesTipoAccion)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><b>@Html.LabelFor(model => model.Detalle.FecRige)</b></td>
+                                <td>
+                                    @Model.Detalle.FecRige.ToShortDateString()
+                                    @Html.Label("  al  ")
+                                    @Model.Detalle.FecVence.ToShortDateString()
+                                    @Html.HiddenFor(model => model.Detalle.FecRige)
+                                    @Html.HiddenFor(model => model.Detalle.FecVence)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>@Html.LabelFor(model => model.Detalle.FecRigeIntegra)</b>
+                                </td>
+                                <td>
+                                    @Model.Detalle.FecRigeIntegra.ToShortDateString()
+                                    @Html.Label("  al  ")
+                                    @Model.Detalle.FecVenceIntegra.ToShortDateString()
+                                    @Html.HiddenFor(model => model.Detalle.FecRigeIntegra)
+                                    @Html.HiddenFor(model => model.Detalle.FecVenceIntegra)
+                                </td>
+                            </tr>
+                        }
+                        <tr>
+                            <td><b>@Html.LabelFor(model => model.Borrador.UsuarioAsignado)</b></td>
+                            <td>
+                                @Model.Asignado.Nombre @Model.Asignado.PrimerApellido @Model.Asignado.SegundoApellido
+                                @Html.HiddenFor(model => Model.Borrador.UsuarioAsignado)
+                                @Html.HiddenFor(model => Model.Asignado.Cedula)
+                                @Html.HiddenFor(model => Model.Asignado.Nombre)
+                                @Html.HiddenFor(model => Model.Asignado.PrimerApellido)
+                                @Html.HiddenFor(model => Model.Asignado.SegundoApellido)
+
+                            </td>
+                            
+                        </tr>
+                    </table>
+
+                    <div class="card">
+                        <h5 class="card-header">Observación</h5>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="form-group col-4">
+                                    @Html.LabelFor(model => model.Movimiento.ObsMovimiento)
+                                    <span>:</span>
+                                    @Html.TextAreaFor(model => model.Movimiento.ObsMovimiento, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            @if (Model.Estado.IdEntidad == 3)
+                            {
+                                <div class="row">
+                                    <div class="form-group col-4">
+                                        <input id="btnFinalizar" class="btn btn-outline-secondary" name="SubmitButton" type="submit" value="Finalizar Borrador" />
+                                        <div id="Div1"></div>  
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>                  
+                 
+                    <div class="card">
+                        <h5 class="card-header">Editar</h5>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="form-group col-4">
+                                    @if (Model.Estado.IdEntidad > 1)
+                                    {
+                                        @Html.Label("Devolver a:")
+                                        @Html.DropDownListFor(model => model.UsuarioDevolucion, Model.UsuariosDevolver, new { @class = "btn btn-secondary dropdown-toggle form-control" })
+                                        @Html.HiddenFor(model => model.UsuarioDevolucion)
+                                    }
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-4">
+                                    <input id="btnDevolver" class="btn btn-outline-secondary" name="SubmitButton" type="submit" value="Devolver Borrador" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <div id="progressbarGuardar" class="loader" hidden></div>
+                                </div>
+                            </div>
+                            @if (Model.Estado.IdEntidad != 3)
+                            {
+                                <div class="row">
+                                    <div class="form-group col-4">
+                                        @Html.Label("Asignar a:")
+                                        @Html.DropDownListFor(model => model.UsuarioAsignado, Model.Usuarios,new { @class="btn btn-secondary dropdown-toggle form-control" })
+                                        @Html.HiddenFor(model => model.UsuarioAsignado)
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-4">
+                                        <input id="btnAsignar" class="btn btn-secondary" name="SubmitButton" type="submit" value="Asignar Borrador" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-4">
+                                        <div id="progressbarGuardar" class="loader" hidden></div>
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                    
+
+                </div>
+            </div>
+        }
+    }
+    if (!Html.ViewData.ModelState.IsValid)
+    {
+        <div class="card border-danger">
+            <div class="card-header"><strong>El formulario contiene los siguientes errores:</strong></div>
+            <div class="card-body text-danger">
+                @foreach (var modelError in Html.ViewData.ModelState.SelectMany(keyValuePair => keyValuePair.Value.Errors))
+                {
+                    <div class="alert alert-danger" role="alert">
+                        <h5>@modelError.ErrorMessage</h5>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+    <div class="link_return">
+        <a href="javascript:history.back()" class="btn btn-outline-primary" id="A5">Regresar</a>
+    </div>
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+<script src="~/scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+

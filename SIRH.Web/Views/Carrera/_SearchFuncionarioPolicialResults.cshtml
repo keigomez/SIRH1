@@ -1,0 +1,222 @@
+﻿@model SIRH.Web.ViewModels.FuncionarioPolicialVM
+
+@{
+    using (Html.BeginForm("ReporteDesgloseFuncionarioPolicial", "Carrera", FormMethod.Post, new { @id = "thisForm" }))
+    {
+
+        <fieldset>
+            <legend>Resultados (@Model.TotalFuncionarios)</legend>
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Cédula</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Código Policial</th>
+                        <th scope="col">Fecha de ingreso</th>
+                        <th scope="col">Fecha de ingreso al régimen</th>
+                        <th scope="col">Puesto</th>
+                        <th scope="col">Clase</th>
+                        <th scope="col">Especialidad</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.Funcionarios.Count(); i++)
+                    {
+                    <tr>
+                        <td>@Html.AttributeEncode(((Model.PaginaActual - 1) * 10) + i + 1) </td>
+                        <td>
+                            @Html.AttributeEncode(Model.Funcionarios.ElementAt(i).Funcionario.Cedula)
+                        </td>
+                        <td>
+                            @Html.AttributeEncode(Model.Funcionarios.ElementAt(i).Funcionario.Nombre) @Html.AttributeEncode(Model.Funcionarios.ElementAt(i).Funcionario.PrimerApellido) @Html.AttributeEncode(Model.Funcionarios.ElementAt(i).Funcionario.SegundoApellido)
+                        </td>
+                        <td>
+                            @Html.AttributeEncode(Model.Funcionarios.ElementAt(i).DetalleContratacion.CodigoPolicial)
+                        </td>
+                        <td>
+                            @if (Model.Funcionarios.ElementAt(i).DetalleContratacion.FechaIngreso.Year > 1)
+                            {@Html.AttributeEncode(Model.Funcionarios.ElementAt(i).DetalleContratacion.FechaIngreso.ToShortDateString());
+                        }
+                        </td>
+                        <td>
+                            @if (Model.Funcionarios.ElementAt(i).DetalleContratacion.FechaRegimenPolicial.Year > 1)
+                            {@Html.AttributeEncode(Model.Funcionarios.ElementAt(i).DetalleContratacion.FechaRegimenPolicial.ToShortDateString());
+                        }
+                        </td>
+                        <td>
+                            @Html.AttributeEncode(Model.Funcionarios.ElementAt(i).Puesto.CodPuesto)
+                        </td>
+                        <td>
+                            @Html.AttributeEncode(Model.Funcionarios.ElementAt(i).DetallePuesto.Clase.DesClase)
+                        </td>
+                        <td>
+                            @Html.AttributeEncode(Model.Funcionarios.ElementAt(i).DetallePuesto.Especialidad.DesEspecialidad)
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Details", "Funcionario", new { cedula = Model.Funcionarios.ElementAt(i).Funcionario.Cedula })" class="btn btn-primary btn-sm">
+                                <i class="fa fa-search"></i> Ver Detalle
+                            </a>
+                        </td>
+                        <td></td>
+
+
+
+                        @Html.HiddenFor(model => model.Funcionarios[i].Funcionario.Cedula)
+                        @Html.HiddenFor(model => model.Funcionarios[i].DetalleContratacion.CodigoPolicial)
+                        @Html.HiddenFor(model => model.Funcionarios[i].DetalleContratacion.FechaRegimenPolicial)
+                        @Html.HiddenFor(model => model.Funcionarios[i].DetalleContratacion.FechaIngreso)
+                        @Html.HiddenFor(model => model.Funcionarios[i].Funcionario.Nombre)
+                        @Html.HiddenFor(model => model.Funcionarios[i].Funcionario.PrimerApellido)
+                        @Html.HiddenFor(model => model.Funcionarios[i].Funcionario.SegundoApellido)
+                        @Html.HiddenFor(model => model.Funcionarios[i].Puesto.CodPuesto)
+                        @Html.HiddenFor(model => model.Funcionarios[i].DetallePuesto.Clase.DesClase)
+                        @Html.HiddenFor(model => model.Funcionarios[i].DetallePuesto.Especialidad.DesEspecialidad)
+
+
+
+                    </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td align="left" colspan="3">
+                            <button class="btn btn-danger" type="submit"><i class="fa fa-file-pdf-o"></i> Exportar a pdf</button>
+                        </td>
+                        <td colspan="7" align="right">
+                            Página (@Model.PaginaActual.ToString() de @Model.TotalPaginas.ToString())
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination justify-content-end">
+                                    @if (Model.PaginaActual == 1)
+                                    {
+                                        <li class="page-item disabled">
+                                            <a class="page-link" href="#" tabindex="-1">Atras</a>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li class="page-item">
+                                            @Ajax.ActionLink("Atras", "SearchFuncionarioPolicial", new
+                                       {
+                                           @page = Model.PaginaActual - 1,
+
+                                           @cedula = Model.paramBusqueda.Funcionario.Cedula,
+                                           @codigo = Model.paramBusqueda.DetalleContratacion.CodigoPolicial,
+
+                                           @diaDesde = Model.paramBusqueda.FechaDesde.Day,
+                                           @mesDesde = Model.paramBusqueda.FechaDesde.Month,
+                                           @annoDesde = Model.paramBusqueda.FechaDesde.Year,
+
+                                           @diaHasta = Model.paramBusqueda.FechaHasta.Day,
+                                           @mesHasta = Model.paramBusqueda.FechaHasta.Month,
+                                           @annoHasta = Model.paramBusqueda.FechaHasta.Year,
+
+                                           @model = Model.paramBusqueda
+                                       }, new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "dvResultadoBusqueda" }, new { @class = "page-link" })
+                                        </li>
+                                    }
+                                    @{ if (Model.TotalPaginas > 10)
+                                        {
+                                            var indice = Model.PaginaActual > 6 ? (Model.PaginaActual + 4 <= Model.TotalPaginas ? Model.PaginaActual - 5 : Model.PaginaActual - 5 - ((Model.PaginaActual + 4) - Model.TotalPaginas)) : 1;
+                                            var final = Model.PaginaActual > 6 ? (Model.PaginaActual + 4 >= Model.TotalPaginas ? Model.TotalPaginas : Model.PaginaActual + 4) : 10;
+
+                                            for (int i = indice; i <= final; i++)
+                                            {
+                                                <li class="page-item">
+                                                    @Ajax.ActionLink(i.ToString(), "SearchFuncionarioPolicial", new
+                                               {
+                                                   @page = i,
+
+                                                   @cedula = Model.paramBusqueda.Funcionario.Cedula,
+                                                   @codigo = Model.paramBusqueda.DetalleContratacion.CodigoPolicial,
+
+                                                   @diaDesde = Model.paramBusqueda.FechaDesde.Day,
+                                                   @mesDesde = Model.paramBusqueda.FechaDesde.Month,
+                                                   @annoDesde = Model.paramBusqueda.FechaDesde.Year,
+
+                                                   @diaHasta = Model.paramBusqueda.FechaHasta.Day,
+                                                   @mesHasta = Model.paramBusqueda.FechaHasta.Month,
+                                                   @annoHasta = Model.paramBusqueda.FechaHasta.Year,
+
+                                                   @model = Model.paramBusqueda
+                                               }, new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "dvResultadoBusqueda" }, new { @class = "page-link" })
+                                                </li>
+                                            }
+                                            if (Model.PaginaActual + 4 < Model.TotalPaginas)
+                                            {
+                                                <li class="page-item disabled">
+                                                    <a class="page-link" href="#">...</a>
+                                                </li>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            for (int i = 1; i <= Model.TotalPaginas; i++)
+                                            {
+                                                <li class="page-item ">
+                                                    @Ajax.ActionLink(i.ToString(), "SearchFuncionarioPolicial", new
+                                               {
+                                                   @page = i,
+
+                                                   @cedula = Model.paramBusqueda.Funcionario.Cedula,
+                                                   @codigo = Model.paramBusqueda.DetalleContratacion.CodigoPolicial,
+
+                                                   @diaDesde = Model.paramBusqueda.FechaDesde.Day,
+                                                   @mesDesde = Model.paramBusqueda.FechaDesde.Month,
+                                                   @annoDesde = Model.paramBusqueda.FechaDesde.Year,
+
+                                                   @diaHasta = Model.paramBusqueda.FechaHasta.Day,
+                                                   @mesHasta = Model.paramBusqueda.FechaHasta.Month,
+                                                   @annoHasta = Model.paramBusqueda.FechaHasta.Year,
+
+                                                   @model = Model.paramBusqueda
+                                               }, new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "dvResultadoBusqueda" }, new { @class = "page-link" })
+                                                </li>
+                                            }
+                                        }
+                                    }
+
+                                    @if (Model.TotalPaginas == 1 || Model.PaginaActual == Model.TotalPaginas)
+                                    {
+                                        <li class="page-item disabled">
+                                            <a class="page-link" href="#">Siguiente</a>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li class="page-item">
+                                            @Ajax.ActionLink("Siguiente", "SearchFuncionarioPolicial", new
+                                       {
+                                           @page = Model.PaginaActual + 1,
+
+                                           @cedula = Model.paramBusqueda.Funcionario.Cedula,
+                                           @codigo = Model.paramBusqueda.DetalleContratacion.CodigoPolicial,
+
+                                           @diaDesde = Model.paramBusqueda.FechaDesde.Day,
+                                           @mesDesde = Model.paramBusqueda.FechaDesde.Month,
+                                           @annoDesde = Model.paramBusqueda.FechaDesde.Year,
+
+                                           @diaHasta = Model.paramBusqueda.FechaHasta.Day,
+                                           @mesHasta = Model.paramBusqueda.FechaHasta.Month,
+                                           @annoHasta = Model.paramBusqueda.FechaHasta.Year,
+
+                                           @model = Model.paramBusqueda
+                                       }, new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "dvResultadoBusqueda" }, new { @class = "page-link" })
+                                        </li>
+                                    }
+
+                                </ul>
+                            </nav>
+                        </td>
+                    </tr>
+                </tfoot>
+
+            </table>
+
+            <br />
+
+        </fieldset>
+
+    }
+}

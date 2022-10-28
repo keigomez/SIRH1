@@ -1,0 +1,36 @@
+﻿@model SIRH.Web.ViewModels.FormularioViaticoCorridoVM
+@{
+    ViewBag.Title = "CreatePagoViaticoCorrido";
+    Layout = "~/Views/Shared/ViaticoCorrido.cshtml";
+}
+
+<link href="~/Content/datetimepicker.css" rel="stylesheet" />
+
+@{
+        Html.EnableClientValidation();
+        using (Html.BeginForm(Ajax.BeginForm("CreatePagoViaticoCorrido", "ViaticoCorrido", new AjaxOptions
+        {
+            UpdateTargetId = "Div3",
+            HttpMethod = "POST",
+            OnSuccess = "SuccessCargarFuncionario",
+            OnComplete = "CompleteCargarFuncionario",
+            OnBegin = "BeginCargarFuncionario"
+        })))
+        {
+            @*@Html.ValidationSummary(true);*@
+
+
+        }
+    <!--Errores del formulario-->
+    <div id="Div3" style="margin-top:15px;">
+    </div>
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+<script src="~/Scripts/sidebar.js" type="text/javascript"></script>
+<script src="~/scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/FormularioViaticoCorrido.js" type="text/javascript"></script>
+<script src="~/Scripts/datetimepicker.js" type="text/javascript"></script>
+<script src="~/Scripts/datetimepicker-es.js" type="text/javascript"></script>

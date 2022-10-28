@@ -1,0 +1,501 @@
+﻿@model SIRH.Web.ViewModels.FormularioGastoTransporteVM
+@{
+    ViewBag.Title = "CreateRegistroViaticoCorrido";
+    Layout = "~/Views/Shared/GastoTransporte.cshtml";
+}
+<link href="~/Content/datetimepicker.css" rel="stylesheet" />
+<h1>
+    @{
+        if (Model.GastoTransporte.EstadoGastoTransporteDTO.NomEstadoDTO == "Vencido")
+        {
+            <span style="color:red">ALERTA POR VENCIMIENTO</span>
+        }
+        if (Model.GastoTransporte.EstadoGastoTransporteDTO.NomEstadoDTO == "Valido")
+        {
+            <span style="color:green">@Model.GastoTransporte.EstadoGastoTransporteDTO.NomEstadoDTO </span>
+        }
+        if (Model.GastoTransporte.EstadoGastoTransporteDTO.NomEstadoDTO == "Anulado")
+        {
+            <span style="color:#4B3DB5">@Model.GastoTransporte.EstadoGastoTransporteDTO.NomEstadoDTO </span>
+        }
+        if (Model.GastoTransporte.EstadoGastoTransporteDTO.NomEstadoDTO == "Espera")
+        {
+            <span style="color:#FFA500">@Model.GastoTransporte.EstadoGastoTransporteDTO.NomEstadoDTO </span>
+        }
+
+    }
+
+    Detalles del GastoTransporte N°: @Model.GastoTransporte.CodigoGastoTransporte
+</h1>
+
+@{
+    using (Html.BeginForm("ReporteAsigancionGT", "ViaticoCorrido", FormMethod.Post, new { @id = "thisForm" }))
+    {
+        <!--Vista de detalle en caso de Detalle-->
+        if (ViewData["viewMode"].ToString() == "Detalle")
+        {
+            <!--data-->
+            <div>
+                <!--Se mantienen los datos para no volver a hacer la busqueda-->
+                @Html.HiddenFor(model => model.NumCartaPresentacion)
+                @Html.HiddenFor(model => model.Funcionario.Nombre)
+                @Html.HiddenFor(model => model.Funcionario.Cedula)
+                @Html.HiddenFor(model => model.Funcionario.PrimerApellido)
+                @Html.HiddenFor(model => model.Funcionario.SegundoApellido)
+                @Html.HiddenFor(model => model.Funcionario.Nombre)
+                @Html.HiddenFor(model => model.GastoTransporte.EstadoGastoTransporteDTO.NomEstadoDTO)
+                @Html.HiddenFor(model => model.GastoTransporte.CodigoGastoTransporte)
+                @Html.HiddenFor(model => model.GastoTransporte.MontGastoTransporteDTO)
+                @Html.HiddenFor(model => model.GastoTransporte.FecInicioDTO)
+                @Html.HiddenFor(model => model.GastoTransporte.ObsGastoTransporteDTO)
+                @Html.HiddenFor(model => model.GastoTransporte.FecFinDTO)
+                @Html.HiddenFor(model => model.GastoTransporte.IdEntidad)
+                @Html.HiddenFor(model => model.UbicacionTrabajo.Distrito.Canton.Provincia.NomProvincia)
+                @Html.HiddenFor(model => model.UbicacionTrabajo.Distrito.Canton.NomCanton)
+                @Html.HiddenFor(model => model.UbicacionTrabajo.Distrito.NomDistrito)
+                @Html.HiddenFor(model => model.UbicacionContrato.Distrito.Canton.Provincia.NomProvincia)
+                @Html.HiddenFor(model => model.UbicacionContrato.Distrito.Canton.NomCanton)
+                @Html.HiddenFor(model => model.UbicacionContrato.Distrito.NomDistrito)
+                @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                @Html.HiddenFor(model => model.Puesto.CodPuesto)
+                @Html.HiddenFor(model => model.DetallePuesto.Clase.DesClase)
+                @Html.HiddenFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)
+                @Html.HiddenFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal)
+                @Html.HiddenFor(model => model.Direccion.Distrito.NomDistrito)
+                @Html.HiddenFor(model => model.Direccion.Distrito.Canton.NomCanton)
+                @Html.HiddenFor(model => model.Direccion.Distrito.Canton.Provincia.NomProvincia)
+                @Html.HiddenFor(model => model.Direccion.DirExacta)
+                @Html.HiddenFor(model => model.TotalMA)
+            </div>
+
+         
+
+            <div>
+                <!--Datos Personales-->
+                <table class="table" style="margin-bottom:70px;margin-top:20px;">
+                    <thead class="thead-light">
+                        <tr><th colspan="4" class="encabezadoTabla">Datos Personales</th></tr>
+                        <tr>
+                            <th># Cédula</th>
+                            <th>Primer Apellido</th>
+                            <th>Segundo Apellido</th>
+                            <th>Nombre</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>@Model.Funcionario.Cedula </td>
+                            <td>@Model.Funcionario.PrimerApellido </td>
+                            <td>@Model.Funcionario.SegundoApellido </td>
+                            <td>@Model.Funcionario.Nombre </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!--Lugar de Trabajo-->
+                <table class="table" style="margin-bottom:70px;">
+                    <thead class="thead-light">
+                        <tr><th colspan="3" class="encabezadoTabla">Lugar de Trabajo</th></tr>
+                        <tr>
+                            <th>Provincia</th>
+                            <th>Cantón</th>
+                            <th>Distrito</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>@Model.UbicacionTrabajo.Distrito.Canton.Provincia.NomProvincia </td>
+                            <td>@Model.UbicacionTrabajo.Distrito.Canton.NomCanton</td>
+                            <td>@Model.UbicacionTrabajo.Distrito.NomDistrito</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!--Lugar de Contrato-->
+                <table class="table" style="margin-bottom:70px;">
+                    <thead class="thead-light">
+                        <tr><th colspan="3" class="encabezadoTabla">Lugar de Contrato</th></tr>
+                        <tr>
+                            <th>Provincia</th>
+                            <th>Cantón</th>
+                            <th>Distrito</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>@Model.UbicacionContrato.Distrito.Canton.Provincia.NomProvincia </td>
+                            <td>@Model.UbicacionContrato.Distrito.Canton.NomCanton </td>
+                            <td>@Model.UbicacionContrato.Distrito.NomDistrito </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!--Dependencia-->
+                <table class="table" style="margin-bottom:70px;">
+                    <thead class="thead-light">
+                        <tr><th colspan="3" class="encabezadoTabla">Dependencia</th></tr>
+                        <tr>
+                            <th>División</th>
+                            <th>Dirección</th>
+                            <th>Departamento</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>@Model.Puesto.UbicacionAdministrativa.Division.NomDivision </td>
+                            <td>@Model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion </td>
+                            <td>@Model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!--Detalles del Puesto-->
+                <table class="table" style="margin-bottom:70px;">
+                    <thead class="thead-light">
+                        <tr><th colspan="4" class="encabezadoTabla">Detalles del Puesto</th></tr>
+                        <tr>
+                            <th># Puesto </th>
+                            <th>Clase</th>
+                            <th>Especialidad</th>
+                            <th>Ocupación Real</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>@Model.Puesto.CodPuesto </td>
+                            <td>@Model.DetallePuesto.Clase.DesClase </td>
+                            <td>@Model.DetallePuesto.Especialidad.DesEspecialidad </td>
+                            <td>@Model.DetallePuesto.OcupacionReal.DesOcupacionReal </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+             <!--Información del GastoTransporte-->
+            <div class="jumbotron" id="Table2">
+                <div class="card" id="setForm">
+                    <div class="card-header">
+                        Información del GastoTransporte
+                    </div>
+                    <div class="card-body">
+
+                        <!--Almacena los datos de la lista de Facturas-->
+                        <div id="facturasData"></div>
+                        <!--Almacena los datos de la lista de Contratos-->
+                        <div id="contratosData"></div>
+                        <!--Tablas de los datos del GastoTransporte-->
+                        <center>
+                            <div class="row">
+
+                                <form>
+                                    <div class="col-3">
+
+                                        <div class="form-group">
+                                            <b>@Html.Label("Fecha del GastoTransporte")</b>
+                                            <div class="start_date input-group mb-4">
+                                                @Html.TextBoxFor(model => model.GastoTransporte.FecInicioDTO, new { @id = "FecInicioDTO", @class = "form-control start_date", @readonly = "readonly", disabled = "disabled", @Value = Model.GastoTransporte.FecInicioDTO.ToShortDateString() })
+                                                @Html.ValidationMessageFor(model => model.GastoTransporte.FecInicioDTO)
+
+
+                                            </div>
+
+
+                                            <div class="end_date input-group mb-4">
+                                                @Html.TextBoxFor(model => model.GastoTransporte.FecFinDTO, new { @id = "FechaFin", @class = "form-control start_date", @readonly = "readonly", disabled = "disabled", @Value = Model.GastoTransporte.FecFinDTO.ToShortDateString() })
+                                                @Html.ValidationMessageFor(model => model.GastoTransporte.FecFinDTO)
+
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="form-group">
+                                            <b>@Html.LabelFor(model => model.NumCartaPresentacion)</b>
+                                            @Html.TextBoxFor(model => model.NumCartaPresentacion, new { @disabled = "disabled", @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.NumCartaPresentacion)
+                                        </div>
+
+                                    </div>
+                                    <div class="col-3">
+                                        <b>@Html.LabelFor(model => model.EstadoSeleccion)</b>
+                                        @Html.DropDownListFor(model => model.EstadoSeleccion, Model.Estado, "Seleccione un Estado", new { @class = "btn btn-secondary dropdown-toggle", @disabled = "disabled" })
+                                        @Html.ValidationMessageFor(model => model.EstadoSeleccion)
+                                    </div>
+                                </form>
+
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-7">
+                                    <b>@Html.LabelFor(model => model.GastoTransporte.MontGastoTransporteDTO)</b>
+
+                                    <b>₡</b>@Html.TextBoxFor(model => model.GastoTransporte.MontGastoTransporteDTO, new
+                                       {
+                                           @disabled = "disabled",
+                                           @Value = Model.GastoTransporte.MontGastoTransporteDTO@*.ToString("#,#.00#;(#,#.00#)")*@,
+                                           @class = "form-control"
+                                       })
+
+                                    @Html.ValidationMessageFor(model => model.GastoTransporte.MontGastoTransporteDTO)
+                                </div>
+
+                                <div class="col-3">
+                                    <b>@Html.Label("N° Informe")</b>
+                                    @Html.TextBoxFor(model => model.GastoTransporte.CodigoGastoTransporte, new { @disabled = "disabled", @class = "form-control" })
+                                </div>
+                            </div>
+
+                        </center>
+
+
+
+                    </div>
+
+                </div>
+
+                
+
+                @if (Model.GastoTransporte.EstadoGastoTransporteDTO.NomEstadoDTO == "Anulado")
+                {
+                    <div class="card" style="margin-bottom:70px;">
+                        <div class="card-header">
+                            <h3>Observaciones del la Anulación</h3>
+                        </div>
+                        <div class="card-body">
+                            @Html.TextAreaFor(model => model.GastoTransporte.ObsGastoTransporteDTO, new { @class = "form-control", disabled = "disabled" })
+                        </div>
+                    </div>
+                }
+
+                <div class="form-group col-9">
+                    <div class="link_return">
+                        <p>
+                            <button class="btn btn-danger" type="submit"><i class="fa fa-file-pdf-o"></i> Exportar a PDF</button>
+
+                            <i class="fa fa-ellipsis-v" style="font-size:20px;"></i>
+
+                            <a href="@Url.Action("AnularGastoTransporte", "ViaticoCorrido",  new { codigo = Model.GastoTransporte.IdEntidad})" class="btn btn-warning">
+                                <i class="fa fa-edit"></i> Editar
+                            </a>
+                            <i class="fa fa-ellipsis-v" style="font-size:20px;"></i>
+                            <button class="btn btn-info" type="submit"><i class="fa fa-send-o"></i> Enviar Correo</button>
+                        </p>
+                    </div>
+                </div>
+            
+
+            </div>
+
+        }
+    }
+
+    if (ViewData["viewMode"].ToString() == "Editar")
+    {
+        <div class="alert alert-success" role="alert">
+            El GastoTransporte se ha modificado con exito.
+        </div>
+
+        <div class="card">
+            <h5 class="card-header">Detalles</h5>
+            <div class="card-body">
+                <div class="row">
+                    <div class="form-group">
+                        <div>Número del GastoTransporte: <b> @Html.AttributeEncode(Model.GastoTransporte.CodigoGastoTransporte) </b></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div>Funcionario: <b>@Html.AttributeEncode(Model.Funcionario.Nombre) @Html.AttributeEncode(Model.Funcionario.PrimerApellido) @Html.AttributeEncode(Model.Funcionario.SegundoApellido) (Cédula: @Html.AttributeEncode(Model.Funcionario.Cedula))</b></div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div>Periodo de Vigencia: <b>@Html.AttributeEncode(Model.GastoTransporte.FecInicioDTO.ToShortDateString()) - @Html.AttributeEncode(Model.GastoTransporte.FecFinDTO.ToShortDateString())</b></div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div>Monto de GastoTransporte: <b>₡ @Html.AttributeEncode(String.Format("{0:F}", Model.GastoTransporte.MontGastoTransporteDTO))</b></div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div>Estado del GastoTransporte: <b>@Html.AttributeEncode(Model.GastoTransporte.EstadoGastoTransporteDTO.NomEstadoDTO)</b></div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div>Facturas del GastoTransporte: <b>@Html.AttributeEncode(string.Join(", ", Model.Facturas.Select(F => F.CodigoFactura).ToArray()))</b></div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div>Contratos del GastoTransporte: <b>@Html.AttributeEncode(string.Join(", ", Model.ContratosArrendamiento.Select(C => C.CodigoContratoArrendamiento).ToArray()))</b></div>
+
+                    </div>
+                </div>
+           
+                     
+         
+
+            </div>
+        </div>
+
+
+
+    }
+
+    if (ViewData["viewMode"].ToString() == "Guardar")
+    {
+        <div class="alert alert-success" role="alert">
+            El GastoTransporte se ha guardado con exito.
+        </div>
+
+        <div class="card">
+            <h5 class="card-header">Detalles</h5>
+            <div class="card-body">
+                <div class="row">
+                    <div class="form-group">
+                        <div>Número del GastoTransporte: <b> @Html.AttributeEncode(Model.GastoTransporte.CodigoGastoTransporte) </b></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div>Funcionario: <b>@Html.AttributeEncode(Model.Funcionario.Nombre) @Html.AttributeEncode(Model.Funcionario.PrimerApellido) @Html.AttributeEncode(Model.Funcionario.SegundoApellido) (Cédula: @Html.AttributeEncode(Model.Funcionario.Cedula))</b></div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div>Periodo de Vigencia: <b>@Html.AttributeEncode(Model.GastoTransporte.FecInicioDTO.ToShortDateString()) - @Html.AttributeEncode(Model.GastoTransporte.FecFinDTO.ToShortDateString())</b></div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div>Monto de GastoTransporte: <b>₡ @Html.AttributeEncode(String.Format("{0:F}", Model.GastoTransporte.MontGastoTransporteDTO))</b></div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div>Estado del GastoTransporte: <b>@Html.AttributeEncode(Model.GastoTransporte.EstadoGastoTransporteDTO.NomEstadoDTO)</b></div>
+
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="form-group">
+                        <table class="table" id="tablaRutas" style="margin-bottom:70px;">
+                            <thead class="table-active">
+
+                                <tr class="table-active">
+                                    <th colspan="12" class="encabezadoTabla">
+                                        Rustas Según CTP
+                                    </th>
+                                </tr>
+                                <tr class="table-active">
+                                    <th class="encabezadoTablaEspecialRegistro">No° Ruta (Según CTP)</th>
+                                    <th class="encabezadoTablaEspecialRegistro">Nombre de Fraccionamiento</th>
+                                    <th class="encabezadoTablaEspecialRegistro">Tarifas</th>
+                                    <th class="encabezadoTablaEspecialRegistro"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.detalleAGT)
+                                {
+                                    <tr class="text-left">
+                                        <td>@item.NomRutaDTO</td>
+                                        <td>@item.NomFraccionamientoDTO</td>
+                                        <td>@item.MontTarifa</td>
+                                    </tr>
+                                }
+                            </tbody>
+                            <tfoot>
+                                <tr class="table-active">
+                                    <th colspan="6" class="encabezadoTabla text-center">
+                                        Total de Tarifas:
+                                        <input type="text" name="Total" id="totalT" class="encabezadoTabla text-center" readonly="readonly" value=@Model.TotalMA />
+                                    </th>
+                                </tr>
+                            </tfoot>
+
+
+                        </table>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+    }
+    <div class="row">
+        @if (Model.GastoTransporte.EstadoGastoTransporteDTO.NomEstadoDTO == "Espera")
+        {
+            <div class="form-group col-3">
+                <div class="link_notify">
+                    @Html.ActionLink("Notificar", "NotifyByEmail", new
+               {
+                   codigo = Model.GastoTransporte.CodigoGastoTransporte,
+                   cedula = Model.Funcionario.Cedula,
+                   username = System.Security.Principal.WindowsIdentity.GetCurrent().Name,
+                   nameFunc = Model.Funcionario.Nombre + " " + Model.Funcionario.PrimerApellido + " " + Model.Funcionario.SegundoApellido
+               }, new { @class = "btn btn-primary" })
+                </div>
+
+            </div>
+
+            <div class="form-group col-3">
+                <a href="@Url.Action("AnularGastoTransporte", "ViaticoCorrido",  new { codigo = Model.GastoTransporte.IdEntidad})" class="btn btn-warning">
+                    <i class="fa fa-edit"></i> Editar
+                </a>
+            </div>
+        }
+     
+        <br /><br />
+     
+    </div>
+
+
+
+
+    if (Model.GastoTransporte.EstadoGastoTransporteDTO.NomEstadoDTO == "Vencido")
+    {
+        <div class="link_return">@Html.ActionLink("Ir a Anular", "Nullify", new { @codigo = Model.GastoTransporte.IdEntidad }, new { @class = "btn btn-primary" })</div>
+
+    }
+
+}
+
+
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+<script type="text/javascript">
+        $(function() {
+            $('a#submit_link').click(function() {
+                $('form#thisForm').submit();
+            });
+       });
+</script>
+
+<script src="~/Scripts/sidebar.js" type="text/javascript"></script>
+<script src="~/scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/EditGastoTransporte.js" type="text/javascript"></script>
+<script src="~/Scripts/datetimepicker.js" type="text/javascript"></script>
+<script src="~/Scripts/datetimepicker-es.js" type="text/javascript"></script>
+
+

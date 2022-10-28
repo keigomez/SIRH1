@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://sisrh.mopt.go.cr:85/CDesarraigoService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SIRH.DTO" />
+  <xs:import schemaLocation="http://sisrh.mopt.go.cr:85/CDesarraigoService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:element name="ActualizarVencimientoDesarraigo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="fecha" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActualizarVencimientoDesarraigoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ActualizarVencimientoDesarraigoResult" nillable="true" type="q1:ArrayOfArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AgregarContratoArrendamiento">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="desarraigo" nillable="true" type="q2:CDesarraigoDTO" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="contrato" nillable="true" type="q3:CContratoArrendamientoDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AgregarContratoArrendamientoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="AgregarContratoArrendamientoResult" nillable="true" type="q4:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AgregarDesarraigo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="carta" nillable="true" type="q5:CCartaPresentacionDTO" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="funcionario" nillable="true" type="q6:CFuncionarioDTO" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="desarraigo" nillable="true" type="q7:CDesarraigoDTO" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="facturas" nillable="true" type="q8:ArrayOfCFacturaDesarraigoDTO" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="contratos" nillable="true" type="q9:ArrayOfCContratoArrendamientoDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AgregarDesarraigoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="AgregarDesarraigoResult" nillable="true" type="q10:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AgregarFactura">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="desarraigo" nillable="true" type="q11:CDesarraigoDTO" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="factura" nillable="true" type="q12:CFacturaDesarraigoDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AgregarFacturaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="AgregarFacturaResult" nillable="true" type="q13:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AnularDesarraigo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="desarraigo" nillable="true" type="q14:CDesarraigoDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AnularDesarraigoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="AnularDesarraigoResult" nillable="true" type="q15:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarDesarraigo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="funcionario" nillable="true" type="q16:CFuncionarioDTO" />
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="desarraigo" nillable="true" type="q17:CDesarraigoDTO" />
+        <xs:element xmlns:q18="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="fechasEmision" nillable="true" type="q18:ArrayOfdateTime" />
+        <xs:element xmlns:q19="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="fechasVencimiento" nillable="true" type="q19:ArrayOfdateTime" />
+        <xs:element xmlns:q20="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="lugarContrato" nillable="true" type="q20:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarDesarraigoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="BuscarDesarraigoResult" nillable="true" type="q21:ArrayOfArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarFuncionarioCedula">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cedula" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarFuncionarioCedulaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="BuscarFuncionarioCedulaResult" nillable="true" type="q22:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CargarCantones">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CargarCantonesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="CargarCantonesResult" nillable="true" type="q23:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CargarDistritos">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CargarDistritosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="CargarDistritosResult" nillable="true" type="q24:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CargarProvincias">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CargarProvinciasResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="CargarProvinciasResult" nillable="true" type="q25:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DesarraigosPorVencer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="fecha" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DesarraigosPorVencerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="DesarraigosPorVencerResult" nillable="true" type="q26:ArrayOfArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLocalizacion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cantones" type="xs:boolean" />
+        <xs:element minOccurs="0" name="distritos" type="xs:boolean" />
+        <xs:element minOccurs="0" name="provincias" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLocalizacionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="GetLocalizacionResult" nillable="true" type="q27:ArrayOfArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarDesarraigo">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarDesarraigoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ListarDesarraigoResult" nillable="true" type="q28:ArrayOfArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarEstadosDesarraigo">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarEstadosDesarraigoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ListarEstadosDesarraigoResult" nillable="true" type="q29:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModificarDesarraigo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="desarraigo" nillable="true" type="q30:CDesarraigoDTO" />
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="facturas" nillable="true" type="q31:ArrayOfCFacturaDesarraigoDTO" />
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="contrato" nillable="true" type="q32:ArrayOfCContratoArrendamientoDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModificarDesarraigoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ModificarDesarraigoResult" nillable="true" type="q33:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerContratosArrendamientos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="desarraigo" nillable="true" type="q34:CDesarraigoDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerContratosArrendamientosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ObtenerContratosArrendamientosResult" nillable="true" type="q35:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerDesarraigo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codigo" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerDesarraigoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ObtenerDesarraigoResult" nillable="true" type="q36:ArrayOfArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerFacturasDesarraigo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="desarraigo" nillable="true" type="q37:CDesarraigoDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerFacturasDesarraigoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ObtenerFacturasDesarraigoResult" nillable="true" type="q38:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerCorreosElectronicos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codigo" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerCorreosElectronicosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ObtenerCorreosElectronicosResult" nillable="true" type="q39:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerMontoRetroactivo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="carta" nillable="true" type="q40:CCartaPresentacionDTO" />
+        <xs:element xmlns:q41="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="fecha" nillable="true" type="q41:ArrayOfdateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerMontoRetroactivoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ObtenerMontoRetroactivoResult" nillable="true" type="q42:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetomarDesarraigo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="desarraigo" nillable="true" type="q43:CDesarraigoDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetomarDesarraigoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="RetomarDesarraigoResult" nillable="true" type="q44:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

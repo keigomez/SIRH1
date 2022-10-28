@@ -1,0 +1,659 @@
+﻿@model SIRH.Web.ViewModels.FormularioAccionPersonalVM
+
+@{ 
+    if (Model != null)
+    {
+        using (Ajax.BeginForm("Create", new AjaxOptions
+        {
+            HttpMethod = "POST",
+            UpdateTargetId = "formulario",
+            InsertionMode = InsertionMode.Replace,
+            OnBegin = "BeginGuardarAccion",
+            OnComplete = "CompleteGuardarAccion",
+            OnSuccess = "SuccessGuardarAccion",
+            OnFailure = "SuccessGuardarAccion"
+        }))
+        {
+            @Html.ValidationSummary(true)
+            <div id="formulario">
+                <div id="tabs">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a id="tab1" class="nav-link " href="#tabs-1" data-toggle="tab" role="tab" aria-controls="tabs-1" aria-selected="true">Datos Funcionario</a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="tab2" class="nav-link active" href="#tabs-2" data-toggle="tab" role="tab" aria-controls="tabs-2" aria-selected="false">Detalles</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div id="tabs-1" class="tab-pane fade " role="tabpanel" aria-labelledby="tab1">
+                            <table class="table table-hover" id="datos_funcionario">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th colspan="6">Información del Funcionario</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><b>@Html.LabelFor(model => model.Funcionario.Cedula)</b></td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.Funcionario.Cedula)
+                                            @Html.HiddenFor(model => model.Funcionario.Cedula)
+                                            @Html.HiddenFor(model => model.Funcionario.Cedula, new { @class = "form-control", @id = "Cedula", @readonly = "readonly", @disabled = "disabled" })
+                                        <td><b>@Html.LabelFor(model => model.Funcionario.Nombre)</b></td>
+                                        <td>
+                                            @Model.Funcionario.Nombre @Model.Funcionario.PrimerApellido @Model.Funcionario.SegundoApellido
+                                            @Html.HiddenFor(model => model.Funcionario.Nombre)
+                                            @Html.HiddenFor(model => model.Funcionario.PrimerApellido)
+                                            @Html.HiddenFor(model => model.Funcionario.SegundoApellido)
+                                        </td>
+                                        <td><b>@Html.LabelFor(model => model.Puesto.CodPuesto)</b></td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.Puesto.CodPuesto)
+                                            @Html.HiddenFor(model => model.Puesto.CodPuesto)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>@Html.LabelFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)</b></td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)
+                                            @Html.HiddenFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)
+                                        </td>
+                                        <td><b>@Html.LabelFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal)</b></td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal)
+                                            @Html.HiddenFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)</b></td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                                            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                                        </td>
+                                        <td><b>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)</b></td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                                            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                                        </td>
+                                        <td><b>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)</b></td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                                            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto)</b></td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto)
+                                            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto)
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="tabs-2" class="tab-pane fade show active" role="tabpanel" aria-labelledby="tab2">
+                            <div class="card">
+                                <h5 class="card-header">Detalles</h5>
+                                <div class="card-body">                                  
+                                    <div class="row">
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.AnioSeleccionado)</b>
+                                            <span>:</span>
+                                        </div>
+                                        <div class="form-group col-2">
+                                            @Html.DropDownListFor(model => model.AnioSeleccionado, Model.Annios, new { @class = "btn btn-secondary dropdown-toggle form-control", @onchange = "MostrarDatos(this.value)" })
+                                            @Html.ValidationMessageFor(model => model.AnioSeleccionado)
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.TipoSeleccionado)</b>
+                                            <span>:</span>
+                                        </div>
+                                        <div class="form-group col-6">
+                                            @Html.DropDownListFor(model => model.TipoSeleccionado, Model.Tipos, "Seleccionar Tipo", new {@id ="tipoAP", @class = "btn btn-secondary dropdown-toggle form-control", @onchange = "MostrarDatos(this.value)" })
+                                            @Html.ValidationMessageFor(model => model.TipoSeleccionado)                                         
+                                        </div>
+                                    </div>
+                                    <div class="row" id="filaUltimaAccion">
+                                        <div class="form-group col-4">
+                                            <b>@Html.Label("Fechas Última Acción")</b>
+                                            <span>:</span>
+                                        </div>
+                                        <div class="form-group col-2">
+                                            @Html.TextBoxFor(model => model.Accion.FecUltRige, new { @class = "form-control", @id = "FecUltRige", @readonly = "readonly" })
+                                            @Html.HiddenFor(model => model.Accion.FecUltRige)
+                                            @Html.TextBoxFor(model => model.Accion.CodigoModulo, new { @class = "form-control", @id = "CodigoModulo", @readonly = "readonly", @style = "display: none;" })
+                                            @Html.HiddenFor(model => model.Accion.CodigoModulo)
+                                        </div>
+                                        <div class="form-group col-2">
+                                            @Html.TextBoxFor(model => model.Accion.FecUltVence, new { @class = "form-control", @id = "FecUltVence", @readonly = "readonly" })
+                                            @Html.HiddenFor(model => model.Accion.FecUltVence)
+                                           
+                                            @Html.TextBoxFor(model => model.Accion.CodigoObjetoEntidad, new { @class = "form-control", @id = "CodigoObjetoEntidad", @readonly = "readonly", @style = "display: none;" })
+                                            @Html.HiddenFor(model => model.Accion.CodigoObjetoEntidad)
+                                        </div>
+                                        <div class="form-group col-2">
+                                            <a href="" id="urlDetalle" class="btn btn-primary btn-sm">
+                                                <i class="fa fa-search"></i> Ver Detalle
+                                            </a>
+                                            @*@Html.TextBoxFor(model => model.Accion.NumAccion, new { @class = "form-control", @id = "numAcc", @readonly = "readonly", @style = "display: none;" })*@
+                                        </div>
+                                    </div>
+                                   <div class="row">
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.Accion.FecRige)</b>
+                                            <span>:</span>
+                                            @Html.TextBoxFor(model => model.Accion.FecRige, new { @id = "FecRige", @class = "form-control", @readonly = "readonly", @placeholder = "Fecha Rige" })
+                                            @Html.ValidationMessageFor(model => model.Accion.FecRige)
+                                        </div>
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.Accion.FecVence)</b>
+                                            <span>:</span>
+                                            @Html.TextBoxFor(model => model.Accion.FecVence, new { @id = "FecVence", @class = "form-control", @readonly = "readonly", @placeholder = "Fecha Vence" })
+                                          
+                                            @*@Html.ValidationMessageFor(model => model.Accion.FecVence)*@
+                                        </div>
+                                       <div class="form-group col-1">
+                                           <b>@Html.Label("")</b>
+                                           <button class="btn btn-outline-primary" type="button" id="CleanFecVence"><i class="fa fa-remove"></i></button>
+                                       </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.Accion.FecRigeIntegra)</b>
+                                            <span>:</span>
+                                            @Html.TextBoxFor(model => model.Accion.FecRigeIntegra, new { @id = "FecRigeIntegra", @class = "form-control", @readonly = "readonly", @placeholder = "Fecha Rige Integra" })
+                                           @* @Html.ValidationMessageFor(model => model.Accion.FecRigeIntegra)*@
+                                        </div>
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.Accion.FecVenceIntegra)</b>
+                                            <span>:</span>
+                                            @Html.TextBoxFor(model => model.Accion.FecVenceIntegra, new { @id = "FecVenceIntegra", @class = "form-control", @readonly = "readonly", @placeholder = "Fecha Vence Integra" })
+                                           @* @Html.ValidationMessageFor(model => model.Accion.FecVenceIntegra)*@
+                                        </div>
+                                        <div class="form-group col-1">
+                                            <b>@Html.Label("")</b>
+                                            <button class="btn btn-outline-primary" type="button" id="CleanFecVenceIntegra"><i class="fa fa-remove"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.Accion.Observaciones)</b>
+                                            <span>:</span>
+                                        </div>
+                                        <div class="form-group col-8">
+                                            @Html.TextAreaFor(model => model.Accion.Observaciones, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.Accion.Observaciones)
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.Programa.DesPrograma)</b>
+                                            <span>:</span>
+                                            @Html.DisplayFor(model => model.Programa.DesPrograma)
+                                            @*@Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.Programa.IdEntidad)
+                                              @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.Programa.DesPrograma)*@
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.Programa.IdEntidad, new { @class = "form-control", @id = "IndPrograma" })
+                                            @Html.ValidationMessageFor(model => model.Detalle.CodPrograma)
+                                            @Html.HiddenFor(model => model.Programa.IdEntidad)
+                                            @Html.HiddenFor(model => model.Detalle.CodPrograma)
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion)</b>
+                                            <span>:</span>
+                                            @Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion)
+                                            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Seccion.IdEntidad)
+                                        </div>
+                                        <div class="form-group col-6" id="filaSeccion">
+                                            @Html.DropDownListFor(model => model.SeccionSeleccionada, Model.Secciones, Model.SeccionSeleccionada, new { @class = "btn btn-secondary dropdown-toggle form-control" })
+                                            @*@Html.ValidationMessageFor(model => model.SeccionSeleccionada)*@
+                                        </div>
+                                    </div>
+                                    <div class="row" id="filaEspecialidad">
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)</b>
+                                            <span>:</span>
+                                            @Html.DisplayFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)
+                                            @Html.HiddenFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)
+                                        </div>
+                                        <div class="form-group col-6">
+                                            @Html.DropDownListFor(model => model.EspecialidadSeleccionada, Model.Especialidades, Model.EspecialidadSeleccionada, new { @class = "btn btn-secondary dropdown-toggle form-control" })
+                                            @*@Html.ValidationMessageFor(model => model.SeccionSeleccionada)*@
+                                        </div>
+                                    </div>
+                                    <div class="row" id="filaSubespecialidad">
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.DetallePuesto.SubEspecialidad.DesSubEspecialidad)</b>
+                                            <span>:</span>
+                                            @Html.DisplayFor(model => model.DetallePuesto.SubEspecialidad.DesSubEspecialidad)
+                                            @Html.HiddenFor(model => model.DetallePuesto.SubEspecialidad.DesSubEspecialidad)
+                                        </div>
+                                        <div class="form-group col-6" >
+                                            @Html.DropDownListFor(model => model.SubespecialidadSeleccionada, Model.Subespecialidades, Model.SubespecialidadSeleccionada, new { @class = "btn btn-secondary dropdown-toggle form-control" })
+                                            @*@Html.ValidationMessageFor(model => model.SeccionSeleccionada)*@
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.Detalle.CodClase)</b>
+                                            <span>:</span>
+                                            @Html.DisplayFor(model => model.DetallePuesto.Clase.DesClase)
+                                            @Html.HiddenFor(model => model.DetallePuesto.Clase.DesClase)
+                                            @Html.TextBoxFor(model => model.DetallePuesto.Clase.IdEntidad, new { @class = "form-control", @id = "CodClase", @readonly = "readonly", @style = "display: none;" })
+                                        </div>
+                                        <div class="form-group col-4" id="filaClase">
+                                            @Html.DropDownListFor(model => model.ClaseSeleccionada, Model.Clases, Model.ClaseSeleccionada, new { @id = "indClase",  @class = "btn btn-secondary dropdown-toggle form-control", @onchange = "ActualizarClaseCategoria(this.value)" })                                         
+                                            @*@Html.ValidationMessageFor(model => model.ClaseSeleccionada)*@
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.Detalle.IndCategoria)</b>
+                                            <span>:</span>
+                                            @Html.DisplayFor(model => model.DetallePuesto.EscalaSalarial.CategoriaEscala)
+                                            @Html.HiddenFor(model => model.DetallePuesto.EscalaSalarial.CategoriaEscala)
+                                        </div>
+                                        <div class="form-group col-4" id="filaCategoria">
+                                            @*@Html.DropDownListFor(model => model.CategoriaSeleccionada, Model.Categorias, Model.CategoriaSeleccionada, new { @id = "CategoriaSeleccionada", @class = "btn btn-secondary dropdown-toggle form-control", @onchange = "ActualizarCategoria(this.value)" })*@
+                                            @Html.TextBoxFor(model => model.Detalle.IndCategoria, new { @class = "form-control", @id = "IndCategoria", @readonly = "readonly" })
+                                            @Html.HiddenFor(model => model.Detalle.IndCategoria)
+                                        </div>
+                                    </div>
+                                    <div class="row" >
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.Detalle.CodPuesto)</b>
+                                            <span>:</span>
+                                            @Html.DisplayFor(model => model.Puesto.CodPuesto)
+                                            @Html.HiddenFor(model => model.Puesto.CodPuesto)
+                                        </div>
+                                        <div class="form-group col-4" id="filaPuesto">
+                                            @Html.TextBoxFor(model => model.Detalle.CodPuesto,new { @class="form-control" })
+                                            @*@Html.ValidationMessageFor(model => model.Detalle.CodPuesto)*@
+                                        </div>
+                                    </div>
+                                    @*<div class="row">
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.Detalle.Disfrutado)</b>
+                                            <span>:</span>
+                                            @Html.DisplayFor(model => model.Contrato.NumeroAnualidades)
+                                            @Html.HiddenFor(model => model.Contrato.NumeroAnualidades)
+                                        </div>
+                                        <div class="form-group col-4" id="filaDisfrutado">
+                                            @Html.TextBoxFor(model => model.Detalle.Disfrutado, new { @class="form-control", @id = "NumDisfrutado" })
+                                            @Html.ValidationMessageFor(model => model.Detalle.Disfrutado)
+                                            @Html.HiddenFor(model => model.Detalle.Disfrutado)
+                                        </div>
+                                    </div>*@
+                                    <div class="row">
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.Detalle.NumAnualidad)</b>
+                                            <span>:</span>
+                                            @Html.DisplayFor(model => model.Contrato.NumeroAnualidades)
+                                            @Html.HiddenFor(model => model.Contrato.NumeroAnualidades)
+                                        </div>
+                                        <div class="form-group col-4" id="filaAutorizado">
+                                            @Html.TextBoxFor(model => model.Detalle.NumAnualidad, new { @class="form-control", @id = "NumAnualidad", @onblur = "ActualizarMontos();" })
+                                            @Html.HiddenFor(model => model.Detalle.NumAnualidad)
+                                            @*@Html.ValidationMessageFor(model => model.Detalle.Autorizado)*@
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.Contrato.FechaMesAumento)</b>
+                                            <span>:</span>
+                                            @Html.DisplayFor(model => model.Contrato.FechaMesAumento)
+                                            @Html.HiddenFor(model => model.Contrato.FechaMesAumento)
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.DropDownListFor(model => model.MesSeleccionado, Model.Meses, new { @id = "MesAum", @class = "btn btn-secondary dropdown-toggle form-control" })
+                                            @Html.ValidationMessageFor(model => model.MesSeleccionado)
+                                            @Html.HiddenFor(model => model.Detalle.MesAumento)
+                                        </div>
+                                    </div>
+                                    <div class="row" id="filaSalBase">
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.Detalle.MtoSalarioBase)</b>
+                                            <span>:</span>
+                                            @String.Format("{0:n}", Model.DetallePuesto.EscalaSalarial.SalarioBase)
+                                            @*@Html.DisplayFor(model => model.DetallePuesto.EscalaSalarial.SalarioBase)*@
+                                            @Html.HiddenFor(model => model.DetallePuesto.EscalaSalarial.SalarioBase)
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.Detalle.MtoSalarioBase, new { @class="form-control", @id = "MtoSalBase", @readonly = "readonly", @disabled = "disabled", @onblur = "ActualizarMontos();" })
+                                            @*@Html.ValidationMessageFor(model => model.Detalle.MtoSalarioBase)*@
+                                        </div>
+                                    </div>
+                                    <div class="row" id="filaMtoAnual">
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.Detalle.MtoAnual)</b>
+                                            <span>:</span>
+                                            @Html.DisplayFor(model => model.DetallePuesto.EscalaSalarial.MontoAumentoAnual)
+                                            @Html.HiddenFor(model => model.DetallePuesto.EscalaSalarial.MontoAumentoAnual)
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.DetallePuesto.EscalaSalarial.MontoAumentoAnual, new { @class="form-control", @id = "MtoAnual", @readonly = "readonly", @disabled = "disabled" })
+                                        </div>
+                                    </div>
+                                    <div class="row" id="filaMtoAnualidades">
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.Detalle.MtoAumentosAnuales)</b>
+                                            <span>:</span>
+                                            @String.Format("{0:n}", Model.Detalle.MtoAumentosAnuales)
+                                           @* @Html.DisplayFor(model => model.Detalle.MtoAumentosAnuales)*@
+                                            @Html.HiddenFor(model => model.DetallePuesto.EscalaSalarial.MontoAumentoAnual)
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.Detalle.MtoAumentosAnuales, new { @class="form-control", @id = "MtoAnuales", @readonly = "readonly", @disabled = "disabled" })
+                                            @*@Html.ValidationMessageFor(model => model.Detalle.MtoAumentosAnuales)*@   
+                                        </div>
+                                    </div>
+                                    <div class="row" id="filaPunto">
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.Detalle.MtoPunto)</b>
+                                            <span>:</span>
+                                            @Html.DisplayFor(model => model.DetallePuesto.EscalaSalarial.Periodo.MontoPuntoCarrera)
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.DetallePuesto.EscalaSalarial.Periodo.MontoPuntoCarrera, new { @class = "form-control", @id = "NumPtoCarrera", @readonly = "readonly", @style = "display: none;" })
+                                            @Html.HiddenFor(model => model.DetallePuesto.EscalaSalarial.Periodo.MontoPuntoCarrera)
+                                        </div>
+                                    </div>
+                                    <div class="row" id="filaNumGradoGrupo">
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.Detalle.NumGradoGrupo)</b>
+                                            <span>:</span>
+                                            @Html.DisplayFor(model => model.PuntosCarrera)
+                                            @Html.HiddenFor(model => model.PuntosCarrera)
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.Detalle.NumGradoGrupo, new { @class = "form-control", @id = "NumPto", @onblur = "ActualizarMontos();" })
+                                            @*@Html.ValidationMessageFor(model => model.Detalle.NumGradoGrupo)*@
+                                        </div>
+                                    </div>
+                                    <div class="row" id="filaMtoGrado">
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.Detalle.MtoGradoGrupo)</b>
+                                            <span>:</span>
+                                            @String.Format("{0:n}", Model.Detalle.MtoGradoGrupo)
+                                            @*@Html.DisplayFor(model => model.Detalle.MtoGradoGrupo)*@
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.Detalle.MtoGradoGrupo, new { @class = "form-control", @id = "MtoPtos", @readonly = "readonly", @disabled = "disabled" })
+                                            @*@Html.ValidationMessageFor(model => model.Detalle.MtoGradoGrupo)*@
+                                        </div>
+                                    </div>
+                                    <div class="row" id="filaPor">
+                                        <div class="form-group col-4">
+                                            @if (Model.DetallePuesto.PorProhibicion > 0)
+                                            {
+                                                <b>@Html.LabelFor(model => model.Detalle.PorProhibicion)</b>
+                                            }
+                                            else
+                                            {
+                                                <b>Dedic. Exclusiva</b>
+                                            }
+                                            <span>:</span>
+                                            @Html.DisplayFor(model => model.Detalle.PorProhibicion)
+                                            @Html.HiddenFor(model => model.DetallePuesto.PorProhibicion)
+                                            @Html.HiddenFor(model => model.DetallePuesto.PorDedicacion)
+                                            @Html.TextBoxFor(model => model.Detalle.PorProhOriginal, new { @class = "form-control", @id = "PorProhOriginal", @hidden = "true" })
+                                            @Html.TextBoxFor(model => model.DetallePuesto.PorDedicacion, new { @class = "form-control", @id = "PorDedOriginal", @hidden = "true" })
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @*@if (Model.DetallePuesto.PorDedicacion > 0)
+                                            {
+                                                @Html.DropDownListFor(model => model.Detalle.PorProhibicion, Model.Porcentajes, new { @class = "form-control", @id = "PorList", @onchange = "ActualizarPorcentaje(this.value)" })
+                                            }
+                                            else
+                                            {
+
+                                            }*@
+                                            @Html.DropDownListFor(model => model.Detalle.PorProhibicion, Model.Porcentajes, new { @class = "form-control", @id = "PorList", @onchange = "ActualizarPorcentaje(this.value)" })
+                                            @Html.TextBoxFor(model => model.Detalle.PorProhibicion, new { @class = "form-control", @id = "PorProhibicion", @readonly = "readonly" })
+                                            @Html.HiddenFor(model => model.Detalle.PorProhibicion)
+                                        </div>
+                                    </div>
+                                    <div class="row" id="filaMtoPor">
+                                        <div class="form-group col-4">
+                                            @if (Model.DetallePuesto.PorProhibicion > 0)
+                                            {
+                                                <b>Monto Proh.</b>
+                                            }
+                                            else
+                                            {
+                                                <b>Monto Dedic.</b>
+                                            }                                          
+                                            <span>:</span>
+                                            @String.Format("{0:n}", Model.Detalle.MtoProhibicion)
+                                            @*@Html.DisplayFor(model => model.Detalle.MtoProhibicion)*@
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.Detalle.MtoProhibicion, new { @class = "form-control", @id = "MtoProh", @readonly = "readonly", @disabled = "disabled" })
+                                            @*@Html.ValidationMessageFor(model => model.Detalle.MtoProhibicion)*@
+                                        </div>
+                                    </div>
+                                    <div class="row" id="filaCurso">
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.Detalle.PorCurso)</b>
+                                            <span>:</span>
+                                            @Html.DisplayFor(model => model.Detalle.PorCurso)
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.Detalle.PorCurso, new { @class = "form-control", @id = "PorCursoOrig", @readonly = "readonly", @hidden = "true" })
+                                            @Html.TextBoxFor(model => model.Detalle.PorCurso, new { @class = "form-control", @id = "PorCurso", @readonly = "readonly", @onblur = "ActualizarMontos();" })
+                                            @*@Html.ValidationMessageFor(model => model.Detalle.MtoRecargo)*@
+                                            @Html.HiddenFor(model => model.Detalle.PorCurso)
+                                        </div>
+                                    </div>
+                                    <div class="row" id="filaRiesgo">
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.Detalle.PorRiesgo)</b>
+                                            <span>:</span>
+                                            @Html.DisplayFor(model => model.Detalle.PorRiesgo)
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.Detalle.PorRiesgo, new { @class = "form-control", @id = "PorRiesgoOrig", @readonly = "readonly", @hidden = "true" })
+                                            @Html.TextBoxFor(model => model.Detalle.PorRiesgo, new { @class = "form-control", @id = "PorRiesgo", @readonly = "readonly", @onblur = "ActualizarMontos();" })
+                                            @*@Html.ValidationMessageFor(model => model.Detalle.MtoRecargo)*@
+                                            @Html.HiddenFor(model => model.Detalle.PorRiesgo)
+                                        </div>
+                                    </div>
+                                    <div class="row" id="filaBonificacion">
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.Detalle.PorBonificacion)</b>
+                                            <span>:</span>
+                                            @Html.DisplayFor(model => model.Detalle.PorBonificacion)
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.Detalle.PorBonificacion, new { @class = "form-control", @id = "PorBonificacionOrig", @readonly = "readonly", @hidden = "true" })
+                                            @Html.TextBoxFor(model => model.Detalle.PorBonificacion, new { @class = "form-control", @id = "PorBonificacion", @readonly = "readonly", @onblur = "ActualizarMontos();" })
+                                            @*@Html.ValidationMessageFor(model => model.Detalle.MtoRecargo)*@
+                                            @Html.HiddenFor(model => model.Detalle.PorBonificacion)
+                                        </div>
+                                    </div>
+                                    <div class="row" id="filaConsulta">
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.Detalle.PorConsulta)</b>
+                                            <span>:</span>
+                                            @Html.DisplayFor(model => model.Detalle.PorConsulta)
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.Detalle.PorConsulta, new { @class = "form-control", @id = "PorConsultaOrig", @readonly = "readonly", @hidden = "true" })
+                                            @Html.TextBoxFor(model => model.Detalle.PorConsulta, new { @class = "form-control", @id = "PorConsulta", @readonly = "readonly", @onblur = "ActualizarMontos();" })
+                                            @*@Html.ValidationMessageFor(model => model.Detalle.MtoRecargo)*@
+                                            @Html.HiddenFor(model => model.Detalle.PorConsulta)
+                                        </div>
+                                    </div>
+                                    <div class="row" id="filaPeligrosidad">
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.Detalle.PorPeligrosidad)</b>
+                                            <span>:</span>
+                                            @Html.DisplayFor(model => model.Detalle.PorPeligrosidad)
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.Detalle.PorPeligrosidad, new { @class = "form-control", @id = "PorPeligrosidadOrig", @readonly = "readonly", @hidden = "true" })
+                                            @Html.TextBoxFor(model => model.Detalle.PorPeligrosidad, new { @class = "form-control", @id = "PorPeligrosidad", @readonly = "readonly", @onblur = "ActualizarMontos();" })
+                                            @*@Html.ValidationMessageFor(model => model.Detalle.MtoRecargo)*@
+                                            @Html.HiddenFor(model => model.Detalle.PorPeligrosidad)
+                                        </div>
+                                    </div>
+                                    <div class="row" id="filaDisponibilidad">
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.Detalle.PorDisponibilidad)</b>
+                                            <span>:</span>
+                                            @Html.DisplayFor(model => model.Detalle.PorDisponibilidad)
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.Detalle.PorDisponibilidad, new { @class = "form-control", @id = "PorDisponibilidadOrig", @readonly = "readonly", @hidden = "true" })
+                                            @Html.TextBoxFor(model => model.Detalle.PorDisponibilidad, new { @class = "form-control", @id = "PorDisponibilidad", @readonly = "readonly"})
+                                            @*@Html.ValidationMessageFor(model => model.Detalle.MtoRecargo)*@
+                                            @Html.HiddenFor(model => model.Detalle.PorDisponibilidad)
+                                        </div>
+                                    </div>
+                                    <div class="row" id="filaQuinquenio">
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.Detalle.PorQuinquenio)</b>
+                                            <span>:</span>
+                                            @Html.DisplayFor(model => model.Detalle.PorQuinquenio)
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.Detalle.PorQuinquenio, new { @class = "form-control", @id = "PorQuinquenioOrig", @readonly = "readonly", @hidden = "true" })
+                                            @Html.TextBoxFor(model => model.Detalle.PorQuinquenio, new { @class = "form-control", @id = "PorQuinquenio", @readonly = "readonly" })
+                                            @Html.HiddenFor(model => model.Detalle.PorQuinquenio)
+                                        </div>
+                                    </div>
+                                    <div class="row" id="filaMtoOtros">
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.Detalle.MtoOtros)</b>
+                                            <span>:</span>
+                                            @*@Html.DisplayFor(model => model.Detalle.MtoOtros)*@
+                                            @String.Format("{0:n}", Model.Detalle.MtoOtros)
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @*<input id='otros' class="form-control" disabled value=@String.Format("{0:n}", Model.Detalle.MtoOtros) />*@
+                                            @Html.TextBoxFor(model => model.Detalle.MtoOtros, new { @class = "form-control", @id = "MtoOtros", @onblur = "ActualizarMontos();" })
+                                            @*@Html.ValidationMessageFor(model => model.Detalle.MtoOtros)*@
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row" id="filaMtoRecargo">
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.Detalle.MtoRecargo)</b>
+                                            <span>:</span>
+                                            @Html.DisplayFor(model => model.Detalle.MtoRecargo)         
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.Detalle.MtoRecargo, new { @class="form-control", @id = "MtoRecargo", @readonly = "readonly", @disabled = "disabled" })
+                                            @*@Html.ValidationMessageFor(model => model.Detalle.MtoRecargo)*@
+                                        </div>
+                                    </div>
+
+                                  
+                                    <div class="row" id="filaTotal">
+                                        <div class="form-group col-4">
+                                            <b>@Html.Label("TOTAL")</b>
+                                            <span>:</span>
+                                            @*@String.Format("{0:n}", Model.DetallePuesto.EscalaSalarial.SalarioBase + Model.Detalle.MtoAumentosAnuales + Model.Detalle.MtoProhibicion + Model.Detalle.MtoGradoGrupo)*@
+                                            @String.Format("{0:n}", Model.Detalle.MtoTotal)
+                                            @Html.HiddenFor(model => model.Detalle.MtoTotal)
+                                        </div >
+                                        <div class="form-group col-4">
+                                            <div id = "1" >
+                                                <input id='total' class="form-control"  disabled value = @String.Format("{0:n}", Model.Detalle.MtoSalarioBase + Model.Detalle.MtoAumentosAnuales + Model.Detalle.MtoProhibicion + Model.Detalle.MtoGradoGrupo) />
+                                             </div >
+                                            @Html.TextBoxFor(model => model.Detalle.MtoTotalNuevo, new { @class = "form-control", @id = "MtoTotalNuevo", @hidden = "true" })
+                                            @Html.HiddenFor(model => model.Detalle.MtoTotalNuevo)
+                                         </div >
+                                     </div >
+
+                                     <div class="row">
+                                        <div class="form-group col-4">
+                                            <input id = "btnGuardar" class="btn btn-secondary" name="SubmitButton" type="submit" value="Guardar Acción" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-4">
+                                            <div id = "progressbarGuardar" class="loader" hidden></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @if(!Html.ViewData.ModelState.IsValid)
+                {
+                    <div class="card border-danger">
+                        <div class="card-header"><strong>El formulario contiene los siguientes errores:</strong></div>
+                        <div class="card-body text-danger">
+                            @foreach(var modelError in Html.ViewData.ModelState.SelectMany(keyValuePair => keyValuePair.Value.Errors))
+                            {
+                                <div class="alert alert-danger" role="alert">
+                                    <h5>@modelError.ErrorMessage</h5>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    }
+
+    <div id = "detalleResultado" >
+
+
+    </div >
+
+    <div class="modal" id="myModal" tabindex="-1">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type = "button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Details</p>
+                    <p>@ViewBag.id</p>
+                </div>
+                <div class="modal-footer">
+                    <button type = "button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*<div class="modal fade" id="detalle-accion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Búsqueda por Clase</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    @{Html.RenderPartial("Details"); }
+                </div>
+                <div class="modal-footer">
+                    <button id="CacelarCalculoPopUp" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button id="CalcularPopUp" type="button" class="btn btn-primary">Calcular</button>
+                </div>
+            </div>
+        </div>
+    </div>*@
+}
+
+<script type="text/javaScript">
+       MostrarDatos(0);
+</script>

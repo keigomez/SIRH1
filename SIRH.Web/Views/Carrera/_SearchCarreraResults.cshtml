@@ -1,0 +1,185 @@
+﻿@model SIRH.Web.ViewModels.BusquedaCarreraVM
+
+@{
+    using (Html.BeginForm("ReporteDesgloseCarrera", "Carrera", FormMethod.Post, new { @id = "thisForm" }))
+    {
+        <div class="card">
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Cédula</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Curso</th>
+                            <th scope="col">Tipo de Curso</th>
+                            <th scope="col">Modalidad</th>
+                            @if (Model.Cursos.ElementAt(0).CursoCapacitacion != null)
+                            {
+                                <th scope="col">Resolución</th>
+                            }
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < Model.Cursos.Count(); i++)
+                        {
+                            <tr>
+                                <td>@Html.AttributeEncode(i + 1) </td>
+                                <td>
+                                    @Html.AttributeEncode(Model.Cursos.ElementAt(i).Funcionario.Cedula)
+                                    @Html.HiddenFor(model => model.Cursos[i].Funcionario.Cedula)
+                                    @Html.HiddenFor(model => model.Cursos[i].Funcionario.Nombre)
+                                    @Html.HiddenFor(model => model.Cursos[i].Funcionario.PrimerApellido)
+                                    @Html.HiddenFor(model => model.Cursos[i].Funcionario.SegundoApellido)
+                                </td>
+                                <td>
+                                    @Html.AttributeEncode(Model.Cursos.ElementAt(i).Funcionario.Nombre) @Html.AttributeEncode(Model.Cursos.ElementAt(i).Funcionario.PrimerApellido) @Html.AttributeEncode(Model.Cursos.ElementAt(i).Funcionario.SegundoApellido)
+                                </td>
+                                @if (Model.Cursos.ElementAt(i).CursoCapacitacion != null)
+                                {
+                                    <td>
+                                        @Html.AttributeEncode(Model.Cursos.ElementAt(i).CursoCapacitacion.DescripcionCapacitacion)
+                                        @Html.HiddenFor(model => model.Cursos[i].CursoCapacitacion.DescripcionCapacitacion)
+                                    </td>
+                                    <td>
+                                        @Html.AttributeEncode("Capacitación")
+                                    </td>
+                                    <td>
+                                        @Html.AttributeEncode(Model.Cursos.ElementAt(i).CursoCapacitacion.Modalidad.Descripcion)
+                                        @Html.HiddenFor(model => model.Cursos[i].CursoCapacitacion.Modalidad.Descripcion)
+                                        @Html.HiddenFor(model => model.Cursos[i].CursoCapacitacion.EntidadEducativa.DescripcionEntidad)
+                                        @Html.HiddenFor(model => model.Cursos[i].CursoCapacitacion.FechaInicio)
+                                        @Html.HiddenFor(model => model.Cursos[i].CursoCapacitacion.FechaFinal)                                        
+                                        @Html.HiddenFor(model => model.Cursos[i].CursoCapacitacion.TotalHoras)
+                                        @Html.HiddenFor(model => model.Cursos[i].CursoCapacitacion.TotalPuntos)
+                                    </td>
+                                    <td>
+                                        @Html.AttributeEncode(Model.Cursos.ElementAt(i).CursoCapacitacion.Resolucion)
+                                        @Html.HiddenFor(model => model.Cursos[i].CursoCapacitacion.Resolucion)
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("Details", "Carrera", new { codigo = Model.Cursos.ElementAt(i).CursoCapacitacion.IdEntidad, tipo = 2 })" class="btn btn-primary btn-sm">
+                                            <i class="fa fa-search"></i> Ver Detalle
+                                        </a>
+                                    </td>
+                                    if (Model.Cursos.ElementAt(i).CursoCapacitacion.Estado == 1 || Model.Cursos.ElementAt(i).CursoCapacitacion.Estado == 2)
+                                    {
+                                        <td>
+                                            <a href="@Url.Action("EditCurso", "Carrera", new { id = Model.Cursos.ElementAt(i).CursoCapacitacion.IdEntidad, tipo = 2 })" class="btn btn-warning btn-sm">
+                                                <i class="fa fa-edit"></i> Editar
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="@Url.Action("Edit", "Carrera", new { id = Model.Cursos.ElementAt(i).CursoCapacitacion.IdEntidad, tipo = 2 })" class="btn btn-danger btn-sm">
+                                                <i class="fa fa-ban"></i> Anular
+                                            </a>
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td></td>
+                                        <td></td>
+                                    }
+                                }
+                                else
+                                {
+                                    <td>
+                                        @Model.Cursos[i].CursoGrado.CursoGrado
+                                        @Html.HiddenFor(model => model.Cursos[i].CursoGrado.CursoGrado)
+                                    </td>
+                                    <td>
+                                        @Html.AttributeEncode("Grado")
+                                    </td>
+                                    <td>
+                                        @Model.Cursos[i].NombreGrado
+                                        @Html.HiddenFor(model => model.Cursos[i].CursoGrado.TipoGrado)
+                                        @Html.HiddenFor(model => model.Cursos[i].CursoGrado.EntidadEducativa.DescripcionEntidad)
+                                        @Html.HiddenFor(model => model.Cursos[i].CursoGrado.FechaEmision)                                       
+                                        @Html.HiddenFor(model => model.Cursos[i].CursoGrado.Incentivo)
+                                    </td>
+                                    @*<td>
+                                        @Model.Cursos[i].CursoGrado.Resolucion
+                                        @Html.HiddenFor(model => model.Cursos[i].CursoGrado.Resolucion)
+                                    </td>*@
+                                    <td>
+                                        <a href="@Url.Action("Details", "Carrera", new { codigo = Model.Cursos.ElementAt(i).CursoGrado.IdEntidad, tipo = 1 })" class="btn btn-primary btn-sm">
+                                            <i class="fa fa-search"></i> Ver Detalle
+                                        </a>
+                                    </td>
+                                    if (Model.Cursos.ElementAt(i).CursoGrado.Estado == 1)
+                                    {
+                                        <td>
+                                            <a href="@Url.Action("EditCurso", "Carrera", new { id = Model.Cursos.ElementAt(i).CursoGrado.IdEntidad, tipo = 1 })" class="btn btn-warning btn-sm">
+                                                <i class="fa fa-edit"></i> Editar
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="@Url.Action("Edit", "Carrera", new { id = Model.Cursos.ElementAt(i).CursoGrado.IdEntidad, tipo = 1 })" class="btn btn-danger btn-sm">
+                                                <i class="fa fa-ban"></i> Anular
+                                            </a>
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td></td>
+                                        <td></td>
+                                    }
+                                }
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <br />
+
+
+                <div class="row">
+                    @if (Model.TotalHoras > 0)
+                    {
+                        <div class="col-sm-2 col-md-2">
+                            <span><strong>Horas Totales: </strong>@Html.AttributeEncode(Model.TotalHoras)</span>
+                        </div>
+                    }
+                    @if (Model.HorasAcumuladas > 0)
+                    {
+                        <div class="col-sm-2 col-md-2">
+                            <span><strong>Horas Acumuladas: </strong>@Html.AttributeEncode(Model.HorasAcumuladas)</span>
+                        </div>
+                    }
+                    @if (Model.TotalPuntos > 0)
+                    {
+                        <div class="col-sm-2 col-md-2">
+                            <span><strong>Puntos Totales: </strong>@Html.AttributeEncode(Model.TotalPuntos)</span>
+                        </div>
+                    }
+                    @if (Model.TotalPorcentaje > 0)
+                    {
+                        <div class="col-sm-2 col-md-2">
+                            <span><strong>Porcentaje Total: </strong>@Html.AttributeEncode(Model.TotalPorcentaje)</span>
+                        </div>
+                    }
+                    @if (Model.PorcentajeAdicional > 0)
+                    {
+                        <div class="col-sm-2 col-md-2">
+                            <span><strong>Porcentaje Adicional: </strong>@Html.AttributeEncode(Model.PorcentajeAdicional)</span>
+                        </div>
+                    }
+                    @if (Model.PuntosAdicionales > 0)
+                    {
+                        <div class="col-sm-2 col-md-2">
+                            <span><strong>Puntos Adicionales: </strong>@Html.AttributeEncode(Model.PuntosAdicionales)</span>
+                        </div>
+                    }
+                </div>
+                <br />
+                <button class="btn btn-danger" type="submit"><i class="fa fa-file-pdf-o"></i> Exportar a pdf</button>
+            </div>
+        </div>   
+    }
+    <br />
+    <a href="@Url.Action("Create", "Carrera")" class="btn btn-success">
+        <i class="fa fa-plus-circle"></i> Registrar nuevo
+    </a>
+}

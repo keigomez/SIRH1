@@ -1,0 +1,221 @@
+﻿@model SIRH.Web.ViewModels.ReintegroVacacionesVM
+
+<script src="~/Content/bootstrap-datepicker/js/jquery-3.4.1.slim.min.js"></script>
+<!--link id="bs-css" href="https://netdna.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet"-->
+<link id="bsdp-css" href="~/Content/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+
+@{
+    if (Model != null)
+    {
+        @Html.ValidationSummary(true)
+
+        <br />
+        <div id="formulario">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Información del Funcionario</strong>
+                </div>
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <tr>
+                            <td>
+                                <strong>@Html.LabelFor(model => model.Funcionario.Cedula): </strong>@Html.DisplayFor(model => model.Funcionario.Cedula)
+                                @Html.HiddenFor(model => model.Funcionario.Cedula)
+                            </td>
+                            <td>
+                                <strong>@Html.LabelFor(model => model.Funcionario.Nombre): </strong>@Model.Funcionario.Nombre @Model.Funcionario.PrimerApellido @Model.Funcionario.SegundoApellido
+                                @Html.HiddenFor(model => model.Funcionario.Nombre)
+                                @Html.HiddenFor(model => model.Funcionario.PrimerApellido)
+                                @Html.HiddenFor(model => model.Funcionario.SegundoApellido)
+                            </td>
+                            <td>
+                                <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                                @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                                @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                            </td>
+                            <td>
+                                <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                                @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                            </td>
+                            <td>
+                                <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion)
+                                @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion)
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        @*<br />
+        <div id="formulario">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Información del periodo</strong>
+                </div>
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <tr>
+                            <td>
+                                <strong>@Html.LabelFor(model => model.PeriodoVacaciones.Saldo): </strong>@Html.DisplayFor(model => model.PeriodoVacaciones.Saldo)
+                                @Html.HiddenFor(model => model.PeriodoVacaciones.Saldo)
+                            </td>
+                            <td>
+                                <strong>@Html.LabelFor(model => model.PeriodoVacaciones.Periodo): </strong>@Html.DisplayFor(model => model.PeriodoVacaciones.Periodo)
+                                @Html.HiddenFor(model => model.PeriodoVacaciones.Periodo)
+                            </td>
+                            <td>
+                                <strong>@Html.LabelFor(model => model.PeriodoVacaciones.FechaCarga): </strong>@Model.PeriodoVacaciones.FechaCarga.ToShortDateString()
+                                @Html.HiddenFor(model => model.PeriodoVacaciones.FechaCarga)
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>*@
+        <br />
+        <div id="formulario_documento">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Información del registro</strong>
+                </div>
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <tr>
+                            <td>
+                                <strong>@Html.LabelFor(model => model.RegistroVacaciones.NumeroTransaccion): </strong>@Html.DisplayFor(model => model.RegistroVacaciones.NumeroTransaccion)
+                                @Html.HiddenFor(model => model.RegistroVacaciones.NumeroTransaccion)
+                            </td>
+                            <td>
+                                <strong>@Html.LabelFor(model => model.RegistroVacaciones.FechaRige): </strong>@Model.RegistroVacaciones.FechaRige.ToShortDateString()
+                                @Html.HiddenFor(model => model.RegistroVacaciones.FechaRige)
+                            </td>
+                            <td>
+                                <strong>@Html.LabelFor(model => model.RegistroVacaciones.FechaVence): </strong>@Model.RegistroVacaciones.FechaVence.ToShortDateString()
+                                @Html.HiddenFor(model => model.RegistroVacaciones.FechaVence)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong>@Html.LabelFor(model => model.RegistroVacaciones.Dias): </strong>@Html.DisplayFor(model => model.RegistroVacaciones.Dias)
+                                @Html.HiddenFor(model => model.RegistroVacaciones.Dias)
+                            </td>
+                            <td>
+                                <strong>@Html.LabelFor(model => model.PeriodoVacaciones.Saldo): </strong>@Html.DisplayFor(model => model.PeriodoVacaciones.Saldo)
+                                @Html.HiddenFor(model => model.PeriodoVacaciones.Saldo)
+                            </td>
+                            <td>
+                                <strong>@Html.LabelFor(model => model.PeriodoVacaciones.Periodo): </strong>@Html.DisplayFor(model => model.PeriodoVacaciones.Periodo)
+                                @Html.HiddenFor(model => model.PeriodoVacaciones.Periodo)
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="jumbotron">
+            @{
+                using (Ajax.BeginForm("ReintegroVacaciones", new AjaxOptions
+                {
+                    HttpMethod = "POST",
+                    UpdateTargetId = "Errores_Formulario",
+                    OnBegin = "BeginGuardarReintegro",
+                    OnComplete = "CompleteGuardarReintegro",
+                    OnSuccess = "SuccessGuardarReintegro",
+                    OnFailure = "SuccessGuardarReintegro"
+                }))
+                {
+                    @Html.HiddenFor(model => model.PeriodoVacaciones.Periodo)
+                    @Html.HiddenFor(model => model.Funcionario.IdEntidad)
+                    @Html.HiddenFor(model => model.PeriodoVacaciones.Periodo)
+                    @Html.HiddenFor(model => model.Funcionario.Cedula)
+                    @Html.HiddenFor(model => model.RegistroVacaciones.NumeroTransaccion)
+                    Html.ValidationSummary(true);
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>Formulario reintegro de vacaciones</strong>
+                        </div>
+                        <div class="card-body">
+
+                            <div class="form">
+                                <div class="form-row">
+                                    <div class="form-group col-4">
+                                        @Html.Label("Fecha del reintegro")<span>:</span>
+                                        <div class="start_date input-group mb-4">
+                                            @Html.TextBoxFor(model => model.ReintegroVacaciones.FechaRige, new { @id = "FechaRige", @class = "form-control start_date", @readonly = "readonly", @placeholder = "Fecha de Inicio" })
+                                            @Html.ValidationMessageFor(model => model.ReintegroVacaciones.FechaRige)
+                                        </div>
+                                        <div class="end_date input-group mb-4">
+                                            @Html.TextBoxFor(model => model.ReintegroVacaciones.FechaVence, new { @id = "FechaVence", @class = "form-control start_date", @readonly = "readonly", @placeholder = "Fecha de Finalización" })
+                                            @Html.ValidationMessageFor(model => model.ReintegroVacaciones.FechaVence)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-4 ">
+                                        @Html.LabelFor(model => model.ReintegroVacaciones.CantidadDias)
+                                        <span>:</span>
+                                        @Html.TextBoxFor(model => model.ReintegroVacaciones.CantidadDias, new { @id = "cantidadDias", @class = "form-control", @placeholder = "###" })
+                                        @Html.ValidationMessageFor(model => model.ReintegroVacaciones.CantidadDias)
+                                    </div>
+                                    <div class="form-group  col-4 ">
+                                        @Html.LabelFor(model => model.ReintegroVacaciones.SolReintegro)
+                                        <span>:</span>
+                                        @Html.TextBoxFor(model => model.ReintegroVacaciones.SolReintegro, new { @id = "numeroSolicitud", @class = "form-control", @placeholder = "###" })
+                                        @Html.ValidationMessageFor(model => model.ReintegroVacaciones.SolReintegro)
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group  col-12">
+                                        @Html.LabelFor(model => model.ReintegroVacaciones.Observaciones)
+                                        <span>:</span>
+                                        @Html.TextAreaFor(model => model.ReintegroVacaciones.Observaciones, new { @id = "obsReintegro", @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.ReintegroVacaciones.Observaciones)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div>
+                        <a class="btn btn-primary" href="javascript:history.back()" id="A5"><i class="fa fa-times"></i> Cancelar</a>
+                        <button class="btn btn-success" id="btnGuardar" name="SubmitButton" type="submit" value="Reintegrar">
+                            <i class="fa fa-save"></i>
+                            Reintegrar
+                        </button>
+                    </div>
+                }
+                <div id="Errores_Formulario" style="margin-top:15px;"> </div>
+            }
+        </div>
+
+
+                }
+}
+
+<script src="~/Content/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script src="~/Content/bootstrap-datepicker/locales/bootstrap-datepicker.es.min.js" charset="UTF-8"></script>
+
+
+<script type="text/javascript">
+    $(function () {
+        $('#FechaRige').val("Click aquí");
+        $('#FechaRige').datepicker(
+        {
+            language: "es",
+            autoclose: true
+        });
+
+        $('#FechaVence').val("Click aquí");
+        $('#FechaVence').datepicker(
+        {
+            language: "es",
+            autoclose: true
+        });
+    });
+</script>

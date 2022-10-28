@@ -1,0 +1,678 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://sisrh.mopt.go.cr:85/CFuncionarioService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SIRH.DTO" />
+  <xs:import schemaLocation="http://sisrh.mopt.go.cr:85/CFuncionarioService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:element name="GuardarDireccionFuncionario">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="funcionario" nillable="true" type="q1:CFuncionarioDTO" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="direccion" nillable="true" type="q2:CDireccionDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GuardarDireccionFuncionarioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="GuardarDireccionFuncionarioResult" nillable="true" type="q3:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarFuncionarioOferente">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cedula" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarFuncionarioOferenteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="BuscarFuncionarioOferenteResult" nillable="true" type="q4:ArrayOfArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarEntidadesFinancieras">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarEntidadesFinancierasResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ListarEntidadesFinancierasResult" nillable="true" type="q5:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarEntidadesGubernamentales">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarEntidadesGubernamentalesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ListarEntidadesGubernamentalesResult" nillable="true" type="q6:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarEntidadesAdscritas">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarEntidadesAdscritasResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ListarEntidadesAdscritasResult" nillable="true" type="q7:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarEntidadFinanciera">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codigo" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarEntidadFinancieraResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="BuscarEntidadFinancieraResult" nillable="true" type="q8:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GuardarInformacionContacto">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="funcionario" nillable="true" type="q9:CFuncionarioDTO" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="informacionContacto" nillable="true" type="q10:CInformacionContactoDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GuardarInformacionContactoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="GuardarInformacionContactoResult" nillable="true" type="q11:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GuardarCuentaBancariaFuncionario">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="cuenta" nillable="true" type="q12:CCuentaBancariaDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GuardarCuentaBancariaFuncionarioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="GuardarCuentaBancariaFuncionarioResult" nillable="true" type="q13:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DescargarDireccion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cedula" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DescargarDireccionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="DescargarDireccionResult" nillable="true" type="q14:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DescargarCatEstadoCivil">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cedula" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DescargarCatEstadoCivilResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="DescargarCatEstadoCivilResult" nillable="true" type="q15:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EditarJornadaFuncionario">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="jornada" nillable="true" type="q16:CTipoJornadaDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EditarJornadaFuncionarioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="EditarJornadaFuncionarioResult" nillable="true" type="q17:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistrarJornadaFuncionario">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="funcionario" nillable="true" type="q18:CFuncionarioDTO" />
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="nombramiento" nillable="true" type="q19:CNombramientoDTO" />
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="jornada" nillable="true" type="q20:CTipoJornadaDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistrarJornadaFuncionarioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="RegistrarJornadaFuncionarioResult" nillable="true" type="q21:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DescargarInformacionContacto">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cedula" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DescargarInformacionContactoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="DescargarInformacionContactoResult" nillable="true" type="q22:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GuardarHistEstadoCivil">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="funcionario" nillable="true" type="q23:CFuncionarioDTO" />
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="historialEstadoCivil" nillable="true" type="q24:CHistorialEstadoCivilDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GuardarHistEstadoCivilResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="GuardarHistEstadoCivilResult" nillable="true" type="q25:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GuardarDetalleContratacion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="detalle" nillable="true" type="q26:CDetalleContratacionDTO" />
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="cuenta" nillable="true" type="q27:CCuentaBancariaDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GuardarDetalleContratacionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="GuardarDetalleContratacionResult" nillable="true" type="q28:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GuardarDetalleNombramiento">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="detalleNombramiento" nillable="true" type="q29:CDetalleNombramientoDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GuardarDetalleNombramientoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="GuardarDetalleNombramientoResult" nillable="true" type="q30:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GuardarDatosPersonalesFuncionario">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="funcionario" nillable="true" type="q31:CFuncionarioDTO" />
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="estadoCivil" nillable="true" type="q32:CHistorialEstadoCivilDTO" />
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="informacion" nillable="true" type="q33:ArrayOfCInformacionContactoDTO" />
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="direccion" nillable="true" type="q34:CDireccionDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GuardarDatosPersonalesFuncionarioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="GuardarDatosPersonalesFuncionarioResult" nillable="true" type="q35:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FuncionariosConCauciones">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FuncionariosConCaucionesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="FuncionariosConCaucionesResult" nillable="true" type="q36:ArrayOfArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarFuncionarioUsuario">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nombreUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarFuncionarioUsuarioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="BuscarFuncionarioUsuarioResult" nillable="true" type="q37:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarFuncionarioBase">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cedula" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarFuncionarioBaseResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="BuscarFuncionarioBaseResult" nillable="true" type="q38:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarFuncionarioJornada">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cedula" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarFuncionarioJornadaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="BuscarFuncionarioJornadaResult" nillable="true" type="q39:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DescargarPerfilFuncionarioBásico">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cedula" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DescargarPerfilFuncionarioBásicoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="DescargarPerfilFuncionarioBásicoResult" nillable="true" type="q40:CFuncionarioDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarFuncionarioGeneral">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q41="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="query" nillable="true" type="q41:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarFuncionarioGeneralResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="BuscarFuncionarioGeneralResult" nillable="true" type="q42:ArrayOfCFuncionarioDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarFuncionarioParam">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cedula" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apellido1" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apellido2" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarFuncionarioParamResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="BuscarFuncionarioParamResult" nillable="true" type="q43:ArrayOfCFuncionarioDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarFuncionarioPuesto">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codPuesto" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="codClase" type="xs:int" />
+        <xs:element minOccurs="0" name="codEspecialidad" type="xs:int" />
+        <xs:element minOccurs="0" name="codOcupacionReal" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarFuncionarioPuestoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="BuscarFuncionarioPuestoResult" nillable="true" type="q44:ArrayOfCFuncionarioDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarFuncionarioUbicacion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="division" type="xs:int" />
+        <xs:element minOccurs="0" name="direccion" type="xs:int" />
+        <xs:element minOccurs="0" name="departamento" type="xs:int" />
+        <xs:element minOccurs="0" name="seccion" type="xs:int" />
+        <xs:element minOccurs="0" name="presupuesto" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarFuncionarioUbicacionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="BuscarFuncionarioUbicacionResult" nillable="true" type="q45:ArrayOfCFuncionarioDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarFuncionarioDesgloceSalarial">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cedula" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="periodo" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarFuncionarioDesgloceSalarialResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q46="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="BuscarFuncionarioDesgloceSalarialResult" nillable="true" type="q46:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarFuncionarioDetallePuesto">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cedula" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarFuncionarioDetallePuestoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q47="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="BuscarFuncionarioDetallePuestoResult" nillable="true" type="q47:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarFuncionarioDetallePuestoVacaciones">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cedula" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarFuncionarioDetallePuestoVacacionesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q48="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="BuscarFuncionarioDetallePuestoVacacionesResult" nillable="true" type="q48:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarFuncionarioDetallePuestoPV">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cedula" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarFuncionarioDetallePuestoPVResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q49="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="BuscarFuncionarioDetallePuestoPVResult" nillable="true" type="q49:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarFuncionarioDetallePuestoPropiedad">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cedula" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarFuncionarioDetallePuestoPropiedadResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q50="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="BuscarFuncionarioDetallePuestoPropiedadResult" nillable="true" type="q50:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarFuncionarioSalario">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cedula" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarFuncionarioSalarioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q51="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="BuscarFuncionarioSalarioResult" nillable="true" type="q51:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarFuncionarioProfesional">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cedula" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarFuncionarioProfesionalResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q52="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="BuscarFuncionarioProfesionalResult" nillable="true" type="q52:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarFuncionarioPolicial">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cedula" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarFuncionarioPolicialResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q53="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="BuscarFuncionarioPolicialResult" nillable="true" type="q53:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DescargarPerfilFuncionarioCompleto">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cedula" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DescargarPerfilFuncionarioCompletoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q54="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="DescargarPerfilFuncionarioCompletoResult" nillable="true" type="q54:ArrayOfArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarFuncionarioPuntosCarreraProfesional">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cedula" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarFuncionarioPuntosCarreraProfesionalResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q55="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="BuscarFuncionarioPuntosCarreraProfesionalResult" nillable="true" type="q55:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarTiposContacto">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarTiposContactoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q56="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ListarTiposContactoResult" nillable="true" type="q56:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarFuncionarioNuevo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cedula" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarFuncionarioNuevoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q57="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="BuscarFuncionarioNuevoResult" nillable="true" type="q57:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarFuncionarioCompleto">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cedula" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apellido1" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apellido2" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="codpuesto" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="codclase" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="codespecialidad" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="codocupacion" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="coddivision" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="coddireccion" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="coddepartamento" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="codseccion" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="codpresupuesto" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarFuncionarioCompletoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q58="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="BuscarFuncionarioCompletoResult" nillable="true" type="q58:ArrayOfCFuncionarioDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarFuncionarioCompletoPP">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cedula" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apellido1" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apellido2" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="codpuesto" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="codclase" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="codespecialidad" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="codnivel" type="xs:int" />
+        <xs:element minOccurs="0" name="coddivision" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="coddireccion" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="coddepartamento" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="codseccion" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="codpresupuesto" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="codestado" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="codcostos" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarFuncionarioCompletoPPResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q59="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="BuscarFuncionarioCompletoPPResult" nillable="true" type="q59:ArrayOfCFuncionarioDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActualizarInformacionBasicaFuncionario">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q60="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="funcionario" nillable="true" type="q60:CFuncionarioDTO" />
+        <xs:element xmlns:q61="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="direccion" nillable="true" type="q61:CDireccionDTO" />
+        <xs:element xmlns:q62="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="contacto" nillable="true" type="q62:ArrayOfCInformacionContactoDTO" />
+        <xs:element xmlns:q63="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="historial" nillable="true" type="q63:CHistorialEstadoCivilDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActualizarInformacionBasicaFuncionarioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q64="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ActualizarInformacionBasicaFuncionarioResult" nillable="true" type="q64:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarInformacionBasicaFuncionario">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cedula" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarInformacionBasicaFuncionarioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q65="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="BuscarInformacionBasicaFuncionarioResult" nillable="true" type="q65:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GuardarDetalleContratacionFuncionario">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q66="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="datos" nillable="true" type="q66:CDetalleContratacionDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GuardarDetalleContratacionFuncionarioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q67="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="GuardarDetalleContratacionFuncionarioResult" nillable="true" type="q67:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CargarDetalleContratacionFuncionario">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cedula" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CargarDetalleContratacionFuncionarioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q68="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="CargarDetalleContratacionFuncionarioResult" nillable="true" type="q68:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarExfuncionarioFiltros">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cedula" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="primerApellido" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="segundoApellido" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="codPuesto" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarExfuncionarioFiltrosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q69="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="BuscarExfuncionarioFiltrosResult" nillable="true" type="q69:ArrayOfCEMUExfuncionarioDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

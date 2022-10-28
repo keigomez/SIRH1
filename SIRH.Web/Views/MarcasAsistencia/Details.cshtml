@@ -1,0 +1,430 @@
+﻿@model SIRH.Web.ViewModels.FormularioMarcasAsistenciaVM
+@{
+    ViewBag.Title = "Detalles";
+    Layout = "~/Views/Shared/MarcasAsistencia.cshtml";
+}
+
+@{
+    if (Request.QueryString["accion"] == "guardar")
+    {
+        if (Model.Error == null)
+        {
+            <div class="alert alert-success" role="alert">
+                El funcionario se ha registrado correctamente
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    Detalles
+                </div>
+                <div class="card-body">
+                   <div style="margin-bottom:15px;">
+                       <h2>
+                           Código de acceso:
+                           @Html.AttributeEncode(Model.Empleado.Digitos)
+                       </h2>
+                   </div>
+                    <table class="table" style="margin-bottom:25px;">
+                        <thead class="thead-light">
+                            <tr>
+                                <th colspan="2">
+                                    Dispositivos asignados
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Ubicación
+                                </td>
+                                <td>
+                                    Descripción
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var dispositivo in Model.ListaDispositivos)
+                            {
+                                <tr>
+                                    <td>
+                                        @dispositivo.Descripcion
+                                    </td>
+                                    <td>
+                                        @dispositivo.Ubicacion
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                    <div>
+                        <a class="btn btn-outline-primary" href="javascript:history.back()" id="A2">Regresar</a>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+        }
+        else
+        {
+            <div class="alert alert-danger" role="alert">
+                El funcionario no pudo ser almacenado debido al siguiente error:
+            </div>
+            <div class="alert alert-danger" role="alert">
+                @Html.AttributeEncode(Model.Error.MensajeError)
+            </div>
+            <div class="alert alert-danger" role="alert">
+                Si conoce la causa de este error, por favor revise los datos que intentó almacenar
+                e intentelo de nuevo.
+            </div>
+            <div class="alert alert-danger" role="alert">
+                De lo contrario le invitamos a ponerse en contacto con nuestro equipo de soporte,
+                mediante el sistema de <a href="http://sisrh.mopt.go.cr:83/" target="_blank">Ayuda y Soporte</a>
+            </div>
+            <div>
+                <a class="btn btn-outline-primary" href="javascript:history.back()" id="A4">Regresar</a>
+            </div>
+
+        }
+    }
+
+    if (Request.QueryString["accion"] == "search")
+    {
+        if (Model.Error == null)
+        {
+            <table class="table" id="detalle_funcionario" style="margin-bottom:25px;">
+                <thead class="thead-light">
+                    <tr>
+                        <th colspan="2">
+                            Detalles del funcionario
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <b>Funcionario</b>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model=>model.Empleado.CodigoEmpleado) 
+                            @Html.DisplayFor(model=>model.Empleado.PrimerNombre) 
+                            @Html.DisplayFor(model=>model.Empleado.SegundoNombre) 
+                            @Html.DisplayFor(model=>model.Empleado.ApellidoPaterno) 
+                            @Html.DisplayFor(model=>model.Empleado.ApellidoMaterno) 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Código de acceso</b>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model=>model.Empleado.Digitos)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>
+                                @Html.LabelFor(model=>model.Empleado.Estado) 
+                            </b>
+                        </td>
+                        @if (Model.Empleado.Estado == 1)
+                        {
+                            <td>
+                                Activo
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                Anulado
+                            </td>
+                        }
+                        
+                    </tr>
+                    @if (!string.IsNullOrEmpty(Model.DetalleNombramiento.ObservacionesTipoJornada))
+                    {
+                        <tr>
+                            <td>
+                                <b>
+                                    @Html.LabelFor(model=>model.DetalleNombramiento.ObservacionesTipoJornada)
+                                </b>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model=>model.DetalleNombramiento.ObservacionesTipoJornada) 
+                                
+                                @Html.HiddenFor(model=>model.DetalleNombramiento.ObservacionesTipoJornada) 
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <table class="table" style="margin-bottom:25px;">
+                <thead class="thead-light">
+                    <tr>
+                        <th colspan="2">
+                            Dispositivos asignados
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            Ubicación
+                        </td>
+                        <td>
+                            Descripción
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var dispositivo in Model.ListaDispositivos)
+                    {
+                        <tr>
+                            <td>
+                                @dispositivo.Descripcion
+                            </td>
+                            <td>
+                                @dispositivo.Ubicacion
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+            <div>
+                <a class="btn btn-primary" href="javascript:history.back()" id="A2">Regresar</a>
+            </div>
+
+        }
+        else
+        {
+            <div class="alert alert-danger" role="alert">
+                El funcionario no pudo ser mostrado debido al siguiente error:
+            </div>
+            <div class="alert alert-danger" role="alert">
+                @Html.AttributeEncode(Model.Error.MensajeError)
+            </div>
+           
+            <div class="alert alert-danger" role="alert">
+                Le invitamos a ponerse en contacto con nuestro equipo de soporte,
+                mediante el sistema de <a href="http://sisrh.mopt.go.cr:83/" target="_blank">Ayuda y Soporte</a>
+            </div>
+            <div>
+                <a class="btn btn-outline-primary" href="javascript:history.back()" id="A4">Regresar</a>
+            </div>
+        }
+    }
+
+    if (Request.QueryString["accion"] == "edit1")
+    {
+        if (Model.Error == null)
+        {
+            <div class="alert alert-success" role="alert">
+                Se ha dado de baja al funcionario correctamente.
+            </div>
+            <table class="table" id="detalle_funcionario" style="margin-bottom:25px;">
+                <thead class="thead-light">
+                    <tr>
+                        <th colspan="2">
+                            Detalles del funcionario
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <b>Funcionario</b>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Empleado.CodigoEmpleado)
+                            @Html.DisplayFor(model => model.Empleado.PrimerNombre)
+                            @Html.DisplayFor(model => model.Empleado.SegundoNombre)
+                            @Html.DisplayFor(model => model.Empleado.ApellidoPaterno)
+                            @Html.DisplayFor(model => model.Empleado.ApellidoMaterno)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Código de acceso</b>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Empleado.Digitos)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>
+                                @Html.LabelFor(model => model.Empleado.Estado)
+                            </b>
+                        </td>
+                        @if (Model.Empleado.Estado == 1)
+                        {
+                            <td>
+                                Activo
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                Anulado
+                            </td>
+                        }
+
+                    </tr>
+                 
+                        <tr>
+                            <td>
+                                <b>
+                                    @Html.LabelFor(model => model.DetalleNombramiento.ObservacionesTipoJornada)
+                                </b>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.DetalleNombramiento.ObservacionesTipoJornada)
+
+                                @Html.HiddenFor(model => model.DetalleNombramiento.ObservacionesTipoJornada)
+                            </td>
+                        </tr>
+                    
+                </tbody>
+            </table>
+
+            <div>
+                <a class="btn btn-primary" href="javascript:history.back()" id="A2">Regresar</a>
+            </div>
+
+        }
+        else
+        {
+            <div class="alert alert-danger" role="alert">
+                El funcionario no pudo ser dado de baja debido al siguiente error:
+            </div>
+            <div class="alert alert-danger" role="alert">
+                @Html.AttributeEncode(Model.Error.MensajeError)
+            </div>
+            <div class="alert alert-danger" role="alert">
+                Si conoce la causa de este error, por favor revise los datos que ingresó
+                e intentelo de nuevo.
+            </div>
+            <div class="alert alert-danger" role="alert">
+                De lo contrario le invitamos a ponerse en contacto con nuestro equipo de soporte,
+                mediante el sistema de <a href="http://sisrh.mopt.go.cr:83/" target="_blank">Ayuda y Soporte</a>
+            </div>
+            <div>
+                <a class="btn btn-outline-primary" href="javascript:history.back()" id="A4">Regresar</a>
+            </div>
+        }
+
+    }
+
+    if (Request.QueryString["accion"] == "edit2")
+    {
+        if (Model.Error == null)
+        {
+            <div class="alert alert-success" role="alert">
+                Se ha dado de alta al funcionario correctamente.
+            </div>
+
+            <table class="table" id="detalle_funcionario" style="margin-bottom:25px;">
+                <thead class="thead-light">
+                    <tr>
+                        <th colspan="2">
+                            Detalles del funcionario
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <b>Funcionario</b>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Empleado.CodigoEmpleado)
+                            @Html.DisplayFor(model => model.Empleado.PrimerNombre)
+                            @Html.DisplayFor(model => model.Empleado.SegundoNombre)
+                            @Html.DisplayFor(model => model.Empleado.ApellidoPaterno)
+                            @Html.DisplayFor(model => model.Empleado.ApellidoMaterno)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Código de acceso</b>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Empleado.Digitos)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>
+                                @Html.LabelFor(model => model.Empleado.Estado)
+                            </b>
+                        </td>
+                        @if (Model.Empleado.Estado == 1)
+                        {
+                            <td>
+                                Activo
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                Anulado
+                            </td>
+                        }
+
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <b>
+                                @Html.LabelFor(model => model.DetalleNombramiento.ObservacionesTipoJornada)
+                            </b>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.DetalleNombramiento.ObservacionesTipoJornada)
+
+                            @Html.HiddenFor(model => model.DetalleNombramiento.ObservacionesTipoJornada)
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+            <div>
+                <a  class="btn btn-primary" href="javascript:history.back()" id="A2">Regresar</a>
+            </div>
+
+
+        }
+        else
+        {
+            <div class="alert alert-danger" role="alert">
+                El funcionario no pudo ser dado de alta debido al siguiente error:
+            </div>
+            <div class="alert alert-danger" role="alert">
+                @Html.AttributeEncode(Model.Error.MensajeError)
+            </div>
+            <div class="alert alert-danger" role="alert">
+                Si conoce la causa de este error, por favor revise los datos que ingresó
+                e intentelo de nuevo.
+            </div>
+            <div class="alert alert-danger" role="alert">
+                De lo contrario le invitamos a ponerse en contacto con nuestro equipo de soporte,
+                mediante el sistema de <a href="http://sisrh.mopt.go.cr:83/" target="_blank">Ayuda y Soporte</a>
+            </div>
+            <div>
+                <a class="btn btn-outline-primary" href="javascript:history.back()" id="A4">Regresar</a>
+            </div>
+        }
+    }
+    @Html.HiddenFor(model=>model.Empleado.CodigoEmpleado) 
+    @Html.HiddenFor(model=>model.Empleado.SegundoNombre) 
+    @Html.HiddenFor(model=>model.Empleado.PrimerNombre) 
+    @Html.HiddenFor(model=>model.Empleado.ApellidoPaterno) 
+    @Html.HiddenFor(model=>model.Empleado.ApellidoMaterno) 
+
+
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+<script src="~/Scripts/sidebar.js" type="text/javascript"></script>
+<script src="~/scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>

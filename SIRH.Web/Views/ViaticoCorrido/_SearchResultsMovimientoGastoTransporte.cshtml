@@ -1,0 +1,135 @@
+﻿@model  IList<SIRH.Web.ViewModels.FormularioGastoTransporteVM>
+@{
+    using (Html.BeginForm("ReporteBusquedaGastoTransporte", "ViaticoCorrido", FormMethod.Post, new { @id = "thisForm" }))
+    {
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th>#Registro</th>
+                    <th>Detalle</th>
+                    <th>Estado</th>
+                    <th>Fecha Inicio del <br /> Gasto Transporte a actuar</th>
+                    <th>Fecha Fin del <br /> Viatico Corrido a actuar</th>
+                    <th>Ver <br /> Detalle</th>
+                    <th>
+                        <!-- boton de notificar por correo-->
+                    </th>
+                    <th>
+                        <!-- boton de editar-->
+                    </th>
+                    <th>
+                        <!-- boton de mostrar detalles-->
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+               
+                @foreach (var item in Model)
+                {
+                    <!--data-->
+
+                    <!--Se mantienen los datos para no volver a hacer la busqueda-->
+
+
+                    @Html.HiddenFor(model => item.NumCartaPresentacion)
+                    @Html.HiddenFor(model => item.Funcionario.Nombre)
+                    @Html.HiddenFor(model => item.Funcionario.Cedula)
+                    @Html.HiddenFor(model => item.Funcionario.PrimerApellido)
+                    @Html.HiddenFor(model => item.Funcionario.SegundoApellido)
+                    @Html.HiddenFor(model => item.Funcionario.Nombre)
+                    @Html.HiddenFor(model => item.GastoTransporte.EstadoGastoTransporteDTO.NomEstadoDTO)
+                    @Html.HiddenFor(model => item.GastoTransporte.CodigoGastoTransporte)
+                    @Html.HiddenFor(model => item.GastoTransporte.MontGastoTransporteDTO)
+                    @Html.HiddenFor(model => item.GastoTransporte.FecInicioDTO)
+                    @Html.HiddenFor(model => item.GastoTransporte.FecFinDTO)
+                    @Html.HiddenFor(model => item.GastoTransporte.IdEntidad)
+                    @Html.HiddenFor(model => item.GastoTransporte.ObsGastoTransporteDTO)
+                    @Html.HiddenFor(model => item.UbicacionTrabajo.Distrito.Canton.Provincia.NomProvincia)
+                    @Html.HiddenFor(model => item.UbicacionTrabajo.Distrito.Canton.NomCanton)
+                    @Html.HiddenFor(model => item.UbicacionTrabajo.Distrito.NomDistrito)
+                    @Html.HiddenFor(model => item.UbicacionContrato.Distrito.Canton.Provincia.NomProvincia)
+                    @Html.HiddenFor(model => item.UbicacionContrato.Distrito.Canton.NomCanton)
+                    @Html.HiddenFor(model => item.UbicacionContrato.Distrito.NomDistrito)
+                    @Html.HiddenFor(model => item.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                    @Html.HiddenFor(model => item.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                    @Html.HiddenFor(model => item.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                    @Html.HiddenFor(model => item.Puesto.CodPuesto)
+                    @Html.HiddenFor(model => item.DetallePuesto.Clase.DesClase)
+                    @Html.HiddenFor(model => item.DetallePuesto.Especialidad.DesEspecialidad)
+                    @Html.HiddenFor(model => item.DetallePuesto.OcupacionReal.DesOcupacionReal)
+                }
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    if (Model[i].MovimeintoList != null) {
+                foreach (var item in Model[i].MovimeintoList)
+                {
+                    <tr>
+                        <td>
+                            @Html.AttributeEncode(item.IdEntidad)
+                        </td>
+                        @*<td>
+                            @if (item.Nomtipo == 2)
+                            {
+                                <labe>Deducción de Viatico Corrido</labe>
+                            }
+                            else if (item.Nomtipo == 3)
+                            {
+                                <labe>Eliminación de Viatico Corrido</labe>
+                            }
+                        </td>*@
+                        
+                        <td>
+                            @Html.AttributeEncode(item.ObsObservacionesDTO)
+                        </td>
+                        <td>
+                            @if (item.EstadoDTO == 1)
+                            {
+                                <labe>Activo</labe>
+                            }
+                            else if (item.EstadoDTO == 2)
+                            {
+                                <labe>Anulado</labe>
+                            }
+                        </td>
+                        <td>
+                            @Html.AttributeEncode(item.GastoTransporteDTO.FecInicioDTO.ToString("dd/MM/yyyy"))
+                        </td>
+                        <td>
+                            @Html.AttributeEncode(item.GastoTransporteDTO.FecFinDTO.ToString("dd/MM/yyyy"))
+                        </td>
+
+                        <td>
+                            @if (item.Nomtipo == 2)
+                            {
+                                <div class="link_view">@Html.ActionLink("Ver Detalle", "DetailsDeduccionGastoTransporte", new { codigo = item.IdEntidad, codigoGT = item.GastoTransporteDTO.IdEntidad }, new { @class = "btn btn-outline-primary" })</div>
+                            }
+                            else if (item.Nomtipo == 3)
+                            {
+                                <div class="link_view">@Html.ActionLink("Ver Detalle", "DetailsDeleteGastoTransporte", new { codigo = item.IdEntidad, codigoGT = item.GastoTransporteDTO.IdEntidad }, new { @class = "btn btn-outline-primary" })</div>
+                            }
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td colspan="7"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="7"></td>
+                    </tr>
+
+
+                }
+                    }
+                }
+            </tbody>
+        </table>
+        <div class="row">
+            @*<div class="form-group col-4">
+                    <div class="link_pdf"><a href="#" class="btn btn-outline-primary" id="submit_link" onclick="return ExportarAPdf();">Exportar resultados a PDF</a></div>
+
+                </div>*@
+        </div>
+    }
+
+
+}

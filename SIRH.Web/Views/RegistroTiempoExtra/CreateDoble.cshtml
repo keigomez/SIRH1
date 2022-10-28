@@ -1,0 +1,56 @@
+﻿@model SIRH.Web.ViewModels.FuncionarioRegistroExtrasVM
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/TiempoExtra.cshtml";
+}
+
+<link id="bsdp-css" href="~/Content/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+
+@using (Ajax.BeginForm("CreateDoble", "RegistroTiempoExtra", new { id = "FormBuscar" }, new AjaxOptions
+{
+    HttpMethod = "Post",
+    UpdateTargetId = "dvResultadoBusqueda",
+    OnSuccess = "ActualizarCampos",
+    OnBegin = "BeginBusqueda",
+    OnFailure = "CompleteBusqueda",
+    OnComplete = "CompleteBusqueda"
+}))
+{
+    <div class="jumbotron">
+        <center>
+            <h3 class="display-4">Registro de Jornadas Dobles</h3>
+            <br />
+            <div class="card">
+                <div class="card-header text-left">
+                    <strong>Buscar Funcionario</strong>
+                </div>
+
+                <div class="card-body">
+                    <div class="form-group">
+                        @Html.TextBoxFor(model => model.Funcionario.Cedula, new { @class = "form-control", @placeholder = "Cédula", style = "width: 280px;" })
+                        @Html.ValidationMessageFor(model => model.Funcionario.Cedula)
+                    </div>
+                    <div class="form-group">
+                        @Html.DropDownListFor(model => model.MesActual,
+                            Model.ListaMeses as SelectList,
+                            "Periodo", new { @id = "MesActual", @class = "form-control", style = "width: 280px;" })
+                    </div>
+                    <input id="btnBuscar" name="SubmitButton" class="btn btn-primary" type="submit" value="Buscar" />
+                    <div id="preloader" class="loader" style="display: none"></div>
+                </div>
+            </div>
+        </center>
+    </div>
+    <br />
+}
+
+<div id="dvResultadoBusqueda"></div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+<script src="~/Scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script src="~/Scripts/funciones-generales.js"></script>
+<script src="~/Scripts/Pages/CreateRegistroTE.js"></script>
+<script src="~/Content/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script src="~/Content/bootstrap-datepicker/locales/bootstrap-datepicker.es.min.js" charset="UTF-8"></script>

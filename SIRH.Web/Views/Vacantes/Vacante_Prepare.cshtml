@@ -1,0 +1,55 @@
+﻿@model SIRH.DTO.CPuestoDTO
+@{
+    ViewBag.Title = "Resultado";
+    Layout = "~/Views/Shared/Vacantes.cshtml";
+}
+
+<center><h2>Control de movimientos de puesto</h2></center>
+
+<div class="card">
+    <div class="card-body">
+        @if (Model.CodPuesto != null)
+        {
+            <div class="alert-info">
+                <br/>
+                <center><h3>Cambios realizados</h3></center>
+                <br />
+            </div>
+            <br />
+            <div>
+                Se ha realizado un movimiento sobre el puesto <b>@Model.CodPuesto</b>, cuyo estado ahora es <b>@Model.EstadoPuesto.DesEstadoPuesto</b>. Una notificación automática al respecto ha sido
+                enviada a los administradores del sistema.
+            </div>
+            <br />
+            <div>
+                Puede ver el detalle del puesto en el siguiente enlace: @Html.ActionLink("Detalle del Puesto", "Details", "Puesto", new { codPuesto = Model.CodPuesto }, null)
+            </div>
+            if (ViewBag.PuestoExtra != null)
+            {
+                <br />
+                <div>
+                    Adicionalmente se afectó el puesto <b>@ViewBag.PuestoExtra</b>, cuyo estado ahora es <b>@ViewBag.EstadoExtra</b>
+                </div>
+                <br />
+                <div>
+                    Puede ver el detalle del puesto en el siguiente enlace: @Html.ActionLink("Detalle del Puesto", "Details", "Puesto", new { codPuesto = ViewBag.PuestoExtra }, null)
+                </div>
+                <br />
+            }
+        }
+        else
+        {
+            <div class="alert-danger">
+                <h2>Error al aplicar los cambios</h2>
+            </div>
+            <div>
+                No se pudo aplicar el movimiento al puesto seleccionado, debido al siguiente error: <b>@Model.Mensaje</b>, si cree
+                que esto no es correcto o es un error propio del sistema por favor póngase en contacto con los administradores.
+            </div>
+            <br />
+            <br />
+
+            @Html.ActionLink("Regresar al Inicio", "Index", "Puesto", new { @class = "btn btn-outline-secondary" });
+        }
+     </div>
+</div>

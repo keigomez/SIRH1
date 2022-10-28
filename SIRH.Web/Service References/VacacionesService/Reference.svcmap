@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="844a97e6-92a8-470f-a91f-2dff7a54336c" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://sisrh.mopt.go.cr:85/CVacacionesService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CVacacionesService.xsd" MetadataType="Schema" ID="9e229057-2735-43e7-9685-afd3dc9b2033" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CVacacionesService.svc?xsd=xsd4" />
+    <MetadataFile FileName="CVacacionesService.wsdl" MetadataType="Wsdl" ID="dbb2fe92-db58-453d-b30b-3dcd09850983" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CVacacionesService.svc?wsdl" />
+    <MetadataFile FileName="CVacacionesService1.xsd" MetadataType="Schema" ID="c3bda921-6a17-47e6-9425-6bc3975b712f" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CVacacionesService.svc?xsd=xsd1" />
+    <MetadataFile FileName="CVacacionesService2.xsd" MetadataType="Schema" ID="f5372eb8-d375-4f84-a9c5-6cfec8866504" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CVacacionesService.svc?xsd=xsd0" />
+    <MetadataFile FileName="CVacacionesService3.xsd" MetadataType="Schema" ID="0cf8e63a-69d5-4c3e-815d-3a39600a2a43" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CVacacionesService.svc?xsd=xsd3" />
+    <MetadataFile FileName="CVacacionesService4.xsd" MetadataType="Schema" ID="029310c0-7e28-4945-87b2-ecdc39427135" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CVacacionesService.svc?xsd=xsd2" />
+    <MetadataFile FileName="CVacacionesService.disco" MetadataType="Disco" ID="ce82631c-0b19-4a8d-b600-b36778563027" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CVacacionesService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

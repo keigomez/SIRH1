@@ -1,0 +1,229 @@
+﻿@model SIRH.Web.ViewModels.FormularioBoletaPrestamoVM
+
+@{
+    ViewBag.Title = "Detalle de préstamo";
+    Layout = "~/Views/Shared/Archivo.cshtml";
+}
+
+<blockquote><h3>Detalle de préstamo</h3></blockquote>
+<br />
+@if (Request.QueryString["accion"] == "guardar")
+{
+    if (Model.Error == null)
+    {
+        <div class="alert alert-success" role="alert">
+            <i class="fa fa-check-circle d-inline" style="font-size:48px;"></i>
+            <h4 class="d-inline"> La boleta de préstamo se ha guardado correctamente.</h4>
+        </div>
+        <br />
+
+        <div class="card">
+            <h5 class="card-header">Detalles</h5>
+            <div class="card-body">
+                <div>Se ha almacenado la boleta de préstamo con número de boleta # <b>@Html.Encode(Model.BoletaPrestamo.IdEntidad)</b></div>
+                <br /><div>para el funcionario: <b>@Html.Encode(Model.BoletaPrestamo.CedulaFuncionario) - @Html.Encode(Model.BoletaPrestamo.NombreFuncionarioSolicitado) @Html.Encode(Model.BoletaPrestamo.ApellidoFuncionarioSolicitado)</b></div>
+                <br /><div>Solicitada por: <b>@Html.Encode(Model.BoletaPrestamo.CedulaSolicitante) - @Html.Encode(Model.BoletaPrestamo.NombreSolicitante) @Html.Encode(Model.BoletaPrestamo.ApellidoSolicitante)</b></div>
+                <br /><div>Correspondiente al periodo: <b>@Html.Encode(Model.BoletaPrestamo.FechaPrestamo.ToShortDateString()) - @Html.Encode(Model.BoletaPrestamo.FechaCaducidad.ToShortDateString())</b></div>
+                <br /><div>Perteneciente a la división: <b>@Html.AttributeEncode(Model.BoletaPrestamo.DivisiónFuncionario)</b></div>
+                <br /><div>Con la dirección: <b>@Html.AttributeEncode(Model.BoletaPrestamo.DirecciónFuncionario)</b></div>
+                <br /><div>Perteneciente al departamento: <b>@Html.AttributeEncode(Model.BoletaPrestamo.DepartamentoFuncionario)</b></div>
+                <br /><div>Con el motivo de: <b>@Html.AttributeEncode(Model.BoletaPrestamo.MotivoPrestamo)</b></div>
+                <br /><div>Atendido por: <b>@Html.Encode(Model.BoletaPrestamo.Usuario.NombreUsuario)</b> </div>
+            </div>
+        </div>
+
+        using (Html.BeginForm("ReporteBoletaPrestamo", "Archivo", FormMethod.Post, new { @id = "thisForm" }))
+        {
+            <div class="card">
+                <div class="card-header text-left">
+                    <b>Boleta # @Model.BoletaPrestamo.IdEntidad</b>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+
+                        @Html.HiddenFor(model => model.BoletaPrestamo.IdEntidad)
+
+                        <li class="list-group-item">
+                            <span>
+                                <b>Solicitante: </b> @Model.BoletaPrestamo.CedulaSolicitante - @Model.BoletaPrestamo.NombreSolicitante  @Model.BoletaPrestamo.ApellidoSolicitante
+                                @Html.HiddenFor(model => model.BoletaPrestamo.CedulaSolicitante)
+                                @Html.HiddenFor(model => model.BoletaPrestamo.NombreSolicitante)
+                                @Html.HiddenFor(model => model.BoletaPrestamo.ApellidoSolicitante)
+                            </span>
+                        </li>
+
+                        <li class="list-group-item">
+                            <span>
+                                <b>Funcionario: </b> @Model.BoletaPrestamo.CedulaFuncionario - @Model.BoletaPrestamo.NombreFuncionarioSolicitado  @Model.BoletaPrestamo.ApellidoFuncionarioSolicitado
+                                @Html.HiddenFor(model => model.BoletaPrestamo.CedulaFuncionario)
+                                @Html.HiddenFor(model => model.BoletaPrestamo.NombreFuncionarioSolicitado)
+                                @Html.HiddenFor(model => model.BoletaPrestamo.ApellidoFuncionarioSolicitado)
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>
+                                <b>@Html.LabelFor(model => model.BoletaPrestamo.Telefonolicitante): </b> @Model.BoletaPrestamo.Telefonolicitante
+                                @Html.HiddenFor(model => model.BoletaPrestamo.Telefonolicitante)
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>
+                                <b>@Html.LabelFor(model => model.BoletaPrestamo.CorreoSolicitante): </b>@Model.BoletaPrestamo.CorreoSolicitante
+                                @Html.HiddenFor(model => model.BoletaPrestamo.CorreoSolicitante)
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>
+                                <b>@Html.LabelFor(model => model.BoletaPrestamo.FechaPrestamo): </b>@Html.Encode(Model.BoletaPrestamo.FechaPrestamo.ToShortDateString())
+                                @Html.HiddenFor(model => model.BoletaPrestamo.FechaPrestamo)
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>
+                                <b>@Html.LabelFor(model => model.BoletaPrestamo.FechaCaducidad): </b>@Html.Encode(Model.BoletaPrestamo.FechaCaducidad.ToShortDateString())
+                                @Html.HiddenFor(model => model.BoletaPrestamo.FechaCaducidad)
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>
+                                <b>@Html.LabelFor(model => model.BoletaPrestamo.MotivoPrestamo): </b>@Model.BoletaPrestamo.MotivoPrestamo
+                                @Html.HiddenFor(model => model.BoletaPrestamo.MotivoPrestamo)
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>
+                                <b>Departamento: </b>@Model.BoletaPrestamo.DepartamentoFuncionario
+                                @Html.HiddenFor(model => model.BoletaPrestamo.DepartamentoFuncionario)
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>
+                                <b>Número de Expediente: </b>@Model.BoletaPrestamo.NumeroExpediente
+                                @Html.HiddenFor(model => model.BoletaPrestamo.NumeroExpediente)
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>
+                                <b>Usuario que lo atendió: </b>@Model.BoletaPrestamo.Usuario.NombreUsuario
+                                @Html.HiddenFor(model => model.BoletaPrestamo.Usuario.NombreUsuario)
+                            </span>
+                        </li>
+                    </ul>
+                    <br />
+
+                    <button class="btn btn-danger" type="submit"><i class="fa fa-file-pdf-o"></i> Exportar a PDF</button>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="alert alert-danger" role="alert">
+            <i class="fa fa-times-circle d-inline" style="font-size:48px;"></i>
+            <h4 class="d-inline"> Ocurrió un error al momento de guardar la póliza.</h4>
+        </div>
+        <br />
+
+        <div class="card">
+            <h5 class="card-header">Detalles</h5>
+            <div class="card-body">
+                <div>La boleta no pudo ser guardada debido al siguiente error: </div>
+                <br /><div><b>@Html.Encode(Model.Error.MensajeError)</b></div>
+                <br /><div>Si conoce la causa de este error, por favor revise los datos que intentó almacenar e intentelo de nuevo.</div>
+                <br /><div>De lo contrario le invitamos a ponerse en contacto con nuestro equipo de soporte, mediante el sistema de <a href="http://sisrh.mopt.go.cr:83/" target="_blank">Ayuda y Soporte</a></div>
+            </div>
+        </div>
+    }
+}
+else
+{ @*Accede desde otras vistas a esta sección*@
+    using (Html.BeginForm("ReporteBoletaPrestamo", "Archivo", FormMethod.Post, new { @id = "thisForm" }))
+    {
+        <div class="card">
+            <div class="card-header text-left">
+                <b>Boleta # @Model.BoletaPrestamo.IdEntidad</b>
+            </div>
+            <div class="card-body">
+                <ul class="list-group">
+                    @Html.HiddenFor(model => model.BoletaPrestamo.IdEntidad)
+                    @Html.HiddenFor(model => model.BoletaPrestamo.NumeroBoleta)
+
+                    <li class="list-group-item">
+                        <span>
+                            <b>Solicitante: </b> @Model.BoletaPrestamo.CedulaSolicitante - @Model.BoletaPrestamo.NombreSolicitante @Model.BoletaPrestamo.ApellidoSolicitante
+                            @Html.HiddenFor(model => model.BoletaPrestamo.CedulaSolicitante)
+                            @Html.HiddenFor(model => model.BoletaPrestamo.NombreSolicitante)
+                            @Html.HiddenFor(model => model.BoletaPrestamo.ApellidoSolicitante)
+                        </span>
+                    </li>
+
+                    <li class="list-group-item">
+                        <span>
+                            <b>Funcionario: </b> @Model.BoletaPrestamo.CedulaFuncionario - @Model.BoletaPrestamo.NombreFuncionarioSolicitado @Model.BoletaPrestamo.ApellidoFuncionarioSolicitado
+                            @Html.HiddenFor(model => model.BoletaPrestamo.CedulaFuncionario)
+                            @Html.HiddenFor(model => model.BoletaPrestamo.NombreFuncionarioSolicitado)
+                            @Html.HiddenFor(model => model.BoletaPrestamo.ApellidoFuncionarioSolicitado)
+                        </span>
+                    </li>
+                    <li class="list-group-item">
+                        <span>
+                            <b>@Html.LabelFor(model => model.BoletaPrestamo.Telefonolicitante): </b> @Model.BoletaPrestamo.Telefonolicitante
+                            @Html.HiddenFor(model => model.BoletaPrestamo.Telefonolicitante)
+                        </span>
+                    </li>
+                    <li class="list-group-item">
+                        <span>
+                            <b>@Html.LabelFor(model => model.BoletaPrestamo.CorreoSolicitante): </b>@Model.BoletaPrestamo.CorreoSolicitante
+                            @Html.HiddenFor(model => model.BoletaPrestamo.CorreoSolicitante)
+                        </span>
+                    </li>
+                    <li class="list-group-item">
+                        <span>
+                            <b>@Html.LabelFor(model => model.BoletaPrestamo.FechaPrestamo): </b>@Html.Encode(Model.BoletaPrestamo.FechaPrestamo.ToShortDateString())
+                            @Html.HiddenFor(model => model.BoletaPrestamo.FechaPrestamo)
+                        </span>
+                    </li>
+                    <li class="list-group-item">
+                        <span>
+                            <b>@Html.LabelFor(model => model.BoletaPrestamo.FechaCaducidad): </b>@Html.Encode(Model.BoletaPrestamo.FechaCaducidad.ToShortDateString())
+                            @Html.HiddenFor(model => model.BoletaPrestamo.FechaCaducidad)
+                        </span>
+                    </li>
+                    <li class="list-group-item">
+                        <span>
+                            <b>@Html.LabelFor(model => model.BoletaPrestamo.MotivoPrestamo): </b>@Model.BoletaPrestamo.MotivoPrestamo
+                            @Html.HiddenFor(model => model.BoletaPrestamo.MotivoPrestamo)
+                        </span>
+                    </li>
+                    <li class="list-group-item">
+                        <span>
+                            <b>Departamento: </b>@Model.BoletaPrestamo.DepartamentoFuncionario
+                            @Html.HiddenFor(model => model.BoletaPrestamo.DepartamentoFuncionario)
+                        </span>
+                    </li>
+                    <li class="list-group-item">
+                        <span>
+                            <b>Número de Expediente: </b>@Model.BoletaPrestamo.NumeroExpediente
+                            @Html.HiddenFor(model => model.BoletaPrestamo.NumeroExpediente)
+                        </span>
+                    </li>
+                    <li class="list-group-item">
+                        <span>
+                            <b>Usuario que lo atendió: </b>@Model.BoletaPrestamo.Usuario.NombreUsuario
+                            @Html.HiddenFor(model => model.BoletaPrestamo.Usuario.NombreUsuario)
+                        </span>
+                    </li>
+                </ul>
+                <br />
+
+                <button class="btn btn-danger" type="submit"><i class="fa fa-file-pdf-o"></i> Exportar a PDF</button>
+            </div>
+        </div>
+    }
+}
+<br />
+
+<a href="javascript:history.back()" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Regresar</a>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")

@@ -1,0 +1,253 @@
+﻿@model SIRH.Web.ViewModels.BusquedaHistoricoPuntosVM
+
+@{
+    ViewBag.Title = "Detalle histórico puntos";
+    Layout = "~/Views/Shared/Carrera.cshtml";
+}
+
+<blockquote><h3>Detalle de histórico de puntos</h3></blockquote>
+
+@using (Html.BeginForm("ReporteDetalleHistoricoPuntos", "Carrera", FormMethod.Post, new { @id = "thisForm" }))
+{
+
+    <div class="card">
+        <h5 class="card-header">
+            <i class="fa fa-user"></i>
+            <b>Detalle de funcionario</b>
+        </h5>
+        <div class="card-body">
+
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <b>Nombre: </b>@Model.Puntos.Nombre
+                </li>
+                <li class="list-group-item">
+                    <b>Cédula: </b>@Model.Puntos.Cedula
+                </li>
+            </ul>
+
+        </div>
+    </div>
+
+    <br />
+
+    <div class="card">
+        <h5 class="card-header">
+            <i class="fa fa-table"></i>
+            <b>Detalle de horas y puntos</b>
+        </h5>
+        <div class="card-body">
+
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td><b>Total de puntos: </b>@Model.Puntos.TotalPuntos</td>
+                        <td><b>Valor del punto: </b>@Model.Puntos.ValorPunto</td>
+                        <td></td>
+                    </tr>
+                     <tr class="card-header"><td colspan="3"></td></tr>
+                    @*<tr>
+                        <td><b>Número de Resolución: </b>@Model.Puntos.NumResolucion</td>
+                        <td>
+                            <b>Fecha de Resolución: </b>@if (Model.Puntos.FecResolucion.Year > 1)
+                            {@Model.Puntos.FecResolucion.ToShortDateString();
+                        }
+                        </td>
+                        <td></td>
+                    </tr>*@
+                    @*<tr class="card-header"><td colspan="3"></td></tr>*@
+                    <tr>
+                        <td><b>Años de experiencia profesional: </b>@Model.Puntos.AnnoExpPR</td>
+                        <td><b>Puntos de experiencia profesional: </b>@Model.Puntos.PtosExpPR</td>
+                        <td></td>
+                        @*<td><b>Años de experiencia Est: </b>@Model.Puntos.AnnoExpEst</td>*@
+                    </tr>
+                    <tr class="card-header"><td colspan="3"></td></tr>
+                    <tr>
+                        @*<td><b>Aprovechamiento: </b>@Model.Puntos.Aprovechamiento</td>*@
+                        <td><b>Horas de aprovechamiento: </b>@Model.Puntos.HorasAprovechamiento</td>
+                        <td><b>Horas excedente de aprovechamiento: </b>@Model.Puntos.HsExcApr</td>
+                        <td><b>Puntos de aprovechamiento: </b>@Model.Puntos.PtosAprovechamiento</td>
+                    </tr>
+                    <tr>
+                        @*<td><b>Aprovechamiento Est: </b>@Model.Puntos.AprovechamientoEst</td>
+            <td><b>Horas de aprovechamiento Est: </b>@Model.Puntos.HoraAprEst</td>*@
+                        <td colspan="3"><b>Cursos de aprovechamiento: </b>@Model.Puntos.CAprovechamiento</td>
+                    </tr>
+                    @*<tr>
+            <td><b>Puntos de aprovechamiento Est: </b>@Model.Puntos.PtosAprEst</td>
+            <td><b>Excedente de aprovechamiento Est: </b>@Model.Puntos.ExcAprEst</td>
+
+        </tr>*@
+                    <tr class="card-header"><td colspan="3"></td></tr>
+                    <tr>
+                        @*<td><b>Participación: </b>@Model.Puntos.Participacion</td>*@
+                        <td><b>Horas de participación: </b>@Model.Puntos.HorasParticipacion</td>
+                        <td><b>Horas excedente de participación: </b>@Model.Puntos.HsExcPar</td>
+                        <td><b>Puntos de participación: </b>@Model.Puntos.PtosParticipacion</td>
+                    </tr>
+                    @*<tr>
+            <td><b>Participación Est: </b>@Model.Puntos.ParticipacionEst</td>
+            <td><b>Horas de participación Est: </b>@Model.Puntos.HoraParEst</td>
+        </tr>*@
+                    <tr>
+                        @*<td><b>Puntos de participación Est: </b>@Model.Puntos.PtosParEst</td>
+            <td><b>Excedente de participación Est: </b>@Model.Puntos.ExcParEst</td>*@
+                        <td colspan="3"><b>Cursos de participación: </b>@Model.Puntos.CParticipacion</td>
+                    </tr>
+                    <tr class="card-header"><td colspan="3"></td></tr>
+                    <tr>
+                        @*<td><b>Instrucción: </b>@Model.Puntos.ParticipacionInstruccion</td>*@
+                        <td><b>Horas de instrucción: </b>@Model.Puntos.HorasInstruccion</td>
+                        <td><b>Puntos de instrucción: </b>@Model.Puntos.PtosInstruccion</td>
+                        <td><b>Cursos de instrucción: </b>@Model.Puntos.CInstruccion</td>
+                    </tr>
+                    @*<tr>
+               
+                        <td></td>
+                        <td></td>
+                    </tr>*@
+                    @*<tr>
+            <td><b>Puntos de experiencia Est: </b>@Model.Puntos.PtosExpEst</td>
+            <td></td>
+            <td></td>
+        </tr>*@
+                    <tr class="card-header"><td colspan="3"></td></tr>
+                    <tr>
+                        @*<td><b>Experiencia docente: </b>@Model.Puntos.ExpDoc</td>*@
+                        <td><b>Puntos de experiencia docente: </b>@Model.Puntos.PtosExpDoc</td>
+                        <td><b>Puntos de publicaciones: </b>@Model.Puntos.PtosPublicacion</td>
+                        <td><b>Puntos de organización internacional: </b>@Model.Puntos.PtosOrgInt</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"><b>Puntos de grado: </b>@Model.Puntos.PtosGrado</td>
+                        @*<td><b>Puntos de grado Est: </b>@Model.Puntos.PtosGrEst</td>*@
+                    </tr>
+                    @*<tr class="card-header"><td colspan="3"></td></tr>
+        <tr>
+            <td><b>Puntos otros: </b>@Model.Puntos.PtosOtros</td>
+            <td><b>Explicación otros: </b>@Model.Puntos.ExplOtros</td>
+            <td><b>Puntos otros Est: </b>@Model.Puntos.PtosOtrosEst</td>
+        </tr>*@
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <br />
+
+    <div class="card">
+        <h5 class="card-header">
+            <i class="fa fa-plus-circle"></i>
+            <b>Detalles Adicionales</b>
+        </h5>
+        <div class="card-body">
+
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td><b>Calificación de Servicio: </b>@Model.Puntos.CalificacionServicio</td>
+                        @*<td><b>Calificación Est: </b>@Model.Puntos.CalificacionEst</td>*@
+                        <td colspan="2"><b>Observación: </b>@Model.Puntos.Observacion</td>                     
+                    </tr>
+                    <tr>
+                        <td><b>Mes de Carrera: </b>@Model.Puntos.MesCarrera</td>
+                        <td><b>Año de Carrera: </b>@Model.Puntos.AnnoCarrera</td>
+                        <td><b>Período: </b>@Model.Puntos.Periodo</td>
+                    </tr>
+                    <tr>
+                        <td><b>Grado: </b>@Model.Puntos.Grado</td>
+                        <td><b>Nivel: </b>@Model.Puntos.Nivel</td>
+                        <td><b>Movimiento: </b>@Model.Puntos.Movimiento</td>
+                    </tr>
+                    <tr>
+                        <td><b>Observación 1: </b>@Model.Puntos.Observacion1</td>
+                        <td><b>Observación 2: </b>@Model.Puntos.Observacion2</td>
+                        <td><b>Observación 3: </b>@Model.Puntos.Observacion3</td>
+                    </tr>
+                    <tr>
+                        <td><b>Fecha: </b>@if (Model.Puntos.Fecha.Year > 1)
+                        {@Model.Puntos.Fecha.ToShortDateString();
+                    }</td>
+                        <td><b>Fecha Rige de Pago: </b>@if (Model.Puntos.FecRigePago.Year > 1)
+                        {@Model.Puntos.FecRigePago.ToShortDateString();
+                    }</td>
+                        <td></td>
+                        @*<td><b>Rige Est: </b>@if (Model.Puntos.RigeEst.Year > 1)
+                        {@Model.Puntos.RigeEst.ToShortDateString();
+                    }</td>*@
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+    <br />
+
+
+    @Html.HiddenFor(model => model.Puntos.Cedula)
+    @Html.HiddenFor(model => model.Puntos.Nombre)
+    @Html.HiddenFor(model => model.Puntos.TotalPuntos)
+    @Html.HiddenFor(model => model.Puntos.ValorPunto)
+    @Html.HiddenFor(model => model.Puntos.AnnoExpPR)
+    @Html.HiddenFor(model => model.Puntos.Aprovechamiento)
+    @Html.HiddenFor(model => model.Puntos.Participacion)
+    @Html.HiddenFor(model => model.Puntos.ParticipacionInstruccion)
+    @Html.HiddenFor(model => model.Puntos.CalificacionServicio)
+    @Html.HiddenFor(model => model.Puntos.HorasAprovechamiento)
+    @Html.HiddenFor(model => model.Puntos.HorasParticipacion)
+    @Html.HiddenFor(model => model.Puntos.HorasInstruccion)
+    @Html.HiddenFor(model => model.Puntos.PtosGrado)
+    @Html.HiddenFor(model => model.Puntos.PtosAprovechamiento)
+    @Html.HiddenFor(model => model.Puntos.PtosExpPR)
+    @Html.HiddenFor(model => model.Puntos.PtosParticipacion)
+    @Html.HiddenFor(model => model.Puntos.PtosInstruccion)
+    @Html.HiddenFor(model => model.Puntos.PtosOtros)
+    @Html.HiddenFor(model => model.Puntos.ExplOtros)
+    @Html.HiddenFor(model => model.Puntos.Observacion)
+    @Html.HiddenFor(model => model.Puntos.MesCarrera)
+    @Html.HiddenFor(model => model.Puntos.AnnoCarrera)
+    @Html.HiddenFor(model => model.Puntos.FecRigePago)
+    @Html.HiddenFor(model => model.Puntos.HsExcPar)
+    @Html.HiddenFor(model => model.Puntos.HsExcApr)
+    @Html.HiddenFor(model => model.Puntos.NumResolucion)
+    @Html.HiddenFor(model => model.Puntos.FecResolucion)
+    @Html.HiddenFor(model => model.Puntos.Periodo)
+    @Html.HiddenFor(model => model.Puntos.Grado)
+    @Html.HiddenFor(model => model.Puntos.Nivel)
+    @Html.HiddenFor(model => model.Puntos.AnnoExpEst)
+    @Html.HiddenFor(model => model.Puntos.AprovechamientoEst)
+    @Html.HiddenFor(model => model.Puntos.ParticipacionEst)
+    @Html.HiddenFor(model => model.Puntos.HoraAprEst)
+    @Html.HiddenFor(model => model.Puntos.HoraParEst)
+    @Html.HiddenFor(model => model.Puntos.PtosGrEst)
+    @Html.HiddenFor(model => model.Puntos.PtosAprEst)
+    @Html.HiddenFor(model => model.Puntos.PtosExpEst)
+    @Html.HiddenFor(model => model.Puntos.PtosParEst)
+    @Html.HiddenFor(model => model.Puntos.PtosOtrosEst)
+    @Html.HiddenFor(model => model.Puntos.ExcParEst)
+    @Html.HiddenFor(model => model.Puntos.ExcAprEst)
+    @Html.HiddenFor(model => model.Puntos.CAprovechamiento)
+    @Html.HiddenFor(model => model.Puntos.CParticipacion)
+    @Html.HiddenFor(model => model.Puntos.CInstruccion)
+    @Html.HiddenFor(model => model.Puntos.ExpDoc)
+    @Html.HiddenFor(model => model.Puntos.Movimiento)
+    @Html.HiddenFor(model => model.Puntos.Observacion1)
+    @Html.HiddenFor(model => model.Puntos.Observacion2)
+    @Html.HiddenFor(model => model.Puntos.Observacion3)
+    @Html.HiddenFor(model => model.Puntos.Fecha)
+    @Html.HiddenFor(model => model.Puntos.PtosPublicacion)
+    @Html.HiddenFor(model => model.Puntos.PtosExpDoc)
+    @Html.HiddenFor(model => model.Puntos.PtosOrgInt)
+    @Html.HiddenFor(model => model.Puntos.RigeEst)
+    @Html.HiddenFor(model => model.Puntos.CalificacionEst)
+
+
+    <button class="btn btn-danger" type="submit"><i class="fa fa-file-pdf-o"></i> Exportar a PDF</button>
+}
+
+@Scripts.Render("~/bundles/jquery")
+<script src="~/Scripts/popper.min.js"></script>
+@Scripts.Render("~/bundles/bootstrap")
+<script src="~/Scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>

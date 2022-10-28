@@ -1,0 +1,344 @@
+﻿@model SIRH.Web.ViewModels.FormularioAccionPersonalVM
+@*@{
+    ViewBag.Title = "Histórico de Acciones de Personal";
+    Layout = "~/Views/Shared/AccionPersonal.cshtml";
+}*@
+<link href="~/Content/datetimepicker.css" rel="stylesheet" />
+@*<center><h2>Histórico Acción de Personal</h2></center>*@
+@{
+    //Html.EnableClientValidation();
+    //using (Ajax.BeginForm("Create", "AccionPersonal", new AjaxOptions
+    //{
+    //    UpdateTargetId = "dvResultadoBusqueda",
+    //    HttpMethod = "POST",
+    //    OnSuccess = "SuccessCargarFuncionario",
+    //    OnComplete = "CompleteCargarFuncionario",
+    //    OnBegin = "BeginCargarFuncionario",
+    //    OnFailure = "CompleteCargarFuncionario"
+    //}))
+    using (Html.BeginForm("ReporteDetalleHistorico", "AccionPersonal", FormMethod.Post, new { @id = "thisForm", target = "_blank" }))
+    {
+        <div id="formulario">
+            <div id="tabs">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a id="tab1" class="nav-link" href="#tabs-1" data-toggle="tab" role="tab" aria-controls="tabs-1" aria-selected="true">Datos Funcionario</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="tab2" class="nav-link active" href="#tabs-2" data-toggle="tab" role="tab" aria-controls="tabs-2" aria-selected="false">Detalle</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div id="tabs-1" class="tab-pane fade " role="tabpanel" aria-labelledby="tab1">
+                        <table class="table table-hover" id="datos_funcionario">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th colspan="6">Información del Funcionario</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><b>@Html.LabelFor(model => model.Funcionario.Cedula)</b></td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.Historico.Cedula)
+                                        @Html.HiddenFor(model => model.Funcionario.Cedula)
+                                    <td><b>@Html.LabelFor(model => model.Funcionario.Nombre)</b></td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.Funcionario.Nombre)
+                                        @Html.DisplayFor(model => model.Funcionario.PrimerApellido)
+                                        @Html.DisplayFor(model => model.Funcionario.SegundoApellido)
+                                        @Html.HiddenFor(model => model.Funcionario.Nombre)
+                                        @Html.HiddenFor(model => model.Funcionario.PrimerApellido)
+                                        @Html.HiddenFor(model => model.Funcionario.SegundoApellido)
+                                        @Html.HiddenFor(model => model.TipoAccion.IdEntidad)
+                                        @Html.HiddenFor(model => model.TipoAccion.DesTipoAccion)
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="tabs-2" class="tab-pane fade show active" role="tabpanel" aria-labelledby="tab2">
+                        <table class="table table-hover">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th colspan="4">
+                                        Datos de la Acción de Personal
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td> @Html.HiddenFor(model => model.Historico.IdEntidad)</td>
+                                    <td> @Html.HiddenFor(model => model.Historico.NumAccion)</td>
+                                    <td> @Html.HiddenFor(model => model.Historico.Explicacion)</td>
+                                </tr>
+                                <tr>
+                                    <td> @Html.Label("Funcionario")</td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.Funcionario.Cedula) -
+                                        @Html.DisplayFor(model => model.Funcionario.Nombre)
+                                        @Html.DisplayFor(model => model.Funcionario.PrimerApellido)
+                                        @Html.DisplayFor(model => model.Funcionario.SegundoApellido)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td> @Html.LabelFor(model => model.Historico.NumAccion)</td>
+                                    <td> @Html.DisplayTextFor(model => model.Historico.NumAccion) </td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.LabelFor(model => model.TipoSeleccionado)</td>
+                                    <td>@Html.DisplayTextFor(model => model.Historico.CodAccion) @Html.DisplayTextFor(model => model.TipoAccion.DesTipoAccion)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.LabelFor(model => model.Historico.Explicacion)</td>
+                                    <td>@Html.DisplayTextFor(model => model.Historico.Explicacion)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div>
+                            <div class="card">
+                                <h5 class="card-header">Detalles</h5>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="form-group col-2">
+                                            <b>@Html.LabelFor(model => model.Historico.FecRige)</b>
+                                            <span>:</span>
+                                        </div>
+                                        <div class="form-group col-3">
+                                            @*@Html.TextBoxFor(model => model.Historico.FecRige, new { @id = "FecRige", @class = "form-control", @readonly = "readonly", @placeholder = "Fecha Rige" })*@
+                                            @Html.TextBox("FecRige", Html.Encode(Model.Historico.FecRige.ToShortDateString()), new { @id = "FecRige", @class = "form-control", @readonly = "readonly", @placeholder = "Fecha Rige" })
+                                            @Html.ValidationMessageFor(model => model.Historico.FecRige)
+                                            @Html.HiddenFor(model => model.Historico.FecRige)
+                                        </div >
+                                        <div class="form-group col-2">
+                                            <b>@Html.LabelFor(model => model.Historico.FecVence)</b>
+                                            <span>:</span>
+                                        </div>
+                                        <div class="form-group col-3">
+                                            @*@Html.TextBoxFor(model => model.Historico.FecVence, new { @id = "FecVence", @class = "form-control", @readonly = "readonly", @placeholder = "Fecha Vence" })*@
+                                            @if (Model.Historico.FecVence.ToShortDateString() != "01/01/0001")
+                                            {
+                                                @Html.TextBox("FecVence", Html.Encode(Model.Historico.FecVence.ToShortDateString()), new { @id = "FecVence", @class = "form-control", @readonly = "readonly", @placeholder = "Fecha Vence" })
+                                            }
+                                            else
+                                            {
+                                                @Html.TextBox("FecVence","", new { @id = "FecVence", @class = "form-control", @readonly = "readonly", @placeholder = "" })
+                                            }
+                                            @Html.HiddenFor(model => model.Historico.FecVence)
+                                            @Html.ValidationMessageFor(model => model.Historico.FecVence)
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-3">
+                                            <b>@Html.LabelFor(model => model.Historico.CodClase)</b>
+                                            <span>:</span>
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.Historico.CodClase, new { @class = "form-control", @readonly = "readonly" })
+                                            @Html.HiddenFor(model => model.Historico.CodClase)
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.Historico.CodClase2, new { @class = "form-control", @readonly = "readonly" })
+                                            @Html.HiddenFor(model => model.Historico.CodClase2)
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-3">
+                                            <b>@Html.LabelFor(model => model.Historico.DesClase)</b>
+                                            <span>:</span>
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.Historico.DesClase, new { @class = "form-control", @readonly = "readonly" })
+                                            @Html.HiddenFor(model => model.Historico.DesClase)
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.Historico.DesClase2, new { @class = "form-control", @readonly = "readonly" })
+                                            @Html.HiddenFor(model => model.Historico.DesClase2)
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-3">
+                                            <b>@Html.LabelFor(model => model.Historico.Categoria)</b>
+                                            <span>:</span>
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.Historico.Categoria, new { @class = "form-control", @readonly = "readonly" })
+                                            @Html.HiddenFor(model => model.Historico.Categoria)
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.Historico.Categoria2, new { @class = "form-control", @readonly = "readonly" })
+                                            @Html.HiddenFor(model => model.Historico.Categoria2)
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-3">
+                                            <b>@Html.LabelFor(model => model.Historico.CodPuesto)</b>
+                                            <span>:</span>
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.Historico.CodPuesto, new { @class = "form-control", @readonly = "readonly" })
+                                            @Html.HiddenFor(model => model.Historico.CodPuesto)
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.Historico.CodPuesto2, new { @class = "form-control", @readonly = "readonly" })
+                                            @Html.HiddenFor(model => model.Historico.CodPuesto2)
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-3">
+                                            <b>@Html.LabelFor(model => model.Historico.Disfrutado)</b>
+                                            <span>:</span>
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.Historico.Disfrutado, new { @class = "form-control", @readonly = "readonly" })
+                                            @Html.HiddenFor(model => model.Historico.Disfrutado)
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.Historico.Disfrutado2, new { @class = "form-control", @readonly = "readonly" })
+                                            @Html.HiddenFor(model => model.Historico.Disfrutado2)
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-3">
+                                            <b>@Html.LabelFor(model => model.Historico.Autorizado)</b>
+                                            <span>:</span>
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.Historico.Autorizado, new { @class = "form-control", @readonly = "readonly" })
+                                            @Html.HiddenFor(model => model.Historico.Autorizado)
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.Historico.Autorizado2, new { @class = "form-control", @readonly = "readonly" })
+                                            @Html.HiddenFor(model => model.Historico.Autorizado2)
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-3">
+                                            <b>@Html.LabelFor(model => model.Historico.MtoSalarioBase)</b>
+                                            <span>:</span>
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.Historico.MtoSalarioBase, new { @class = "form-control text-right", @align = "right", @readonly = "readonly" })
+                                            @*<input id='MtoSalarioBase' class="form-control" align="right" disabled value=@Model.Historico.MtoSalarioBase />*@
+                                            @Html.HiddenFor(model => model.Historico.MtoSalarioBase)
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.Historico.MtoSalarioBase2, new { @class = "form-control text-right", @readonly = "readonly" })
+                                            @Html.ValidationMessageFor(model => model.Historico.MtoSalarioBase2)
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-3">
+                                            <b>@Html.LabelFor(model => model.Historico.MtoAumentosAnuales)</b>
+                                            <span>:</span>
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.Historico.MtoAumentosAnuales, new { @class = "form-control text-right", @readonly = "readonly" })
+                                            @Html.HiddenFor(model => model.Historico.MtoAumentosAnuales)
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.Historico.MtoAumentosAnuales2, new { @class = "form-control text-right", @readonly = "readonly" })
+                                            @Html.HiddenFor(model => model.Historico.MtoAumentosAnuales2)
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-3">
+                                            <b>@Html.LabelFor(model => model.Historico.MtoRecargo)</b>
+                                            <span>:</span>
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.Historico.MtoRecargo, new { @class = "form-control text-right", @readonly = "readonly" })
+                                            @Html.HiddenFor(model => model.Historico.MtoRecargo)
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.Historico.MtoRecargo2, new { @class = "form-control text-right", @readonly = "readonly" })
+                                            @Html.ValidationMessageFor(model => model.Historico.MtoRecargo2)
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-3">
+                                            <b>@Html.LabelFor(model => model.Historico.MtoProhibicion)</b>
+                                            <span>:</span>
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.Historico.MtoProhibicion, new { @class = "form-control text-right", @readonly = "readonly" })
+                                            @Html.HiddenFor(model => model.Historico.MtoProhibicion)
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.Historico.MtoProhibicion2, new { @class = "form-control text-right", @readonly = "readonly" })
+                                            @Html.ValidationMessageFor(model => model.Historico.MtoProhibicion2)
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-3">
+                                            <b>@Html.LabelFor(model => model.Historico.MtoGradoGrupo)</b>
+                                            <span>:</span>
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.Historico.MtoGradoGrupo, new { @class = "form-control text-right", @readonly = "readonly" })
+                                            @Html.HiddenFor(model => model.Historico.MtoGradoGrupo)
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.Historico.MtoGradoGrupo2, new { @class = "form-control text-right", @readonly = "readonly" })
+                                            @Html.ValidationMessageFor(model => model.Historico.MtoGradoGrupo2)
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-3">
+                                            <b>@Html.LabelFor(model => model.Historico.MtoOtros)</b>
+                                            <span>:</span>
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.Historico.MtoOtros, new { @class = "form-control text-right", @readonly = "readonly" })
+                                            @Html.HiddenFor(model => model.Historico.MtoOtros)
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.Historico.MtoOtros2, new { @class = "form-control text-right", @readonly = "readonly" })
+                                            @Html.ValidationMessageFor(model => model.Historico.MtoOtros2)
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-3">
+                                            <b>@Html.LabelFor(model => model.Historico.MtoTotal)</b>
+                                            <span>:</span>
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @*@Html.TextBoxFor(model => model.Historico.MtoTotal, new { @class = "form-control", @readonly = "readonly" })*@
+                                            <input id='MtoTotal' class="form-control text-right" disabled value=@String.Format("{0:n}", Model.Historico.MtoTotal) />
+                                            @Html.HiddenFor(model => model.Historico.MtoTotal)
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @*@Html.TextBoxFor(model => model.Historico.MtoTotal2, new { @class = "form-control text-right", @readonly = "readonly" })*@
+                                            <input id='MtoTotal2' class="form-control text-right" disabled value=@String.Format("{0:n}", Model.Historico.MtoTotal2) />
+                                            @Html.HiddenFor(model => model.Historico.MtoTotal2)
+                                            @Html.ValidationMessageFor(model => model.Historico.MtoTotal2)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <button class="btn btn-info" type="submit"><i class="fa fa-file-pdf-o"></i> Exportar a PDF</button>
+        </div>
+
+
+    }
+    <div id="dvResultadoBusqueda">
+        @{
+            //Html.RenderPartial("_FormularioBorradorAccionPersonal", Model);
+        }
+    </div>
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+<script src="~/Scripts/sidebar.js" type="text/javascript"></script>
+<script src="~/scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script src="~/Scripts/datetimepicker.js" type="text/javascript"></script>
+<script src="~/Scripts/datetimepicker-es.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/FormularioBorradorAccionPersonal.js" type="text/javascript"></script>

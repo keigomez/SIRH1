@@ -1,0 +1,14 @@
+﻿@model SIRH.DTO.CBaseDTO
+
+@if (Model.IdEntidad != -1)
+{
+    <div class="alert-success">
+        <i class="fa fa-check"></i> El correo electrónico ha sido enviado satisfactoriamente, una copia debería llegar también a su bandeja de entrada. Le atenderemos tan pronto como nos sea posible.
+    </div>
+}
+else
+{
+    <div class="alert-danger">
+        <i class="fa fa-stop-circle"></i> El correo electrónico no se ha enviado debido al siguiente error: @Model.Mensaje
+    </div>
+}

@@ -1,0 +1,178 @@
+﻿@model SIRH.Web.ViewModels.FormularioCaucionVM
+
+@{
+    ViewBag.Title = "Detalle de póliza";
+    Layout = "~/Views/Shared/Cauciones.cshtml";
+}
+
+<blockquote><h3>Detalle de póliza</h3></blockquote>
+<br />
+@if (Request.QueryString["accion"] == "guardar")
+{
+    if (Model.Error == null)
+    {
+        <div class="alert alert-success" role="alert">
+            <i class="fa fa-check-circle d-inline" style="font-size:48px;"></i>
+            <h4 class="d-inline"> La póliza de caución se ha guardado correctamente.</h4>
+        </div>
+        <br />
+
+        <div class="card">
+            <h5 class="card-header">Detalles</h5>
+            <div class="card-body">
+                <div>Se ha almacenado la póliza de caución # <b>@Html.Encode(Model.Caucion.NumeroPoliza)</b> para el funcionario: </div>
+                <br /><div><b>@Html.Encode(Model.Funcionario.Cedula) - @Html.Encode(Model.Funcionario.Nombre) @Html.Encode(Model.Funcionario.PrimerApellido) @Html.Encode(Model.Funcionario.SegundoApellido)</b></div>
+                <br /><div>Presentada a través del Oficio N° <b>@Model.Caucion.NumeroOficioEntrega</b></div>
+                <br /><div>Correspondiente al periodo: <b>@Html.Encode(Model.Caucion.FechaEmision.ToShortDateString()) - @Html.Encode(Model.Caucion.FechaVence.ToShortDateString())</b> por un monto de <b>₡ @Html.Encode(String.Format("{0:F}", Model.MontoCaucion.MontoColones))</b></div>
+                <br /><div>En el nivel de: @Html.AttributeEncode(Model.MontoCaucion.Descripcion)</div>
+                <br /><div>Emitido por: @Model.EntidadSeguros.NombreEntidad</div>
+                <br /><div>Nota: el funcionario @(Model.Caucion.CopiaCertificada == true ? "presentó" : "NO presentó") una copia certificada del pago correspondiente.</div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-danger" role="alert">
+            <i class="fa fa-times-circle d-inline" style="font-size:48px;"></i>
+            <h4 class="d-inline"> Ocurrió un error al momento de guardar la póliza.</h4>
+        </div>
+        <br />
+
+        <div class="card">
+            <h5 class="card-header">Detalles</h5>
+            <div class="card-body">
+                <div>La póliza de caución no pudo ser guardada debido al siguiente error: </div>
+                <br /><div><b>@Html.Encode(Model.Error.MensajeError)</b></div>
+                <br /><div>Si conoce la causa de este error, por favor revise los datos que intentó almacenar e intentelo de nuevo.</div>
+                <br /><div>De lo contrario le invitamos a ponerse en contacto con nuestro equipo de soporte, mediante el sistema de <a href="http://sisrh.mopt.go.cr:83/" target="_blank">Ayuda y Soporte</a></div>
+            </div>
+        </div>
+    }
+}
+else
+{
+    if (Request.QueryString["accion"] == "modificar")
+    {
+        if (Model.Error == null)
+        {
+            <div class="alert alert-primary" role="alert">
+                <i class="fa fa-exclamation-circle d-inline" style="font-size:48px;"></i>
+                <h4 class="d-inline"> La póliza de caución se ha anulado.</h4>
+            </div>
+            <br />
+            <div class="card">
+                <h5 class="card-header">Detalles</h5>
+                <div class="card-body">
+                    <div>Se ha anulado la póliza de caución # <b>@Html.Encode(Model.Caucion.NumeroPoliza)</b> para el funcionario: </div>
+                    <br /><div><b>@Html.Encode(Model.Funcionario.Cedula) - @Html.Encode(Model.Funcionario.Nombre) @Html.Encode(Model.Funcionario.PrimerApellido) @Html.Encode(Model.Funcionario.SegundoApellido)</b></div>
+                    <br /><div>Correspondiente al periodo: <b>@Html.Encode(Model.Caucion.FechaEmision.ToShortDateString()) - @Html.Encode(Model.Caucion.FechaVence.ToShortDateString()) </b> por un monto de <b>₡ @Html.Encode(String.Format("{0:F}", Model.MontoCaucion.MontoColones))</b></div>
+                    <br /><div>En el nivel de: @Html.AttributeEncode(Model.MontoCaucion.Descripcion)</div>
+                    <br /><div>Emitido por: @Model.EntidadSeguros.NombreEntidad</div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-danger" role="alert">
+                <i class="fa fa-times-circle d-inline" style="font-size:48px;"></i>
+                <h4 class="d-inline"> Ocurrió un error al momento de anular la póliza.</h4>
+            </div>
+            <br />
+
+            <div class="card">
+                <h5 class="card-header">Detalles</h5>
+                <div class="card-body">
+                    <div>La póliza de caución no pudo ser anulada debido al siguiente error: </div>
+                    <br /><div><b>@Html.Encode(Model.Error.MensajeError)</b></div>
+                    <br /><div>Si conoce la causa de este error, por favor revise los datos que intentó almacenar e intentelo de nuevo.</div>
+                    <br /><div>De lo contrario le invitamos a ponerse en contacto con nuestro equipo de soporte, mediante el sistema de <a href="http://sisrh.mopt.go.cr:83/" target="_blank">Ayuda y Soporte</a></div>
+                </div>
+            </div>
+        }
+    }
+
+    else
+    {
+        using (Html.BeginForm("ReporteDetalleCaucion", "Caucion", FormMethod.Post, new { @id = "thisForm" }))
+        {
+            <div class="card">
+                <div class="card-header text-left">
+                    <b>Póliza # @Model.Caucion.NumeroPoliza</b>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <span>
+                                <b>Funcionario: </b> @Model.Funcionario.Cedula - @Model.Funcionario.Nombre @Model.Funcionario.PrimerApellido @Model.Funcionario.SegundoApellido
+                                @Html.HiddenFor(model => model.Funcionario.Cedula)
+                                @Html.HiddenFor(model => model.Funcionario.Nombre)
+                                @Html.HiddenFor(model => model.Funcionario.PrimerApellido)
+                                @Html.HiddenFor(model => model.Funcionario.SegundoApellido)
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>
+                                <b>@Html.LabelFor(model => model.Caucion.NumeroOficioEntrega): </b> @Model.Caucion.NumeroOficioEntrega
+                                @Html.HiddenFor(model => model.Caucion.NumeroOficioEntrega)
+                                @Html.HiddenFor(model => model.Caucion.NumeroPoliza)
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>
+                                <b>@Html.LabelFor(model => model.Caucion.CopiaCertificada): </b>@(Model.Caucion.CopiaCertificada == true ? "Sí" : "No")
+                                @Html.HiddenFor(model => model.Caucion.CopiaCertificada)
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>
+                                <b>@Html.LabelFor(model => model.EntidadSeguros.NombreEntidad): </b>@Model.EntidadSeguros.NombreEntidad
+                                @Html.HiddenFor(model => model.EntidadSeguros.NombreEntidad)
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>
+                                <b>@Html.LabelFor(model => model.Caucion.FechaEmision): </b>@Html.Encode(Model.Caucion.FechaEmision.ToShortDateString())
+                                @Html.HiddenFor(model => model.Caucion.FechaEmision)
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>
+                                <b>@Html.LabelFor(model => model.Caucion.FechaVence): </b>@Html.Encode(Model.Caucion.FechaVence.ToShortDateString())
+                                @Html.HiddenFor(model => model.Caucion.FechaVence)
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>
+                                <b>@Html.LabelFor(model => model.MontoSeleccionado): </b>@Model.MontoCaucion.Descripcion - ₡ @Html.Encode(Model.MontoCaucion.MontoColones.ToString("#,##0.00"))
+                                @Html.HiddenFor(model => model.MontoCaucion.Nivel)
+                                @Html.HiddenFor(model => model.MontoCaucion.Descripcion)
+                                @Html.HiddenFor(model => model.MontoCaucion.MontoColones)
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>
+                                <b>@Html.LabelFor(model => model.Caucion.DetalleEstadoPoliza): </b>@Model.Caucion.DetalleEstadoPoliza
+                                @Html.HiddenFor(model => model.Caucion.DetalleEstadoPoliza)
+                            </span>
+                        </li>
+                    </ul>
+                    <br />
+
+                    <button class="btn btn-danger" type="submit"><i class="fa fa-file-pdf-o"></i> Exportar a PDF</button>
+                    @if (Model.Caucion.EstadoPoliza == 1)
+                    {
+                        <a href="@Url.Action("Edit", "Caucion", new { @codigo = Model.Caucion.IdEntidad })" class="btn btn-warning">
+                            <i class="fa fa-pencil-square-o"></i> Editar
+                        </a>
+                    }
+                </div>
+            </div>
+        }
+    }
+}
+<br />
+
+<a href="javascript:history.back()" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Regresar</a>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")

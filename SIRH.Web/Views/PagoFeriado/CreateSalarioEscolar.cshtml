@@ -1,0 +1,73 @@
+﻿@model SIRH.Web.ViewModels.FormularioSalarioEscolarVM
+
+@{
+    ViewBag.Title = "Modificar el porcentaje de salario escolar";
+    Layout = "~/Views/Shared/PagoFeriado.cshtml";
+}
+
+@{
+
+    Html.EnableClientValidation();
+    using (Ajax.BeginForm("CreateSalarioEscolar", "PagoFeriado", new AjaxOptions
+    {
+        UpdateTargetId = "detalleResultado",
+        HttpMethod = "POST",
+        OnComplete = "CompleteSalario",
+        OnBegin = "BeginSalario"
+    }))
+    {
+        <div class="jumbotron">
+            <center>
+                <h3 class="display-4">Modificar el porcentaje de salario escolar</h3>
+                <br />
+                <div class="card">
+                    <div class="card-header text-left">
+                        <strong>Datos del salario escolar</strong>
+                    </div>
+
+                    <div class="card-body">
+
+                        <div class="form-group row">
+                            <label for="validationCustomUsername" class="col-sm-5 col-form-label">Porcentaje actual</label>
+                            <div class="input-group col-sm-5">
+                                @Html.TextBoxFor(model => model.CatalogoRemuneracion.PorcentajeRemuneracion, new { @id = "PorcentajeRemuneracion", @class = "form-control", aria_describedby = "inputGroupPrepend", disabled = "true" })
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroupPrepend">%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="validationCustomUsername" class="col-sm-5 col-form-label">Porcentaje nuevo</label>
+                            <div class="input-group col-sm-5">
+                                @Html.TextBoxFor(model => model.CatalogoRemuneracion.PorcentajeRemuneracion, new { @id = "PorcentajeRemuneracion", @class = "form-control", aria_describedby = "inputGroupPrepend" })
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroupPrepend">%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="Descripcion" class="col-sm-5 col-form-label">Número de resolución</label>
+                            <div class="col-sm-5">
+                                @Html.TextBoxFor(model => model.Descripcion, new { @id = "Descripcion", @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <input id="btnAgregar" name="SubmitButton" type="submit" value="Guardar" class="btn btn-primary float-right" />
+                        <div id="preloader" class="loader float-right" style="display: none"></div>
+
+                    </div>
+                </div>
+
+            </center>
+        </div>
+    }
+}
+
+<div id="detalleResultado"></div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+<script src="~/Scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/CreateSalarioEscolar.js"></script>

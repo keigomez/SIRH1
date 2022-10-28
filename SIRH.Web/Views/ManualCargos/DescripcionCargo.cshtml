@@ -1,0 +1,247 @@
+﻿@model SIRH.Web.ViewModels.ManualCargosVM
+
+@{
+    ViewBag.Title = "DescripcionCargo";
+    Layout = "~/Views/Shared/ManualCargos.cshtml";
+}
+
+@using (Ajax.BeginForm("DescripcionCargo", new AjaxOptions { HttpMethod = "Post" }))
+{
+    <div class="jumbotron">
+        <center>
+            <h3 class="display-4">Descripción del cargo</h3>
+            <br />
+            <div class="card">
+                <div class="card-header text-left">
+                    <strong>Información del cargo</strong>
+                </div>
+
+                <div class="card-body">
+
+                    <div class="form-group row">
+                        <div class="col-sm-3">
+                            @Html.LabelFor(model => model.Cargo.NombreCargo, new { @for = "Nombre", @class = "col-form-label" })
+                            @Html.HiddenFor(model => model.Cargo.IdEntidad)
+                        </div>
+                        <div class="col-sm-9">
+                            @Html.TextBoxFor(model => model.Cargo.NombreCargo, new { @id = "Nombre", @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.Cargo.ClaseCargo.DesClase, new { @for = "codclase", @class = "col-sm-3 col-form-label" })
+                        <div class="col-sm-3">
+                            <button class="btn btn-outline-primary" type="button" id="DialogClase"><i class="fa fa-search"></i></button>
+                            <button class="btn btn-outline-primary" type="button" id="CleanClase"><i class="fa fa-remove"></i></button>
+                            @Html.TextBoxFor(model => model.Cargo.ClaseCargo.DesClase, new { @id = "codclase", @readonly = "readonly", @class = "form-control" })
+                            @Html.HiddenFor(model => model.Cargo.ClaseCargo.IdEntidad)
+                        </div>
+
+
+                        @Html.LabelFor(model => model.Cargo.EspecialidadCargo.DesEspecialidad, new { @for = "codespecialidad", @class = "col-sm-3 col-form-label" })
+                        <div class="col-sm-3">
+                            <button class="btn btn-outline-primary" type="button" id="DialogEspecialidad"><i class="fa fa-search"></i></button>
+                            <button class="btn btn-outline-primary" type="button" id="CleanEspecialidad"><i class="fa fa-remove"></i></button>
+                            @Html.TextBoxFor(model => model.Cargo.EspecialidadCargo.DesEspecialidad, new { @id = "codespecialidad", @readonly = "readonly", @class = "form-control" })
+                            @Html.HiddenFor(model => model.Cargo.EspecialidadCargo.IdEntidad)
+                        </div>
+
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.Cargo.SubespecialidadCargo.DesSubEspecialidad, new { @for = "codsubespecialidad", @class = "col-sm-3 col-form-label" })
+                        <div class="col-sm-3">
+                            <button class="btn btn-outline-primary" type="button" id="DialogSubespecialidad"><i class="fa fa-search"></i></button>
+                            <button class="btn btn-outline-primary" type="button" id="CleanSubEspecialidad"><i class="fa fa-remove"></i></button>
+                            @Html.TextBoxFor(model => model.Cargo.SubespecialidadCargo.DesSubEspecialidad, new { @id = "codsubespecialidad", @readonly = "readonly", @class = "form-control" })
+                            @Html.HiddenFor(model => model.Cargo.SubespecialidadCargo.IdEntidad)
+                        </div>
+                        <div class="col-sm-3">
+                            @Html.LabelFor(model => model.Cargo.SeccionCargo.NomSeccion, new { @for = "codseccion", @class = "col-form-label" })
+                        </div>
+                        <div class="col-sm-3">
+                            <button class="btn btn-outline-primary" type="button" id="dialog-seccion"><i class="fa fa-search"></i></button>
+                            <button class="btn btn-outline-primary" type="button" id="clean-seccion"><i class="fa fa-remove"></i></button>
+                            @Html.TextBoxFor(model => model.Cargo.SeccionCargo.NomSeccion, new { @id = "codseccion", @readonly = "readonly", @class = "form-control" })
+                            @Html.HiddenFor(model => model.Cargo.SeccionCargo.IdEntidad)
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-3">
+                            @Html.LabelFor(model => model.Cargo.ProcesoTrabajo, new { @for = "Proceso", @class = "col-form-label" })
+                        </div>
+                        <div class="col-sm-3">
+                            @Html.TextBoxFor(model => model.Cargo.ProcesoTrabajo, new { @id = "Proceso", @class = "form-control" })
+                        </div>
+                        <div class="col-sm-3">@Html.LabelFor(model => model.Cargo.UbicacionOrganizacional, new { @for = "UbicacionOrganizacional", @class = "col-form-label" })</div>
+                        <div class="col-sm-3">@Html.TextBoxFor(model => model.Cargo.UbicacionOrganizacional, new { @id = "UbicacionOrganizacional", @class = "form-control" })</div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-3">
+                            @Html.LabelFor(model => model.Cargo.Estrato, new { @for = "Estrato", @class = "col-form-label" })
+                        </div>
+                        <div class="col-sm-3">
+                            @Html.TextBoxFor(model => model.Cargo.Estrato, new { @id = "Estrato", @class = "form-control" })
+                        </div>
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-3"></div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-3">
+                            @Html.LabelFor(model => model.Cargo.JefaturaInmediata, new { @for = "Inmediata", @class = "col-form-label" })
+                        </div>
+                        <div class="col-sm-3">
+                            @Html.TextBoxFor(model => model.Cargo.JefaturaInmediata, new { @id = "Inmediata", @class = "form-control" })
+                        </div>
+
+                        <div class="col-sm-3">
+                            @Html.LabelFor(model => model.Cargo.JefaturaSuperiorInmediata, new { @for = "Superior", @class = "col-form-label" })
+                        </div>
+                        <div class="col-sm-3">
+                            @Html.TextBoxFor(model => model.Cargo.JefaturaSuperiorInmediata, new { @id = "Superior", @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-3">
+                            Propósito <div id="contador">(0 de 2500)</div>
+                        </div>
+                        <div class="col-sm-9">
+                            @Html.TextAreaFor(model => model.Cargo.Proposito, new { @id = "Proposito", @class = "form-control", @maxlength="2500" })
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </center>
+        <br />
+        <div class="float-right">
+            @if (Model != null)
+            {
+                <button class="btn btn-success" name="SubmitButton" type="submit">Actualizar y continuar</button>
+            }
+            else
+            {
+                <button class="btn btn-success" name="SubmitButton" type="submit">Guardar y continuar</button>
+            }
+            
+            @*<a href="@Url.Action("Actividades", "ManualCargos")" class="btn btn-success">
+                <i class="fa fa-floppy-o"></i> Guardar y continuar
+            </a>*@
+        </div>
+    </div>
+}
+
+<div id="dvResultadoBusqueda"></div>
+<br />
+
+<div class="modal fade" id="buscar-clase" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Búsqueda por Clase</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @{Html.RenderPartial("Clase_Index", new SIRH.Web.Models.ClaseModel()); }
+            </div>
+            <div class="modal-footer">
+                <button id="CacelarCalculoPopUp" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="buscar-especialidad" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Búsqueda por Especialidad</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @{Html.RenderPartial("Especialidad_Index", new SIRH.Web.Models.EspecialidadModel()); }
+            </div>
+            <div class="modal-footer">
+                <button id="CacelarCalculoPopUp" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="buscar-subespecialidad" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Búsqueda por Especialidad</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @{Html.RenderPartial("/Views/Puesto/Subespecialidad_Index.cshtml", new SIRH.Web.Models.SubespecialidadModel()); }
+            </div>
+            <div class="modal-footer">
+                <button id="CacelarCalculoPopUp" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="buscar-seccion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Búsqueda por Sección</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @{Html.RenderPartial("Seccion_Index", new SIRH.Web.Models.SeccionModel());}
+            </div>
+            <div class="modal-footer">
+                <button id="CacelarCalculoPopUp" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*@Scripts.Render("~/bundles/jquery")
+<script src="~/Scripts/popper.min.js"></script>
+@Scripts.Render("~/bundles/bootstrap")
+<script src="~/Scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script src="~/Scripts/funciones-generales.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/IndexFuncionario.js" type="text/javascript"></script>
+<script src="~/Scripts/puesto-control.js" type="text/javascript"></script>
+<script type="text/javascript" src="~/Scripts/funciones-dialogos.js"></script>
+<script src="~/Scripts/datetimepicker.js" type="text/javascript"></script>
+<script src="~/Scripts/datetimepicker-es.js" type="text/javascript"></script>*@
+@Scripts.Render("~/bundles/jquery")
+<script src="~/Scripts/popper.min.js"></script>
+<script src="https://getbootstrap.com/docs/4.1/assets/js/vendor/popper.min.js"></script>
+@Scripts.Render("~/bundles/bootstrap")
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+<script src="~/Scripts/funciones-generales.js" type="text/javascript"></script>
+<script src="~/Scripts/sidebar.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/IndexFuncionario.js" type="text/javascript"></script>
+<script type="text/javascript" src="~/Scripts/ubicacion-control.js"></script>
+<script src="~/Scripts/puesto-control.js" type="text/javascript"></script>
+<script type="text/javascript" src="~/Scripts/funciones-dialogos.js"></script>
+<script src="~/scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("body").tooltip({ selector: '[data-toggle=tooltip]' });
+    });
+
+    $("#Proposito").keyup(function () {
+        $("#contador").text("(" + $(this).val().length + " de 2500)");
+    });
+</script>
+

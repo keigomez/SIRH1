@@ -1,0 +1,820 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MasterTASModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BitacoraHP">
+          <Key>
+            <PropertyRef Name="IdBitacora" />
+          </Key>
+          <Property Name="IdBitacora" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdAdress" Type="smallint" Nullable="false" />
+          <Property Name="TipoTransaccion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="Hora" Type="datetime" Nullable="false" />
+          <Property Name="Data1" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Data2" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CatBitacora">
+          <Key>
+            <PropertyRef Name="IdCatalogo" />
+          </Key>
+          <Property Name="IdCatalogo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Format" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CodigoAsistencia">
+          <Key>
+            <PropertyRef Name="IdCodigo" />
+          </Key>
+          <Property Name="IdCodigo" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="output1" Type="smallint" Nullable="false" />
+          <Property Name="output2" Type="smallint" Nullable="false" />
+          <Property Name="output3" Type="smallint" Nullable="false" />
+          <Property Name="output4" Type="smallint" Nullable="false" />
+          <Property Name="output5" Type="smallint" Nullable="false" />
+          <Property Name="output6" Type="smallint" Nullable="false" />
+          <Property Name="output7" Type="smallint" Nullable="false" />
+          <Property Name="output8" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DispositivoAsistencia">
+          <Key>
+            <PropertyRef Name="IdDispositivo" />
+            <PropertyRef Name="IdTagLectora" />
+          </Key>
+          <Property Name="IdDispositivo" Type="int" Nullable="false" />
+          <Property Name="IdTagLectora" Type="int" Nullable="false" />
+          <Property Name="IdTagSoftware" Type="int" Nullable="false" />
+          <Property Name="asistencia" Type="smallint" Nullable="false" />
+          <Property Name="acceso" Type="smallint" Nullable="false" />
+          <Property Name="output1" Type="smallint" Nullable="false" />
+          <Property Name="output2" Type="smallint" Nullable="false" />
+          <Property Name="output3" Type="smallint" Nullable="false" />
+          <Property Name="output4" Type="smallint" Nullable="false" />
+          <Property Name="output5" Type="smallint" Nullable="false" />
+          <Property Name="output6" Type="smallint" Nullable="false" />
+          <Property Name="output7" Type="smallint" Nullable="false" />
+          <Property Name="output8" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DispositivoEmpresa">
+          <Key>
+            <PropertyRef Name="IdDispositivo" />
+            <PropertyRef Name="IdEmpresa" />
+          </Key>
+          <Property Name="IdDispositivo" Type="int" Nullable="false" />
+          <Property Name="IdEmpresa" Type="int" Nullable="false" />
+          <Property Name="HallaMarcas" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dispositivos">
+          <Key>
+            <PropertyRef Name="IdDispositivo" />
+          </Key>
+          <Property Name="IdDispositivo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ModeloBiometrica" Type="smallint" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Ubicacion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="TipoComunicacion" Type="int" Nullable="false" />
+          <Property Name="PuertoComm" Type="int" Nullable="false" />
+          <Property Name="DireccionIP" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Velocidad" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="TiempoEspera" Type="int" Nullable="false" />
+          <Property Name="PuertoComunicacion" Type="smallint" Nullable="false" />
+          <Property Name="Capacidad" Type="smallint" Nullable="false" />
+          <Property Name="Verifica" Type="smallint" Nullable="false" />
+          <Property Name="NoTelefono" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="InitString" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="SoloVacia" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Empresa">
+          <Key>
+            <PropertyRef Name="IdEmpresa" />
+          </Key>
+          <Property Name="IdEmpresa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreComercial" Type="varchar" MaxLength="255" />
+          <Property Name="RazonSocial" Type="varchar" MaxLength="255" />
+          <Property Name="RepresentanteLegal" Type="varchar" MaxLength="100" />
+          <Property Name="Direccion" Type="varchar" MaxLength="255" />
+          <Property Name="Telefono" Type="varchar" MaxLength="255" />
+          <Property Name="EntradaTarde" Type="smallint" />
+          <Property Name="RenumeriacionHoraExtra" Type="smallint" />
+          <Property Name="PoliticaHoraExtra" Type="smallint" />
+          <Property Name="NombreDB" Type="varchar" MaxLength="255" />
+          <Property Name="PathDB" Type="varchar" MaxLength="255" />
+          <Property Name="NombreLogo" Type="varchar" MaxLength="255" />
+          <Property Name="GeneraCodigo" Type="smallint" />
+          <Property Name="Verifica" Type="smallint" />
+          <Property Name="Usuairo" Type="varchar" MaxLength="50" />
+          <Property Name="PassWord" Type="varchar" MaxLength="50" />
+          <Property Name="AutorizacionHorasExtras" Type="smallint" />
+          <Property Name="TomarHorasExtras" Type="smallint" />
+          <Property Name="FaltantedeMarca" Type="char" MaxLength="1" />
+          <Property Name="MarcarESHE" Type="smallint" Nullable="false" />
+          <Property Name="Prefijo" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="Correlativo" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ImageLogo" Type="image" />
+          <Property Name="PrioridadProcesoMarca" Type="int" Nullable="false" />
+          <Property Name="AgregaMarcaBlanco" Type="int" Nullable="false" />
+          <Property Name="ProcesoMarcas" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MasterTAS.dbo.EmpresaParametros' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="EmpresaParametros">
+          <Key>
+            <PropertyRef Name="IdEmpresa" />
+          </Key>
+          <Property Name="IdEmpresa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Doblemarcaje" Type="smallint" />
+          <Property Name="tiempodoblemarcaje" Type="smallint" />
+          <Property Name="descuentamatutino" Type="smallint" />
+          <Property Name="descuentavespertino" Type="smallint" />
+          <Property Name="descuentaalimentacion" Type="smallint" />
+          <Property Name="lviniciadoble" Type="varchar" MaxLength="5" />
+          <Property Name="lvfindoble" Type="varchar" MaxLength="5" />
+          <Property Name="siniciadoble" Type="varchar" MaxLength="5" />
+          <Property Name="sfindoble" Type="varchar" MaxLength="5" />
+          <Property Name="diniciadoble" Type="varchar" MaxLength="5" />
+          <Property Name="dfindoble" Type="varchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="Marcaciones">
+          <Key>
+            <PropertyRef Name="IdMarcacion" />
+          </Key>
+          <Property Name="IdMarcacion" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdDispositivo" Type="smallint" Nullable="false" />
+          <Property Name="CodigoEmpleado" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="Hora" Type="datetime" Nullable="false" />
+          <Property Name="Procesado" Type="smallint" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MasterTAS.dbo.PathDB' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="PathDB">
+          <Key>
+            <PropertyRef Name="PathDB" />
+            <PropertyRef Name="AutoDB" />
+          </Key>
+          <Property Name="PathDB" Type="varchar" MaxLength="1024" Nullable="false" />
+          <Property Name="AutoDB" Type="varchar" MaxLength="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PlantillaEmpleado">
+          <Key>
+            <PropertyRef Name="CodigoEmpleado" />
+          </Key>
+          <Property Name="CodigoEmpleado" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Plantilla" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="Existe" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PlantillaEmpleadoB">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="CodigoEmpleado" Type="varchar" MaxLength="10" />
+          <Property Name="Contrasena" Type="varchar" MaxLength="10" />
+          <Property Name="senver" Type="varchar" MaxLength="10" />
+          <Property Name="temver" Type="varchar" MaxLength="10" />
+          <Property Name="nombre" Type="varchar" MaxLength="100" />
+          <Property Name="dedo" Type="varchar" MaxLength="10" />
+          <Property Name="admlev" Type="varchar" MaxLength="10" />
+          <Property Name="schdul" Type="varchar" MaxLength="10" />
+          <Property Name="secthr" Type="varchar" MaxLength="10" />
+          <Property Name="temxof" Type="varchar" MaxLength="10" />
+          <Property Name="temyof" Type="varchar" MaxLength="10" />
+          <Property Name="indexc" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="PlantillaEmpleadoB1">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="posicion" />
+            <PropertyRef Name="ubicacion" />
+          </Key>
+          <Property Name="ID" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="posicion" Type="numeric" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="ubicacion" Type="numeric" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="valor" Type="numeric" Precision="5" Scale="0" />
+        </EntityType>
+        <EntityType Name="SeguridadDatos">
+          <Key>
+            <PropertyRef Name="IdSeguridad" />
+          </Key>
+          <Property Name="IdSeguridad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUsuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdEmpresa" Type="int" Nullable="false" />
+          <Property Name="IdDepartamento" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TagLectora">
+          <Key>
+            <PropertyRef Name="IdLectora" />
+            <PropertyRef Name="IdTagLectora" />
+          </Key>
+          <Property Name="IdLectora" Type="int" Nullable="false" />
+          <Property Name="IdTagLectora" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TagSoftware">
+          <Key>
+            <PropertyRef Name="IdTag" />
+          </Key>
+          <Property Name="IdTag" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'MasterTAS.dbo.ZkPlantillas' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="ZkPlantillas">
+          <Property Name="CodigoEmpleado" Type="varchar" MaxLength="10" />
+          <Property Name="Dedo" Type="int" />
+          <Property Name="Template" Type="text" />
+          <Property Name="Privilege" Type="int" />
+          <Property Name="TempLen" Type="text" />
+        </EntityType>-->
+        <Association Name="FK_DispositivoAsistencia_TagSoftware">
+          <End Role="TagSoftware" Type="Self.TagSoftware" Multiplicity="1" />
+          <End Role="DispositivoAsistencia" Type="Self.DispositivoAsistencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TagSoftware">
+              <PropertyRef Name="IdTag" />
+            </Principal>
+            <Dependent Role="DispositivoAsistencia">
+              <PropertyRef Name="IdTagSoftware" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MasterTASModelStoreContainer">
+          <EntitySet Name="BitacoraHP" EntityType="Self.BitacoraHP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CatBitacora" EntityType="Self.CatBitacora" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CodigoAsistencia" EntityType="Self.CodigoAsistencia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DispositivoAsistencia" EntityType="Self.DispositivoAsistencia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DispositivoEmpresa" EntityType="Self.DispositivoEmpresa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dispositivos" EntityType="Self.Dispositivos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empresa" EntityType="Self.Empresa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Marcaciones" EntityType="Self.Marcaciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlantillaEmpleado" EntityType="Self.PlantillaEmpleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlantillaEmpleadoB" EntityType="Self.PlantillaEmpleadoB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlantillaEmpleadoB1" EntityType="Self.PlantillaEmpleadoB1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SeguridadDatos" EntityType="Self.SeguridadDatos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TagLectora" EntityType="Self.TagLectora" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TagSoftware" EntityType="Self.TagSoftware" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmpresaParametros" EntityType="Self.EmpresaParametros" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[EmpresaParametros].[IdEmpresa] AS [IdEmpresa], 
+[EmpresaParametros].[Doblemarcaje] AS [Doblemarcaje], 
+[EmpresaParametros].[tiempodoblemarcaje] AS [tiempodoblemarcaje], 
+[EmpresaParametros].[descuentamatutino] AS [descuentamatutino], 
+[EmpresaParametros].[descuentavespertino] AS [descuentavespertino], 
+[EmpresaParametros].[descuentaalimentacion] AS [descuentaalimentacion], 
+[EmpresaParametros].[lviniciadoble] AS [lviniciadoble], 
+[EmpresaParametros].[lvfindoble] AS [lvfindoble], 
+[EmpresaParametros].[siniciadoble] AS [siniciadoble], 
+[EmpresaParametros].[sfindoble] AS [sfindoble], 
+[EmpresaParametros].[diniciadoble] AS [diniciadoble], 
+[EmpresaParametros].[dfindoble] AS [dfindoble]
+FROM [dbo].[EmpresaParametros] AS [EmpresaParametros]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PathDB" EntityType="Self.PathDB" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[PathDB].[PathDB] AS [PathDB], 
+[PathDB].[AutoDB] AS [AutoDB]
+FROM [dbo].[PathDB] AS [PathDB]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_DispositivoAsistencia_TagSoftware" Association="Self.FK_DispositivoAsistencia_TagSoftware">
+            <End Role="TagSoftware" EntitySet="TagSoftware" />
+            <End Role="DispositivoAsistencia" EntitySet="DispositivoAsistencia" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MasterTASModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BitacoraHP">
+          <Key>
+            <PropertyRef Name="IdBitacora" />
+          </Key>
+          <Property Name="IdBitacora" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdAdress" Type="Int16" Nullable="false" />
+          <Property Name="TipoTransaccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Hora" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Data1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Data2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CatBitacora">
+          <Key>
+            <PropertyRef Name="IdCatalogo" />
+          </Key>
+          <Property Name="IdCatalogo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Format" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CodigoAsistencia">
+          <Key>
+            <PropertyRef Name="IdCodigo" />
+          </Key>
+          <Property Name="IdCodigo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="output1" Type="Int16" Nullable="false" />
+          <Property Name="output2" Type="Int16" Nullable="false" />
+          <Property Name="output3" Type="Int16" Nullable="false" />
+          <Property Name="output4" Type="Int16" Nullable="false" />
+          <Property Name="output5" Type="Int16" Nullable="false" />
+          <Property Name="output6" Type="Int16" Nullable="false" />
+          <Property Name="output7" Type="Int16" Nullable="false" />
+          <Property Name="output8" Type="Int16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DispositivoAsistencia">
+          <Key>
+            <PropertyRef Name="IdDispositivo" />
+            <PropertyRef Name="IdTagLectora" />
+          </Key>
+          <Property Name="IdDispositivo" Type="Int32" Nullable="false" />
+          <Property Name="IdTagLectora" Type="Int32" Nullable="false" />
+          <Property Name="asistencia" Type="Int16" Nullable="false" />
+          <Property Name="acceso" Type="Int16" Nullable="false" />
+          <Property Name="output1" Type="Int16" Nullable="false" />
+          <Property Name="output2" Type="Int16" Nullable="false" />
+          <Property Name="output3" Type="Int16" Nullable="false" />
+          <Property Name="output4" Type="Int16" Nullable="false" />
+          <Property Name="output5" Type="Int16" Nullable="false" />
+          <Property Name="output6" Type="Int16" Nullable="false" />
+          <Property Name="output7" Type="Int16" Nullable="false" />
+          <Property Name="output8" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="TagSoftware" Relationship="Self.FK_DispositivoAsistencia_TagSoftware" FromRole="DispositivoAsistencia" ToRole="TagSoftware" />
+        </EntityType>
+        <EntityType Name="DispositivoEmpresa">
+          <Key>
+            <PropertyRef Name="IdDispositivo" />
+            <PropertyRef Name="IdEmpresa" />
+          </Key>
+          <Property Name="IdDispositivo" Type="Int32" Nullable="false" />
+          <Property Name="IdEmpresa" Type="Int32" Nullable="false" />
+          <Property Name="HallaMarcas" Type="Int16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dispositivos">
+          <Key>
+            <PropertyRef Name="IdDispositivo" />
+          </Key>
+          <Property Name="IdDispositivo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ModeloBiometrica" Type="Int16" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ubicacion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TipoComunicacion" Type="Int32" Nullable="false" />
+          <Property Name="PuertoComm" Type="Int32" Nullable="false" />
+          <Property Name="DireccionIP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Velocidad" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TiempoEspera" Type="Int32" Nullable="false" />
+          <Property Name="PuertoComunicacion" Type="Int16" Nullable="false" />
+          <Property Name="Capacidad" Type="Int16" Nullable="false" />
+          <Property Name="Verifica" Type="Int16" Nullable="false" />
+          <Property Name="NoTelefono" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="InitString" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SoloVacia" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Empresa">
+          <Key>
+            <PropertyRef Name="IdEmpresa" />
+          </Key>
+          <Property Name="IdEmpresa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreComercial" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="RazonSocial" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="RepresentanteLegal" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EntradaTarde" Type="Int16" />
+          <Property Name="RenumeriacionHoraExtra" Type="Int16" />
+          <Property Name="PoliticaHoraExtra" Type="Int16" />
+          <Property Name="NombreDB" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PathDB" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="NombreLogo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="GeneraCodigo" Type="Int16" />
+          <Property Name="Verifica" Type="Int16" />
+          <Property Name="Usuairo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PassWord" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AutorizacionHorasExtras" Type="Int16" />
+          <Property Name="TomarHorasExtras" Type="Int16" />
+          <Property Name="FaltantedeMarca" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="MarcarESHE" Type="Int16" Nullable="false" />
+          <Property Name="Prefijo" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Correlativo" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ImageLogo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="PrioridadProcesoMarca" Type="Int32" Nullable="false" />
+          <Property Name="AgregaMarcaBlanco" Type="Int32" Nullable="false" />
+          <Property Name="ProcesoMarcas" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Marcaciones">
+          <Key>
+            <PropertyRef Name="IdMarcacion" />
+          </Key>
+          <Property Name="IdMarcacion" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdDispositivo" Type="Int16" Nullable="false" />
+          <Property Name="CodigoEmpleado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Hora" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Procesado" Type="Int16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PlantillaEmpleado">
+          <Key>
+            <PropertyRef Name="CodigoEmpleado" />
+          </Key>
+          <Property Name="CodigoEmpleado" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Plantilla" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Existe" Type="Int16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PlantillaEmpleadoB">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CodigoEmpleado" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Contrasena" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="senver" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="temver" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="dedo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="admlev" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="schdul" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="secthr" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="temxof" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="temyof" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="indexc" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PlantillaEmpleadoB1">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="posicion" />
+            <PropertyRef Name="ubicacion" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="posicion" Type="Decimal" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="ubicacion" Type="Decimal" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="valor" Type="Decimal" Precision="5" Scale="0" />
+        </EntityType>
+        <EntityType Name="SeguridadDatos">
+          <Key>
+            <PropertyRef Name="IdSeguridad" />
+          </Key>
+          <Property Name="IdSeguridad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdEmpresa" Type="Int32" Nullable="false" />
+          <Property Name="IdDepartamento" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TagLectora">
+          <Key>
+            <PropertyRef Name="IdLectora" />
+            <PropertyRef Name="IdTagLectora" />
+          </Key>
+          <Property Name="IdLectora" Type="Int32" Nullable="false" />
+          <Property Name="IdTagLectora" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TagSoftware">
+          <Key>
+            <PropertyRef Name="IdTag" />
+          </Key>
+          <Property Name="IdTag" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="DispositivoAsistencia" Relationship="Self.FK_DispositivoAsistencia_TagSoftware" FromRole="TagSoftware" ToRole="DispositivoAsistencia" />
+        </EntityType>
+        <EntityType Name="EmpresaParametros">
+          <Key>
+            <PropertyRef Name="IdEmpresa" />
+          </Key>
+          <Property Name="IdEmpresa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Doblemarcaje" Type="Int16" />
+          <Property Name="tiempodoblemarcaje" Type="Int16" />
+          <Property Name="descuentamatutino" Type="Int16" />
+          <Property Name="descuentavespertino" Type="Int16" />
+          <Property Name="descuentaalimentacion" Type="Int16" />
+          <Property Name="lviniciadoble" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="lvfindoble" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="siniciadoble" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="sfindoble" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="diniciadoble" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="dfindoble" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PathDB">
+          <Key>
+            <PropertyRef Name="PathDB1" />
+            <PropertyRef Name="AutoDB" />
+          </Key>
+          <Property Name="PathDB1" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AutoDB" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_DispositivoAsistencia_TagSoftware">
+          <End Role="TagSoftware" Type="Self.TagSoftware" Multiplicity="1" />
+          <End Role="DispositivoAsistencia" Type="Self.DispositivoAsistencia" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="MasterTASEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BitacoraHP" EntityType="Self.BitacoraHP" />
+          <EntitySet Name="CatBitacora" EntityType="Self.CatBitacora" />
+          <EntitySet Name="CodigoAsistencia" EntityType="Self.CodigoAsistencia" />
+          <EntitySet Name="DispositivoAsistencia" EntityType="Self.DispositivoAsistencia" />
+          <EntitySet Name="DispositivoEmpresa" EntityType="Self.DispositivoEmpresa" />
+          <EntitySet Name="Dispositivos" EntityType="Self.Dispositivos" />
+          <EntitySet Name="Empresa" EntityType="Self.Empresa" />
+          <EntitySet Name="Marcaciones" EntityType="Self.Marcaciones" />
+          <EntitySet Name="PlantillaEmpleado" EntityType="Self.PlantillaEmpleado" />
+          <EntitySet Name="PlantillaEmpleadoB" EntityType="Self.PlantillaEmpleadoB" />
+          <EntitySet Name="PlantillaEmpleadoB1" EntityType="Self.PlantillaEmpleadoB1" />
+          <EntitySet Name="SeguridadDatos" EntityType="Self.SeguridadDatos" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TagLectora" EntityType="Self.TagLectora" />
+          <EntitySet Name="TagSoftware" EntityType="Self.TagSoftware" />
+          <EntitySet Name="EmpresaParametros" EntityType="Self.EmpresaParametros" />
+          <EntitySet Name="PathDB" EntityType="Self.PathDB" />
+          <AssociationSet Name="FK_DispositivoAsistencia_TagSoftware" Association="Self.FK_DispositivoAsistencia_TagSoftware">
+            <End Role="TagSoftware" EntitySet="TagSoftware" />
+            <End Role="DispositivoAsistencia" EntitySet="DispositivoAsistencia" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MasterTASModelStoreContainer" CdmEntityContainer="MasterTASEntities">
+          <EntitySetMapping Name="BitacoraHP">
+            <EntityTypeMapping TypeName="MasterTASModel.BitacoraHP">
+              <MappingFragment StoreEntitySet="BitacoraHP">
+                <ScalarProperty Name="IdBitacora" ColumnName="IdBitacora" />
+                <ScalarProperty Name="IdAdress" ColumnName="IdAdress" />
+                <ScalarProperty Name="TipoTransaccion" ColumnName="TipoTransaccion" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Hora" ColumnName="Hora" />
+                <ScalarProperty Name="Data1" ColumnName="Data1" />
+                <ScalarProperty Name="Data2" ColumnName="Data2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CatBitacora">
+            <EntityTypeMapping TypeName="MasterTASModel.CatBitacora">
+              <MappingFragment StoreEntitySet="CatBitacora">
+                <ScalarProperty Name="IdCatalogo" ColumnName="IdCatalogo" />
+                <ScalarProperty Name="Format" ColumnName="Format" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CodigoAsistencia">
+            <EntityTypeMapping TypeName="MasterTASModel.CodigoAsistencia">
+              <MappingFragment StoreEntitySet="CodigoAsistencia">
+                <ScalarProperty Name="IdCodigo" ColumnName="IdCodigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="output1" ColumnName="output1" />
+                <ScalarProperty Name="output2" ColumnName="output2" />
+                <ScalarProperty Name="output3" ColumnName="output3" />
+                <ScalarProperty Name="output4" ColumnName="output4" />
+                <ScalarProperty Name="output5" ColumnName="output5" />
+                <ScalarProperty Name="output6" ColumnName="output6" />
+                <ScalarProperty Name="output7" ColumnName="output7" />
+                <ScalarProperty Name="output8" ColumnName="output8" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DispositivoAsistencia">
+            <EntityTypeMapping TypeName="MasterTASModel.DispositivoAsistencia">
+              <MappingFragment StoreEntitySet="DispositivoAsistencia">
+                <ScalarProperty Name="IdDispositivo" ColumnName="IdDispositivo" />
+                <ScalarProperty Name="IdTagLectora" ColumnName="IdTagLectora" />
+                <ScalarProperty Name="asistencia" ColumnName="asistencia" />
+                <ScalarProperty Name="acceso" ColumnName="acceso" />
+                <ScalarProperty Name="output1" ColumnName="output1" />
+                <ScalarProperty Name="output2" ColumnName="output2" />
+                <ScalarProperty Name="output3" ColumnName="output3" />
+                <ScalarProperty Name="output4" ColumnName="output4" />
+                <ScalarProperty Name="output5" ColumnName="output5" />
+                <ScalarProperty Name="output6" ColumnName="output6" />
+                <ScalarProperty Name="output7" ColumnName="output7" />
+                <ScalarProperty Name="output8" ColumnName="output8" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DispositivoEmpresa">
+            <EntityTypeMapping TypeName="MasterTASModel.DispositivoEmpresa">
+              <MappingFragment StoreEntitySet="DispositivoEmpresa">
+                <ScalarProperty Name="IdDispositivo" ColumnName="IdDispositivo" />
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+                <ScalarProperty Name="HallaMarcas" ColumnName="HallaMarcas" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dispositivos">
+            <EntityTypeMapping TypeName="MasterTASModel.Dispositivos">
+              <MappingFragment StoreEntitySet="Dispositivos">
+                <ScalarProperty Name="IdDispositivo" ColumnName="IdDispositivo" />
+                <ScalarProperty Name="ModeloBiometrica" ColumnName="ModeloBiometrica" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
+                <ScalarProperty Name="TipoComunicacion" ColumnName="TipoComunicacion" />
+                <ScalarProperty Name="PuertoComm" ColumnName="PuertoComm" />
+                <ScalarProperty Name="DireccionIP" ColumnName="DireccionIP" />
+                <ScalarProperty Name="Velocidad" ColumnName="Velocidad" />
+                <ScalarProperty Name="TiempoEspera" ColumnName="TiempoEspera" />
+                <ScalarProperty Name="PuertoComunicacion" ColumnName="PuertoComunicacion" />
+                <ScalarProperty Name="Capacidad" ColumnName="Capacidad" />
+                <ScalarProperty Name="Verifica" ColumnName="Verifica" />
+                <ScalarProperty Name="NoTelefono" ColumnName="NoTelefono" />
+                <ScalarProperty Name="InitString" ColumnName="InitString" />
+                <ScalarProperty Name="SoloVacia" ColumnName="SoloVacia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empresa">
+            <EntityTypeMapping TypeName="MasterTASModel.Empresa">
+              <MappingFragment StoreEntitySet="Empresa">
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+                <ScalarProperty Name="NombreComercial" ColumnName="NombreComercial" />
+                <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
+                <ScalarProperty Name="RepresentanteLegal" ColumnName="RepresentanteLegal" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="EntradaTarde" ColumnName="EntradaTarde" />
+                <ScalarProperty Name="RenumeriacionHoraExtra" ColumnName="RenumeriacionHoraExtra" />
+                <ScalarProperty Name="PoliticaHoraExtra" ColumnName="PoliticaHoraExtra" />
+                <ScalarProperty Name="NombreDB" ColumnName="NombreDB" />
+                <ScalarProperty Name="PathDB" ColumnName="PathDB" />
+                <ScalarProperty Name="NombreLogo" ColumnName="NombreLogo" />
+                <ScalarProperty Name="GeneraCodigo" ColumnName="GeneraCodigo" />
+                <ScalarProperty Name="Verifica" ColumnName="Verifica" />
+                <ScalarProperty Name="Usuairo" ColumnName="Usuairo" />
+                <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+                <ScalarProperty Name="AutorizacionHorasExtras" ColumnName="AutorizacionHorasExtras" />
+                <ScalarProperty Name="TomarHorasExtras" ColumnName="TomarHorasExtras" />
+                <ScalarProperty Name="FaltantedeMarca" ColumnName="FaltantedeMarca" />
+                <ScalarProperty Name="MarcarESHE" ColumnName="MarcarESHE" />
+                <ScalarProperty Name="Prefijo" ColumnName="Prefijo" />
+                <ScalarProperty Name="Correlativo" ColumnName="Correlativo" />
+                <ScalarProperty Name="ImageLogo" ColumnName="ImageLogo" />
+                <ScalarProperty Name="PrioridadProcesoMarca" ColumnName="PrioridadProcesoMarca" />
+                <ScalarProperty Name="AgregaMarcaBlanco" ColumnName="AgregaMarcaBlanco" />
+                <ScalarProperty Name="ProcesoMarcas" ColumnName="ProcesoMarcas" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Marcaciones">
+            <EntityTypeMapping TypeName="MasterTASModel.Marcaciones">
+              <MappingFragment StoreEntitySet="Marcaciones">
+                <ScalarProperty Name="IdMarcacion" ColumnName="IdMarcacion" />
+                <ScalarProperty Name="IdDispositivo" ColumnName="IdDispositivo" />
+                <ScalarProperty Name="CodigoEmpleado" ColumnName="CodigoEmpleado" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Hora" ColumnName="Hora" />
+                <ScalarProperty Name="Procesado" ColumnName="Procesado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlantillaEmpleado">
+            <EntityTypeMapping TypeName="MasterTASModel.PlantillaEmpleado">
+              <MappingFragment StoreEntitySet="PlantillaEmpleado">
+                <ScalarProperty Name="CodigoEmpleado" ColumnName="CodigoEmpleado" />
+                <ScalarProperty Name="Plantilla" ColumnName="Plantilla" />
+                <ScalarProperty Name="Existe" ColumnName="Existe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlantillaEmpleadoB">
+            <EntityTypeMapping TypeName="MasterTASModel.PlantillaEmpleadoB">
+              <MappingFragment StoreEntitySet="PlantillaEmpleadoB">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CodigoEmpleado" ColumnName="CodigoEmpleado" />
+                <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+                <ScalarProperty Name="senver" ColumnName="senver" />
+                <ScalarProperty Name="temver" ColumnName="temver" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="dedo" ColumnName="dedo" />
+                <ScalarProperty Name="admlev" ColumnName="admlev" />
+                <ScalarProperty Name="schdul" ColumnName="schdul" />
+                <ScalarProperty Name="secthr" ColumnName="secthr" />
+                <ScalarProperty Name="temxof" ColumnName="temxof" />
+                <ScalarProperty Name="temyof" ColumnName="temyof" />
+                <ScalarProperty Name="indexc" ColumnName="indexc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlantillaEmpleadoB1">
+            <EntityTypeMapping TypeName="MasterTASModel.PlantillaEmpleadoB1">
+              <MappingFragment StoreEntitySet="PlantillaEmpleadoB1">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="posicion" ColumnName="posicion" />
+                <ScalarProperty Name="ubicacion" ColumnName="ubicacion" />
+                <ScalarProperty Name="valor" ColumnName="valor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SeguridadDatos">
+            <EntityTypeMapping TypeName="MasterTASModel.SeguridadDatos">
+              <MappingFragment StoreEntitySet="SeguridadDatos">
+                <ScalarProperty Name="IdSeguridad" ColumnName="IdSeguridad" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+                <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="MasterTASModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TagLectora">
+            <EntityTypeMapping TypeName="MasterTASModel.TagLectora">
+              <MappingFragment StoreEntitySet="TagLectora">
+                <ScalarProperty Name="IdLectora" ColumnName="IdLectora" />
+                <ScalarProperty Name="IdTagLectora" ColumnName="IdTagLectora" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TagSoftware">
+            <EntityTypeMapping TypeName="MasterTASModel.TagSoftware">
+              <MappingFragment StoreEntitySet="TagSoftware">
+                <ScalarProperty Name="IdTag" ColumnName="IdTag" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmpresaParametros">
+            <EntityTypeMapping TypeName="MasterTASModel.EmpresaParametros">
+              <MappingFragment StoreEntitySet="EmpresaParametros">
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+                <ScalarProperty Name="Doblemarcaje" ColumnName="Doblemarcaje" />
+                <ScalarProperty Name="tiempodoblemarcaje" ColumnName="tiempodoblemarcaje" />
+                <ScalarProperty Name="descuentamatutino" ColumnName="descuentamatutino" />
+                <ScalarProperty Name="descuentavespertino" ColumnName="descuentavespertino" />
+                <ScalarProperty Name="descuentaalimentacion" ColumnName="descuentaalimentacion" />
+                <ScalarProperty Name="lviniciadoble" ColumnName="lviniciadoble" />
+                <ScalarProperty Name="lvfindoble" ColumnName="lvfindoble" />
+                <ScalarProperty Name="siniciadoble" ColumnName="siniciadoble" />
+                <ScalarProperty Name="sfindoble" ColumnName="sfindoble" />
+                <ScalarProperty Name="diniciadoble" ColumnName="diniciadoble" />
+                <ScalarProperty Name="dfindoble" ColumnName="dfindoble" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PathDB">
+            <EntityTypeMapping TypeName="MasterTASModel.PathDB">
+              <MappingFragment StoreEntitySet="PathDB">
+                <ScalarProperty Name="PathDB1" ColumnName="PathDB" />
+                <ScalarProperty Name="AutoDB" ColumnName="AutoDB" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_DispositivoAsistencia_TagSoftware" TypeName="MasterTASModel.FK_DispositivoAsistencia_TagSoftware" StoreEntitySet="DispositivoAsistencia">
+            <EndProperty Name="TagSoftware">
+              <ScalarProperty Name="IdTag" ColumnName="IdTagSoftware" />
+            </EndProperty>
+            <EndProperty Name="DispositivoAsistencia">
+              <ScalarProperty Name="IdDispositivo" ColumnName="IdDispositivo" />
+              <ScalarProperty Name="IdTagLectora" ColumnName="IdTagLectora" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

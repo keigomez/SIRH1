@@ -1,0 +1,14 @@
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.DatosMarcasReloj\bin\Release\SIRH.DatosMarcasReloj.dll.config
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.DatosMarcasReloj\bin\Release\SIRH.DatosMarcasReloj.dll
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.DatosMarcasReloj\bin\Release\SIRH.DatosMarcasReloj.pdb
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.DatosMarcasReloj\bin\Release\EntityFramework.dll
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.DatosMarcasReloj\bin\Release\SIRH.Datos.dll
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.DatosMarcasReloj\bin\Release\SIRH.DTO.dll
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.DatosMarcasReloj\bin\Release\SIRH.Datos.pdb
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.DatosMarcasReloj\bin\Release\SIRH.DTO.pdb
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.DatosMarcasReloj\bin\Release\EntityFramework.xml
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.DatosMarcasReloj\obj\Release\SIRH.DatosMarcasReloj.csprojResolveAssemblyReference.cache
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.DatosMarcasReloj\obj\Release\SIRH.DatosMarcasReloj.Properties.Resources.resources
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.DatosMarcasReloj\obj\Release\SIRH.DatosMarcasReloj.csproj.GenerateResource.Cache
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.DatosMarcasReloj\obj\Release\SIRH.DatosMarcasReloj.dll
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.DatosMarcasReloj\obj\Release\SIRH.DatosMarcasReloj.pdb

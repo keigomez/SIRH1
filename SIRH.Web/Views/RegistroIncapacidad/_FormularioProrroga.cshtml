@@ -1,0 +1,201 @@
+﻿@model SIRH.Web.ViewModels.FormularioRegistroIncapacidadVM
+@{
+    if (Model != null)
+    {
+        using (Ajax.BeginForm("Create", new AjaxOptions
+        {
+            HttpMethod = "POST",
+            UpdateTargetId = "detalle",
+            OnBegin = "BeginGuardarIncapacidad",
+            OnComplete = "CompleteGuardarIncapacidad",
+            OnSuccess = "SuccessGuardarIncapacidad",
+            OnFailure = "SuccessGuardarIncapacidad"
+        }))
+        {
+            Html.ValidationSummary(true);
+            <div id="formulario">
+                <div class="card">
+                    <h5 class="card-header">Datos de la Incapacidad</h5>
+                    <div class="card-body">
+                        @Html.HiddenFor(model => model.Funcionario.Cedula)
+                        @Html.HiddenFor(model => model.EntidadSeleccionada)
+                        @Html.HiddenFor(model => model.TipoSeleccionado)
+                        @Html.HiddenFor(model => model.Incapacidad.FecRige)
+                        @Html.HiddenFor(model => model.Incapacidad.FecVence)
+                        @Html.HiddenFor(model => model.IndProrroga)
+                        @Html.HiddenFor(model => model.Incapacidad.NumDiasTotal)
+                        @Html.HiddenFor(model => model.Incapacidad.NumDiasOrigen)
+
+                        @if (Model.Incapacidad.CodNumeroCaso == "" || Model.Incapacidad.CodNumeroCaso == null)
+                        {
+                            <div class="row">
+                                <div class="form-group col-3">
+                                    <b>@Html.LabelFor(model => model.Incapacidad.CodIncapacidad)</b>
+                                    <span>:</span>
+                                    @Html.TextBoxFor(model => model.Incapacidad.CodIncapacidad, new { @class = "form-control"})
+                                </div>
+                            </div>
+                        }
+
+
+                        @*<div class="row">
+                            <div class="form-group col-3">
+                                <b>@Html.LabelFor(model => model.TipoSeleccionado)</b>
+                                @Html.HiddenFor(model => model.Funcionario.Cedula)
+                                @Html.HiddenFor(model => model.Incapacidad.CodIncapacidad)
+                                @Html.HiddenFor(model => model.Incapacidad.IndProrroga)
+                                <span>:</span>
+                                @Html.TextBoxFor(model => model.TipoIncapacidad.DescripcionTipoIncapacidad, new { @class = "form-control", @readonly = "readonly" })
+                                @Html.HiddenFor(model => model.TipoIncapacidad.IdEntidad)
+                                @Html.ValidationMessageFor(model => model.TipoIncapacidad.DescripcionTipoIncapacidad)
+                            </div>
+                            <div class="form-group col-3">
+                                <b>@Html.LabelFor(model => model.EntidadMedica.DescripcionEntidadMedica)</b>
+                                <span>:</span>
+                                @Html.TextBoxFor(model => model.EntidadMedica.DescripcionEntidadMedica, new { @class = "form-control", @readonly = "readonly" })
+                                @Html.HiddenFor(model => model.EntidadMedica.IdEntidad, new { @id = "Entidad" })
+                                @Html.ValidationMessageFor(model => model.EntidadSeleccionada)
+                            </div>
+                            <div class="form-group col-3">
+                                <b>@Html.LabelFor(model => model.Incapacidad.FecRige)</b>
+                                <span>:</span>
+                                @Html.TextBoxFor(model => model.Incapacidad.FecRige, new { @id = "FecRige", @class = "form-control", @readonly = "readonly", @placeholder = "Fecha Rige", @onchange = "ObtenerPorc()" })
+                                @Html.ValidationMessageFor(model => model.Incapacidad.FecRige)
+                            </div>
+                            <div class="form-group col-3">
+                                <b>@Html.LabelFor(model => model.Incapacidad.FecVence)</b>
+                                <span>:</span>
+                                @Html.TextBoxFor(model => model.Incapacidad.FecVence, new { @id = "FecVence", @class = "form-control", @readonly = "readonly", @placeholder = "Fecha Vence", @onchange = "ObtenerPorc()" })
+                                @Html.ValidationMessageFor(model => model.Incapacidad.FecVence)
+                            </div>
+                        </div>*@
+                        <div class="row">
+                            <div class="form-group col-3">
+                                <b>@Html.LabelFor(model => model.MontoSalarioBruto)</b>
+                                <span>:</span>
+                                @Html.TextBoxFor(model => model.MontoSalarioBruto, new { @id = "MontoSalarioBruto", @class = "form-control", @readonly = "readonly", @hidden = "true" })
+
+                                <input id='MtoSalBruto' class="form-control" align="right" disabled value=@String.Format("{0:n}", Model.MontoSalarioBruto) />
+                                @Html.ValidationMessageFor(model => model.MontoSalarioBruto)
+                            </div>
+                            <div class="form-group col-3">
+                                <b>@Html.Label("Total Subsidio")</b>
+                                <span>:</span>
+                                <input id='MtoTotalSubsidio' class="form-control" disabled value=@String.Format("{0:n}", 0) />
+                            </div>
+                            <div class="form-group col-3">
+                                <b>@Html.Label("Total Rebajo")</b>
+                                <span>:</span>
+                                <input id='MtoTotalRebaja' class="form-control" disabled value=@String.Format("{0:n}", 0) />
+                            </div>
+                            <div class="form-group col-3">
+                                <b>@Html.Label("Total Días")</b>
+                                <span>:</span>
+                                @Html.TextBoxFor(model => model.Incapacidad.Detalles.Count, new { @id = "TotalDias", @class = "form-control", @readonly = "readonly"})
+                                @Html.TextBoxFor(model => model.Incapacidad.NumDiasOrigen, new { @id = "DiasOrigen", @class = "form-control", @readonly = "readonly", @hidden ="hidden" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <h6 class="card-header">Desglose de la Incapacidad</h6>
+                            <table class="table table-hover">
+                                <thead class="thead-light">
+                                    <tr class="text-center">
+                                        <th>#</th>
+                                        <th>Día</th>
+                                        <th>Por. Subsidio</th>
+                                        <th>Mto Subsidio</th>
+                                        <th>Por. Rebajo</th>
+                                        <th>Mto Rebajo</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-center">
+                                    @{
+                                        int count = Model.Incapacidad.Detalles.Count;
+                                        for (int i = 0; i < count; i++)
+                                        {
+                                            <tr>
+                                                <td>
+                                                   @(i + 1)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(model => model.Incapacidad.Detalles[i].FecRige)
+                                                    @Html.HiddenFor(model => model.Incapacidad.Detalles[i].FecRige)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(model => model.Incapacidad.Detalles[i].PorSubsidio)
+                                                    @Html.HiddenFor(model => model.Incapacidad.Detalles[i].PorSubsidio)
+                                                </td>
+                                                <td>
+                                                    @Html.Encode(Model.Incapacidad.Detalles[i].MtoSubsidio.ToString("#,##0.00"))
+                                                    @Html.HiddenFor(model => model.Incapacidad.Detalles[i].MtoSubsidio)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(model => model.Incapacidad.Detalles[i].PorRebaja)
+                                                    @Html.HiddenFor(model => model.Incapacidad.Detalles[i].PorRebaja)
+                                                </td>
+                                                <td>
+                                                    @Html.Encode(Model.Incapacidad.Detalles[i].MtoRebaja.ToString("#,##0.00"))
+                                                    @Html.HiddenFor(model => model.Incapacidad.Detalles[i].MtoRebaja)
+                                                </td>
+                                            </tr>
+                                        }
+                                        <tr>
+                                            <td><b>Cantidad de Días: </b> @Html.Encode(count)</td>
+                                            <td><b>Total Subsidio</b></td>
+                                            <td>
+                                                <b>@Html.Encode(Model.Incapacidad.MontoTotalSubsidio.ToString("#,##0.00"))</b>
+                                                @Html.HiddenFor(model => model.Incapacidad.MontoTotalSubsidio)
+                                            </td>
+                                            <td><b>Total Rebaja</b></td>
+                                            <td>
+                                                <b> @Html.Encode(Model.Incapacidad.MontoTotalRebaja.ToString("#,##0.00")) </b>
+                                                @Html.HiddenFor(model => model.Incapacidad.MontoTotalRebaja)
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            <table id="tabla" class="table table-hover">
+                                <thead class="thead-light">
+                                    @*<tr>
+                                <th>Día</th>
+                                <th>Por. Subsidio</th>
+                                <th>Mto Subsidio</th>
+                                <th>Por. Rebajo</th>
+                                <th>Mto Rebajo</th>
+                            </tr>*@
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-12">
+                                <b>
+                                    @Html.LabelFor(model => model.Incapacidad.ObsIncapacidad)
+                                    <span>:</span>
+                                </b>
+                                @Html.TextAreaFor(model => model.Incapacidad.ObsIncapacidad, new { @class = "form-control", @rows = 5 })
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-4">
+                                <input id="btnGuardarProrroga" class="btn btn-secondary" name="SubmitButton" type="submit" value="Guardar Prórroga"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-4">
+                                <div id="progressbarGuardarP" class="loader" hidden></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+                                        
+        <script>ObtenerPorc();</script>
+    }
+
+    <div id="detalleResultado">
+    </div>
+}

@@ -1,0 +1,35 @@
+﻿@model SIRH.Web.ViewModels.FoleoVM
+
+@{
+    using (Html.BeginForm("ReporteBusquedaExpediente", "Archivo", FormMethod.Post, new { @id = "thisForm" }))
+    {
+        <div class="card">
+            <div class="card-body">
+                <ul id="myUL">
+                @{
+                    foreach (var item in Model.expediente.listaTomos)
+                    {
+                        <li><span class="caret"><i class="fa fa-folder"></i>&nbsp;@Html.AttributeEncode(item.Descripcion)</span>
+                                <ul class="nested">
+                                    @{
+                                        if (item.ListaFolios.Count() > 0)
+                                        {
+                                            foreach (var folio in item.ListaFolios)
+                                            {
+                                                <li><span><i class="fa fa-file"></i>&nbsp;@Html.AttributeEncode(folio.Descripcion)</span></li>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <li><span><i class="fa fa-ban"></i>&nbsp; Sin folios por el momento.</span></li>
+                                        }
+                                    }
+                                </ul>
+                        </li>
+                     }
+                }
+                </ul>
+            </div>
+        </div>
+     }
+}

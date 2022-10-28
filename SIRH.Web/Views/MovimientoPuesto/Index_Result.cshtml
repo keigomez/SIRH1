@@ -1,0 +1,195 @@
+﻿@model SIRH.Web.ViewModels.MovimientoPuestoVM
+@{//
+    if (Model != null)
+    {
+        if (Model.TotalMovimientos < 1)
+        {
+            <div class="alert alert-danger" role="alert">
+                No se encontraron resultados para la búsqueda solicitada.
+            </div>
+        }
+        else
+        {
+            <div class="card">
+                <h5 class="card-header">Resultados (@Model.TotalMovimientos)</h5>
+                <div class="card-body">
+                    <table class="table">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>#</th>
+                                <th>Número de Puesto</th>
+                                <th>Clase</th>
+                                <th>Especialidad</th>
+                                <th>Motivo Movimiento</th>
+                                <th>Fecha Movimiento</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                int cuenta = 0;
+                                foreach (var item in Model.MovimientosPuesto)
+                                {
+                                    cuenta++;
+                                    <tr>
+                                        <td>@(((Model.PaginaActual - 1) * 10) + cuenta)</td>
+                                        <td>@item.Puesto.CodPuesto</td>
+
+                                        @if(@item.Puesto.EstadoPuesto.IdEntidad == 24) {
+                                            if( Model.PermisoVacantes)
+                                            {
+                                                <td>@item.Puesto.DetallePuesto.Clase.DesClase</td>
+                                                <td>@item.Puesto.DetallePuesto.Especialidad.DesEspecialidad</td>
+                                                <td>@item.MotivoMovimiento.DesMotivo</td>
+                                                <td>@item.FecMovimiento.ToShortDateString()</td>
+                                            }
+                                            else {
+                                                <td>No tiene permisos para ver este puesto</td>
+                                            }
+                                        }
+                                        else {
+                                            <td>@item.Puesto.DetallePuesto.Clase.DesClase</td>
+                                            <td>@item.Puesto.DetallePuesto.Especialidad.DesEspecialidad</td>
+                                            <td>@item.MotivoMovimiento.DesMotivo</td>
+                                            <td>@item.FecMovimiento.ToShortDateString()</td>
+                                        }
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td align="left" colspan="2">
+
+
+                                </td>
+                                <td align="left">
+
+                                </td>
+                                <td colspan="3" align="right">
+
+                                    Página (@Model.PaginaActual.ToString() de @Model.TotalPaginas.ToString())
+
+                                    <nav aria-label="Page navigation example">
+                                        <ul class="pagination justify-content-end">
+                                            @if (Model.PaginaActual == 1)
+                                            {
+                                                <li class="page-item disabled">
+                                                    <a class="page-link" href="#" tabindex="-1">Atras</a>
+                                                </li>
+                                            }
+                                            else
+                                            {
+                                                <li class="page-item">
+                                                    @Ajax.ActionLink("Atras", "Index", new
+                                               {
+                                                   @page = Model.PaginaActual - 1,
+                                                   @codpuesto = Model.CodPuesto,
+                                                   @codcedula = Model.CodCedula,
+                                                   @FechaDesde = Model.FechaDesde,
+                                                   @FechaHasta = Model.FechaHasta,
+                                                   @motivoSeleccionado = Model.MotivoSeleccionado
+                                               }, new AjaxOptions { UpdateTargetId = "target" }, new { @class = "page-link" })
+                                                </li>
+                                            }
+
+                                            @{if (Model.TotalPaginas > 10)
+                                                {
+                                                    var indice = Model.PaginaActual > 6 ? (Model.PaginaActual + 4 <= Model.TotalPaginas ? Model.PaginaActual - 5 : Model.PaginaActual - 5 - ((Model.PaginaActual + 4) - Model.TotalPaginas)) : 1;
+                                                    var final = Model.PaginaActual > 6 ? (Model.PaginaActual + 4 >= Model.TotalPaginas ? Model.TotalPaginas : Model.PaginaActual + 4) : 10;
+
+                                                    for (int i = indice; i <= final; i++)
+                                                    {
+                                                        <li class="page-item ">
+                                                            @Ajax.ActionLink(i.ToString(), "Index", new
+                                                       {
+                                                           @page = i,
+                                                           @codpuesto = Model.CodPuesto,
+                                                           @codcedula = Model.CodCedula,
+                                                           @FechaDesde = Model.FechaDesde,
+                                                           @FechaHasta = Model.FechaHasta,
+                                                           @motivoSeleccionado = Model.MotivoSeleccionado
+                                                       }, new AjaxOptions { UpdateTargetId = "target" }, new { @class = "page-link" })
+                                                        </li>
+                                                    }
+                                                    if (Model.PaginaActual + 4 < Model.TotalPaginas)
+                                                    {
+                                                        <li class="page-item disabled">
+                                                            <a class="page-link" href="#">...</a>
+                                                        </li>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    for (int i = 1; i <= Model.TotalPaginas; i++)
+                                                    {
+                                                        <li class="page-item ">
+                                                            @Ajax.ActionLink(i.ToString(), "Index", new
+                                                       {
+                                                           @page = i,
+                                                           @codpuesto = Model.CodPuesto,
+                                                           @codcedula = Model.CodCedula,
+                                                           @FechaDesde = Model.FechaDesde,
+                                                           @FechaHasta = Model.FechaHasta,
+                                                           @motivoSeleccionado = Model.MotivoSeleccionado
+                                                       }, new AjaxOptions { UpdateTargetId = "target" }, new { @class = "page-link" })
+                                                        </li>
+                                                    }
+
+                                                }
+
+
+                                            }
+                                            @if (Model.TotalPaginas == 1 || Model.PaginaActual == Model.TotalPaginas)
+                                            {
+                                                <li class="page-item disabled">
+                                                    <a class="page-link" href="#">Siguiente</a>
+                                                </li>
+                                            }
+                                            else
+                                            {
+                                                <li class="page-item">
+                                                    @Ajax.ActionLink("Siguiente", "Index", new
+                                               {
+                                                   @page = Model.PaginaActual + 1,
+                                                   @codpuesto = Model.CodPuesto,
+                                                   @codcedula = Model.CodCedula,
+                                                   @FechaDesde = Model.FechaDesde,
+                                                   @FechaHasta = Model.FechaHasta,
+                                                   @motivoSeleccionado = Model.MotivoSeleccionado
+                                               }, new AjaxOptions { UpdateTargetId = "target" }, new { @class = "page-link" })
+                                                </li>
+                                            }
+                                        </ul>
+                                    </nav>
+
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <div class="row">
+                        @using (Ajax.BeginForm("GenerarReporteMovimiento", "MovimientoPuesto", new AjaxOptions
+                        {
+                            HttpMethod = "POST"
+                        }, new { @id = "form_reporte" }))
+                        {
+                            <button class="btn btn-success" type="submit" onclick="return onBeginReport()"><i class="fa fa-file-excel-o"></i> Reporte genérico</button>
+                        }
+                        &nbsp;
+                        @using (Ajax.BeginForm("GenerarReporteCosto", "MovimientoPuesto", new AjaxOptions
+                        {
+                            HttpMethod = "POST"
+                        }, new { @id = "form_reporte" }))
+                        {
+                            <button class="btn btn-outline-success" type="submit" onclick="return onBeginReport()"><i class="fa fa-calculator"></i> Reporte de costos</button>
+                        }
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript">
+                function onBeginReport() {
+                    document.getElementById("form_reporte").submit();
+                }
+            </script>
+        }
+    }
+}

@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/TiempoExtra.cshtml";
+}
+
+<div class="jumbotron">
+    <center>
+        <h1 class="display-4">Módulo de Administración de Registro de Tiempo Extraordinario</h1>
+        <p class="lead">Bienvenido(a), @Session["Nombre_Completo"]</p>
+        <hr class="my-4">
+        <p>Para iniciar, seleccione alguna de las opciones del menú a su izquierda.</p>
+        <p>En este módulo, usted puede:</p>
+    </center>
+</div>
+
+<div class="container">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-sm-3 col-md-4">
+            <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                <div class="card-header">Registrar tiempo extraordinario</div>
+                <div class="card-body text-secondary">
+                    <center><img src="~/Content/Images/new.png" class="img-thumbnail" alt=""></center>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3 col-md-4">
+            <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                <div class="card-header">Editar registros de tiempo extra</div>
+                <div class="card-body text-secondary">
+                    <center><img src="~/Content/Images/edit_page.png" class="img-thumbnail" alt=""></center>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3 col-md-4">
+            <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                <div class="card-header">Consultar Información</div>
+                <div class="card-body text-secondary">
+                    <center><img src="~/Content/Images/look.png" class="img-thumbnail" alt=""></center>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3 col-md-4">
+            <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                <div class="card-header">Ver Archivos</div>
+                <div class="card-body text-secondary">
+                    <center><img src="~/Content/Images/pdf_download.png" class="img-thumbnail" alt=""></center>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+

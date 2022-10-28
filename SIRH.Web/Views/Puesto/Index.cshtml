@@ -1,0 +1,215 @@
+﻿@model SIRH.Web.ViewModels.FuncionarioPuestoVM
+@{
+    ViewBag.Title = "Puesto";
+    Layout = "~/Views/Shared/Reporte.cshtml";
+}
+
+<center><h2>Búsqueda de funcionarios por puesto</h2></center>
+
+@using (Ajax.BeginForm("Index", "Puesto", new AjaxOptions { UpdateTargetId = "target", HttpMethod = "POST", OnSuccess = "successData", OnBegin = "beginData" }))
+{
+        <div class="card">
+            <div class="card-header">
+                Parámetros de búsqueda:
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="form-group col-6">
+                        @Html.Label("Número de puesto")
+                        <span>:</span>
+                        @Html.TextBox("codpuesto", String.Empty, new { @onkeypress = "return IsNumeric(event,'', 'código de puesto')", @class = "form-control" })
+                    </div>
+                    <div class="form-group col-6">
+                        @Html.Label("Clase")
+                        <span>:</span>
+                        <button class="btn btn-outline-primary" type="button" id="DialogClase"><i class="fa fa-search"></i></button>
+                        <button class="btn btn-outline-primary" type="button" id="CleanClase"><i class="fa fa-remove"></i></button>
+                        @Html.TextBox("codclase", String.Empty, new { @readonly = "readonly", @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-6">
+                        @Html.Label("Especialidad")
+                        <span>:</span>
+                        <button class="btn btn-outline-primary" type="button" id="DialogEspecialidad"><i class="fa fa-search"></i></button>
+                        <button class="btn btn-outline-primary" type="button" id="CleanEspecialidad"><i class="fa fa-remove"></i></button>
+                        @Html.TextBox("codespecialidad", String.Empty, new { @readonly = "readonly", @class = "form-control" })
+                    </div>
+                    <div class="form-group col-6">
+                        @Html.Label("Ocupación Real")
+                        <span>:</span>
+                        <button class="btn btn-outline-primary" type="button" id="DialogOcupacion"><i class="fa fa-search"></i></button>
+                        <button class="btn btn-outline-primary" type="button" id="CleanOcupacion"><i class="fa fa-remove"></i></button>
+                        @Html.TextBox("codocupacion", String.Empty, new { @readonly = "readonly", @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-6">
+                        @Html.Label("Estado :")
+                        @{ 
+                            List<String> listEstados = new List<String>();
+                            listEstados.Add("Propiedad");
+                            listEstados.Add("Interino");
+                            listEstados.Add("Puestos con nombramiento a plazo fijo");
+                            listEstados.Add("Vacantes sin interino ni propietario");
+                            listEstados.Add("Vacantes con propietario sin interino");
+                            listEstados.Add("Vacantes con interino sin propietario");
+                            listEstados.Add("Vacantes con interino y propietario");
+                            <!---->
+                            listEstados.Add("Ascenso Interino");
+                            listEstados.Add("Traslado Horizonal en Propiedad");
+                            listEstados.Add("Traslado Interinstitucional Horizontal Interino");
+                            listEstados.Add("Traslado Interinstitucional Ascenso Interino");
+                            listEstados.Add("Traslado Interinstitucional Ascenso en Propiedad");
+                            listEstados.Add("Traslado Interinstitucional Descenso en Propiedad");
+                            listEstados.Add("Traslado Interinstitucional Descenso Interino");
+                            listEstados.Add("Traslado Horizontal Interino dentro del MOPT");
+                            listEstados.Add("Traslado Horizontal en Propiedad dentro del MOPT");
+                            listEstados.Add("Permiso sin Salario");
+                            <!---->
+                            listEstados.Add("Relacion de puestos completos");
+                            var estados = new SelectList(listEstados);
+                        }
+                        @Html.DropDownList("estadoPuestoSeleccionado",
+                            estados as SelectList, "Seleccione una opción",
+                            new { @id = "estadoPuestoSeleccionado", @class = "form-control" })
+                    </div>
+                    <div class="form-group col-6">
+                        @Html.Label("Estrato :")
+                        @{
+                            List<String> listConfianzas = new List<String>();
+                            listConfianzas.Add("Todos");
+                            listConfianzas.Add("De confianza");
+                            listConfianzas.Add("No de confianza");
+                            var confianzas = new SelectList(listConfianzas);
+                        }
+                        @Html.DropDownList("confianzaSeleccionada",
+                            confianzas as SelectList, "Seleccione una opción",
+                            new { @id = "confianzaSeleccionada", @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-6">
+                        @Html.Label("Nivel Ocupacional")
+                        <span>:</span>
+                        @{
+                            List<string> listNiveles = new List<string>();
+                            listNiveles.Add("Nivel Superior");
+                            listNiveles.Add("Nivel Ejecutivo");
+                            listNiveles.Add("Nivel Profesional");
+                            listNiveles.Add("Nivel Técnico");
+                            listNiveles.Add("Servicios");
+                            listNiveles.Add("Puestos Policiales");
+                            var niveles = new SelectList(listNiveles);
+                        }
+                        @Html.DropDownList("codnivel",
+                            niveles as SelectList, "Seleccione una opción",
+                            new { @id = "codnivel", @class = "form-control" })
+                    </div>
+                    <div class="col-6"></div>
+                </div>
+            </div>
+            <center>
+                <div class="card-footer text-muted">
+                    <div class="row">
+                        <div class="form-group col-12">
+                            <input class="btn btn-secondary" type="submit" value="Buscar" id="btnBusca" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-12">
+                            <div id="progressbar" class="loader" hidden></div>
+                        </div>
+                    </div>
+                </div>
+            </center>
+        </div>
+            <div id="error" class="alert alert-danger" role="alert" hidden></div>
+}
+
+
+
+<div class="modal fade" id="buscar-clase" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Búsqueda por Clase</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @{Html.RenderPartial("Clase_Index"); }
+            </div>
+            <div class="modal-footer">
+                <button id="CacelarCalculoPopUp" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                @*<button id="CalcularPopUp" type="button" class="btn btn-primary">Calcular</button>*@
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="buscar-especialidad" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Búsqueda por Especialidad</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @{Html.RenderPartial("Especialidad_Index"); }
+            </div>
+            <div class="modal-footer">
+                <button id="CacelarCalculoPopUp" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                @*<button id="CalcularPopUp" type="button" class="btn btn-primary">Calcular</button>*@
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="buscar-ocupacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Búsqueda por Ocupación Real</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @{Html.RenderPartial("Ocupacion_Index"); }
+            </div>
+            <div class="modal-footer">
+                <button id="CacelarCalculoPopUp" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                @*<button id="CalcularPopUp" type="button" class="btn btn-primary">Calcular</button>*@
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="target">
+    @if (Model != null)
+    {
+        if (Model.TotalPuestos > 0)
+        {
+            Html.RenderPartial("Index_Result", Model);
+        }
+    }
+    @if (Session["errorP"] != null && (string)Session["errorP"] == "error")
+    {
+        Html.RenderPartial("_ErrorPuesto");
+    }
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+<script src="~/Scripts/popper.min.js"></script>
+@Scripts.Render("~/bundles/bootstrap")
+
+<script src="~/Scripts/sidebar.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/IndexPuesto.js" type="text/javascript"></script>
+<script src="~/scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script src="~/Scripts/puesto-control.js" type="text/javascript"></script>
+<script src="~/Scripts/funciones-generales.js" type="text/javascript"></script>
+<script src="~/Scripts/funciones-dialogos.js" type="text/javascript"></script>

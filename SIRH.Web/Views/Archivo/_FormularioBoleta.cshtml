@@ -1,0 +1,361 @@
+﻿@model SIRH.Web.ViewModels.FormularioBoletaPrestamoVM
+
+<script type="text/javascript" src="~/Scripts/funciones-dialogos.js"></script>
+<script type="text/javascript" src="~/Scripts/funciones-generales.js"></script>
+
+@{
+
+    if (Model != null)
+    {
+        using (Ajax.BeginForm("CreateBoletaPrestamo", new AjaxOptions
+        {
+            HttpMethod = "POST",
+            UpdateTargetId = "detalle",
+            OnBegin = "BeginGuardarBoleta",
+            OnComplete = "CompleteGuardarBoleta",
+            OnSuccess = "SuccessGuardarBoleta",
+            OnFailure = "SuccessGuardarBoleta"
+        }))
+        {
+            if (Model.Mensaje != null)
+            {
+                    Html.ValidationSummary(true);
+                    <div id="formulario">
+                        <div class="card">
+                            <h5 class="card-header">Datos necesarios para préstamo</h5>
+                            <div class="alert alert-warning">
+                                <b>@Html.LabelFor(model => model.Mensaje, new { @id = "Mensaje" }) :&nbsp &nbsp </b><b>@Model.Mensaje</b>
+                                @Html.HiddenFor(model => model.Mensaje)
+                            </div>
+
+                            @Html.HiddenFor(model => model.BoletaPrestamo.CedulaSolicitante)
+                            @Html.HiddenFor(model => model.UsuarioExterno)
+                            @Html.HiddenFor(model => model.BoletaPrestamo.CedulaFuncionario)
+
+                            <div class="row">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <h4>Datos de Solicitante</h4>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.BoletaPrestamo.NombreSolicitante)
+                                                @Html.TextBoxFor(model => model.BoletaPrestamo.NombreSolicitante, new { @class = "form-control", @readonly = "readonly" })
+                                                @Html.HiddenFor(model => model.BoletaPrestamo.NombreSolicitante)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.BoletaPrestamo.ApellidoSolicitante)
+                                                @Html.TextBoxFor(model => model.BoletaPrestamo.ApellidoSolicitante, new { @class = "form-control", @readonly = "readonly" })
+                                                @Html.HiddenFor(model => model.BoletaPrestamo.ApellidoSolicitante)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.BoletaPrestamo.Telefonolicitante)
+                                                @Html.TextBoxFor(model => model.BoletaPrestamo.Telefonolicitante, new { @class = "form-control" })
+                                                @Html.HiddenFor(model => model.BoletaPrestamo.Telefonolicitante)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.BoletaPrestamo.CorreoSolicitante)
+                                                @Html.TextBoxFor(model => model.BoletaPrestamo.CorreoSolicitante, new { @class = "form-control" })
+                                                @Html.HiddenFor(model => model.BoletaPrestamo.CorreoSolicitante)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.BoletaPrestamo.LugarDeProcedencia)
+                                                @Html.TextBoxFor(model => model.BoletaPrestamo.LugarDeProcedencia, new { @id = "Institucion", @class = "form-control", })
+                                                @Html.HiddenFor(model => model.BoletaPrestamo.LugarDeProcedencia)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.BoletaPrestamo.MotivoPrestamo)
+                                                @Html.TextAreaFor(model => model.BoletaPrestamo.MotivoPrestamo, new { @class = "form-control" })
+                                                @Html.HiddenFor(model => model.BoletaPrestamo.MotivoPrestamo)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.BoletaPrestamo.FechaPrestamo, new { @for = "datepickerFechaPrestamo" })
+                                                @Html.TextBoxFor(model => model.BoletaPrestamo.FechaPrestamo, new { @id = "datepickerFechaPrestamo", @class = "form-control", @readonly = "readonly" })
+                                                @Html.HiddenFor(model => model.BoletaPrestamo.FechaPrestamo)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.BoletaPrestamo.FechaCaducidad)
+                                                @Html.TextBoxFor(model => model.BoletaPrestamo.FechaCaducidad, new { @id = "FechaDevolucion", @class = "form-control", @readonly = "readonly", @value = "" })
+                                                @Html.HiddenFor(model => model.BoletaPrestamo.FechaCaducidad)
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <h4>Datos de Expediente</h4>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-10">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.BoletaPrestamo.NombreFuncionarioSolicitado)
+                                                @Html.TextBoxFor(model => model.BoletaPrestamo.NombreFuncionarioSolicitado, new { @id = "NombreFuncionarioSolicitado", @readonly = "readonly", @class = "form-control" })
+                                                @Html.HiddenFor(model => model.BoletaPrestamo.NombreFuncionarioSolicitado)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.BoletaPrestamo.ApellidoFuncionarioSolicitado)
+                                                @Html.TextBoxFor(model => model.BoletaPrestamo.ApellidoFuncionarioSolicitado, new { @id = "ApellidoFuncionarioSlicitado", @readonly = "readonly", @class = "form-control" })
+                                                @Html.HiddenFor(model => model.BoletaPrestamo.ApellidoFuncionarioSolicitado)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.BoletaPrestamo.DivisiónFuncionario)
+                                                @Html.TextBoxFor(model => model.BoletaPrestamo.DivisiónFuncionario, new { @id = "DivisiónFuncionario", @readonly = "readonly", @class = "form-control" })
+                                                @Html.HiddenFor(model => model.BoletaPrestamo.DivisiónFuncionario)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.BoletaPrestamo.DirecciónFuncionario)
+                                                @Html.TextBoxFor(model => model.BoletaPrestamo.DirecciónFuncionario, new { @id = "DirecciónFuncionario", @readonly = "readonly", @class = "form-control" })
+                                                @Html.HiddenFor(model => model.BoletaPrestamo.DirecciónFuncionario)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.BoletaPrestamo.DepartamentoFuncionario)
+                                                @Html.TextBoxFor(model => model.BoletaPrestamo.DepartamentoFuncionario, new { @id = "DepartamentoFuncionario", @readonly = "readonly", @class = "form-control" })
+                                                @Html.HiddenFor(model => model.BoletaPrestamo.DepartamentoFuncionario)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.BoletaPrestamo.NumeroExpediente)
+                                                @Html.TextBoxFor(model => model.BoletaPrestamo.NumeroExpediente, new { @id = "NumeroExpediente", @readonly = "readonly", @class = "form-control" })
+                                                @Html.HiddenFor(model => model.BoletaPrestamo.NumeroExpediente)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <input id="btnGuardar" class="btn btn-warning" style="margin:auto;" name="SubmitButton" type="submit" value="Guardar Boleta" />
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-4">
+                                    <div id="progressbarGuardar" class="loader" hidden></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            }
+            else
+            {
+                    Html.ValidationSummary(true);
+                    <div id="formulario">
+                        <div class="card">
+                            <div class="row">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <h4>Datos de Solicitante</h4>
+                                        </div>
+                                    </div>
+
+                                    @Html.HiddenFor(model => model.BoletaPrestamo.CedulaSolicitante)
+                                    @Html.HiddenFor(model => model.UsuarioExterno)
+                                    @Html.HiddenFor(model => model.BoletaPrestamo.CedulaFuncionario)
+
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.BoletaPrestamo.NombreSolicitante)
+                                                @Html.TextBoxFor(model => model.BoletaPrestamo.NombreSolicitante, new { @class = "form-control", @readonly = "readonly" })
+                                                @Html.HiddenFor(model => model.BoletaPrestamo.NombreSolicitante)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.BoletaPrestamo.ApellidoSolicitante)
+                                                @Html.TextBoxFor(model => model.BoletaPrestamo.ApellidoSolicitante, new { @class = "form-control", @readonly = "readonly" })
+                                                @Html.HiddenFor(model => model.BoletaPrestamo.ApellidoSolicitante)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.BoletaPrestamo.Telefonolicitante)
+                                                @Html.TextBoxFor(model => model.BoletaPrestamo.Telefonolicitante, new { @class = "form-control" })
+                                                @Html.HiddenFor(model => model.BoletaPrestamo.Telefonolicitante)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.BoletaPrestamo.CorreoSolicitante)
+                                                @Html.TextBoxFor(model => model.BoletaPrestamo.CorreoSolicitante, new { @class = "form-control" })
+                                                @Html.HiddenFor(model => model.BoletaPrestamo.CorreoSolicitante)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.BoletaPrestamo.LugarDeProcedencia)
+                                                @Html.TextBoxFor(model => model.BoletaPrestamo.LugarDeProcedencia, new { @id = "Institucion", @class = "form-control", })
+                                                @Html.HiddenFor(model => model.BoletaPrestamo.LugarDeProcedencia)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.BoletaPrestamo.MotivoPrestamo)
+                                                @Html.TextAreaFor(model => model.BoletaPrestamo.MotivoPrestamo, new { @class = "form-control" })
+                                                @Html.HiddenFor(model => model.BoletaPrestamo.MotivoPrestamo)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.BoletaPrestamo.FechaPrestamo, new { @for = "datepickerFechaPrestamo" })
+                                                @Html.TextBoxFor(model => model.BoletaPrestamo.FechaPrestamo, new { @id = "datepickerFechaPrestamo", @class = "form-control", @readonly = "readonly" })
+                                                @Html.HiddenFor(model => model.BoletaPrestamo.FechaPrestamo)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.BoletaPrestamo.FechaCaducidad)
+                                                @Html.TextBoxFor(model => model.BoletaPrestamo.FechaCaducidad, new { @id = "FechaDevolucion", @class = "form-control", @readonly = "readonly", @value = "" })
+                                                @Html.HiddenFor(model => model.BoletaPrestamo.FechaCaducidad)
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <h4>Datos de Expediente</h4>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-10">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.BoletaPrestamo.NombreFuncionarioSolicitado)
+                                                @Html.TextBoxFor(model => model.BoletaPrestamo.NombreFuncionarioSolicitado, new { @id = "NombreFuncionarioSolicitado", @readonly = "readonly", @class = "form-control" })
+                                                @Html.HiddenFor(model => model.BoletaPrestamo.NombreFuncionarioSolicitado)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-10">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.BoletaPrestamo.ApellidoFuncionarioSolicitado)
+                                                @Html.TextBoxFor(model => model.BoletaPrestamo.ApellidoFuncionarioSolicitado, new { @id = "ApellidoFuncionarioSlicitado", @readonly = "readonly", @class = "form-control" })
+                                                @Html.HiddenFor(model => model.BoletaPrestamo.ApellidoFuncionarioSolicitado)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-10">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.BoletaPrestamo.DivisiónFuncionario)
+                                                @Html.TextBoxFor(model => model.BoletaPrestamo.DivisiónFuncionario, new { @id = "DivisiónFuncionario", @readonly = "readonly", @class = "form-control" })
+                                                @Html.HiddenFor(model => model.BoletaPrestamo.DivisiónFuncionario)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-10">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.BoletaPrestamo.DirecciónFuncionario)
+                                                @Html.TextBoxFor(model => model.BoletaPrestamo.DirecciónFuncionario, new { @id = "DirecciónFuncionario", @readonly = "readonly", @class = "form-control" })
+                                                @Html.HiddenFor(model => model.BoletaPrestamo.DirecciónFuncionario)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-10">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.BoletaPrestamo.DepartamentoFuncionario)
+                                                @Html.TextBoxFor(model => model.BoletaPrestamo.DepartamentoFuncionario, new { @id = "DepartamentoFuncionario", @readonly = "readonly", @class = "form-control" })
+                                                @Html.HiddenFor(model => model.BoletaPrestamo.DepartamentoFuncionario)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-10">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.BoletaPrestamo.NumeroExpediente)
+                                                @Html.TextBoxFor(model => model.BoletaPrestamo.NumeroExpediente, new { @id = "NumeroExpediente", @readonly = "readonly", @class = "form-control" })
+                                                @Html.HiddenFor(model => model.BoletaPrestamo.NumeroExpediente)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <input id="btnGuardarBoleta" class="btn btn-warning" style="margin:auto;" name="SubmitButton" type="submit" value="Guardar Boleta" />
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-4">
+                                    <div id="progressbarGuardar" class="loader" hidden></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            }
+
+            <div id="detalle"> </div>
+        }
+    }
+
+}
+

@@ -1,0 +1,425 @@
+﻿@model SIRH.Web.ViewModels.FuncionarioCarreraVM
+
+<div id="formulario">
+    @if (Model.Funcionario != null)
+    {
+        using (Ajax.BeginForm("Create", "Carrera", new { id = "form" }, new AjaxOptions
+        {
+            HttpMethod = "POST",
+            UpdateTargetId = "formulario",
+            OnBegin = "BeginGuardarCarrera",
+            OnComplete = "CompleteGuardarCarrera",
+        }, new { enctype = "multipart/form-data" }))
+        {
+            @Html.ValidationSummary(true)
+
+            <div class="card">
+                <h5 class="card-header">Información del Funcionario</h5>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-3 col-md-4">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <span>
+                                        <strong>@Html.LabelFor(model => model.Funcionario.Cedula): </strong>@Html.DisplayFor(model => model.Funcionario.Cedula)
+                                        @Html.HiddenFor(model => model.Funcionario.Cedula)
+                                    </span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span>
+                                        <strong>@Html.LabelFor(model => model.DetallePuesto.Clase.DesClase): </strong>@Html.DisplayFor(model => model.DetallePuesto.Clase.DesClase)
+                                        @Html.HiddenFor(model => model.DetallePuesto.Clase.IdEntidad)
+                                        @Html.HiddenFor(model => model.DetallePuesto.Clase.DesClase)
+                                        @Html.HiddenFor(model => model.DetallePuesto.EscalaSalarial.CategoriaEscala)
+                                    </span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span>
+                                        <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                                        @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                                    </span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span>
+                                        <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion)
+                                        @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Seccion.IdEntidad)
+                                        @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion)
+                                    </span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span>
+                                        <strong>@Html.LabelFor(model => model.Calficacion): </strong>@Html.DisplayFor(model => model.Calficacion)
+                                        @Html.HiddenFor(model => model.Calficacion)
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-3 col-md-4">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <span>
+                                        <strong>@Html.LabelFor(model => model.Funcionario.Nombre): </strong>@Model.Funcionario.Nombre @Model.Funcionario.PrimerApellido @Model.Funcionario.SegundoApellido
+                                        @Html.HiddenFor(model => model.Funcionario.Nombre)
+                                        @Html.HiddenFor(model => model.Funcionario.PrimerApellido)
+                                        @Html.HiddenFor(model => model.Funcionario.SegundoApellido)
+                                    </span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span>
+                                        <strong>@Html.LabelFor(model => model.DetallePuesto.Especialidad.DesEspecialidad): </strong>@Html.DisplayFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)
+                                        @Html.HiddenFor(model => model.DetallePuesto.Especialidad.IdEntidad)
+                                        @Html.HiddenFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)
+                                    </span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span>
+                                        <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                                        @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                                    </span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span>
+                                        <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto)
+                                        @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto)
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-3 col-md-4">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <span>
+                                        <strong>@Html.LabelFor(model => model.Puesto.CodPuesto): </strong>@Html.DisplayFor(model => model.Puesto.CodPuesto)
+                                        @Html.HiddenFor(model => model.Puesto.CodPuesto)
+                                    </span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span>
+                                        <strong>@Html.LabelFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal): </strong>@Html.DisplayFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal)
+                                        @Html.HiddenFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal)
+                                    </span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span>
+                                        <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                                        @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                                    </span>
+                                </li>
+                                @if (Model.DetalleContratacion.IdEntidad != -1)
+                                {
+                                    if (Model.DetalleContratacion.CodigoPolicial != 0)
+                                    {
+                                        <li class="list-group-item">
+                                            <span>
+                                                <strong>@Html.LabelFor(model => model.DetalleContratacion.CodigoPolicial): </strong>@Html.DisplayFor(model => model.DetalleContratacion.CodigoPolicial)
+                                            </span>
+                                        </li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                        @Html.HiddenFor(model => model.DetalleContratacion.CodigoPolicial, new { @id = "CodigoPolicial" })
+                        @Html.HiddenFor(model => model.PuntosEspecializada, new { @id = "PtsEspecializada" })
+                        @Html.HiddenFor(model => model.PuntosLibros, new { @id = "PtsLibros" })
+                        @Html.HiddenFor(model => model.PuntosPublicaciones, new { @id = "PtsPublicaciones" })
+                        @Html.HiddenFor(model => model.PorcentajeCurso, new { @id = "PorCurso" })
+                        @Html.HiddenFor(model => model.PorcentajeRiesgo, new { @id = "PorRiesgo" })
+                        @Html.HiddenFor(model => model.HorasAprovechamiento, new { @id = "HrsAprovechamiento" })
+                        @Html.HiddenFor(model => model.HorasPartipacion, new { @id = "HrsParticipacion" })
+                        @Html.HiddenFor(model => model.HorasInstruccion, new { @id = "HrsInstruccion" })
+                        @Html.HiddenFor(model => model.PorcentajeInstruccionOficial, new { @id = "PorInstruccion" })
+                        @Html.HiddenFor(model => model.CursoGradoActual, new { @id = "CursoActual" })
+                        @Html.HiddenFor(model => model.Funcionario.Mensaje, new { @id = "PuntosAdicionales" })
+                    </div>
+
+                </div>
+            </div>
+            <br />
+
+            <div class="card">
+                <h5 class="card-header">@Model.TituloFieldSet</h5>
+                @Html.HiddenFor(model => model.TituloFieldSet)
+            <div class="card-body">
+                @if (Model.CursoCapacitacion != null)
+                {
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.CursoCapacitacion.DescripcionCapacitacion, new { @for = "DescripcionCapacitacion", @class = "col-sm-3 col-form-label" })
+                        <div class="col-sm-5">
+                            @Html.TextBoxFor(model => model.CursoCapacitacion.DescripcionCapacitacion, new { @id = "DescripcionCapacitacion", @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.CursoCapacitacion.DescripcionCapacitacion)
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.EntidadEducativaSeleccionada, new { @for = "EntidadEducativaSeleccionada", @class = "col-sm-3 col-form-label" })
+                        <div class="col-sm-5">
+                            @Html.DropDownListFor(model => model.EntidadEducativaSeleccionada,
+                                                                    Model.EntidadesEducativas as SelectList,
+                                                                    "Seleccionar...", new { @id = "EntidadEducativaSeleccionada", @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.EntidadEducativaSeleccionada)
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.ModalidadSeleccionada, new { @for = "ModalidadSeleccionada", @class = "col-sm-3 col-form-label" })
+                        <div class="col-sm-5">
+                            @Html.DropDownListFor(model => model.ModalidadSeleccionada,
+                                                                    Model.Modalidades as SelectList,
+                                                                    "Seleccionar...", new { @id = "ModalidadSeleccionada", @class = "form-control", @onchange = "return OnChangeModalidad()" })
+                            @Html.ValidationMessageFor(model => model.ModalidadSeleccionada)
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.CursoCapacitacion.FechaInicio, new { @for = "FecInicio", @class = "col-sm-3 col-form-label" })
+                        <div class="col-sm-5">
+                            @Html.TextBoxFor(model => model.CursoCapacitacion.FechaInicio, new { @id = "FecInicio", @class = "form-control", @readonly = "readonly" })
+                            @Html.ValidationMessageFor(model => model.CursoCapacitacion.FechaInicio)
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.CursoCapacitacion.FechaFinal, new { @for = "FecFinal", @class = "col-sm-3 col-form-label" })
+                        <div class="col-sm-5">
+                            @Html.TextBoxFor(model => model.CursoCapacitacion.FechaFinal, new { @id = "FecFinal", @class = "form-control", @readonly = "readonly" })
+                            @Html.ValidationMessageFor(model => model.CursoCapacitacion.FechaFinal)
+                        </div>
+                    </div>
+
+                    <div class="form-group row hide" style="display:none;">
+                        @Html.LabelFor(model => model.CursoCapacitacion.TotalHoras, new { @for = "TotalHoras", @class = "col-sm-3 col-form-label" })
+                        <div class="col-sm-5">
+                            @Html.TextBoxFor(model => model.CursoCapacitacion.TotalHoras, new { @id = "TotalHoras", @class = "form-control", @onchange = "return OnChangeTotalHoras()", @onkeypress = "return IsNumeric(event, '', 'campo de cédula')" })
+                            @Html.ValidationMessageFor(model => model.CursoCapacitacion.TotalHoras)
+                        </div>
+                    </div>
+                    <div class="form-group row hide" style="display:none;">
+                        @Html.LabelFor(model => model.HorasAcumuladas, new { @for = "HorasAcum", @class = "col-sm-3 col-form-label" })
+                        <div class="col-sm-5">
+                            @Html.TextBoxFor(model => model.HorasAcumuladas, new { @id = "HorasAcum", @class = "form-control", @readonly = "readonly" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row hide" style="display:none;">
+                        <label class="col-sm-3 col-form-label">Horas acumuladas anteriormente</label>
+                        <div class="col-sm-5">
+                            <input type="text" id="HorasAcumAnt" class="form-control" readonly />
+                        </div>
+                    </div>
+
+                    if (Model.DetalleContratacion.CodigoPolicial != 0)
+                    {
+                        <div class="form-group row">
+                            <label for="TotalPorcentaje" class="col-sm-3 col-form-label">Porcentaje a asignar</label>
+                            <div class="col-sm-5">
+                                @Html.TextBoxFor(model => model.CursoCapacitacion.TotalPuntos, new { @id = "TotalPorcentaje", @class = "form-control", @readonly = "readonly" })
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="Porcentaje" class="col-sm-3 col-form-label">Porcentaje total</label>
+                            <div class="col-sm-5">
+                                @Html.TextBoxFor(model => model.Porcentaje, new { @id = "Porcentaje", @class = "form-control", @readonly = "readonly" })
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Porcentaje total anterior</label>
+                            <div class="col-sm-5">
+                                <input type="text" id="PorcentajeAnt" class="form-control" readonly />
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="form-group row">
+                            <label for="TotalPuntos" class="col-sm-3 col-form-label">Puntos a asignar</label>
+                            <div class="col-sm-5">
+                                @Html.TextBoxFor(model => model.CursoCapacitacion.TotalPuntos, new { @id = "TotalPuntos", @class = "form-control", @readonly = "readonly" })
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="Puntaje" class="col-sm-3 col-form-label">Puntaje total</label>
+                            <div class="col-sm-5">
+                                @Html.TextBoxFor(model => model.Puntaje, new { @id = "Puntaje", @class = "form-control", @readonly = "readonly" })
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Puntaje total anterior</label>
+                            <div class="col-sm-5">
+                                <input type="text" id="PuntajeAnt" class="form-control" readonly />
+                            </div>
+                        </div>
+                    }
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.CursoCapacitacion.Resolucion, new { @for = "Resolucion", @class = "col-sm-3 col-form-label" })
+                        <div class="col-sm-5">
+                            @Html.TextBoxFor(model => model.CursoCapacitacion.Resolucion, new { @id = "Resolucion", @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.CursoCapacitacion.Resolucion)
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.CursoCapacitacion.Observaciones, new { @for = "Observaciones", @class = "col-sm-3 col-form-label" })
+                        <div class="col-sm-5">
+                            @Html.TextBoxFor(model => model.CursoCapacitacion.Observaciones, new { @id = "Observaciones", @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.CursoCapacitacion.Observaciones)
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.CursoCapacitacion.ImagenTitulo, new { @for = "ImagenTitulo", @class = "col-sm-3 col-form-label" })
+                        <div class="col-sm-5">
+                            <div class="custom-file">
+                                @Html.TextBoxFor(model => model.File, new { id = "ImagenTitulo", @class = "custom-file-input form-control", type = "file", accept = "application/pdf" })
+                                <label class="custom-file-label" for="ImagenTitulo">Seleccionar PDF</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br />
+                    <a id="pdf_preview" href="" style="display: none;" target="_blank">Ver PDF</a>
+                }
+                else
+                {
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.CursoGrado.CursoGrado, new { @for = "CursoGrado", @class = "col-sm-3 col-form-label" })
+                        <div class="col-sm-5">
+                            @Html.TextBoxFor(model => model.CursoGrado.CursoGrado, new { @id = "CursoGrado", @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.CursoGrado.CursoGrado)
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.EntidadEducativaSeleccionada, new { @for = "EntidadEducativaSeleccionada", @class = "col-sm-3 col-form-label" })
+                        <div class="col-sm-5">
+                            @Html.DropDownListFor(model => model.EntidadEducativaSeleccionada,
+                                                                    Model.EntidadesEducativas as SelectList,
+                                                                    "Seleccionar...", new { @id = "EntidadEducativaSeleccionada", @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.EntidadEducativaSeleccionada)
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.CursoGrado.FechaEmision, new { @for = "FecEmision", @class = "col-sm-3 col-form-label" })
+                        <div class="col-sm-5">
+                            @Html.TextBoxFor(model => model.CursoGrado.FechaEmision, new { @id = "FecEmision", @class = "form-control", @readonly = "readonly" })
+                            @Html.ValidationMessageFor(model => model.CursoGrado.FechaEmision)
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.GradoAcademicoSeleccionado, new { @for = "GradoAcademicoSeleccionado", @class = "col-sm-3 col-form-label" })
+                        <div class="col-sm-5">
+                            @Html.DropDownListFor(model => model.GradoAcademicoSeleccionado,
+                                                                    Model.GradosAcademicos as SelectList,
+                                                                    "Seleccionar...", new { @id = "GradoAcademicoSeleccionado", @class = "form-control", @onchange = "return OnChangeGrado()" })
+                            @Html.ValidationMessageFor(model => model.GradoAcademicoSeleccionado)
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        @if (Model.DetalleContratacion.CodigoPolicial != 0)
+                        {
+                            <label for="PorcentajeIncentivo" class="col-sm-3 col-form-label">Porcentaje a asignar</label>
+                        }
+                        else
+                        {
+                            <label for="PorcentajeIncentivo" class="col-sm-3 col-form-label">Puntaje a asignar</label>
+                        }
+                        <div class="col-sm-5">
+                            @Html.TextBoxFor(model => model.CursoGrado.Incentivo, new { @id = "PorcentajeIncentivo", @class = "form-control", @readonly = "readonly" })
+                            @Html.ValidationMessageFor(model => model.CursoGrado.Incentivo)
+                        </div>
+                    </div>
+
+                    @*<div class="form-group row">
+                @if (Model.DetalleContratacion.CodigoPolicial != 0)
+                {
+                    <label for="PorcentajeIncentivoAnt" class="col-sm-3 col-form-label">Porcentaje anterior</label>
+                }
+                else
+                {
+                    <label for="PorcentajeIncentivoAnt" class="col-sm-3 col-form-label">Puntaje anterior</label>
+                }
+                <div class="col-sm-5">
+                    <input type="text" id="PorcentajeIncentivoAnt" class="form-control" readonly />
+                </div>
+            </div>*@
+
+                    @*<div class="form-group row">
+                @Html.LabelFor(model => model.CursoGrado.Resolucion, new { @for = "Resolucion", @class = "col-sm-3 col-form-label" })
+                <div class="col-sm-5">
+                    @Html.TextBoxFor(model => model.CursoGrado.Resolucion, new { @id = "Resolucion", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.CursoGrado.Resolucion)
+                </div>
+            </div>*@
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.CursoGrado.Observaciones, new { @for = "Observaciones", @class = "col-sm-3 col-form-label" })
+                        <div class="col-sm-5">
+                            @Html.TextBoxFor(model => model.CursoGrado.Observaciones, new { @id = "Observaciones", @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.CursoGrado.Observaciones)
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.CursoGrado.ImagenTitulo, new { @for = "ImagenTitulo", @class = "col-sm-3 col-form-label" })
+                        <div class="col-sm-5">
+                            <div class="custom-file">
+                                @Html.TextBoxFor(model => model.File, new { id = "ImagenTitulo", @class = "custom-file-input form-control", type = "file", accept = "application/pdf" })
+                                <label class="custom-file-label" for="ImagenTitulo">Seleccionar PDF</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br />
+                    <a id="pdf_preview" href="" style="display: none;" target="_blank">Ver PDF</a>
+
+                }
+
+                <div id="warningCapacitacion" class="alert alert-warning" role="alert" style="display: none">
+                    <i class="fa fa-warning d-inline" style="font-size:48px;"></i>
+                    <h4 class="d-inline"> ¡Atención! El funcionario alcanzó el tope de puntos para la modalidad seleccionada, por lo que no se le sumarán más puntos ni podrá acumular más horas (si es el caso) en la misma.</h4>
+                </div>
+
+                <div id="warningGrado" class="alert alert-warning" role="alert" style="display: none">
+                    <i class="fa fa-warning d-inline" style="font-size:48px;"></i>
+                    <h4 class="d-inline"> ¡Atención! El funcionario no cumple con los requisitos previos para registrar el grado seleccionado o bien ya cuenta con dicho grado registrado.</h4>
+                </div>
+
+                <br />
+                <input id="btnGuardar" name="SubmitButton" type="submit" value="Guardar datos" class="btn btn-primary float-right" />
+                <div id="preloaderGuardar" class="loader float-right" style="display: none"></div>
+            </div>
+            </div>
+
+            <br />
+
+            if (!Html.ViewData.ModelState.IsValid)
+            {
+                <div class="card border-danger">
+                    <div class="card-header"><strong>El formulario contiene los siguientes errores:</strong></div>
+                    <div class="card-body text-danger">
+                        @foreach (var modelError in Html.ViewData.ModelState.SelectMany(keyValuePair => keyValuePair.Value.Errors))
+                        {
+                            <div class="alert alert-danger" role="alert">
+                                <h5>@modelError.ErrorMessage</h5>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        }
+    }
+
+    <script src="~/Scripts/Pages/_FormularioCarrera.js"></script>
+</div>
+
+
+
+
+
+

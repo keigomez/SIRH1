@@ -1,0 +1,42 @@
+﻿@model SIRH.Web.Models.DepartamentoModel
+@{
+    using (Ajax.BeginForm("Departamento_Index", "UbicacionPuesto", new AjaxOptions { UpdateTargetId = "target-departamento", HttpMethod = "POST", OnSuccess = "successDataDepartamento", OnBegin = "beginDataDepartamento" }))
+    {
+        <div class="card">
+            <div class="card-header">
+                Parámetros de búsqueda:
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="form-group col-10">
+                        @Html.Label("Código de departamento")
+                        <span>:</span>
+                        @Html.TextBox("codigodepartamento", String.Empty, new { @onkeypress = "return IsNumeric(event,'departamento', 'código de departamento')", @class = "form-control" })
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="form-group col-10">
+                        @Html.Label("Nombre de departamento")
+                        <span>:</span>
+                        @Html.TextBox("nomdepartamento", String.Empty, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-8">
+                        <input class="btn btn-primary" type="submit" value="Buscar" id="btnBuscaDepartamento" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-5">
+                        <div id="progressbardepartamento" class="loader" hidden></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    <div id="error-departamento" class="alert alert-danger" role="alert" hidden></div>
+    <div id="target-departamento"></div>
+
+}

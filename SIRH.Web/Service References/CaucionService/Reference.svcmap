@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="f5097e9b-3d96-4801-8bc7-3a7a46a546c3" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://sisrh.mopt.go.cr:85/CCaucionesService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CCaucionesService.wsdl" MetadataType="Wsdl" ID="e9cca701-4a44-47fc-bb6b-0edbefee1e96" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CCaucionesService.svc?wsdl" />
+    <MetadataFile FileName="CCaucionesService.disco" MetadataType="Disco" ID="8d12b4a4-bb1d-4cee-9eda-02fac2abb8de" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CCaucionesService.svc?disco" />
+    <MetadataFile FileName="CCaucionesService.xsd" MetadataType="Schema" ID="13b979bf-5e13-46f0-9933-e6547827d367" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CCaucionesService.svc?xsd=xsd1" />
+    <MetadataFile FileName="CCaucionesService1.xsd" MetadataType="Schema" ID="99e9f835-25df-4836-8ecc-04caf5e2d0fa" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CCaucionesService.svc?xsd=xsd0" />
+    <MetadataFile FileName="CCaucionesService2.xsd" MetadataType="Schema" ID="4be731e8-9f1a-4233-979f-6fbb1638709c" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CCaucionesService.svc?xsd=xsd3" />
+    <MetadataFile FileName="CCaucionesService3.xsd" MetadataType="Schema" ID="3d4c9243-ac12-44b5-b72d-46231317e914" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CCaucionesService.svc?xsd=xsd2" />
+    <MetadataFile FileName="CCaucionesService4.xsd" MetadataType="Schema" ID="24580514-be00-49ac-ab07-d1a246a98c9f" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CCaucionesService.svc?xsd=xsd4" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

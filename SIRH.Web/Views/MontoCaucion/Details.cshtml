@@ -1,0 +1,130 @@
+﻿@model SIRH.Web.ViewModels.BusquedaMontosVM
+
+@{
+    ViewBag.Title = "Detalle de Monto";
+    Layout = "~/Views/Shared/Cauciones.cshtml";
+}
+
+@{
+    if (Model.Error != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            <i class="fa fa-times-circle d-inline" style="font-size:48px;"></i>
+            <h4 class="d-inline"> Ocurrió un error al cargar el monto de caución.</h4>
+        </div>
+        <br />
+
+        <div class="card">
+            <h5 class="card-header">Detalles</h5>
+            <div class="card-body">
+                <div>El monto de caución no se pudo cargar debido al siguiente error: </div>
+                <br /><div><b>@Html.AttributeEncode(Model.Error.MensajeError)</b></div>
+                <br /><div>Si conoce la causa de este error, por favor revise los datos que intentó almacenar e intentelo de nuevo.</div>
+                <br /><div>De lo contrario le invitamos a ponerse en contacto con nuestro equipo de soporte, mediante el sistema de <a href="http://sisrh.mopt.go.cr:83/" target="_blank">Ayuda y Soporte</a></div>
+            </div>
+        </div>
+        <br />
+        <a href="javascript:history.back()" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Regresar</a>
+
+    }
+    else
+    {
+        if (Request.QueryString["accion"] == "guardar")
+        {
+            <div class="alert alert-success" role="alert">
+                <i class="fa fa-check-circle d-inline" style="font-size:48px;"></i>
+                <h4 class="d-inline"> El nivel de caución se ha guardado correctamente.</h4>
+            </div>
+            <br />
+
+            <div class="card">
+                <h5 class="card-header">Detalles</h5>
+                <div class="card-body">
+                    <div>Se ha almacenado el nivel de caución: </div>
+                    <br /><div><b>@Html.AttributeEncode(Model.MontoCaucion.Nivel) - @Html.AttributeEncode(Model.MontoCaucion.Descripcion) </b></div>
+                    <br /><div>Vigente desde:@Html.AttributeEncode(Model.MontoCaucion.FechaRige.ToShortDateString()) </div>
+                    <br /><div>Con base en: @Html.AttributeEncode(Model.MontoCaucion.Justificacion)</div>
+                    <br /><div>Por un monto de: ₡ @Model.MontoCaucion.MontoColones.ToString("#,#.00#;(#,#.00#)")</div>
+                    <br /><div>Con estado: @Model.MontoCaucion.DetalleEstadoMonto </div>
+                    @if (Model.MontoCaucion.DetalleEstadoMonto != "Activo")
+                    {
+                        <br /><div>Cuyo vencimiento se dio el: @Html.AttributeEncode(Model.MontoCaucion.FechaInactiva.ToShortDateString()) </div>
+                        <br /><div>Por motivo de: @Html.AttributeEncode(Model.MontoCaucion.JustificacionInactiva)</div>
+                    }
+                    <br />
+                    <a href="javascript:history.back()" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Regresar</a>
+                </div>
+            </div>
+            <br />
+        }
+        else
+        {
+            if (Request.QueryString["accion"] == "modificar")
+            {
+                <div class="alert alert-info" role="alert">
+                    <i class="fa fa-check-circle d-inline" style="font-size:48px;"></i>
+                    <h4 class="d-inline"> El nivel de caución se ha modificado correctamente.</h4>
+                </div>
+                <br />
+
+                <div class="card">
+                    <h5 class="card-header">Detalles</h5>
+                    <div class="card-body">
+                        <div>Se ha almacenado el nivel de caución: </div>
+                        <br /><div><b>@Html.AttributeEncode(Model.MontoCaucion.Nivel) - @Html.AttributeEncode(Model.MontoCaucion.Descripcion) </b></div>
+                        <br /><div>Vigente desde:@Html.AttributeEncode(Model.MontoCaucion.FechaRige.ToShortDateString()) </div>
+                        <br /><div>Con base en: @Html.AttributeEncode(Model.MontoCaucion.Justificacion)</div>
+                        <br /><div>Por un monto de: ₡ @Model.MontoCaucion.MontoColones.ToString("#,#.00#;(#,#.00#)")</div>
+                        <br /><div>Con estado: @Model.MontoCaucion.DetalleEstadoMonto </div>
+                        @if (Model.MontoCaucion.DetalleEstadoMonto != "Activo")
+                        {
+                            <br /><div>Cuyo vencimiento se dio el: @Html.AttributeEncode(Model.MontoCaucion.FechaInactiva.ToShortDateString()) </div>
+                            <br /><div>Por motivo de: @Html.AttributeEncode(Model.MontoCaucion.JustificacionInactiva)</div>
+                        }
+                        <br />
+                        <a href="javascript:history.back()" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Regresar</a>
+                    </div>
+                </div>
+                <br />
+            }
+            else
+            {
+
+        <blockquote><h3>Detalle de monto</h3></blockquote>
+
+        <div class="card">
+            <div class="card-header">
+                <b>Monto para @Html.AttributeEncode(Model.MontoCaucion.Descripcion)</b>
+            </div>
+            <div class="card-body">
+                <ul class="list-group">
+                    <li class="list-group-item"><span><strong>@Html.LabelFor(model => model.MontoCaucion.Nivel): </strong>@Html.AttributeEncode(Model.MontoCaucion.Nivel)</span></li>
+                    <li class="list-group-item"><span><strong>@Html.LabelFor(model => model.MontoCaucion.Descripcion): </strong>@Html.AttributeEncode(Model.MontoCaucion.Descripcion)</span></li>
+                    <li class="list-group-item"><span><strong>@Html.LabelFor(model => model.MontoCaucion.MontoColones): </strong>₡ @Model.MontoCaucion.MontoColones.ToString("#,#.00#;(#,#.00#)")</span></li>
+                    <li class="list-group-item"><span><strong>@Html.LabelFor(model => model.MontoCaucion.FechaRige): </strong>@Model.MontoCaucion.FechaRige.ToShortDateString()</span></li>
+                    <li class="list-group-item"><span><strong>@Html.LabelFor(model => model.MontoCaucion.Justificacion): </strong>@Model.MontoCaucion.Justificacion</span></li>
+                    <li class="list-group-item"><span><strong>@Html.LabelFor(model => model.MontoCaucion.DetalleEstadoMonto): </strong>@Model.MontoCaucion.DetalleEstadoMonto</span></li>
+                    @if (Model.MontoCaucion.EstadoMonto == 2)
+                    {
+                        <li class="list-group-item"><span><strong>@Html.LabelFor(model => model.MontoCaucion.FechaInactiva): </strong>@Model.MontoCaucion.FechaInactiva.ToShortDateString()</span></li>
+                        <li class="list-group-item"><span><strong>@Html.LabelFor(model => model.MontoCaucion.JustificacionInactiva): </strong>@Model.MontoCaucion.JustificacionInactiva</span></li>
+                    }
+                </ul>
+            </div>
+        </div>
+        <br />
+        <a href="javascript:history.back()" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Regresar</a>
+                if (Model.MontoCaucion.EstadoMonto == 1)
+                {
+            <a href="@Url.Action("Edit", "MontoCaucion", new { id = Model.MontoCaucion.IdEntidad })" class="btn btn-warning">
+                <i class="fa fa-edit"></i> Editar
+            </a>
+                    }
+                }
+            }
+        }
+    }
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+

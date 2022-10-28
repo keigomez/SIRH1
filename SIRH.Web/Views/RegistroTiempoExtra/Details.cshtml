@@ -1,0 +1,628 @@
+﻿@model SIRH.Web.ViewModels.FuncionarioRegistroExtrasVM
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/TiempoExtra.cshtml";
+    bool guarda = Model.DetallePuesto.OcupacionReal.DesOcupacionReal.StartsWith("GUARDA") || Model.DetallePuesto.Clase.DesClase.Contains("OFIC.SEGUR.SERV.CIVIL") || (Model.RegistroTiempoExtra.Clase != null && Model.RegistroTiempoExtra.Clase.DesClase.Contains("OFIC.SEGUR.SERV.CIVIL"));
+
+}
+@{
+            System.Security.Principal.WindowsPrincipal principal = new System.Security.Principal.WindowsPrincipal(System.Security.Principal.WindowsIdentity.GetCurrent());
+}
+@{
+    if (Model != null)
+    {
+        <div>
+            <div class="jumbotron">
+                <center>
+                    @if (!Model.Doble)
+                    {
+                        <h3 class="display-4">Detalle de Tiempo Extra</h3>
+                    }
+                    else
+                    {
+                        <h3 class="display-4">Detalle de Jornada Doble</h3>
+                    }
+                </center>
+                <br />
+                <div class="card">
+                    <h5 class="card-header">
+                        Información del tiempo extra @(Model.DetallePuesto.Clase?.DesClase != Model.RegistroTiempoExtra.Clase?.DesClase ? "(Cambio de clase)" : "")
+                    </h5>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-3 col-md-4">
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <span>
+                                            <strong>@Html.LabelFor(model => model.Funcionario.Cedula): </strong>@Html.DisplayFor(model => model.Funcionario.Cedula)
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span>
+                                            <strong>@Html.LabelFor(model => model.Funcionario.Nombre): </strong>@Model.Funcionario.Nombre @Model.Funcionario.PrimerApellido @Model.Funcionario.SegundoApellido
+
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span>
+                                            <strong>@Html.LabelFor(model => model.RegistroTiempoExtra.Periodo): </strong>@Model.RegistroTiempoExtra.Periodo
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span>
+                                            <strong>@Html.LabelFor(model => model.RegistroTiempoExtra.OficJustificacion): </strong>@Html.DisplayFor(model => model.RegistroTiempoExtra.OficJustificacion)
+                                            @Html.HiddenFor(model => model.RegistroTiempoExtra.Mensaje)
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <strong><i class="fa fa-info-circle"></i> Valores de horas ordinarias:</strong><br /><br />
+                                        <span>
+                                            <strong id="horaDiurna">@(guarda ? "Monto por hora diurna: " : "Monto por hora: ") </strong>@Html.DisplayFor(model => model.RegistroTiempoExtra.MontoDiurna)
+                                        </span>
+                                        <br />
+                                        <span class="horaGuarda">
+                                            @if (guarda)
+                                            {
+                                                <strong>Monto por hora mixta: </strong>@Html.DisplayFor(model => model.RegistroTiempoExtra.MontoMixta)
+                                            }
+                                        </span>
+                                        <br />
+                                        <span class="horaGuarda">
+                                            @if (guarda)
+                                            {
+                                                <strong>Monto por hora nocturna: </strong>@Html.DisplayFor(model => model.RegistroTiempoExtra.MontoNocturna)
+                                            }
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <strong>Archivo de Justificación: </strong>
+                                        @if (Model.HayArchivo)
+                                        {
+                                            <a id="pdf_preview" href="@Html.Raw(@Url.Action("GetFile", "RegistroTiempoExtra", new { cedula = Model.Funcionario.Cedula, nombre = Model.Funcionario.Nombre.Trim(), apellido = Model.Funcionario.PrimerApellido, mesActual = Model.RegistroTiempoExtra.Periodo, id = Model.RegistroTiempoExtra.IdEntidad }))">@($"{Model.Funcionario.Cedula}_{Model.Funcionario.Nombre}_{Model.Funcionario.PrimerApellido.Substring(0, 1).ToUpper()}_{Model.RegistroTiempoExtra.Periodo.Replace(" ", "_")}.pdf")</a>
+                                        }
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-3 col-md-4">
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <span>
+                                            <strong>@Html.LabelFor(model => model.Puesto.CodPuesto): </strong>@Html.DisplayFor(model => model.Puesto.CodPuesto)
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span>
+                                            <strong>@Html.LabelFor(model => model.DetallePuesto.Especialidad.DesEspecialidad): </strong>@Html.DisplayFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span>
+                                            <strong>@Html.LabelFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal): </strong>@Html.DisplayFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal)
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span>
+                                            <strong>@Html.LabelFor(model => model.RegistroTiempoExtra.Clase.DesClase): </strong>@Html.DisplayFor(model => model.RegistroTiempoExtra.Clase.DesClase)
+                                            @if (Model.DetallePuesto.Clase?.DesClase != Model.RegistroTiempoExtra.Clase?.DesClase)
+                                            {
+                                                <strong>@Html.Label("claseReal", "Clase Original: ") </strong>@Html.DisplayFor(model => model.DetallePuesto.Clase.DesClase)
+                                            }
+                                            @Html.HiddenFor(model => model.DetallePuesto.Clase.DesClase)
+                                            @Html.HiddenFor(model => model.RegistroTiempoExtra.Clase.DesClase)
+                                            @Html.HiddenFor(model => model.ClaseActual)
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span>
+                                            <strong>@Html.LabelFor(model => model.RegistroTiempoExtra.Presupuesto.CodigoPresupuesto): </strong>@Html.DisplayFor(model => model.RegistroTiempoExtra.Presupuesto.CodigoPresupuesto)
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span>
+                                            <strong>@Html.LabelFor(model => model.RegistroTiempoExtra.Actividad): </strong>@Html.DisplayFor(model => model.RegistroTiempoExtra.Actividad)
+                                            @Html.HiddenFor(model => model.RegistroTiempoExtra.Actividad)
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span>
+                                            <strong id="montosalario">Salario reportado en Integra: </strong>@((Model.Desglose1.MontoSalarioBruto + Model.Desglose2.MontoSalarioBruto).ToString("#,#.00#;(#,#.00#)"))
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-3 col-md-4">
+                                <ul class="list-group">
+
+                                    <li class="list-group-item">
+                                        <span>
+                                            <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span>
+                                            <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span>
+                                            <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span>
+                                            <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion)
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span>
+                                            <strong>@Html.LabelFor(model => model.RegistroTiempoExtra.Area): </strong>@Html.DisplayFor(model => model.RegistroTiempoExtra.Area)
+                                            @Html.HiddenFor(model => model.RegistroTiempoExtra.Area)
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span>
+                                            <strong>@Html.LabelFor(model => model.RegistroTiempoExtra.Estado): </strong>@Html.DisplayFor(model => model.RegistroTiempoExtra.Estado)
+                                            @Html.HiddenFor(model => model.RegistroTiempoExtra.Estado)
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <br />
+                        @if (Model.RegistroTiempoExtra.Estado == SIRH.DTO.EstadoExtraEnum.Rechazado)
+                        {
+                            <div>
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        @if (Model.Doble)
+                                        {
+                                            <span>
+                                                <strong>@Html.DisplayNameFor(model => model.RegistroTiempoExtra.ObservacionesEstadoDoble):</strong>
+                                                <br />
+                                                @Html.DisplayFor(model => model.RegistroTiempoExtra.ObservacionesEstadoDoble)
+                                            </span>
+                                        }
+                                        else
+                                        {
+                                            <span>
+                                                <strong>@Html.DisplayNameFor(model => model.RegistroTiempoExtra.ObservacionesEstado):</strong>
+                                                <br />
+                                                @Html.DisplayFor(model => model.RegistroTiempoExtra.ObservacionesEstado)
+                                            </span>
+                                        }
+                                    </li>
+                                </ul>
+                            </div>
+                            <br />
+                        }
+                        <div>
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <span>
+                                        <strong>Justificación: </strong>
+                                        <br />
+                                        @Html.DisplayFor(model => model.RegistroTiempoExtra.Justificacion)
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @if (Model.DetalleExtras != null)
+            {
+                <div class="card">
+                    <h5 class="card-header">Detalle de horas extra</h5>
+                    <div class="card-body">
+                        <table id="extras" class="table table-bordered">
+                            <thead class="thead-dark">
+                                <tr class="text-center">
+                                    <th scope="col">Fecha Inicial</th>
+                                    <th scope="col">Fecha Final</th>
+                                    <th scope="col">Hora Inicial</th>
+                                    <th scope="col">Hora Final</th>
+                                    <th scope="col" style="display: @(guarda ? "" : "none");">Jornada</th>
+                                    <th scope="col">H0</th>
+                                    <th scope="col">H1</th>
+                                    <th scope="col">H2</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-center">
+                                @{
+                                    int count = Model.DetalleExtras.Count;
+                                    for (int i = 0; i < count; i++)
+                                    {
+                                        if (guarda && (Model.DetalleExtras[i].FechaInicioEspecial || Model.DetalleExtras[i].FechaFinalEspecial))
+                                        {
+                                            @:<tr style="background-color: #e6fff2">
+                                            }
+                                            else if (!guarda && (Model.DetalleExtras[i].FechaInicio.DayOfWeek == DayOfWeek.Saturday ||
+                                                Model.DetalleExtras[i].FechaInicio.DayOfWeek == DayOfWeek.Sunday ||
+                                                SIRH.Web.Helpers.DiasFestivosHelper.EsFeriado(Model.DetalleExtras[i].FechaInicio)))
+                                            {
+                                                @:<tr style="background-color: #e6fff2">
+                                            }
+                                            else
+                                            {
+                                                @:<tr>
+                                            }
+                                            <td>
+                                                @Html.DisplayFor(model => model.DetalleExtras[i].FechaInicio)
+                                            </td>
+                                            <td>
+                                                @if (Model.DetalleExtras[i].FechaFinal >= Model.DetalleExtras[i].FechaInicio)
+                                                {
+                                                    @Html.DisplayFor(model => model.DetalleExtras[i].FechaFinal)
+                                                }
+                                            </td>
+                                            <td>
+                                                @if (Model.DetalleExtras[i].HoraInicio != null && Model.DetalleExtras[i].MinutoInicio != null)
+                                                {
+                                                    @Html.Label($"{Model.DetalleExtras[i].HoraInicio}:{Model.DetalleExtras[i].MinutoInicio}")
+                                                }
+                                            </td>
+                                            <td>
+                                                @if (Model.DetalleExtras[i].HoraFinal != null && Model.DetalleExtras[i].MinutoFinal != null)
+                                                {
+                                                    @Html.Label($"{Model.DetalleExtras[i].HoraFinal}:{Model.DetalleExtras[i].MinutoFinal}")
+                                                }
+                                            </td>
+                                            <td style="display: @(guarda?"":"none");">
+                                                @if (Model.DetalleExtras[i].Jornada == SIRH.DTO.JornadaEnum.D ||
+                                                    Model.DetalleExtras[i].Jornada == SIRH.DTO.JornadaEnum.DD)
+                                                {
+                                                    @Html.Label("Diurna")
+                                                }
+                                                else if (Model.DetalleExtras[i].Jornada == SIRH.DTO.JornadaEnum.M ||
+                                                Model.DetalleExtras[i].Jornada == SIRH.DTO.JornadaEnum.MD)
+                                                {
+                                                    @Html.Label("Mixta")
+                                                }
+                                                else if (Model.DetalleExtras[i].Jornada == SIRH.DTO.JornadaEnum.N ||
+                                                    Model.DetalleExtras[i].Jornada == SIRH.DTO.JornadaEnum.ND)
+                                                {
+                                                    @Html.Label("Nocturna")
+                                                }
+                                            </td>
+                                            <td>
+                                                @if (Model.H0 != null && Model.H0.Count > i)
+                                                {
+                                                    @*if (Model.H0[i] > 0 && Model.DetalleExtras[i].Jornada != null)
+                                                        {
+                                                            if (Model.DetalleExtras[i].Jornada == SIRH.DTO.JornadaEnum.D
+                                                                || Model.DetalleExtras[i].Jornada == SIRH.DTO.JornadaEnum.DD
+                                                                || Model.DetalleExtras[i].Jornada == SIRH.DTO.JornadaEnum.MD
+                                                                || Model.DetalleExtras[i].Jornada == SIRH.DTO.JornadaEnum.ND)
+                                                            {
+                                                                @Html.DisplayFor(model => model.H0[i]).ToString().Replace(".", ":")
+                                                            }
+                                                            else if (Model.DetalleExtras[i].FechaInicioEspecial || Model.DetalleExtras[i].FechaFinalEspecial)
+                                                            {
+                                                                if (Model.DetalleExtras[i].Jornada == SIRH.DTO.JornadaEnum.M)
+                                                                {
+                                                                    @Html.Label($"{(Model.H0[i] + 1).ToString("N2").Replace(".", ":")}")
+                                                                }
+                                                                else if (Model.DetalleExtras[i].Jornada == SIRH.DTO.JornadaEnum.N)
+                                                                {
+                                                                    @Html.Label($"{(Model.H0[i] + 2).ToString("N2").Replace(".", ":")}")
+                                                                }
+                                                            }
+                                                        }*@
+                                                    if (Model.H0[i] > 0)
+                                                    {
+                                                        @Html.DisplayFor(model => model.H0[i]).ToString().Replace(".", ":")
+                                                    }
+                                                    @Html.HiddenFor(model => model.H0[i])
+                                                }
+                                            </td>
+                                            <td>
+                                                @if (Model.H1 != null && Model.H1.Count > i)
+                                                {
+                                                    if (Model.H1[i] > 0)
+                                                    {
+                                                        @Html.DisplayFor(model => model.H1[i]).ToString().Replace(".", ":")
+                                                    }
+                                                }
+                                            </td>
+                                            <td>
+                                                @if (Model.H2 != null && Model.H2.Count > i)
+                                                {
+                                                    if (Model.H2[i] > 0)
+                                                    {
+                                                        @Html.DisplayFor(model => model.H2[i]).ToString().Replace(".", ":")
+                                                    }
+                                                }
+                                            </td>
+                                        @:</tr>
+                                    }
+                                }
+
+
+                            </tbody>
+                            <tfoot class="text-center">
+                                @{
+                                    <tr>
+                                        <td colspan="@(guarda? 5 : 4)" style="text-align:right;"><b>Total tiempo</b></td>
+                                        <td>@Html.DisplayFor(model => model.TotalHorasH0).ToString().Replace(".", ":")</td>
+                                        <td>@Html.DisplayFor(model => model.TotalHorasH1).ToString().Replace(".", ":")</td>
+                                        <td>@Html.DisplayFor(model => model.TotalHorasH2).ToString().Replace(".", ":")</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="@(guarda? 5 : 4)" style="text-align:right;"><b>Total a pagar por horas</b></td>
+                                        <td>@Html.DisplayFor(model => model.TotalH0)</td>
+                                        <td>@Html.DisplayFor(model => model.TotalH1)</td>
+                                        <td>@Html.DisplayFor(model => model.TotalH2)</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="@(guarda? 5 : 4)" style="text-align:right;"><b>Monto total</b></td>
+                                        <td colspan="@(guarda? 4 : 3)">
+                                            @Html.DisplayFor(model => model.TotalPagar)
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="@(guarda? 5 : 4)" style="text-align:right;"><b>@Html.LabelFor(model => model.RegistroTiempoExtra.FecPago)</b></td>
+                                        <td colspan="@(guarda? 4 : 3)">@Html.Label($"{Model.MesActualPago} - {Model.RegistroTiempoExtra.FecPago.ToShortDateString()}")</td>
+
+
+                                    </tr>
+                                }
+                            </tfoot>
+                        </table>
+                        <div class="float-left form-group">
+                            <div class="btn-group d-flex">
+                                @using (Html.BeginForm("ReporteDesgloseHorasExtras", "RegistroTiempoExtra", FormMethod.Post, new { @id = "form_reportar", @target = "_blank" }))
+                                {
+                                    @Html.HiddenFor(model => model.Funcionario.Cedula)
+                                    @Html.HiddenFor(model => model.Funcionario.Nombre)
+                                    @Html.HiddenFor(model => model.Funcionario.PrimerApellido)
+                                    @Html.HiddenFor(model => model.Funcionario.SegundoApellido)
+                                    @Html.HiddenFor(model => model.Nombramineto.IdEntidad)
+                                    @Html.HiddenFor(model => model.Nombramineto.FecRige)
+                                    @Html.HiddenFor(model => model.Nombramineto.FecVence)
+                                    @Html.HiddenFor(model => model.EstadoDetalles)
+
+                                    @Html.HiddenFor(model => model.Doble)
+                                    @Html.HiddenFor(model => model.RegistroTiempoExtra.FecPago)
+                                    @Html.HiddenFor(model => model.RegistroTiempoExtra.IdEntidad)
+                                    @Html.HiddenFor(model => model.RegistroTiempoExtra.Periodo)
+                                    @Html.HiddenFor(model => model.RegistroTiempoExtra.OficJustificacion)
+                                    @Html.HiddenFor(model => model.RegistroTiempoExtra.Justificacion)
+                                    @Html.HiddenFor(model => model.RegistroTiempoExtra.MontoDiurna)
+                                    @Html.HiddenFor(model => model.RegistroTiempoExtra.MontoMixta)
+                                    @Html.HiddenFor(model => model.RegistroTiempoExtra.MontoNocturna)
+                                    @Html.HiddenFor(model => model.RegistroTiempoExtra.Estado)
+                                    @Html.HiddenFor(model => model.RegistroTiempoExtra.EstadoDetalles)
+                                    @Html.HiddenFor(model => model.RegistroTiempoExtra.FecRegistroDetalles)
+                                    @Html.HiddenFor(model => model.RegistroTiempoExtra.Mensaje)
+                                    @Html.HiddenFor(model => model.UsuarioEnvia)
+                                    @Html.HiddenFor(model => model.Desglose1.MontoSalarioBruto)
+                                    @Html.HiddenFor(model => model.Desglose1.IdEntidad)
+                                    @Html.HiddenFor(model => model.Desglose2.MontoSalarioBruto)
+                                    @Html.HiddenFor(model => model.Desglose2.IdEntidad)
+
+                                    @Html.HiddenFor(model => model.RegistroTiempoExtra.Clase.DesClase)//Debe ser la clase guardada
+                                    @Html.HiddenFor(model => model.HayArchivo)
+                                    @Html.HiddenFor(model => model.TotalHorasH0)
+                                    @Html.HiddenFor(model => model.TotalHorasH1)
+                                    @Html.HiddenFor(model => model.TotalHorasH2)
+                                    @Html.HiddenFor(model => model.TotalH0)
+                                    @Html.HiddenFor(model => model.TotalH1)
+                                    @Html.HiddenFor(model => model.TotalH2)
+                                    @Html.HiddenFor(model => model.TotalPagar)
+                                    @Html.HiddenFor(model => model.ClaseActual)
+                                    @Html.HiddenFor(model => model.MesActual)
+                                    @Html.HiddenFor(model => model.MesActualPago)
+                                    @Html.HiddenFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal)
+                                    @Html.HiddenFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)
+                                    @Html.HiddenFor(model => model.DetallePuesto.Clase.DesClase)
+
+                                    @Html.HiddenFor(model => model.RegistroTiempoExtra.Presupuesto.CodigoPresupuesto)//Debe ser el presupuesto guardado
+                                    @Html.HiddenFor(model => model.RegistroTiempoExtra.Presupuesto.Area)
+                                    @Html.HiddenFor(model => model.RegistroTiempoExtra.Presupuesto.Actividad)
+
+                                    @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                                    @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                                    @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                                    @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion)
+                                    @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto)
+                                    @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.Area)
+                                    @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.Actividad)
+                                    @Html.HiddenFor(model => model.Puesto.CodPuesto)
+                                    @Html.HiddenFor(model => model.RegistroTiempoExtra.Area)
+                                    @Html.HiddenFor(model => model.RegistroTiempoExtra.Actividad)
+
+                                    @Html.HiddenFor(model => model.EstadoDetalles)
+                                    for (int i = 0; i < Model.DetalleExtras.Count; i++)
+                                    {
+                                        @Html.HiddenFor(model => model.DetalleExtras[i].FechaInicio)
+                                        @Html.HiddenFor(model => model.DetalleExtras[i].FechaFinal)
+                                        @Html.HiddenFor(model => model.DetalleExtras[i].HoraInicio)
+                                        @Html.HiddenFor(model => model.DetalleExtras[i].HoraFinal)
+                                        @Html.HiddenFor(model => model.DetalleExtras[i].MinutoInicio)
+                                        @Html.HiddenFor(model => model.DetalleExtras[i].MinutoFinal)
+                                        @Html.HiddenFor(model => model.DetalleExtras[i].TotalLinea)
+                                        @Html.HiddenFor(model => model.DetalleExtras[i].HoraTotalH0)
+                                        @Html.HiddenFor(model => model.DetalleExtras[i].HoraTotalH1)
+                                        @Html.HiddenFor(model => model.DetalleExtras[i].HoraTotalH2)
+                                        @Html.HiddenFor(model => model.DetalleExtras[i].MinutoTotalH0)
+                                        @Html.HiddenFor(model => model.DetalleExtras[i].MinutoTotalH1)
+                                        @Html.HiddenFor(model => model.DetalleExtras[i].MinutoTotalH2)
+
+                                        @Html.HiddenFor(model => model.DetalleExtras[i].FechaInicioEspecial)
+                                        @Html.HiddenFor(model => model.DetalleExtras[i].FechaFinalEspecial)
+                                        @Html.HiddenFor(model => model.DetalleExtras[i].Estado)
+                                        @Html.HiddenFor(model => model.DetalleExtras[i].H0)
+                                        @Html.HiddenFor(model => model.H0[i])
+                                        @Html.HiddenFor(model => model.DetalleExtras[i].H1)
+                                        @Html.HiddenFor(model => model.H1[i])
+                                        @Html.HiddenFor(model => model.DetalleExtras[i].H2)
+                                        @Html.HiddenFor(model => model.H2[i])
+                                        @Html.HiddenFor(model => model.DetalleExtras[i].Jornada)
+                                        @Html.HiddenFor(model => model.DetalleExtras[i].TipoExtra.IdEntidad)
+                                    }
+                                    <div class="float-left">
+                                        <div id="btn_group">
+                                            <button type="submit" class="btn btn-success mr-1"><i class="fa fa-file-pdf-o"></i>&nbsp;&nbsp;Exportar a PDF</button>
+                                            @{ 
+                                                string anular, anulado = "";
+                                                if (Model.Doble)
+                                                {
+                                                    anulado = "Jornada doble anulada";
+                                                    anular = "Anular jornada doble";
+                                                }
+                                                else
+                                                {
+                                                    anulado = "Registro anulado";
+                                                    anular = "Anular registro";
+                                                }
+                                            }
+                                            @Html.Hidden("anulado", anulado, new { @id = "anulado" })
+                                            <button id="btnAnular" type="button" class="btn btn-danger" onclick="abrirConfirmarAnular();"
+                                                   @(Model.Doble ?  (Model.EstadoDetalles == SIRH.DTO.EstadoDetalleExtraEnum.Activo
+                                                    || Model.EstadoDetalles == SIRH.DTO.EstadoDetalleExtraEnum.Aprobado
+                                                    || Model.EstadoDetalles == SIRH.DTO.EstadoDetalleExtraEnum.Rechazado) ? "" : "disabled"
+                                                    : Model.RegistroTiempoExtra.Estado == SIRH.DTO.EstadoExtraEnum.Activo
+                                                    || Model.RegistroTiempoExtra.Estado == SIRH.DTO.EstadoExtraEnum.Rechazado
+                                                    || Model.RegistroTiempoExtra.Estado == SIRH.DTO.EstadoExtraEnum.Aprobado ? "" : "disabled")
+                                                   title="@(Model.Doble ? Model.EstadoDetalles == SIRH.DTO.EstadoDetalleExtraEnum.Activo ? anular: anulado : Model.RegistroTiempoExtra.Estado == SIRH.DTO.EstadoExtraEnum.Activo ? anular : anulado)">
+                                            <i class="fa fa-trash"></i> Anular
+                                            </button>
+                                            @if ((principal.Identity.Name.Contains("elisa.robles") || principal.Identity.Name.Contains("grettel.urena") || principal.Identity.Name.Contains("deivert")) && Model.RegistroTiempoExtra.Estado != SIRH.DTO.EstadoExtraEnum.Cerrado)
+                                            {
+                                            <button id="btnAprobar" class="btn btn-outline-success" type="button" onclick="abrirConfirmarAprobar();"><i class="fa fa-check"></i> Aprobar</button>
+                                            <button id="btnRechazar" class="btn btn-outline-danger" type="button" onclick="abrirConfirmarRechazar();"><i class="fa fa-ban"></i> Rechazar</button>
+                                            }
+                                            <div id="preloader" class="loader float-right" style="display: none"></div>
+                                            </div>
+                                        </div>
+                                            }
+                                        <!--MODAL DE ANULACIÓN-->
+                                        <div class="modal fade" id="modal-anular" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header alert alert-warning" role="alert">
+                                                        <h5 class="modal-title" id="exampleModalCenterTitle">
+                                                            <i class="fa fa-exclamation-circle d-inline" style="font-size:25px;"></i>
+                                                            ¡Atención! Usted está apunto de anular @(Model.Doble ? "jornadas dobles" : "un registro de tiempo extra")
+                                                        </h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <h9>@(Model.Doble ? "Se anularán las jornadas dobles, pero el registro de tiempo extra permanecerá activo" : "Al anular el registro de tiempo extra también se anulará cualquier jornada doble asociada.")</h9>                                                         
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        @using (Ajax.BeginForm("Cancel", "RegistroTiempoExtra", new { fechaDetalles = Model.RegistroTiempoExtra.FecRegistroDetalles, idRegistro = Model.RegistroTiempoExtra.IdEntidad, doble = Model.Doble }, new AjaxOptions
+                                                        {
+                                                            HttpMethod = "Post",
+                                                            UpdateTargetId = "dvResultadoAnular",
+                                                            OnSuccess = "Anular",
+                                                            OnBegin = "AnularConfirmado",
+                                                            OnFailure = "Complete('btnAnular','preloader')",
+                                                            OnComplete = "Complete('btnAnular','preloader')"
+                                                        }, new { @id = "formAnular" }))
+                                                        {
+                                                            <input name="SubmitButton" class="btn btn-primary" type="submit" value="Anular" />
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--MODAL DE APROBACIÓN-->
+                                        <div class="modal fade" id="modal-aprobar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header alert alert-success" role="alert">
+                                                        <h5 class="modal-title" id="exampleModalCenterTitle">
+                                                            <i class="fa fa-exclamation-circle d-inline" style="font-size:25px;"></i>
+                                                            ¡Atención! Usted está apunto de aprobar @(Model.Doble ? "jornadas dobles" : "un registro de tiempo extra")
+                                                        </h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <h9>@(Model.Doble ? "Se aprobarán las jornadas dobles." : "Se aprobará el registro de tiempo extra para pago.")</h9>
+                                                        <br /><br /><i class="fa fa-warning"></i> Al aprobar este registro, el mismo aparecerá en el archivo de pagos que se genera para cargar a Integra.
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        @using (Ajax.BeginForm("Cancel", "RegistroTiempoExtra", new { fechaDetalles = Model.RegistroTiempoExtra.FecRegistroDetalles, idRegistro = Model.RegistroTiempoExtra.IdEntidad, doble = Model.Doble, user = Model.UsuarioEnvia }, new AjaxOptions
+                                                        {
+                                                            HttpMethod = "Post",
+                                                            UpdateTargetId = "dvResultadoAprobar",
+                                                            OnSuccess = "Aprobar",
+                                                            OnBegin = "AprobarConfirmado",
+                                                            OnFailure = "Complete('','')",
+                                                            OnComplete = "Complete('','')"
+                                                        }, new { @id = "formAprobar" }))
+                                                        {
+                                                            <input name="SubmitButton" class="btn btn-primary" type="submit" value="Aprobar" />
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--MODAL DE RECHAZO-->
+                                        <div class="modal fade" id="modal-rechazar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header alert alert-danger" role="alert">
+                                                        <h5 class="modal-title" id="exampleModalCenterTitle">
+                                                            <i class="fa fa-exclamation-circle d-inline" style="font-size:25px;"></i>
+                                                            ¡Atención! Usted está apunto de rechazar @(Model.Doble ? "jornadas dobles" : "un registro de tiempo extra")
+                                                        </h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <h9>@(Model.Doble ? "Se rechazarán las jornadas dobles." : "Se rechazará el registro de tiempo extra para pago.")</h9>
+                                                        <br /><br />
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        @using (Ajax.BeginForm("Cancel", "RegistroTiempoExtra", new { fechaDetalles = Model.RegistroTiempoExtra.FecRegistroDetalles, idRegistro = Model.RegistroTiempoExtra.IdEntidad, doble = Model.Doble, user = Model.UsuarioEnvia }, new AjaxOptions
+                                                        {
+                                                            HttpMethod = "Post",
+                                                            UpdateTargetId = "dvResultadoRechazar",
+                                                            OnSuccess = "Rechazar",
+                                                            OnBegin = "RechazarConfirmado",
+                                                            OnFailure = "Complete('','')",
+                                                            OnComplete = "Complete('','')"
+                                                        }, new { @id = "formRechazar" }))
+                                                        {
+                                                            <label>Justificación del rechazo</label>
+                                                            <textarea name="Justificacion" id="CampoJustificacion"></textarea>
+                                                            <br /><br />
+                                                            <input name="SubmitButton" class="btn btn-primary" type="submit" value="Rechazar" />
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                </div>
+
+            }
+
+
+        </div>
+
+        <div id="dvResultadoAnular"></div>
+        <div id="dvResultadoAprobar"></div>
+        <div id="dvResultadoRechazar"></div>
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        <script src="~/Scripts/funciones-generales.js"></script>
+        <script src="~/Scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+        <script src="~/Scripts/Pages/SearchTiempoExtra.js" type="text/javascript"></script>
+    }
+    <br />
+}

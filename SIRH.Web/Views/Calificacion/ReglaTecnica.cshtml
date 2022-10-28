@@ -1,0 +1,160 @@
+﻿@model SIRH.Web.ViewModels.FormularioCalificacionVM
+@{
+    ViewBag.Title = "ReglaTecnica";
+    Layout = "~/Views/Shared/Calificacion.cshtml";
+}
+
+
+@using (Ajax.BeginForm("ReglaTecnica", "Calificacion", new AjaxOptions
+{
+    HttpMethod = "POST",
+    UpdateTargetId = "target",
+    OnBegin = "beginData",
+    OnComplete = "successData",
+    OnSuccess = "successData",
+    OnFailure = "successData"
+}, new { @id = "form", enctype = "multipart/form-data" }))
+
+
+{
+    <fieldset>
+        <legend>Resultados (@Model.ReglasTecnicas.Count)</legend>
+        <div class="form-group col-3 text-right">
+
+        </div>
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Dirección</th>
+                    <th scope="col">Jefatura</th>
+                    <th scope="col">Correo</th>
+                    <th scope="col">Num. Calificaciones</th>
+                    <th scope="col">Num. Excelentes</th>
+                    <th scope="col">Entregado</th>
+                    <th></th>
+                    @if (Model.EsAdministrador)
+                    {
+                        <th scope="col"><input id="btnEnviarCorreo" class="btn btn-info" name="SubmitButton" type="submit" value="Enviar Correo" /></th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    @Html.TextBox("codPeriodo", String.Empty, new { @readonly = "readonly", @class = "form-control" })
+                    @Html.TextBox("codFuncionario", String.Empty, new { @readonly = "readonly", @hidden = "hidden", @class = "form-control" })
+                    int cuenta = 0;
+                    foreach (var item in Model.ReglasTecnicas)
+                    {
+                        @Html.HiddenFor(model => model.ReglasTecnicas[cuenta].IdEntidad)
+                        @Html.HiddenFor(model => model.ReglasTecnicas[cuenta].DirectorDTO.IdEntidad)
+                        @Html.HiddenFor(model => model.ReglasTecnicas[cuenta].DirectorDTO.Nombre)
+                        @Html.HiddenFor(model => model.ReglasTecnicas[cuenta].IndEstadoDTO)
+                        @Html.HiddenFor(model => model.ReglasTecnicas[cuenta].EmailDTO)
+                        @Html.HiddenFor(model => model.ReglasTecnicas[cuenta].Periodo.IdEntidad)
+
+                        <tr>
+                            <td>
+                                @(cuenta+1)
+                            </td>
+
+                            <td>@item.DireccionDTO.NomDireccion</td>
+                            <td>@item.DirectorDTO.Nombre</td>
+                            <td>@item.EmailDTO</td>
+                            <td>@item.NumFuncionariosDTO</td>
+                            <td>@item.NumExcelentesDTO</td>
+                            <td>
+                                @Html.CheckBox("check", (Model.ReglasTecnicas[cuenta].IndEstadoDTO == 1 ? true : false), new
+                               {
+                                   @type = "checkbox",
+                                   @checked = "checked",
+                                   @data_toggle = "toggle",
+                                   @data_onstyle = "success",
+                                   @data_offstyle = "danger",
+                                   @data_width = "70",
+                                   @data_on = "Sí",
+                                   @data_off = "No",
+                                   @class = "clsCheck",
+                                   @disabled = "disabled"
+                               })
+                            </td>
+                            @if (Model.EsAdministrador)
+                            {
+                            <td>
+                                @if (item.IndEstadoDTO > 0)
+                                {
+                                    @Html.ActionLink("Ver Documento", "", "Calificacion", null, new { @onclick = "return VerDocumento('" + item.IdEntidad + "');", @type = "button", @class = "btn btn-primary btn-sm" })
+                                }
+                            </td>
+                            <td>
+                                @*@if (item.DirectorDTO.IdEntidad == 0)
+                                {*@
+                                    @Html.ActionLink("Asignar Director", "", "Calificacion", null, new { @onclick = "return CargarDato('" + Model.Periodos + "','" + item.IdEntidad + "');", @type = "button", @class = "btn btn-outline-primary btn-sm" })
+                                @*}*@
+                            </td>
+                            }
+                        </tr>
+                        cuenta++;
+                    }
+                    <tr></tr>
+                }
+            </tbody>
+        </table>
+    </fieldset>
+
+    if (!Model.EsAdministrador && Model.ReglasTecnicas.Count > 0)
+    {
+        <div class="card">
+             <div class="row">
+                <div class="form-group col-3">
+                    <strong> Documento de Regla Técnica </strong>               
+                </div>
+                <div class="custom-file form-group col-6">
+                   
+                    @Html.TextBoxFor(model => model.File, new { id = "ImagenError", @class = "custom-file-input form-control", type = "file", accept = "application/pdf", title = "Solo archivos .pdf" })
+                    <label class="custom-file-label" for="ImagenError">Seleccionar Archivo/pdf</label>
+                    @Html.HiddenFor(model => model.Imagen, new { id = "Imagen" })
+                </div>
+                <div class="form-group col-2">
+                    <input id="btnAgregar" name="SubmitButton" type="submit" value="Subir Archivo" class="btn btn-primary" />
+                    <div id="preloader" class="loader" style="display: none"></div>
+                </div> 
+            </div>                     
+        </div>
+    }
+}
+
+<div id="target"></div>
+
+<div class="modal fade" id="buscar-jefe" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Búsqueda por Jefatura</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @{
+                    SIRH.Web.Models.FuncionarioModel modelo = new SIRH.Web.Models.FuncionarioModel();
+                    Html.RenderPartial("~/Views/Calificacion/Director_Index.cshtml", modelo);
+                }
+            </div>
+            <div class="modal-footer">
+                <button id="CacelarCalculoPopUp" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                @*<button id="CalcularPopUp" type="button" class="btn btn-primary">Calcular</button>*@
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+<script src="~/Scripts/Pages/FormularioIncidencia.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/FuncionesCalificacion.js" type="text/javascript"></script>
+
+<link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>

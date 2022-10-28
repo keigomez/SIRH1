@@ -1,0 +1,734 @@
+﻿@model SIRH.Web.ViewModels.FormularioPagoFeriadoVM
+
+@{
+    ViewBag.Title = "Detalles";
+    Layout = "~/Views/Shared/PagoFeriado.cshtml";
+}
+
+@{
+    if (Request.QueryString["accion"] == "edit")
+    {
+        if (Model.Error == null)
+        {
+            <div class="alert alert-primary" role="alert">
+                <i class="fa fa-exclamation-circle d-inline" style="font-size:48px;"></i>
+                <h4 class="d-inline"> El trámite de pago se ha anulado correctamente.</h4>
+            </div>
+            <br />
+            <div class="card">
+                <h5 class="card-header">Detalles</h5>
+                <div class="card-body">
+                    <h5 class="card-title">Se ha anulado el trámite de pago #<b>@Html.AttributeEncode(Model.PagoFeriados.IdEntidad)</b> para el funcionario:</h5>
+                    <b>
+                        @Html.AttributeEncode(Model.Funcionario.Cedula) -
+                        @Html.AttributeEncode(Model.Funcionario.Nombre)
+                        @Html.AttributeEncode(Model.Funcionario.PrimerApellido)
+                        @Html.AttributeEncode(Model.Funcionario.SegundoApellido)
+                    </b>
+                    <br /><br />
+                    <p>Fecha del trámite: <b>@Html.Encode(Model.PagoExtraordinario.FechaTramite)</b></p>
+                    <p>Estado del trámite: <b>@Html.Encode(Model.EstadoTramite.DescripcionEstado)</b></p>
+                    <p>
+                        Funcionario:
+                        <b>
+                            @Html.AttributeEncode(Model.Funcionario.Cedula) -
+                            @Html.Encode(Model.Funcionario.Nombre)
+                            @Html.Encode(Model.Funcionario.PrimerApellido)
+                            @Html.Encode(Model.Funcionario.SegundoApellido)
+                        </b>
+                    </p>
+                    <br />
+
+                    <div class="card">
+                        <div class="card-body">
+                            <table class="table">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">Descripción</th>
+                                        <th scope="col">Cantidad de horas</th>
+                                        <th scope="col">Año de día</th>
+                                        <th scope="col">Salario por horas</th>
+                                        <th scope="col">Monto</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for (int i = 0; i < Model.DiasPagados.Count(); i++)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Model.CatalogoDiaAsueto.ElementAt(i).DescripcionDia
+                                            </td>
+                                            <td>
+                                                @Model.DiasPagados.ElementAt(i).CantidadHoras
+                                            </td>
+                                            <td>
+                                                @Model.DiasPagados.ElementAt(i).Anio
+                                            </td>
+                                            <td>
+                                                ₡ @Model.DiasPagados.ElementAt(i).MontoSalarioHora.ToString("#,#.00#;(#,#.00#)")
+                                            </td>
+                                            <td>
+                                                ₡ @Model.DiasPagados.ElementAt(i).MontoTotal.ToString("#,#.00#;(#,#.00#)")
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <br />
+
+                    <div class="card">
+                        <div class="card-body">
+                            <table id="diferenciasPeriodos" class="table">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th colspan="2" scope="col">Cálculo diferencias de varios periodos</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            Subtotal de días
+                                        </td>
+                                        <td>
+                                            ₡ @Model.PagoFeriados.MontoSubtotalDia.ToString("#,#.00#;(#,#.00#)")
+                                            @Html.HiddenFor(model => model.PagoFeriados.MontoSubtotalDia)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Salario Escolar
+                                        </td>
+                                        <td>
+                                            ₡ @Model.PagoFeriados.MontoSalarioEscolar.ToString("#,#.00#;(#,#.00#)")
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Subtotal
+                                        </td>
+                                        <td>
+                                            ₡ @Model.SubtotalDiferencias.ToString("#,#.00#;(#,#.00#)")
+                                            @Html.HiddenFor(model => model.SubtotalDiferencias)
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <br />
+
+                    <div class="card">
+                        <div class="card-body">
+                            <table class="table">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th colspan="2" scope="col">Deducciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            Total de deducciones obrero
+                                        </td>
+                                        <td>
+                                            ₡ @Model.PagoFeriados.MontoDeduccionObrero.ToString("#,#.00#;(#,#.00#)")
+                                            @Html.HiddenFor(model => model.PagoFeriados.MontoDeduccionObrero)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Total de deducciones patronales
+                                        </td>
+                                        <td>
+                                            ₡ @Model.PagoFeriados.MontoDeduccionPatronal.ToString("#,#.00#;(#,#.00#)")
+                                            @Html.HiddenFor(model => model.PagoFeriados.MontoDeduccionPatronal)
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <br />
+
+                    <div class="card">
+                        <div class="card-body">
+                            <table class="table">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th colspan="2" scope="col">Totales</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            Diferencia líquida
+                                        </td>
+                                        <td>
+                                            ₡ @Model.PagoFeriados.MontoDiferenciaLiquida.ToString("#,#.00#;(#,#.00#)")
+                                            @Html.HiddenFor(model => model.PagoFeriados.MontoDiferenciaLiquida)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Aguinaldo proporcional
+                                        </td>
+                                        <td>
+                                            ₡ @Model.PagoFeriados.MontoAguinaldoProporcional.ToString("#,#.00#;(#,#.00#)")
+                                            @Html.HiddenFor(model => model.PagoFeriados.MontoAguinaldoProporcional)
+                                        </td>
+                                    </tr>
+                                    <tr style="background-color: #DDDDDD;">
+                                        <td>
+                                            <b>Monto Total </b>
+                                        </td>
+                                        <td>
+                                            ₡ @Model.PagoFeriados.MontoDeTotal.ToString("#,#.00#;(#,#.00#)")
+                                            @Html.HiddenFor(model => model.PagoFeriados.MontoDeTotal)
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <a href="javascript:history.back()" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Regresar</a>
+        }
+        else
+        {
+            <div class="alert alert-danger" role="alert">
+                <i class="fa fa-times-circle d-inline" style="font-size:48px;"></i>
+                <h4 class="d-inline"> Ocurrió un error al momento de anular el trámite de pago.</h4>
+            </div>
+            <br />
+
+            <div class="card">
+                <h5 class="card-header">Detalles</h5>
+                <div class="card-body">
+                    <div>El trámite de pago no pudo ser anulado debido al siguiente error: </div>
+                    <br /><div><b>@Html.Encode(Model.Error.MensajeError)</b></div>
+                    <br /><div>Si conoce la causa de este error, por favor revise los datos que intentó almacenar e intentelo de nuevo.</div>
+                    <br /><div>De lo contrario le invitamos a ponerse en contacto con nuestro equipo de soporte, mediante el sistema de <a href="http://sisrh.mopt.go.cr:83/" target="_blank">Ayuda y Soporte</a></div>
+                </div>
+            </div>
+        }
+    }
+    else if (Request.QueryString["accion"] == "guardar")
+    {
+        if (Model.Error == null)
+        {
+            <div class="alert alert-success" role="alert">
+                <i class="fa fa-check-circle d-inline" style="font-size:48px;"></i>
+                <h4 class="d-inline"> El trámite de pago se ha guardado correctamente.</h4>
+            </div>
+            <br />
+            using (Html.BeginForm("ReporteGuardarPagoFeriado", "PagoFeriado", FormMethod.Post, new { @id = "thisForm" }))
+            {
+                <div class="card">
+                    <h5 class="card-header">Detalles</h5>
+                    <div class="card-body">
+
+
+                        <div>Se ha almacenado el trámite de pago # <b>@Html.Encode(Model.PagoFeriados.IdEntidad) </b> para el funcionario:</div>
+                        <br />
+                        <div><b>@Html.Encode(Model.Funcionario.Cedula) - @Html.Encode(Model.Funcionario.Nombre) @Html.Encode(Model.Funcionario.PrimerApellido) @Html.Encode(Model.Funcionario.SegundoApellido)</b></div>
+                        @Html.HiddenFor(model => model.Funcionario.Cedula)
+                        @Html.HiddenFor(model => model.Funcionario.Nombre)
+                        @Html.HiddenFor(model => model.Funcionario.PrimerApellido)
+                        @Html.HiddenFor(model => model.Funcionario.SegundoApellido)
+                        @Html.HiddenFor(model => model.PagoFeriados.IdEntidad)
+                        <br />
+                        <p>Fecha del trámite: <b>@Html.AttributeEncode(Model.PagoExtraordinario.FechaTramite)</b></p>
+                        @Html.HiddenFor(model => model.PagoExtraordinario.FechaTramite)
+                        @Html.HiddenFor(model => model.PagoFeriados.ObsevacionTramite)
+
+                        @if (!string.IsNullOrEmpty(Model.PagoFeriados.ObsevacionTramite))
+                        {
+                            <div class="form-group">
+                                <label for="ObsevacionTramite">Observaciones</label>
+                                @Html.TextAreaFor(model => model.PagoFeriados.ObsevacionTramite, new { @id = "ObsevacionTramite", @class = "form-control", @rows = 3, @readonly = "readonly" })
+                            </div>
+                        }
+
+                        <p>Salario bruto: <b>₡ @Model.PagoFeriados.MontoSalaroBruto.ToString("#,#.00#;(#,#.00#)")</b></p>
+                        @Html.HiddenFor(model => model.PagoFeriados.MontoSalaroBruto)
+
+                        <nav class="nav nav-pills flex-column flex-sm-row">
+                            <a class="flex-sm-fill text-sm-center nav-link active" id="funcionario-tab" data-toggle="tab" href="#funcionario" role="tab" aria-controls="funcionario" aria-selected="true">Funcionario</a>
+                            <a class="flex-sm-fill text-sm-center nav-link" id="diaspago-tab" data-toggle="tab" href="#diaspago" role="tab" aria-controls="diaspago" aria-selected="false">Días pago</a>
+                            <a class="flex-sm-fill text-sm-center nav-link" id="diferencias-tab" data-toggle="tab" href="#diferencias" role="tab" aria-controls="diferencias" aria-selected="false">Diferencias de periodos</a>
+                            <a class="flex-sm-fill text-sm-center nav-link" id="obrero-tab" data-toggle="tab" href="#obrero" role="tab" aria-controls="obrero" aria-selected="false">Deducciones obrero</a>
+                            <a class="flex-sm-fill text-sm-center nav-link" id="patronal-tab" data-toggle="tab" href="#patronal" role="tab" aria-controls="patronal" aria-selected="false">Deducciones patronales</a>
+                            <a class="flex-sm-fill text-sm-center nav-link" id="totales-tab" data-toggle="tab" href="#totales" role="tab" aria-controls="totales" aria-selected="false">Totales</a>
+                        </nav>
+                        <br />
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="funcionario" role="tabpanel" aria-labelledby="funcionario-tab">
+                                <div class="row">
+                                    <div class="col-sm-3 col-md-4">
+                                        <ul class="list-group">
+                                            <li class="list-group-item">
+                                                <span>
+                                                    <strong>@Html.LabelFor(model => model.Funcionario.Nombre): </strong>@Model.Funcionario.Nombre @Model.Funcionario.PrimerApellido @Model.Funcionario.SegundoApellido
+                                                </span>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <span>
+                                                    <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                                                    @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                                                </span>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <span>
+                                                    <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                                                    @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-3 col-md-4">
+                                        <ul class="list-group">
+                                            <li class="list-group-item">
+                                                <span>
+                                                    <strong>@Html.LabelFor(model => model.Funcionario.Cedula): </strong>@Html.DisplayFor(model => model.Funcionario.Cedula)
+                                                </span>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <span>
+                                                    <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                                                    @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="diaspago" role="tabpanel" aria-labelledby="diaspago-tab">
+                                <div class="card text-center">
+                                    <div class="card-body">
+                                        <table class="table table-borderless">
+                                            <thead class="thead-dark">
+                                                <tr>
+                                                    <th scope="col">Descripción</th>
+                                                    <th scope="col">Cantidad de horas</th>
+                                                    <th scope="col">Año de día</th>
+                                                    <th scope="col">Salario por horas</th>
+                                                    <th scope="col">Monto</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                                @for (int i = 0; i < Model.DiasPagados.Count(); i++)
+                                                {
+                                                    <tr>
+                                                        <td>
+                                                            @Model.CatalogoDiaAsueto.ElementAt(i).DescripcionDia
+                                                        </td>
+                                                        <td>
+                                                            @Model.DiasPagados.ElementAt(i).CantidadHoras
+                                                        </td>
+                                                        <td>
+                                                            @Model.DiasPagados.ElementAt(i).Anio
+                                                        </td>
+                                                        <td>
+                                                            ₡ @Model.DiasPagados.ElementAt(i).MontoSalarioHora.ToString("#,#.00#;(#,#.00#)")
+                                                        </td>
+                                                        <td>
+                                                            ₡ @Model.DiasPagados.ElementAt(i).MontoTotal.ToString("#,#.00#;(#,#.00#)")
+                                                        </td>
+                                                    </tr>
+                                                }
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="card-footer">
+                                        <p>Salario Escolar: <b>₡  @Model.PagoFeriados.MontoSalarioEscolar.ToString("#,#.00#;(#,#.00#)")</b></p>
+                                        @Html.HiddenFor(model => model.PagoFeriados.MontoSalarioEscolar)
+
+                                        <p>Subtotal de días: <b>₡  @Model.PagoFeriados.MontoSubtotalDia.ToString("#,#.00#;(#,#.00#)")</b></p>
+                                        @Html.HiddenFor(model => model.PagoFeriados.MontoSubtotalDia)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="diferencias" role="tabpanel" aria-labelledby="diferencias-tab">
+                                <table id="diferenciasPeriodos" class="table">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th colspan="2" scope="col">Cálculo diferencias de varios periodos</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                Subtotal de días
+                                            </td>
+                                            <td>
+                                                ₡ @Model.PagoFeriados.MontoSubtotalDia.ToString("#,#.00#;(#,#.00#)")
+                                                @Html.HiddenFor(model => model.PagoFeriados.MontoSubtotalDia)
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Salario Escolar
+                                            </td>
+                                            <td>
+                                                ₡ @Model.PagoFeriados.MontoSalarioEscolar.ToString("#,#.00#;(#,#.00#)")
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Subtotal
+                                            </td>
+                                            <td>
+                                                ₡ @Model.SubtotalDiferencias.ToString("#,#.00#;(#,#.00#)")
+                                                @Html.HiddenFor(model => model.SubtotalDiferencias)
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="obrero" role="tabpanel" aria-labelledby="obrero-tab">
+                                <table id="deduccionObrero" class="table">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th colspan="3" scope="col">Deducciones de ley a aplicar (Obrero)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @for (int i = 0; i < Model.DeduccionesObreroEfectuada.Count(); i++)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @Model.DeduccionesObrero.ElementAt(i).DescripcionDeduccion
+                                                </td>
+                                                <td>
+                                                    @Model.DeduccionesObreroEfectuada.ElementAt(i).PorcentajeEfectuado%
+                                                </td>
+                                                <td>
+                                                    ₡ @Model.DeduccionesObreroEfectuada.ElementAt(i).MontoDeduccion.ToString("#,#.00#;(#,#.00#)")
+                                                </td>
+                                            </tr>
+                                        }
+                                        <tr>
+                                            <td colspan="2">
+                                                Total de deducciones Obrero
+                                            </td>
+                                            <td>
+                                                ₡ @Model.PagoFeriados.MontoDeduccionObrero.ToString("#,#.00#;(#,#.00#)")
+                                                @Html.HiddenFor(model => model.PagoFeriados.MontoDeduccionObrero)
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            <div class="tab-pane fade" id="patronal" role="tabpanel" aria-labelledby="patronal-tab">
+                                <table id="deduccionPatronal" class="table">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th colspan="3" scope="col">Deducciones de ley a aplicar (Patronal)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @for (int i = 0; i < Model.DeduccionesPatronalEfectuada.Count(); i++)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @Model.DeduccionesPatronal.ElementAt(i).DescripcionDeduccion
+                                                </td>
+                                                <td>
+                                                    @Model.DeduccionesPatronalEfectuada.ElementAt(i).PorcentajeEfectuado %
+                                                </td>
+                                                <td>
+                                                    ₡ @Model.DeduccionesPatronalEfectuada.ElementAt(i).MontoDeduccion.ToString("#,#.00#;(#,#.00#)")
+                                                </td>
+                                            </tr>
+                                        }
+                                        <tr>
+                                            <td colspan="2">
+                                                Total de deducciones Patronal
+                                            </td>
+                                            <td>
+                                                ₡ @Model.PagoFeriados.MontoDeduccionPatronal.ToString("#,#.00#;(#,#.00#)")
+                                                @Html.HiddenFor(model => model.PagoFeriados.MontoDeduccionPatronal)
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            <div class="tab-pane fade" id="totales" role="tabpanel" aria-labelledby="totales-tab">
+                                <table id="tabla_montos_totales" class="table">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th colspan="2" scope="col">Total a pagar al servidor</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                Diferencia líquida
+                                            </td>
+                                            <td>
+                                                ₡ @Model.PagoFeriados.MontoDiferenciaLiquida.ToString("#,#.00#;(#,#.00#)")
+                                                @Html.HiddenFor(model => model.PagoFeriados.MontoDiferenciaLiquida)
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Aguinaldo proporcional
+                                            </td>
+                                            <td>
+                                                ₡ @Model.PagoFeriados.MontoAguinaldoProporcional.ToString("#,#.00#;(#,#.00#)")
+                                                @Html.HiddenFor(model => model.PagoFeriados.MontoAguinaldoProporcional)
+                                            </td>
+                                        </tr>
+                                        <tr style="background-color: #DDDDDD;">
+                                            <td>
+                                                <b>Monto Total </b>
+                                            </td>
+                                            <td>
+                                                ₡ @Model.PagoFeriados.MontoDeTotal.ToString("#,#.00#;(#,#.00#)")
+                                                @Html.HiddenFor(model => model.PagoFeriados.MontoDeTotal)
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <br />
+                <a href="javascript:history.back()" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Regresar</a>
+                <button class="btn btn-danger" type="submit"><i class="fa fa-file-pdf-o"></i> Exportar a PDF</button>
+            }
+
+        }
+        else
+        {
+            <div class="alert alert-danger" role="alert">
+                <i class="fa fa-times-circle d-inline" style="font-size:48px;"></i>
+                <h4 class="d-inline"> Ocurrió un error al momento de guardar el trámite de pago.</h4>
+            </div>
+            <br />
+
+            <div class="card">
+                <h5 class="card-header">Detalles</h5>
+                <div class="card-body">
+                    <div>El trámite de pago no pudo ser guardado debido al siguiente error: </div>
+                    <br /><div><b>@Html.Encode(Model.Error.MensajeError)</b></div>
+                    <br /><div>Si conoce la causa de este error, por favor revise los datos que intentó almacenar e intentelo de nuevo.</div>
+                    <br /><div>De lo contrario le invitamos a ponerse en contacto con nuestro equipo de soporte, mediante el sistema de <a href="http://sisrh.mopt.go.cr:83/" target="_blank">Ayuda y Soporte</a></div>
+                </div>
+            </div>
+        }
+    }
+    else if (Request.QueryString["accion"] == "search")
+    {
+        if (Model.Error == null)
+        {
+            using (Html.BeginForm("ReporteDetallePagoFeriado", "PagoFeriado", FormMethod.Post, new { @id = "thisForm" }))
+            {
+                <div class="card">
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <b>Número: </b> @Html.AttributeEncode(Model.PagoFeriados.IdEntidad)
+                                @Html.HiddenFor(model => model.PagoFeriados.IdEntidad)
+                            </li>
+                            <li class="list-group-item">
+                                <b>Fecha del trámite: </b> @Html.AttributeEncode(Model.PagoExtraordinario.FechaTramite)
+                                @Html.HiddenFor(model => model.PagoExtraordinario.FechaTramite)
+                            </li>
+                            <li class="list-group-item">
+                                <b>Estado del trámite: </b> @Html.AttributeEncode(Model.EstadoTramite.DescripcionEstado)
+                                @Html.HiddenFor(model => model.EstadoTramite.DescripcionEstado)
+                            </li>
+                            <li class="list-group-item">
+                                <b>Funcionario</b>
+                                @Html.Encode(Model.Funcionario.Cedula)
+                                -
+                                @Html.Encode(Model.Funcionario.Nombre)
+                                @Html.Encode(Model.Funcionario.PrimerApellido)
+                                @Html.Encode(Model.Funcionario.SegundoApellido)
+
+                                @Html.HiddenFor(model => model.Funcionario.Cedula)
+                                @Html.HiddenFor(model => model.Funcionario.Nombre)
+                                @Html.HiddenFor(model => model.Funcionario.PrimerApellido)
+                                @Html.HiddenFor(model => model.Funcionario.SegundoApellido)
+                            </li>
+                            <li class="list-group-item">
+                                <b>Salario bruto</b> ₡ @Model.PagoFeriados.MontoSalaroBruto.ToString("#,#.00#;(#,#.00#)")
+                                @Html.HiddenFor(model => model.PagoFeriados.MontoSalaroBruto)
+                                @Html.HiddenFor(model => model.PagoFeriados.ObsevacionTramite)
+                            </li>
+                            @if (!string.IsNullOrEmpty(Model.PagoFeriados.ObsevacionTramite))
+                                {
+                                <li>
+                                    <div class="form-group">
+                                        <b><label for="ObsevacionTramite">Observaciones</label></b>
+                                        @Html.TextAreaFor(model => model.PagoFeriados.ObsevacionTramite, new { @id = "ObsevacionTramite", @class = "form-control", @rows = 3 })
+                                    </div>
+                                </li>
+                                }
+                        </ul>
+                    </div>
+                </div>
+
+                <br />
+
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">Descripción</th>
+                                    <th scope="col">Cantidad de horas</th>
+                                    <th scope="col">Año de día</th>
+                                    <th scope="col">Salario por horas</th>
+                                    <th scope="col">Monto</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (int i = 0; i < Model.DiasPagados.Count(); i++)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Model.CatalogoDiaAsueto.ElementAt(i).DescripcionDia
+                                        </td>
+                                        <td>
+                                            @Model.DiasPagados.ElementAt(i).CantidadHoras
+                                        </td>
+                                        <td>
+                                            @Model.DiasPagados.ElementAt(i).Anio
+                                        </td>
+                                        <td>
+                                            ₡ @Model.DiasPagados.ElementAt(i).MontoSalarioHora.ToString("#,#.00#;(#,#.00#)")
+                                        </td>
+                                        <td>
+                                            ₡ @Model.DiasPagados.ElementAt(i).MontoTotal.ToString("#,#.00#;(#,#.00#)")
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <br />
+
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th colspan="2" scope="col">Deducciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        Total de deducciones obrero
+                                    </td>
+                                    <td>
+                                        ₡ @Model.PagoFeriados.MontoDeduccionObrero.ToString("#,#.00#;(#,#.00#)")
+                                        @Html.HiddenFor(model => model.PagoFeriados.MontoDeduccionObrero)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Total de deducciones patronales
+                                    </td>
+                                    <td>
+                                        ₡ @Model.PagoFeriados.MontoDeduccionPatronal.ToString("#,#.00#;(#,#.00#)")
+                                        @Html.HiddenFor(model => model.PagoFeriados.MontoDeduccionPatronal)
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <br />
+
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th colspan="2" scope="col">Totales</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        Diferencia líquida
+                                    </td>
+                                    <td>
+                                        ₡ @Model.PagoFeriados.MontoDiferenciaLiquida.ToString("#,#.00#;(#,#.00#)")
+                                        @Html.HiddenFor(model => model.PagoFeriados.MontoDiferenciaLiquida)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Aguinaldo proporcional
+                                    </td>
+                                    <td>
+                                        ₡ @Model.PagoFeriados.MontoAguinaldoProporcional.ToString("#,#.00#;(#,#.00#)")
+                                        @Html.HiddenFor(model => model.PagoFeriados.MontoAguinaldoProporcional)
+                                    </td>
+                                </tr>
+                                <tr style="background-color: #DDDDDD;">
+                                    <td>
+                                        <b>Monto Total </b>
+                                    </td>
+                                    <td>
+                                        ₡ @Model.PagoFeriados.MontoDeTotal.ToString("#,#.00#;(#,#.00#)")
+                                        @Html.HiddenFor(model => model.PagoFeriados.MontoDeTotal)
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <br />
+
+                <a href="javascript:history.back()" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Regresar</a>
+                <button class="btn btn-danger" type="submit"><i class="fa fa-file-pdf-o"></i> Exportar a PDF</button>
+            }
+        }
+        else
+        {
+            <div class="alert alert-danger" role="alert">
+                <i class="fa fa-times-circle d-inline" style="font-size:48px;"></i>
+                <h4 class="d-inline"> Ocurrió un error al momento de buscar el trámite de pago.</h4>
+            </div>
+            <br />
+
+            <div class="card">
+                <h5 class="card-header">Detalles</h5>
+                <div class="card-body">
+                    <div>El trámite de pago no pudo ser encontrado debido al siguiente error: </div>
+                    <br /><div><b>@Html.Encode(Model.Error.MensajeError)</b></div>
+                    <br /><div>Si conoce la causa de este error, por favor revise los datos que intentó almacenar e intentelo de nuevo.</div>
+                    <br /><div>De lo contrario le invitamos a ponerse en contacto con nuestro equipo de soporte, mediante el sistema de <a href="http://sisrh.mopt.go.cr:83/" target="_blank">Ayuda y Soporte</a></div>
+                </div>
+            </div>
+        }
+    }
+}
+
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")

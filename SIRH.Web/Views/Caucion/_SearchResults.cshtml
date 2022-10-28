@@ -1,0 +1,83 @@
+﻿@model IList<SIRH.Web.ViewModels.FormularioCaucionVM>
+@{
+    using (Html.BeginForm("ReporteDesgloseCaucion", "Caucion", FormMethod.Post, new { @id = "thisForm" }))
+    {
+        <div class="card">
+            <div class="card-body">
+                <table class="table detalle">
+                    <thead>
+                        <tr>
+                            <th scope="col">Cédula</th>
+                            <th scope="col"># Póliza</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">#Puesto</th>
+                            <th scope="col">Aseguradora</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < Model.Count(); i++)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.Encode(Model.ElementAt(i).Funcionario.Cedula)
+                                    @Html.HiddenFor(model => model[i].Funcionario.Cedula)
+                                    @Html.HiddenFor(model => model[i].Funcionario.Nombre)
+                                    @Html.HiddenFor(model => model[i].Funcionario.PrimerApellido)
+                                    @Html.HiddenFor(model => model[i].Funcionario.SegundoApellido)
+                                </td>
+                                <td>
+                                    @Html.Encode(Model.ElementAt(i).Caucion.NumeroPoliza)
+                                    @Html.HiddenFor(model => model[i].Caucion.NumeroPoliza)
+                                </td>
+                                <td>
+                                    @Model.ElementAt(i).Funcionario.Nombre @Model.ElementAt(i).Funcionario.PrimerApellido @Model.ElementAt(i).Funcionario.SegundoApellido
+                                </td>
+                                <td>
+                                    @Html.Encode(Model.ElementAt(i).Puesto.CodPuesto)
+                                    @Html.HiddenFor(model => model[i].Puesto.CodPuesto)
+                                </td>
+                                <td>
+                                    @Html.Encode(Model.ElementAt(i).EntidadSeguros.NombreEntidad)
+                                    @Html.HiddenFor(model => model[i].EntidadSeguros.NombreEntidad)
+                                    @Html.HiddenFor(model => model[i].MontoCaucion.Nivel)
+                                    @Html.HiddenFor(model => model[i].MontoCaucion.Descripcion)
+                                    @Html.HiddenFor(model => model[i].MontoCaucion.MontoColones)
+                                </td>
+                                <td>
+                                    @Html.Encode(Model.ElementAt(i).Caucion.DetalleEstadoPoliza)
+                                    @Html.HiddenFor(model => model[i].Caucion.DetalleEstadoPoliza)
+                                    @Html.HiddenFor(model => model[i].Caucion.FechaEmision)
+                                    @Html.HiddenFor(model => model[i].Caucion.FechaVence)
+                                    @Html.HiddenFor(model => model[i].Caucion.ObservacionesPoliza)
+                                </td>                             
+                                <td>                                   
+                                    <a href="@Url.Action("Details", "Caucion", new { codigo = Model.ElementAt(i).Caucion.IdEntidad })" class="btn btn-primary btn-sm">
+                                        <i class="fa fa-search"></i> Ver Detalle
+                                    </a>
+                                </td>
+                                @if (Model.ElementAt(i).Caucion.EstadoPoliza != 4 && Model.ElementAt(i).Caucion.EstadoPoliza != 3)
+                                {
+                                    <td>
+                                        <a href="@Url.Action("Edit", "Caucion", new { codigo = Model.ElementAt(i).Caucion.IdEntidad })" class="btn btn-warning btn-sm">
+                                            <i class="fa fa-edit"></i> Editar
+                                        </a>
+                                    </td>
+
+                                }
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <br />
+                <button class="btn btn-danger" type="submit"><i class="fa fa-file-pdf-o"></i> Exportar a pdf</button>
+            </div>
+        </div>
+    }
+    <br />
+    <a href="@Url.Action("Create", "Caucion")" class="btn btn-success">
+        <i class="fa fa-plus-circle"></i> Crear nueva
+    </a>
+}

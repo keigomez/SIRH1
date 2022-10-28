@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Archivo.cshtml";
+}
+
+<div class="jumbotron">
+    <center>
+        <h1 class="display-4">Módulo de Archivo de Recursos Humanos</h1>
+        <p class="lead">Bienvenido(a), @Session["Nombre_Completo"]</p>
+        <hr class="my-4">
+        <p>Para iniciar, seleccione alguna de las opciones del menú a su izquierda.</p>
+        <p>En este módulo, usted puede:</p>
+    </center>
+
+</div>
+
+<div class="container">
+    <div class="row justify-content-center align-items-center">
+
+            <div class="col-sm-3 col-md-4">
+                <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Realizar Préstamo Expediente</div>
+                    <div class="card-body text-secondary">
+                        <center><img src="~/Content/Images/new.png" class="img-thumbnail" alt=""></center>
+                    </div>
+                </div>
+            </div>
+        <div class="col-sm-3 col-md-4">
+            <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                <div class="card-header">Búsqueda de Préstamos</div>
+                <div class="card-body text-secondary">
+                    <center><img src="~/Content/Images/track-folders.png" class="img-thumbnail" alt=""></center>
+                </div>
+            </div>
+        </div>
+            <div class="col-sm-3 col-md-4">
+                <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Búsqueda de Expediente</div>
+                    <div class="card-body text-secondary">
+                        <center><img src="~/Content/Images/look.png" class="img-thumbnail" alt=""></center>
+                    </div>
+                </div>
+            </div>
+        <div class="col-sm-3 col-md-4">
+            <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                <div class="card-header">Trasladar expediente a Archivo Central</div>
+                <div class="card-body text-secondary">
+                    <center><img src="~/Content/Images/puesto_change.png" class="img-thumbnail" alt=""></center>
+                </div>
+            </div>
+        </div>
+            <div class="col-sm-3 col-md-4">
+                <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Foleo</div>
+                    <div class="card-body text-secondary">
+                        <center><img src="~/Content/Images/puesto_prestamo.png" class="img-thumbnail" alt=""></center>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+
+

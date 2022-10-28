@@ -1,0 +1,121 @@
+﻿
+@model SIRH.Web.ViewModels.FormularioBoletaPrestamoVM
+@{
+    ViewBag.Title = "CreateBoletaPrestamo";
+    Layout = "~/Views/Shared/Archivo.cshtml";
+}
+<link href="~/Content/datetimepicker.css" rel="stylesheet" />
+<center><h2>Solicitudes de Préstamo de Expedientes</h2></center>
+@using (Ajax.BeginForm("CreateBoletaPrestamo", "Archivo", new AjaxOptions
+{
+    UpdateTargetId = "UpdateFormularioBoleta",
+    InsertionMode = InsertionMode.Replace,
+    HttpMethod = "POST",
+    OnSuccess = "SuccesBoletaPrestamo",
+    OnComplete = "CompleteBoletaPrestamo",
+    OnBegin = "BeginBoletaPrestamo"
+}))
+{
+    <div class="card">
+        <h5 class="card-header">Buscar Funcionario</h5>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-3">
+                    <div class="form-group">
+                        @Html.LabelFor(model => Model.UsuarioExterno, new { @for = "TipoUsuario" })
+                        @Html.CheckBoxFor(model => Model.UsuarioExterno, new { @id = "TipoUsuario" }) @*@onchange = "return OnChangeTipoUsuario()"*@
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.BoletaPrestamo.CedulaSolicitante)
+                        @Html.TextBoxFor(model => model.BoletaPrestamo.CedulaSolicitante, new { @id = "CampoSolicitanteText", @class = "form-control"})
+                        @*@Html.HiddenFor(model => model.BoletaPrestamo.CedulaSolicitante)*@
+                    </div>
+                </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                            @Html.LabelFor(model => Model.SolicitanteEsFuncionario, new { @for = "SolicitanteEsFuncionario" })
+                            @Html.CheckBoxFor(model => Model.SolicitanteEsFuncionario, new { @id = "SolicitanteEsFuncionario", @onchange = "return OnChangeSolicitanteEsFuncionario()" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.BoletaPrestamo.CedulaFuncionario)
+                            @Html.TextBoxFor(model => model.BoletaPrestamo.CedulaFuncionario, new { @id = "CampoSolicitanteEsFuncionarioText", @class = "form-control", })
+                            @Html.HiddenFor(model => model.BoletaPrestamo.CedulaSolicitante)
+                        </div>
+                    </div>
+                </div>
+            <div class="row">
+                <input id="btnBuscar" name="SubmitButton" type="submit" value="Buscar" class="btn btn-success" />
+                <div id="preloaderBuscar" class="loader float-right" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+}
+
+<div id="UpdateFormularioBoleta"></div>
+
+
+@*<link href="~/Content/datetimepicker.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "CreateBoletaPrestamo";
+    Layout = "~/Views/Shared/Archivo.cshtml";
+
+        Html.EnableClientValidation();
+        using (Html.BeginForm(Ajax.BeginForm("CreateBoletaPrestamo", "Archivo", new AjaxOptions
+        {
+            UpdateTargetId = "UpdateBoletaPrestamo",
+            HttpMethod = "POST",
+            OnSuccess = "SuccesBoletaPrestamo",
+            OnComplete = "CompleteBoletaPrestamo",
+            OnBegin = "BeginBoletaPrestamo"
+        })))
+        {
+            @Html.ValidationSummary(true)
+            <center><h2>Solicitudes de Préstamo de Expediente</h2></center>
+
+            <div class="card">
+                <h5 class="card-header">Prestamo de Expediente</h5>
+                <div class="card-body">
+                    <center>
+                        <div class="row">
+                            <div class="col-2">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => Model.UsuarioExterno, new { @for = "TipoUsuario" })
+                                    @Html.CheckBoxFor(model => Model.UsuarioExterno, new { @id = "TipoUsuario"}) @*onchange = "return OnChangeTipoUsuario()"
+                                </div>
+                            </div>
+                         </div>
+                        <div class="row">
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.CedulaSolicitante)
+                                        @Html.TextBoxFor(model => model.CedulaSolicitante, new { @class = "form-control", style = "margin-bottom:10px;" })
+                                        @Html.ValidationMessageFor(model => model.CedulaSolicitante)
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-2">
+                                <div class="form-group">
+                                    <input id="btnBuscar" name="SubmitButton" type="submit" value="Buscar" class="btn btn-success" style="margin:auto;" />
+                                    <div id="preloaderBuscar" class="loader float-right" style="display: none"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </center>
+                </div>
+          </div>
+          <br />
+          <div id="UpdateBoletaPrestamo"></div>
+
+        }
+}*@
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+<script src="~/Scripts/sidebar.js" type="text/javascript"></script>
+<script src="~/scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/CreateBoletaPrestamo.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/FormularioBoleta.js" type="text/javascript"></script>
+<script src="~/Scripts/datetimepicker.js" type="text/javascript"></script>
+<script src="~/Scripts/datetimepicker-es.js" type="text/javascript"></script>

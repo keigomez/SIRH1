@@ -1,0 +1,96 @@
+﻿@model SIRH.Web.ViewModels.BusquedaEmpleadosMarcasAsistenciaVM
+@{
+    ViewBag.Title = "Búsqueda de funcionarios";
+    Layout = "~/Views/Shared/MarcasAsistencia.cshtml";
+}
+
+<center>
+    <h2>Buscar funcionarios</h2>
+</center>
+<div class="jumbotron">
+    @{
+        using (Ajax.BeginForm("Search", "MarcasAsistencia", new AjaxOptions
+        {
+            UpdateTargetId = "dvResultadoBusqueda",
+            HttpMethod = "POST",
+            OnComplete = "CompleteSearch",
+            OnBegin = "BeginSearch"
+        }))
+        {
+            <div class="card" id="detalle_funcionario">
+                <div class="card-header">
+                    Parámetros de búsqueda
+                </div>
+                <div class="card-body">
+                    <div class="row" style="margin-bottom:25px;">
+                        <div class="form-group col-5">
+                            @Html.LabelFor(model => model.Empleado.CodigoEmpleado)         
+                            <span>:</span>
+                            @Html.TextBoxFor(model => model.Cedula, new { @maxlength = "10",  @class = "form-control" })
+
+                        </div>
+                        <div class="form-group col-5">
+                            @Html.LabelFor(model => model.Empleado.Digitos)
+                            <span>:</span>
+                            @Html.TextBoxFor(model => model.Codigo, new { @maxlength = "10",  @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom:25px;">
+                        <div class="form-group col-5">
+                            @Html.LabelFor(model => model.Empleado.PrimerNombre)
+                            <span>:</span>
+                            @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control" })
+                        </div>
+                        <div class="form-group col-5">
+                            @Html.LabelFor(model => model.Empleado.ApellidoPaterno)
+                            <span>:</span>
+                            @Html.TextBoxFor(model => model.NombreApellido1, new { @class = "form-control" })
+                        </div>
+                        
+                    </div>
+                    <div class="row" style="margin-bottom:25px;">
+                        <div class="form-group col-5">
+                            @Html.LabelFor(model => model.Empleado.ApellidoMaterno)
+                            <span>:</span>
+                            @Html.TextBoxFor(model => model.NombreApellido2, new { @class = "form-control" })
+                        </div>
+
+                        <div class="form-group col-5">
+                            @Html.LabelFor(model => model.EstadoSeleccionado)
+                            <span>:</span>
+                            @Html.DropDownListFor(model => model.EstadoSeleccionado, Model.Estados, "Estado del empleado", new { @class = "btn btn-secondary dropdown-toggle" })
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom:25px;">
+                            <div class="col-4"></div>
+                            <div class="form-group col-4">
+                                <input id="btnBuscar" class="btn btn-secondary" name="SubmitButton" type="submit" value="Buscar" />
+                            </div> 
+                    </div>
+                    <div class="row" style="margin-bottom:25px;">
+                        <div class="col-4"></div>
+                        <div class="form-group col-5">
+                            <div id="preloader" class="loader" hidden></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @Html.HiddenFor(model => model.Empleado.CodigoEmpleado)
+        }
+
+        
+        <div id="error" class="alert alert-danger" role="alert" hidden>
+            
+        </div>
+
+        <div id="dvResultadoBusqueda">
+        </div>
+    }
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+<script src="~/Scripts/sidebar.js" type="text/javascript"></script>
+<script src="~/scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/SearchMarcasAsistencia.js" type="text/javascript"></script>

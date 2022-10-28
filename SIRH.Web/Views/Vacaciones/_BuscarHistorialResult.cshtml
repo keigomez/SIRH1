@@ -1,0 +1,121 @@
+﻿@model SIRH.Web.ViewModels.DetalleVacacionesVM
+@{
+    if (Model != null)
+    {
+        <br />
+        <div id="formulario">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Información del Funcionario</strong>
+                </div>
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <tr>
+                            <td>
+                                <strong>@Html.LabelFor(model => model.Funcionario.Cedula): </strong>@Html.DisplayFor(model => model.Funcionario.Cedula)
+                                @Html.HiddenFor(model => model.Funcionario.Cedula)
+                            </td>
+                            <td>
+                                <strong>@Html.LabelFor(model => model.Funcionario.Nombre): </strong>@Model.Funcionario.Nombre @Model.Funcionario.PrimerApellido @Model.Funcionario.SegundoApellido
+                                @Html.HiddenFor(model => model.Funcionario.Nombre)
+                                @Html.HiddenFor(model => model.Funcionario.PrimerApellido)
+                                @Html.HiddenFor(model => model.Funcionario.SegundoApellido)
+                            </td>
+                            <td>
+                                <strong>@Html.LabelFor(model => model.Puesto.CodPuesto): </strong>@Html.DisplayFor(model => model.Puesto.CodPuesto)
+                                @Html.HiddenFor(model => model.Puesto.CodPuesto)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                                @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                            </td>
+                            <td>
+                                <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                                @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                            </td>
+                            <td>
+                                <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion)
+                                @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                                @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                                <strong>@Html.LabelFor(model => model.DetallePuesto.Clase.DesClase): </strong>@Html.DisplayFor(model => model.DetallePuesto.Clase.DesClase)
+                                @Html.HiddenFor(model => model.DetallePuesto.Clase.DesClase)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong>Fecha de contratación: </strong>@Html.DisplayFor(model => model.DetalleContratacion.FechaIngreso)
+                                @Html.HiddenFor(model => model.DetalleContratacion.FechaIngreso)
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <br>
+        if (Model.PeriodosEmulacion != null)
+        {
+            <table class="table" id="tablaFacturas" style="margin-bottom:70px;">
+                <thead>
+                    <tr>
+                        <th>Periodo</th>
+                        <th class="text-center">Total de días registrados en el periodo</th>
+                        <th> <!-- boton detalle--></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.PeriodosEmulacion.Count; i++)
+                    {
+                        <tr>
+                            <td class="border-bottom border-info">@Model.PeriodosEmulacion[i].Periodo</td>
+                            <td class="border-bottom border-info text-center">@Model.PeriodosEmulacion[i].Saldo</td>
+                            <td class="border-bottom border-info">
+                                <a href="@Url.Action("DetalleHistorial", "Vacaciones", new
+                                    {
+                                        cedula = Model.Funcionario.Cedula,
+                                        periodo = Model.PeriodosEmulacion[i].Periodo,
+                                        ex = "si"
+
+                                    })" class="btn btn-primary">
+                                    <i class="fa fa-paperclip"></i> Detalles
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <div class="alert alert-info">No se encontraron historiales de vacaciones en los respaldos de emulación para el funcionario</div>
+        }
+
+        <br />
+        <a class="btn btn-primary" href="javascript:history.back()" id="A5"><i class="fa fa-arrow-circle-left"></i> Regresar</a>
+        @*<td class="border-bottom btn btn-success ">*@
+        <a href="@Url.Action("ReporteFuncionario", "Vacaciones",  new
+            {
+                cedula = Model.Funcionario.Cedula
+
+            })" class="btn btn-success">
+            <i class="fa fa-file-text-o"></i> Generar PDF
+
+        </a>
+            @*</td>*@
+
+    }
+}
+
+

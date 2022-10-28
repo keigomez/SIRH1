@@ -1,0 +1,56 @@
+﻿@model IList<SIRH.Web.ViewModels.BoletasRecuperadasVM>
+
+@{
+    using (Html.BeginForm("ReporteBusquedaPrestamo", "Archivo", FormMethod.Post, new { @id = "thisForm" }))
+    {
+        <table class="table table-hover">
+            <thead class="thead-light">
+                <tr>
+                    <th>N° Boleta</th>
+                    <th>N° Expediente</th>
+                    <th>Fecha Entrega</th>
+                    <th>Fecha Caducidad</th>
+                    <th>Cédula Funcionario</th>
+                    <th>Nombre Funcionario</th>
+                    <th>Apellido Funcionario</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.AttributeEncode(item.ListaBoletas[0].IdEntidad)
+
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].ListaBoletas[0].CedulaFuncionario)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].ListaBoletas[0].IdEntidad)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].ListaBoletas[0].NumeroExpediente)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].ListaBoletas[0].FechaPrestamo)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].ListaBoletas[0].FechaCaducidad)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].ListaBoletas[0].NombreFuncionarioSolicitado)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].ListaBoletas[0].ApellidoFuncionarioSolicitado)
+                            </td>
+
+                            <td> @Html.AttributeEncode(item.ListaBoletas[0].NumeroExpediente)</td>
+                            <td> @Html.AttributeEncode(item.ListaBoletas[0].FechaPrestamo.ToShortDateString())</td>
+                            <td> @Html.AttributeEncode(item.ListaBoletas[0].FechaCaducidad.ToShortDateString())</td>
+                            <td> @Html.AttributeEncode(item.ListaBoletas[0].CedulaFuncionario)</td>
+                            <td> @Html.AttributeEncode(item.ListaBoletas[0].NombreFuncionarioSolicitado)</td>
+                            <td> @Html.AttributeEncode(item.ListaBoletas[0].ApellidoFuncionarioSolicitado)</td>
+
+                            <td><a href="@Url.Action("Details", "Archivo", new { @codigo = item.ListaBoletas[0].IdEntidad })" class="btn btn-primary btn-sm"><i class="fa fa-search"></i> Ver Detalle</a></td>
+                        </tr>
+                    }
+                    <tr>
+                        <td colspan="7"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="7"><button class="btn btn-outline-primary" type="submit"><i class="fa fa-file-pdf-o"></i>Exportar resultados a PDF</button></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+     }
+}

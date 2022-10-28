@@ -1,0 +1,208 @@
+﻿@model SIRH.Web.ViewModels.FuncionarioUbicacionVM
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Home.cshtml";
+}
+    <center><h2>Búsqueda de funcionarios por ubicacion</h2></center>
+    @using (Ajax.BeginForm("Index", "UbicacionPuesto", new AjaxOptions { UpdateTargetId = "target", HttpMethod = "POST", OnSuccess = "successData", OnBegin = "beginData" }))
+    {
+        <div class="card" id="detalle">
+            <div class="card-header">
+                Parámetros de búsqueda:
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="form-group col-5">
+                        @Html.Label("División")
+                        <span>:</span>
+                        <button class="btn btn-outline-primary" type="button" id="dialog-division"><i class="fa fa-search"></i></button>
+                        <button class="btn btn-outline-primary" type="button" id="clean-division" ><i class="fa fa-remove"></i></button>
+                        @Html.TextBox("coddivision", String.Empty, new { @readonly = "readonly", @class = "form-control" })
+                    </div>
+                    <div class="form-group col-5">
+                        @Html.Label("Dirección General")
+                        <span>:</span>
+                        <button class="btn btn-outline-primary" type="button" id="dialog-direccion" ><i class="fa fa-search"></i></button>
+                        <button class="btn btn-outline-primary" type="button" id="clean-direccion" ><i class="fa fa-remove"></i></button>
+                        @Html.TextBox("coddireccion", String.Empty, new { @readonly = "readonly", @class = "form-control" })
+                     </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-5">
+                        @Html.Label("Departamento")
+                        <span>:</span>
+                        <button class="btn btn-outline-primary" type="button" id="dialog-departamento" ><i class="fa fa-search"></i></button>
+                        <button class="btn btn-outline-primary" type="button" id="clean-departamento" ><i class="fa fa-remove"></i></button>
+                        @Html.TextBox("coddepartamento", String.Empty, new { @readonly = "readonly", @class = "form-control" })
+                    </div>
+                    <div class="form-group col-5">
+                        @Html.Label("Sección")
+                        <span>:</span>
+                        <button class="btn btn-outline-primary" type="button" id="dialog-seccion" ><i class="fa fa-search"></i></button>
+                        <button class="btn btn-outline-primary" type="button" id="clean-seccion" ><i class="fa fa-remove"></i></button>
+                        @Html.TextBox("codseccion", String.Empty, new { @readonly = "readonly", @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-5">
+                        @Html.Label("Presupuesto")
+                        <span>:</span>
+                        <button class="btn btn-outline-primary" type="button" id="dialog-presupuesto"><i class="fa fa-search"></i></button>
+                        <button class="btn btn-outline-primary" type="button" id="clean-presupuesto"><i class="fa fa-remove"></i></button>
+                        @Html.TextBox("codpresupuesto", String.Empty, new { @readonly = "readonly", @class = "form-control" })
+                    </div>
+                    <div class="form-group col-5">
+                        @Html.Label("Centro de Costos")
+                        <span>:</span>
+                        <button class="btn btn-outline-primary" type="button" id="dialog-centro"><i class="fa fa-search"></i></button>
+                        <button class="btn btn-outline-primary" type="button" id="clean-centro"><i class="fa fa-remove"></i></button>
+                        @Html.TextBox("codscostos", String.Empty, new { @readonly = "readonly", @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-3">
+                        <input class="btn btn-secondary" type="submit" value="Buscar" id="btnBusca" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-5"></div>
+                    <div class="form-group">
+                        <div id="preloader" class="loader" hidden></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    }
+
+
+<div id="error" class="alert alert-danger" role="alert" hidden></div>
+
+<div class="modal fade" id="buscar-division" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Búsqueda por División</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @{Html.RenderPartial("Division_Index"); }
+            </div>
+            <div class="modal-footer">
+                <button id="CacelarCalculoPopUp" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                @*<button id="CalcularPopUp" type="button" class="btn btn-primary">Calcular</button>*@
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="buscar-direccion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Búsqueda por Dirección General</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @{Html.RenderPartial("Direccion_Index"); }
+            </div>
+            <div class="modal-footer">
+                <button id="CacelarCalculoPopUp" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                @*<button id="CalcularPopUp" type="button" class="btn btn-primary">Calcular</button>*@
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="buscar-departamento" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Búsqueda por Departamento</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @{Html.RenderPartial("Departamento_Index"); }
+            </div>
+            <div class="modal-footer">
+                <button id="CacelarCalculoPopUp" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                @*<button id="CalcularPopUp" type="button" class="btn btn-primary">Calcular</button>*@
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="buscar-seccion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Búsqueda por Sección</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @{Html.RenderPartial("Seccion_Index");}
+            </div>
+            <div class="modal-footer">
+                <button id="CacelarCalculoPopUp" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                @*<button id="CalcularPopUp" type="button" class="btn btn-primary">Calcular</button>*@
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="buscar-presupuesto" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Búsqueda por Código Presupuestario</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @*@{Html.RenderPartial("Presupuesto_Index");}*@
+                @{ 
+                    var PresupuestoModel = (SIRH.Web.Models.PresupuestoModel)ViewBag.PresupuestoModel;
+                }
+                @Html.Partial("Presupuesto_Index", PresupuestoModel)
+            </div>
+            <div class="modal-footer">
+                <button id="CacelarCalculoPopUp" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                @*<button id="CalcularPopUp" type="button" class="btn btn-primary">Calcular</button>*@
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="target">
+    @if (Model != null)
+    {
+        if (Model.TotalFuncionarios > 0)
+        {
+            Html.RenderPartial("Index_Result", Model);
+        }
+    } 
+    @if (Session["errorU"] != null && (string)Session["errorU"] == "error"){
+        Html.RenderPartial("_ErrorUbicacionPuesto");
+    }
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+<script src="~/Scripts/sidebar.js" type="text/javascript"></script>
+<script src="~/scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script type="text/javascript" src="~/Scripts/ubicacion-control.js"></script>
+<script type="text/javascript" src="~/Scripts/funciones-dialogos.js"></script>
+<script type="text/javascript" src="~/Scripts/funciones-generales.js"></script>

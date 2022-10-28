@@ -1,0 +1,40 @@
+﻿@model SIRH.Web.ViewModels.FormularioCalculoRetroactivo
+@{
+
+    <form id="CalcularRetroactivo">
+        @Html.ValidationSummary(true)
+        <div class="card">
+            <div class="card-header">
+                Calcular Retroactivo
+            </div>
+            <div class="card-body">
+                <div class="group-form">
+                    @Html.LabelFor(model => model.Carta.NumeroCarta)
+                    <span>:</span>
+                    @Html.TextBoxFor(model => model.Carta.NumeroCarta, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Carta.NumeroCarta)
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("Fecha de busqueda")<span>:</span>
+                    <div class="start_date input-group mb-4">
+                        @Html.TextBoxFor(model => model.FechaICalculo, new { @id = "fechaICalculoPopUp", @class = "form-control start_date", @readonly = "readonly", @placeholder = "Fecha de Inicio" })
+                        @Html.ValidationMessageFor(model => model.FechaICalculo)
+                    </div>
+                    <div class="end_date input-group mb-4">
+                        @Html.TextBoxFor(model => model.FechaFCalculo, new { @id = "fechaFCalculoFPopUp", @class = "form-control start_date", @readonly = "readonly", @placeholder = "Fecha de Finalización" })
+                        @Html.ValidationMessageFor(model => model.FechaFCalculo)
+                    </div>
+                </div>
+
+                <div class="alert alert-warning" role="alert">
+                    <span id="MensajeCalcularRetroactivo" class="validation-summary-errors"></span>
+                </div>
+
+
+            </div>
+        </div>
+
+    </form>
+}
+

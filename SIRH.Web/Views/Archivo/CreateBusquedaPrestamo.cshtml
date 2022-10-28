@@ -1,0 +1,101 @@
+﻿
+@model SIRH.Web.ViewModels.BusquedaExpedienteVM
+@{
+    ViewBag.Title = "CreateBusquedaPrestamo";
+    Layout = "~/Views/Shared/Archivo.cshtml";
+}
+@*<link href="~/Content/datetimepicker.css" rel="stylesheet" />*@
+
+<script src="~/Content/bootstrap-datepicker/js/jquery-3-4.1.slim.min.js"></script>
+<!--link id="bs-css" href="https://netdna.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet"-->
+<link id="bsdp-css" href="~/Content/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+
+<center><h2>Búsqueda de Expedientes en Préstamo</h2></center>
+@using (Ajax.BeginForm("CreateBusquedaPrestamo", "Archivo", new AjaxOptions
+{
+    UpdateTargetId = "UpdateBusquedaPrestamo",
+    InsertionMode = InsertionMode.Replace,
+    HttpMethod = "POST",
+    OnSuccess = "SuccesBusquedaPrestamo",
+    OnComplete = "CompleteBusquedaPrestamo",
+    OnBegin = "BeginBusquedaPrestamo"
+}))
+{
+    <div class="card">
+        <h5 class="card-header">Parámetros de búsqueda</h5>
+        <div class="card-body">
+            <div class="row"><b>@Html.LabelFor(model => model.Expediente.FiltroBusqueda)</b></div>
+            <div class="row">
+                    <div class="form-group">
+                        @Html.RadioButtonFor(model => model.Expediente.FiltroBusqueda, "Cédula Funcionario", new { @onchange = "return OnChangeDeshabilitarCampoFechas()" }) Cédula Funcionario &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        @Html.RadioButtonFor(model => model.Expediente.FiltroBusqueda, "Cédula Solicitante", new { @onchange = "return OnChangeDeshabilitarCampoFechas()" }) Cédula Solicitante &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        @Html.RadioButtonFor(model => model.Expediente.FiltroBusqueda, "Número Expediente", new { @onchange = "return OnChangeDeshabilitarCampoFechas()" }) Número Expediente &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        @Html.RadioButtonFor(model => model.Expediente.FiltroBusqueda, "Fecha Préstamo", new { @id = "FiltroFecha", @onchange = "return OnChangeHabilitarCampoFechas()"}) Fecha Préstamo &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        @Html.RadioButtonFor(model => model.Expediente.FiltroBusqueda, "Fecha Devolución", new { @id = "FiltroFechaD", @onchange = "return OnChangeHabilitarCampoFechas()" }) Fecha Devolución &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        @*@Html.RadioButtonFor(model => model.Expediente.FiltroBusqueda, "Número Boleta", new { @onchange = "return OnChangeDeshabilitarCampoFechas()" }) Número Boleta &nbsp; &nbsp;*@   
+                    </div>
+                </div>
+            <div class="row">
+                <div class="col-3">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Expediente.DatoABuscar)
+                        @Html.TextBoxFor(model => model.Expediente.DatoABuscar, new { @id = "datoABuscar", @class = "form-control" })
+                        @Html.HiddenFor(model => model.Expediente.DatoABuscar)
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Expediente.FechaInicio, new { @for = "datepickerFechaInicioPrestamoExpediente" })
+                        @Html.TextBoxFor(model => model.Expediente.FechaInicio, new { @id = "datepickerFechaInicioPrestamoExpediente", @class = "form-control", @readonly = "readonly" })
+                        @Html.HiddenFor(model => model.Expediente.FechaInicio)
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Expediente.FechaFin, new { @for = "datepickerFechaFinPrestamoExpediente" })
+                        @Html.TextBoxFor(model => model.Expediente.FechaFin, new { @id = "datepickerFechaFinPrestamoExpediente", @class = "form-control", @readonly = "readonly" })
+                        @Html.HiddenFor(model => model.Expediente.FechaFin)
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <input id="btnBuscar" name="SubmitButton" type="submit" value="Buscar" class="btn btn-success" />
+                    <div id="preloaderBuscar" class="loader float-left"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div id="UpdateBusquedaPrestamo"></div>
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+<script src="~/Scripts/sidebar.js" type="text/javascript"></script>
+<script src="~/scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/CreateBusquedaPrestamo.js" type="text/javascript"></script>
+@*<script src="~/Scripts/datetimepicker.js" type="text/javascript"></script>
+<script src="~/Scripts/datetimepicker-es.js" type="text/javascript"></script>*@
+
+<script src="~/Content/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script src="~/Content/bootstrap-datepicker/locales/bootstrap-datepicker.es.min.js" charset="UTF-8"></script>
+
+<script type="text/javascript">
+    $(function () {
+        $('#FechaInicio').val("Click aquí");
+        $('#FechaInicio').datepicker(
+        {
+            language: "es",
+            autoclose: true
+        });
+        $('#FechaFin').val("Click aquí");
+        $('#FechaFin').datepicker(
+        {
+            language: "es",
+            autoclose: true
+        });
+    });
+</script>

@@ -1,0 +1,103 @@
+﻿@model IList<SIRH.Web.ViewModels.FormularioDeduccionTemporalVM>
+@{
+    using (Html.BeginForm("ReporteDeducciones", "Planilla", FormMethod.Post, new { @id = "thisForm", target = "_blank" }))
+    {
+        <legend>Resultados (@Model.Count)</legend>
+        <button class="btn btn-danger" type="submit"><i class="fa fa-file-pdf-o"></i> Exportar a pdf</button>
+        <div class="card">
+            <div class="card-body">
+                <table class="table detalle">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Tipo deducción</th>
+                            <th scope="col">Funcionario</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Fecha rige</th>
+                            <th>Monto</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < Model.Count; i++)
+                        {
+                            <tr>
+                                <td>
+                                    @(i+1)
+                                </td>
+                                <td>
+                                    @Html.AttributeEncode(Model[i].DatoTipoDeduccion.DetalleTipoDeduccionTemporal)                                    
+                                    @Html.HiddenFor(model => model[i].DatoTipoDeduccion.IdEntidad)
+                                    @Html.HiddenFor(model => model[i].DatoTipoDeduccion.DetalleTipoDeduccionTemporal)
+                                    @Html.HiddenFor(model => model[i].Deduccion.Dias)
+                                    @Html.HiddenFor(model => model[i].Deduccion.Horas)
+                                    @Html.HiddenFor(model => model[i].Deduccion.NumeroDocumento)
+                                    @Html.HiddenFor(model => model[i].MostrarDato)
+                                </td>
+                                <td>
+                                    @Html.AttributeEncode(Model[i].Funcionario.Cedula)
+                                    @Html.HiddenFor(model => model[i].Funcionario.Cedula)
+                                    @Html.HiddenFor(model => model[i].Funcionario.Nombre)
+                                    @Html.HiddenFor(model => model[i].Funcionario.PrimerApellido)
+                                    @Html.HiddenFor(model => model[i].Funcionario.SegundoApellido)
+                                    @Html.HiddenFor(model => model[i].Bitacora.FechaEjecucion)
+                                    @Html.HiddenFor(model => model[i].Bitacora.Usuario.IdEntidad)
+                                    @Html.HiddenFor(model => model[i].Bitacora.Usuario.NombreUsuario)
+                                    @Html.HiddenFor(model => model[i].Puesto.CodPuesto)
+                                    @Html.HiddenFor(model => model[i].Expediente.NumeroExpediente)
+                                </td>
+                                <td>
+                                    @Html.AttributeEncode(Model[i].Funcionario.PrimerApellido)
+                                    @Html.AttributeEncode(Model[i].Funcionario.SegundoApellido)
+                                    @Html.AttributeEncode(Model[i].Funcionario.Nombre)
+                                </td>
+                                <td>
+                                    @Model[i].Deduccion.FechaRige.ToShortDateString()
+                                    @Html.HiddenFor(model => model[i].Deduccion.FechaRige)
+                                    @Html.HiddenFor(model => model[i].Deduccion.FechaVence)
+                                </td>
+                                <td>
+                                    @Html.Encode(Model[i].Deduccion.MontoDeduccion.ToString("#,##0.00"))
+                                    @Html.HiddenFor(model => model[i].Deduccion.MontoDeduccion)
+                                </td>
+                                <td>
+                                    @(Model[i].Deduccion.Estado == 0 ? "Registrada" : Model[i].Deduccion.Estado == 1 ? "Aprobada" : "Anulada" )
+                                    @Html.HiddenFor(model => model[i].Deduccion.Estado)
+                                </td>
+                                <td>
+                                    <div style="display: inline">
+                                        <div class="link_view"> @Html.ActionLink(" Ver Detalle", "", "Planilla", null, new { @onclick = "return ObtenerDetalle('" + Model[i].Deduccion.IdEntidad + "');", @type = "button", @class = "fa fa-search btn btn-primary btn-sm" })</div>
+                                    </div>
+                                </td>
+                                @if (Model[i].Deduccion.Estado == 0)
+                                {
+                                    if (Model[i].PermisoAprobar)
+                                    {
+                                        <td>
+                                            @*<a href="@Url.Action("Aprobar", "RegistroIncapacidad", new { @codigo = item.Incapacidad.IdEntidad })" class="btn btn-warning btn-sm">
+                                                    <i class="fa fa-edit"></i> Aprobar
+                                                </a>*@
+                                            <div style="display: inline">
+                                                <div class="link_view"> @Html.ActionLink("Aprobar", "", "Planilla", null, new { @onclick = "return CargarAprobar('" + Model[i].Deduccion.IdEntidad + "');", @type = "button", @class = "fa fa-edit btn btn-success btn-sm" })</div>
+                                            </div>
+
+                                        </td>
+                                    }
+                                    <td>
+                                        <div style="display: inline">
+                                            <div class="link_view"> @Html.ActionLink(" Anular", "", "Planilla", null, new { @onclick = "return CargarAnular('" + Model[i].Deduccion.IdEntidad + "');", @type = "button", @class = "fa fa-remove btn btn-danger btn-sm" })</div>
+                                        </div>
+                                    </td>
+                                }
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <br />
+                
+            </div>
+        </div>
+    }
+}

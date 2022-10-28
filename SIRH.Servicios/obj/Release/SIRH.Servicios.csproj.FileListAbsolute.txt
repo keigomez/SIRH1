@@ -1,0 +1,16 @@
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Servicios\bin\Release\SIRH.Servicios.dll.config
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Servicios\bin\Release\SIRH.Servicios.dll
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Servicios\bin\Release\SIRH.Servicios.pdb
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Servicios\bin\Release\SIRH.DTO.dll
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Servicios\bin\Release\SIRH.Logica.dll
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Servicios\bin\Release\SIRH.Datos.dll
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Servicios\bin\Release\SIRH.DatosMarcasReloj.dll
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Servicios\bin\Release\EntityFramework.dll
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Servicios\bin\Release\SIRH.DTO.pdb
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Servicios\bin\Release\SIRH.Logica.pdb
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Servicios\bin\Release\SIRH.Datos.pdb
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Servicios\bin\Release\SIRH.DatosMarcasReloj.pdb
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Servicios\bin\Release\EntityFramework.xml
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Servicios\obj\Release\SIRH.Servicios.csprojResolveAssemblyReference.cache
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Servicios\obj\Release\SIRH.Servicios.dll
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Servicios\obj\Release\SIRH.Servicios.pdb

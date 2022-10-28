@@ -1,0 +1,705 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EmpresasDataDB1ModelStoreContainer" CdmEntityContainer="EmpresasDataDB1Entities">
+    <EntitySetMapping Name="AccesoDirecto">
+      <EntityTypeMapping TypeName="EmpresasDataDB1Model.AccesoDirecto">
+        <MappingFragment StoreEntitySet="AccesoDirecto">
+          <ScalarProperty Name="IdAccesoDirecto" ColumnName="IdAccesoDirecto" />
+          <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
+          <ScalarProperty Name="IdOpcion" ColumnName="IdOpcion" />
+          <ScalarProperty Name="Opcion" ColumnName="Opcion" />
+          <ScalarProperty Name="Aplicacion" ColumnName="Aplicacion" />
+          <ScalarProperty Name="IdGrupo" ColumnName="IdGrupo" />
+          <ScalarProperty Name="Grupo" ColumnName="Grupo" />
+          <ScalarProperty Name="Icono" ColumnName="Icono" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AutorizaAusencias">
+      <EntityTypeMapping TypeName="EmpresasDataDB1Model.AutorizaAusencias">
+        <MappingFragment StoreEntitySet="AutorizaAusencias">
+          <ScalarProperty Name="IdAusencias" ColumnName="IdAusencias" />
+          <ScalarProperty Name="CodigoEmpleado" ColumnName="CodigoEmpleado" />
+          <ScalarProperty Name="IdJustificacion" ColumnName="IdJustificacion" />
+          <ScalarProperty Name="CodigoEmpleadoAutoriza" ColumnName="CodigoEmpleadoAutoriza" />
+          <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+          <ScalarProperty Name="FechaFinal" ColumnName="FechaFinal" />
+          <ScalarProperty Name="Dia" ColumnName="Dia" />
+          <ScalarProperty Name="Hora" ColumnName="Hora" />
+          <ScalarProperty Name="Minuto" ColumnName="Minuto" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Congoce" ColumnName="Congoce" />
+          <ScalarProperty Name="HoraSalida" ColumnName="HoraSalida" />
+          <ScalarProperty Name="HoraEntrada" ColumnName="HoraEntrada" />
+          <ScalarProperty Name="CodigoEmpleadoAutoriza2" ColumnName="CodigoEmpleadoAutoriza2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BitacoraHorarioRotativo">
+      <EntityTypeMapping TypeName="EmpresasDataDB1Model.BitacoraHorarioRotativo">
+        <MappingFragment StoreEntitySet="BitacoraHorarioRotativo">
+          <ScalarProperty Name="IdBitacoraHorario" ColumnName="IdBitacoraHorario" />
+          <ScalarProperty Name="CodigoEmpleado" ColumnName="CodigoEmpleado" />
+          <ScalarProperty Name="IdHorario" ColumnName="IdHorario" />
+          <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+          <ScalarProperty Name="FechaFinal" ColumnName="FechaFinal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BitacoraPrograma">
+      <EntityTypeMapping TypeName="EmpresasDataDB1Model.BitacoraPrograma">
+        <MappingFragment StoreEntitySet="BitacoraPrograma">
+          <ScalarProperty Name="IdBitacora" ColumnName="IdBitacora" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Hora" ColumnName="Hora" />
+          <ScalarProperty Name="Evento" ColumnName="Evento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CartasEmpleado">
+      <EntityTypeMapping TypeName="EmpresasDataDB1Model.CartasEmpleado">
+        <MappingFragment StoreEntitySet="CartasEmpleado">
+          <ScalarProperty Name="IdCartaEmpleado" ColumnName="IdCartaEmpleado" />
+          <ScalarProperty Name="CodigoEmpleado" ColumnName="CodigoEmpleado" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="TipoCarta" ColumnName="TipoCarta" />
+          <ScalarProperty Name="IdMachote" ColumnName="IdMachote" />
+          <ScalarProperty Name="NombreMachote" ColumnName="NombreMachote" />
+          <ScalarProperty Name="Firma" ColumnName="Firma" />
+          <ScalarProperty Name="EstatusImpresion" ColumnName="EstatusImpresion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clasificacion">
+      <EntityTypeMapping TypeName="EmpresasDataDB1Model.Clasificacion">
+        <MappingFragment StoreEntitySet="Clasificacion">
+          <ScalarProperty Name="IdClasificacion" ColumnName="IdClasificacion" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Departamentos">
+      <EntityTypeMapping TypeName="EmpresasDataDB1Model.Departamentos">
+        <MappingFragment StoreEntitySet="Departamentos">
+          <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
+          <ScalarProperty Name="CodigoDepartamento" ColumnName="CodigoDepartamento" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="CodigoEnPunto" ColumnName="CodigoEnPunto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DiasAsueto">
+      <EntityTypeMapping TypeName="EmpresasDataDB1Model.DiasAsueto">
+        <MappingFragment StoreEntitySet="DiasAsueto">
+          <ScalarProperty Name="IdAsueto" ColumnName="IdAsueto" />
+          <ScalarProperty Name="TipoAsueto" ColumnName="TipoAsueto" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Jornada" ColumnName="Jornada" />
+          <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+          <ScalarProperty Name="FechaFinal" ColumnName="FechaFinal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Empleado">
+      <EntityTypeMapping TypeName="EmpresasDataDB1Model.Empleado">
+        <MappingFragment StoreEntitySet="Empleado">
+          <ScalarProperty Name="CodigoEmpleado" ColumnName="CodigoEmpleado" />
+          <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+          <ScalarProperty Name="NoDocumento" ColumnName="NoDocumento" />
+          <ScalarProperty Name="CodigoAcceso" ColumnName="CodigoAcceso" />
+          <ScalarProperty Name="Nombre1" ColumnName="Nombre1" />
+          <ScalarProperty Name="Nombre2" ColumnName="Nombre2" />
+          <ScalarProperty Name="Apellido1" ColumnName="Apellido1" />
+          <ScalarProperty Name="Apellido2" ColumnName="Apellido2" />
+          <ScalarProperty Name="ApellidoCasada" ColumnName="ApellidoCasada" />
+          <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+          <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+          <ScalarProperty Name="Edad" ColumnName="Edad" />
+          <ScalarProperty Name="EstadoCivil" ColumnName="EstadoCivil" />
+          <ScalarProperty Name="FechaInicioLabores" ColumnName="FechaInicioLabores" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="Puesto" ColumnName="Puesto" />
+          <ScalarProperty Name="TipoHorario" ColumnName="TipoHorario" />
+          <ScalarProperty Name="PoliticaEmpresa" ColumnName="PoliticaEmpresa" />
+          <ScalarProperty Name="PeriodoNominal" ColumnName="PeriodoNominal" />
+          <ScalarProperty Name="Extras" ColumnName="Extras" />
+          <ScalarProperty Name="Supervisor" ColumnName="Supervisor" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="MotivoBaja" ColumnName="MotivoBaja" />
+          <ScalarProperty Name="FechaBaja" ColumnName="FechaBaja" />
+          <ScalarProperty Name="Permanente" ColumnName="Permanente" />
+          <ScalarProperty Name="Fotografia" ColumnName="Fotografia" />
+          <ScalarProperty Name="MarcaSoloTExtra" ColumnName="MarcaSoloTExtra" />
+          <ScalarProperty Name="NoRotacionesDescanso" ColumnName="NoRotacionesDescanso" />
+          <ScalarProperty Name="NoDiasDescanso" ColumnName="NoDiasDescanso" />
+          <ScalarProperty Name="NoRotacion" ColumnName="NoRotacion" />
+          <ScalarProperty Name="SeguroSocial" ColumnName="SeguroSocial" />
+          <ScalarProperty Name="IdTributaria" ColumnName="IdTributaria" />
+          <ScalarProperty Name="Salario" ColumnName="Salario" />
+          <ScalarProperty Name="FianzaPoliza" ColumnName="FianzaPoliza" />
+          <ScalarProperty Name="Probidad" ColumnName="Probidad" />
+          <ScalarProperty Name="Identificacion1" ColumnName="Identificacion1" />
+          <ScalarProperty Name="Identificacion2" ColumnName="Identificacion2" />
+          <ScalarProperty Name="PuestoNominal" ColumnName="PuestoNominal" />
+          <ScalarProperty Name="PreparacionAcademica" ColumnName="PreparacionAcademica" />
+          <ScalarProperty Name="Colegiado" ColumnName="Colegiado" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="PartidaPresupuesto" ColumnName="PartidaPresupuesto" />
+          <ScalarProperty Name="Banco" ColumnName="Banco" />
+          <ScalarProperty Name="CuentaBanco" ColumnName="CuentaBanco" />
+          <ScalarProperty Name="Planilla" ColumnName="Planilla" />
+          <ScalarProperty Name="Clasificacion" ColumnName="Clasificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmpleadoDispositivo">
+      <EntityTypeMapping TypeName="EmpresasDataDB1Model.EmpleadoDispositivo">
+        <MappingFragment StoreEntitySet="EmpleadoDispositivo">
+          <ScalarProperty Name="CodigoEmpleado" ColumnName="CodigoEmpleado" />
+          <ScalarProperty Name="IdDispositivo" ColumnName="IdDispositivo" />
+          <ScalarProperty Name="CodigoAcceso" ColumnName="CodigoAcceso" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmpleadoHorario">
+      <EntityTypeMapping TypeName="EmpresasDataDB1Model.EmpleadoHorario">
+        <MappingFragment StoreEntitySet="EmpleadoHorario">
+          <ScalarProperty Name="IdHorarioEmpleado" ColumnName="IdHorarioEmpleado" />
+          <ScalarProperty Name="IdCodigoEmpleado" ColumnName="IdCodigoEmpleado" />
+          <ScalarProperty Name="IdHorario" ColumnName="IdHorario" />
+          <ScalarProperty Name="FechaInicioHorario" ColumnName="FechaInicioHorario" />
+          <ScalarProperty Name="TipoHorario" ColumnName="TipoHorario" />
+          <ScalarProperty Name="CantidadTiempo" ColumnName="CantidadTiempo" />
+          <ScalarProperty Name="TipoTiempo" ColumnName="TipoTiempo" />
+          <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+          <ScalarProperty Name="FechaFinal" ColumnName="FechaFinal" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="NoCantidadTiempo" ColumnName="NoCantidadTiempo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EntradaSalida">
+      <EntityTypeMapping TypeName="EmpresasDataDB1Model.EntradaSalida">
+        <MappingFragment StoreEntitySet="EntradaSalida">
+          <ScalarProperty Name="IdEntradaSalida" ColumnName="IdEntradaSalida" />
+          <ScalarProperty Name="IdJornada" ColumnName="IdJornada" />
+          <ScalarProperty Name="IdHorario" ColumnName="IdHorario" />
+          <ScalarProperty Name="IdDiaSemana" ColumnName="IdDiaSemana" />
+          <ScalarProperty Name="CodigoEmpleado" ColumnName="CodigoEmpleado" />
+          <ScalarProperty Name="TipoOperacion" ColumnName="TipoOperacion" />
+          <ScalarProperty Name="TagOperacion" ColumnName="TagOperacion" />
+          <ScalarProperty Name="FaltaMarca" ColumnName="FaltaMarca" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Hora" ColumnName="Hora" />
+          <ScalarProperty Name="FormaCaptura" ColumnName="FormaCaptura" />
+          <ScalarProperty Name="IdJustificacion" ColumnName="IdJustificacion" />
+          <ScalarProperty Name="IdSupervisor" ColumnName="IdSupervisor" />
+          <ScalarProperty Name="UsuarioOpera" ColumnName="UsuarioOpera" />
+          <ScalarProperty Name="Discrepancia" ColumnName="Discrepancia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HorarioCampana">
+      <EntityTypeMapping TypeName="EmpresasDataDB1Model.HorarioCampana">
+        <MappingFragment StoreEntitySet="HorarioCampana">
+          <ScalarProperty Name="IdHorario" ColumnName="IdHorario" />
+          <ScalarProperty Name="Hora" ColumnName="Hora" />
+          <ScalarProperty Name="Duracion" ColumnName="Duracion" />
+          <ScalarProperty Name="Lunes" ColumnName="Lunes" />
+          <ScalarProperty Name="Martes" ColumnName="Martes" />
+          <ScalarProperty Name="Miercoles" ColumnName="Miercoles" />
+          <ScalarProperty Name="Jueves" ColumnName="Jueves" />
+          <ScalarProperty Name="Viernes" ColumnName="Viernes" />
+          <ScalarProperty Name="Sabado" ColumnName="Sabado" />
+          <ScalarProperty Name="Domingo" ColumnName="Domingo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HorarioDT">
+      <EntityTypeMapping TypeName="EmpresasDataDB1Model.HorarioDT">
+        <MappingFragment StoreEntitySet="HorarioDT">
+          <ScalarProperty Name="IdDia" ColumnName="IdDia" />
+          <ScalarProperty Name="IdCorrelaHorarioDia" ColumnName="IdCorrelaHorarioDia" />
+          <ScalarProperty Name="IdHorario" ColumnName="IdHorario" />
+          <ScalarProperty Name="SalidaDiaSig" ColumnName="SalidaDiaSig" />
+          <ScalarProperty Name="HoraEntrada" ColumnName="HoraEntrada" />
+          <ScalarProperty Name="ToleranciaAHoraE" ColumnName="ToleranciaAHoraE" />
+          <ScalarProperty Name="ToleranciaDHoraE" ColumnName="ToleranciaDHoraE" />
+          <ScalarProperty Name="HoraSalida" ColumnName="HoraSalida" />
+          <ScalarProperty Name="ToleranciaAHoraS" ColumnName="ToleranciaAHoraS" />
+          <ScalarProperty Name="ToleranciaDHoraS" ColumnName="ToleranciaDHoraS" />
+          <ScalarProperty Name="Almuerzo" ColumnName="Almuerzo" />
+          <ScalarProperty Name="TiempoAlmuerzo" ColumnName="TiempoAlmuerzo" />
+          <ScalarProperty Name="HoraITAlmuerzo" ColumnName="HoraITAlmuerzo" />
+          <ScalarProperty Name="HoraFTAlmuerzo" ColumnName="HoraFTAlmuerzo" />
+          <ScalarProperty Name="SalidaMatutino" ColumnName="SalidaMatutino" />
+          <ScalarProperty Name="EntradaMatutino" ColumnName="EntradaMatutino" />
+          <ScalarProperty Name="SalidaVespertino" ColumnName="SalidaVespertino" />
+          <ScalarProperty Name="EntradaVespertino" ColumnName="EntradaVespertino" />
+          <ScalarProperty Name="IniciaHorasExtras" ColumnName="IniciaHorasExtras" />
+          <ScalarProperty Name="IniciaHorasSimples" ColumnName="IniciaHorasSimples" />
+          <ScalarProperty Name="IniciaHorasDobles" ColumnName="IniciaHorasDobles" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HorarioHD">
+      <EntityTypeMapping TypeName="EmpresasDataDB1Model.HorarioHD">
+        <MappingFragment StoreEntitySet="HorarioHD">
+          <ScalarProperty Name="IdHorario" ColumnName="IdHorario" />
+          <ScalarProperty Name="NombreHorario" ColumnName="NombreHorario" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="TiempoMaxDentroOf" ColumnName="TiempoMaxDentroOf" />
+          <ScalarProperty Name="CodigoEnPunto" ColumnName="CodigoEnPunto" />
+          <ScalarProperty Name="DescansoMatituno" ColumnName="DescansoMatituno" />
+          <ScalarProperty Name="DescansoVespertino" ColumnName="DescansoVespertino" />
+          <ScalarProperty Name="MarcaAlimentacion" ColumnName="MarcaAlimentacion" />
+          <ScalarProperty Name="PosicionTurno1" ColumnName="PosicionTurno1" />
+          <ScalarProperty Name="PosicionTurno2" ColumnName="PosicionTurno2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HorarioRango">
+      <EntityTypeMapping TypeName="EmpresasDataDB1Model.HorarioRango">
+        <MappingFragment StoreEntitySet="HorarioRango">
+          <ScalarProperty Name="IdHorario" ColumnName="IdHorario" />
+          <ScalarProperty Name="IdDia" ColumnName="IdDia" />
+          <ScalarProperty Name="Rango" ColumnName="Rango" />
+          <ScalarProperty Name="EntradaJornadaA" ColumnName="EntradaJornadaA" />
+          <ScalarProperty Name="EntradaJornadaD" ColumnName="EntradaJornadaD" />
+          <ScalarProperty Name="SalidaMatutinoA" ColumnName="SalidaMatutinoA" />
+          <ScalarProperty Name="SalidaMatutinoD" ColumnName="SalidaMatutinoD" />
+          <ScalarProperty Name="EntradaMatutinoA" ColumnName="EntradaMatutinoA" />
+          <ScalarProperty Name="EntradaMatutinoD" ColumnName="EntradaMatutinoD" />
+          <ScalarProperty Name="SalidaAlmuerzoA" ColumnName="SalidaAlmuerzoA" />
+          <ScalarProperty Name="SalidaAlmuerzoD" ColumnName="SalidaAlmuerzoD" />
+          <ScalarProperty Name="EntradaAlmuerzoA" ColumnName="EntradaAlmuerzoA" />
+          <ScalarProperty Name="EntradaAlmuerzoD" ColumnName="EntradaAlmuerzoD" />
+          <ScalarProperty Name="SalidaVespertinoA" ColumnName="SalidaVespertinoA" />
+          <ScalarProperty Name="SalidaVespertinoD" ColumnName="SalidaVespertinoD" />
+          <ScalarProperty Name="EntradaVespertinoA" ColumnName="EntradaVespertinoA" />
+          <ScalarProperty Name="EntradaVespertinoD" ColumnName="EntradaVespertinoD" />
+          <ScalarProperty Name="SalidaJornadaA" ColumnName="SalidaJornadaA" />
+          <ScalarProperty Name="SalidaJornadaD" ColumnName="SalidaJornadaD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Incidencias">
+      <EntityTypeMapping TypeName="EmpresasDataDB1Model.Incidencias">
+        <MappingFragment StoreEntitySet="Incidencias">
+          <ScalarProperty Name="IdIncidencias" ColumnName="IdIncidencias" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Justificaciones">
+      <EntityTypeMapping TypeName="EmpresasDataDB1Model.Justificaciones">
+        <MappingFragment StoreEntitySet="Justificaciones">
+          <ScalarProperty Name="IdJustificacion" ColumnName="IdJustificacion" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="CodigoMigracion" ColumnName="CodigoMigracion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MotivoBaja">
+      <EntityTypeMapping TypeName="EmpresasDataDB1Model.MotivoBaja">
+        <MappingFragment StoreEntitySet="MotivoBaja">
+          <ScalarProperty Name="IdBaja" ColumnName="IdBaja" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Opciones">
+      <EntityTypeMapping TypeName="EmpresasDataDB1Model.Opciones">
+        <MappingFragment StoreEntitySet="Opciones">
+          <ScalarProperty Name="IdOpcion" ColumnName="IdOpcion" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Parent" ColumnName="Parent" />
+          <ScalarProperty Name="Menu" ColumnName="Menu" />
+          <ScalarProperty Name="Nuevo" ColumnName="Nuevo" />
+          <ScalarProperty Name="Editar" ColumnName="Editar" />
+          <ScalarProperty Name="Borrar" ColumnName="Borrar" />
+          <ScalarProperty Name="Generar" ColumnName="Generar" />
+          <ScalarProperty Name="Confirmacion" ColumnName="Confirmacion" />
+          <ScalarProperty Name="Formulario" ColumnName="Formulario" />
+          <ScalarProperty Name="IdLunch" ColumnName="IdLunch" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Planillas">
+      <EntityTypeMapping TypeName="EmpresasDataDB1Model.Planillas">
+        <MappingFragment StoreEntitySet="Planillas">
+          <ScalarProperty Name="IdPlanilla" ColumnName="IdPlanilla" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PreAutorizaHorasExtras">
+      <EntityTypeMapping TypeName="EmpresasDataDB1Model.PreAutorizaHorasExtras">
+        <MappingFragment StoreEntitySet="PreAutorizaHorasExtras">
+          <ScalarProperty Name="IdAutorizacion" ColumnName="IdAutorizacion" />
+          <ScalarProperty Name="CodigoEmpleado" ColumnName="CodigoEmpleado" />
+          <ScalarProperty Name="MotivoHoraExtra" ColumnName="MotivoHoraExtra" />
+          <ScalarProperty Name="Autoriza" ColumnName="Autoriza" />
+          <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+          <ScalarProperty Name="FechaFinal" ColumnName="FechaFinal" />
+          <ScalarProperty Name="HoraInicio" ColumnName="HoraInicio" />
+          <ScalarProperty Name="HoraFinal" ColumnName="HoraFinal" />
+          <ScalarProperty Name="Procesado" ColumnName="Procesado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Puesto">
+      <EntityTypeMapping TypeName="EmpresasDataDB1Model.Puesto">
+        <MappingFragment StoreEntitySet="Puesto">
+          <ScalarProperty Name="IdPuesto" ColumnName="IdPuesto" />
+          <ScalarProperty Name="IdDepto" ColumnName="IdDepto" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="CodigoMigracion" ColumnName="CodigoMigracion" />
+          <ScalarProperty Name="CodigoEnPunto" ColumnName="CodigoEnPunto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Seguridad">
+      <EntityTypeMapping TypeName="EmpresasDataDB1Model.Seguridad">
+        <MappingFragment StoreEntitySet="Seguridad">
+          <ScalarProperty Name="IdSeguridad" ColumnName="IdSeguridad" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="IdOpcion" ColumnName="IdOpcion" />
+          <ScalarProperty Name="Nuevo" ColumnName="Nuevo" />
+          <ScalarProperty Name="Editar" ColumnName="Editar" />
+          <ScalarProperty Name="Borrar" ColumnName="Borrar" />
+          <ScalarProperty Name="Generar" ColumnName="Generar" />
+          <ScalarProperty Name="Confirmacion" ColumnName="Confirmacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SeguridadDatos">
+      <EntityTypeMapping TypeName="EmpresasDataDB1Model.SeguridadDatos">
+        <MappingFragment StoreEntitySet="SeguridadDatos">
+          <ScalarProperty Name="IdSeguridad" ColumnName="IdSeguridad" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+          <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="EmpresasDataDB1Model.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TablasDT">
+      <EntityTypeMapping TypeName="EmpresasDataDB1Model.TablasDT">
+        <MappingFragment StoreEntitySet="TablasDT">
+          <ScalarProperty Name="IdCampo" ColumnName="IdCampo" />
+          <ScalarProperty Name="IdTabla" ColumnName="IdTabla" />
+          <ScalarProperty Name="CorrelaTabla" ColumnName="CorrelaTabla" />
+          <ScalarProperty Name="NombreCampo" ColumnName="NombreCampo" />
+          <ScalarProperty Name="TipoDato" ColumnName="TipoDato" />
+          <ScalarProperty Name="Longitud" ColumnName="Longitud" />
+          <ScalarProperty Name="Nulo" ColumnName="Nulo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TablasHD">
+      <EntityTypeMapping TypeName="EmpresasDataDB1Model.TablasHD">
+        <MappingFragment StoreEntitySet="TablasHD">
+          <ScalarProperty Name="IdTabla" ColumnName="IdTabla" />
+          <ScalarProperty Name="NombreTabla" ColumnName="NombreTabla" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoJustificaciones">
+      <EntityTypeMapping TypeName="EmpresasDataDB1Model.TipoJustificaciones">
+        <MappingFragment StoreEntitySet="TipoJustificaciones">
+          <ScalarProperty Name="IdTipoJustificacion" ColumnName="IdTipoJustificacion" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UsuariosSys">
+      <EntityTypeMapping TypeName="EmpresasDataDB1Model.UsuariosSys">
+        <MappingFragment StoreEntitySet="UsuariosSys">
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ZonaTiempoDT">
+      <EntityTypeMapping TypeName="EmpresasDataDB1Model.ZonaTiempoDT">
+        <MappingFragment StoreEntitySet="ZonaTiempoDT">
+          <ScalarProperty Name="IdZonaTiempo" ColumnName="IdZonaTiempo" />
+          <ScalarProperty Name="Intervalo" ColumnName="Intervalo" />
+          <ScalarProperty Name="HoraInicial" ColumnName="HoraInicial" />
+          <ScalarProperty Name="HoraFinal" ColumnName="HoraFinal" />
+          <ScalarProperty Name="Lunes" ColumnName="Lunes" />
+          <ScalarProperty Name="Martes" ColumnName="Martes" />
+          <ScalarProperty Name="Miercoles" ColumnName="Miercoles" />
+          <ScalarProperty Name="Jueves" ColumnName="Jueves" />
+          <ScalarProperty Name="Viernes" ColumnName="Viernes" />
+          <ScalarProperty Name="Sabado" ColumnName="Sabado" />
+          <ScalarProperty Name="Domingo" ColumnName="Domingo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ZonaTiempoHD">
+      <EntityTypeMapping TypeName="EmpresasDataDB1Model.ZonaTiempoHD">
+        <MappingFragment StoreEntitySet="ZonaTiempoHD">
+          <ScalarProperty Name="IdZonaTiempo" ColumnName="IdZonaTiempo" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AutorizaHorasExtras">
+      <EntityTypeMapping TypeName="EmpresasDataDB1Model.AutorizaHorasExtras">
+        <MappingFragment StoreEntitySet="AutorizaHorasExtras">
+          <ScalarProperty Name="IdAutorizacion" ColumnName="IdAutorizacion" />
+          <ScalarProperty Name="CodigoEmpleado" ColumnName="CodigoEmpleado" />
+          <ScalarProperty Name="MotivoHoraExtra" ColumnName="MotivoHoraExtra" />
+          <ScalarProperty Name="Autoriza" ColumnName="Autoriza" />
+          <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+          <ScalarProperty Name="FechaFinal" ColumnName="FechaFinal" />
+          <ScalarProperty Name="tothein" ColumnName="tothein" />
+          <ScalarProperty Name="totheout" ColumnName="totheout" />
+          <ScalarProperty Name="tothe" ColumnName="tothe" />
+          <ScalarProperty Name="tothesimples" ColumnName="tothesimples" />
+          <ScalarProperty Name="tothedobles" ColumnName="tothedobles" />
+          <ScalarProperty Name="tothemixtas" ColumnName="tothemixtas" />
+          <ScalarProperty Name="totheinreal" ColumnName="totheinreal" />
+          <ScalarProperty Name="totheoutreal" ColumnName="totheoutreal" />
+          <ScalarProperty Name="tothereal" ColumnName="tothereal" />
+          <ScalarProperty Name="tothesimplesreal" ColumnName="tothesimplesreal" />
+          <ScalarProperty Name="tothedoblesreal" ColumnName="tothedoblesreal" />
+          <ScalarProperty Name="tothemixtasreal" ColumnName="tothemixtasreal" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="fechaingreso" ColumnName="fechaingreso" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CambioHorario">
+      <EntityTypeMapping TypeName="EmpresasDataDB1Model.CambioHorario">
+        <MappingFragment StoreEntitySet="CambioHorario">
+          <ScalarProperty Name="IdCambio" ColumnName="IdCambio" />
+          <ScalarProperty Name="CodigoEmpleado" ColumnName="CodigoEmpleado" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Hora" ColumnName="Hora" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EntradaSalidaBlanco">
+      <EntityTypeMapping TypeName="EmpresasDataDB1Model.EntradaSalidaBlanco">
+        <MappingFragment StoreEntitySet="EntradaSalidaBlanco">
+          <ScalarProperty Name="IdEntradaSalida" ColumnName="IdEntradaSalida" />
+          <ScalarProperty Name="IdJornada" ColumnName="IdJornada" />
+          <ScalarProperty Name="IdHorario" ColumnName="IdHorario" />
+          <ScalarProperty Name="IdDiaSemana" ColumnName="IdDiaSemana" />
+          <ScalarProperty Name="CodigoEmpleado" ColumnName="CodigoEmpleado" />
+          <ScalarProperty Name="TipoOperacion" ColumnName="TipoOperacion" />
+          <ScalarProperty Name="TagOperacion" ColumnName="TagOperacion" />
+          <ScalarProperty Name="FaltaMarca" ColumnName="FaltaMarca" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Hora" ColumnName="Hora" />
+          <ScalarProperty Name="FormaCaptura" ColumnName="FormaCaptura" />
+          <ScalarProperty Name="IdJustificacion" ColumnName="IdJustificacion" />
+          <ScalarProperty Name="IdSupervisor" ColumnName="IdSupervisor" />
+          <ScalarProperty Name="UsuarioOpera" ColumnName="UsuarioOpera" />
+          <ScalarProperty Name="Discrepancia" ColumnName="Discrepancia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MachoteCartas">
+      <EntityTypeMapping TypeName="EmpresasDataDB1Model.MachoteCartas">
+        <MappingFragment StoreEntitySet="MachoteCartas">
+          <ScalarProperty Name="IdMachote" ColumnName="IdMachote" />
+          <ScalarProperty Name="TipoCarta" ColumnName="TipoCarta" />
+          <ScalarProperty Name="NombreMachote" ColumnName="NombreMachote" />
+          <ScalarProperty Name="CuerpodelMachote" ColumnName="CuerpodelMachote" />
+          <ScalarProperty Name="Pais" ColumnName="Pais" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="preEntradaSalida">
+      <EntityTypeMapping TypeName="EmpresasDataDB1Model.preEntradaSalida">
+        <MappingFragment StoreEntitySet="preEntradaSalida">
+          <ScalarProperty Name="IdEntradaSalida" ColumnName="IdEntradaSalida" />
+          <ScalarProperty Name="IdJornada" ColumnName="IdJornada" />
+          <ScalarProperty Name="IdHorario" ColumnName="IdHorario" />
+          <ScalarProperty Name="IdDiaSemana" ColumnName="IdDiaSemana" />
+          <ScalarProperty Name="CodigoEmpleado" ColumnName="CodigoEmpleado" />
+          <ScalarProperty Name="TipoOperacion" ColumnName="TipoOperacion" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Hora" ColumnName="Hora" />
+          <ScalarProperty Name="FormaCaptura" ColumnName="FormaCaptura" />
+          <ScalarProperty Name="IdJustificacion" ColumnName="IdJustificacion" />
+          <ScalarProperty Name="IdSupervisor" ColumnName="IdSupervisor" />
+          <ScalarProperty Name="UsuarioOpera" ColumnName="UsuarioOpera" />
+          <ScalarProperty Name="Discrepancia" ColumnName="Discrepancia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="preparaMarcas">
+      <EntityTypeMapping TypeName="EmpresasDataDB1Model.preparaMarcas">
+        <MappingFragment StoreEntitySet="preparaMarcas">
+          <ScalarProperty Name="IdMarcacion" ColumnName="IdMarcacion" />
+          <ScalarProperty Name="IdDispositivo" ColumnName="IdDispositivo" />
+          <ScalarProperty Name="CodigoEmpleado" ColumnName="CodigoEmpleado" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Hora" ColumnName="Hora" />
+          <ScalarProperty Name="Procesado" ColumnName="Procesado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RepAusencias">
+      <EntityTypeMapping TypeName="EmpresasDataDB1Model.RepAusencias">
+        <MappingFragment StoreEntitySet="RepAusencias">
+          <ScalarProperty Name="CodigoEmpleado" ColumnName="CodigoEmpleado" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="IdJustificacion" ColumnName="IdJustificacion" />
+          <ScalarProperty Name="CodigoEmpleadoAuto" ColumnName="CodigoEmpleadoAuto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RepEntradaSalida">
+      <EntityTypeMapping TypeName="EmpresasDataDB1Model.RepEntradaSalida">
+        <MappingFragment StoreEntitySet="RepEntradaSalida">
+          <ScalarProperty Name="CodigoEmpleado" ColumnName="CodigoEmpleado" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="EntradaJornada1" ColumnName="EntradaJornada1" />
+          <ScalarProperty Name="SalidaJornada1" ColumnName="SalidaJornada1" />
+          <ScalarProperty Name="EntradaJornada2" ColumnName="EntradaJornada2" />
+          <ScalarProperty Name="SalidaJornada2" ColumnName="SalidaJornada2" />
+          <ScalarProperty Name="EntradaJornada3" ColumnName="EntradaJornada3" />
+          <ScalarProperty Name="SalidaJornada3" ColumnName="SalidaJornada3" />
+          <ScalarProperty Name="EntradaJornada4" ColumnName="EntradaJornada4" />
+          <ScalarProperty Name="SalidaJornada4" ColumnName="SalidaJornada4" />
+          <ScalarProperty Name="TotalHorasDia" ColumnName="TotalHorasDia" />
+          <ScalarProperty Name="Discrepancia" ColumnName="Discrepancia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RepEntradaTarde">
+      <EntityTypeMapping TypeName="EmpresasDataDB1Model.RepEntradaTarde">
+        <MappingFragment StoreEntitySet="RepEntradaTarde">
+          <ScalarProperty Name="CodigoEmpleado" ColumnName="CodigoEmpleado" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="HrEntradaJornada1" ColumnName="HrEntradaJornada1" />
+          <ScalarProperty Name="EntradaJornada1" ColumnName="EntradaJornada1" />
+          <ScalarProperty Name="MinTarde1" ColumnName="MinTarde1" />
+          <ScalarProperty Name="HrEntradaJornada2" ColumnName="HrEntradaJornada2" />
+          <ScalarProperty Name="EntradaJornada2" ColumnName="EntradaJornada2" />
+          <ScalarProperty Name="MinTarde2" ColumnName="MinTarde2" />
+          <ScalarProperty Name="HrEntradaJornada3" ColumnName="HrEntradaJornada3" />
+          <ScalarProperty Name="EntradaJornada3" ColumnName="EntradaJornada3" />
+          <ScalarProperty Name="MinTarde3" ColumnName="MinTarde3" />
+          <ScalarProperty Name="HrEntradaJornada4" ColumnName="HrEntradaJornada4" />
+          <ScalarProperty Name="EntradaJornada4" ColumnName="EntradaJornada4" />
+          <ScalarProperty Name="MinTarde4" ColumnName="MinTarde4" />
+          <ScalarProperty Name="TotalMinEntTarde" ColumnName="TotalMinEntTarde" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RepHoraExtra">
+      <EntityTypeMapping TypeName="EmpresasDataDB1Model.RepHoraExtra">
+        <MappingFragment StoreEntitySet="RepHoraExtra">
+          <ScalarProperty Name="CodigoEmpleado" ColumnName="CodigoEmpleado" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="HoraEntradaJ1" ColumnName="HoraEntradaJ1" />
+          <ScalarProperty Name="HoraSalidaJ1" ColumnName="HoraSalidaJ1" />
+          <ScalarProperty Name="HoraEntradaJ2" ColumnName="HoraEntradaJ2" />
+          <ScalarProperty Name="HoraSalidaJ2" ColumnName="HoraSalidaJ2" />
+          <ScalarProperty Name="HoraEntradaJ3" ColumnName="HoraEntradaJ3" />
+          <ScalarProperty Name="HoraSalidaJ3" ColumnName="HoraSalidaJ3" />
+          <ScalarProperty Name="HoraEntradaJ4" ColumnName="HoraEntradaJ4" />
+          <ScalarProperty Name="HoraSalidaJ4" ColumnName="HoraSalidaJ4" />
+          <ScalarProperty Name="HoraExtraNormal" ColumnName="HoraExtraNormal" />
+          <ScalarProperty Name="HoraExtraNormalNoLaboral" ColumnName="HoraExtraNormalNoLaboral" />
+          <ScalarProperty Name="HoraExtraDiaFeriado" ColumnName="HoraExtraDiaFeriado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RepIncidenciasGen">
+      <EntityTypeMapping TypeName="EmpresasDataDB1Model.RepIncidenciasGen">
+        <MappingFragment StoreEntitySet="RepIncidenciasGen">
+          <ScalarProperty Name="CodigoEmpleado" ColumnName="CodigoEmpleado" />
+          <ScalarProperty Name="TipoEntradaSalida" ColumnName="TipoEntradaSalida" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Hora" ColumnName="Hora" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RepMarcasReloj">
+      <EntityTypeMapping TypeName="EmpresasDataDB1Model.RepMarcasReloj">
+        <MappingFragment StoreEntitySet="RepMarcasReloj">
+          <ScalarProperty Name="CodigoEmpleado" ColumnName="CodigoEmpleado" />
+          <ScalarProperty Name="CodigoAcceso" ColumnName="CodigoAcceso" />
+          <ScalarProperty Name="NombreEmpleado" ColumnName="NombreEmpleado" />
+          <ScalarProperty Name="IdDepto" ColumnName="IdDepto" />
+          <ScalarProperty Name="NombreDepto" ColumnName="NombreDepto" />
+          <ScalarProperty Name="IdPuesto" ColumnName="IdPuesto" />
+          <ScalarProperty Name="NombrePuesto" ColumnName="NombrePuesto" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Hora" ColumnName="Hora" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RepMovNomina">
+      <EntityTypeMapping TypeName="EmpresasDataDB1Model.RepMovNomina">
+        <MappingFragment StoreEntitySet="RepMovNomina">
+          <ScalarProperty Name="CodigoEmpleado" ColumnName="CodigoEmpleado" />
+          <ScalarProperty Name="IdJornada" ColumnName="IdJornada" />
+          <ScalarProperty Name="TotalJornada" ColumnName="TotalJornada" />
+          <ScalarProperty Name="TotalTEDiaNormal" ColumnName="TotalTEDiaNormal" />
+          <ScalarProperty Name="TotalTEDiaDescanso" ColumnName="TotalTEDiaDescanso" />
+          <ScalarProperty Name="TotalTEDiaAsueto" ColumnName="TotalTEDiaAsueto" />
+          <ScalarProperty Name="TotalFaltas" ColumnName="TotalFaltas" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RepSalidaAnticipada">
+      <EntityTypeMapping TypeName="EmpresasDataDB1Model.RepSalidaAnticipada">
+        <MappingFragment StoreEntitySet="RepSalidaAnticipada">
+          <ScalarProperty Name="CodigoEmpleado" ColumnName="CodigoEmpleado" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="HoraSalidaJornada1" ColumnName="HoraSalidaJornada1" />
+          <ScalarProperty Name="MinAntiJornada1" ColumnName="MinAntiJornada1" />
+          <ScalarProperty Name="HoraSalidaJornada2" ColumnName="HoraSalidaJornada2" />
+          <ScalarProperty Name="MinAntiJornada2" ColumnName="MinAntiJornada2" />
+          <ScalarProperty Name="HoraSalidaJornada3" ColumnName="HoraSalidaJornada3" />
+          <ScalarProperty Name="MinAntiJornada3" ColumnName="MinAntiJornada3" />
+          <ScalarProperty Name="HoraSalidaJornada4" ColumnName="HoraSalidaJornada4" />
+          <ScalarProperty Name="MinAntiJornada4" ColumnName="MinAntiJornada4" />
+          <ScalarProperty Name="TotalMinAnticipados" ColumnName="TotalMinAnticipados" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_MarcasRelojes">
+      <EntityTypeMapping TypeName="EmpresasDataDB1Model.Tbl_MarcasRelojes">
+        <MappingFragment StoreEntitySet="Tbl_MarcasRelojes">
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Dispositivo" ColumnName="Dispositivo" />
+          <ScalarProperty Name="CodEmpleado" ColumnName="CodEmpleado" />
+          <ScalarProperty Name="CodBiometrica" ColumnName="CodBiometrica" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="hr" ColumnName="hr" />
+          <ScalarProperty Name="mi" ColumnName="mi" />
+          <ScalarProperty Name="sg" ColumnName="sg" />
+          <ScalarProperty Name="Depto" ColumnName="Depto" />
+          <ScalarProperty Name="Puesto" ColumnName="Puesto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

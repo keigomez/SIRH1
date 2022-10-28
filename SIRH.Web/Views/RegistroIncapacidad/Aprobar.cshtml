@@ -1,0 +1,184 @@
+﻿@model SIRH.Web.ViewModels.FormularioRegistroIncapacidadVM
+
+@{
+    ViewBag.Title = "Aprobar Incapacidad";
+    Layout = "~/Views/Shared/RegistroIncapacidad.cshtml";
+}
+
+<blockquote><h3>Detalle de Incapacidad</h3></blockquote>
+<br />
+@using (Ajax.BeginForm("Aprobar", "RegistroIncapacidad", new { codigo = Int32.Parse(Request.QueryString["codigo"]) }, new AjaxOptions
+{
+    HttpMethod = "Post",
+    UpdateTargetId = "dvResultadoBusqueda",
+    InsertionMode = InsertionMode.Replace,
+    OnComplete = "CompleteEditarCaucion",
+    OnBegin = "BeginEditarCaucion"
+}))
+{
+    <div class="card">
+        <div class="card-header text-left">
+            <b>Incapacidad # @Model.Incapacidad.IdEntidad</b>
+        </div>
+        <div class="card-body">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <span>
+                        <b>Funcionario: </b> @Model.Funcionario.Cedula - @Model.Funcionario.Nombre @Model.Funcionario.PrimerApellido @Model.Funcionario.SegundoApellido
+                        @Html.HiddenFor(model => model.Funcionario.Cedula)
+                        @Html.HiddenFor(model => model.Funcionario.Nombre)
+                        @Html.HiddenFor(model => model.Funcionario.PrimerApellido)
+                        @Html.HiddenFor(model => model.Funcionario.SegundoApellido)
+                    </span>
+                </li>
+                <li class="list-group-item">
+                    <span>
+                        <b>@Html.Label("Núm.Expediente"): </b> @Model.Expediente.NumeroExpediente
+                        @Html.HiddenFor(model => model.Expediente.NumeroExpediente)
+                    </span>
+                </li>
+                <li class="list-group-item">
+                    <span>
+                        <b>@Html.LabelFor(model => model.Incapacidad.CodIncapacidad): </b> @Model.Incapacidad.CodIncapacidad
+                        @Html.HiddenFor(model => model.Incapacidad.CodIncapacidad)
+                        @Html.HiddenFor(model => model.Incapacidad.IdEntidad)
+                    </span>
+                </li>
+                <li class="list-group-item">
+                    <span>
+                        <b>@Html.LabelFor(model => model.EntidadMedica.DescripcionEntidadMedica): </b>@Model.EntidadMedica.DescripcionEntidadMedica
+                        @Html.HiddenFor(model => model.EntidadMedica.IdEntidad)
+                        @Html.HiddenFor(model => model.EntidadMedica.DescripcionEntidadMedica)
+                        @Html.HiddenFor(model => model.TipoIncapacidad.EntidadMedica.IdEntidad)
+                        @Html.HiddenFor(model => model.TipoIncapacidad.EntidadMedica.DescripcionEntidadMedica)
+                    </span>
+                </li>
+                <li class="list-group-item">
+                    <span>
+                        <b>@Html.LabelFor(model => model.TipoIncapacidad.DescripcionTipoIncapacidad): </b>@Model.TipoIncapacidad.DescripcionTipoIncapacidad
+                        @Html.HiddenFor(model => model.TipoIncapacidad.IdEntidad)
+                        @Html.HiddenFor(model => model.TipoIncapacidad.DescripcionTipoIncapacidad)
+                        @Html.HiddenFor(model => model.Incapacidad.TipoIncapacidad.IdEntidad)
+                        @Html.HiddenFor(model => model.Incapacidad.TipoIncapacidad.DescripcionTipoIncapacidad)
+                        @Html.HiddenFor(model => model.Incapacidad.IndProrroga)
+                    </span>
+                </li>
+
+                <li class="list-group-item">
+                    <span>
+                        <b>@Html.LabelFor(model => model.Incapacidad.FecRige): </b>@Html.Encode(Model.Incapacidad.FecRige.ToShortDateString())
+                        @Html.HiddenFor(model => model.Incapacidad.FecRige)
+                    </span>
+                </li>
+                <li class="list-group-item">
+                    <span>
+                        <b>@Html.LabelFor(model => model.Incapacidad.FecVence): </b>@Html.Encode(Model.Incapacidad.FecVence.ToShortDateString())
+                        @Html.HiddenFor(model => model.Incapacidad.FecVence)
+                    </span>
+                </li>
+                <li class="list-group-item">
+                    <span>
+                        <b>@Html.LabelFor(model => model.Incapacidad.DetalleEstadoIncapacidad): </b>@Model.Incapacidad.DetalleEstadoIncapacidad
+                        @Html.HiddenFor(model => model.Incapacidad.DetalleEstadoIncapacidad)
+                    </span>
+                </li>
+                <li class="list-group-item">
+                    <span>
+                        <b>@Html.LabelFor(model => model.Incapacidad.ObsIncapacidad): </b>@Model.Incapacidad.ObsIncapacidad
+                        @Html.HiddenFor(model => model.Incapacidad.ObsIncapacidad)
+                    </span>
+                </li>
+                <li class="list-group-item">
+
+                    <span>
+                        <b>@Html.LabelFor(model => model.Incapacidad.MtoSalario): </b>@Html.Encode(Model.Incapacidad.MtoSalario.ToString("#,##0.00"))
+                        @Html.HiddenFor(model => model.Incapacidad.MtoSalario)
+                        @Html.HiddenFor(model => model.Incapacidad.MontoTotalSubsidio)
+                        @Html.HiddenFor(model => model.Incapacidad.MontoTotalRebaja)
+                    </span>
+                </li>
+            </ul>
+            <br />
+            <table class="table table-hover">
+                <thead class="thead-light">
+                    <tr class="text-center">
+                        <th>Día</th>
+                        <th>Por. Subsidio</th>
+                        <th>Mto Subsidio</th>
+                        <th>Por. Rebajo</th>
+                        <th>Mto Rebajo</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    @{
+                        int count = Model.Incapacidad.Detalles.Count;
+                        for (int i = 0; i < count; i++)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(model => model.Incapacidad.Detalles[i].FecRige)
+                                    @Html.HiddenFor(model => Model.Incapacidad.Detalles[i].FecRige)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => model.Incapacidad.Detalles[i].PorSubsidio)
+                                    @Html.HiddenFor(model => Model.Incapacidad.Detalles[i].PorSubsidio)
+                                </td>
+                                <td>
+                                    @Html.Encode(Model.Incapacidad.Detalles[i].MtoSubsidio.ToString("#,##0.00"))
+                                    @Html.HiddenFor(model => Model.Incapacidad.Detalles[i].MtoSubsidio)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => model.Incapacidad.Detalles[i].PorRebaja)
+                                    @Html.HiddenFor(model => Model.Incapacidad.Detalles[i].PorRebaja)
+                                </td>
+                                <td>
+                                    @Html.Encode(Model.Incapacidad.Detalles[i].MtoRebaja.ToString("#,##0.00"))
+                                    @Html.HiddenFor(model => Model.Incapacidad.Detalles[i].MtoRebaja)
+                                </td>
+                            </tr>
+                        }
+                        <tr>
+                            <td><b>Cantidad de Días: </b> @Html.Encode(count)</td>
+                            <td><b>Total Subsidio</b></td>
+                            <td>
+                                <b>@Html.Encode(Model.Incapacidad.MontoTotalSubsidio.ToString("#,##0.00"))</b>
+                                @Html.HiddenFor(model => Model.Incapacidad.MontoTotalSubsidio)
+                            </td>
+                            <td><b>Total Rebaja</b></td>
+                            <td>
+                                <b> @Html.Encode(Model.Incapacidad.MontoTotalRebaja.ToString("#,##0.00")) </b>
+                                @Html.HiddenFor(model => Model.Incapacidad.MontoTotalRebaja)
+                            </td>
+                        </tr>
+                    }
+
+                    @*@{
+                            foreach (var item in Model.Incapacidad.Detalles)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.AttributeEncode(item.FecRige)
+                                        @Html.HiddenFor(model => model.Incapacidad.Detalles.IndexOf(item).FecRige)
+                                    </td>
+                                </tr>
+                            }
+                        }*@
+                </tbody>
+            </table>
+
+            <button class="btn btn-success" type="submit"><i class="fa fa fa-check-square-o"></i> Aprobar Incapacidad</button>
+            <div id="preloader" class="loader float-right" style="display: none"></div>
+        </div>
+    </div>
+                        }
+<br />
+
+<div id="dvResultadoBusqueda"></div>
+<br />
+
+<a href="javascript:history.back()" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Regresar</a>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+<script src="~/Scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/EditCaucion.js"></script>

@@ -1,0 +1,139 @@
+﻿@model SIRH.Web.ViewModels.BusquedaAccionPersonalVM
+@{
+    using (Ajax.BeginForm("SearchProrroga", "AccionPersonal", new AjaxOptions
+    {
+        UpdateTargetId = "dvResultadoBusqueda",
+        HttpMethod = "POST",
+        OnComplete = "CompleteSearch",
+        OnBegin = "BeginSearch"
+    }))
+    {
+        Html.ValidationSummary(true);
+        <table class="table table-hover">
+            <thead class="thead-light">
+                <tr>
+                    <th></th>
+                    <th>Cédula</th>
+                    <th>Nombre</th>
+                    <th>Acción</th>
+                    <th>Tipo</th>
+                    <th>Estado</th>
+                    <th>Fecha Rige</th>
+                    <th>Fecha Vence</th>
+                    <th>Fecha Prórroga</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+
+                    int count = Model.Acciones.Count;
+                    for (int i = 0; i < count; i++)
+                    {
+                        <tr>
+                            <td>
+                                @Html.CheckBoxFor(model => model.Acciones[i].Seleccionado)
+                                @Html.HiddenFor(model => model.Acciones[i].Seleccionado)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Acciones[i].Funcionario.Cedula)
+                                @Html.HiddenFor(model => model.Acciones[i].Funcionario.IdEntidad)
+                                @Html.HiddenFor(model => model.Acciones[i].Funcionario.Cedula)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Acciones[i].Funcionario.Nombre)
+                                @Html.DisplayFor(model => model.Acciones[i].Funcionario.PrimerApellido)
+                                @Html.DisplayFor(model => model.Acciones[i].Funcionario.SegundoApellido)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Acciones[i].Accion.NumAccion)
+                                @Html.HiddenFor(model => model.Acciones[i].Accion.NumAccion)
+                                @Html.HiddenFor(model => model.Acciones[i].Accion.Observaciones)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Acciones[i].Accion.TipoAccion.DesTipoAccion)
+                                @Html.HiddenFor(model => model.Acciones[i].Accion.TipoAccion.DesTipoAccion)
+                            </td>
+                            <td>
+                                @Html.Encode(Model.Acciones[i].Accion.FecRige.ToShortDateString())
+                                @Html.HiddenFor(model => model.Acciones[i].Accion.FecRige)
+                            </td>
+                            <td>
+                                @Html.Encode((Model.Acciones[i].Accion.FecVence.HasValue) ? Convert.ToDateTime(Model.Acciones[i].Accion.FecVence).ToShortDateString() : "")
+                                @Html.HiddenFor(model => model.Acciones[i].Accion.FecVence)
+                            </td>
+                            <td>
+                                @Html.Encode(Convert.ToDateTime(Model.Acciones[i].Accion.FecUltRige).ToShortDateString())
+                                @Html.HiddenFor(model => model.Acciones[i].Accion.FecUltRige)
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.Acciones[i].Accion.FecUltVence, "{0:dd/MM/yyyy}", new { @class = "form-control", @id = "FecUltVence", @readonly = "readonly" })
+                                @Html.HiddenFor(model => model.Acciones[i].Accion.FecUltVence)
+                            </td>
+                        </tr>
+                    }
+
+                    @*foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.CheckBoxFor(model => item.Seleccionado)
+                                @Html.HiddenFor(item.Seleccionado)
+                            </td>
+                            <td>
+                                @Html.AttributeEncode(item.Funcionario.Cedula)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Funcionario.Cedula)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Funcionario.Nombre)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Funcionario.PrimerApellido)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Funcionario.SegundoApellido)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Funcionario.SegundoApellido)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Accion.IdEntidad)
+                            </td>
+
+                            <td>
+                                @item.Funcionario.Nombre @item.Funcionario.PrimerApellido @item.Funcionario.SegundoApellido
+                            </td>
+                            <td>
+                                @Html.AttributeEncode(item.Accion.NumAccion)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Accion.NumAccion)
+                            </td>
+                            <td>
+                                @Html.AttributeEncode(item.Accion.TipoAccion.DesTipoAccion)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Accion.TipoAccion.DesTipoAccion)
+                            </td>
+                            <td>
+                                @Html.AttributeEncode(item.Accion.Estado.DesEstadoBorrador)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Accion.Estado.DesEstadoBorrador)
+                            </td>
+                            <td>
+                                @Html.AttributeEncode(item.Accion.FecRige.ToShortDateString())
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Accion.FecRige)
+                            </td>
+                            <td>
+                                @Html.AttributeEncode((item.Accion.FecVence.HasValue) ? Convert.ToDateTime(item.Accion.FecVence).ToShortDateString() : "")
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Accion.FecVence)
+                            </td>
+                            <td>
+                                @Html.AttributeEncode(Convert.ToDateTime(item.Accion.FecUltRige).ToShortDateString())
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Accion.FecUltRige)
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => item.Accion.FecUltVence, "{0:dd/MM/yyyy}", new { @class = "form-control", @id = "FecUltVence", @readonly = "readonly" })
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Accion.FecUltVence)
+                            </td>
+                        </tr>
+                    }*@
+                    <tr>
+                        <td colspan="7"></td>
+                    </tr>
+                    <tr></tr>
+                }
+            </tbody>
+        </table>
+        <div class="row">
+            <div class="form-group col-4">
+                <input id="btnGuardarProrroga" class="btn btn-secondary" name="SubmitButton" type="submit" value="Guardar Prórroga" />
+            </div>
+        </div>
+    }
+}

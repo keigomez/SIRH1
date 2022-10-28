@@ -1,0 +1,130 @@
+﻿@model SIRH.Web.ViewModels.FormularioNombramientoVM
+
+@{
+
+    using (Html.BeginForm(Ajax.BeginForm("GuardarNombramiento", "Nombramiento", new AjaxOptions
+    {
+        HttpMethod = "POST",
+        OnBegin = "onBegin"
+    })))
+    {
+        <div class="card">
+            <div class="card-header">
+                Datos del nombramiento
+            </div>
+            <div class="card-body">
+                <div class="alert alert-warning">
+                    <strong><i class="fa fa-warning"></i> Está apunto de nombrar al funcionario @(Model.Funcionario.Nombre + " " + Model.Funcionario.PrimerApellido + " " + Model.Funcionario.SegundoApellido) (@Model.Funcionario.Cedula) en el puesto # @Model.Puesto.CodPuesto</strong>
+                </div>
+                <div class="row">
+                    <div class="form-group col-6">
+                        N° Oficio
+                        <span>:</span>
+                        @Html.TextBoxFor(model => model.CodOficio, new { @id = "NumeroOficio", @class = "form-control" })
+                        @Html.HiddenFor(model => model.CodOficio)
+                    </div>
+                </div>
+                <div class="row" id="divMovimientoPuesto">
+                    <div class="form-group col-6">
+                        @Html.LabelFor(model => model.MotivoSeleccionado)
+                        <span>:</span>
+                        @Html.DropDownListFor(model => model.MotivoSeleccionado, Model.MotivosMovimiento, "Seleccione...", new { @id = "MotivoVacante", @onchange = "return checkNombramiento(this);", @class = "form-control" })
+                        @Html.HiddenFor(model => model.MotivoSeleccionado, new { @id = "setMotivo" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-6">
+                        @Html.LabelFor(model => model.Nombramiento.FecRige)
+                        <span>:</span>
+                        @Html.TextBoxFor(model => model.Nombramiento.FecRige, new { @id = "FechaMovimiento", @class = "form-control", @readonly = "readonly" })
+                        @Html.HiddenFor(model => model.Nombramiento.FecRige)
+                    </div>
+                </div>
+                <div class="row" id="divFechaVencimiento">
+                    <div class="form-group col-6">
+                        @Html.LabelFor(model => model.Nombramiento.FecVence)
+                        <span>:</span>
+                        @Html.TextBoxFor(model => model.Nombramiento.FecVence, new { @id = "FecVencimiento", @class = "form-control", @readonly = "readonly" })
+                        @Html.HiddenFor(model => model.Nombramiento.FecVence)
+                    </div>
+                </div>
+                <div class="row" id="divExplicacion">
+                    <div class="form-group col-12">
+                        @Html.LabelFor(model => model.Explicacion)
+                        <span>:</span>
+                        @Html.TextAreaFor(model => model.Explicacion, new { @class = "form-control", @rows = 3, @cols = 12 })
+                        @Html.HiddenFor(model => model.Explicacion)
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer text-muted">
+                <div class="row">
+                    <div class="form-group col-10">
+                        <input class="btn btn-secondary" type="button" id="busca" value="Validar" onclick="return validarNombramiento();" />
+                    </div>
+                    @* DATOS DEL PUESTO A NOMBRAR *@
+                    @Html.HiddenFor(model => model.Puesto.CodPuesto)
+                    @* DATOS DEL FUNCIONARIO A NOMBRAR *@
+                    @Html.HiddenFor(model => model.Funcionario.Cedula)
+                    @* DATOS DEL PUESTO QUE OCUPABA EL FUNCIONARIO *@
+                    @if (Model.PuestoFuncionario != null)
+                    {
+                        @Html.HiddenFor(model => model.PuestoFuncionario.CodPuesto)
+                    }
+                    @* DATOS DEL NOMBRAMIENTO ANTERIOR *@
+                    @if (Model.Nombramiento != null)
+                    {
+                        @Html.HiddenFor(model => model.Nombramiento.IdEntidad)
+                    }
+                    @Html.HiddenFor(model => model.TextoMotivo)
+                    @Html.HiddenFor(model => model.DetalleAccion.IndCategoria)
+                    @Html.HiddenFor(model => model.DetalleAccion.NumAnualidad)
+                    @Html.HiddenFor(model => model.DetalleAccion.MesAumento)
+                    @Html.HiddenFor(model => model.DetalleAccion.MtoSalarioBase)
+                    @Html.HiddenFor(model => model.DetalleAccion.MtoAumentosAnuales)
+                    @Html.HiddenFor(model => model.DetalleAccion.PorBonificacion)
+                    @Html.HiddenFor(model => model.DetalleAccion.PorCurso)
+                    @Html.HiddenFor(model => model.DetalleAccion.PorConsulta)
+                    @Html.HiddenFor(model => model.DetalleAccion.PorDisponibilidad)
+                    @Html.HiddenFor(model => model.DetalleAccion.NumGradoGrupo)
+                    @Html.HiddenFor(model => model.DetalleAccion.MtoGradoGrupo)
+                    @Html.HiddenFor(model => model.DetalleAccion.PorProhibicion)
+                    @Html.HiddenFor(model => model.DetalleAccion.MtoProhibicion)
+                    @Html.HiddenFor(model => model.DetalleAccion.PorQuinquenio)
+                    @Html.HiddenFor(model => model.DetalleAccion.MtoRecargo)
+                    @Html.HiddenFor(model => model.DetalleAccion.PorRiesgo)
+                    @Html.HiddenFor(model => model.DetalleAccion.MtoOtros)
+                    @Html.HiddenFor(model => model.DetalleAccion.MtoTotal)
+                </div>
+                <div class="row">
+                    <div class="form-group col-8">
+                        <div id="progressbar" class="loader" hidden></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="error" class="alert alert-danger" role="alert" hidden></div>
+
+        <div id="errorRegistro" class="alert alert-danger" role="alert"> </div>
+        <div id="successRegistro">
+            <table>
+                <tr>
+                    <td><strong>Validación exitosa.</strong></td>
+                </tr>
+                <tr>
+                    <td>¿Desea confirmar este nombramiento?</td>
+                </tr>
+                <tr>
+                    <td align="left">
+                        <input class="btn btn-secondary" type="submit" value="Sí" id="Submit1" />
+                        <input class="btn btn-secondary" type="button" id="Button1" value="No" onclick="return LimpiarFormNombramiento();" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    }
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")

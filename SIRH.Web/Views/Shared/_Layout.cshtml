@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Sistema Integrado de Recursos Humanos</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="~/Content/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Content/sidebar.css">
+
+
+</head>
+<body>
+    <div class="container-fluid ">
+        <div class="row">
+            <img class="embed-responsive" src="~/Content/Images/encabezadodiseno.jpg" width="100%" />
+        </div>
+    </div>
+    <div class="wrapper">
+        @{
+            System.Security.Principal.WindowsPrincipal principal = new System.Security.Principal.WindowsPrincipal(System.Security.Principal.WindowsIdentity.GetCurrent());
+        }
+        <div id="content">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    @*<button type="button" id="sidebarCollapse" class="navbar-btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>*@
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                @*@Html.ActionLink(System.Security.Principal.WindowsIdentity.GetCurrent().Name, "Browse", "PerfilUsuario", new { username = System.Security.Principal.WindowsIdentity.GetCurrent().Name })
+                                    <i class="fa fa-user-circle"></i>*@
+                                <a class="colorlink" href="@Url.Action("Perfil", "PerfilUsuario", new { @username = principal.Identity.Name })">
+                                    <i class="fa fa-user"></i> @principal.Identity.Name
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            @RenderBody()
+
+        </div>
+    </div>
+    <div class="container-fluid ">
+        <div class="row">
+            <img class="embed-responsive" src="~/Content/Images/pie-gris.png" />
+        </div>
+    </div>
+    <script src="~/Scripts/sidebar.js" type="text/javascript"></script>
+</body>
+</html>

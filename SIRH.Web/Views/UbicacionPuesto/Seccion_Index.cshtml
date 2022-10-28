@@ -1,0 +1,42 @@
+﻿@model SIRH.Web.Models.SeccionModel
+@{
+    using (Ajax.BeginForm("Seccion_Index", "UbicacionPuesto", new AjaxOptions { UpdateTargetId = "target-seccion", HttpMethod = "POST", OnSuccess = "successDataSeccion", OnBegin = "beginDataSeccion" }))
+    {
+        <div class="card">
+            <div class="card-header">
+                Parámetros de búsqueda:
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="form-group col-6">
+                        @Html.Label("Código de sección")
+                        <span>:</span>
+                        @Html.TextBox("codigoseccion", String.Empty, new { @onkeypress = "return IsNumeric(event,'seccion', 'código de sección')", @class = "form-control" })
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="form-group col-6">
+                        @Html.Label("Nombre de sección")
+                        <span>:</span>
+                        @Html.TextBox("nomseccion", String.Empty, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-8">
+                        <input class="btn btn-secondary" type="submit" value="Buscar" id="btnBuscaSeccion" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-5">
+                        <div id="progressbarseccion" class="loader" hidden></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    <div id="error-seccion" class="alert alert-danger" role="alert" hidden></div>
+    <div id="target-seccion"></div>
+
+}

@@ -1,0 +1,637 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="wsConsultaDatosPersona">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CriterioConsulta" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="pIdentificacion" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="TipoDato" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="wsConsultaDatosPersonaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="wsConsultaDatosPersonaResult" type="tns:Persona" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Persona">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Identificacion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Apellido1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Apellido2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Conocido_Como" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Genero" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Fecha_Nacimiento" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Lugar" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Hospital" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nacionalidad" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Edad" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Indicador_Defuncion" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" name="Identificacion_Padre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre_Apellidos_Padre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Conocido_Como_Padre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nacionalidad_Padre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Edad_Padre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Identificacion_Madre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre_Apellidos_Madre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Conocido_Como_Madre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nacionalidad_Madre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Edad_Madre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Marginal" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mensaje" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Indicador_Empadronado" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" name="Indice_Estado_Civil" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Defuncion" type="tns:Defuncion" />
+          <s:element minOccurs="0" maxOccurs="1" name="EstadoCivil" type="tns:EstadoCivil" />
+          <s:element minOccurs="0" maxOccurs="1" name="Electoral" type="tns:Electoral" />
+          <s:element minOccurs="0" maxOccurs="1" name="DatosPrivados" type="tns:DatosPrivados" />
+          <s:element minOccurs="0" maxOccurs="1" name="Menor" type="tns:Menor" />
+          <s:element minOccurs="0" maxOccurs="1" name="Historico_EstadoCivil" type="tns:ArrayOfEstadoCivil" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Defuncion">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Cita" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="Fecha" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Hora" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Lugar" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EstadoCivil">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Cita_Inscripcion" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="Identificacion_Conyugue" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Apellido1_Conyugue" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Apellido2_Conyugue" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre_Conyugue" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nacionalidad_Conyugue" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Conocido_Como_Conyugue" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Identificador_Defuncion_Conyugue" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre_Padre_Conyugue" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nacionalidad_Padre_Conyugue" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre_Madre_Conyugue" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nacionalidad_Madre_Conyugue" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Fecha_Nacimiento_Conyugue" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Edad_Conyugue" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Fecha" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Lugar" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Tipo_Matrimonio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Tipo_Relacion" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IndicadorExtranjero_Conyugue" type="s:short" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Electoral">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Codigo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Descripcion_Provincia" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Descripcion_Canton" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Descripcion_Distrito_Admin" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Descripcion_Distrito_Electoral" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Junta" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Numero_Elector" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Conocido_Como" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Fecha_Caducidad" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DatosPrivados">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Foto" type="s:base64Binary" />
+          <s:element minOccurs="0" maxOccurs="1" name="Firma" type="s:base64Binary" />
+          <s:element minOccurs="0" maxOccurs="1" name="Direccion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Telefono" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Donador" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mensaje" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Menor">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Historial_Targeta" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Foto" type="s:unsignedByte" />
+          <s:element minOccurs="0" maxOccurs="1" name="Direccion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Telefono" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Vigencia" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Tiene_Anotacion_Suspension_Patria_Potestad" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Tiene_Adopcion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Tiene_Reconocimiento" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEstadoCivil">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EstadoCivil" nillable="true" type="tns:EstadoCivil" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="wsConsultaUltimoEstadoCivil">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CriterioConsulta" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="pIdentificacion" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="wsConsultaUltimoEstadoCivilResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="wsConsultaUltimoEstadoCivilResult" type="tns:Persona" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="wsConsultaDefuncion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CriterioConsulta" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="pIdentificacion" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="wsConsultaDefuncionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="wsConsultaDefuncionResult" type="tns:Persona" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="wsConsultaDatosElectorales">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pIdentificacion" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="wsConsultaDatosElectoralesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="wsConsultaDatosElectoralesResult" type="tns:Persona" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="wsConsultaHistoricoEstadoCivil">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CriterioConsulta" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="pIdentificacion" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="wsConsultaHistoricoEstadoCivilResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="wsConsultaHistoricoEstadoCivilResult" type="tns:Persona" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="wsFechaVencimientoUltCedulaEmitita">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_pCedula" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="wsFechaVencimientoUltCedulaEmititaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="wsFechaVencimientoUltCedulaEmititaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="wsArchivoDiarioDeCedulasEmitidas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_pFecha" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="wsArchivoDiarioDeCedulasEmitidasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="wsArchivoDiarioDeCedulasEmitidasResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="wsHijosRegistrados">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_pCedula" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="wsHijosRegistradosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="wsHijosRegistradosResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="wsMovimientosDefunciones">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_pFecha" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="wsMovimientosDefuncionesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="wsMovimientosDefuncionesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="wsMovimientosNacimientos">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_pFecha" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="wsMovimientosNacimientosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="wsMovimientosNacimientosResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="wsMovimientosMatrimonios">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_pFecha" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="wsMovimientosMatrimoniosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="wsMovimientosMatrimoniosResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="wsConsultaDatosPersonaSoapIn">
+    <wsdl:part name="parameters" element="tns:wsConsultaDatosPersona" />
+  </wsdl:message>
+  <wsdl:message name="wsConsultaDatosPersonaSoapOut">
+    <wsdl:part name="parameters" element="tns:wsConsultaDatosPersonaResponse" />
+  </wsdl:message>
+  <wsdl:message name="wsConsultaUltimoEstadoCivilSoapIn">
+    <wsdl:part name="parameters" element="tns:wsConsultaUltimoEstadoCivil" />
+  </wsdl:message>
+  <wsdl:message name="wsConsultaUltimoEstadoCivilSoapOut">
+    <wsdl:part name="parameters" element="tns:wsConsultaUltimoEstadoCivilResponse" />
+  </wsdl:message>
+  <wsdl:message name="wsConsultaDefuncionSoapIn">
+    <wsdl:part name="parameters" element="tns:wsConsultaDefuncion" />
+  </wsdl:message>
+  <wsdl:message name="wsConsultaDefuncionSoapOut">
+    <wsdl:part name="parameters" element="tns:wsConsultaDefuncionResponse" />
+  </wsdl:message>
+  <wsdl:message name="wsConsultaDatosElectoralesSoapIn">
+    <wsdl:part name="parameters" element="tns:wsConsultaDatosElectorales" />
+  </wsdl:message>
+  <wsdl:message name="wsConsultaDatosElectoralesSoapOut">
+    <wsdl:part name="parameters" element="tns:wsConsultaDatosElectoralesResponse" />
+  </wsdl:message>
+  <wsdl:message name="wsConsultaHistoricoEstadoCivilSoapIn">
+    <wsdl:part name="parameters" element="tns:wsConsultaHistoricoEstadoCivil" />
+  </wsdl:message>
+  <wsdl:message name="wsConsultaHistoricoEstadoCivilSoapOut">
+    <wsdl:part name="parameters" element="tns:wsConsultaHistoricoEstadoCivilResponse" />
+  </wsdl:message>
+  <wsdl:message name="wsFechaVencimientoUltCedulaEmititaSoapIn">
+    <wsdl:part name="parameters" element="tns:wsFechaVencimientoUltCedulaEmitita" />
+  </wsdl:message>
+  <wsdl:message name="wsFechaVencimientoUltCedulaEmititaSoapOut">
+    <wsdl:part name="parameters" element="tns:wsFechaVencimientoUltCedulaEmititaResponse" />
+  </wsdl:message>
+  <wsdl:message name="wsArchivoDiarioDeCedulasEmitidasSoapIn">
+    <wsdl:part name="parameters" element="tns:wsArchivoDiarioDeCedulasEmitidas" />
+  </wsdl:message>
+  <wsdl:message name="wsArchivoDiarioDeCedulasEmitidasSoapOut">
+    <wsdl:part name="parameters" element="tns:wsArchivoDiarioDeCedulasEmitidasResponse" />
+  </wsdl:message>
+  <wsdl:message name="wsHijosRegistradosSoapIn">
+    <wsdl:part name="parameters" element="tns:wsHijosRegistrados" />
+  </wsdl:message>
+  <wsdl:message name="wsHijosRegistradosSoapOut">
+    <wsdl:part name="parameters" element="tns:wsHijosRegistradosResponse" />
+  </wsdl:message>
+  <wsdl:message name="wsMovimientosDefuncionesSoapIn">
+    <wsdl:part name="parameters" element="tns:wsMovimientosDefunciones" />
+  </wsdl:message>
+  <wsdl:message name="wsMovimientosDefuncionesSoapOut">
+    <wsdl:part name="parameters" element="tns:wsMovimientosDefuncionesResponse" />
+  </wsdl:message>
+  <wsdl:message name="wsMovimientosNacimientosSoapIn">
+    <wsdl:part name="parameters" element="tns:wsMovimientosNacimientos" />
+  </wsdl:message>
+  <wsdl:message name="wsMovimientosNacimientosSoapOut">
+    <wsdl:part name="parameters" element="tns:wsMovimientosNacimientosResponse" />
+  </wsdl:message>
+  <wsdl:message name="wsMovimientosMatrimoniosSoapIn">
+    <wsdl:part name="parameters" element="tns:wsMovimientosMatrimonios" />
+  </wsdl:message>
+  <wsdl:message name="wsMovimientosMatrimoniosSoapOut">
+    <wsdl:part name="parameters" element="tns:wsMovimientosMatrimoniosResponse" />
+  </wsdl:message>
+  <wsdl:portType name="wsConsultaPersonaSoap">
+    <wsdl:operation name="wsConsultaDatosPersona">
+      <wsdl:input message="tns:wsConsultaDatosPersonaSoapIn" />
+      <wsdl:output message="tns:wsConsultaDatosPersonaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="wsConsultaUltimoEstadoCivil">
+      <wsdl:input message="tns:wsConsultaUltimoEstadoCivilSoapIn" />
+      <wsdl:output message="tns:wsConsultaUltimoEstadoCivilSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="wsConsultaDefuncion">
+      <wsdl:input message="tns:wsConsultaDefuncionSoapIn" />
+      <wsdl:output message="tns:wsConsultaDefuncionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="wsConsultaDatosElectorales">
+      <wsdl:input message="tns:wsConsultaDatosElectoralesSoapIn" />
+      <wsdl:output message="tns:wsConsultaDatosElectoralesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="wsConsultaHistoricoEstadoCivil">
+      <wsdl:input message="tns:wsConsultaHistoricoEstadoCivilSoapIn" />
+      <wsdl:output message="tns:wsConsultaHistoricoEstadoCivilSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="wsFechaVencimientoUltCedulaEmitita">
+      <wsdl:input message="tns:wsFechaVencimientoUltCedulaEmititaSoapIn" />
+      <wsdl:output message="tns:wsFechaVencimientoUltCedulaEmititaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="wsArchivoDiarioDeCedulasEmitidas">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Debe de poner como parámetro una fecha para cargar. El formato es AAAAMMDD. por ejemplo 20151012. Si deja el parámetro vacío retornará la fecha actual.</wsdl:documentation>
+      <wsdl:input message="tns:wsArchivoDiarioDeCedulasEmitidasSoapIn" />
+      <wsdl:output message="tns:wsArchivoDiarioDeCedulasEmitidasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="wsHijosRegistrados">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Debe de poner como parámetro una cédula válida de persona nacional. El formato es 999999999. por ejemplo 101110111. </wsdl:documentation>
+      <wsdl:input message="tns:wsHijosRegistradosSoapIn" />
+      <wsdl:output message="tns:wsHijosRegistradosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="wsMovimientosDefunciones">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Debe de poner como parámetro una fecha válida. El formato es AAAAMMDD. por ejemplo 20161105. </wsdl:documentation>
+      <wsdl:input message="tns:wsMovimientosDefuncionesSoapIn" />
+      <wsdl:output message="tns:wsMovimientosDefuncionesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="wsMovimientosNacimientos">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Debe de poner como parámetro una fecha válida. El formato es AAAAMMDD. por ejemplo 20161105. </wsdl:documentation>
+      <wsdl:input message="tns:wsMovimientosNacimientosSoapIn" />
+      <wsdl:output message="tns:wsMovimientosNacimientosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="wsMovimientosMatrimonios">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Debe de poner como parámetro una fecha válida. El formato es AAAAMMDD. por ejemplo 20161105. </wsdl:documentation>
+      <wsdl:input message="tns:wsMovimientosMatrimoniosSoapIn" />
+      <wsdl:output message="tns:wsMovimientosMatrimoniosSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="wsConsultaPersonaSoap" type="tns:wsConsultaPersonaSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="wsConsultaDatosPersona">
+      <soap:operation soapAction="http://tempuri.org/wsConsultaDatosPersona" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="wsConsultaUltimoEstadoCivil">
+      <soap:operation soapAction="http://tempuri.org/wsConsultaUltimoEstadoCivil" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="wsConsultaDefuncion">
+      <soap:operation soapAction="http://tempuri.org/wsConsultaDefuncion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="wsConsultaDatosElectorales">
+      <soap:operation soapAction="http://tempuri.org/wsConsultaDatosElectorales" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="wsConsultaHistoricoEstadoCivil">
+      <soap:operation soapAction="http://tempuri.org/wsConsultaHistoricoEstadoCivil" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="wsFechaVencimientoUltCedulaEmitita">
+      <soap:operation soapAction="http://tempuri.org/wsFechaVencimientoUltCedulaEmitita" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="wsArchivoDiarioDeCedulasEmitidas">
+      <soap:operation soapAction="http://tempuri.org/wsArchivoDiarioDeCedulasEmitidas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="wsHijosRegistrados">
+      <soap:operation soapAction="http://tempuri.org/wsHijosRegistrados" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="wsMovimientosDefunciones">
+      <soap:operation soapAction="http://tempuri.org/wsMovimientosDefunciones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="wsMovimientosNacimientos">
+      <soap:operation soapAction="http://tempuri.org/wsMovimientosNacimientos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="wsMovimientosMatrimonios">
+      <soap:operation soapAction="http://tempuri.org/wsMovimientosMatrimonios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsConsultaPersonaSoap12" type="tns:wsConsultaPersonaSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="wsConsultaDatosPersona">
+      <soap12:operation soapAction="http://tempuri.org/wsConsultaDatosPersona" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="wsConsultaUltimoEstadoCivil">
+      <soap12:operation soapAction="http://tempuri.org/wsConsultaUltimoEstadoCivil" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="wsConsultaDefuncion">
+      <soap12:operation soapAction="http://tempuri.org/wsConsultaDefuncion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="wsConsultaDatosElectorales">
+      <soap12:operation soapAction="http://tempuri.org/wsConsultaDatosElectorales" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="wsConsultaHistoricoEstadoCivil">
+      <soap12:operation soapAction="http://tempuri.org/wsConsultaHistoricoEstadoCivil" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="wsFechaVencimientoUltCedulaEmitita">
+      <soap12:operation soapAction="http://tempuri.org/wsFechaVencimientoUltCedulaEmitita" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="wsArchivoDiarioDeCedulasEmitidas">
+      <soap12:operation soapAction="http://tempuri.org/wsArchivoDiarioDeCedulasEmitidas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="wsHijosRegistrados">
+      <soap12:operation soapAction="http://tempuri.org/wsHijosRegistrados" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="wsMovimientosDefunciones">
+      <soap12:operation soapAction="http://tempuri.org/wsMovimientosDefunciones" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="wsMovimientosNacimientos">
+      <soap12:operation soapAction="http://tempuri.org/wsMovimientosNacimientos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="wsMovimientosMatrimonios">
+      <soap12:operation soapAction="http://tempuri.org/wsMovimientosMatrimonios" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="wsConsultaPersona">
+    <wsdl:port name="wsConsultaPersonaSoap" binding="tns:wsConsultaPersonaSoap">
+      <soap:address location="http://192.168.153.10/psiws/wsConsultaPersona.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsConsultaPersonaSoap12" binding="tns:wsConsultaPersonaSoap12">
+      <soap12:address location="http://192.168.153.10/psiws/wsConsultaPersona.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SIRH.Datos" GeneratedClassName="DatosConexion">
+  <Profiles />
+  <Settings>
+    <Setting Name="ConADABAS" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Dsn=connx01;uid=sag;pwd=fs12wc05;application=ADABAS_131_107_0_42</Value>
+    </Setting>
+    <Setting Name="ConSIRH" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">data source=vm-sqldesa2016\sqldesa2016;initial catalog=SIRH;persist security info=True;user id=SIRH;password=SiRh144;MultipleActiveResultSets=True;</Value>
+    </Setting>
+    <Setting Name="Setting" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+  </Settings>
+</SettingsFile>

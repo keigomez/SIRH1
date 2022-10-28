@@ -1,0 +1,173 @@
+﻿@model  IList<SIRH.Web.ViewModels.FormularioDesarraigoVM>
+@{
+    using (Html.BeginForm("ReporteBusquedaDesarraigo", "Desarraigo", FormMethod.Post, new { @id = "thisForm" }))
+    {
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th>#Registro</th>
+                    <th>Cédula</th>
+                    <th>Nombre</th>
+                    <th>#Puesto</th>
+                    <th>Estado</th>
+                    <th>Fecha del <br /> Desarraigo</th>
+                    <th>Lugar del <br /> Desarraigo</th>
+                    <th>
+                        <!-- boton de notificar por correo-->
+                    </th>
+                    <th>
+                        <!-- boton de editar-->
+                    </th>
+                    <th>
+                        <!-- boton de mostrar detalles-->
+                    </th>
+                    <th>
+                        <!-- boton de mostrar anular-->
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @Html.Hidden("filtro", @ViewData["Filtro"].ToString())
+                @foreach (var item in Model)
+                {
+                    <!--data-->
+
+                    <!--Se mantienen los datos para no volver a hacer la busqueda-->
+
+
+                    @Html.HiddenFor(model => item.NumCartaPresentacion)
+                    @Html.HiddenFor(model => item.Funcionario.Nombre)
+                    @Html.HiddenFor(model => item.Funcionario.Cedula)
+                    @Html.HiddenFor(model => item.Funcionario.PrimerApellido)
+                    @Html.HiddenFor(model => item.Funcionario.SegundoApellido)
+                    @Html.HiddenFor(model => item.Funcionario.Nombre)
+                    @Html.HiddenFor(model => item.Desarraigo.EstadoDesarraigo.NomEstadoDesarraigo)
+                    @Html.HiddenFor(model => item.Desarraigo.CodigoDesarraigo)
+                    @Html.HiddenFor(model => item.Desarraigo.MontoDesarraigo)
+                    @Html.HiddenFor(model => item.Desarraigo.FechaInicio)
+                    @Html.HiddenFor(model => item.Desarraigo.FechaFin)
+                    @Html.HiddenFor(model => item.Desarraigo.IdEntidad)
+                    @Html.HiddenFor(model => item.Desarraigo.ObservacionesDesarraigo)
+                    @Html.HiddenFor(model => item.UbicacionTrabajo.Distrito.Canton.Provincia.NomProvincia)
+                    @Html.HiddenFor(model => item.UbicacionTrabajo.Distrito.Canton.NomCanton)
+                    @Html.HiddenFor(model => item.UbicacionTrabajo.Distrito.NomDistrito)
+                    @Html.HiddenFor(model => item.UbicacionContrato.Distrito.Canton.Provincia.NomProvincia)
+                    @Html.HiddenFor(model => item.UbicacionContrato.Distrito.Canton.NomCanton)
+                    @Html.HiddenFor(model => item.UbicacionContrato.Distrito.NomDistrito)
+                    @Html.HiddenFor(model => item.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                    @Html.HiddenFor(model => item.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                    @Html.HiddenFor(model => item.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                    @Html.HiddenFor(model => item.Puesto.CodPuesto)
+                    @Html.HiddenFor(model => item.DetallePuesto.Clase.DesClase)
+                    @Html.HiddenFor(model => item.DetallePuesto.Especialidad.DesEspecialidad)
+                    @Html.HiddenFor(model => item.DetallePuesto.OcupacionReal.DesOcupacionReal)
+
+                    <tr>
+                        <td>
+                            @Html.AttributeEncode(item.Desarraigo.CodigoDesarraigo)
+                        </td>
+                        <td>
+                            @Html.AttributeEncode(item.Funcionario.Cedula)
+                        </td>
+                        <td>
+                            @item.Funcionario.Nombre  @item.Funcionario.PrimerApellido @item.Funcionario.SegundoApellido
+                        </td>
+                        <td>
+                            @Html.AttributeEncode(item.Puesto.CodPuesto)
+                        </td>
+                        @if (@Html.AttributeEncode(item.Desarraigo.EstadoDesarraigo.NomEstadoDesarraigo) == "Vencido_PSS")
+                        {
+                            <td>
+                                Vencido por permiso sin salario
+                            </td>
+                        }
+                        @if (@Html.AttributeEncode(item.Desarraigo.EstadoDesarraigo.NomEstadoDesarraigo) == "Vencido_Incap")
+                        {
+                            <td>
+                                Vencido por incapacidad
+                            </td>
+                        }
+                        @if (@Html.AttributeEncode(item.Desarraigo.EstadoDesarraigo.NomEstadoDesarraigo) == "Vencido_Vac")
+                        {
+                            <td>
+                                Vencido por vacaciones
+                            </td>
+                        }
+                        @if (@Html.AttributeEncode(item.Desarraigo.EstadoDesarraigo.NomEstadoDesarraigo) == "Espera" ||
+                           @Html.AttributeEncode(item.Desarraigo.EstadoDesarraigo.NomEstadoDesarraigo) == "Valido" ||
+                           @Html.AttributeEncode(item.Desarraigo.EstadoDesarraigo.NomEstadoDesarraigo) == "Vencido" ||
+                            @Html.AttributeEncode(item.Desarraigo.EstadoDesarraigo.NomEstadoDesarraigo) == "Anulado"
+                            )
+                        {
+                            <td>
+                                @Html.AttributeEncode(item.Desarraigo.EstadoDesarraigo.NomEstadoDesarraigo)
+                            </td>
+                        }
+
+                        <td>
+                            @Html.AttributeEncode(item.Desarraigo.FechaInicio.ToString("dd/MM/yyyy")) @Html.AttributeEncode(item.Desarraigo.FechaFin.ToString("dd/MM/yyyy"))
+                        </td>
+                        <td>
+                            @Html.AttributeEncode(item.UbicacionTrabajo.Distrito.Canton.Provincia.NomProvincia)   @Html.AttributeEncode(item.UbicacionTrabajo.Distrito.Canton.NomCanton)
+                        </td>
+                        <td>
+                            @if (item.Desarraigo.EstadoDesarraigo.NomEstadoDesarraigo == "Espera")
+                            {
+                                <div class="link_notify">
+                                    @Html.ActionLink("Notificar", "NotifyByEmail", new
+                               {
+                                   codigo = item.Desarraigo.CodigoDesarraigo,
+                                   cedula = item.Funcionario.Cedula,
+                                   username = System.Security.Principal.WindowsIdentity.GetCurrent().Name,
+                                   nameFunc = item.Funcionario.Nombre + " " + item.Funcionario.PrimerApellido + " " + item.Funcionario.SegundoApellido
+                               }, new { @class = "btn btn-outline-primary" })
+                                </div>
+                            }
+
+                            @if (item.Desarraigo.EstadoDesarraigo.NomEstadoDesarraigo == "Espera" ||
+                                            item.Desarraigo.EstadoDesarraigo.NomEstadoDesarraigo == "Valido")
+                            {
+                                <div class="link_return">@Html.ActionLink("Anular", "Nullify", new { @codigo = item.Desarraigo.IdEntidad }, new { @class = "btn btn-outline-primary" })</div>
+                            }
+
+                        </td>
+
+                        <td>
+                            @if (item.Desarraigo.EstadoDesarraigo.NomEstadoDesarraigo == "Espera" || item.Desarraigo.EstadoDesarraigo.NomEstadoDesarraigo == "Valido")
+                            {
+                                <div class="link_edit">@Html.ActionLink("Editar", "Edit", new { codigo = item.Desarraigo.IdEntidad }, new { @class = "btn btn-outline-primary" })</div>
+                            }
+                        </td>
+
+                        <td>
+                            <div class="link_view">@Html.ActionLink("Detalles", "Details", new { codigo = item.Desarraigo.IdEntidad, accion = "Detalle" }, new { @class = "btn btn-outline-primary" })</div>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td colspan="7"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="7"></td>
+                    </tr>
+
+
+                }
+            </tbody>
+        </table>
+        <div class="row">
+
+            <div class="form-group col-4">
+                <div>
+                    <p>
+                        <a href="@Url.Action("Create", "Desarraigo")" class="btn btn-outline-primary">
+                            <i class="fa fa-pencil-square-o"></i> Crear nuevo
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    }
+
+
+}

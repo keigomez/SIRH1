@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="e99629be-c3fb-4267-9e1c-ac11a6b245ec" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://sisrh.mopt.go.cr:85/CServiciosGeneralesService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CServiciosGeneralesService.xsd" MetadataType="Schema" ID="b7bbc85e-f7da-4f16-a384-7d13305fc28e" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CServiciosGeneralesService.svc?xsd=xsd4" />
+    <MetadataFile FileName="CServiciosGeneralesService.wsdl" MetadataType="Wsdl" ID="3a8c3f45-514b-4e13-bae4-b252b747d1c8" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CServiciosGeneralesService.svc?wsdl" />
+    <MetadataFile FileName="CServiciosGeneralesService1.wsdl" MetadataType="Wsdl" ID="4952a7a0-d5ed-4cec-bb7d-b8bdbd005c77" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CServiciosGeneralesService.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="CServiciosGeneralesService1.xsd" MetadataType="Schema" ID="478bf0a6-4941-4cab-b425-b52519f8101b" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CServiciosGeneralesService.svc?xsd=xsd2" />
+    <MetadataFile FileName="CServiciosGeneralesService2.xsd" MetadataType="Schema" ID="0fee49ad-b7c5-4b23-9531-e5b6ea3eccbe" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CServiciosGeneralesService.svc?xsd=xsd3" />
+    <MetadataFile FileName="CServiciosGeneralesService3.xsd" MetadataType="Schema" ID="1079e639-9c6e-463a-8240-531560e5f95d" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CServiciosGeneralesService.svc?xsd=xsd0" />
+    <MetadataFile FileName="CServiciosGeneralesService4.xsd" MetadataType="Schema" ID="fea77153-06f0-4201-8525-cd8e984b53ca" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CServiciosGeneralesService.svc?xsd=xsd1" />
+    <MetadataFile FileName="CServiciosGeneralesService.disco" MetadataType="Disco" ID="e6729bc8-91bd-432b-81d6-397e48db7a37" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CServiciosGeneralesService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

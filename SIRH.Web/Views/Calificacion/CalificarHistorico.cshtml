@@ -1,0 +1,64 @@
+﻿@model SIRH.Web.ViewModels.BusquedaHistorialCalificacionVM
+@{
+    using (Ajax.BeginForm("CalificarHistorico", "Calificacion", new AjaxOptions { UpdateTargetId = "target-jefe", HttpMethod = "POST" }))
+    {
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="form-group col-6">
+                        @Html.Label("Año")
+                        <span>:</span>
+                        @Html.TextBox("periodo", String.Empty, new { @onkeypress = "return IsNumeric(event,'departamento', 'código de departamento')", @class = "form-control", @maxlength = 4 })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-6">
+                        @Html.Label("Nota")
+                        <span>:</span>
+                       @Html.TextBox("nota", String.Empty, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-12">
+                        @Html.Label("Justificación")
+                        <span>:</span>
+                        @Html.TextArea("justificacion", String.Empty, new { @class = "form-control", @rows = 3, @maxlength = 1000 })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-12">
+                        @Html.Label("Es Policía Tránsito")
+                        <span>:</span>
+                        @Html.CheckBox("EsPolicia", false, new
+                        {
+                            @type = "checkbox",
+                            @checked = "checked",
+                            @data_toggle = "toggle",
+                            @data_onstyle = "success",
+                            @data_offstyle = "danger",
+                            @data_width = "70",
+                            @data_on = "Sí",
+                            @data_off = "No",
+                            @class = "clsCheck",
+                        })
+                    </div>
+                </div>
+
+                @Html.TextBox("cedFuncionario", String.Empty, new { @readonly = "readonly", @hidden = "hidden", @class = "form-control" })
+                <div class="row">
+                    <div class="form-group col-6">
+                       <input class="btn btn-secondary" type="submit" value="Agregar" id="btnBuscaJefe" />
+                       @* @Html.ActionLink("Agregar", "", "Calificacion", null, new { @onclick = "return ActualizarJefe('" + item.IdEntidad + "','" + item.Nombre + "');", @class = "btn btn-outline-primary" })*@
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-5">
+                        <div id="progressbarjefe" class="loader" hidden></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    <div id="error-jefe" class="alert alert-danger" role="alert" hidden></div>
+    <div id="target-jefe"></div>
+}

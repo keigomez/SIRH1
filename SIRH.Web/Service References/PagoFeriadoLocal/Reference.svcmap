@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d722d342-d40c-426e-9ad4-bceac5a2372b" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8731/Design_Time_Addresses/SIRH.Servicios/CPagoFeriadoService/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="1dc02f1b-2068-435f-bd30-c4570e5d047c" SourceId="1" SourceUrl="http://localhost:8731/Design_Time_Addresses/SIRH.Servicios/CPagoFeriadoService/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="a28719fa-3b93-4f55-9451-9348c686544c" SourceId="1" SourceUrl="http://localhost:8731/Design_Time_Addresses/SIRH.Servicios/CPagoFeriadoService/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="e231d8bf-b580-473a-bf56-3346fce0cdf7" SourceId="1" SourceUrl="http://localhost:8731/Design_Time_Addresses/SIRH.Servicios/CPagoFeriadoService/mex" />
+    <MetadataFile FileName="SIRH.DTO.xsd" MetadataType="Schema" ID="75e2a5e4-e5b5-411e-a9f1-4aa36730c0c8" SourceId="1" SourceUrl="http://localhost:8731/Design_Time_Addresses/SIRH.Servicios/CPagoFeriadoService/mex" />
+    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="6c5f4019-6338-4b97-add7-1d82414f0cf9" SourceId="1" SourceUrl="http://localhost:8731/Design_Time_Addresses/SIRH.Servicios/CPagoFeriadoService/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

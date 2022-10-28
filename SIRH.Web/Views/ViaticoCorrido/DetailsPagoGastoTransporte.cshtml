@@ -1,0 +1,395 @@
+﻿@model SIRH.Web.ViewModels.FormularioGastoTransporteVM
+@{
+    ViewBag.Title = "DetailsPagoGastoTransporte";
+    Layout = "~/Views/Shared/GastoTransporte.cshtml";
+}
+
+<blockquote><h3>Detalle de Pago del Gasto de Transporte</h3></blockquote>
+<br />
+
+@using (Html.BeginForm("ReporteDetallePagoGT", "ViaticoCorrido", FormMethod.Post, new { @id = "thisForm" }))
+{
+    //Detalles luego de crear un pago
+    if (Request.QueryString["accion"] == "guardar")
+    {
+        if (Model.Error == null)
+        {
+            <!--Se mantienen los datos para no volver a hacer la busqueda-->
+            @Html.HiddenFor(model => model.Funcionario.Nombre)
+            @Html.HiddenFor(model => model.Funcionario.Cedula)
+            @Html.HiddenFor(model => model.Funcionario.PrimerApellido)
+            @Html.HiddenFor(model => model.Funcionario.SegundoApellido)
+            @Html.HiddenFor(model => model.UbicacionTrabajo.Distrito.Canton.Provincia.NomProvincia)
+            @Html.HiddenFor(model => model.UbicacionTrabajo.Distrito.Canton.NomCanton)
+            @Html.HiddenFor(model => model.UbicacionTrabajo.Distrito.NomDistrito)
+            @Html.HiddenFor(model => model.UbicacionContrato.Distrito.Canton.Provincia.NomProvincia)
+            @Html.HiddenFor(model => model.UbicacionContrato.Distrito.Canton.NomCanton)
+            @Html.HiddenFor(model => model.UbicacionContrato.Distrito.NomDistrito)
+            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+            @Html.HiddenFor(model => model.Puesto.CodPuesto)
+            @Html.HiddenFor(model => model.DetallePuesto.Clase.DesClase)
+            @Html.HiddenFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)
+            @Html.HiddenFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal)
+            @Html.HiddenFor(model => model.GastoTransporte.FecInicioDTO)
+            @Html.HiddenFor(model => model.GastoTransporte.FecFinDTO)
+            @Html.HiddenFor(model => model.GastoTransporte.NombramientoDTO)
+            @Html.HiddenFor(model => model.Direccion.Distrito.IdEntidad)
+            @Html.HiddenFor(model => model.Direccion.Distrito.NomDistrito)
+            @Html.HiddenFor(model => model.Nombramiento.IdEntidad)
+            @Html.HiddenFor(model => model.Nombramiento.EstadoNombramiento)
+            @Html.HiddenFor(model => model.Nombramiento.Funcionario)
+            @Html.HiddenFor(model => model.Nombramiento.Puesto)
+            @Html.HiddenFor(model => model.Nombramiento.FecRige)
+            @Html.HiddenFor(model => model.Nombramiento.FecVence)
+            @Html.HiddenFor(model => model.NumCartaPresentacion, new { @class = "form-control" })
+            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.IdUnidadPresupuestaria)
+            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.Area)
+            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.Actividad)
+            @Html.HiddenFor(model => model.Eliminacion.FecFinDTO)
+            @Html.HiddenFor(model => model.Eliminacion.FecInicioDTO)
+            @Html.HiddenFor(model => model.MovimientoGastoTransporte.IdEntidad)
+            @Html.HiddenFor(model => model.GastoTransporte.Pagos[0].FecPago)
+            @Html.HiddenFor(model => model.GastoTransporte.CodigoGastoTransporte)
+            @Html.HiddenFor(model => model.GastoTransporte.MontGastoTransporteDTO)
+
+            <div class="alert alert-success" role="alert">
+                <i class="fa fa-check-circle d-inline" style="font-size:48px;"></i>
+                <h4 class="d-inline">El Pago de Gasto de Transporte se ha guardado correctamente.</h4>
+            </div>
+            <br />
+
+            <div class="card">
+                <h5 class="card-header">Detalles</h5>
+                <div class="card-body">
+                    <div>Se ha almacenado el Pago de Gasto de Transporte #<b>@Html.Encode(Model.GastoTransporte.CodigoGastoTransporte)</b> </div>
+                    <br /><div>Funcionario: <b>@Html.Encode(Model.Funcionario.Cedula) - @Html.Encode(Model.Funcionario.Nombre) @Html.Encode(Model.Funcionario.PrimerApellido) @Html.Encode(Model.Funcionario.SegundoApellido)</b></div>
+                    <br /><div>Monto del Gasto de Transporte: <b>@Html.Encode(Convert.ToDecimal(Model.GastoTransporte.MontGastoTransporteDTO).ToString("#,##0.00"))</b></div>
+                    <br /><div>Fecha de Pago: <b>@Html.Encode(Model.GastoTransporte.Pagos[0].FecPago.ToShortDateString())</b></div>
+                </div>
+
+                <table class="table table-hover">
+                    <thead class="thead-light">
+                        <tr class="text-left">
+                            <th>Día</th>
+                            <th>Motivo</th>
+                            <th>Monto</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-left">
+                        <tr class="text-left">
+                            <td><b>DEDUCCIONES</b></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        @{
+                            int count = Model.GastoTransporte.Pagos[0].Detalles.Count;
+                            int diasRebajo = 0;
+                            int diasReintegro = 0;
+                            decimal monRebajo = 0;
+                            decimal monReintegro = 0;
+
+                            for (int i = 0; i < count; i++)
+                            {
+                                if (Model.GastoTransporte.Pagos[0].Detalles[i].TipoDetalleDTO.IdEntidad != 5) // Deducciones
+                                {
+                                    monRebajo += Model.GastoTransporte.Pagos[0].Detalles[i].MonPago;
+                                    diasRebajo++;
+
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(model => model.GastoTransporte.Pagos[0].Detalles[i].FecDiaPago)
+                                            @Html.HiddenFor(model => Model.GastoTransporte.Pagos[0].Detalles[i].FecDiaPago)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.GastoTransporte.Pagos[0].Detalles[i].TipoDetalleDTO.DescripcionTipo)
+                                            @Html.HiddenFor(model => Model.GastoTransporte.Pagos[0].Detalles[i].TipoDetalleDTO.IdEntidad)
+                                            @Html.HiddenFor(model => Model.GastoTransporte.Pagos[0].Detalles[i].TipoDetalleDTO.DescripcionTipo)
+                                        </td>
+                                        <td class="text-right">
+                                            @Html.Encode(Model.GastoTransporte.Pagos[0].Detalles[i].MonPago.ToString("#,##0.00"))
+                                            @Html.HiddenFor(model => Model.GastoTransporte.Pagos[0].Detalles[i].MonPago)
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            <tr>
+                                <td></td>
+                                <td><b>Cantidad de Días Deducciones: </b> @Html.Encode(diasRebajo)</td>
+                                <td class="text-right">
+                                    <b class="text-right alert-danger">@Html.Encode(monRebajo.ToString("#,##0.00"))</b>
+                                </td>
+                            </tr>
+                            <tr class="text-left">
+                                <td><b>REINTEGROS</b></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            for (int i = 0; i < count; i++)
+                            {
+                                if (Model.GastoTransporte.Pagos[0].Detalles[i].TipoDetalleDTO.IdEntidad == 5) // Reintegros
+                                {
+                                    monReintegro += Model.GastoTransporte.Pagos[0].Detalles[i].MonPago;
+                                    diasReintegro++;
+
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(model => model.GastoTransporte.Pagos[0].Detalles[i].FecDiaPago)
+                                            @Html.HiddenFor(model => Model.GastoTransporte.Pagos[0].Detalles[i].FecDiaPago)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.GastoTransporte.Pagos[0].Detalles[i].TipoDetalleDTO.DescripcionTipo)
+                                            @Html.HiddenFor(model => Model.GastoTransporte.Pagos[0].Detalles[i].TipoDetalleDTO.IdEntidad)
+                                            @Html.HiddenFor(model => Model.GastoTransporte.Pagos[0].Detalles[i].TipoDetalleDTO.DescripcionTipo)
+                                        </td>
+                                        <td class="text-right">
+                                            @Html.Encode(Model.GastoTransporte.Pagos[0].Detalles[i].MonPago.ToString("#,##0.00"))
+                                            @Html.HiddenFor(model => Model.GastoTransporte.Pagos[0].Detalles[i].MonPago)
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            <tr>
+                                <td></td>
+                                <td><b>Cantidad de Días Reintegro: </b> @Html.Encode(diasReintegro)</td>
+                                <td class="text-right">
+                                    <b class="text-right alert-info">@Html.Encode(monReintegro.ToString("#,##0.00"))</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><b>Total a Pagar</b></td>
+                                <td class="text-right">
+                                    <b>@Html.Encode(Model.GastoTransporte.Pagos[0].MonPago.ToString("#,##0.00"))</b>
+                                    @Html.HiddenFor(model => Model.GastoTransporte.Pagos[0].MonPago)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <div style="text-align:right; margin-right:10px;">
+                    <p>
+                        <button class="btn btn-info" type="submit"><i class="fa fa-file-pdf-o"></i> Exportar a PDF</button>
+                    </p>
+                </div>
+
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-danger" role="alert">
+                <i class="fa fa-times-circle d-inline" style="font-size:48px;"></i>
+                <h4 class="d-inline"> Ocurrió un error al momento de guardar el Pago de Gasto de Transporte.</h4>
+            </div>
+            <br />
+
+            <div class="card">
+                <h5 class="card-header">Detalles</h5>
+                <div class="card-body">
+                    <div>El Pago de Gasto de Transporte no pudo ser guardado debido al siguiente error: </div>
+                    <br /><div><b>@Html.Encode(Model.Error.MensajeError)</b></div>
+                    <br /><div>Si conoce la causa de este error, por favor revise los datos que intentó almacenar e intentelo de nuevo.</div>
+                    <br /><div>De lo contrario le invitamos a ponerse en contacto con nuestro equipo de soporte, mediante el sistema de <a href="http://sisrh.mopt.go.cr:83/" target="_blank">Ayuda y Soporte</a></div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+            //Detalles tras la anulación de un pago
+            if (Request.QueryString["accion"] == "modificar")
+            {
+                if (Model.Error == null)
+                {
+                    <div class="alert alert-primary" role="alert">
+                        <i class="fa fa-exclamation-circle d-inline" style="font-size:48px;"></i>
+                        <h4 class="d-inline">El Pago de Gasto de Transporte se ha anulado.</h4>
+                    </div>
+                    <br />
+                    <div class="card">
+                        <h5 class="card-header">Detalles</h5>
+                        <div class="card-body">
+                            <div>Se ha anulado el Pago de Gasto de Transporte # <b>@Html.Encode(Model.GastoTransporte.CodigoGastoTransporte)</b></div>
+                            <br /><div>Monto del pago de gasto: <b>@Html.Encode(Model.GastoTransporte.Pagos[0].MonPago.ToString("#,##0.00"))</b></div>
+                            <br /><div>Fecha de pago: <b>@Html.Encode(Model.GastoTransporte.Pagos[0].FecPago.ToShortDateString())</b></div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="alert alert-danger" role="alert">
+                        <i class="fa fa-times-circle d-inline" style="font-size:48px;"></i>
+                        <h4 class="d-inline"> Ocurrió un error al momento de anular el Pago de Gasto de Transporte.</h4>
+                    </div>
+                    <br />
+
+                    <div class="card">
+                        <h5 class="card-header">Detalles</h5>
+                        <div class="card-body">
+                            <div>El Pago de Gasto de Transporte no pudo ser anulado debido al siguiente error: </div>
+                            <br /><div><b>@Html.Encode(Model.Error.MensajeError)</b></div>
+                            <br /><div>Si conoce la causa de este error, por favor revise los datos que intentó almacenar e inténtelo de nuevo.</div>
+                            <br /><div>De lo contrario le invitamos a ponerse en contacto con nuestro equipo de soporte, mediante el sistema de <a href="http://sisrh.mopt.go.cr:83/" target="_blank">Ayuda y Soporte</a></div>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                //Muestra los detalles del pago(y del funcionario)
+                using (Html.BeginForm("ReportePagoViaticoCorrido", "ViaticoCorrido", FormMethod.Post, new { @id = "thisForm" }))
+                {
+                    <div class="card">
+                        <div class="card-header text-left">
+                            <b>Gasto de Transporte #@Model.GastoTransporte.CodigoGastoTransporte</b>
+                            @Html.HiddenFor(model => model.GastoTransporte.CodigoGastoTransporte)
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-group">
+                                @* Funcionario *@
+                                <li class="list-group-item">
+                                    <span>
+                                        <b>Funcionario: </b> @Model.Funcionario.Cedula - @Model.Funcionario.Nombre @Model.Funcionario.PrimerApellido @Model.Funcionario.SegundoApellido
+                                        @Html.HiddenFor(model => model.Funcionario.Cedula)
+                                        @Html.HiddenFor(model => model.Funcionario.Nombre)
+                                        @Html.HiddenFor(model => model.Funcionario.PrimerApellido)
+                                        @Html.HiddenFor(model => model.Funcionario.SegundoApellido)
+                                    </span>
+                                </li>
+                                @* Lugar de trabajo *@
+                                <li class="list-group-item">
+                                    <span>
+                                        <b>@Html.Label("Lugar de Trabajo"): </b>
+                                        @Model.UbicacionTrabajo.Distrito.Canton.Provincia.NomProvincia -
+                                        @Model.UbicacionTrabajo.Distrito.Canton.NomCanton -
+                                        @Model.UbicacionTrabajo.Distrito.NomDistrito
+                                        @Html.HiddenFor(model => model.UbicacionTrabajo.Distrito.Canton.Provincia.NomProvincia)
+                                        @Html.HiddenFor(model => model.UbicacionTrabajo.Distrito.Canton.NomCanton)
+                                        @Html.HiddenFor(model => model.UbicacionTrabajo.Distrito.NomDistrito)
+                                    </span>
+                                </li>
+                                @* Lugar de contrato *@
+                                <li class="list-group-item">
+                                    <span>
+                                        <b>@Html.Label("Lugar de Contrato"): </b>
+                                        @Model.UbicacionContrato.Distrito.Canton.Provincia.NomProvincia -
+                                        @Model.UbicacionContrato.Distrito.Canton.NomCanton -
+                                        @Model.UbicacionContrato.Distrito.NomDistrito
+                                        @Html.HiddenFor(model => model.UbicacionContrato.Distrito.Canton.Provincia.NomProvincia)
+                                        @Html.HiddenFor(model => model.UbicacionContrato.Distrito.Canton.NomCanton)
+                                        @Html.HiddenFor(model => model.UbicacionContrato.Distrito.NomDistrito)
+                                    </span>
+                                </li>
+                                @* Fecha del gasto *@
+                                <li class="list-group-item">
+                                    <span>
+                                        <b>@Html.Label("Fecha del Gasto de Transporte:") </b>@Html.Encode(Model.GastoTransporte.FecInicioDTO.ToShortDateString()) -
+                                        @Html.Encode(Model.GastoTransporte.FecFinDTO.ToShortDateString())
+                                        @Html.HiddenFor(model => model.GastoTransporte.FecInicioDTO)
+                                        @Html.HiddenFor(model => model.GastoTransporte.FecFinDTO)
+                                        @Html.HiddenFor(model => model.GastoTransporte.FecPagoDTO)
+                                    </span>
+                                </li>
+                                @* Información Pago *@
+                                <li class="list-group-item">
+                                    <span>
+                                        <b>@Html.LabelFor(model => model.GastoTransporte.Pagos[0].FecPago): </b>@Model.GastoTransporte.Pagos[0].FecPago.ToShortDateString()
+                                        @Html.HiddenFor(model => model.GastoTransporte.Pagos[0].FecPago)
+                                    </span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span>
+                                        <b>@Html.LabelFor(model => model.GastoTransporte.Pagos[0].NumBoleta): </b>@Model.GastoTransporte.Pagos[0].NumBoleta
+                                        @Html.HiddenFor(model => model.GastoTransporte.Pagos[0].NumBoleta)
+                                    </span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span>
+                                        <b>@Html.LabelFor(model => model.GastoTransporte.Pagos[0].ReservaRecurso): </b>@Model.GastoTransporte.Pagos[0].ReservaRecurso
+                                        @Html.HiddenFor(model => model.GastoTransporte.Pagos[0].ReservaRecurso)
+                                    </span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span>
+                                        <b>@Html.LabelFor(model => model.GastoTransporte.MontGastoTransporteDTO): </b>@Html.Encode(Convert.ToDecimal(Model.GastoTransporte.MontGastoTransporteDTO).ToString("#,##0.00"))
+                                        @Html.HiddenFor(model => model.GastoTransporte.MontGastoTransporteDTO)
+                                    </span>
+                                </li>
+                                @Html.HiddenFor(model => model.GastoTransporte.Pagos[0].IndEstado)
+                            </ul>
+                        <br />
+
+                        <table class="table table-hover">
+                            <thead class="thead-light">
+                                <tr class="text-center">
+                                    <th>Día</th>
+                                    <th>Motivo Rebajo</th>
+                                    <th>Mto Rebajo</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-center">
+                                @* Cálculo del total a rebajar *@
+                                @{
+                                    int count = Model.GastoTransporte.Pagos[0].Detalles.Count;
+                                    decimal monRebajo = 0;
+
+                                    for (int i = 0; i < count; i++)
+                                    {
+                                        monRebajo += Model.GastoTransporte.Pagos[0].Detalles[i].MonPago;
+                                        @Html.HiddenFor(model => model.GastoTransporte.Pagos[0].Detalles[i].IdEntidad)
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(model => model.GastoTransporte.Pagos[0].Detalles[i].FecDiaPago)
+                                                @Html.HiddenFor(model => model.GastoTransporte.Pagos[0].Detalles[i].FecDiaPago)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(model => model.GastoTransporte.Pagos[0].Detalles[i].TipoDetalleDTO.DescripcionTipo)
+                                                @Html.HiddenFor(model => model.GastoTransporte.Pagos[0].Detalles[i].TipoDetalleDTO.DescripcionTipo)
+                                            </td>
+                                            <td>
+                                                @Html.Encode(Model.GastoTransporte.Pagos[0].Detalles[i].MonPago.ToString("#,##0.00"))
+                                                @Html.HiddenFor(model => model.GastoTransporte.Pagos[0].Detalles[i].MonPago)
+                                            </td>
+                                        </tr>
+                                    }
+                                    <tr>
+                                        <td><b>Cantidad de Días Rebajo: </b> @Html.Encode(count)</td>
+                                        <td></td>
+                                        <td>
+                                            <b class="text-right alert-danger">@Html.Encode(monRebajo.ToString("#,##0.00"))</b>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td><b>Total a Pagar</b></td>
+                                        <td>
+                                            <b>@Html.Encode(Model.GastoTransporte.Pagos[0].MonPago.ToString("#,##0.00"))</b>
+                                            @Html.HiddenFor(model => model.GastoTransporte.Pagos[0].MonPago)
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+                        <button class="btn btn-info" type="submit"><i class="fa fa-file-pdf-o"></i> Exportar a PDF</button>
+                        @if (Model.GastoTransporte.IdEntidad == 0)
+                        {
+                            <a href="@Url.Action("Edit", "ViaticoCorrido", new { @codigo = Model.GastoTransporte.IdEntidad })" class="btn btn-warning">
+                                <i class="fa fa-pencil-square-o"></i> Editar
+                            </a>
+                        }
+                    </div>
+                </div>
+            }
+        }
+    }
+}
+<br />
+<a href="javascript:history.back()" class="btn btn-secondary"><i class="fa fa-arrow-circle-left"></i> Regresar</a>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+
+

@@ -1,0 +1,154 @@
+﻿@model  SIRH.Web.ViewModels.BusquedaHistoricoPlanillaVM
+@{
+    using (Html.BeginForm("ReporteBusquedaHistorico", "Planilla", FormMethod.Post, new { /*enctype = "multipart/form-data",*/ @id = "thisForm", target = "_blank" }))
+    {
+        <div class="card">
+            <div class="card-header">
+                <i class="fa fa-list"></i> <b>Resultados (@Model.TotalRegistros)</b>
+                @if (Model.TotalPaginas > 1)
+                {
+                    <div><i class="fa fa-location-arrow"></i> Mostrando página @Model.PaginaActual de @Model.TotalPaginas</div>
+                }
+            </div>
+            <div class="card-body">
+                <table class="table detalle">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Cédula</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col"># Puesto</th>
+                            <th scope="col">Salario total</th>
+                            <th scope="col">Periodo</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < Model.Historico.Count(); i++)
+                        {
+                            <tr>
+                                <td>
+                                    @((Model.PaginaActual -1) * 10 + (i+1))
+                                </td>
+                                <td>
+                                    @Html.Encode(Model.Historico.ElementAt(i).Cedula)
+                                    @Html.HiddenFor(model => model.Historico[i].Cedula)
+                                </td>
+                                <td>
+                                    @Html.Encode(Model.Historico.ElementAt(i).Nombre)
+                                    @Html.HiddenFor(model => model.Historico[i].Nombre)
+                                </td>
+                                <td>
+                                    @Html.Encode(Model.Historico.ElementAt(i).NumeroPuesto)
+                                    @Html.HiddenFor(model => model.Historico[i].NumeroPuesto)
+                                </td>
+                                <td>
+                                    @Html.Encode(Model.Historico.ElementAt(i).SalarioQuincenal)
+                                    @Html.HiddenFor(model => model.Historico[i].SalarioMensual)
+                                </td>
+                                <td>
+                                    @Html.Encode(Model.Historico.ElementAt(i).FechaPeriodo)
+                                    @Html.HiddenFor(model => model.Historico[i].FechaPeriodo)
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("DetailsHistorico", "Planilla", new { codigo = Model.Historico.ElementAt(i).IdEntidad })" class="btn btn-primary btn-sm">
+                                        <i class="fa fa-search"></i> Ver Detalle
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <button id="a" class="btn btn-danger" type="submit" name="btnSubmit" value="pdf"><i class="fa fa-file-pdf-o"></i> Exportar a pdf</button>
+                <button id="b" class="btn btn-success" type="submit" name="btnSubmit" value="excel"><i class="fa fa-file-excel-o"></i> Exportar a Excel</button>
+            </div>
+            <div class="card-footer">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-end">
+                        @if (Model.PaginaActual == 1)
+                        {
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1">Atras</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="page-item">
+                                @Ajax.ActionLink("Atras", "MoverPaginadorHistoricoPlanilla", new
+                                               {
+                                                   @page = Model.PaginaActual - 1
+                                               }, new AjaxOptions { UpdateTargetId = "dvResultadoBusqueda" }, new { @class = "page-link" })
+                            </li>
+                        }
+
+                        @*@{for (int i = 1; i <= Model.TotalPaginas; i++)
+                            {
+                                <li class="page-item ">
+                                    @Ajax.ActionLink(i.ToString(), "MoverPaginadorHistoricoPlanilla", new
+                                                   {
+                                                       @page = i
+                                                   }, new AjaxOptions { UpdateTargetId = "dvResultadoBusqueda" }, new { @class = "page-link" })
+                                </li>
+                            }
+                        }*@
+
+                        @{ if (Model.TotalPaginas > 10)
+                            {
+                                var indice = Model.PaginaActual > 6 ? (Model.PaginaActual + 4 <= Model.TotalPaginas ? Model.PaginaActual - 5 : Model.PaginaActual - 5 - ((Model.PaginaActual + 4) - Model.TotalPaginas)) : 1;
+                                var final = Model.PaginaActual > 6 ? (Model.PaginaActual + 4 >= Model.TotalPaginas ? Model.TotalPaginas : Model.PaginaActual + 4) : 10;
+
+                                for (int i = indice; i <= final; i++)
+                                {
+                                    <li class="page-item">
+                                        @Ajax.ActionLink(i.ToString(), "MoverPaginadorHistoricoPlanilla", new
+                                                       {
+                                                           @page = i
+                                                       }, new AjaxOptions { UpdateTargetId = "dvResultadoBusqueda" }, new { @class = "page-link" })
+                                    </li>
+                                }
+                                if (Model.PaginaActual + 4 < Model.TotalPaginas)
+                                {
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#">...</a>
+                                    </li>
+                                }
+
+                            }
+                            else
+                            {
+                                for (int i = 1; i <= Model.TotalPaginas; i++)
+                                {
+                                    <li class="page-item ">
+                                        @Ajax.ActionLink(i.ToString(), "MoverPaginadorHistoricoPlanilla", new
+                                                       {
+                                                           @page = i
+                                                       }, new AjaxOptions { UpdateTargetId = "dvResultadoBusqueda" }, new { @class = "page-link" })
+                                    </li>
+                                }
+                            }
+                        }
+
+
+                        @if (Model.TotalPaginas == 1 || Model.PaginaActual == Model.TotalPaginas)
+                        {
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#">Siguiente</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="page-item">
+                                @Ajax.ActionLink("Siguiente", "MoverPaginadorHistoricoPlanilla", new
+                                               {
+                                                   @page = Model.PaginaActual + 1
+                                               }, new AjaxOptions { UpdateTargetId = "dvResultadoBusqueda" }, new { @class = "page-link" })
+                            </li>
+                        }
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    }
+    <br />
+}
+

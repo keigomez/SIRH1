@@ -1,0 +1,9 @@
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Datos\bin\Release\SIRH.Datos.dll.config
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Datos\bin\Release\SIRH.Datos.dll
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Datos\bin\Release\SIRH.Datos.pdb
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Datos\bin\Release\EntityFramework.dll
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Datos\bin\Release\SIRH.DTO.dll
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Datos\bin\Release\SIRH.DTO.pdb
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Datos\obj\Release\SIRH.Datos.csprojResolveAssemblyReference.cache
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Datos\obj\Release\SIRH.Datos.dll
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Datos\obj\Release\SIRH.Datos.pdb

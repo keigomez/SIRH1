@@ -1,0 +1,231 @@
+﻿@model SIRH.Web.ViewModels.FormularioViaticoCorridoVM
+@{
+    if (Model != null)
+    {
+        <b>@Html.LabelFor(model => model.Formulario)</b> <label>@Model.Formulario</label>
+
+        <table class="table table-hover">
+            <thead class="thead-light">
+                <tr>
+                    <th colspan="6">Información del Funcionario</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>@Html.LabelFor(model => model.Funcionario.Cedula)</b></td>
+                    <td>
+                        @Html.DisplayFor(model => model.Funcionario.Cedula)
+                        @Html.HiddenFor(model => model.Funcionario.Cedula)
+                    <td><b>@Html.LabelFor(model => model.Funcionario.Nombre)</b></td>
+                    <td>
+                        @Model.Funcionario.Nombre @Model.Funcionario.PrimerApellido @Model.Funcionario.SegundoApellido
+                        @Html.HiddenFor(model => model.Funcionario.Nombre)
+                        @Html.HiddenFor(model => model.Funcionario.PrimerApellido)
+                        @Html.HiddenFor(model => model.Funcionario.SegundoApellido)
+                    </td>
+                    <td><b>@Html.LabelFor(model => model.Puesto.CodPuesto)</b></td>
+                    <td>
+                        @Html.DisplayFor(model => model.Puesto.CodPuesto)
+                        @Html.HiddenFor(model => model.Puesto.CodPuesto)
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>@Html.LabelFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)</b></td>
+                    <td>
+                        @Html.DisplayFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)
+                        @Html.HiddenFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)
+                    </td>
+                    <td><b>@Html.LabelFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal)</b></td>
+                    <td>
+                        @Html.DisplayFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal)
+                        @Html.HiddenFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal)
+                    </td>
+                    <td><b>@Html.LabelFor(model => model.DetallePuesto.Clase.DesClase)</b></td>
+                    <td>
+                        @Html.DisplayFor(model => model.DetallePuesto.Clase.DesClase)
+                        @Html.HiddenFor(model => model.DetallePuesto.Clase.IdEntidad)
+                        @Html.HiddenFor(model => model.DetallePuesto.Clase.DesClase)
+                    </td>
+                </tr> 
+            </tbody>
+        </table>
+
+        <div class="jumbotron" id="Conetedor2">
+            @{
+                using (Ajax.BeginForm("CreateReintegroDiasVC", new AjaxOptions
+                {
+                    HttpMethod = "POST",
+                    UpdateTargetId = "Div3",
+                    OnBegin = "BeginGuardarDesarraigo",
+                    OnComplete = "CompleteGuardarDesarraigo",
+                    OnSuccess = "SuccessGuardarDesarraigo",
+                    OnFailure = "SuccessGuardarDesarraigo"
+                }))
+                {
+                    Html.ValidationSummary(true);
+                     <!--Formulario de Viatico Corrido-->
+                    <div id="Div1">
+                        <div id="setForm">
+                            <!--Se mantienen los datos para no volver a hacer la busqueda-->
+                            @Html.HiddenFor(model => model.Funcionario.Nombre)
+                            @Html.HiddenFor(model => model.Funcionario.Cedula)
+                            @Html.HiddenFor(model => model.Funcionario.PrimerApellido)
+                            @Html.HiddenFor(model => model.Funcionario.SegundoApellido)
+                            @Html.HiddenFor(model => model.Funcionario.Nombre)
+                            @Html.HiddenFor(model => model.UbicacionTrabajo.Distrito.Canton.Provincia.NomProvincia)
+                            @Html.HiddenFor(model => model.UbicacionTrabajo.Distrito.Canton.NomCanton)
+                            @Html.HiddenFor(model => model.UbicacionTrabajo.Distrito.NomDistrito)
+                            @Html.HiddenFor(model => model.UbicacionContrato.Distrito.Canton.Provincia.NomProvincia)
+                            @Html.HiddenFor(model => model.UbicacionContrato.Distrito.Canton.NomCanton)
+                            @Html.HiddenFor(model => model.UbicacionContrato.Distrito.NomDistrito)
+                            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                            @Html.HiddenFor(model => model.Puesto.CodPuesto)
+                            @Html.HiddenFor(model => model.DetallePuesto.Clase.DesClase)
+                            @Html.HiddenFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)
+                            @Html.HiddenFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal)
+                            @Html.HiddenFor(model => model.ViaticoCorrido.DesSenasDTO)
+                            @Html.HiddenFor(model => model.ViaticoCorrido.NumTelDomicilioDTO)
+                            @Html.HiddenFor(model => model.ViaticoCorrido.IdEntidad)
+                            @Html.HiddenFor(model => model.ViaticoCorrido.PernocteDTO)
+                            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.Programa.DesPrograma)
+                            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.Area)
+                            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.Actividad)
+                            
+                            @Html.TextBoxFor(model => model.ViaticoCorrido.IdEntidad, new { @id = "idViatico", @class = "form-control", @disabled = "disabled", @hidden = "hidden" }) 
+
+                            <!--Tabla Motivos-->
+                            <!--Almacena los datos de la lista de Motivos-->
+                            <div id="MotivosData"></div>
+                            <table class="table" id="tablaMotivos" style="margin-bottom:70px;">
+                                <thead class="table-active">
+                                    <tr class="table-active">
+                                        <th colspan="12" class="encabezadoTabla">
+                                            Días Rebajados
+                                            <div style="float:right;"><input class="btn btn-secondary " id="btnAgregarMotivo" type="button" value="+ Agregar Motivo" /></div>
+                                        </th>
+                                    </tr>
+                                    <tr class="table-active">
+                                        <th class="encabezadoTablaEspecialRegistro">Tipo</th>
+                                        <th class="encabezadoTablaEspecialRegistro">Fecha Rige</th>
+                                        <th class="encabezadoTablaEspecialRegistro">Monto</th>
+                                        <th class="encabezadoTablaEspecialRegistro">Reintegrar</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tablaMotivosDetalle">
+                                    @{
+                                        int count = Model.DetalleD.Count;
+                                        for (int i = 0; i < count; i++)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @Html.DisplayFor(model => model.DetalleD[i].DesMotivoDTO)
+                                                    @Html.HiddenFor(model => Model.DetalleD[i].DesMotivoDTO)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(model => model.DetalleD[i].FecRigeDTO)
+                                                    @Html.HiddenFor(model => Model.DetalleD[i].FecRigeDTO)
+                                                </td>
+                                                <td>
+                                                    @Html.Encode(Convert.ToDecimal(Model.DetalleD[i].MontMontoBajarDTO).ToString("#,##0.00"))
+                                                    @Html.HiddenFor(model => Model.DetalleD[i].MontMontoBajarDTO)
+                                                </td>
+                                                <td>
+                                                    @Html.CheckBoxFor(model => model.DetalleD[i].IndReintegroDTO, new
+                                                   {
+                                                       //@id = "toggleE"+ cuenta,
+                                                       @type = "checkbox",
+                                                       @checked = "checked",
+                                                       @data_toggle = "toggle",
+                                                       @data_onstyle = "success",
+                                                       @data_offstyle = "danger",
+                                                       @data_width = "70",
+                                                       @data_on = "Sí",
+                                                       @data_off = "No",
+                                                       @class = "clsCheck"
+                                                   })
+                                                </td>
+
+                                            </tr>
+                                        }
+                                        <tr>
+                                            <td><b>Cantidad de Días: </b> @Html.Encode(count)</td>
+                                            <td><b>Total Subsidio</b></td>
+                                            <td>
+                                                @*<b>@Html.Encode(Model.Incapacidad.MontoTotalSubsidio.ToString("#,##0.00"))</b>
+                                                @Html.HiddenFor(model => Model.Incapacidad.MontoTotalSubsidio)*@
+                                            </td>
+                                            <td><b>Total Rebaja</b></td>
+                                            <td>
+                                                @*<b> @Html.Encode(Model.Incapacidad.MontoTotalRebaja.ToString("#,##0.00")) </b>
+                                                @Html.HiddenFor(model => Model.Incapacidad.MontoTotalRebaja)*@
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+
+                            <div class="card" style="margin-bottom:20px;">
+                                <h5 class="card-header">Motivo Reintegro</h5>
+                                <div class="card-body">
+                                    <center>
+                                        <div class="form-group">
+                                            @Html.TextAreaFor(model => model.MovimientoVC.ObsObservacionesDTO, new { @class = "form-control", @rows = "5", id = "comment" })
+                                            @Html.HiddenFor(model => model.MovimientoVC.ObsObservacionesDTO)
+                                            @Html.ValidationMessageFor(model => model.MovimientoVC.ObsObservacionesDTO)
+                                        </div>
+                                    </center>
+                                </div>
+                            </div>
+                            @if (Model.DetalleD != null)
+                            {
+                                for (int i = 0; i < Model.DetalleD.Count; i++)
+                                {
+                                    @Html.HiddenFor(model => model.DetalleD[i].IdEntidad)
+                                    @Html.HiddenFor(model => model.DetalleD[i].DesMotivoDTO)
+                                    @Html.HiddenFor(model => model.DetalleD[i].FecRigeDTO)
+                                    @Html.HiddenFor(model => model.DetalleD[i].FecVenceDTO)
+                                    @Html.HiddenFor(model => model.DetalleD[i].NumNoDiaDTO)
+                                    @Html.HiddenFor(model => model.DetalleD[i].MontMontoBajarDTO)
+                                    @Html.HiddenFor(model => model.DetalleD[i].MontMontoRebajarDTO)
+                                    @Html.HiddenFor(model => model.DetalleD[i].TotRebajarDTO)
+                                    @Html.HiddenFor(model => model.DetalleD[i].NumSolicitudAccionPDTO)
+
+                                    @Html.ValidationMessageFor(model => model.DetalleD[i].IdEntidad)
+                                    @Html.ValidationMessageFor(model => model.DetalleD[i].DesMotivoDTO)
+                                    @Html.ValidationMessageFor(model => model.DetalleD[i].FecRigeDTO)
+                                    @Html.ValidationMessageFor(model => model.DetalleD[i].FecVenceDTO)
+                                    @Html.ValidationMessageFor(model => model.DetalleD[i].NumNoDiaDTO)
+                                    @Html.ValidationMessageFor(model => model.DetalleD[i].MontMontoBajarDTO)
+                                    @Html.ValidationMessageFor(model => model.DetalleD[i].MontMontoRebajarDTO)
+                                    @Html.ValidationMessageFor(model => model.DetalleD[i].TotRebajarDTO)
+                                    @Html.ValidationMessageFor(model => model.DetalleD[i].NumSolicitudAccionPDTO)
+                                }
+                            }
+
+                            @Html.HiddenFor(model => model.ViaticoCorridoList[0].IdEntidad)
+
+                            @Html.ValidationMessageFor(model => model.ViaticoCorridoList[0].IdEntidad)
+
+                            <div class="row">
+                                <div class="col-2">
+                                    <input class="btn btn-info" id="btnGuardar" name="SubmitButton" type="submit" value="Agregar Reintegro" />
+                                </div>
+                                <div class="col-10">
+                                    <div id="preloader1" class="loader" hidden></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+                
+        <!--Errores del formulario-->
+        <div id="Div3" style="margin-top:15px;"> </div>
+    }
+
+        <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+}

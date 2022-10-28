@@ -1,0 +1,452 @@
+﻿@model SIRH.Web.ViewModels.FuncionarioRegistroExtrasVM
+<link rel="stylesheet" href="~/Content/datetimepicker.css">
+<div id="formulario">
+    @{
+        if (Model.DetalleExtras != null)
+        {
+            using (Ajax.BeginForm("CreateDoble", "RegistroTiempoExtra", new { id = "FormRegistroDoble" }, new AjaxOptions
+            {
+                HttpMethod = "Post",
+                UpdateTargetId = "formulario",
+                OnSuccess = "SuccessValidacionDoble",
+                OnBegin = "BeginValidacionDoble",
+                OnFailure = "CompleteValidacionDoble",
+                OnComplete = "CompleteValidacionDoble"
+            }))
+            {
+                <div class="card">
+                    <h5 class="card-header">Información del tiempo extra @(Model.DetallePuesto.Clase?.DesClase != Model.RegistroTiempoExtra.Clase?.DesClase ? "(Cambio de clase)" : "")</h5>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-3 col-md-4">
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <span>
+                                            <strong>@Html.LabelFor(model => model.Funcionario.Cedula): </strong>@Html.DisplayFor(model => model.Funcionario.Cedula)
+                                            @Html.HiddenFor(model => model.Funcionario.Cedula)
+                                            @Html.HiddenFor(model => model.MesActual)
+                                            @Html.HiddenFor(model => model.RegistroTiempoExtra.Periodo)
+                                            @Html.HiddenFor(model => model.FechaMin)
+                                            @Html.HiddenFor(model => model.FechaMax)
+                                            @Html.HiddenFor(model => model.RegistroTiempoExtra.IdEntidad)
+                                            @Html.HiddenFor(model => model.Nombramineto.FecRige)
+                                            @Html.HiddenFor(model => model.Nombramineto.FecVence)
+
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span>
+                                            <strong>@Html.LabelFor(model => model.Funcionario.Nombre): </strong>@Model.Funcionario.Nombre @Model.Funcionario.PrimerApellido @Model.Funcionario.SegundoApellido
+                                            @Html.HiddenFor(model => model.Funcionario.Nombre)
+                                            @Html.HiddenFor(model => model.Funcionario.PrimerApellido)
+                                            @Html.HiddenFor(model => model.Funcionario.SegundoApellido)
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span>
+                                            <strong>@Html.LabelFor(model => model.RegistroTiempoExtra.FecPago): </strong>@Html.Label($"{Model.MesActualPago} - {Model.RegistroTiempoExtra.FecPago.ToShortDateString()}")
+                                            @Html.HiddenFor(model => model.MesActualPago)
+                                            @Html.HiddenFor(model => model.RegistroTiempoExtra.FecPago)
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span>
+                                            <strong>@Html.LabelFor(model => model.RegistroTiempoExtra.OficJustificacion): </strong>@Html.DisplayFor(model => model.RegistroTiempoExtra.OficJustificacion)
+                                            @Html.HiddenFor(model => model.RegistroTiempoExtra.OficJustificacion)
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <strong><i class="fa fa-info-circle"></i> Valores de horas ordinarias:</strong><br /><br />
+                                        <span>
+                                            <strong id="horaDiurna">Monto por hora diurna: </strong>@Html.DisplayFor(model => model.RegistroTiempoExtra.MontoDiurna)
+                                            @Html.HiddenFor(model => model.RegistroTiempoExtra.MontoDiurna)
+                                            @Html.HiddenFor(model => model.RegistroTiempoExtra.MontoDiurna)
+                                            @Html.HiddenFor(model => model.Desglose1.MontoSalarioBruto)
+                                            @Html.HiddenFor(model => model.Desglose1.IdEntidad)
+                                            @Html.HiddenFor(model => model.Desglose2.MontoSalarioBruto)
+                                            @Html.HiddenFor(model => model.Desglose2.IdEntidad)
+                                        </span>
+                                        <br />
+                                        <span class="horaGuarda">
+                                            <strong>Monto por hora mixta: </strong>@Html.DisplayFor(model => model.RegistroTiempoExtra.MontoMixta)
+                                            @Html.HiddenFor(model => model.RegistroTiempoExtra.MontoMixta)
+                                        </span>
+                                        <br />
+                                        <span class="horaGuarda">
+                                            <strong>Monto por hora nocturna: </strong>@Html.DisplayFor(model => model.RegistroTiempoExtra.MontoNocturna)
+                                            @Html.HiddenFor(model => model.RegistroTiempoExtra.MontoNocturna)
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <strong>Archivo de Justificación: </strong>
+                                        @if (Model.HayArchivo)
+                                        {
+                                            <a id="pdf_preview" href="@Html.Raw(@Url.Action("GetFile", "RegistroTiempoExtra", new { cedula = Model.Funcionario.Cedula, nombre = Model.Funcionario.Nombre.Trim(), apellido = Model.Funcionario.PrimerApellido.Trim(), mesActual = Model.RegistroTiempoExtra.Periodo, id = Model.RegistroTiempoExtra.IdEntidad }))">@($"{Model.Funcionario.Cedula}_{Model.Funcionario.Nombre}_{Model.Funcionario.PrimerApellido.Substring(0, 1).ToUpper()}_{Model.RegistroTiempoExtra.Periodo.Replace(" ", "_")}.pdf")</a>
+                                        }
+                                        @Html.HiddenFor(model => model.HayArchivo)
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-3 col-md-4">
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <span>
+                                            <strong>@Html.LabelFor(model => model.Puesto.CodPuesto): </strong>@Html.DisplayFor(model => model.Puesto.CodPuesto)
+                                            @Html.HiddenFor(model => model.Puesto.CodPuesto)
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span>
+                                            <strong>@Html.LabelFor(model => model.DetallePuesto.Especialidad.DesEspecialidad): </strong>@Html.DisplayFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)
+                                            @Html.HiddenFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span>
+                                            <strong>@Html.LabelFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal): </strong>@Html.DisplayFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal)
+                                            @Html.HiddenFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal)
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span>
+                                            <strong>@Html.LabelFor(model => model.RegistroTiempoExtra.Clase.DesClase): </strong>@Html.DisplayFor(model => model.RegistroTiempoExtra.Clase.DesClase)
+                                            @if (Model.DetallePuesto.Clase?.DesClase != Model.RegistroTiempoExtra.Clase?.DesClase)
+                                            {
+                                            <strong>@Html.Label("claseReal", "Clase Original: ") </strong>@Html.DisplayFor(model => model.DetallePuesto.Clase.DesClase)
+                                            }
+                                            @Html.HiddenFor(model => model.DetallePuesto.Clase.DesClase)
+                                            @Html.HiddenFor(model => model.RegistroTiempoExtra.Clase.DesClase)
+                                            @Html.HiddenFor(model => model.ClaseActual)
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span>
+                                            <strong>@Html.LabelFor(model => model.RegistroTiempoExtra.Presupuesto.CodigoPresupuesto): </strong>@Html.DisplayFor(model => model.RegistroTiempoExtra.Presupuesto.CodigoPresupuesto)
+                                            @Html.HiddenFor(model => model.RegistroTiempoExtra.Presupuesto.CodigoPresupuesto)
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span>
+                                            <strong>@Html.LabelFor(model => model.RegistroTiempoExtra.Presupuesto.Actividad): </strong>@Html.DisplayFor(model => model.RegistroTiempoExtra.Presupuesto.Actividad)
+                                            @Html.HiddenFor(model => model.RegistroTiempoExtra.Presupuesto.Actividad)
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span>
+                                            <strong id="montosalario">Salario reportado en Integra: </strong>@((Model.Desglose1.MontoSalarioBruto + Model.Desglose2.MontoSalarioBruto).ToString("#,#.00#;(#,#.00#)"))
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-3 col-md-4">
+                                <ul class="list-group">
+
+                                    <li class="list-group-item">
+                                        <span>
+                                            <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                                            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span>
+                                            <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                                            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span>
+                                            <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                                            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span>
+                                            <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion)
+                                            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion)
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span>
+                                            <strong>@Html.LabelFor(model => model.RegistroTiempoExtra.Presupuesto.Area): </strong>@Html.DisplayFor(model => model.RegistroTiempoExtra.Presupuesto.Area)
+                                            @Html.HiddenFor(model => model.RegistroTiempoExtra.Presupuesto.Area)
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <br />
+                        <div>
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <span>
+                                        <strong>Justificación: </strong>
+                                        <br />
+                                        @Html.DisplayFor(model => model.RegistroTiempoExtra.Justificacion)
+                                        @Html.HiddenFor(model => model.RegistroTiempoExtra.Justificacion)
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="card">
+                    <h5 class="card-header">Resumen de Cálculos</h5>
+                    <div class="card-body">
+                        <table class="table table-hover">
+                            <thead class="thead-light text-center">
+                                <tr>
+                                    <th>--</th>
+                                    <th>H0</th>
+                                    <th>H1</th>
+                                    <th>H2</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-center">
+                                <tr>
+                                    <th>Total de horas</th>
+                                    <td>@Html.DisplayFor(model => model.TotalHorasH0Ver).ToString().Replace(".", ":")</td>
+                                    <td>@Html.DisplayFor(model => model.TotalHorasH1Ver).ToString().Replace(".", ":")</td>
+                                    <td>@Html.DisplayFor(model => model.TotalHorasH2Ver).ToString().Replace(".", ":")</td>
+                                    @Html.HiddenFor(model => model.TotalHorasH0Ver)
+                                    @Html.HiddenFor(model => model.TotalHorasH1Ver)
+                                    @Html.HiddenFor(model => model.TotalHorasH2Ver)
+                                </tr>
+                                <tr>
+                                    <th>Total a pagar por horas</th>
+                                    <td>@Html.DisplayFor(model => model.TotalH0Ver)</td>
+                                    <td>@Html.DisplayFor(model => model.TotalH1Ver)</td>
+                                    <td>@Html.DisplayFor(model => model.TotalH2Ver)</td>
+                                    @Html.HiddenFor(model => model.TotalH0Ver)
+                                    @Html.HiddenFor(model => model.TotalH1Ver)
+                                    @Html.HiddenFor(model => model.TotalH2Ver)
+                                </tr>
+                                <tr>
+                                    <th>Monto total</th>
+                                    <td colspan="3">@Html.DisplayFor(model => model.TotalPagarVer)</td>
+                                    @Html.HiddenFor(model => model.TotalPagarVer)
+                                    @Html.HiddenFor(model => model.RegistroTiempoExtra.MontoTotal)
+                                </tr>
+                                @{ 
+                                    for(int i = 0; i < Model.DetalleExtrasGuardados.Count(); i++)
+                                    {
+                                        @Html.HiddenFor(model => model.DetalleExtrasGuardados[i].Estado)
+                                        @Html.HiddenFor(model => model.DetalleExtrasGuardados[i].FechaInicio)
+                                        @Html.HiddenFor(model => model.DetalleExtrasGuardados[i].FechaFinal)
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <br />
+                <div class="card">
+                    <h5 class="card-header">Registro de jornada dobles</h5>
+                    <div class="card-body">
+                        <table id="extras" class="table table-bordered">
+                            <thead class="thead-dark">
+                                <tr class="text-center">
+                                    <th scope="col">Fecha Inicial</th>
+                                    <th scope="col">Fecha Final</th>
+                                    <th scope="col">Hora Inicial</th>
+                                    <th scope="col">Hora Final</th>
+                                    <th scope="col">Día<br />Especial</th>
+                                    <th scope="col">Jornada</th>
+                                    <th scope="col">H0</th>
+                                    <th scope="col">H1</th>
+                                    <th scope="col">H2</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-center">
+                                @{
+                                    for (int i = 0; i < Model.DetalleExtras.Count; i++)
+                                    {
+                                    <tr> 
+                                        <td class="align-middle">
+                                            @Html.TextBoxFor(model => model.DetalleExtras[i].FechaInicioDoble, "{0:dd/MM/yyyy}", new {@id="fechaInicio-"+i, @class = "form-control datepicker", @readonly = "readonly", @size = "7" })
+                                            @Html.HiddenFor(model => model.DetalleExtras[i].TotalLinea, new { style = "display: none;", Value = @Model.DetalleExtras[i].TotalLinea })
+                                            @Html.HiddenFor(model => model.DetalleExtras[i].FechaInicio)
+                                        </td>
+                                        <td class="align-middle">
+                                            @if (Model.DetalleExtras[i].FechaFinal > Model.DetalleExtras[i].FechaInicio)
+                                            {
+                                                @Html.DisplayFor(model => model.DetalleExtras[i].FechaFinal)
+                                                @Html.HiddenFor(model => model.DetalleExtras[i].FechaFinal)
+                                            }
+                                        </td>
+                                        <td class="align-middle">
+                                            &nbsp;&nbsp;@Html.TextBoxFor(model => model.DetalleExtras[i].HoraInicio, new { placeholder = "HH", @class = "hora_minuto form-control d-inline p-2 text-center", @maxlength = "2", @onkeypress = "return IsNumeric(event, '', 'campo de hora inicial')" }) :
+                                            @Html.TextBoxFor(model => model.DetalleExtras[i].MinutoInicio, new { placeholder = "MM", @class = "hora_minuto form-control d-inline p-2 text-center", @maxlength = "2", @onkeypress = "return IsNumeric(event, '', 'campo de minuto inicial')" })
+                                        </td>
+                                        <td class="align-middle">
+                                            &nbsp;&nbsp;@Html.TextBoxFor(model => model.DetalleExtras[i].HoraFinal, new { placeholder = "HH", @class = "hora_minuto form-control d-inline p-2 text-center", @maxlength = "2", @onkeypress = "return IsNumeric(event, '', 'campo de hora final')" }) :
+                                            @Html.TextBoxFor(model => model.DetalleExtras[i].MinutoFinal, new { placeholder = "MM", @class = "hora_minuto form-control d-inline p-2 text-center", @maxlength = "2", @onkeypress = "return IsNumeric(event, '', 'campo de minuto final')" })
+                                        </td>
+                                        <td class="align-middle">
+                                            <div class="text-left align-middle">
+                                                <div class="custom-control custom-checkbox ml-2">
+                                                    @Html.CheckBoxFor(model => model.DetalleExtras[i].FechaInicioEspecial, new { @id = "fechaIni-" + i, @class = "jornada especial custom-control-input" })
+                                                    <label class="custom-control-label" for="fechaIni-@i">F. Ini</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox ml-2">
+                                                    @if (Model.DetalleExtras[i].Jornada != null && Model.DetalleExtras[i].Jornada == SIRH.DTO.JornadaEnum.N)
+                                                    {
+                                                        @Html.CheckBoxFor(model => model.DetalleExtras[i].FechaFinalEspecial, new { @id = "fechaFin-" + i, @class = "jornada especial custom-control-input" })
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.CheckBoxFor(model => model.DetalleExtras[i].FechaFinalEspecial, new { @id = "fechaFin-" + i, @disabled = "disabled", @class = "jornada especial custom-control-input" })
+                                                    }
+                                                    <label class="custom-control-label" for="fechaFin-@i">F. Fin</label>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle">
+                                            <div class="custom-control custom-radio custom-control">
+                                                @Html.RadioButtonFor(model => model.DetalleExtras[i].Jornada, SIRH.DTO.JornadaEnum.DD, new { @id = "JD-" + i, @name = "jornada-"+i, @class = "jornada custom-control-input" })
+                                                <label class="custom-control-label" for="JD-@i">D</label>
+                                            </div>
+                                            <div class="custom-control custom-radio custom-control">
+                                                @Html.RadioButtonFor(model => model.DetalleExtras[i].Jornada, SIRH.DTO.JornadaEnum.MD, new { @id = "JM-" + i, @name = "jornada-" + i, @class = "jornada custom-control-input" })
+                                                <label class="custom-control-label" for="JM-@i">M</label>
+                                            </div>
+                                            <div class="custom-control custom-radio custom-control">
+                                                @Html.RadioButtonFor(model => model.DetalleExtras[i].Jornada, SIRH.DTO.JornadaEnum.ND, new { @id = "JN-" + i, @name = "jornada-" + i, @class = "jornada custom-control-input" })
+                                                <label class="custom-control-label" for="JN-@i">N</label>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle">
+                                            &nbsp;&nbsp;@Html.TextBoxFor(model => model.DetalleExtras[i].HoraTotalH0, new { placeholder = "HH", @class = "hora_minuto form-control d-inline p-2 text-center", maxlength = "2", @onkeypress = "return IsNumeric(event, '', 'campo de hora inicial')" }) :
+                                            @Html.TextBoxFor(model => model.DetalleExtras[i].MinutoTotalH0, new { placeholder = "MM", @class = "hora_minuto form-control d-inline p-2 text-center", maxlength = "2", @onkeypress = "return IsNumeric(event, '', 'campo de minuto inicial')" })
+                                        </td>
+                                        <td class="align-middle">
+                                            &nbsp;&nbsp;@Html.TextBoxFor(model => model.DetalleExtras[i].HoraTotalH1, new { placeholder = "HH", @class = "hora_minuto form-control d-inline p-2 text-center", maxlength = "2", @onkeypress = "return IsNumeric(event, '', 'campo de hora inicial')" }) :
+                                            @Html.TextBoxFor(model => model.DetalleExtras[i].MinutoTotalH1, new { placeholder = "MM", @class = "hora_minuto form-control d-inline p-2 text-center", maxlength = "2", @onkeypress = "return IsNumeric(event, '', 'campo de minuto inicial')" })
+                                        </td>
+                                        <td class="align-middle">
+                                            &nbsp;&nbsp;@Html.TextBoxFor(model => model.DetalleExtras[i].HoraTotalH2, new { placeholder = "HH", @class = "hora_minuto form-control d-inline p-2 text-center", maxlength = "2", @onkeypress = "return IsNumeric(event, '', 'campo de hora inicial')" }) :
+                                            @Html.TextBoxFor(model => model.DetalleExtras[i].MinutoTotalH2, new { placeholder = "MM", @class = "hora_minuto form-control d-inline p-2 text-center", maxlength = "2", @onkeypress = "return IsNumeric(event, '', 'campo de minuto inicial')" })
+                                        </td>
+                                    </tr>
+                                    }
+                                }
+                            </tbody>
+                            <tfoot class="text-center">
+                                @{
+                                    <tr>
+                                        <td>
+                                            <div class="float-left">
+                                                <div id="btn_group2" class="btn_grupo">
+                                                    <input id="btnMas" name="submit" type="submit" value="+" class="btn btn-success" />
+                                                    @if (Model.DetalleExtras.Count > 1)
+                                                    {
+                                                        <input id="btnMenos" name="submit" type="submit" value="-" class="btn btn-danger" />
+                                                    }
+                                                </div>
+                                                <div id="preloaderFila" class="loader" style="display: none"></div>
+                                            </div>
+                                        </td>
+                                        <td colspan="5" style="text-align:right;"><b>Total tiempo</b></td>
+                                        <td>@Html.DisplayFor(model => model.TotalHorasH0).ToString().Replace(".", ":")</td>
+                                        <td>@Html.DisplayFor(model => model.TotalHorasH1).ToString().Replace(".", ":")</td>
+                                        <td>@Html.DisplayFor(model => model.TotalHorasH2).ToString().Replace(".", ":")</td>
+                                        @Html.HiddenFor(model => model.TotalHorasH0)
+                                        @Html.HiddenFor(model => model.TotalHorasH1)
+                                        @Html.HiddenFor(model => model.TotalHorasH2)
+                                    </tr>
+                                    <tr>
+                                        <td colspan="6" style="text-align:right;"><b>Total a pagar por horas</b></td>
+                                        <td>@Html.DisplayFor(model => model.TotalH0)</td>
+                                        <td>@Html.DisplayFor(model => model.TotalH1)</td>
+                                        <td>@Html.DisplayFor(model => model.TotalH2)</td>
+                                        @Html.HiddenFor(model => model.TotalH0)
+                                        @Html.HiddenFor(model => model.TotalH1)
+                                        @Html.HiddenFor(model => model.TotalH2)
+                                    </tr>
+                                    <tr>
+                                        <td colspan="6" style="text-align:right;"><b>Monto total</b></td>
+                                        <td colspan="4">
+                                            @Html.DisplayFor(model => model.TotalPagar)
+                                            @Html.HiddenFor(model => model.TotalPagar)
+                                        </td>
+                                    </tr>
+                                }
+                            </tfoot>
+                        </table>
+                        <br />
+                        <div class="float-right">
+                            <div id="btn_group" class="btn_grupo">
+                                <input id="btnCalculo" name="submit" type="submit" value="Calcular" class="btn btn-dark" onclick="CalculandoDoble();" />
+                                <input id="btnRegistroDoble" name="submit" type="submit" value="Registrar" class="btn btn-primary" disabled="disabled" />
+                            </div>
+                            <div id="preloaderRegistro" class="loader" style="display: none"></div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                if (!Html.ViewData.ModelState.IsValid)
+                {
+                    <div class="card border-danger"  id="divError">
+                        <div class="card-header"><strong>El formulario contiene los siguientes errores:</strong></div>
+                        <div class="card-body text-danger">
+                            @foreach (var modelError in Html.ViewData.ModelState.SelectMany(keyValuePair => keyValuePair.Value.Errors))
+                            {
+                                <div class="alert alert-danger" role="alert">
+                                    <h5>@modelError.ErrorMessage</h5>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+            }
+            @*<script src="~/Scripts/datetimepicker.js" type="text/javascript"></script>
+            <script src="~/Scripts/datetimepicker-es.js" type="text/javascript"></script>*@
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    if ($(".datepicker").length && $("#MesActual").length && $("#FechaMin").length && $("#FechaMax").length) {
+                        var min = $("#FechaMin").val().split("/");
+                        var max = $("#FechaMax").val().split("/");
+                        var config = {
+                            locale: 'es-es',
+                            uiLibrary: 'bootstrap4',
+                            format: 'dd/mm/yyyy',
+                            minDate: new Date(min[2], min[1] - 1, min[0]),
+                            maxDate: new Date(max[2], max[1] - 1, max[0])
+                        }
+                        $(".datepicker").each(function () {
+                            //$(this).datepicker(config);
+                            $(this).datepicker(
+                            {
+                                language: "es",
+                                autoclose: true
+                            });
+                        });
+                    }
+                    $(".especial").on("click", function (e) {
+                        var checkbox = $(this);
+                        if (!checkbox.is(":checked") && $("#btnCalculo").val() === "Modificar") {
+                            e.preventDefault();
+                            return false;
+                        }
+                    });
+                    $('input[type=radio]').change(function () {
+                        var finLibre = $("#fechaFin-" + this.id.split("-")[1]);
+                        if (this.value == 'ND') {
+                            finLibre.removeAttr('disabled');
+                        }
+                        else {
+                            finLibre.prop("checked", false);
+                            finLibre.attr('disabled', 'disabled');
+                        }
+                    });
+                    hayError();
+                });
+                function hayError() {
+                    if ($("#divError").length) {
+                        $('#btnRegistroDoble').attr('disabled', true);
+                    }
+                }
+            </script>
+        }
+    }
+</div>

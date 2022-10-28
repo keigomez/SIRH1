@@ -1,0 +1,86 @@
+﻿@model SIRH.Web.ViewModels.FormularioPlanillaVM
+@{
+    ViewBag.Title = "SearchPresupuesto";
+    Layout = "~/Views/Shared/Planilla.cshtml";
+}
+<link href="~/Content/datetimepicker.css" rel="stylesheet" />
+<center><h2>Movimientos de Presupuesto</h2></center>
+@using (Ajax.BeginForm("SearchPresupuesto", "Planilla", new AjaxOptions
+{
+    UpdateTargetId = "dvResultadoBusqueda",
+    HttpMethod = "POST",
+    InsertionMode = InsertionMode.Replace,
+    OnSuccess = "SuccessCargarFuncionario",
+    OnComplete = "CompleteCargarFuncionario",
+    OnBegin = "BeginCargarFuncionario"
+    //OnFailure = "CompleteCargarFuncionario"
+}))
+{
+    <div class="card">
+        <h5 class="card-header">Movimientos presupuestarios</h5>
+        
+        
+        <div class="card-body">
+            <div class="form-group row">
+                <div class="form-group col-4">
+                    @Html.LabelFor(model => model.ComponentePresupuestario.AnioPresupuesto)
+                    <span>:</span>
+                    @Html.TextBoxFor(model => model.ComponentePresupuestario.AnioPresupuesto, new { @class = "form-control", @placeholder = "Año", style = "width: 280px;" })
+                    @Html.ValidationMessageFor(model => model.ComponentePresupuestario.AnioPresupuesto)
+                </div>
+                <div class="form-group col-4">
+                    @Html.LabelFor(model => model.TipoSeleccionado)
+                    <span>:</span>
+                    @Html.DropDownListFor(model => model.TipoSeleccionado, Model.TiposMovimiento, "Seleccione una opción", new { @class = "btn btn-secondary dropdown-toggle" })
+                    @Html.ValidationMessageFor(model => model.TipoSeleccionado)
+                </div>
+                <div class="form-group col-4">
+                    @Html.LabelFor(model => model.ProgramaSeleccionado)
+                    <span>:</span>
+                    @Html.DropDownListFor(model => model.ProgramaSeleccionado, Model.Programas, "Seleccione una opción", new { @class = "btn btn-secondary dropdown-toggle" })
+                    @Html.ValidationMessageFor(model => model.ProgramaSeleccionado)
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="form-group col-6">
+                    @Html.LabelFor(model => model.ObjetoGastoSeleccionado)
+                    <span>:</span>
+                    @Html.DropDownListFor(model => model.ObjetoGastoSeleccionado, Model.ObjetoGasto, "Seleccione una opción", new { @class = "btn btn-secondary dropdown-toggle" })
+                    @Html.ValidationMessageFor(model => model.ObjetoGastoSeleccionado)
+                </div>        
+            </div>
+                <div class="row">
+                    <div class="form-group col-2">
+                        <input id="btnBuscar" class="btn btn-secondary" name="SubmitButton" type="submit" value="Buscar" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-4">
+                        <div id="progressbar" class="loader" hidden></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-4">
+                        @Html.HiddenFor(model => model.ComponentePresupuestario.IdEntidad)
+                    </div>
+                </div>
+
+
+
+                                    @*<input id="btnBuscar" name="SubmitButton" class="btn btn-primary" type="submit" value="Buscar" />
+                    <div id="preloader" class="loader" style="display: none"></div>*@
+
+                </div>
+            </div>
+}
+
+<div id="dvResultadoBusqueda"></div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+<script src="~/scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/FormularioIncapacidad.js" type="text/javascript"></script>
+
+<script src="~/Scripts/datetimepicker.js" type="text/javascript"></script>
+<script src="~/Scripts/datetimepicker-es.js" type="text/javascript"></script>

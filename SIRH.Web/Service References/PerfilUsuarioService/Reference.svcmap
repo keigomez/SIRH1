@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="f119bb24-34f2-47cc-94da-eaba91acfa65" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://sisrh.mopt.go.cr:85/CPerfilUsuarioService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CPerfilUsuarioService.disco" MetadataType="Disco" ID="75d5b69e-f9d9-43e0-97a0-046d923f4315" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CPerfilUsuarioService.svc?disco" />
+    <MetadataFile FileName="CPerfilUsuarioService.xsd" MetadataType="Schema" ID="b092b882-781b-44b6-8471-035f6c85d1fb" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CPerfilUsuarioService.svc?xsd=xsd4" />
+    <MetadataFile FileName="CPerfilUsuarioService1.xsd" MetadataType="Schema" ID="f1bf1f35-027f-4363-b588-12eb6dfa7179" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CPerfilUsuarioService.svc?xsd=xsd0" />
+    <MetadataFile FileName="CPerfilUsuarioService2.xsd" MetadataType="Schema" ID="32d300a4-39a5-469b-8d09-a16c3224b09e" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CPerfilUsuarioService.svc?xsd=xsd1" />
+    <MetadataFile FileName="CPerfilUsuarioService3.xsd" MetadataType="Schema" ID="3ac73156-c4e6-483d-a826-b20d93e26c68" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CPerfilUsuarioService.svc?xsd=xsd2" />
+    <MetadataFile FileName="CPerfilUsuarioService.wsdl" MetadataType="Wsdl" ID="13a1a0a0-74db-48b7-a0e3-f3875757163e" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CPerfilUsuarioService.svc?wsdl" />
+    <MetadataFile FileName="CPerfilUsuarioService4.xsd" MetadataType="Schema" ID="f812439f-ce5b-4db0-996e-7c8c7f94dfdf" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CPerfilUsuarioService.svc?xsd=xsd3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

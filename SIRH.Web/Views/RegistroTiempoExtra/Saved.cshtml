@@ -1,0 +1,157 @@
+﻿@model SIRH.Web.ViewModels.FuncionarioRegistroExtrasVM
+
+@{
+    ViewBag.Title = "Registro guardado!";
+    Layout = "~/Views/Shared/TiempoExtra.cshtml";
+}
+
+@{Model.MesActual = Request.QueryString["periodo"];}
+
+@{
+    if (Model.Funcionario.Mensaje != "Error")
+    {
+        using (Html.BeginForm("ReporteDesgloseHorasExtras", "RegistroTiempoExtra", FormMethod.Post, new { @id = "thisForm", @target = "_blank" }))
+        {
+            <div class="alert alert-success" role="alert">
+                <i class="fa fa-check-circle d-inline" style="font-size:48px;"></i>
+                <h4 class="d-inline">@Model.tituloSaved</h4>
+            </div>
+            <br />
+
+            <div class="card">
+                <h5 class="card-header">Detalles</h5>
+                <div class="card-body">
+                    @if (!Model.Doble)
+                    {
+                        <div>Se han almacenado los registros de tiempo extraordinario para el funcionario: </div>
+                        <br /><div><b>@Html.Encode(Model.Funcionario.Cedula) - @Html.Encode(Model.Funcionario.Nombre) @Html.Encode(Model.Funcionario.PrimerApellido) @Html.Encode(Model.Funcionario.SegundoApellido)</b></div>
+                        <br /><div>Correspondiente al periodo: <b>@Html.Encode(Model.RegistroTiempoExtra.Periodo)</b></div>
+                        <br /><div>Pagadero el: @Html.Encode(Model.RegistroTiempoExtra.FecPago.ToShortDateString())</div>
+                        <br /><div>Emitido el: @Html.Encode(Model.RegistroTiempoExtra.FechaEmision.ToShortDateString())</div>
+                    }
+                    else
+                    {
+                        <div> Se han almacenado los registros de jornadas dobles para el funcionario: </div>
+                        <br /><div><b>@Html.Encode(Model.Funcionario.Cedula) - @Html.Encode(Model.Funcionario.Nombre) @Html.Encode(Model.Funcionario.PrimerApellido) @Html.Encode(Model.Funcionario.SegundoApellido)</b></div>
+                        <br /><div>Correspondiente al periodo: <b>@Html.Encode(Model.RegistroTiempoExtra.Periodo)</b></div>
+                        <br /><div>Emitido el: @Html.Encode(Model.RegistroTiempoExtra.FechaEmision.ToShortDateString())</div>
+                    }
+                </div>
+            </div>
+            <br />
+
+            @*@Html.HiddenFor(model => model.Funcionario.Cedula)
+            @Html.HiddenFor(model => model.Funcionario.Nombre)
+            @Html.HiddenFor(model => model.Funcionario.PrimerApellido)
+            @Html.HiddenFor(model => model.Funcionario.SegundoApellido)
+
+            @Html.HiddenFor(model => model.RegistroTiempoExtra.FecPago)
+            @Html.HiddenFor(model => model.RegistroTiempoExtra.Periodo)
+            @Html.HiddenFor(model => model.RegistroTiempoExtra.OficJustificacion)
+            @Html.HiddenFor(model => model.RegistroTiempoExtra.Justificacion)
+            @Html.HiddenFor(model => model.RegistroTiempoExtra.MontoDiurna)
+            @Html.HiddenFor(model => model.RegistroTiempoExtra.MontoMixta)
+            @Html.HiddenFor(model => model.RegistroTiempoExtra.MontoNocturna)
+            @Html.HiddenFor(model => model.RegistroTiempoExtra.Estado)
+            @Html.HiddenFor(model => model.RegistroTiempoExtra.EstadoDetalles)
+            @Html.HiddenFor(model => model.Doble)
+
+            @Html.HiddenFor(model => model.Desglose1.MontoSalarioBruto)
+            @Html.HiddenFor(model => model.Desglose1.IdEntidad)
+            @Html.HiddenFor(model => model.Desglose2.MontoSalarioBruto)
+            @Html.HiddenFor(model => model.Desglose2.IdEntidad)
+
+            @Html.HiddenFor(model => model.RegistroTiempoExtra.Clase.DesClase)//Debe ser la clase guardada
+            @Html.HiddenFor(model => model.HayArchivo)
+            @Html.HiddenFor(model => model.TotalHorasH0)
+            @Html.HiddenFor(model => model.TotalHorasH1)
+            @Html.HiddenFor(model => model.TotalHorasH2)
+            @Html.HiddenFor(model => model.TotalH0)
+            @Html.HiddenFor(model => model.TotalH1)
+            @Html.HiddenFor(model => model.TotalH2)
+            @Html.HiddenFor(model => model.TotalPagar)
+            @Html.HiddenFor(model => model.ClaseActual)
+            @Html.HiddenFor(model => model.MesActual)
+            @Html.HiddenFor(model => model.MesActualPago)
+            @Html.HiddenFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal)
+            @Html.HiddenFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)
+            @Html.HiddenFor(model => model.DetallePuesto.Clase.DesClase)
+
+            @Html.HiddenFor(model => model.RegistroTiempoExtra.Presupuesto.CodigoPresupuesto)//Debe ser el presupuesto guardado
+            @Html.HiddenFor(model => model.RegistroTiempoExtra.Presupuesto.Area)
+            @Html.HiddenFor(model => model.RegistroTiempoExtra.Presupuesto.Actividad)
+            @Html.HiddenFor(model => model.RegistroTiempoExtra.FecRegistroDetalles)
+
+            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion)
+            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto)
+            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.Area)
+            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.Actividad)
+            @Html.HiddenFor(model => model.Puesto.CodPuesto)
+            @Html.HiddenFor(model => model.Nombramineto.IdEntidad)
+            @Html.HiddenFor(model => model.Nombramineto.FecRige)
+            @Html.HiddenFor(model => model.Nombramineto.FecVence)
+            @Html.HiddenFor(model => model.EstadoDetalles)
+            for (int i = 0; i < Model.DetalleExtras.Count; i++)
+            {
+                @Html.HiddenFor(model => model.DetalleExtras[i].FechaInicio)
+                @Html.HiddenFor(model => model.DetalleExtras[i].FechaFinal)
+                @Html.HiddenFor(model => model.DetalleExtras[i].HoraInicio)
+                @Html.HiddenFor(model => model.DetalleExtras[i].HoraFinal)
+                @Html.HiddenFor(model => model.DetalleExtras[i].HoraTotalH0)
+                @Html.HiddenFor(model => model.DetalleExtras[i].HoraTotalH1)
+                @Html.HiddenFor(model => model.DetalleExtras[i].HoraTotalH2)
+                @Html.HiddenFor(model => model.DetalleExtras[i].MinutoTotalH0)
+                @Html.HiddenFor(model => model.DetalleExtras[i].MinutoTotalH1)
+                @Html.HiddenFor(model => model.DetalleExtras[i].MinutoTotalH2)
+                @Html.HiddenFor(model => model.DetalleExtras[i].MinutoInicio)
+                @Html.HiddenFor(model => model.DetalleExtras[i].MinutoFinal)
+                @Html.HiddenFor(model => model.DetalleExtras[i].TotalLinea)
+                @Html.HiddenFor(model => model.DetalleExtras[i].FechaInicioEspecial)
+                @Html.HiddenFor(model => model.DetalleExtras[i].FechaFinalEspecial)
+                @Html.HiddenFor(model => model.DetalleExtras[i].TipoExtra.IdEntidad)
+                @Html.HiddenFor(model => model.DetalleExtras[i].H0)
+                @Html.HiddenFor(model => model.DetalleExtras[i].Estado)
+                @Html.HiddenFor(model => model.H0[i])
+                @Html.HiddenFor(model => model.DetalleExtras[i].H1)
+                @Html.HiddenFor(model => model.H1[i])
+                @Html.HiddenFor(model => model.DetalleExtras[i].H2)
+                @Html.HiddenFor(model => model.H2[i])
+                @Html.HiddenFor(model => model.DetalleExtras[i].Jornada)
+            }*@
+
+            <a href="@Url.Action("Index", "RegistroTiempoExtra")" class="btn btn-primary">
+                <i class="fa fa-home"></i> Regresar al Inicio
+            </a>
+            @*<button class="btn btn-success" type="submit"><i class="fa fa-file-pdf-o"></i>&nbsp;&nbsp;Exportar a PDF</button>*@
+        }
+
+    }
+    else
+    {
+        <div class="alert alert-danger" role="alert">
+            <i class="fa fa-times-circle d-inline" style="font-size:48px;"></i>
+            <h4 class="d-inline"> @Html.AttributeEncode(Model.RegistroTiempoExtra.Mensaje)</h4>
+        </div>
+        <br />
+
+        <div class="card">
+            <h5 class="card-header">Detalles</h5>
+            <div class="card-body">
+                <div>No se encontraron registros para el funcionario con la cédula: </div>
+                <br /><div><b>@Html.Encode(Model.Funcionario.Cedula) </b></div>
+                <br /><div>En el periodo: <b>@Html.Encode(Model.RegistroTiempoExtra.Periodo)</b></div>
+            </div>
+        </div>
+        <br />
+        <a href="@Url.Action("Index", "RegistroTiempoExtra")" class="btn btn-primary">
+            <i class="fa fa-home"></i> Regresar al Inicio
+        </a>
+    }
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+}
+
+

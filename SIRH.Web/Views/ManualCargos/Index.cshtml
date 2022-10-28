@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/ManualCargos.cshtml";
+}
+
+<div class="jumbotron">
+    <center>
+        <h1 class="display-4">Módulo de Gestión para Manual de Cargos</h1>
+        <p class="lead">Bienvenido(a), @Session["Nombre_Completo"]</p>
+        <hr class="my-4">
+        <p>Para iniciar, seleccione alguna de las opciones del menú a su izquierda.</p>
+        <p>En este módulo, usted puede:</p>
+    </center>
+
+</div>
+
+<div class="container">
+    <div class="row justify-content-center align-items-center">
+            <div class="col-sm-3 col-md-4">
+                <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Gestion de cargos</div>
+                    <div class="card-body text-secondary">
+                        <center><img src="~/Content/Images/new.png" class="img-thumbnail" alt=""></center>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 col-md-4">
+                <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Seguimiento de información de cargos</div>
+                    <div class="card-body text-secondary">
+                        <center><img src="~/Content/Images/edit_page.png" class="img-thumbnail" alt=""></center>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 col-md-4">
+                <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Agregar Modalidades de trabajo, entorno y relaciones</div>
+                    <div class="card-body text-secondary">
+                        <center><img src="~/Content/Images/table_add.png" class="img-thumbnail" alt=""></center>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 col-md-4">
+                <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Editar Responsabilidades por activos y otros</div>
+                    <div class="card-body text-secondary">
+                        <center><img src="~/Content/Images/table_edit.png" class="img-thumbnail" alt=""></center>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 col-md-4">
+                <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Consultar Requerimientos Específicos</div>
+                    <div class="card-body text-secondary">
+                        <center><img src="~/Content/Images/look.png" class="img-thumbnail" alt=""></center>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 col-md-4">
+                <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Generar reportes y aprobaciones</div>
+                    <div class="card-body text-secondary">
+                        <center><img src="~/Content/Images/pdf_download.png" class="img-thumbnail" alt=""></center>
+                    </div>
+                </div>
+            </div>
+      
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+

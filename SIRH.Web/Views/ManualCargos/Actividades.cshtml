@@ -1,0 +1,150 @@
+﻿@model SIRH.Web.ViewModels.ManualCargosVM
+
+@{
+    ViewBag.Title = "Actividades";
+    Layout = "~/Views/Shared/ManualCargos.cshtml";
+}
+
+@using (Ajax.BeginForm("Actividades", "ManualCargos", new AjaxOptions
+{
+    UpdateTargetId = "dvResultadoBusqueda",
+    HttpMethod = "POST",
+    OnComplete = "CompleteSearch",
+    OnBegin = "BeginSearch"
+}))
+{
+    <div class="jumbotron">
+        <center>
+            <h3>Actividades Claves según los Resultados de la Clase (Para cada resultado puede haber más de una actividad)</h3>
+            <br />
+            <h4>Cargo: @Model.Cargo.NombreCargo</h4>
+            @Html.HiddenFor(P => P.Cargo.IdEntidad)
+            <br />
+            @if (Model.Resultados != null && Model.Resultados.Count > 0)
+            {
+                <div class="card">
+                    <div class="card-header text-left">
+                        <strong>Histórico de Resultados y Actividades para el cargo</strong>
+                        @Html.HiddenFor(model => model.Cargo.Mensaje)
+                    </div>
+                    <div class="card-body">
+                        @for (int i = 0; i < Model.Resultados.Count; i++)
+                        {
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <td><b>Resultado N° @(i + 1)</b></td>
+                                        <td>@Model.Resultados[i].ResultadoCargo</td>
+                                        <td><button type="button" class="btn btn-outline-danger" title="Elimina el resultado y todas sus actividades" onclick="location.href='@Url.Action("EliminarResultado", new { id = Model.Resultados[i].IdEntidad, cargo = Model.Resultados[i].Cargo.IdEntidad })'"><i class="fa fa-trash"></i> Eliminar resultado</button></td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="3">
+                                            <table class="table table-hover">
+                                                @for (int j = 0; j < Model.Resultados[i].ActividadesResultado.Count; j++)
+                                                {
+                                                    <tr>
+                                                        <td><b>Actividad N° @(j+1)</b></td>
+                                                        <td>@Model.Resultados[i].ActividadesResultado[j].ActividadResultadoCargo</td>
+                                                        <td><button type="button" class="btn btn-outline-dark"  title="Elimina la actividad" onclick="location.href='@Url.Action("EliminarActividad", new { id = Model.Resultados[i].ActividadesResultado[j].IdEntidad, cargo = Model.Resultados[i].Cargo.IdEntidad })'"><i class="fa fa-trash"></i> Eliminar actividad</button></td>
+                                                    </tr>
+                                                }
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        }
+                    </div>
+                </div>
+            }
+            <br />
+            <div class="card">
+                <div class="card-header text-left">
+                    <strong>Registro de Resultados y Actividades</strong>
+                </div>
+                <div class="card-body">
+                    <div id="registros">
+
+                    </div>
+                    <button type="button" id="Agregar" class="btn btn-outline-success" onclick="FuncionAgregar();"><i class="fa fa-plus-circle"></i> Agregar Resultado</button>
+                </div>
+            </div>
+        </center>
+        <br />
+        <div class="float-right">
+            <a href="@Url.Action("DescripcionCargo", "ManualCargos", new { codigo = Model.Cargo.IdEntidad })" class="btn btn-outline-danger">
+                <i class="fa fa-arrow-circle-o-left"></i> Regresar
+            </a>
+            @*<a href="@Url.Action("Factores", "ManualCargos")" class="btn btn-success">
+                <i class="fa fa-floppy-o"></i> Guardar y continuar
+            </a>*@
+            <button type="submit" class="btn btn-success"><i class="fa fa-floppy-o"></i> Guardar y continuar</button>
+        </div>
+    </div>
+}
+
+<div id="dvResultadoBusqueda"></div>
+<br />
+
+@Scripts.Render("~/bundles/jquery")
+<script src="~/Scripts/popper.min.js"></script>
+@Scripts.Render("~/bundles/bootstrap")
+<script src="~/Scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/SearchMontoCaucion.js" type="text/javascript"></script>
+<script src="~/Scripts/datetimepicker.js" type="text/javascript"></script>
+<script src="~/Scripts/datetimepicker-es.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("body").tooltip({ selector: '[data-toggle=tooltip]' });
+    });
+</script>
+<script type="text/javascript">
+    var resultados = 0;
+    var resultadosActividades = new Array();
+    function FuncionAgregar() {
+        resultados++;
+        resultadosActividades.push(new Array());
+        var div = document.getElementById("registros");
+        var newdiv = document.createElement('resultado' + pos);
+        var pos = resultados - 1;
+        newdiv.innerHTML =
+        //document.getElementById("registros").innerHTML +=
+        "<div class=\"card\">" +
+            "<div class=\"card-header text-left\">" +
+                "Resultado N° " + resultados +
+            "</div>" +
+            "<div class=\"card-body\">" +
+                "<div class=\"form-group row\">" +
+                    "<div class=\"col-sm-3\">" +
+                        "Descripción Resultado" + 
+                    "</div>" +
+                    "<div class=\"col-sm-9\">" +
+                        "<input name=\"resultado-" + pos + "\" type=\"text\" id=\"resultado" + pos + "\" class=\"form-control\">" +
+                    "</div>" +
+                "</div>" +
+                "<div id=\"actividades" + pos + "\"></div>" +
+                "<button type=\"button\" id=\"AgregarActividad" + pos + "\" class=\"btn btn-outline-info\" onclick=\"FuncionAgregarActividad(" + pos + ");\"><i class=\"fa fa-plus-circle\"></i> Agregar Actividad</button>" +
+            "</div>" +
+        "</div><br />";
+        div.appendChild(newdiv);
+    }
+
+    function FuncionAgregarActividad(pos) {
+        resultadosActividades[pos].push(resultadosActividades.length);
+        var div = document.getElementById("actividades" + pos);
+        var newdiv = document.createElement('actividad' + resultados);
+        //document.getElementById("actividades" + pos).className = "form-group row";
+        newdiv.innerHTML =
+        //document.getElementById("actividades" + pos).innerHTML +=
+            "<div class=\"col-sm-3\">" +
+                "Actividad N° " + (resultadosActividades[pos].length) +
+            "</div>" +
+            "<div class=\"col-sm-9\">" +
+                "<input name=\"resultado-" + pos + "actividad_" + resultadosActividades[pos].length + "\" type=\"text\" id=\"resultado" + resultados + "\" class=\"form-control\">" +
+            "</div><div></div>";
+        newdiv.className = "form-group row";
+        div.appendChild(newdiv);
+    }
+</script>

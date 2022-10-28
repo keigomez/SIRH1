@@ -1,0 +1,660 @@
+﻿
+@model SIRH.Web.ViewModels.DetalleVacacionesVM
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/Vacaciones.cshtml";
+}
+
+<link id="bsdp-css" href="~/Content/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+
+<h1>
+    <span style="color: darkblue">Detalles del periodo @Model.Periodo.Periodo</span>
+    <br>
+</h1>
+    @{
+        if (Model.detalle == 2)
+        {
+            <div class="alert alert-success">Periodo @Model.Periodo.Periodo agregado con exito!</div>
+            <br>
+        }
+        else
+        if (Model.detalle == 3)
+        {
+            <div class="alert alert-success">Reintegro exitoso! Periodo: @Model.Periodo.Periodo</div>
+            <br>
+        }
+        else
+        if (Model.detalle == 4)
+        {
+            <div class="alert alert-success">Vacaciones agregadas con exito! Periodo: @Model.Periodo.Periodo</div>
+            <br>
+        }
+        else
+        if (Model.detalle == 5)
+        {
+            <div class="alert alert-success">Datos del periodo actualizados con éxito! Periodo: @Model.Periodo.Periodo</div>
+            <br>
+        }
+        if (Model.detalle == 6)
+        {
+            <div class="alert alert-success">El reintegro se ha guardado correctamente</div>
+            <br>
+        }
+    }
+
+<div class="card">
+    <div class="card-header">
+        <strong>Información del Funcionario</strong>
+    </div>
+    <div class="card-body">
+        <table class="table table-hover">
+            <tr>
+                <td>
+                    <strong>@Html.LabelFor(model => model.Funcionario.Cedula): </strong>@Html.DisplayFor(model => model.Funcionario.Cedula)
+                    @Html.HiddenFor(model => model.Funcionario.Cedula)
+                </td>
+                <td>
+                    <strong>@Html.LabelFor(model => model.Funcionario.Nombre): </strong>@Model.Funcionario.Nombre @Model.Funcionario.PrimerApellido @Model.Funcionario.SegundoApellido
+                    @Html.HiddenFor(model => model.Funcionario.Nombre)
+                    @Html.HiddenFor(model => model.Funcionario.PrimerApellido)
+                    @Html.HiddenFor(model => model.Funcionario.SegundoApellido)
+                </td>
+                <td>
+                    <strong>@Html.LabelFor(model => model.Puesto.CodPuesto): </strong>@Html.DisplayFor(model => model.Puesto.CodPuesto)
+                    @Html.HiddenFor(model => model.Puesto.CodPuesto)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                    @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                </td>
+                <td>
+                    <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                    @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                </td>
+                <td>
+                    <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion)
+                    @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                    @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                </td>
+                <td>
+                    <strong>@Html.LabelFor(model => model.DetallePuesto.Especialidad.DesEspecialidad): </strong>@Html.DisplayFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)
+                    @Html.HiddenFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)
+                </td>
+                <td>
+                    <strong>@Html.LabelFor(model => model.DetallePuesto.Clase.DesClase): </strong>@Html.DisplayFor(model => model.DetallePuesto.Clase.DesClase)
+                    @Html.HiddenFor(model => model.DetallePuesto.Clase.DesClase)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>Fecha de contratación: </strong>@Html.DisplayFor(model => model.DetalleContratacion.FechaIngreso)
+                    @Html.HiddenFor(model => model.DetalleContratacion.FechaIngreso)
+                </td>
+                <td>
+                    <strong>Fecha de vacaciones: </strong>@Model.DetalleContratacion.FechaVacaciones.ToShortDateString()
+                    @Html.HiddenFor(model => model.DetalleContratacion.FechaVacaciones)
+                </td>
+                <td>
+                    <strong>Días a derecho: </strong>@Model.Periodo.DiasDerecho
+                    @Html.HiddenFor(model => model.Periodo.DiasDerecho)
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Estado del periodo: </strong>@Model.estadoPeriodo</td>
+                <td></td>
+                <td>
+                    <strong>Saldo: </strong>@Model.Periodo.Saldo
+                    @Html.HiddenFor(model => model.Periodo.Saldo)
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+@{
+    if (Model.detalle == 0 || Model.detalle == 5 || Model.detalle == 6)
+    {
+        if (Model.RegistroVacaciones.Count() != 0)
+        {
+            if (Model.Alerta != null)
+            {
+                <br />
+                <div class="alert alert-danger"><i class="fa fa-warning"></i> @Model.Alerta</div>
+            }
+
+            //a
+            <br>
+            <div class="card">
+                <div class="card-header"><h5>Registro de vacaciones</h5></div>
+                <div class="card">
+                    <table class="table">
+                        <thead class="card-header">
+                            <tr>
+                                <th>Fecha Inicio</th>
+                                <th>Fecha Fin</th>
+                                <th>Días</th>
+                                <th>Tipo de transaccíon</th>
+                                <th>N° documento</th>
+                                <th>Fuente</th>
+                                <th>Estado</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (int i = 0; i < Model.RegistroVacaciones.Count; i++)
+                            {
+                                if (Model.RegistroVacaciones[i].Estado == 1)
+                                {
+                                    Model.estadoPeriodo = "Solicitud activa";
+                                }
+                                else
+                                if (Model.RegistroVacaciones[i].Estado == 2)
+                                {
+                                    Model.estadoPeriodo = "Solicitud con reintegro";
+                                }
+                                else
+                                if(Model.RegistroVacaciones[i].Estado == -1)
+                                {
+                                    Model.estadoPeriodo = "Solicitud reintegrada de Emulación al SIRH";
+                                }
+                                else
+                                {
+                                    Model.estadoPeriodo = "Desconocido";
+                                }
+                                <tr></tr>
+                                <tr>
+                                    <td>@Model.RegistroVacaciones[i].FechaRige.ToShortDateString()</td>
+                                    <td>@Model.RegistroVacaciones[i].FechaVence.ToShortDateString()</td>
+                                    <td>@Model.RegistroVacaciones[i].Dias</td>
+                                    @if (Model.RegistroVacaciones[i].TipoTransaccion == 1 && !(Model.RegistroVacaciones[i].NumeroTransaccion.TrimEnd().EndsWith("1299") || Model.RegistroVacaciones[i].NumeroTransaccion.TrimEnd().EndsWith("0388") || Model.RegistroVacaciones[i].NumeroTransaccion.TrimEnd().EndsWith("0488")))
+                                    {
+                                        <td>Vacaciones normales</td>
+
+                                    }
+                                    else if (Model.RegistroVacaciones[i].TipoTransaccion == 6)
+                                    {
+                                        <td>Permiso con goce de salario</td>
+                                    }
+                                    else if (Model.RegistroVacaciones[i].NumeroTransaccion.TrimEnd().EndsWith("1299") || Model.RegistroVacaciones[i].NumeroTransaccion.TrimEnd().EndsWith("0388") || Model.RegistroVacaciones[i].NumeroTransaccion.TrimEnd().EndsWith("0488"))
+                                    {
+                                        <td>Vacaciones colectivas</td>
+                                    }
+                                    else
+                                    {
+                                        <td>Vacaciones proporcionales</td>
+                                    }
+                                    <td>@Model.RegistroVacaciones[i].NumeroTransaccion</td>
+                                    <td>@Model.RegistroVacaciones[i].Fuente</td>
+                                    <td>@Model.estadoPeriodo</td>
+                                    @if (Model.RegistroVacaciones[i].Fuente == "SIRH" && Model.PeriodosActivos != null && (Convert.ToBoolean(Session["Administrador_Global"]) ||
+                                    Convert.ToBoolean(Session["Administrador_" + Convert.ToInt32(SIRH.Web.Helpers.EModulosHelper.Vacaciones)]) ||
+                                    Session["Permiso_17_56"] != null))
+                                    {
+                                        <td><button class="btn btn-outline-info" onclick="abrirTrasladarRegistro(@(Model.RegistroVacaciones[i].IdEntidad), '@(Model.RegistroVacaciones[i].NumeroTransaccion.ToString())', @(Model.RegistroVacaciones[i].Dias));" id="btnAnular"><i class="fa fa-reply"></i> Trasladar</button></td>
+                                    }
+                                    else
+                                    {
+                                        <td></td>
+                                    }
+                                    @if (Model.RegistroVacaciones[i].Estado != -1 && Model.Periodo.Estado == 1)
+                                    {
+                                        <td><button class="btn btn-outline-dark" onclick="abrirReintegrarRegistro(@(Model.RegistroVacaciones[i].IdEntidad), '@(Model.RegistroVacaciones[i].NumeroTransaccion.ToString())', @(Model.RegistroVacaciones[i].Dias), '@(Model.RegistroVacaciones[i].FechaRige.ToShortDateString())','@(Model.RegistroVacaciones[i].FechaVence.ToShortDateString())', '@(Model.RegistroVacaciones[i].Fuente)');" id="btnReintegrar"><i class="fa fa-backward"></i> Reintegrar</button></td>
+                                    }
+                                    else
+                                    {
+                                        <td></td>
+                                    }
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td>
+                                    <b>Totales:</b>
+                                </td>
+                                <td></td>
+                                <td>
+                                    @Model.TotalRegistros
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+            <br>
+        }
+        if (Model.ReintegroVacaciones.Count() != 0)
+        {
+            <div class="card">
+                <div class="card-header"><h5>Reintegro de vacaciones</h5></div>
+                <div class="card">
+                    <table class="table" style="margin-bottom:10px;">
+                        <thead class="card-header">
+                            <tr>
+                                <th>Fecha rige</th>
+                                <th>Observaciones</th>
+                                <th>N° solicitud</th>
+                                <th>Cantidad de dias</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (int i = 0; i < Model.ReintegroVacaciones.Count; i++)
+                            {
+                                <tr></tr>
+                                <tr>
+                                    <td>@Model.ReintegroVacaciones[i].FechaRige.ToShortDateString()</td>
+                                    <td>@Model.ReintegroVacaciones[i].Observaciones</td>
+                                    <td>@Model.ReintegroVacaciones[i].SolReintegro</td>
+                                    <td>@Model.ReintegroVacaciones[i].CantidadDias</td>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td>
+                                    <b>Totales:</b>
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    @Model.TotalReintegros
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+            <br>
+        }
+        if (Model.RegistroVacaciones.Count() == 0 && Model.ReintegroVacaciones.Count() == 0)
+        {
+            <br>
+            <div class="card">
+                <div class="card-header"><h5><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> No existen registros de vacaciones ni reintegros de vacaciones registrados!</h5></div>
+            </div>
+            <br/>
+        }
+        else
+        {
+            if (Model.RegistroVacaciones.Count() == 0)
+            {
+                <br>
+                <div class="card">
+                    <div class="card-header"><h5><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> No existen registros de vacaciones registrados!</h5></div>
+                </div>
+                <br>
+            }
+            if (Model.ReintegroVacaciones.Count() == 0)
+            {
+                <br>
+                <div class="card">
+                    <div class="card-header"><h5><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> No existen reintegros de vacaciones registrados!</h5></div>
+                </div>
+                <br>
+            }
+        }
+    }
+    if (Model.detalle == 2 || Model.detalle == 3)
+    {
+        <br />
+        <div class="card">
+            <div class="card-header">
+                <strong>Periodo de vacaciones</strong>
+            </div>
+            <div class="card-body">
+                <table class="table table-hover">
+                    <tr>
+                        <td>
+                            <strong>@Html.LabelFor(model => model.Periodo.Periodo): </strong>@Html.DisplayFor(model => model.Periodo.Periodo)
+                            @Html.HiddenFor(model => model.Periodo.Periodo)
+                        </td>
+                        <td>
+                            <strong>@Html.LabelFor(model => model.Periodo.FechaCarga): </strong>@Model.Periodo.FechaCarga.ToShortDateString()
+                            @Html.HiddenFor(model => model.Periodo.FechaCarga)
+                        </td>
+                        <td>
+                            <strong>@Html.LabelFor(model => model.Periodo.Saldo): </strong>@Html.DisplayFor(model => model.Periodo.Saldo)
+                            @Html.HiddenFor(model => model.Periodo.Saldo)
+                        </td>
+                        <td>
+                            <strong>@Html.LabelFor(model => model.Periodo.Estado): </strong> Activo
+                            @Html.HiddenFor(model => model.Periodo.Estado)
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <br />
+    }
+    if (Model.detalle == 4)
+    {
+        <br />
+        <div class="card">
+            <div class="card-header">
+                <strong>Vacaciones agregadas</strong>
+            </div>
+            <div class="card-body">
+                <table class="table table-hover">
+                    <tr>
+                        <td>
+                            <strong>@Html.LabelFor(model => model.Periodo.Periodo): </strong>@Html.DisplayFor(model => model.Periodo.Periodo)
+                            @Html.HiddenFor(model => model.Periodo.Periodo)
+                        </td>
+                        <td>
+                            <strong>@Html.LabelFor(model => model.Periodo.Saldo): </strong>@Html.DisplayFor(model => model.Periodo.Saldo)
+                            @Html.HiddenFor(model => model.Periodo.Saldo)
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <br />
+    }
+}
+<a class="btn btn-primary" href="javascript:history.back()" id="A5"><i class="fa fa-arrow-circle-left"></i> Regresar</a>
+@if (Model.Periodo.Estado == 1 && (Convert.ToBoolean(Session["Administrador_Global"]) ||
+                    Convert.ToBoolean(Session["Administrador_" + Convert.ToInt32(SIRH.Web.Helpers.EModulosHelper.Vacaciones)]) ||
+                    Session["Permiso_17_56"] != null))
+{
+    <button class="btn btn-outline-danger" onclick="abrirAnularPeriodo();"id="btnAnular"><i class="fa fa-eraser"></i> Anular periodo</button>
+    <button class="btn btn-outline-info" onclick="abrirActualizarDerecho();" id="btnDerecho"><i class="fa fa-calendar-plus-o"></i> Actualizar días a derecho</button>
+    <button class="btn btn-outline-success" onclick="abrirActualizarSaldo();" id="btnSaldo"><i class="fa fa-upload"></i> Actualizar saldo</button>
+}
+<div id="preloader" class="loader float-right" style="display: none"></div>
+
+<!--MODAL SALDO-->
+<div class="modal fade" id="modal-saldo" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header alert alert-success" role="alert">
+                <h5 class="modal-title" id="exampleModalCenterTitle">
+                    <i class="fa fa-exclamation-circle d-inline" style="font-size:25px;"></i>
+                    ¡Atención! Usted está apunto de modificar el saldo del periodo <strong>@Model.Periodo.Periodo</strong> para el funcionario <strong>@Model.Funcionario.Cedula - @Model.Funcionario.Nombre @Model.Funcionario.PrimerApellido @Model.Funcionario.SegundoApellido</strong>
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            @using (Ajax.BeginForm("ActualizarDatos", "Vacaciones", new { idRegistro = @Model.codigoDetalle, mensaje = "saldo" }, new AjaxOptions
+            {
+                HttpMethod = "Post",
+                UpdateTargetId = "dvResultadoSaldo",
+                OnSuccess = "ActualizarSaldo",
+                OnBegin = "ActualizarSaldoConfirmado",
+                OnFailure = "CompleteActualizarSaldo('btnSaldo','preloader')",
+                OnComplete = "CompleteActualizarSaldo('btnSaldo','preloader')"
+            }, new { @id = "formActualizarSaldo" }))
+            {
+                <div class="modal-body">
+                    <h9><strong>Saldo de vacaciones</strong></h9>
+                    @Html.HiddenFor(model => model.Periodo.DiasDerecho, new { @id = "diasDerecho" })
+                    @Html.HiddenFor(model => model.Periodo.Periodo, new { @id = "periodo" })
+                    @Html.HiddenFor(model => model.Funcionario.Cedula, new { @id = "cedula" })
+                    <br /><br /> El saldo actual de este periodo es: <strong>@Model.Periodo.Saldo</strong>. Digite el nuevo saldo en el espacio a continuación:
+                    <br /><br /><div>Nuevo saldo: <input type="text" id="txtNuevoSaldo" name="txtNuevoSaldo" size="4" maxlength="4" placeholder="##.#" /></div>
+                    <br /><br /><div hidden="hidden" id="error" class="alert alert-danger"></div>
+                </div>
+                <div class="modal-footer">
+                    <input name = "SubmitButton" class="btn btn-primary" type="submit" value="Actualizar" />
+                    <button type = "button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<!--MODAL DIAS DERECHO-->
+<div class="modal fade" id="modal-derecho" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header alert alert-info" role="alert">
+                <h5 class="modal-title" id="exampleModalCenterTitle">
+                    <i class="fa fa-exclamation-circle d-inline" style="font-size:25px;"></i>
+                    ¡Atención! Usted está apunto de modificar los días a derecho del periodo <strong>@Model.Periodo.Periodo</strong> para el funcionario <strong>@Model.Funcionario.Cedula - @Model.Funcionario.Nombre @Model.Funcionario.PrimerApellido @Model.Funcionario.SegundoApellido</strong>
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            @using (Ajax.BeginForm("ActualizarDatos", "Vacaciones", new { idRegistro = @Model.codigoDetalle, mensaje = "derecho" }, new AjaxOptions
+            {
+                HttpMethod = "Post",
+                UpdateTargetId = "dvResultadoDerecho",
+                OnSuccess = "ActualizarDerecho",
+                OnBegin = "ActualizarDerechoConfirmado",
+                OnFailure = "CompleteActualizarDerecho('btnDerecho','preloader')",
+                OnComplete = "CompleteActualizarDerecho('btnDerecho','preloader')"
+            }, new { @id = "formActualizarSaldo" }))
+            {
+                <div class="modal-body">
+                    <h9><strong>Días a derecho</strong></h9>
+                    @Html.HiddenFor(model => model.Periodo.Saldo, new { @id = "saldo" })
+                    @Html.HiddenFor(model => model.Periodo.Periodo, new { @id = "periodo" })
+                    @Html.HiddenFor(model => model.Funcionario.Cedula, new { @id = "cedula" })
+                    <br /><br /> La cantidad de días a derecho actual del periodo es: <strong>@Model.Periodo.DiasDerecho</strong>. Digite la nueva cantidad de días a derecho en el espacio a continuación:
+                    <br /><br /><div>Nueva cantidad: <input type="text" id="txtNuevoDerecho" name="txtNuevoDerecho" size="4" maxlength="4" placeholder="##.#" /></div>
+                    <br /><br /><div hidden="hidden" id="error" class="alert alert-danger"></div>
+                </div>
+                <div class="modal-footer">
+                    <input name="SubmitButton" class="btn btn-primary" type="submit" value="Actualizar" />
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<!--MODAL ANULAR-->
+<div class="modal fade" id="modal-anular" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header alert alert-danger" role="alert">
+                <h5 class="modal-title" id="exampleModalCenterTitle">
+                    <i class="fa fa-exclamation-circle d-inline" style="font-size:25px;"></i>
+                    ¡Atención! Usted está apunto de anular el periodo <strong>@Model.Periodo.Periodo</strong> para el funcionario <strong>@Model.Funcionario.Cedula - @Model.Funcionario.Nombre @Model.Funcionario.PrimerApellido @Model.Funcionario.SegundoApellido</strong>
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            @using (Ajax.BeginForm("ActualizarDatos", "Vacaciones", new { idRegistro = @Model.codigoDetalle, mensaje = "anular" }, new AjaxOptions
+            {
+                HttpMethod = "Post",
+                UpdateTargetId = "dvResultadoDerecho",
+                OnSuccess = "AnularPeriodo",
+                OnBegin = "AnularPeriodoConfirmado",
+                OnFailure = "CompleteAnularPeriodo('btnAnular','preloader')",
+                OnComplete = "CompleteAnularPeriodo('btnAnular','preloader')"
+            }, new { @id = "formAnularPeriodo" }))
+            {
+                if (@Model.RegistroVacaciones.Count(R => R.Fuente == "SIRH") > 0)
+                {
+                    <div class="modal-body">
+                        <h9><strong>No es posible anular este periodo</strong></h9>
+                        <br /><br /> Hay varios registros de vacaciones activos (ingresados en el SIRH) en este periodo, antes de poder anularlo, debe trasladarlo a otro periodo vigente del funcionario.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Aceptar</button>
+                    </div>
+                }
+                else
+                {
+                    <div class="modal-body">
+                        <h9>El periodo quedará anulado y no podrá reactivarse ni se le podrán cargar registros de vacaciones nuevamente</h9>
+                        @Html.HiddenFor(model => model.Periodo.Periodo, new { @id = "periodo" })
+                        @Html.HiddenFor(model => model.Funcionario.Cedula, new { @id = "cedula" })
+                    </div>
+                    <div class="modal-footer">
+                        <input name="SubmitButton" class="btn btn-primary" type="submit" value="Anular" />
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>
+
+<!--MODAL TRASLADAR-->
+<div class="modal fade" id="modal-trasladar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header alert alert-warning" role="alert">
+                <h5 class="modal-title" id="exampleModalCenterTitle">
+                    <i class="fa fa-exclamation-circle d-inline" style="font-size:25px;"></i>
+                    ¡Atención! Usted está apunto de trasladar el registro de vacaciones <strong id="numDocumento"></strong> del funcionario <strong>@Model.Funcionario.Cedula - @Model.Funcionario.Nombre @Model.Funcionario.PrimerApellido @Model.Funcionario.SegundoApellido</strong>
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            @using (Ajax.BeginForm("TrasladarRegistro", "Vacaciones", new AjaxOptions
+            {
+                HttpMethod = "Post",
+                UpdateTargetId = "dvResultadoTraslado",
+                OnBegin = "TrasladarRegistroConfirmado",
+                OnFailure = "CompleteTrasladarRegistro('btnTrasladar','preloader')",
+                OnComplete = "CompleteTrasladarRegistro('btnTrasladar','preloader')"
+            }, new { @id = "formTrasladarRegistro" }))
+            {
+                <div class="modal-body">
+                    <input type="hidden" id="dias" />
+                    <input type="hidden" id="idRegistro" name="identRegistro" />
+                    <strong>Seleccione el periodo o periodos en el que ubicará el registro y la cantidad de días a trasladar. Si el registro tiene un reintegro no podrá dividirlo, deberá trasladar sus días completos.</strong>
+                    <div>Puede separar los días en varios periodos, eso seccionará el registro en varios nuevos. El máximo de días que puede trasladar son: <strong id="mensajeDias"></strong> </div>
+                    <table class="table table-hover">
+                        <tr>
+                            <td></td>
+                            <td>Periodo</td>
+                            <td>Disponibles</td>
+                            <td>A trasladar</td>
+                        </tr>
+                        @if (Model.PeriodosActivos != null)
+                        {
+                            for (int i = 0; i < Model.PeriodosActivos.Count; i++)
+                            {
+                                <tr>
+                                    <td><input type="radio" name="periodo" id="@("periodo" + i)" class="form-check" onclick="return radioClick(@(i))" /></td>
+                                    <td>@Model.PeriodosActivos[i].Periodo</td>
+                                    <td>@Model.PeriodosActivos[i].Saldo</td>
+                                    <td>
+                                        <input type="number" step="0.5" min="0" id="@("diasTraslado" + i)" name="@("textdiasTraslado" + i)" class="form-control-range" onmouseup="return controlNumber(@(i))" readonly="readonly" />
+                                        @Html.HiddenFor(model => model.PeriodosActivos[i].Saldo, new { @id = ("Saldo" + i) })
+                                        @Html.HiddenFor(model => model.PeriodosActivos[i].IdEntidad)
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr><td colspan="4">No hay ningún periodo activo adonde trasladar el registro.</td></tr>
+                        }
+                    </table>
+                    <div id="error" class="alert alert-danger" style="display:none"></div>
+                    @Html.HiddenFor(model => model.Periodo.Periodo, new { @id = "periodo" })
+                    @Html.HiddenFor(model => model.Periodo.IdEntidad, new { @id = "identperiodo" })
+                    @Html.HiddenFor(model => model.Funcionario.Cedula, new { @id = "cedula" })
+                    @Html.HiddenFor(model => model.PeriodosActivos.Count)
+                </div>
+                <div class="modal-footer">
+                    <input name="SubmitButton" class="btn btn-primary" type="submit" value="Trasladar" />
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<!--MODAL REINTEGRAR-->
+<div class="modal fade" id="modal-reintegrar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header alert alert-dark" role="alert">
+                <h5 class="modal-title" id="exampleModalCenterTitle">
+                    <i class="fa fa-exclamation-circle d-inline" style="font-size:25px;"></i>
+                    ¡Atención! Usted está apunto de reintegrar el registro de vacaciones <strong id="numDocumento"></strong> del funcionario <strong>@Model.Funcionario.Cedula - @Model.Funcionario.Nombre @Model.Funcionario.PrimerApellido @Model.Funcionario.SegundoApellido</strong>
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            @using (Ajax.BeginForm("ReintegrarRegistro", "Vacaciones", new AjaxOptions
+            {
+                HttpMethod = "Post",
+                UpdateTargetId = "dvResultadoReintegro",
+                OnSuccess = "ReintegrarRegistro",
+                OnBegin = "ReintegrarRegistroConfirmado",
+                OnFailure = "CompleteReintegrarRegistro('btnReintegrar','preloader')",
+                OnComplete = "CompleteReintegrarRegistro('btnReintegrar','preloader')"
+            }, new { @id = "formReintegrarRegistro" }))
+            {
+                <div class="modal-body">
+                    <input type="hidden" id="fechaInicioOriginal" name="fechaInicioOriginal"/>
+                    <input type="hidden" id="fechaFinOriginal" name="fechaFinOriginal"/>
+                    <input type="hidden" id="diasOriginal" />
+                    <input type="hidden" id="idRegistro" name="identRegistro" />
+                    <input type="hidden" id="fuente" name="fuente" />
+                    <strong>Seleccione la cantidad de días a reintegrar, junto con la fecha de rige y vence correspondientes.</strong>
+                    <table class="table table-hover">
+                        <tr>
+                            <td>Fecha inicio registro</td>
+                            <td>Fecha fin registro</td>
+                            <td>Días registro</td>
+                            <td><b>Fecha inicio reintegro</b></td>
+                            <td><b>Fecha fin reintegro</b></td>
+                            <td><b>Días reintegro</b></td>
+                            <td><b>Documento reintegro</b></td>
+                        </tr>
+                        <tr>
+                            <td><div id="inicio"></div></td>
+                            <td><div id="fin"></div></td>
+                            <td><div id="dias"></div></td>
+                            <td><input type="text" id="fecInicio" name="fecInicio" class="form-control" readonly/></td>
+                            <td><input type="text" id="fecFin" name="fecFin" class="form-control" readonly/></td>
+                            <td><input type="number" id="diasReintegro" name="diasReintegro" step="0.5" max="" min="0" class="form-control"/></td>
+                            <td><input type="text" id="docReintegro" name="docReintegro" class="form-control" /></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><b>Observaciones</b></td>
+                            <td colspan="5"><textarea id="obsReintegro" class="form-control" name="obsReintegro"></textarea></td>
+                        </tr>
+                    </table>
+                    <div id="error" class="alert alert-danger" style="display:none"></div>
+                    <div id="dvResultadoReintegro"></div>
+                    @Html.HiddenFor(model => model.Periodo.Periodo, new { @id = "periodo" })
+                    @Html.HiddenFor(model => model.Periodo.IdEntidad, new { @id = "identperiodo" })
+                    @Html.HiddenFor(model => model.Funcionario.Cedula, new { @id = "cedula" })
+                    @Html.HiddenFor(model => model.PeriodosActivos.Count)
+                </div>
+                <div class="modal-footer">
+                    <input name="SubmitButton" class="btn btn-primary" type="submit" value="Reintegrar" />
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div id="dvResultadoSaldo"></div>
+<div id="dvResultadoDerecho"></div>
+<div id="dvResultadoAnular"></div>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+<script src="~/Scripts/funciones-generales.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/DetailsVacaciones.js" type="text/javascript"></script>
+<script src="~/Content/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script src="~/Content/bootstrap-datepicker/locales/bootstrap-datepicker.es.min.js" charset="UTF-8"></script>

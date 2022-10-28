@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="0d108c83-8f6d-42e8-84d4-94b65b62b56c" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8731/Design_Time_Addresses/SIRH.Servicios/CEstadoBorradorService/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="717b16eb-bb9c-4ea3-a11e-241224c98fbe" SourceId="1" SourceUrl="http://localhost:8731/Design_Time_Addresses/SIRH.Servicios/CEstadoBorradorService/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="a82ea5aa-fae9-4543-b641-79895d7f90dd" SourceId="1" SourceUrl="http://localhost:8731/Design_Time_Addresses/SIRH.Servicios/CEstadoBorradorService/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="00272e88-31e1-4982-86ef-97170fb9dd83" SourceId="1" SourceUrl="http://localhost:8731/Design_Time_Addresses/SIRH.Servicios/CEstadoBorradorService/mex" />
+    <MetadataFile FileName="SIRH.DTO.xsd" MetadataType="Schema" ID="632a47f6-d8fa-4d5c-99db-caeabf0f1a8f" SourceId="1" SourceUrl="http://localhost:8731/Design_Time_Addresses/SIRH.Servicios/CEstadoBorradorService/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

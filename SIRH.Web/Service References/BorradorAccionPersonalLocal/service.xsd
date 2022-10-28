@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/SIRH.DTO" />
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:element name="GuardarSolicitud">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="registro" nillable="true" type="q1:CBorradorAccionPersonalDTO" />
+        <xs:element minOccurs="0" name="codUsuarioEnvia" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="codUsuarioRecibe" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GuardarSolicitudResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="GuardarSolicitudResult" nillable="true" type="q2:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GuardarBorrador">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="funcionario" nillable="true" type="q3:CFuncionarioDTO" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="estado" nillable="true" type="q4:CEstadoBorradorDTO" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="tipo" nillable="true" type="q5:CTipoAccionPersonalDTO" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="registro" nillable="true" type="q6:CBorradorAccionPersonalDTO" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="detalle" nillable="true" type="q7:CDetalleBorradorAccionPersonalDTO" />
+        <xs:element minOccurs="0" name="codUsuarioEnvia" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="codUsuarioRecibe" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GuardarBorradorResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="GuardarBorradorResult" nillable="true" type="q8:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EditarBorrador">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="funcionario" nillable="true" type="q9:CFuncionarioDTO" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="estado" nillable="true" type="q10:CEstadoBorradorDTO" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="tipo" nillable="true" type="q11:CTipoAccionPersonalDTO" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="registro" nillable="true" type="q12:CBorradorAccionPersonalDTO" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="detalle" nillable="true" type="q13:CDetalleBorradorAccionPersonalDTO" />
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="movimiento" nillable="true" type="q14:CMovimientoBorradorAccionPersonalDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EditarBorradorResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="EditarBorradorResult" nillable="true" type="q15:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerBorrador">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codigo" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerBorradorResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ObtenerBorradorResult" nillable="true" type="q16:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarSolicitud">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="registro" nillable="true" type="q17:CBorradorAccionPersonalDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarSolicitudResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="BuscarSolicitudResult" nillable="true" type="q18:ArrayOfArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarBorrador">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="funcionario" nillable="true" type="q19:CFuncionarioDTO" />
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="registro" nillable="true" type="q20:CBorradorAccionPersonalDTO" />
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="detalle" nillable="true" type="q21:CDetalleBorradorAccionPersonalDTO" />
+        <xs:element xmlns:q22="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="fechasRige" nillable="true" type="q22:ArrayOfdateTime" />
+        <xs:element xmlns:q23="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="fechasVence" nillable="true" type="q23:ArrayOfdateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarBorradorResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="BuscarBorradorResult" nillable="true" type="q24:ArrayOfArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActualizarEstado">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="registro" nillable="true" type="q25:CBorradorAccionPersonalDTO" />
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="movimiento" nillable="true" type="q26:CMovimientoBorradorAccionPersonalDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActualizarEstadoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ActualizarEstadoResult" nillable="true" type="q27:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FuncionariosConBorradores">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FuncionariosConBorradoresResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="FuncionariosConBorradoresResult" nillable="true" type="q28:ArrayOfArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

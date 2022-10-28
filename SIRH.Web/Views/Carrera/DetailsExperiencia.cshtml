@@ -1,0 +1,185 @@
+﻿@model SIRH.Web.ViewModels.FuncionarioExperienciaVM
+
+@{
+    ViewBag.Title = "Detalle Experiencia Profesional";
+    Layout = "~/Views/Shared/Carrera.cshtml";
+}
+
+<blockquote><h3>Detalle experiencia profesional</h3></blockquote>
+<br />
+@if (Request.QueryString["accion"] == "guardar")
+{
+    if (Model.Error == null)
+    {
+        if (Model.Experiencia != null)
+        {
+            <div class="alert alert-success" role="alert">
+                <i class="fa fa-check-circle d-inline" style="font-size:48px;"></i>
+                <h4 class="d-inline"> El registro de experiencia profesional se ha guardado correctamente.</h4>
+            </div>
+            <br />
+
+            <div class="card">
+                <h5 class="card-header">Detalles</h5>
+                <div class="card-body">
+                    <div>Se ha almacenado el registro por: <b>@Model.Experiencia.TipoExp == 1 ? Reconocimiento : Ajuste </b> para el funcionario: </div>
+                    <br /><div><b>@Html.AttributeEncode(Model.Funcionario.Cedula) - @Html.AttributeEncode(Model.Funcionario.Nombre) @Html.AttributeEncode(Model.Funcionario.PrimerApellido) @Html.AttributeEncode(Model.Funcionario.SegundoApellido)</b></div>
+                    <br /><div>Este registro se asociará a la resolución: <b>@Html.AttributeEncode(Model.Experiencia.NumeroResoluc) </b>, el cual genera un total de <b>@Html.AttributeEncode(Model.Experiencia.IndicadorPtsAsignados) puntos.</b></div>
+                    <br /><div>Según: @Html.AttributeEncode(Model.Experiencia.ObservacionesExp).</div>
+                    <br /><div>En Fecha: @Html.AttributeEncode(Model.Experiencia.FechaReg.ToShortDateString())</div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-danger" role="alert">
+                <i class="fa fa-times-circle d-inline" style="font-size:48px;"></i>
+                <h4 class="d-inline"> Ocurrió un error al momento de guardar la experiencia profesional.</h4>
+            </div>
+            <br />
+
+            <div class="card">
+                <h5 class="card-header">Detalles</h5>
+                <div class="card-body">
+                    <div>La experiencia profesional no pudo ser guardada debido al siguiente error: </div>
+                    <br /><div><b>No se pudieron obtener los datos de experiencia profesional con la cédula indicada: @Request.QueryString["accion"]</b></div>
+                    <br /><div>Si conoce la causa de este error, por favor revise los datos que intentó almacenar e intentelo de nuevo.</div>
+                    <br /><div>De lo contrario le invitamos a ponerse en contacto con nuestro equipo de soporte, mediante el sistema de <a href="http://sisrh.mopt.go.cr:83/" target="_blank">Ayuda y Soporte</a></div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="alert alert-danger" role="alert">
+            <i class="fa fa-times-circle d-inline" style="font-size:48px;"></i>
+            <h4 class="d-inline"> Ocurrió un error al momento de guardar la experiencia profesional.</h4>
+        </div>
+            <br />
+
+            <div class="card">
+                <h5 class="card-header">Detalles</h5>
+                <div class="card-body">
+                    <div>La experiencia profesional no pudo ser guardada debido al siguiente error: </div>
+                    <br /><div><b>@Html.AttributeEncode(Model.Error.MensajeError)</b></div>
+                    <br /><div>Si conoce la causa de este error, por favor revise los datos que intentó almacenar e intentelo de nuevo.</div>
+                    <br /><div>De lo contrario le invitamos a ponerse en contacto con nuestro equipo de soporte, mediante el sistema de <a href="http://sisrh.mopt.go.cr:83/" target="_blank">Ayuda y Soporte</a></div>
+                </div>
+            </div>
+    }
+}
+else
+{
+    if (Request.QueryString["accion"] == "modificar")
+    {
+        if (Model.Error == null)
+        {
+            if (Model.Experiencia != null)
+            {
+                <div class="alert alert-success" role="alert">
+                    <i class="fa fa-check-circle d-inline" style="font-size:48px;"></i>
+                    <h4 class="d-inline"> La experiencia profesional seleccionada se ha anulado correctamente.</h4>
+                </div>
+                <br />
+
+                <div class="card">
+                    <h5 class="card-header">Detalles</h5>
+                    <div class="card-body">
+                        <div>Se ha anulado el registro por: <b>@Model.Experiencia.TipoExp == 1 ? Reconocimiento : Ajuste </b> para el funcionario: </div>
+                        <br /><div><b>@Html.AttributeEncode(Model.Funcionario.Cedula) - @Html.AttributeEncode(Model.Funcionario.Nombre) @Html.AttributeEncode(Model.Funcionario.PrimerApellido) @Html.AttributeEncode(Model.Funcionario.SegundoApellido)</b></div>
+                        <br /><div>Este registro se asociará a la resolución: <b>@Html.AttributeEncode(Model.Experiencia.NumeroResoluc) </b>, el cual genera un total de <b>@Html.AttributeEncode(Model.Experiencia.IndicadorPtsAsignados) puntos.</b></div>
+                        <br /><div>Según: @Html.AttributeEncode(Model.Experiencia.ObservacionesExp).</div>
+                        <br /><div>En Fecha: @Html.AttributeEncode(Model.Experiencia.FechaReg.ToShortDateString())</div> 
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-danger" role="alert">
+                    <i class="fa fa-times-circle d-inline" style="font-size:48px;"></i>
+                    <h4 class="d-inline"> Ocurrió un error al momento de guardar la experiencia profesional.</h4>
+                </div>
+                <br />
+
+                <div class="card">
+                    <h5 class="card-header">Detalles</h5>
+                    <div class="card-body">
+                        <div>La experiencia profesional no pudo ser guardada debido al siguiente error: </div>
+                        <br /><div><b>No se pudieron obtener los datos de experiencia profesional con la cédula indicada: @Request.QueryString["accion"]</b></div>
+                        <br /><div>Si conoce la causa de este error, por favor revise los datos que intentó almacenar e intentelo de nuevo.</div>
+                        <br /><div>De lo contrario le invitamos a ponerse en contacto con nuestro equipo de soporte, mediante el sistema de <a href="http://sisrh.mopt.go.cr:83/" target="_blank">Ayuda y Soporte</a></div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="alert alert-danger" role="alert">
+                <i class="fa fa-times-circle d-inline" style="font-size:48px;"></i>
+                <h4 class="d-inline"> Ocurrió un error al momento de anular la experiencia profesional.</h4>
+            </div>
+                <br />
+
+                <div class="card">
+                    <h5 class="card-header">Detalles</h5>
+                    <div class="card-body">
+                        <div>La experiencia profesional no pudo ser anulada debido al siguiente error: </div>
+                        <br /><div><b>@Html.AttributeEncode(Model.Error.MensajeError)</b></div>
+                        <br /><div>Si conoce la causa de este error, por favor revise los datos que intentó almacenar e intentelo de nuevo.</div>
+                        <br /><div>De lo contrario le invitamos a ponerse en contacto con nuestro equipo de soporte, mediante el sistema de <a href="http://sisrh.mopt.go.cr:83/" target="_blank">Ayuda y Soporte</a></div>
+                    </div>
+                </div>
+        }
+    }
+    else
+    {
+        if (Model.Experiencia != null)
+        {
+            using (Html.BeginForm("ReporteDetalleExperiencia", "Carrera", FormMethod.Post, new { @id = "thisForm" }))
+            {
+                <div class="card">
+                    <div class="card-body">
+                        <p class="card-text">Registro por: @Model.Experiencia.TipoExp == 1 ? Reconocimiento : Ajuste</p>
+                        <br />
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                            <b>Funcionario: </b>@Model.Funcionario.Cedula - @Model.Funcionario.Nombre Model.Funcionario.PrimerApellido @Model.Funcionario.SegundoApellido
+                                @Html.HiddenFor(model => model.Funcionario.Cedula)
+                                @Html.HiddenFor(model => model.Funcionario.Nombre)
+                                @Html.HiddenFor(model => model.Funcionario.PrimerApellido)
+                                @Html.HiddenFor(model => model.Funcionario.SegundoApellido)
+                            </li>
+                            <li class="list-group-item">
+                                <b>@Html.LabelFor(model => model.Experiencia.FechaReg): </b>@Html.DisplayFor(model => model.Experiencia.FechaReg)
+                                @Html.HiddenFor(model => model.Experiencia.FechaReg)
+                            </li>
+                            <li class="list-group-item">
+                                <b>@Html.LabelFor(model => model.Experiencia.NumeroResoluc): </b>@Html.DisplayFor(model => model.Experiencia.NumeroResoluc)
+                                @Html.HiddenFor(model => model.Experiencia.NumeroResoluc)
+                            </li>
+                            <li class="list-group-item">
+                                <b>@Html.LabelFor(model => model.Experiencia.IndicadorPtsAsignados): </b>@Html.DisplayFor(model => model.Experiencia.IndicadorPtsAsignados)
+                                @Html.HiddenFor(model => model.Experiencia.IndicadorPtsAsignados)
+                            </li>
+                            <li class="list-group-item">
+                                <b>@Html.LabelFor(model => model.Experiencia.ObservacionesExp): </b>@Html.DisplayFor(model => model.Experiencia.ObservacionesExp)
+                                @Html.HiddenFor(model => model.Experiencia.ObservacionesExp)
+                            </li>
+                        </ul>
+                        <br />
+                        <button class="btn btn-danger" type="submit"><i class="fa fa-file-pdf-o"></i> Exportar a PDF</button>
+                    </div>
+                </div>
+            }
+        }
+
+    }
+}
+
+<br />
+
+<a href="javascript:history.back()" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Regresar</a>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+

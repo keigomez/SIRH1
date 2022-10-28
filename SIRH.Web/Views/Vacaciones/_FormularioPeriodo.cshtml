@@ -1,0 +1,102 @@
+﻿
+
+@model SIRH.Web.ViewModels.FormularioPeriodoVacacionesVM
+@{
+    if (Model != null)
+    {
+        <br />
+        <div id="formulario">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Información del Funcionario</strong>
+                </div>
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <tr>
+                            <td>
+                                <strong>@Html.LabelFor(model => model.Funcionario.Cedula): </strong>@Html.DisplayFor(model => model.Funcionario.Cedula)
+                                @Html.HiddenFor(model => model.Funcionario.Cedula)
+                            </td>
+                            <td>
+                                <strong>@Html.LabelFor(model => model.Funcionario.Nombre): </strong>@Model.Funcionario.Nombre @Model.Funcionario.PrimerApellido @Model.Funcionario.SegundoApellido
+                                @Html.HiddenFor(model => model.Funcionario.Nombre)
+                                @Html.HiddenFor(model => model.Funcionario.PrimerApellido)
+                                @Html.HiddenFor(model => model.Funcionario.SegundoApellido)
+                            </td>
+                            <td>
+                                <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                                @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                                @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                            </td>
+                            <td>
+                                <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                                @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                            </td>
+                            <td>
+                                <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion)
+                                @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion)
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="jumbotron">
+            @{
+                using (Ajax.BeginForm("CreatePeriodo", new AjaxOptions
+                {
+                    UpdateTargetId = "Errores_Formulario",
+                    HttpMethod = "POST",
+                    OnSuccess = "SuccessCargarPeriodo",
+                    OnComplete = "CompleteCargarPeriodo",
+                    OnBegin = "BeginCargarPeriodo"
+                }))
+                {
+                    @Html.HiddenFor(model => model.Funcionario.Cedula)
+                    Html.ValidationSummary(true);
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>Formulario de registro periodo de vacaciones</strong>
+                        </div>
+                        <div class="card-body">
+                            <div class="alert alert-warning">
+                                <i class="fa fa-warning"></i> Si ingresa un periodo repetido, este no se duplicará. El sistema modificará el saldo del actual con el que ingrese en este formulario.
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-4 ">
+                                    @Html.LabelFor(model => model.PeriodoVacaciones.Periodo)
+                                    <span>:</span>
+                                    @Html.TextBoxFor(model => model.PeriodoVacaciones.Periodo, new { @id = "Periodo", @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.PeriodoVacaciones.Periodo)
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group  col-4 ">
+                                    @Html.LabelFor(model => model.PeriodoVacaciones.DiasDerecho)
+                                    <span>:</span>
+                                    @Html.TextBoxFor(model => model.PeriodoVacaciones.DiasDerecho, new { @id = "diasDerecho", @class = "form-control", @placeholder = "###" })
+                                    @Html.ValidationMessageFor(model => model.PeriodoVacaciones.DiasDerecho)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div>
+                        <a class="btn btn-primary" href="javascript:history.back()" id="A5"><i class="fa fa-times"></i> Cancelar</a>
+                        <button class="btn btn-success" id="btnGuardar" name="SubmitButton" type="submit" value="Guardar">
+                            <i class="fa fa-save"></i>
+                            Guardar
+                        </button>
+                    </div>
+                }
+                <div id="Errores_Formulario" style="margin-top:15px;"> </div>
+            }
+        </div>
+                }
+}

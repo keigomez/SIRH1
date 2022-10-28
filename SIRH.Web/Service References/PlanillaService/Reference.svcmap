@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="f70c77d7-699d-462e-9ef5-ab77c39d036d" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://sisrh.mopt.go.cr:85/CPlanillaService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CPlanillaService.xsd" MetadataType="Schema" ID="9cff39b9-a3f5-4afe-adf1-f935e5ee9ae0" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CPlanillaService.svc?xsd=xsd3" />
+    <MetadataFile FileName="CPlanillaService1.xsd" MetadataType="Schema" ID="017aa0a2-25a0-44e0-9ffd-953a150eb65d" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CPlanillaService.svc?xsd=xsd0" />
+    <MetadataFile FileName="CPlanillaService.wsdl" MetadataType="Wsdl" ID="b5d4916f-0d7f-44f1-b205-add3344b50dd" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CPlanillaService.svc?wsdl" />
+    <MetadataFile FileName="CPlanillaService2.xsd" MetadataType="Schema" ID="e3db4421-5e86-4932-bcaa-51d612772cde" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CPlanillaService.svc?xsd=xsd2" />
+    <MetadataFile FileName="CPlanillaService3.xsd" MetadataType="Schema" ID="b38da5c9-3c2a-4b44-8a20-fbd2522934db" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CPlanillaService.svc?xsd=xsd4" />
+    <MetadataFile FileName="CPlanillaService4.xsd" MetadataType="Schema" ID="7228da33-bb22-4543-aba4-41a5b15c5965" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CPlanillaService.svc?xsd=xsd1" />
+    <MetadataFile FileName="CPlanillaService.disco" MetadataType="Disco" ID="ca3131de-3f6f-4a01-ab69-4b8eaeba68d9" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CPlanillaService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

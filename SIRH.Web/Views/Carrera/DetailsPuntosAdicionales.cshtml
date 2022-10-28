@@ -1,0 +1,58 @@
+﻿@model SIRH.Web.ViewModels.DetallePuntosAdicionalesVM
+
+@{
+    ViewBag.Title = "DetailsPuntosAdicionales";
+    Layout = "~/Views/Shared/Carrera.cshtml";
+}
+
+@{
+    if (Request.QueryString["accion"] == "guardar")
+    {
+        <div class="alert alert-success" role="alert">
+            <i class="fa fa-check-circle d-inline" style="font-size:48px;"></i>
+            <h4 class="d-inline">Se han modificado los puntos correctamente.</h4>
+        </div>
+        <br />
+
+        <div class="card">
+            <h5 class="card-header">Detalle</h5>
+            <div class="card-body">
+                <div>Se han modificado los puntos: </div>
+                <ul class="list-group">
+                    <li class="list-group-item"><span><strong>@Html.LabelFor(model => model.Funcionario): </strong>@Html.AttributeEncode(Model.Funcionario.Cedula)</span></li>
+                    <li class="list-group-item"><span><strong>@Html.LabelFor(model => model.Puntos) agregados: </strong>@Html.AttributeEncode(Model.Puntos)</span></li>
+                </ul>
+                <br />
+                <a href="javascript:history.back()" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Regresar</a>
+            </div>
+        </div>
+        <br />
+    }
+    else
+    {
+
+                <blockquote><h3>Detalle de puntos adicionales</h3></blockquote>
+
+                <div class="card">
+                    <div class="card-header">
+                        <b>Detalle de puntos adicionales</b>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item"><span><strong>@Html.LabelFor(model => model.Funcionario): </strong>@Html.AttributeEncode(Model.Funcionario.Cedula)</span></li>
+                            <li class="list-group-item"><span><strong>@Html.LabelFor(model => model.Puntos): </strong>@Html.AttributeEncode(Model.Puntos)</span></li>
+                        </ul>
+                        <br />
+                        <a href="javascript:history.back()" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Regresar</a>
+                    </div>
+                </div>
+                <br />
+
+    }
+
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+

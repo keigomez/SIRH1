@@ -1,0 +1,139 @@
+﻿@model SIRH.Web.ViewModels.BusquedaDesarraigoVM
+@{
+    ViewBag.Title = "Busqueda de Desarraigos";
+    Layout = "~/Views/Shared/Desarraigo.cshtml";
+}
+<link href="~/Content/datetimepicker.css" rel="stylesheet" />
+
+
+<center><h2>Busqueda de Desarraigos</h2></center>
+
+@{
+    using (Ajax.BeginForm("Search", "Desarraigo", new AjaxOptions
+    {
+        UpdateTargetId = "dvResultadoBusqueda",
+        HttpMethod = "POST",
+        OnComplete = "CompleteSearch",
+        OnBegin = "BeginSearch"
+    }))
+    {
+        <div class="card">
+            <div class="card-header">
+               <strong> Filtros de busqueda </strong>
+            </div>
+            <div class="card-body">
+
+                <div class="row" style="margin-bottom:15px;">
+                    <!-- Cedula Funcionario -->
+
+                    <div class="form-group col-4">
+                        @Html.LabelFor(model => model.Funcionario.Cedula)
+                        <span>
+                            :
+                        </span>
+                        @Html.TextBoxFor(model => model.Funcionario.Cedula, new { @class = "form-control", @maxlength = "10" })
+                        @Html.ValidationMessageFor(model => model.Funcionario.Cedula)
+                    </div>
+                    <!-- Codigo Desarraigo -->
+                    <div class="form-group col-5">
+                        @Html.LabelFor(model => model.Desarraigo.CodigoDesarraigo)
+                        <span>:</span>
+                        @Html.TextBoxFor(model => model.Desarraigo.CodigoDesarraigo, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Desarraigo.CodigoDesarraigo)
+                    </div>
+                </div>
+
+                <div class="row" style="margin-bottom:5px;">
+                    <!-- Fecha de inico del desarraigo -->
+                    <div class="form-group col-4">
+                        @Html.Label("Inicio del desarraigo")
+                        <span>:</span>
+                        <div class="start_date input-group mb-4">
+                            @Html.TextBoxFor(model => model.FechaInicioDesarraigoI, new { @class = "form-control start_date", @readonly = "readonly", @placeholder = "Fecha de Inicio" })
+                            @Html.ValidationMessageFor(model => model.FechaInicioDesarraigoI)
+                        </div>
+                        <div class="end_date input-group mb-4">
+                            @Html.TextBoxFor(model => model.FechaInicioDesarraigoF, new { @class = "form-control start_date", @readonly = "readonly", @placeholder = "Fecha de Finalización" })
+                            @Html.ValidationMessageFor(model => model.FechaInicioDesarraigoF)
+                        </div>
+                    </div>
+                    <!-- Fecha de finalizacion del desarraigo -->
+                    <div class="form-group col-5">
+                        @Html.Label("Fin del desarraigo")
+                        <span>:</span>
+                        <div class="start_date input-group mb-4">
+                            @Html.TextBoxFor(model => model.FechaFinalDesarraigoI, new { @class = "form-control ", @readonly = "readonly", @placeholder = "Fecha de Inicio" })
+                            @Html.ValidationMessageFor(model => model.FechaFinalDesarraigoI)
+                        </div>
+                        <div class="end_date input-group mb-4">
+                            @Html.TextBoxFor(model => model.FechaFinalDesarraigoF, new { @class = "form-control ", @readonly = "readonly", @placeholder = "Fecha de Finalización" })
+                            @Html.ValidationMessageFor(model => model.FechaFinalDesarraigoF)
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:5px;">
+                    <div class="form-group col-4">
+                        @Html.Label("Lugar de contrato")
+                        <span>:</span>
+                        @Html.DropDownListFor(model => model.ProvinciaSeleccion, Model.Provincias, "Provincia", new { @id = "DropProvincias", @class = "form-control", @readonly = "readonly", @onchange = "ObtenerCantones(this.selectedIndex)" })
+                        @Html.ValidationMessageFor(model => model.ProvinciaSeleccion)
+                    </div>
+                    <div class="form-group col-5">
+                        @Html.LabelFor(model => model.EstadoSeleccion)
+                        <span>:</span>
+                        @Html.DropDownListFor(model => model.EstadoSeleccion, Model.Estados, "Seleccione un Estado", new {@class = "form-control", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.EstadoSeleccion)
+                    </div>
+
+                </div>
+                <div class="row" style="margin-bottom:1px;">
+                    <div class="form-group col-4">
+                        @Html.DropDownListFor(model => model.CantonSeleccion, Model.Cantones, "Cantón", new { @id = "DropCantones", @class = "form-control", @readonly = "readonly" , @onchange = "ObtenerDistritos(this.value)" })
+                        @Html.ValidationMessageFor(model => model.CantonSeleccion)
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:20px;">
+                    <div class="form-group col-4">
+                        @Html.DropDownListFor(model => model.DistritoSeleccion, Model.Distritos, "Distrito", new { @id = "DropDistritos", @class = "form-control", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.DistritoSeleccion)
+                    </div>
+                </div>
+
+
+                <div id="btnBuscar" class="form-group">
+                     
+                    <button type="button" class="btn btn-primary " value="Limpiar" onclick="CleanSearch()" >
+                        <i class="fa fa-eraser"></i>
+                        Limpiar
+                    </button>
+
+                    <button type="submit" class="btn btn-primary " value="Buscar">
+                        <i class="fa fa-search"></i>
+                        Buscar
+                    </button>
+
+
+                </div>
+
+                <div class="row">
+                    <div class="col-5"></div>
+                    <div id="preloader" class="loader" hidden></div>
+                </div>
+            </div>
+     </div>
+
+    }
+    <div id="dvResultadoBusqueda"></div>
+}
+
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+
+<script src="~/Scripts/sidebar.js" type="text/javascript"></script>
+<script src="~/scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/SearchDesarraigo.js" type="text/javascript"></script>
+<script src="~/Scripts/datetimepicker.js" type="text/javascript"></script>
+<script src="~/Scripts/datetimepicker-es.js" type="text/javascript"></script>

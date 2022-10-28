@@ -1,0 +1,159 @@
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Logica\bin\Debug\SIRH.Logica.dll.config
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Logica\bin\Debug\SIRH.Logica.dll
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Logica\bin\Debug\SIRH.Logica.pdb
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Logica\bin\Debug\EntityFramework.dll
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Logica\bin\Debug\Microsoft.AspNet.Scaffolding.EntityFramework.12.0.dll
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Logica\bin\Debug\Microsoft.Data.Entity.Design.Extensibility.dll
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Logica\bin\Debug\SIRH.Datos.dll
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Logica\bin\Debug\SIRH.DatosMarcasReloj.dll
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Logica\bin\Debug\SIRH.DTO.dll
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Logica\bin\Debug\Microsoft.AspNet.Scaffolding.12.0.dll
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Logica\bin\Debug\EnvDTE.dll
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Logica\bin\Debug\EnvDTE80.dll
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Logica\bin\Debug\stdole.dll
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Logica\bin\Debug\SIRH.DatosMarcasReloj.pdb
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Logica\bin\Debug\SIRH.Datos.pdb
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Logica\bin\Debug\SIRH.DTO.pdb
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Logica\bin\Debug\EntityFramework.xml
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Logica\bin\Debug\Microsoft.AspNet.Scaffolding.EntityFramework.12.0.xml
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Logica\bin\Debug\Microsoft.AspNet.Scaffolding.12.0.xml
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Logica\bin\Debug\EnvDTE.xml
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Logica\bin\Debug\EnvDTE80.xml
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Logica\bin\Debug\de\Microsoft.Data.Entity.Design.Extensibility.resources.dll
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Logica\bin\Debug\es\Microsoft.Data.Entity.Design.Extensibility.resources.dll
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Logica\bin\Debug\fr\Microsoft.Data.Entity.Design.Extensibility.resources.dll
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Logica\bin\Debug\it\Microsoft.Data.Entity.Design.Extensibility.resources.dll
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Logica\bin\Debug\ja\Microsoft.Data.Entity.Design.Extensibility.resources.dll
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Logica\bin\Debug\ko\Microsoft.Data.Entity.Design.Extensibility.resources.dll
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Logica\bin\Debug\ru\Microsoft.Data.Entity.Design.Extensibility.resources.dll
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Logica\bin\Debug\zh-Hans\Microsoft.Data.Entity.Design.Extensibility.resources.dll
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Logica\bin\Debug\zh-Hant\Microsoft.Data.Entity.Design.Extensibility.resources.dll
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Logica\obj\Debug\SIRH.Logica.csprojResolveAssemblyReference.cache
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Logica\obj\Debug\SIRH.Logica.dll
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Logica\obj\Debug\SIRH.Logica.pdb
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.Logica.dll.config
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.Logica.dll
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.Logica.pdb
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Logica\bin\Debug\EntityFramework.dll
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.Datos.dll
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.DatosMarcasReloj.dll
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.DTO.dll
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Logica\bin\Debug\EnvDTE.dll
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Logica\bin\Debug\EnvDTE80.dll
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Logica\bin\Debug\stdole.dll
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.DatosMarcasReloj.pdb
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.DatosMarcasReloj.dll.config
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.Datos.pdb
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.Datos.dll.config
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.DTO.pdb
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Logica\bin\Debug\EntityFramework.xml
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Logica\obj\Debug\SIRH.Logica.csproj.AssemblyReference.cache
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Logica\obj\Debug\SIRH.Logica.csproj.CoreCompileInputs.cache
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Logica\obj\Debug\SIRH.Logica.csproj.CopyComplete
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Logica\obj\Debug\SIRH.Logica.dll
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Logica\obj\Debug\SIRH.Logica.pdb
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.Logica.dll.config
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.Logica.dll
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.Logica.pdb
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Logica\bin\Debug\EntityFramework.dll
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.Datos.dll
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.DatosMarcasReloj.dll
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.DTO.dll
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Logica\bin\Debug\EnvDTE.dll
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Logica\bin\Debug\EnvDTE80.dll
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Logica\bin\Debug\stdole.dll
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.DatosMarcasReloj.pdb
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.DatosMarcasReloj.dll.config
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.Datos.pdb
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.Datos.dll.config
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.DTO.pdb
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Logica\bin\Debug\EntityFramework.xml
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Logica\obj\Debug\SIRH.Logica.csproj.AssemblyReference.cache
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Logica\obj\Debug\SIRH.Logica.csproj.CoreCompileInputs.cache
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Logica\obj\Debug\SIRH.Logica.csproj.CopyComplete
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Logica\obj\Debug\SIRH.Logica.dll
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Logica\obj\Debug\SIRH.Logica.pdb
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.Logica.dll.config
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.Logica.dll
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.Logica.pdb
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Logica\bin\Debug\EntityFramework.dll
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.Datos.dll
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.DatosMarcasReloj.dll
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.DTO.dll
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Logica\bin\Debug\EnvDTE.dll
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Logica\bin\Debug\EnvDTE80.dll
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Logica\bin\Debug\stdole.dll
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.DatosMarcasReloj.pdb
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.DatosMarcasReloj.dll.config
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.Datos.pdb
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.Datos.dll.config
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.DTO.pdb
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Logica\bin\Debug\EntityFramework.xml
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Logica\obj\Debug\SIRH.Logica.csproj.AssemblyReference.cache
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Logica\obj\Debug\SIRH.Logica.csproj.CoreCompileInputs.cache
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Logica\obj\Debug\SIRH.Logica.csproj.CopyComplete
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Logica\obj\Debug\SIRH.Logica.dll
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Logica\obj\Debug\SIRH.Logica.pdb
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.Logica.dll.config
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.Logica.dll
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.Logica.pdb
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Logica\bin\Debug\EntityFramework.dll
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.Datos.dll
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.DatosMarcasReloj.dll
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.DTO.dll
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Logica\bin\Debug\EnvDTE.dll
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Logica\bin\Debug\EnvDTE80.dll
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Logica\bin\Debug\stdole.dll
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.DatosMarcasReloj.pdb
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.DatosMarcasReloj.dll.config
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.Datos.pdb
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.Datos.dll.config
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.DTO.pdb
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Logica\bin\Debug\EntityFramework.xml
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Logica\obj\Debug\SIRH.Logica.csproj.AssemblyReference.cache
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Logica\obj\Debug\SIRH.Logica.csproj.CoreCompileInputs.cache
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Logica\obj\Debug\SIRH.Logica.csproj.CopyComplete
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Logica\obj\Debug\SIRH.Logica.dll
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Logica\obj\Debug\SIRH.Logica.pdb
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.Logica.dll.config
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.Logica.dll
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.Logica.pdb
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Logica\bin\Debug\EntityFramework.dll
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.Datos.dll
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.DatosMarcasReloj.dll
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.DTO.dll
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Logica\bin\Debug\EnvDTE.dll
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Logica\bin\Debug\EnvDTE80.dll
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Logica\bin\Debug\stdole.dll
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.DatosMarcasReloj.pdb
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.DatosMarcasReloj.dll.config
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.Datos.pdb
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.Datos.dll.config
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Logica\bin\Debug\SIRH.DTO.pdb
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Logica\bin\Debug\EntityFramework.xml
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Logica\obj\Debug\SIRH.Logica.csproj.AssemblyReference.cache
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Logica\obj\Debug\SIRH.Logica.csproj.CoreCompileInputs.cache
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Logica\obj\Debug\SIRH.Logica.csproj.CopyComplete
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Logica\obj\Debug\SIRH.Logica.dll
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Logica\obj\Debug\SIRH.Logica.pdb
+C:\Users\ramir\Videos\SIRH-main\SIRH.Logica\bin\Debug\SIRH.Logica.dll.config
+C:\Users\ramir\Videos\SIRH-main\SIRH.Logica\bin\Debug\SIRH.Logica.dll
+C:\Users\ramir\Videos\SIRH-main\SIRH.Logica\bin\Debug\SIRH.Logica.pdb
+C:\Users\ramir\Videos\SIRH-main\SIRH.Logica\bin\Debug\EntityFramework.dll
+C:\Users\ramir\Videos\SIRH-main\SIRH.Logica\bin\Debug\SIRH.Datos.dll
+C:\Users\ramir\Videos\SIRH-main\SIRH.Logica\bin\Debug\SIRH.DatosMarcasReloj.dll
+C:\Users\ramir\Videos\SIRH-main\SIRH.Logica\bin\Debug\SIRH.DTO.dll
+C:\Users\ramir\Videos\SIRH-main\SIRH.Logica\bin\Debug\EnvDTE.dll
+C:\Users\ramir\Videos\SIRH-main\SIRH.Logica\bin\Debug\EnvDTE80.dll
+C:\Users\ramir\Videos\SIRH-main\SIRH.Logica\bin\Debug\stdole.dll
+C:\Users\ramir\Videos\SIRH-main\SIRH.Logica\bin\Debug\SIRH.DatosMarcasReloj.pdb
+C:\Users\ramir\Videos\SIRH-main\SIRH.Logica\bin\Debug\SIRH.DatosMarcasReloj.dll.config
+C:\Users\ramir\Videos\SIRH-main\SIRH.Logica\bin\Debug\SIRH.Datos.pdb
+C:\Users\ramir\Videos\SIRH-main\SIRH.Logica\bin\Debug\SIRH.Datos.dll.config
+C:\Users\ramir\Videos\SIRH-main\SIRH.Logica\bin\Debug\SIRH.DTO.pdb
+C:\Users\ramir\Videos\SIRH-main\SIRH.Logica\bin\Debug\EntityFramework.xml
+C:\Users\ramir\Videos\SIRH-main\SIRH.Logica\obj\Debug\SIRH.Logica.csproj.AssemblyReference.cache
+C:\Users\ramir\Videos\SIRH-main\SIRH.Logica\obj\Debug\SIRH.Logica.csproj.CoreCompileInputs.cache
+C:\Users\ramir\Videos\SIRH-main\SIRH.Logica\obj\Debug\SIRH.Logica.csproj.CopyComplete
+C:\Users\ramir\Videos\SIRH-main\SIRH.Logica\obj\Debug\SIRH.Logica.dll
+C:\Users\ramir\Videos\SIRH-main\SIRH.Logica\obj\Debug\SIRH.Logica.pdb

@@ -1,0 +1,53 @@
+﻿@model SIRH.DTO.CBaseDTO
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/PerfilUsuario.cshtml";
+}
+
+<div class="jumbotron">
+    <center>
+        <h1 class="display-4">Módulo de Administración de Usuarios</h1>
+        <p class="lead">Bienvenido(a), @Session["Nombre_Completo"]</p>
+        <hr class="my-4">
+        <p>Para iniciar, seleccione alguna de las opciones del menú a su izquierda.</p>
+        <p>En este módulo, usted puede:</p>
+    </center>
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-sm-3 col-md-4">
+                <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Registrar usuarios</div>
+                    <div class="card-body text-secondary">
+                        <center><img src="~/Content/Images/user_add.png" class="img-thumbnail" alt="" height="60" width="60"></center>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 col-md-4">
+                <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Deshabilitar usuarios</div>
+                    <div class="card-body text-secondary">
+                        <center><img src="~/Content/Images/user_delete.png" class="img-thumbnail" alt="" height="60" width="60"></center>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 col-md-4">
+                <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Asignar permisos</div>
+                    <div class="card-body text-secondary">
+                        <center><img src="~/Content/Images/key.png" class="img-thumbnail" alt="" height="60" width="60"></center>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 col-md-4">
+                <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Gestionar perfiles</div>
+                    <div class="card-body text-secondary">
+                        <center><img src="~/Content/Images/candado.jpeg" class="img-thumbnail" alt="" height="60" width="60"></center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

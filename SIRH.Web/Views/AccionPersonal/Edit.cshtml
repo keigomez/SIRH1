@@ -1,0 +1,135 @@
+﻿@model SIRH.Web.ViewModels.FormularioAccionPersonalVM
+@{
+    ViewBag.Title = "Anular Acción de Personal";
+    Layout = "~/Views/Shared/AccionPersonal.cshtml";
+}
+
+<blockquote><h3>Modificar Acción de Personal (Anular)</h3></blockquote>
+@{
+    if (Model.Error != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            <i class="fa fa-times-circle d-inline" style="font-size:48px;"></i>
+            <h4 class="d-inline"> Ocurrió un error al momento de cargar la Acción de Personal.</h4>
+        </div>
+        <div class="card">
+            <h5 class="card-header">Detalles</h5>
+            <div class="card-body">
+                <div>La Acción no pudo ser cargada debido al siguiente error: </div>
+                <br /><div><b>@Html.AttributeEncode(Model.Error.MensajeError)</b></div>
+                <br /><div>Si conoce la causa de este error, por favor intentelo de nuevo.</div>
+                <br /><div>De lo contrario le invitamos a ponerse en contacto con nuestro equipo de soporte, mediante el sistema de <a href="http://sisrh.mopt.go.cr:83/" target="_blank">Ayuda y Soporte</a></div>
+
+            </div>
+        </div>
+    }
+    else
+    {
+        using (Ajax.BeginForm("Edit", "AccionPersonal", new { codigo = @Model.Accion.IdEntidad }, new AjaxOptions
+        {
+            HttpMethod = "Post",
+            UpdateTargetId = "dvResultadoBusqueda",
+            InsertionMode = InsertionMode.Replace,
+            OnComplete = "CompleteEditarCaucion",
+            OnBegin = "BeginEditarCaucion"
+        }))
+        {
+            @Html.ValidationSummary(true)
+            <div class="card">
+                <div class="card-header text-left">
+                    <b>Incapacidad # @Model.Accion.NumAccion</b>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <span>
+                                <b>Funcionario: </b>@Model.Funcionario.Cedula - @Model.Funcionario.Nombre @Model.Funcionario.PrimerApellido @Model.Funcionario.SegundoApellido
+                                @Html.HiddenFor(model => model.Funcionario.Cedula)
+                                @Html.HiddenFor(model => model.Funcionario.Nombre)
+                                @Html.HiddenFor(model => model.Funcionario.PrimerApellido)
+                                @Html.HiddenFor(model => model.Funcionario.SegundoApellido)
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>
+                                <b>@Html.LabelFor(model => model.Accion.IdEntidad): </b> @Model.Accion.IdEntidad
+                                @Html.HiddenFor(model => model.Accion.IdEntidad)
+                                @Html.HiddenFor(model => model.Accion.CodigoModulo)
+                                @Html.HiddenFor(model => model.Accion.CodigoObjetoEntidad)
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>
+                                <b>@Html.LabelFor(model => model.Accion.NumAccion): </b>@Model.Accion.NumAccion
+                                @Html.HiddenFor(model => model.Accion.NumAccion)
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>
+                                <b>@Html.LabelFor(model => model.TipoAccion): </b>@Model.TipoAccion.DesTipoAccion
+                                @Html.HiddenFor(model => model.TipoAccion.IdEntidad)
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>
+                                <b>@Html.LabelFor(model => model.Accion.FecRige): </b>@Html.AttributeEncode(Model.Accion.FecRige.ToShortDateString())
+                                @Html.HiddenFor(model => model.Accion.FecRige)
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>
+                                <b>@Html.LabelFor(model => model.Accion.FecVence): </b>@Html.AttributeEncode((Model.Accion.FecVence.HasValue) ? Convert.ToDateTime(Model.Accion.FecVence).ToShortDateString() : "")
+                                @Html.HiddenFor(model => model.Accion.FecVence)
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>
+                                <b>@Html.LabelFor(model => model.Accion.FecRigeIntegra): </b>@Html.AttributeEncode(Model.Accion.FecRigeIntegra.ToShortDateString())
+                                @Html.HiddenFor(model => model.Accion.FecRigeIntegra)
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>
+                                <b>@Html.LabelFor(model => model.Accion.FecVenceIntegra): </b>@Html.AttributeEncode((Model.Accion.FecVenceIntegra.HasValue) ? Convert.ToDateTime(Model.Accion.FecVenceIntegra).ToShortDateString() : "")
+                                @Html.HiddenFor(model => model.Accion.FecVenceIntegra)
+                            </span>
+                        </li>
+                    </ul>
+                    <br />
+
+                </div>
+            </div>
+
+            <br />
+
+            <div class="alert alert-warning" role="alert">
+                <i class="fa fa-exclamation-circle d-inline" style="font-size:48px;"></i>
+                <h4 class="d-inline"> ¡Atención! Usted está apunto de anular la Acción de Personal # <b>@Model.Accion.NumAccion</b>.</h4>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-group row">
+                        <b class="col-2 col-form-label">@Html.LabelFor(model => model.Accion.Observaciones, new { @for = "ObservacionesPoliza" })</b>
+                        <div class="col-10">
+                            @Html.TextAreaFor(model => model.Accion.Observaciones, new { @id = "ObservacionesPoliza", @class = "form-control", @rows = 5 })
+                        </div>
+                    </div>
+                    <br />
+                    <input id="btnEditar" name="SubmitButton" type="submit" value="Anular Acción Personal" class="btn btn-primary float-right" />
+                    <div id="preloader" class="loader float-right" style="display: none"></div>
+                </div>
+            </div>
+        }
+    }
+}
+<br />
+<div id="dvResultadoBusqueda"></div>
+<br />
+<a href="javascript:history.back()" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Regresar</a>
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+<script src="~/Scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/EditCaucion.js"></script>

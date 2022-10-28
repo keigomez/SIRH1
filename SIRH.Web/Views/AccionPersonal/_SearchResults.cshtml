@@ -1,0 +1,112 @@
+﻿@model IList<SIRH.Web.ViewModels.FormularioAccionPersonalVM>
+
+@{
+    using (Html.BeginForm("ReporteBorradores", "AccionPersonal", FormMethod.Post, new { @id = "thisForm", target = "_blank" }))
+    {
+        <legend>Resultados (@Model.Count)</legend>
+        <button class="btn btn-danger" type="submit"><i class="fa fa-file-pdf-o"></i> Exportar a PDF</button>
+        <table class="table table-hover">
+            <thead class="thead-light">
+                <tr>
+                    <th>Cédula</th>
+                    <th>Nombre</th>
+                    <th>Acción</th>
+                    <th>Tipo</th>
+                    <th>Estado</th>
+                    <th>Fecha Rige</th>
+                    <th>Fecha Vence</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (var item in Model.OrderByDescending(Q => Q.Accion.NumAccion))
+                    {
+                        <tr>
+                            <td>
+                                @Html.AttributeEncode(item.Funcionario.Cedula)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Funcionario.Cedula)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Funcionario.Nombre)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Funcionario.PrimerApellido)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Funcionario.SegundoApellido)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Funcionario.SegundoApellido)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Accion.IdEntidad)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Accion.Observaciones)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Asignado.Nombre)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Asignado.PrimerApellido)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Asignado.SegundoApellido)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Accion.FecRigeIntegra)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Accion.FecVenceIntegra)
+                            </td>
+                           
+                            <td>
+                                @item.Funcionario.Nombre @item.Funcionario.PrimerApellido @item.Funcionario.SegundoApellido
+                            </td>
+                            <td>
+                                @Html.AttributeEncode(item.Accion.NumAccion)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Accion.NumAccion)
+                            </td>
+                            <td>
+                                @Html.AttributeEncode(item.Accion.TipoAccion.DesTipoAccion)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Accion.TipoAccion.DesTipoAccion)
+                            </td>
+                            <td>
+                                @Html.AttributeEncode(item.Accion.Estado.DesEstadoBorrador)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Accion.Estado.DesEstadoBorrador)
+                            </td>
+                            <td>
+                                @Html.AttributeEncode(item.Accion.FecRige.ToShortDateString())
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Accion.FecRige)
+                            </td>
+                            <td>
+                                @Html.AttributeEncode((item.Accion.FecVence.HasValue) ? Convert.ToDateTime(item.Accion.FecVence).ToShortDateString() : "")
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Accion.FecVence)
+                            </td>
+                            <td>
+                                @if (item.TipoAccion.IdEntidad == 5 || item.TipoAccion.IdEntidad == 8) // 5 Incapacidad  8 - Prórroga de incapacidad.
+                                {
+                                    <div style="display: inline">
+                                        <div class="link_view"> @Html.ActionLink("Ver Detalle", "", "RegistroIncapacidad", null, new { @onclick = "return ObtenerDetalleIncapacidad('" + item.Accion.CodigoObjetoEntidad + "');", @type = "button", @class = "btn btn-primary btn-sm" })</div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    @*<a href="@Url.Action("Details", "AccionPersonal", new { @numAccion = item.Accion.NumAccion })" class="btn btn-primary btn-sm">
+                                            <i class="fa fa-search"></i> Ver Detalle
+                                        </a>*@
+                                    <div style="display: inline">
+                                        <div class="link_view"> @Html.ActionLink("Ver Detalle", "", "AccionPersonal", null, new { @onclick = "return ObtenerDetalle('" + item.Accion.NumAccion + "');", @type = "button", @class = "btn btn-primary btn-sm" })</div>
+                                    </div>
+                                }
+                            </td>
+
+                            @if (item.Estado.IdEntidad ==3) // (item.Estado.IdEntidad != 8)
+                            {
+                                <td>
+                                    <a href="@Url.Action("Aprobar", "AccionPersonal", new { @numAccion = item.Accion.NumAccion })" class="btn btn-warning btn-sm">
+                                        <i class="fa fa-edit"></i> Aprobar
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("Edit", "AccionPersonal", new { @numAccion = item.Accion.NumAccion })" class="btn btn-danger btn-sm">
+                                        <i class="fa fa-edit"></i> Anular
+                                    </a>
+                                </td>
+                            }
+                            @*<td style="width:180px">
+                                <div style="display:inline">
+                                    @if (item.Estado.IdEntidad != 8)
+                                    {
+                                        <div class="btn btn-warning btn-sm">@Html.ActionLink("Anular", "Cancel", new { @numAccion = item.Accion.NumAccion }, new { @class = "btn btn-outline-primary" })</div>
+                                    }
+                                    <div class="link_view">@Html.ActionLink("Ver Detalle", "Details", new { @numAccion = item.Accion.NumAccion }, new { @class = "btn btn-outline-primary" })</div>
+                                </div>
+                            </td>*@
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    }
+}

@@ -1,0 +1,60 @@
+﻿@model SIRH.Web.ViewModels.FormularioCalificacionVM
+
+@{
+    ViewBag.Title = "EvaluacionFueraDominio";
+    Layout = "~/Views/Shared/Calificacion.cshtml";
+}
+
+<div class="jumbotron">
+    <center>
+        <h3 class="display-4">Evaluación fuera de dominio</h3>
+        <br />
+        <div class="card">
+            <div class="card-header text-left">
+                <strong>Datos de inicio de sesión</strong>
+            </div>
+            @using (Ajax.BeginForm("EvaluacionFueraDominio", "Calificacion", new AjaxOptions { UpdateTargetId = "resultado", HttpMethod = "POST" }))
+            {
+                <div class="card-body">
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Cédula:</label>
+                        <div class="col-sm-3">
+                            <input type="text" name="ced" class="form-control" value="" id="ced" oninput="check_text(this);" placeholder="Cédula" pattern="[0-9]{10}" maxlength="10" />
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Contraseña:</label>
+                        <div class="col-sm-3">
+                            <input type="password" name="contra" class="form-control" value="" id="contra" placeholder="Contraseña" />
+                        </div>
+                    </div>
+
+                    <button id="Iniciar" type="submit" class="btn btn-primary float-right" name="Cargar" value="Iniciar">Iniciar</button>
+
+                    <div id="preloader" name="preloader" class="loader" hidden></div>
+                    <span id="error" style="color: Red"></span>
+                    <br />
+
+                </div>
+
+            }
+        </div>
+    </center>
+</div>
+
+<div id="resultado" class="container">
+    @{
+
+        //Html.RenderPartial("_Historial", Model);
+    }
+</div>
+
+<br />
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+<script src="~/scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/FuncionesCalificacion.js"></script>
+

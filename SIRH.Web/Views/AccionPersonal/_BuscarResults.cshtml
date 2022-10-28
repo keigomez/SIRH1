@@ -1,0 +1,77 @@
+﻿@model IList<SIRH.Web.ViewModels.FormularioAccionPersonalVM>
+
+@{ 
+    using (Html.BeginForm("ReporteHistorico", "AccionPersonal", FormMethod.Post, new { @id = "thisForm" }))
+    {
+        <table class="table table-hover">
+            <thead class="thead-light">
+                <tr>
+                    <th>Num. Acción</th>
+                    <th>Fec Rige</th>
+                    <th>Vence</th>
+                    <th>Acción</th>
+                    <th>Cédula</th>
+                    @*<th>Núm. Puesto</th>*@
+                    <th>Explicación</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.AttributeEncode(item.Historico.NumAccion)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Historico.NumAccion)
+                            </td>
+                           
+                            <td>
+                                @Html.AttributeEncode(Html.Encode(item.Historico.FecRige.ToShortDateString()))
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Historico.FecRige)
+                            </td>
+                            
+                            <td>
+                                @if (item.Historico.FecVence.ToShortDateString() != "01/01/0001")
+                                {
+                                    @Html.AttributeEncode(Html.Encode(item.Historico.FecVence.ToShortDateString()))
+                                }
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Historico.FecVence)
+                            </td>
+                            <td>
+                                @*@Html.AttributeEncode(item.Historico.CodAccion)*@ 
+                                @Html.AttributeEncode(item.TipoAccion.DesTipoAccion)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Historico.CodAccion)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].TipoAccion.DesTipoAccion)
+                            </td>
+                            <td>
+                                @Html.AttributeEncode(item.Historico.Cedula)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Historico.Cedula)
+                            </td>
+                            @*<td>
+                                @Html.AttributeEncode(item.Historico.CodPuesto)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Historico.CodPuesto)
+                            </td>*@
+                            <td>
+                                @Html.AttributeEncode(item.Historico.Explicacion)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Historico.Explicacion)
+                            </td>
+                            <td>
+                                <div style="display: inline">
+                                    <div class="link_view"> @Html.ActionLink("Ver Detalle", "", "AccionPersonal", null, new { @onclick = "return ObtenerDetalleH('" + item.Historico.IdEntidad + "');", @type = "button", @class = "btn btn-primary btn-sm" })</div>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                    <tr>
+                        <td colspan="7"></td>
+                    </tr>
+                    
+                    <tr>
+                        <td colspan="7"><div class="link_pdf"><a href="#" id="submit_link" onclick="return ExportarAPdf();">Exportar resultados a Excel</a></div></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+}

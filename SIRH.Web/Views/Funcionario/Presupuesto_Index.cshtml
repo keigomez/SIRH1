@@ -1,0 +1,34 @@
+﻿@model SIRH.Web.Models.PresupuestoModel
+
+@{
+    using (Ajax.BeginForm("Presupuesto_Index", "Funcionario", new AjaxOptions { UpdateTargetId = "target-presupuesto", HttpMethod = "POST", OnSuccess = "successDataPresupuesto", OnBegin = "beginDataPresupuesto" }))
+    {
+        <div class="card">
+            <div class="card-header">
+                Parámetros de búsqueda:
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="form-group col-10">
+                        <label for="codigopresupuesto">Código Presupuestario</label>
+                        @Html.TextBox("codigopresupuesto", String.Empty, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-8">
+                        <input class="btn btn-secondary" type="submit" value="Buscar" id="btnBuscaPresupuesto" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-5">
+                        <div id="progressbarpresupuesto" class="loader" hidden></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    <div id="error-presupuesto" class="alert alert-danger" role="alert" hidden></div>
+    <br />
+    <div id="target-presupuesto"></div>
+
+}

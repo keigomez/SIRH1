@@ -1,0 +1,177 @@
+﻿@model SIRH.Web.ViewModels.ComponentePresupuestarioVM
+
+@{
+    if (Model != null)
+    {
+        using (Ajax.BeginForm("Create", new AjaxOptions
+        {
+            HttpMethod = "POST",
+            UpdateTargetId = "formulario",
+            InsertionMode = InsertionMode.Replace,
+            OnBegin = "BeginGuardarDecreto",
+            OnComplete = "CompleteGuardarDecreto",
+            OnSuccess = "SuccessGuardarDecreto",
+            OnFailure = "SuccessGuardarDecreto"
+        }))
+        {
+            @Html.ValidationSummary(true)
+            <div id="formulario">
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Datos del Decreto</strong>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-hover" id="datos_decreto">
+                            <tr>
+                                <td>
+                                    <strong>@Html.LabelFor(model => model.ObjetoGasto.IdEntidad): </strong>@Html.DisplayFor(model => model.ObjetoGasto.IdEntidad)
+                                    @Html.HiddenFor(model => model.ObjetoGasto.IdEntidad)
+                                </td>
+                                <td>
+                                    <strong>@Html.LabelFor(model => model.Programa.IdEntidad): </strong>@Html.DisplayFor(model => model.Programa.IdEntidad)
+                                </td>
+                                <td>
+                                    <strong>@Html.LabelFor(model => model.AnioPresupuesto): </strong>@Html.DisplayFor(model => model.AnioPresupuesto)
+                                    @Html.HiddenFor(model => model.AnioPresupuesto)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>@Html.LabelFor(model => model.MontoComponente): </strong>@Html.DisplayFor(model => model.MontoComponente)
+                                    @Html.HiddenFor(model => model.MontoComponente)
+                                </td>
+                                <td>
+                                    <strong>@Html.LabelFor(model => model.TipoMovimiento.IdEntidad): </strong>@Html.DisplayFor(model => model.TipoMovimiento.IdEntidad)
+                                    @Html.HiddenFor(model => model.TipoMovimiento.IdEntidad)
+                                </td>
+                                <td>
+                                    <strong>@Html.LabelFor(model => model.Detalle): </strong>@Html.DisplayFor(model => model.Detalle)
+                                    @Html.HiddenFor(model => model.Detalle)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>@Html.LabelFor(model => model.TituloComponente): </strong>@Html.DisplayFor(model => model.TituloComponente)
+                                    @Html.HiddenFor(model => model.TituloComponente)
+                                </td>
+                                <td>
+                                    <strong>@Html.LabelFor(model => model.NumeroComponentePresupuestario): </strong>@Html.DisplayFor(model => model.NumeroComponentePresupuestario)
+                                    @Html.HiddenFor(model => model.NumeroComponentePresupuestario)
+                                </td>
+                                <td>
+                                    <strong>@Html.LabelFor(model => model.FechaDecreto): </strong>@Html.DisplayFor(model => model.FechaDecreto)
+                                    @Html.HiddenFor(model => model.FechaDecreto)
+                                </td>
+                            </tr>
+                            <tr>
+                            <td>
+                             </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <br />
+                <div class="card">
+                    <div class="card-header">
+                        <b>Datos del Decreto</b>
+                    </div>
+                    <div class="card-body">
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model, new { @for = "ObjetoGasto", @class = "col-sm-2 col-form-label" })
+                            <div class="col-sm-10">
+                                @Html.TextBoxFor(model => model.ComponentePresupuestario.ObjetoGasto, new { @id = "ObjetoGasto", @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ComponentePresupuestario.ObjetoGasto)
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.ComponentePresupuestario.Programa, new { @for = "Programa", @class = "col-sm-2 col-form-label" })
+                            <div class="col-sm-10">
+                                @Html.TextBoxFor(model => model.ComponentePresupuestario.Programa, new { @id = "Programa", @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ComponentePresupuestario.Programa)
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.ComponentePresupuestario.AnioPresupuesto, new { @for = "AnioPresupuesto", @class = "col-sm-2 col-form-label" })
+                            <div class="col-sm-10">
+                                @Html.TextBoxFor(model => model.ComponentePresupuestario.AnioPresupuesto, new { @id = "AnioPresupuesto", @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ComponentePresupuestario.AnioPresupuesto)
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.ComponentePresupuestario.MontoComponente, new { @for = "MtoComponentePresupuestario", @class = "col-sm-2 col-form-label" })
+                            <div class="col-sm-10">
+                                @Html.TextBoxFor(model => model.ComponentePresupuestario.MontoComponente, new { @id = "MtoComponentePresupuestario", @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ComponentePresupuestario.MontoComponente)
+                            </div>
+
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.ComponentePresupuestario.TipoMovimiento, new { @for = "CatMovimientoPresupuesto", @class = "col-sm-2 col-form-label" })
+                            <div class="col-sm-10">
+                                @Html.TextBoxFor(model => model.ComponentePresupuestario.TipoMovimiento, new { @id = "CatMovimientoPresupuesto", @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ComponentePresupuestario.TipoMovimiento)
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.ComponentePresupuestario.Detalle, new { @for = "ObsComponentePresupuestario", @class = "col-sm-2 col-form-label" })
+                            <div class="col-sm-10">
+                                @Html.TextBoxFor(model => model.ComponentePresupuestario.Detalle, new { @id = "ObsComponentePresupuestario", @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ComponentePresupuestario.Detalle)
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.ComponentePresupuestario.TituloComponente, new { @for = "TituloComponentePresupuestario", @class = "col-sm-2 col-form-label" })
+                            <div class="col-sm-10">
+                                @Html.TextBoxFor(model => model.ComponentePresupuestario.TituloComponente, new { @id = "TituloComponentePresupuestario", @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ComponentePresupuestario.TituloComponente)
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.ComponentePresupuestario.NumeroComponentePresupuestario, new { @for = "NumeroComponentePresupuestario", @class = "col-sm-2 col-form-label" })
+                            <div class="col-sm-10">
+                                @Html.TextBoxFor(model => model.ComponentePresupuestario.NumeroComponentePresupuestario, new { @id = "NumeroComponentePresupuestario", @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ComponentePresupuestario.NumeroComponentePresupuestario)
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.ComponentePresupuestario.FechaDecreto, new { @for = "datepickerDecreto", @class = "col-sm-2 col-form-label" })
+                            <div class="col-sm-10">
+                                @Html.TextBoxFor(model => model.ComponentePresupuestario.FechaDecreto, new { @id = "datepickerDecreto", @class = "form-control", @readonly = "readonly" })
+                                @Html.ValidationMessageFor(model => model.ComponentePresupuestario.FechaDecreto)
+                            </div>
+                        </div>
+
+                        <input id="btnGuardar" name="SubmitButton" type="submit" value="Guardar Decreto" class="btn btn-primary float-right" />
+                        <div id="preloaderGuardar" class="loader float-right" style="display: none"></div>
+                    </div>
+                </div>
+                <br />
+
+                @if (!Html.ViewData.ModelState.IsValid)
+                {
+                    <div class="card border-danger">
+                        <div class="card-header"><strong>El formulario contiene los siguientes errores:</strong></div>
+                        <div class="card-body text-danger">
+                            @foreach (var modelError in Html.ViewData.ModelState.SelectMany(keyValuePair => keyValuePair.Value.Errors))
+                            {
+                                <div class="alert alert-danger" role="alert">
+                                    <h5>@modelError.ErrorMessage</h5>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+            }
+        }
+    }
+

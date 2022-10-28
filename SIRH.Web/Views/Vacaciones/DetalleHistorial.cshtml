@@ -1,0 +1,196 @@
+﻿@model SIRH.Web.ViewModels.DetalleVacacionesVM
+
+@{
+    ViewBag.Title = "DetalleHistorial";
+    Layout = "~/Views/Shared/Vacaciones.cshtml";
+}
+
+<h1>
+    <span style="color: darkblue">Detalles del periodo @Model.Periodo.Periodo</span>
+    <br>
+</h1>
+<div class="card">
+    <div class="card-header">
+        <strong>Información del Funcionario</strong>
+    </div>
+    <div class="card-body">
+        <table class="table table-hover">
+            <tr>
+                <td>
+                    <strong>@Html.LabelFor(model => model.Funcionario.Cedula): </strong>@Html.DisplayFor(model => model.Funcionario.Cedula)
+                    @Html.HiddenFor(model => model.Funcionario.Cedula)
+                </td>
+                <td>
+                    <strong>@Html.LabelFor(model => model.Funcionario.Nombre): </strong>@Model.Funcionario.Nombre @Model.Funcionario.PrimerApellido @Model.Funcionario.SegundoApellido
+                    @Html.HiddenFor(model => model.Funcionario.Nombre)
+                    @Html.HiddenFor(model => model.Funcionario.PrimerApellido)
+                    @Html.HiddenFor(model => model.Funcionario.SegundoApellido)
+                </td>
+                <td>
+                    <strong>@Html.LabelFor(model => model.Puesto.CodPuesto): </strong>@Html.DisplayFor(model => model.Puesto.CodPuesto)
+                    @Html.HiddenFor(model => model.Puesto.CodPuesto)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                    @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                </td>
+                <td>
+                    <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                    @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                </td>
+                <td>
+                    <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion)
+                    @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                    @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                </td>
+                <td>
+                    <strong>@Html.LabelFor(model => model.DetallePuesto.Especialidad.DesEspecialidad): </strong>@Html.DisplayFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)
+                    @Html.HiddenFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)
+                </td>
+                <td>
+                    <strong>@Html.LabelFor(model => model.DetallePuesto.Clase.DesClase): </strong>@Html.DisplayFor(model => model.DetallePuesto.Clase.DesClase)
+                    @Html.HiddenFor(model => model.DetallePuesto.Clase.DesClase)
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Estado del periodo: </strong>Histórico</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+</div>
+<br>
+<div class="card">
+    <div class="card-header"><h5>Registro de vacaciones</h5></div>
+    <div class="card">
+        <table class="table">
+            <thead class="card-header">
+                <tr>
+                    <th>Fecha Inicio</th>
+                    <th>Fecha Fin</th>
+                    <th>Días</th>
+                    <th>Tipo de transaccíon</th>
+                    <th>N° documento</th>
+                    <th>Fuente</th>
+                    <th>Estado</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.RegistroVacaciones.Count; i++)
+                {
+                    if (Model.RegistroVacaciones[i].Estado == 1)
+                    {
+                        Model.estadoPeriodo = "Solicitud activa";
+                    }
+                    else
+                     if (Model.RegistroVacaciones[i].Estado == 2)
+                    {
+                        Model.estadoPeriodo = "Solicitud con reintegro";
+                    }
+                    else
+                    {
+                        Model.estadoPeriodo = "Desconocido";
+                    }
+                    <tr></tr>
+                    <tr>
+                        <td>@Model.RegistroVacaciones[i].FechaRige.ToShortDateString()</td>
+                        <td>@Model.RegistroVacaciones[i].FechaVence.ToShortDateString()</td>
+                        <td>@Model.RegistroVacaciones[i].Dias</td>
+                        @if (Model.RegistroVacaciones[i].TipoTransaccion == 1)
+                        {
+                            <td>Vacaciones normales</td>
+
+                        }
+                        else if (Model.RegistroVacaciones[i].TipoTransaccion == 6)
+                        {
+                            <td>Permiso con goce de salario</td>
+                        }
+                        else
+                        {
+                            <td>Vacaciones proporcionales</td>
+                        }
+                        <td>@Model.RegistroVacaciones[i].NumeroTransaccion</td>
+                        <td>Emulación</td>
+                        <td>@Model.estadoPeriodo</td>
+                        @if (Model.RegistroVacaciones[i].Fuente == "SIRH" && Model.PeriodosActivos != null && (Convert.ToBoolean(Session["Administrador_Global"]) ||
+        Convert.ToBoolean(Session["Administrador_" + Convert.ToInt32(SIRH.Web.Helpers.EModulosHelper.Vacaciones)]) ||
+        Session["Permiso_17_56"] != null))
+                        {
+                            <td><button class="btn btn-outline-info" onclick="abrirTrasladarRegistro(@(Model.RegistroVacaciones[i].IdEntidad), '@(Model.RegistroVacaciones[i].NumeroTransaccion.ToString())', @(Model.RegistroVacaciones[i].Dias));" id="btnAnular"><i class="fa fa-reply"></i> Trasladar</button></td>
+                        }
+                        else
+                        {
+                            <td></td>
+                        }
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>
+                        <b>Totales:</b>
+                    </td>
+                    <td></td>
+                    <td>
+                        @Model.TotalRegistros
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+<br>
+@if (Model.ReintegroVacaciones.Count() != 0)
+{
+<div class="card">
+    <div class="card-header"><h5>Reintegro de vacaciones</h5></div>
+    <div class="card">
+        <table class="table" style="margin-bottom:10px;">
+            <thead class="card-header">
+                <tr>
+                    <th>Fecha rige</th>
+                    <th>N° solicitud</th>
+                    <th>Cantidad de dias</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.ReintegroVacaciones.Count; i++)
+                {
+                    <tr></tr>
+                                <tr>
+                                    <td>@Model.ReintegroVacaciones[i].FechaRige.ToShortDateString()</td>
+                                    <td>@Model.ReintegroVacaciones[i].SolReintegro</td>
+                                    <td>@Model.ReintegroVacaciones[i].CantidadDias</td>
+                                </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>
+                        <b>Totales:</b>
+                    </td>
+                    <td></td>
+                    <td>
+                        @Model.TotalReintegros
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+<br>
+}
+

@@ -1,0 +1,344 @@
+﻿@model SIRH.Web.ViewModels.FormularioDesarraigoVM
+@{
+    ViewBag.Title = "Editar Desarraigo";
+    Layout = "~/Views/Shared/Desarraigo.cshtml";
+}
+<link href="~/Content/datetimepicker.css" rel="stylesheet" />
+<h1>
+    @{
+        if (Model.Desarraigo.EstadoDesarraigo.NomEstadoDesarraigo == "Vencido" || Model.Desarraigo.EstadoDesarraigo.NomEstadoDesarraigo == "Vencido_Incap" ||
+      Model.Desarraigo.EstadoDesarraigo.NomEstadoDesarraigo == "Vencido_Vac" || Model.Desarraigo.EstadoDesarraigo.NomEstadoDesarraigo == "Vencido_PSS")
+        {
+            <span style="color:red">ALERTA POR VENCIMIENTO</span>
+        }
+        if (Model.Desarraigo.EstadoDesarraigo.NomEstadoDesarraigo == "Valido")
+        {
+            <span style="color:green">(Estado: @Model.Desarraigo.EstadoDesarraigo.NomEstadoDesarraigo)</span>
+        }
+        else
+        {
+            <span style="color:#FFA500"> (Estado: @Model.Desarraigo.EstadoDesarraigo.NomEstadoDesarraigo)</span>
+        }
+    }
+    Editar el Desarraigo N°: @Model.Desarraigo.CodigoDesarraigo
+</h1>
+
+
+<br />
+<div id="formulario">
+    <div class="card">
+        <div class="card-header">
+            <strong>Información del Funcionario</strong>
+        </div>
+        <div class="card-body">
+            <table class="table table-hover">
+                <tr>
+                    <td>
+                        <strong>@Html.LabelFor(model => model.Funcionario.Cedula): </strong>@Html.DisplayFor(model => model.Funcionario.Cedula)
+                        @Html.HiddenFor(model => model.Funcionario.Cedula)
+                    </td>
+                    <td>
+                        <strong>@Html.LabelFor(model => model.Funcionario.Nombre): </strong>@Model.Funcionario.Nombre @Model.Funcionario.PrimerApellido @Model.Funcionario.SegundoApellido
+                        @Html.HiddenFor(model => model.Funcionario.Nombre)
+                        @Html.HiddenFor(model => model.Funcionario.PrimerApellido)
+                        @Html.HiddenFor(model => model.Funcionario.SegundoApellido)
+                    </td>
+                    <td>
+                        <strong>@Html.LabelFor(model => model.Puesto.CodPuesto): </strong>@Html.DisplayFor(model => model.Puesto.CodPuesto)
+                        @Html.HiddenFor(model => model.Puesto.CodPuesto)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>@Html.LabelFor(model => model.DetallePuesto.Clase.DesClase): </strong>@Html.DisplayFor(model => model.DetallePuesto.Clase.DesClase)
+                        @Html.HiddenFor(model => model.DetallePuesto.Clase.DesClase)
+                    </td>
+                    <td>
+                        <strong>@Html.LabelFor(model => model.DetallePuesto.Especialidad.DesEspecialidad): </strong>@Html.DisplayFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)
+                        @Html.HiddenFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)
+                    </td>
+                    <td>
+                        <strong>@Html.LabelFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal): </strong>@Html.DisplayFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal)
+                        @Html.HiddenFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                        @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                    </td>
+                    <td>
+                        <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                        @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                    </td>
+                    <td>
+                        <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                        @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion)
+                        @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion)
+                    </td>
+                    <td>
+                        <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto)
+                        @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto)
+                    </td>
+                    <td>
+                        <strong>Lugar de trabajo: </strong> @Model.UbicacionTrabajo.Distrito.NomDistrito DE @Model.UbicacionTrabajo.Distrito.Canton.NomCanton, @Model.UbicacionTrabajo.Distrito.Canton.Provincia.NomProvincia
+                        @Html.HiddenFor(model => model.UbicacionTrabajo.Distrito.Canton.Provincia.NomProvincia)
+                        @Html.HiddenFor(model => Model.UbicacionTrabajo.Distrito.Canton.NomCanton)
+                        @Html.HiddenFor(model => Model.UbicacionTrabajo.Distrito.NomDistrito)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Lugar de contrato: </strong> @Model.UbicacionContrato.Distrito.NomDistrito DE @Model.UbicacionContrato.Distrito.Canton.NomCanton, @Model.UbicacionContrato.Distrito.Canton.Provincia.NomProvincia
+                        @Html.HiddenFor(model => Model.UbicacionContrato.Distrito.Canton.Provincia.NomProvincia)
+                        @Html.HiddenFor(model => Model.UbicacionContrato.Distrito.Canton.NomCanton)
+                        @Html.HiddenFor(model => Model.UbicacionContrato.Distrito.NomDistrito)
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<br />
+
+<!--Formulario de Editar-->
+<div id="CotenedorForm">
+    @{
+        Html.EnableClientValidation();
+        using (Ajax.BeginForm("Edit", new AjaxOptions
+        {
+            HttpMethod = "POST",
+            UpdateTargetId = "dvResultadoBusqueda",
+            OnBegin = "BeginGuardarDesarraigo",
+            OnComplete = "CompleteGuardarDesarraigo"
+        }))
+        {
+        <div class="Div2">
+            <div class="card" id="setForm">
+                <div class="card-header">
+                    <strong>Editar desarraigo</strong>
+                </div>
+                <div class="card-body">
+                    <div>
+                        <!--Se mantienen los datos para no volver a hacer la busqueda-->
+                        @Html.HiddenFor(model => model.NumCartaPresentacion)
+                        @Html.HiddenFor(model => model.Funcionario.Nombre)
+                        @Html.HiddenFor(model => model.Funcionario.Cedula)
+                        @Html.HiddenFor(model => model.Funcionario.PrimerApellido)
+                        @Html.HiddenFor(model => model.Funcionario.SegundoApellido)
+                        @Html.HiddenFor(model => model.Funcionario.Nombre)
+                        @Html.HiddenFor(model => model.Desarraigo.EstadoDesarraigo.NomEstadoDesarraigo)
+                        @Html.HiddenFor(model => model.Desarraigo.CodigoDesarraigo)
+                        @Html.HiddenFor(model => model.Desarraigo.MontoDesarraigo)
+                        @Html.HiddenFor(model => model.Desarraigo.IdEntidad)
+                        @Html.HiddenFor(model => model.UbicacionTrabajo.Distrito.Canton.Provincia.NomProvincia)
+                        @Html.HiddenFor(model => model.UbicacionTrabajo.Distrito.Canton.NomCanton)
+                        @Html.HiddenFor(model => model.UbicacionTrabajo.Distrito.NomDistrito)
+                        @Html.HiddenFor(model => model.UbicacionContrato.Distrito.Canton.Provincia.NomProvincia)
+                        @Html.HiddenFor(model => model.UbicacionContrato.Distrito.Canton.NomCanton)
+                        @Html.HiddenFor(model => model.UbicacionContrato.Distrito.NomDistrito)
+                        @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                        @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                        @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                        @Html.HiddenFor(model => model.Puesto.CodPuesto)
+                        @Html.HiddenFor(model => model.DetallePuesto.Clase.DesClase)
+                        @Html.HiddenFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)
+                        @Html.HiddenFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal)
+                    </div>
+                    <!--Almacena los datos de la lista de Facturas-->
+                    <div id="facturasData"></div>
+                    <!--Almacena los datos de la lista de Contratos-->
+                    <div id="contratosData"></div>
+                    <!--Tablas de los datos del desarraigo-->
+                    <center>
+                        <div class="row">
+
+                            <form>
+                                <div class="col-3">
+
+                                    <b>@Html.LabelFor(model => model.Desarraigo.MontoDesarraigo)</b>
+
+                                    <b>(Colones)</b>@Html.TextBox("_montoDesarraigo", 0, new { @class = "form-control", @disabled = "disabled", @Value = Model.Desarraigo.MontoDesarraigo.ToString("#,#.00#;(#,#.00#)") })
+                                    <br>
+
+                                    @Html.ValidationMessageFor(model => model.Desarraigo.MontoDesarraigo)
+                                    <b>@Html.Label("N° Informe")</b>
+                                    @Html.TextBoxFor(model => model.Desarraigo.CodigoDesarraigo, new { disabled = "disabled", @class = "form-control" })
+
+
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <b>@Html.LabelFor(model => model.NumCartaPresentacion)</b>
+                                        @Html.TextBoxFor(model => model.NumCartaPresentacion, new { @disabled = "disabled", @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.NumCartaPresentacion)
+                                        <br>
+                                        <div class="form-group">
+                                            <b>@Html.Label("Fecha del Desarraigo")</b>
+                                            <div class="start_date input-group mb-4">
+                                                @Html.TextBoxFor(model => model.Desarraigo.FechaInicio, new { @id = "FechaInicio", @class = "form-control start_date", @readonly = "readonly", disabled = "disabled", @Value = Model.Desarraigo.FechaInicio.ToShortDateString() })
+                                                @Html.ValidationMessageFor(model => model.Desarraigo.FechaInicio)
+                                            </div>
+                                            <div class="end_date input-group mb-4">
+                                                @Html.TextBoxFor(model => model.Desarraigo.FechaFin, new { @id = "FechaFin", @class = "form-control start_date", @readonly = "readonly", disabled = "disabled", @Value = Model.Desarraigo.FechaFin.ToShortDateString() })
+                                                @Html.ValidationMessageFor(model => model.Desarraigo.FechaFin)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-5">
+                                    <div class="form-group">
+                                        <b>@Html.LabelFor(model => model.EstadoSeleccion)</b>
+                                        @Html.DropDownListFor(model => model.EstadoSeleccion, Model.Estado, "Seleccione un Estado", new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.EstadoSeleccion)
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </center>
+
+                </div>
+
+            </div>
+            @*Facturas del Desarraigo*@
+            <table class="table" id="tablaFacturas" style="margin-bottom:70px;">
+                <thead class="thead-light">
+                    <tr>
+                        <th colspan="5" class="encabezadoTablaEspecial">
+                            Informacion facturas
+                            <div style="float:right;"><input class="btn btn-primary float-left " id="btnAgregarFactura" type="button" value="+ Agregar Factura" /></div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>Código de Factura</th>
+                        <th>Monto de Factura</th>
+                        <th>Fecha de Facturación</th>
+                        <th>Emisor de la Factura</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.Facturas.Count; i++)
+                    {
+                        <tr class="omitir">
+                            <td>@Model.Facturas[i].CodigoFactura</td>
+                            <td>@Model.Facturas[i].MontoFactura.ToString("#,#.00#;(#,#.00#)")</td>
+                            <td>@Model.Facturas[i].FechaFacturacion.ToShortDateString()</td>
+                            <td colspan='2'>@Model.Facturas[i].Emisor</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        <table class="table" id="tablaContratos" style="margin-bottom:70px;">
+            <thead class="thead-light">
+                <tr class="table-active">
+                    <th colspan="6" class="encabezadoTabla">
+                        Información Contrato Arrendamiento
+                        <div style="float:right;"><input class="btn btn-primary float-right" id="btnAgregarContrato" type="button" value="+ Agregar Contrato" /></div>
+                    </th>
+                </tr>
+                <tr class="table-active">
+                    <th class="encabezadoTablaEspecialRegistro">Código del Contrato</th>
+                    <th class="encabezadoTablaEspecialRegistro">Monto del Contrato</th>
+                    <th class="encabezadoTablaEspecialRegistro">Fecha de Inicio</th>
+                    <th class="encabezadoTablaEspecialRegistro">Fecha de Vencimiento</th>
+                    <th class="encabezadoTablaEspecialRegistro">Emisor del Contrato</th>
+                    <th class="encabezadoTablaEspecialRegistro"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.ContratosArrendamiento.Count; i++)
+                {
+                    <tr class="omitir">
+                        <td>@Model.ContratosArrendamiento[i].CodigoContratoArrendamiento</td>
+                        <td>@Model.ContratosArrendamiento[i].MontoContrato.ToString("#,#.00#;(#,#.00#)")</td>
+                        <td>@Model.ContratosArrendamiento[i].FechaInicio.ToShortDateString()</td>
+                        <td>@Model.ContratosArrendamiento[i].FechaFin.ToShortDateString()</td>
+                        <td colspan='2'>@Model.ContratosArrendamiento[i].EmisorContrato</td>
+                    </tr>
+                }
+            </tbody>
+            </table>
+
+                <table class="table" style="margin-bottom:9px;" id="gruposBtn">
+                    <tr>
+                        <th>
+                            <input type="button" class="btn btn-primary float-sm-none" value="Cancelar" onclick="javascript:history.back()" />
+                            <input id="btnGuardar" class="btn btn-success" name="SubmitButton" type="submit" value="Editar Desarraigo" onclick="agregarFacturasContratos()" />
+                        </th>
+                    </tr>
+
+
+                </table>
+
+        </div>
+        }
+
+
+        <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Agregar Factura</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        @{Html.RenderPartial("_AgregarFactura", Model.GetModelFacturas); }
+                    </div>
+                    <div class="modal-footer">
+                        <button id="CacelarFacturaPopUp" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button id="AgregarFacturaPopUp" type="button" class="btn btn-primary">Agregar Factura</button>
+                        <button id="EditarFacturaPopUp" type="button" class="btn btn-primary" style="display:none">Editar Factura</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Agregar Contrato de Arrendamiento</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        @{Html.RenderPartial("_AgregarContrato", Model.GetModelContratos); }
+                    </div>
+                    <div class="modal-footer">
+                        <button id="CacelarContratoPopUp" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button id="AgregarContratoPopUp" type="button" class="btn btn-primary">Agregar Contrato</button>
+                        <button id="EditarContratoPopUp" type="button" class="btn btn-primary" style="display:none">Editar Contrato</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="dvResultadoBusqueda"></div>
+
+    }
+</div>
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+<script src="~/Scripts/sidebar.js" type="text/javascript"></script>
+<script src="~/scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/EditDesarraigo.js" type="text/javascript"></script>
+<script src="~/Scripts/datetimepicker.js" type="text/javascript"></script>
+<script src="~/Scripts/datetimepicker-es.js" type="text/javascript"></script>

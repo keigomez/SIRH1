@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="4b93ad5a-429c-4afa-9ba3-77148d9bf280" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://sisrh.mopt.go.cr:85/CNombramientoService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CNombramientoService.xsd" MetadataType="Schema" ID="43072a7c-9078-4738-993e-669d72a73325" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CNombramientoService.svc?xsd=xsd1" />
+    <MetadataFile FileName="CNombramientoService.wsdl" MetadataType="Wsdl" ID="369bd529-e9da-4c86-b501-9bbf40068563" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CNombramientoService.svc?wsdl" />
+    <MetadataFile FileName="CNombramientoService1.xsd" MetadataType="Schema" ID="e95cb861-4a00-47fb-9d74-170bd4364ba3" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CNombramientoService.svc?xsd=xsd3" />
+    <MetadataFile FileName="CNombramientoService2.xsd" MetadataType="Schema" ID="a708f213-056d-4296-88ca-71a79b4965ba" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CNombramientoService.svc?xsd=xsd2" />
+    <MetadataFile FileName="CNombramientoService3.xsd" MetadataType="Schema" ID="46c57594-3a1a-49f5-92bb-55de61d7bbec" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CNombramientoService.svc?xsd=xsd0" />
+    <MetadataFile FileName="CNombramientoService.disco" MetadataType="Disco" ID="e4e67395-f13b-442e-a046-1f465f24e48d" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CNombramientoService.svc?disco" />
+    <MetadataFile FileName="CNombramientoService4.xsd" MetadataType="Schema" ID="1d5b3dc0-fc85-49a8-be80-ebd368e515cc" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CNombramientoService.svc?xsd=xsd4" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

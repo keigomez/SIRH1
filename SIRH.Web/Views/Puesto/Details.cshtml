@@ -1,0 +1,455 @@
+﻿@model SIRH.Web.ViewModels.PerfilFuncionarioVM
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/Reporte.cshtml";
+}
+
+@{
+    if (Session["errorF"] != null && (string)Session["errorF"] == "error")
+    {
+        <div>
+            @{
+                Html.RenderPartial("_ErrorPuesto");
+            }
+        </div>
+    }
+    else
+    {
+        <center><h2>Puesto # @Model.Puesto.CodPuesto.TrimEnd()</h2></center>
+
+        <div class="row">
+            <div class="col-10"></div>
+            <div class="form-group">
+                @using (Html.BeginForm("GenerarReporteFuncionario", "Funcionario", FormMethod.Post, new { target = "_blank" }))
+                {
+                    <input type="submit" class="btn btn-primary" value="Generar Reporte" />
+                }
+            </div>
+        </div>
+
+        <div id="tabs">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a id="tab1" class="nav-link active" href="#tabs-1" data-toggle="tab" role="tab" aria-controls="tabs-1" aria-selected="true">Detalle de Puesto</a>
+                </li>
+                <li class="nav-item">
+                    <a id="tab2" class="nav-link" href="#tabs-2" data-toggle="tab" role="tab" aria-controls="tabs-2" aria-selected="false">Detalle de Ubicación</a>
+                </li>
+                @if (Model.Nombramiento != null && Model.Nombramiento.Mensaje == null)
+                {
+                    if (Model.Funcionario.Mensaje != null)
+                    {
+                        <li class="nav-item">
+                            <a id="tab3" class="nav-link" href="#tabs-3" data-toggle="tab" role="tab" aria-controls="tabs-3" aria-selected="false">Funcionario Asociado</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a id="tab3" class="nav-link" href="#tabs-3" data-toggle="tab" role="tab" aria-controls="tabs-3" aria-selected="false">Último Funcionario Asociado</a>
+                        </li>
+                    }
+                    <li class="nav-item">
+                        <a id="tab4" class="nav-link" href="#tabs-4" data-toggle="tab" role="tab" aria-controls="tabs-4" aria-selected="false">Detalle de Salario</a>
+                    </li>
+                }
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div id="tabs-1" class="tab-pane fade show active" role="tabpanel" aria-labelledby="tab1">
+                    <div class="card">
+                        <h5 class="card-header">Detalle Puesto</h5>
+                        <div class="card-body">
+                            <table class="table table-hover">
+                                <tbody>
+                                    <tr>
+                                        <th>@Html.LabelFor(model => model.Puesto.CodPuesto) </th>
+                                        <td>@Html.DisplayFor(model => model.Puesto.CodPuesto)</td>
+                                        <th>@Html.LabelFor(model => model.Puesto.EstadoPuesto.DesEstadoPuesto)</th>
+                                        <td>@Html.DisplayFor(model => model.Puesto.EstadoPuesto.DesEstadoPuesto)</td>
+                                    </tr>
+                                    <tr>
+                                        <th>@Html.LabelFor(model => model.DetallePuesto.Clase.DesClase) </th>
+                                        <td>@Html.DisplayFor(model => model.DetallePuesto.Clase.DesClase)</td>
+                                        <th>@Html.LabelFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)</th>
+                                        <td>@Html.DisplayFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)</td>
+                                    </tr>
+                                    <tr>
+                                        <th>@Html.LabelFor(model => model.DetallePuesto.SubEspecialidad.DesSubEspecialidad) </th>
+                                        <td>@Html.DisplayFor(model => model.DetallePuesto.SubEspecialidad.DesSubEspecialidad)</td>
+                                        <th>@Html.LabelFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal)</th>
+                                        <td>@Html.DisplayFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal)</td>
+                                    </tr>
+                                    <tr>
+                                        <th>@Html.LabelFor(model => model.DetallePuesto.EscalaSalarial.SalarioBase) </th>
+                                        <td>@Html.DisplayFor(model => model.DetallePuesto.EscalaSalarial.SalarioBase)</td>
+                                        <th>@Html.LabelFor(model => model.DetallePuesto.EscalaSalarial.MontoAumentoAnual)</th>
+                                        <td>@Html.DisplayFor(model => model.DetallePuesto.EscalaSalarial.MontoAumentoAnual)</td>
+                                    </tr>
+                                    <tr>
+                                        <th>@Html.LabelFor(model => model.DetallePuesto.EscalaSalarial.CategoriaEscala) </th>
+                                        <td>@Html.DisplayFor(model => model.DetallePuesto.EscalaSalarial.CategoriaEscala)</td>
+                                        <th>Condición:</th>
+                                        <td>
+                                            @if (Model.FuncionarioPropietario == null && Model.FuncionarioOcupante == null)
+                                            {
+                                                <div>Vacante pura</div>
+                                            }
+                                            else
+                                            {
+                                                if (Model.FuncionarioPropietario == null)
+                                                {
+                                                    <div>Vacante con interino sin propietario</div>
+                                                }
+                                                else
+                                                {
+                                                    if (Model.FuncionarioOcupante == null)
+                                                    {
+                                                        <div>Vacante con propietario sin interino</div>
+                                                    }
+                                                    else
+                                                    {
+                                                        if (Model.FuncionarioOcupante.Funcionario.Cedula != Model.FuncionarioPropietario.Funcionario.Cedula)
+                                                        {
+                                                            <div>Vacante con interino y propietario</div>
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    @if (Model.Funcionario.Mensaje != null)
+                    {
+                        <div class="card">
+                            <h5 class="card-header">Detalle Nombramiento Activo</h5>
+                            <div class="card-body">
+                                <table class="table table-hover">
+                                    <tbody>
+                                        <tr>
+                                            <th>@Html.LabelFor(model => model.Nombramiento.EstadoNombramiento.DesEstado)</th>
+                                            <td>@Html.DisplayFor(model => model.Nombramiento.EstadoNombramiento.DesEstado)</td>
+                                        </tr>
+                                        <tr>
+                                            <th>@Html.LabelFor(model => model.Nombramiento.FecRige)</th>
+                                            @if (Model.Nombramiento.FecRige == DateTime.MinValue)
+                                            {
+                                                <td></td>
+                                            }
+                                            else
+                                            {
+                                                <td>@Html.DisplayFor(model => model.Nombramiento.FecRige)</td>
+                                            }
+                                            <th>@Html.LabelFor(model => model.Nombramiento.FecVence)</th>
+                                            @if (Model.Nombramiento.FecVence == DateTime.MinValue)
+                                            {
+                                                <td></td>
+                                            }
+                                            else
+                                            {
+                                                <td>@Html.DisplayFor(model => model.Nombramiento.FecVence)</td>
+                                            }
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <h5 class="card-header">Propietario del Puesto</h5>
+                            <div class="card-body">
+                                <table class="table table-hover">
+                                    <tbody>
+                                        <tr>
+                                            <th>@Html.LabelFor(model => model.FuncionarioPropietario.Funcionario.Cedula)</th>
+                                            <td>@Html.DisplayFor(model => model.FuncionarioPropietario.Funcionario.Cedula)</td>
+                                            <th>@Html.LabelFor(model => model.FuncionarioPropietario.Funcionario.Nombre)</th>
+                                            <td>@Html.DisplayFor(model => model.FuncionarioPropietario.Funcionario.Nombre) @Html.DisplayFor(model => model.FuncionarioPropietario.Funcionario.PrimerApellido) @Html.DisplayFor(model => model.FuncionarioPropietario.Funcionario.SegundoApellido)</td>
+                                        </tr>
+                                        <tr>
+                                            <th>@Html.LabelFor(model => model.FuncionarioPropietario.EstadoNombramiento.DesEstado)</th>
+                                            <td>@Html.DisplayFor(model => model.FuncionarioPropietario.EstadoNombramiento.DesEstado)</td>
+                                            <th>@Html.Label("Rige")</th>
+                                            <td>
+                                                @Html.DisplayFor(model => model.FuncionarioPropietario.FecRige)
+                                                -
+                                                @(Model.FuncionarioPropietario != null ? Model.FuncionarioPropietario.FecVence.Year != 1 ? Model.FuncionarioPropietario.FecVence.ToString() : "" : "")
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <h5 class="card-header">Detalle Ocupante</h5>
+                            <div class="card-body">
+                                <table class="table table-hover">
+                                    <tbody>
+                                        <tr>
+                                            <th>@Html.LabelFor(model => model.FuncionarioOcupante.Funcionario.Cedula)</th>
+                                            <td>@Html.DisplayFor(model => model.FuncionarioOcupante.Funcionario.Cedula)</td>
+                                            <th>@Html.LabelFor(model => model.FuncionarioOcupante.Funcionario.Nombre)</th>
+                                            <td>@Html.DisplayFor(model => model.FuncionarioOcupante.Funcionario.Nombre) @Html.DisplayFor(model => model.FuncionarioOcupante.Funcionario.PrimerApellido) @Html.DisplayFor(model => model.FuncionarioOcupante.Funcionario.SegundoApellido)</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div id="tabs-2" class="tab-pane fade" role="tabpanel" aria-labelledby="tab2">
+                    <div class="card">
+                        <h5 class="card-header">Ubicación Administrativa</h5>
+                        <div class="card-body">
+                            <table class="table table-hover">
+                                <tr>
+                                    <th>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision) </th>
+                                    <td>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)</td>
+                                    <th>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)</th>
+                                    <td>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)</td>
+                                </tr>
+                                <tr>
+                                    <th>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento) </th>
+                                    <td>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)</td>
+                                    <th>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion)</th>
+                                    <td>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion)</td>
+                                </tr>
+                                <tr>
+                                    <th>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto) </th>
+                                    <td>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto)</td>
+                                    <th></th>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h5 class="card-header">Ubicación Contrato</h5>
+                        <div class="card-body">
+                            <table class="table table-hover">
+                                <tbody>
+                                    <tr>
+                                        <th>@Html.LabelFor(model => model.UbicacionContrato.Distrito.Canton.Provincia.NomProvincia) </th>
+                                        <td>@Html.DisplayFor(model => model.UbicacionContrato.Distrito.Canton.Provincia.NomProvincia)</td>
+                                        <th>@Html.LabelFor(model => model.UbicacionContrato.Distrito.Canton.NomCanton)</th>
+                                        <td>@Html.DisplayFor(model => model.UbicacionContrato.Distrito.Canton.NomCanton)</td>
+                                    </tr>
+                                    <tr>
+                                        <th>@Html.LabelFor(model => model.UbicacionContrato.Distrito.NomDistrito) </th>
+                                        <td>@Html.DisplayFor(model => model.UbicacionContrato.Distrito.NomDistrito)</td>
+                                        <th>@Html.LabelFor(model => model.UbicacionContrato.ObsUbicacionPuesto)</th>
+                                        <td>@Html.DisplayFor(model => model.UbicacionContrato.ObsUbicacionPuesto)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h5 class="card-header">Ubicación Trabajo</h5>
+                        <div class="card-body">
+                            <table class="table table-hover">
+                                <tbody>
+                                    <tr>
+                                        <th>@Html.LabelFor(model => model.UbicacionTrabajo.Distrito.Canton.Provincia.NomProvincia) </th>
+                                        <td>@Html.DisplayFor(model => model.UbicacionTrabajo.Distrito.Canton.Provincia.NomProvincia)</td>
+                                        <th>@Html.LabelFor(model => model.UbicacionTrabajo.Distrito.Canton.NomCanton)</th>
+                                        <td>@Html.DisplayFor(model => model.UbicacionTrabajo.Distrito.Canton.NomCanton)</td>
+                                    </tr>
+                                    <tr>
+                                        <th>@Html.LabelFor(model => model.UbicacionTrabajo.Distrito.NomDistrito) </th>
+                                        <td>@Html.DisplayFor(model => model.UbicacionTrabajo.Distrito.NomDistrito)</td>
+                                        <th>@Html.LabelFor(model => model.UbicacionTrabajo.ObsUbicacionPuesto)</th>
+                                        <td>@Html.DisplayFor(model => model.UbicacionTrabajo.ObsUbicacionPuesto)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                @if (Model.Nombramiento != null && Model.Nombramiento.Mensaje == null)
+                {
+                    <div id="tabs-3" class="tab-pane fade" role="tabpanel" aria-labelledby="tab3">
+                        <div class="card">
+                            <h5 class="card-header">Datos Personales</h5>
+                            <div class="card-body">
+                                <table class="table table-hover">
+                                    <tbody>
+                                        <tr>
+                                            <th>@Html.LabelFor(model => model.Funcionario.Cedula) </th>
+                                            <td>@Html.DisplayFor(model => model.Funcionario.Cedula) </td>
+                                            <th>@Html.LabelFor(model => model.Funcionario.Nombre) </th>
+                                            <td>@Model.Funcionario.Nombre @Model.Funcionario.PrimerApellido @Model.Funcionario.SegundoApellido </td>
+                                        </tr>
+                                        <tr>
+                                            <th>@Html.LabelFor(model => model.Funcionario.FechaNacimiento) </th>
+                                            <td>@Html.DisplayFor(model => model.Funcionario.FechaNacimiento) </td>
+                                            <th>@Html.LabelFor(model => model.Funcionario.Sexo) </th>
+                                            <td>@Model.Funcionario.Sexo.ToString() </td>
+                                        </tr>
+                                        <tr>
+                                            <th>@Html.LabelFor(model => model.Funcionario.EstadoFuncionario.DesEstadoFuncionario) </th>
+                                            <td>@Html.DisplayFor(model => model.Funcionario.EstadoFuncionario.DesEstadoFuncionario) </td>
+                                            <th></th>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        @*Tiene un Funcionario nombrado actualmente*@
+                        @if (Model.Funcionario.Mensaje != null)
+                        {
+                            <div class="card">
+                                <h5 class="card-header">Detalle de Contratación</h5>
+                                <div class="card-body">
+                                    <table class="table table-hover">
+                                        <tbody>
+                                            <tr>
+                                                <th>@Html.LabelFor(model => model.DetalleContrato.FechaIngreso) </th>
+                                                <td>@Html.DisplayFor(model => model.DetalleContrato.FechaIngreso)</td>
+                                                @if (Model.DetalleContrato.FechaCese.Year > 1950)
+                                                {
+                                                    <th>@Html.LabelFor(model => model.DetalleContrato.FechaCese)</th>
+                                                    <td>@Html.DisplayFor(model => model.DetalleContrato.FechaCese)</td>
+                                                }
+                                                else
+                                                {
+                                                    <th>@Html.LabelFor(model => model.DetalleContrato.FechaCese)</th>
+                                                    <td></td>
+                                                }
+                                            </tr>
+                                            <tr>
+                                                <th>@Html.LabelFor(model => model.DetalleContrato.FechaMesAumento) </th>
+                                                <td>@Html.DisplayFor(model => model.DetalleContrato.FechaMesAumento)</td>
+                                                <th>@Html.LabelFor(model => model.DetalleContrato.NumeroAnualidades)</th>
+                                                <td>@Html.DisplayFor(model => model.DetalleContrato.NumeroAnualidades)</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <h5 class="card-header">Información de Localización</h5>
+                                <div class="card-body">
+                                    <table class="table table-hover">
+                                        <tbody>
+                                            <tr>
+                                                <th>@Html.LabelFor(model => model.Direccion.Distrito.Canton.Provincia.NomProvincia) </th>
+                                                <td>@Html.DisplayFor(model => model.Direccion.Distrito.Canton.Provincia.NomProvincia) </td>
+                                                <th>@Html.LabelFor(model => model.Direccion.Distrito.Canton.NomCanton) </th>
+                                                <td>@Html.DisplayFor(model => model.Direccion.Distrito.Canton.NomCanton)</td>
+                                            </tr>
+                                            <tr>
+                                                <th>@Html.LabelFor(model => model.Direccion.Distrito.NomDistrito) </th>
+                                                <td>@Html.DisplayFor(model => model.Direccion.Distrito.NomDistrito)</td>
+                                                <th>@Html.LabelFor(model => model.Direccion.DirExacta) </th>
+                                                <td>@Html.DisplayFor(model => model.Direccion.DirExacta)</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="card">
+                                <h5 class="card-header">Último Nombramiento del Puesto</h5>
+                                <div class="card-body">
+                                    <table class="table table-hover">
+                                        <tbody>
+                                            <tr>
+                                                <th>@Html.LabelFor(model => model.Nombramiento.EstadoNombramiento.DesEstado) </th>
+                                                <td colspan="3">@Html.DisplayFor(model => model.Nombramiento.EstadoNombramiento.DesEstado)</td>
+                                            </tr>
+                                            <tr>
+                                                <th>@Html.LabelFor(model => model.Nombramiento.FecRige) </th>
+                                                <td>@Html.DisplayFor(model => model.Nombramiento.FecRige)</td>
+                                                <th>@Html.LabelFor(model => model.Nombramiento.FecVence)</th>
+                                                <td>@Html.DisplayFor(model => model.Nombramiento.FecVence)</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                    <div id="tabs-4" class="tab-pane fade" role="tabpanel" aria-labelledby="tab4">
+                        <div class="card">
+                            <h5 class="card-header">Detalle Salario</h5>
+                            <div class="card-body">
+                                <table class="table table-hover">
+                                    <tr>
+                                        <th>@Html.LabelFor(model => model.Salario.DetallePuesto.EscalaSalarial.SalarioBase) </th>
+                                        <td align="right">@String.Format("{0:n}", Model.Salario.DetallePuesto.EscalaSalarial.SalarioBase)</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th>@Html.LabelFor(model => model.Salario.MtoAumentosAnuales) (@Model.DetalleContrato.NumeroAnualidades) </th>
+                                        <td align="right">@String.Format("{0:n}", Model.Salario.MtoAumentosAnuales)</td>
+                                        <th>@Html.LabelFor(model => model.Salario.DetallePuesto.EscalaSalarial.MontoAumentoAnual)</th>
+                                        <td align="right">@String.Format("{0:n}", Model.Salario.DetallePuesto.EscalaSalarial.MontoAumentoAnual)</td>
+
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th>@Html.LabelFor(model => model.Salario.MtoProhibicion) (@Model.Salario.PorProhibicion) </th>
+                                        <td align="right">@String.Format("{0:n}", Model.Salario.MtoProhibicion)</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th>@Html.LabelFor(model => model.Salario.MtoGradoGrupo) (@Model.Salario.NumPuntos) </th>
+                                        <td align="right">@String.Format("{0:n}", Model.Salario.MtoGradoGrupo)</td>
+                                        <th>@Html.LabelFor(model => model.Salario.DetallePuesto.EscalaSalarial.Periodo.MontoPuntoCarrera)</th>
+                                        <td align="right">@String.Format("{0:n}", Model.Salario.DetallePuesto.EscalaSalarial.Periodo.MontoPuntoCarrera)</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th>@Html.LabelFor(model => model.Salario.MtoOtros) </th>
+                                        <td align="right">@String.Format("{0:n}", Model.Salario.MtoOtros)</td>
+                                        <th></th>
+                                    </tr>
+
+                                    @foreach (var item in Model.Salario.DetallePuesto.DetalleRubros)
+                                    {
+                                        <tr>
+                                            <th></th>
+                                            <td></td>
+                                            <th>@item.Componente.DesComponenteSalarial (@item.PorValor)</th>
+                                            <td align="right">@String.Format("{0:n}", item.MtoValor)</td>
+                                            <td></td>
+                                        </tr>
+                                    }
+                                    <tr>
+                                        <th>@Html.LabelFor(model => model.Salario.MtoTotal) </th>
+                                        <td align="right">@String.Format("{0:n}", Model.Salario.MtoTotal)</td>
+                                        <th></th>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+
+}
+
+
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+<script src="~/Scripts/sidebar.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/DetailsFuncionario.js" type="text/javascript"></script>
+<script src="~/scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>

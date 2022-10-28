@@ -1,0 +1,212 @@
+﻿@model SIRH.Web.ViewModels.BusquedaDeduccionTemporalVM
+
+@{
+    ViewBag.Title = "Búsqueda de deducciones";
+    Layout = "~/Views/Shared/Planilla.cshtml";
+}
+
+@*<link rel="stylesheet" href="~/Content/datetimepicker.css">*@
+<link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+
+<script src="~/Content/bootstrap-datepicker/js/jquery-3.4.1.slim.min.js"></script>
+<!--link id="bs-css" href="https://netdna.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet"-->
+<link id="bsdp-css" href="~/Content/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+
+@using (Ajax.BeginForm("DeduccionSearch", "Planilla", new AjaxOptions
+{
+    UpdateTargetId = "dvResultadoBusqueda",
+    HttpMethod = "POST",
+    OnComplete = "CompleteSearch",
+    OnBegin = "BeginSearch"
+}))
+{
+    <div class="jumbotron">
+        <center>
+            <h3 class="display-4">Gestión de deducciones</h3>
+            <br />
+            <div class="card">
+                <div class="card-header text-left">
+                    <strong>Parámetros de búsqueda <i class="fa fa-info-circle" data-toggle="tooltip" data-placement="right" title="Debe seleccionar al menos un parámetro de búsqueda"></i></strong>
+                </div>
+
+                <div class="card-body">
+
+                    <div class="form-group row">
+                        <div class="col-sm-3">
+                            @Html.LabelFor(model => model.Funcionario.Cedula, new { @for = "Cedula", @class = "col-form-label" })
+                        </div>
+                        <div class="col-sm-3">
+                            @Html.TextBoxFor(model => model.Funcionario.Cedula, new { @id = "Cedula", @class = "form-control" })
+                        </div>
+
+                        @Html.LabelFor(model => model.EstadoSeleccionado, new { @for = "Estado", @class = "col-sm-3 col-form-label" })
+                        <div class="col-sm-3">
+                            @Html.DropDownListFor(model => model.EstadoSeleccionado,
+                                Model.Estados as SelectList,
+                                null, new { @id = "Estado", @class = "form-control" })
+                        </div>
+
+                    </div>
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.FechaEmisionDesde, new { @for = "FechaInicio", @class = "col-sm-3 col-form-label" })
+                        <div class="col-sm-3">
+                            @Html.TextBoxFor(model => model.FechaEmisionDesde, new { @id = "FechaInicio", @class = "form-control", @readonly = "readonly" })
+                        </div>
+
+                        @Html.LabelFor(model => model.FechaEmisionHasta, new { @for = "FechaFin", @class = "col-sm-3 col-form-label" })
+                        <div class="col-sm-3">
+                            @Html.TextBoxFor(model => model.FechaEmisionHasta, new { @id = "FechaFin", @class = "form-control", @readonly = "readonly" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.TipoSeleccionado, new { @for = "Tipo", @class = "col-sm-3 col-form-label" })
+                        <div class="col-sm-9">
+                            @Html.DropDownListFor(model => model.TipoSeleccionado,
+                        Model.Tipos as SelectList,
+                        "Seleccione...", new { @id = "Tipo", @class = "form-control" })
+                        </div>
+
+                        <div class="col-sm-3">
+                        </div>
+                    </div>
+
+                    @Html.HiddenFor(model => model.PermisoAdministrador)
+                    @Html.HiddenFor(model => model.PermisoRegistrar)
+
+                    @if (Model.PermisoAdministrador || Model.PermisoRegistrar)
+                    {
+                        <div id="accordion">
+                            <div class="card">
+                                <div class="card-header" id="headingOne">
+                                    <h5 class="mb-0">
+                                        <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                            + Añadir parámetros de bitácora
+                                        </a>
+                                    </h5>
+                                </div>
+
+                                <div id="collapseOne" class="collapse multi-collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <div class="form-group row">
+                                            @Html.LabelFor(model => model.FechaBitacoraDesde, new { @for = "FechaBitacoraInicio", @class = "col-sm-3 col-form-label" })
+                                            <div class="col-sm-3">
+                                                @Html.TextBoxFor(model => model.FechaBitacoraDesde, new { @id = "FechaBitacoraInicio", @class = "form-control", @readonly = "readonly" })
+                                            </div>
+
+                                            @Html.LabelFor(model => model.FechaBitacoraHasta, new { @for = "FechaBitacoraFin", @class = "col-sm-3 col-form-label" })
+                                            <div class="col-sm-3">
+                                                @Html.TextBoxFor(model => model.FechaBitacoraHasta, new { @id = "FechaBitacoraFin", @class = "form-control", @readonly = "readonly" })
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                        <div class="form-group row">
+                                            @Html.LabelFor(model => model.UsuarioSeleccionado, new { @for = "Usuario", @class = "col-sm-3 col-form-label" })
+                                            <div class="col-sm-6">
+                                                @Html.DropDownListFor(model => model.UsuarioSeleccionado,
+             Model.Usuarios as SelectList,
+             "Seleccione...", new { @id = "Usuario", @class = "form-control" })
+                                            </div>
+
+                                            <div class="col-sm-3">
+                                            </div>
+                                            <div class="col-sm-3">
+                                            </div>
+                                        </div>                               
+                                </div>
+                            </div>
+                            <br />
+                        </div>
+                    }
+
+                    <div class="form-group row">
+                        @Html.Label("Ordenar Por", new { @class = "col-sm-3 col-form-label" })
+                        <div class="col-sm-6">
+                            Apellido
+                            @Html.RadioButtonFor(model => model.CampoOrdenar, "Apellido", new { @class = "col-sm-1 col-form-label", @checked = "true"})
+                            Núm. Expediente
+                            @Html.RadioButtonFor(model => model.CampoOrdenar, "Núm. Expediente", new { @class = "col-sm-2 col-form-label" })
+                        </div>  
+
+                        <div class="col-sm-6">
+                        </div>
+                    </div>
+
+                    <input id="btnBuscar" name="SubmitButton" type="submit" value="Buscar" class="btn btn-primary float-right" />
+                    <div id="preloader" class="loader float-right" style="display: none"></div>
+
+                </div>
+
+            </div>
+
+        </center>
+        <br />
+        <a href="@Url.Action("CreateDeduccion", "Planilla")" class="btn btn-success">
+            <i class="fa fa-plus-circle"></i> Registrar Deducción
+        </a>
+    </div>
+}
+
+<div id="dvResultadoBusqueda"></div>
+<br />
+
+<div class="modal fade" id="detalle" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="card-body">
+                    <div id="target"></div>
+                    <span id="error" style="color: Red"></span>
+                    <br />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="CacelarCalculoPopUp" type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+<script src="~/Scripts/popper.min.js"></script>
+@Scripts.Render("~/bundles/bootstrap")
+<script src="~/Scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/SearchMontoCaucion.js" type="text/javascript"></script>
+@*<script src="~/Scripts/datetimepicker.js" type="text/javascript"></script>
+<script src="~/Scripts/datetimepicker-es.js" type="text/javascript"></script>*@
+<script src="~/Scripts/Pages/FormularioDeduccionTemporal.js" type="text/javascript"></script>
+@*<script type="text/javascript">
+    $(document).ready(function () {
+        $("body").tooltip({ selector: '[data-toggle=tooltip]' });
+    });
+</script>*@
+
+<script src="~/Content/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script src="~/Content/bootstrap-datepicker/locales/bootstrap-datepicker.es.min.js" charset="UTF-8"></script>
+
+<script type="text/javascript">
+    $(function () {
+        $('#FechaInicio').val("Click aquí");
+        $('#FechaInicio').datepicker(
+        {
+            weekStart: 0,
+            language: "es",
+            autoclose: true
+        });
+        $('#FechaFin').val("Click aquí");
+        $('#FechaFin').datepicker(
+        {
+            weekStart: 0,
+            language: "es",
+            autoclose: true
+        });      
+    });
+</script>

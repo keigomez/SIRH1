@@ -1,0 +1,222 @@
+﻿@model SIRH.Web.ViewModels.ManualCargosVM
+
+@{
+    ViewBag.Title = "Competencias2";
+    Layout = "~/Views/Shared/ManualCargos.cshtml";
+}
+
+@using (Ajax.BeginForm("Competencias2", "ManualCargos", new AjaxOptions
+{
+    UpdateTargetId = "dvResultadoBusqueda",
+    HttpMethod = "POST",
+    OnComplete = "CompleteSearch",
+    OnBegin = "BeginSearch"
+}))
+{
+    <div class="jumbotron">
+        <center>
+            <h1>Competencias del grupo ocupacional y evidencias</h1>
+            <h4>Cargo: @Model.Cargo.NombreCargo</h4>
+            @Html.HiddenFor(model => model.Cargo.IdEntidad)
+            @if (Model.CompetenciasGrupo != null && Model.CompetenciasGrupo.Count > 0)
+            {
+                <br />
+                <div class="card">
+                    <div class="card-header text-left">
+                        <strong>Histórico Grupo Ocupacional</strong>
+                        @Html.HiddenFor(model => model.Cargo.Mensaje)
+                    </div>
+                    <div class="card-body">
+                        @for (int i = 0; i < Model.CompetenciasGrupo.Count; i++)
+                        {
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr class="card-header">
+                                        <td><b>Competencia: @(Model.CompetenciasGrupo[i].TipoGrupoOcupacional)</b></td>
+                                        <td>
+                                            Nivel de dominio: @(Model.CompetenciasGrupo[i].Nivel == 1 ? "Basico" :
+                                                               @Model.CompetenciasGrupo[i].Nivel == 2 ? "Intermedio" :
+                                                               @Model.CompetenciasGrupo[i].Nivel == 3 ? "Avanzado" : "Destacado")
+                                        </td>
+                                        <td><button type="button" class="btn btn-outline-danger" title="Elimina la competencia y sus datos asociados" onclick="location.href='@Url.Action("EliminarCompetenciaGrupo", new { id = Model.CompetenciasGrupo[i].IdEntidad, cargo = Model.CompetenciasGrupo[i].Cargo.IdEntidad })'"><i class="fa fa-trash"></i> Eliminar competencia</button></td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="3">
+                                            <table class="table table-hover">
+                                                @for (int j = 0; j < Model.CompetenciasGrupo[i].ComportamientosGrupo.Count; j++)
+                                                {
+                                                    <tr>
+                                                        <td><b>Comportamiento N° @(j + 1)</b></td>
+                                                        <td>@Model.CompetenciasGrupo[i].ComportamientosGrupo[j].Comportamiento</td>
+                                                        <td><button type="button" class="btn btn-outline-dark" title="Elimina el comportamiento y sus datos asociados" onclick="location.href='@Url.Action("EliminarComportamientoGrupo", new { id = Model.CompetenciasGrupo[i].ComportamientosGrupo[j].IdEntidad, cargo = Model.CompetenciasGrupo[i].Cargo.IdEntidad })'"><i class="fa fa-trash"></i> Eliminar comportamiento</button></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="3">
+                                                            <table class="table table-hover">
+                                                                @for (int k = 0; k < Model.CompetenciasGrupo[i].ComportamientosGrupo[j].EvidenciasGrupo.Count; k++)
+                                                                {
+                                                                    <tr>
+                                                                        <td><b>Evidencia N° @(k + 1)</b></td>
+                                                                        <td>@Model.CompetenciasGrupo[i].ComportamientosGrupo[j].EvidenciasGrupo[k].Evidencia</td>
+                                                                        <td><button type="button" class="btn btn-outline-secondary" title="Elimina la evidencia" onclick="location.href='@Url.Action("EliminarEvidenciaGrupo", new { id = Model.CompetenciasGrupo[i].ComportamientosGrupo[j].EvidenciasGrupo[k].IdEntidad, cargo = Model.CompetenciasGrupo[i].Cargo.IdEntidad })'"><i class="fa fa-trash"></i> Eliminar evidencia</button></td>
+                                                                    </tr>
+                                                                }
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        }
+                    </div>
+                </div>
+                <br />
+            }
+            <div class="card">
+                <div class="card-header text-left">
+                    <strong>RegistroGrupo ocupacional</strong>
+                </div>
+                <div class="card-body">
+                    <div id="registros">
+                    </div>
+                    <button type="button" id="AgregarCompetencia" class="btn btn-outline-info" onclick="FuncionAgregarCompetencia();"><i class="fa fa-plus-circle"></i> Agregar Competencia</button>
+                </div>
+            </div>
+
+        </center>
+        <br />
+        <div class="float-right">
+            <a href="@Url.Action("Competencias", "ManualCargos", new { codigo = Model.Cargo.IdEntidad })" class="btn btn-outline-danger">
+                <i class="fa fa-arrow-circle-o-left"></i> Regresar
+            </a>
+            <button class="btn btn-success" type="submit"><i class="fa fa-floppy-o"></i> Guardar y finalizar</button>
+        </div>
+    </div>
+}
+
+<div id="dvResultadoBusqueda"></div>
+<br />
+
+@Scripts.Render("~/bundles/jquery")
+<script src="~/Scripts/popper.min.js"></script>
+@Scripts.Render("~/bundles/bootstrap")
+<script src="~/Scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/SearchMontoCaucion.js" type="text/javascript"></script>
+<script src="~/Scripts/datetimepicker.js" type="text/javascript"></script>
+<script src="~/Scripts/datetimepicker-es.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("body").tooltip({ selector: '[data-toggle=tooltip]' });
+    });
+</script>
+
+<script type="text/javascript">
+    var resultados = 0;
+    var resultadosActividades = new Array();
+    function FuncionAgregarCompetencia() {
+        resultados++;
+        resultadosActividades.push(new Array());
+        var pos = resultados - 1;
+        var div = document.getElementById("registros");
+        var newdiv = document.createElement("competencia" + pos);
+        newdiv.innerHTML =
+        "<div class=\"card\">" +
+            "<div class=\"card-header text-left\">" +
+                "Competencia N° " + resultados +
+            "</div>" +
+            "<div class=\"card-body\">" +
+                "<div class=\"form-group row\">" +
+                    "<div class=\"col-sm-3\">" +
+                        "Nombre de la competencia" +
+                    "</div>" +
+                    "<div class=\"col-sm-9\">" +
+                        "<input type=\"text\" id=\"resultado" + pos + "\" class=\"form-control\" name=\"competencia" + (pos+1) + "\" >" +
+                    "</div>" +
+                "</div>" +
+
+                "<div class=\"form-group row\">" +
+                    "<div class=\"col-sm-3\">" +
+                        "Nivel de dominio" +
+                    "</div>" +
+                    "<div class=\"col-sm-9\">" +
+                        "<select id=\"nivel" + pos + "\" class=\"form-control\" name=\"nivelCompetencia" + (pos+1) + "\" >" +
+                        "<option value=\"vacio\">Seleccione...</option>" +
+                        "<option value=\"basico\">Básico</option>" +
+                        "<option value=\"intermedio\">Intermedio</option>" +
+                        "<option value=\"avanzado\">Avanzado</option>" +
+                        "<option value=\"destacado\">Destacado</option>" +
+                        "</select>" +
+                    "</div>" +
+                "</div>" +
+
+                "<div id=\"actividades" + pos + "\"></div>" +
+                "<button type=\"button\" id=\"AgregarComportamiento" + pos + "\" class=\"btn btn-outline-warning\" onclick=\"FuncionAgregarComportamiento(" + pos + ");\"><i class=\"fa fa-plus-circle\"></i> Agregar Comportamiento</button>" +
+            "</div>" +
+        "</div><br />";
+        div.appendChild(newdiv);
+    }
+
+    var resultadosComportamiento = new Array();
+    function FuncionAgregarComportamiento(pos) {
+        //resultadosComportamiento.push(resultadosComportamiento.length + 1);
+        resultadosActividades[pos].push(new Array());
+        var div = document.getElementById("actividades" + pos);
+        var newdiv = document.createElement("div");//"comportamiento" + resultadosActividades[pos].length);
+        newdiv.setAttribute("id", "comportamiento" + resultadosActividades[pos].length);
+        //document.getElementById("actividades" + pos).className = "form-group row";
+        newdiv.innerHTML =
+            //"<div class=\"form-group row\">"
+                "<div class=\"col-sm-3\">" +
+                    "<b>Comportamiento N° " + (resultadosActividades[pos].length) +
+                "</b></div>" +
+                "<div class=\"col-sm-9\">" +
+                    "<input type=\"text\" id=\"resultado_" + resultadosActividades.length + "_" + resultadosActividades[pos].length + "\" class=\"form-control\" name=\"comportamiento" + (pos+1) + "_" + resultadosActividades[pos].length + "\"></input>" +
+                "</div>"
+                + "<div id=\"evidenciaComportamiento_" + pos + "_" + resultadosActividades[pos].length + "\" class=\"col-sm-12\" style=\"margin-top:10px;\"></div>"
+                + "<div class=\"col-sm-12\" style=\"margin-top:10px;\"><button type=\"button\" id=\"AgregarEvidenciaCompetencia\" class=\"btn btn-outline-dark\" onclick=\"FuncionAgregarEvidenciaCompetencia(" + pos + "," + (resultadosActividades[pos].length-1) + ");\"><i class=\"fa fa-plus-circle\"></i> Agregar Evidencia</button><br/>"
+                + "</div>";
+        //"</div>";
+        newdiv.className = "form-group row";
+        div.appendChild(newdiv);
+    }
+
+    var resultadosEvidenciaCompetencia = new Array();
+    function FuncionAgregarEvidenciaCompetencia(a, b) {
+        //resultadosEvidenciaCompetencia.push(resultadosEvidenciaCompetencia.length + 1);
+        //alert(resultadosActividades[a].length);
+        resultadosActividades[a][b].push(new Array());
+        var div = document.getElementById("evidenciaComportamiento_" + a + "_" + (b + 1));
+        var newdiv = document.createElement("div");//"evidencia_" + a + "_" + b + "_" + resultadosActividades[a][b].length);
+        //document.getElementById("evidenciaComportamiento" + d).className = "form-group row";
+        newdiv.innerHTML =
+            //"<div class=\"form-group row\">"
+                "<div class=\"col-sm-3\">" +
+                    "Evidencia N° " + (resultadosActividades[a][b].length) +
+                "</div>" +
+                "<div class=\"col-sm-9\">" +
+                    "<input type=\"text\" id=\"resultado_" + a + "_" + b + "_" + resultadosActividades[a][b].length + "\" class=\"form-control\" name=\"evidencia" + (a+1) + "_" + (b+1) + "_" + resultadosActividades[a][b].length + "\">" +
+                "</div>";
+        //"</div>";
+        newdiv.className = "form-group row";
+        div.appendChild(newdiv);
+    }
+
+
+    function FuncionAgregarActividad(pos) {
+        resultadosActividades[pos].push(resultadosActividades.length);
+        document.getElementById("actividades" + pos).className = "form-group row";
+        document.getElementById("actividades" + pos).innerHTML +=
+            "<div class=\"col-sm-3\">" +
+                "Evidencia N° " + (resultadosActividades[pos].length) +
+            "</div>" +
+            "<div class=\"col-sm-9\">" +
+                "<input type=\"text\" id=\"resultado" + resultados + "\" class=\"form-control\">" +
+            "</div><div></div>";
+    }
+</script>
+

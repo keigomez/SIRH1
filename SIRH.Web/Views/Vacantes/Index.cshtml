@@ -1,0 +1,374 @@
+﻿
+@{
+    ViewBag.Title = "Vacantes";
+    Layout = "~/Views/Shared/Vacantes.cshtml";
+}
+
+    <div class="jumbotron">
+        <center>
+            <h1 class="display-4">Módulo de Administración de Funcionarios, Puestos y Nombramientos</h1>
+            <p class="lead">Bienvenido(a), @Session["Nombre_Completo"]</p>
+            <hr class="my-4">
+            <p>Para iniciar, seleccione alguna de las opciones del menú a su izquierda.</p>
+            <p>En este módulo, usted puede:</p>
+        </center>
+    </div>
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="row justify-content-center">
+                @{
+                    if (Convert.ToBoolean(Session["Administrador_Global"])
+                            || Convert.ToBoolean(Session["Administrador_" + Convert.ToInt32(SIRH.Web.Helpers.EModulosHelper.Vacantes)]))
+                    {
+                    <div class="col-sm-3 col-md-4">
+                        <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                            <div class="card-header">Consultar puestos</div>
+                            <div class="card-body text-secondary">
+                                <center>
+                                    <img alt="" src="../../Content/Images/puesto_search.png" />
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-md-4">
+                        <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                            <div class="card-header">Verificar estado de puestos</div>
+                            <div class="card-body text-secondary">
+                                <center>
+                                    <img alt="" src="../../Content/Images/puesto_pencil.png" />
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-md-4">
+                        <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                            <div class="card-header">Registrar estudios de puestos</div>
+                            <div class="card-body text-secondary">
+                                <center>
+                                    <img alt="" src="../../Content/Images/estudio_puesto.png" />
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-md-4">
+                        <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                            <div class="card-header">Registrar movimientos de puesto</div>
+                            <div class="card-body text-secondary">
+                                <center>
+                                    <img alt="" src="../../Content/Images/puesto_change.png" />
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-md-4">
+                        <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                            <div class="card-header">Realizar nombramientos</div>
+                            <div class="card-body text-secondary">
+                                <center>
+                                    <img alt="" src="../../Content/Images/puesto_assign.png" />
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-md-4">
+                        <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                            <div class="card-header">Registrar oferentes</div>
+                            <div class="card-body text-secondary">
+                                <center>
+                                    <img alt="" src="../../Content/Images/oferente_add.png" />
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-md-4">
+                        <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                            <div class="card-header">Generar reportes</div>
+                            <div class="card-body text-secondary">
+                                <center>
+                                    <img alt="" src="../../Content/Images/pdf_download.png" />
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-md-4">
+                        <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                            <div class="card-header">Registrar préstamos de puestos</div>
+                            <div class="card-body text-secondary">
+                                <center>
+                                    <img alt="" src="../../Content/Images/puesto_prestamo.png" />
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-md-4">
+                        <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                            <div class="card-header">Registrar pedimentos de puestos</div>
+                            <div class="card-body text-secondary">
+                                <center>
+                                    <img alt="" src="../../Content/Images/puesto_ask.png" />
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-md-4">
+                        <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                            <div class="card-header">Registrar cartas de presentación</div>
+                            <div class="card-body text-secondary">
+                                <center>
+                                    <img alt="" src="../../Content/Images/carpres_add.png" />
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                    else
+                    {
+                        if (Convert.ToBoolean(Session["Permiso_Vacantes_AdministradorVacantesGeneral"])
+                            || Convert.ToBoolean(Session["Permiso_Vacantes_AdministradorVacantesPolicial"]))
+                        {
+                            <div class="col-sm-3 col-md-4">
+                                <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                                    <div class="card-header">Consultar puestos</div>
+                                    <div class="card-body text-secondary">
+                                        <center>
+                                            <img alt="" src="../../Content/Images/puesto_search.png" />
+                                        </center>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 col-md-4">
+                                <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                                    <div class="card-header">Verificar estado de puestos</div>
+                                    <div class="card-body text-secondary">
+                                        <center>
+                                            <img alt="" src="../../Content/Images/puesto_pencil.png" />
+                                        </center>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 col-md-4">
+                                <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                                    <div class="card-header">Generar reportes</div>
+                                    <div class="card-body text-secondary">
+                                        <center>
+                                            <img alt="" src="../../Content/Images/pdf_download.png" />
+                                        </center>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            if (Convert.ToBoolean(Session["Permiso_Vacantes_AdministradorNominaGeneral"])
+                            || Convert.ToBoolean(Session["Permiso_Vacantes_AdministradorNominaPolicial"]))
+                            {
+                                <div class="col-sm-3 col-md-4">
+                                    <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                                        <div class="card-header">Consultar puestos</div>
+                                        <div class="card-body text-secondary">
+                                            <center>
+                                                <img alt="" src="../../Content/Images/puesto_search.png" />
+                                            </center>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3 col-md-4">
+                                    <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                                        <div class="card-header">Verificar estado de puestos</div>
+                                        <div class="card-body text-secondary">
+                                            <center>
+                                                <img alt="" src="../../Content/Images/puesto_pencil.png" />
+                                            </center>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3 col-md-4">
+                                    <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                                        <div class="card-header">Registrar movimientos de puesto</div>
+                                        <div class="card-body text-secondary">
+                                            <center>
+                                                <img alt="" src="../../Content/Images/puesto_change.png" />
+                                            </center>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3 col-md-4">
+                                    <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                                        <div class="card-header">Realizar nombramientos</div>
+                                        <div class="card-body text-secondary">
+                                            <center>
+                                                <img alt="" src="../../Content/Images/puesto_assign.png" />
+                                            </center>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3 col-md-4">
+                                    <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                                        <div class="card-header">Registrar oferentes</div>
+                                        <div class="card-body text-secondary">
+                                            <center>
+                                                <img alt="" src="../../Content/Images/oferente_add.png" />
+                                            </center>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3 col-md-4">
+                                    <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                                        <div class="card-header">Generar reportes</div>
+                                        <div class="card-body text-secondary">
+                                            <center>
+                                                <img alt="" src="../../Content/Images/pdf_download.png" />
+                                            </center>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3 col-md-4">
+                                    <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                                        <div class="card-header">Registrar pedimentos de puestos</div>
+                                        <div class="card-body text-secondary">
+                                            <center>
+                                                <img alt="" src="../../Content/Images/puesto_ask.png" />
+                                            </center>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3 col-md-4">
+                                    <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                                        <div class="card-header">Registrar cartas de presentación</div>
+                                        <div class="card-body text-secondary">
+                                            <center>
+                                                <img alt="" src="../../Content/Images/carpres_add.png" />
+                                            </center>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                if (Convert.ToBoolean(Session["Permiso_Vacantes_AdministradorEstudio"]))
+                                {
+                                    <div class="col-sm-3 col-md-4">
+                                        <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                                            <div class="card-header">Consultar puestos</div>
+                                            <div class="card-body text-secondary">
+                                                <center>
+                                                    <img alt="" src="../../Content/Images/puesto_search.png" />
+                                                </center>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3 col-md-4">
+                                        <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                                            <div class="card-header">Verificar estado de puestos</div>
+                                            <div class="card-body text-secondary">
+                                                <center>
+                                                    <img alt="" src="../../Content/Images/puesto_pencil.png" />
+                                                </center>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3 col-md-4">
+                                        <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                                            <div class="card-header">Registrar estudios de puestos</div>
+                                            <div class="card-body text-secondary">
+                                                <center>
+                                                    <img alt="" src="../../Content/Images/estudio_puesto.png" />
+                                                </center>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3 col-md-4">
+                                        <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                                            <div class="card-header">Generar reportes</div>
+                                            <div class="card-body text-secondary">
+                                                <center>
+                                                    <img alt="" src="../../Content/Images/pdf_download.png" />
+                                                </center>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    if (Convert.ToBoolean(Session["Permiso_Vacantes_AdministradorEstudio"]))
+                                    {
+                                        <div class="col-sm-3 col-md-4">
+                                            <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                                                <div class="card-header">Consultar puestos</div>
+                                                <div class="card-body text-secondary">
+                                                    <center>
+                                                        <img alt="" src="../../Content/Images/puesto_search.png" />
+                                                    </center>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3 col-md-4">
+                                            <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                                                <div class="card-header">Verificar estado de puestos</div>
+                                                <div class="card-body text-secondary">
+                                                    <center>
+                                                        <img alt="" src="../../Content/Images/puesto_pencil.png" />
+                                                    </center>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3 col-md-4">
+                                            <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                                                <div class="card-header">Generar reportes</div>
+                                                <div class="card-body text-secondary">
+                                                    <center>
+                                                        <img alt="" src="../../Content/Images/pdf_download.png" />
+                                                    </center>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3 col-md-4">
+                                            <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                                                <div class="card-header">Registrar préstamos de puestos</div>
+                                                <div class="card-body text-secondary">
+                                                    <center>
+                                                        <img alt="" src="../../Content/Images/puesto_prestamo.png" />
+                                                    </center>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="col-sm-3 col-md-4">
+                                            <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                                                <div class="card-header">Consultar puestos</div>
+                                                <div class="card-body text-secondary">
+                                                    <center>
+                                                        <img alt="" src="../../Content/Images/puesto_search.png" />
+                                                    </center>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3 col-md-4">
+                                            <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                                                <div class="card-header">Generar reportes</div>
+                                                <div class="card-body text-secondary">
+                                                    <center>
+                                                        <img alt="" src="../../Content/Images/pdf_download.png" />
+                                                    </center>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    <script src="~/Scripts/sidebar.js" type="text/javascript"></script>
+    <script src="~/scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+
+

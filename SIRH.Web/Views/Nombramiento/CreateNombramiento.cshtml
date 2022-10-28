@@ -1,0 +1,68 @@
+﻿@model SIRH.Web.ViewModels.FormularioNombramientoVM
+
+@{
+    ViewBag.Title = "Registro de nombramientos";
+    Layout = "~/Views/Shared/Vacantes.cshtml";
+}
+
+<!--link href="~/Content/datetimepicker.css" rel="stylesheet" /-->
+<script src="~/Content/bootstrap-datepicker/js/jquery-3.4.1.slim.min.js"></script>
+<link id="bsdp-css" href="~/Content/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+
+@using (Ajax.BeginForm("CreateNombramiento", "Nombramiento", new AjaxOptions
+{
+    UpdateTargetId = "target",
+    HttpMethod = "POST",
+    InsertionMode = InsertionMode.Replace,
+    OnSuccess = "successCreateNombramiento", //"Success",
+    OnBegin = "beginCreateNombramiento", //"Begin"
+    OnComplete = "completeCreateNombramiento"
+}))
+
+{
+    <div class="jumbotron">
+        <center>
+            <h3 class="display-4">Registro de nombramientos</h3>
+            <br />
+            <div class="card">
+                <div class="card-header text-left">
+                    <strong>Parámetros de búsqueda</strong>
+                </div>
+                <div class="card-body">
+                    <div class="form-group row">
+                        @Html.Label("Cédula de funcionario", new { @class = "col-sm-3 col-form-label" })
+                        <div class="col-sm-3">
+                            @Html.TextBoxFor(model => model.Funcionario.Cedula, String.Empty, new { @onkeypress = "return IsNumeric(event,'', 'cedula')", @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Funcionario.Cedula)
+                        </div>
+                        @Html.Label("Código de Puesto", new { @class = "col-sm-3 col-form-label" })
+                        <div class="col-sm-3">
+                            @Html.TextBoxFor(model => model.Puesto.CodPuesto, String.Empty, new { @onkeypress = "return IsNumeric(event,'', 'código de puesto')", @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Puesto.CodPuesto)
+                        </div>
+                    </div>
+                    <input id="btnBusca" name="SubmitButton" type="submit" value="Buscar" class="btn btn-primary float-right" />
+                    <div id="progressbar" class="loader float-right" hidden></div>
+                </div>
+            </div>
+        </center>
+    </div>
+}
+
+<div id="error" class="alert alert-danger" role="alert" hidden></div>
+
+<div id="target"></div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+<script src="~/Scripts/sidebar.js" type="text/javascript"></script>
+<script src="~/scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/FormularioVacantes.js" type="text/javascript"></script>
+<script src="~/Scripts/funciones-generales.js" type="text/javascript"></script>
+<script src="~/Scripts/funciones-dialogos.js" type="text/javascript"></script>
+@*<script src="~/Scripts/datetimepicker.js" type="text/javascript"></script>
+    <script src="~/Scripts/datetimepicker-es.js" type="text/javascript"></script>*@
+<script src="~/Content/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script src="~/Content/bootstrap-datepicker/locales/bootstrap-datepicker.es.min.js" charset="UTF-8"></script>
+

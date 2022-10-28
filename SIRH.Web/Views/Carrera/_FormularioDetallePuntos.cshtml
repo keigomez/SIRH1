@@ -1,0 +1,183 @@
+﻿@model SIRH.Web.ViewModels.DetallePuntosAdicionalesVM
+
+
+
+@using (Html.BeginForm())
+{
+
+    <div class="card">
+        <h5 class="card-header">Información del Funcionario</h5>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-3 col-md-4">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <span>
+                                <strong>@Html.LabelFor(model => model.Funcionario.Cedula): </strong>@Html.DisplayFor(model => model.Funcionario.Cedula)
+                                @Html.HiddenFor(model => model.Funcionario.Cedula)
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>
+                                <strong>@Html.LabelFor(model => model.DetallePuesto.Clase.DesClase): </strong>@Html.DisplayFor(model => model.DetallePuesto.Clase.DesClase)
+                                @Html.HiddenFor(model => model.DetallePuesto.Clase.IdEntidad)
+                                @Html.HiddenFor(model => model.DetallePuesto.Clase.DesClase)
+                                @Html.HiddenFor(model => model.DetallePuesto.EscalaSalarial.CategoriaEscala)
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>
+                                <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                                @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>
+                                <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion)
+                                @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Seccion.IdEntidad)
+                                @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion)
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-3 col-md-4">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <span>
+                                <strong>@Html.LabelFor(model => model.Funcionario.Nombre): </strong>@Model.Funcionario.Nombre @Model.Funcionario.PrimerApellido @Model.Funcionario.SegundoApellido
+                                @Html.HiddenFor(model => model.Funcionario.Nombre)
+                                @Html.HiddenFor(model => model.Funcionario.PrimerApellido)
+                                @Html.HiddenFor(model => model.Funcionario.SegundoApellido)
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>
+                                <strong>@Html.LabelFor(model => model.DetallePuesto.Especialidad.DesEspecialidad): </strong>@Html.DisplayFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)
+                                @Html.HiddenFor(model => model.DetallePuesto.Especialidad.IdEntidad)
+                                @Html.HiddenFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>
+                                <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                                @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>
+                                <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto)
+                                @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto)
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-3 col-md-4">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <span>
+                                <strong>@Html.LabelFor(model => model.Puesto.CodPuesto): </strong>@Html.DisplayFor(model => model.Puesto.CodPuesto)
+                                @Html.HiddenFor(model => model.Puesto.CodPuesto)
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>
+                                <strong>@Html.LabelFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal): </strong>@Html.DisplayFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal)
+                                @Html.HiddenFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal)
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>
+                                <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                                @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                            </span>
+                        </li>
+                        @if (Model.DetalleContratacion.IdEntidad != -1)
+                        {
+                            if (Model.DetalleContratacion.CodigoPolicial != 0)
+                            {
+                                <li class="list-group-item">
+                                    <span>
+                                        <strong>@Html.LabelFor(model => model.DetalleContratacion.CodigoPolicial): </strong>@Html.DisplayFor(model => model.DetalleContratacion.CodigoPolicial)
+                                    </span>
+                                </li>
+                            }
+                        }
+                    </ul>
+                </div>
+                @Html.HiddenFor(model => model.DetalleContratacion.CodigoPolicial, new { @id = "CodigoPolicial" })
+                @Html.HiddenFor(model => model.Funcionario.Mensaje, new { @id = "PuntosAdicionales" })
+            </div>
+
+        </div>
+    </div>
+    <br />
+
+    <div class="card">
+        <h5 class="card-header">Agregar o quitar puntos</h5>
+        <div class="card-body">
+
+            <div class="form-group row">
+                <div class="col-sm-3">
+                    @Html.LabelFor(model => model.Puntos, new { @for = "Puntos", @class = "col-form-label float-left" })
+                    <i class="fa fa-info-circle" data-toggle="tooltip" data-placement="bottom" title="Digite un número negativo para restar puntos o un número positivo para añadir"></i>
+                </div>
+                <div class="col-sm-5">
+                    @Html.TextBoxFor(model => model.Puntos, new { @id = "Puntos", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Puntos)
+                </div>
+            </div>
+
+            @*<div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Puntos actuales</label>
+                    <div class="col-sm-5">
+                        @Html.TextBoxFor(model => model.PuntosAdicionales, new { @id = "PuntosActuales", @class = "form-control", @readonly = "readonly" })
+                    </div>
+                </div>*@
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.numDoc, new { @for = "NumDoc", @class = "col-sm-3 col-form-label" })
+                <div class="col-sm-5">
+                    @Html.TextBoxFor(model => model.numDoc, new { @id = "NumDoc", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Puntos)
+                </div>
+            </div>
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Observaciones, new { @for = "Observaciones", @class = "col-sm-3 col-form-label" })
+                <div class="col-sm-5">
+                    @Html.TextBoxFor(model => model.Observaciones, new { @id = "Observaciones", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Puntos)
+                </div>
+            </div>
+
+            <br />
+            <input id="btnGuardar" name="SubmitButton" type="submit" value="Guardar datos" class="btn btn-primary float-right" />
+            <div id="preloaderGuardar" class="loader float-right" style="display: none"></div>
+        </div>
+    </div>
+
+    <br />
+
+    if (!Html.ViewData.ModelState.IsValid)
+    {
+        <div class="card border-danger">
+            <div class="card-header"><strong>El formulario contiene los siguientes errores:</strong></div>
+            <div class="card-body text-danger">
+                @foreach (var modelError in Html.ViewData.ModelState.SelectMany(keyValuePair => keyValuePair.Value.Errors))
+                {
+                    <div class="alert alert-danger" role="alert">
+                        <h5>@modelError.ErrorMessage</h5>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+
+    <br />
+
+
+}
+
+@Scripts.Render("~/bundles/jquery")
+<script src="~/Scripts/popper.min.js"></script>
+@Scripts.Render("~/bundles/bootstrap")

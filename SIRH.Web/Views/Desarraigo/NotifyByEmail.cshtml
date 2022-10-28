@@ -1,0 +1,77 @@
+﻿@model SIRH.Web.ViewModels.NotificacionesCorreoVM
+@{
+    ViewBag.Title = "Notificar por Correo Electrónico";
+    Layout = "~/Views/Shared/Desarraigo.cshtml";
+}
+
+<center><h2>Notificar por correo electrónico</h2></center>
+@{
+    <div class="jumbotron">
+        <div class="card">
+            <div class="card-body">
+                @using (Ajax.BeginForm("NotifyByEmail", new AjaxOptions
+                {
+                    HttpMethod = "POST",
+                    UpdateTargetId = "respuestasFormulario"
+                }))
+                {
+                    Html.ValidationSummary(true);
+                    @Html.HiddenFor(model => model.NombreUsuario)
+                    @Html.HiddenFor(model => model.NombreFuncionario)
+                    @Html.HiddenFor(model => model.PiePagina)
+                    @Html.HiddenFor(model => model.PiePagina2)
+                    <div class="form-group">
+                        <strong>De: </strong>
+                        @Html.DisplayFor(model => model.CorreoUsuario, new { disabled = "true", @class = "form-control" })
+                        @Html.HiddenFor(model => model.CorreoUsuario)
+                    </div>
+                    <div class="form-group">
+                        <strong>Para: </strong>
+                        @Html.DisplayFor(model => model.CorreoFuncionario, new { disabled = "true", @class = "form-control" })
+                        @Html.HiddenFor(model => model.CorreoFuncionario)
+                    </div>
+                    <div class="form-group">
+                        <strong>Asunto: </strong>
+                        @Html.DisplayFor(model => model.Asunto, new { disabled = "true", @class = "form-control" })
+                        @Html.HiddenFor(model => model.Asunto)
+                    </div>
+                    <div class="form-group">
+                        @Html.TextAreaFor(model => model.MensajePrevio, new { disabled = "true", @class = "form-control" })
+                        @Html.HiddenFor(model => model.MensajePrevio)
+                    </div>
+                    <div>
+                        <strong>Informacion a solicitar: </strong>
+                    </div>
+                    <div class="form-group">
+                        @Html.TextAreaFor(model => model.Observaciones, new { @class = "form-control" })
+                    </div>
+
+                    <div>
+                        <div class="form-group" id="gruposBtn">
+                            <a class="btn btn-primary" href="javascript:history.back()" id="A5"><i class="fa fa-arrow-circle-left"></i> Regresar</a>
+                            <button id="btnEviarCorreo" class="btn btn-success" name="SubmitButton" type="submit">
+                                <i class="fa fa-share"></i>
+                                Enviar Correo
+                            </button>
+                        </div>
+                    </div>
+                }
+                <div id="respuestasFormulario" role="alert">
+
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<!--Respuestas del formulario-->
+
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+<script src="~/Scripts/sidebar.js" type="text/javascript"></script>
+<script src="~/scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/FormularioDesarraigo.js" type="text/javascript"></script>
+<script src="~/Scripts/datetimepicker.js" type="text/javascript"></script>
+<script src="~/Scripts/datetimepicker-es.js" type="text/javascript"></script>

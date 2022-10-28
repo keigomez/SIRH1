@@ -1,0 +1,186 @@
+﻿@model SIRH.Web.ViewModels.FormularioMarcasAsistenciaVM
+@{
+    ViewBag.Title = " Dar de baja";
+    Layout = "~/Views/Shared/MarcasAsistencia.cshtml";
+}
+
+@{
+    using (Html.BeginForm())
+    {
+        if (Request.QueryString["accion"] == "edit1")
+        {
+            Html.ValidationSummary(true);
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Modificar funcionario (Dar de baja)</h5>
+                    <table class="table" id="detalle_funcionario" style="margin-bottom:25px;">
+                        <thead class="thead-light">
+                            <tr>
+                                <th colspan="2">
+                                    Información del funcionario
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <b>Código de acceso:</b>
+                                </td>
+                                <td>
+                                    @Html.AttributeEncode(Model.Empleado.Digitos)
+                                </td>
+                                <td>
+                                    @Html.HiddenFor(model=>model.Empleado.Digitos)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>Funcionario:</b>
+                                </td>
+                                <td>
+                                    @Html.AttributeEncode(Model.Empleado.CodigoEmpleado) 
+                                    @Html.HiddenFor(model=>model.Empleado.CodigoEmpleado) 
+                                    @Html.AttributeEncode(Model.Empleado.PrimerNombre) 
+                                    @Html.HiddenFor(model=>model.Empleado.PrimerNombre) 
+                                    @Html.AttributeEncode(Model.Empleado.SegundoNombre) 
+                                    @Html.HiddenFor(model=>model.Empleado.SegundoNombre) 
+                                    @Html.AttributeEncode(Model.Empleado.ApellidoPaterno) 
+                                    @Html.HiddenFor(model=>model.Empleado.ApellidoPaterno) 
+                                    @Html.AttributeEncode(Model.Empleado.ApellidoMaterno) 
+                                    @Html.HiddenFor(model=>model.Empleado.ApellidoMaterno) 
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="alert alert-warning" role="alert">
+                        ¡Atención! Usted está apunto de dar de baja al funcionario con cédula # <b>
+                            @Model.Empleado.CodigoEmpleado
+                        </b>.
+                    </div>
+                    
+                    <div class="row" style="margin-bottom:15px;">
+                        <div class="form-group col-6">
+                            @Html.Label("Motivo de baja")
+                            <span>:</span>
+                            @Html.DropDownListFor(model => model.MotivoBajaSeleccionado, Model.CatalogoMotivoBaja, "Motivo de baja" , new { @class= "btn btn-secondary dropdown-toggle" })
+                        </div>
+                       
+                    </div>
+                    <div class="row" style="margin-bottom:15px;">
+                        <div class="form-group col-10">
+                            @Html.LabelFor(model => model.DetalleNombramiento.ObservacionesTipoJornada)
+                            <span>:</span>
+                            @Html.TextAreaFor(model => model.DetalleNombramiento.ObservacionesTipoJornada, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom:15px;">
+                        <div class="form-group col-4">
+                            <a class="btn btn-outline-primary" href="javascript:history.back()" id="A2">Regresar</a>
+                        </div>
+                        <div class="form-group col-4">
+                            <input class="btn btn-primary" id="btnEditar" name="SubmitButton" type="submit" value="Dar de baja" />
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom:15px;">
+                        <div class="form-group col-5">
+                            <center>
+                                <div id="preloader" class="loader" hidden></div>
+                            </center>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        }
+
+        if (Request.QueryString["accion"] == "edit2")
+        {
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Modificar funcionario (Dar de alta)</h5>
+                    @Html.ValidationSummary(true)
+                    <table class="table" id="detalle_funcionario" style="margin-bottom:25px;">
+                        <thead class="thead-light">
+                            <tr>
+                                <th colspan="2">
+                                    Información del funcionario
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <b>Código de acceso:</b>
+                                </td>
+                                <td>
+                                    @Html.AttributeEncode(Model.Empleado.Digitos)
+                                </td>
+                                <td>
+                                    @Html.HiddenFor(model => model.Empleado.Digitos)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>Funcionario:</b>
+                                </td>
+                                <td>
+                                    @Html.AttributeEncode(Model.Empleado.CodigoEmpleado)
+                                    @Html.HiddenFor(model => model.Empleado.CodigoEmpleado)
+                                    @Html.AttributeEncode(Model.Empleado.PrimerNombre)
+                                    @Html.HiddenFor(model => model.Empleado.PrimerNombre)
+                                    @Html.AttributeEncode(Model.Empleado.SegundoNombre)
+                                    @Html.HiddenFor(model => model.Empleado.SegundoNombre)
+                                    @Html.AttributeEncode(Model.Empleado.ApellidoPaterno)
+                                    @Html.HiddenFor(model => model.Empleado.ApellidoPaterno)
+                                    @Html.AttributeEncode(Model.Empleado.ApellidoMaterno)
+                                    @Html.HiddenFor(model => model.Empleado.ApellidoMaterno)
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="alert alert-warning" role="alert">
+                        ¡Atención! Usted está apunto de dar de alta al funcionario con cédula # <b>
+                            @Model.Empleado.CodigoEmpleado
+                        </b>.
+                    </div>
+                    <div class="row" style="margin-bottom:15px;">
+                        <div class="form-group col-10">
+                            @Html.LabelFor(model => model.DetalleNombramiento.ObservacionesTipoJornada)
+                            <span>:</span>
+                            @Html.TextAreaFor(model => model.DetalleNombramiento.ObservacionesTipoJornada, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom:15px;">
+                        <div class="form-group col-4">
+                            <a class="btn btn-outline-primary" href="javascript:history.back()" id="A2">Regresar</a>
+                        </div>
+                        <div class="form-group col-4">
+                            <input class="btn btn-primary" id="btnEditar" name="SubmitButton" type="submit" value="Dar de alta"  />
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom:15px;">
+                        <div class="form-group col-5">
+                            <center>
+                                <div id="preloader" class="loader" hidden></div>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    if (Model.Error != null && Model.Error.MensajeError == "ErrorEdit")
+    {
+        <div id="errors" class="alert alert-danger" role="alert">
+            @Html.ValidationSummary("El formulario contiene los siguientes errores:")
+        </div>
+    }
+
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+<script src="~/Scripts/sidebar.js" type="text/javascript"></script>
+<script src="~/scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>

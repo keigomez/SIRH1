@@ -1,0 +1,38 @@
+﻿@model SIRH.Web.Models.SubespecialidadModel
+@{
+    using (Ajax.BeginForm("Subespecialidad_Index", "Puesto", new AjaxOptions { UpdateTargetId = "target-subespecialidad", HttpMethod = "POST", OnSuccess = "successDataSubespecialidad", OnBegin = "beginDataSubespecialidad" }))
+    {
+        <div class="card">
+            <h5 class="card-header">Parámetros de búsqueda:</h5>
+            <div class="card-body">
+                <div class="row">
+                    <div class="form-group col-7">
+                        @Html.Label("Código de subespecialidad")
+                        <span>:</span>
+                        @Html.TextBox("codigoSubespecialidad", String.Empty, new { @class = "form-control", @onkeypress = "return IsNumeric(event, 'subespecialidad', 'código de subespecialidad')" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-7">
+                        @Html.Label("Nombre de subespecialidad")
+                        <span>:</span>
+                        @Html.TextBox("nomSubespecialidad", String.Empty, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-3">
+                        <input type="submit" value="Buscar" id="btnBuscaSubespecialidad" class="btn btn-primary" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-3">
+                        <div id="progressbarsubespecialidad" class="loader" hidden></div>
+                    </div>
+                </div>
+                <div id="error-subespecialidad" class="alert alert-danger" role="alert" hidden></div>
+            </div>
+        </div>
+    }
+    <div id="target-subespecialidad"></div>
+}
+

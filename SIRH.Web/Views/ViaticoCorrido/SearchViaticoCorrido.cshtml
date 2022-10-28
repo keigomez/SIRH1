@@ -1,0 +1,88 @@
+﻿@model SIRH.Web.ViewModels.BusquedaViaticoCorridoVM
+@{
+    ViewBag.Title = "SearchViaticoCorrido";
+    Layout = "~/Views/Shared/ViaticoCorrido.cshtml";
+}
+
+<link href="~/Content/datetimepicker.css" rel="stylesheet" />
+
+
+<center><h2>Búsqueda de Viático Corrido</h2></center>
+
+@{
+    using (Ajax.BeginForm("SearchViaticoCorrido", "ViaticoCorrido", new AjaxOptions
+    {
+        UpdateTargetId = "dvResultadoBusqueda",
+        HttpMethod = "POST",
+        OnComplete = "CompleteSearch",
+        OnBegin = "BeginSearch"
+    }))
+    {
+        <div class="card">
+            <div class="card-header">
+                Filtros de búsqueda
+            </div>
+            <div class="card-body">
+
+                <center>
+                    <div class="row">
+                        <form class="form-inline">
+                            <div class="col-2">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Funcionario.Cedula)
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    @Html.TextBoxFor(model => model.Funcionario.Cedula, new { @class = "form-control", style = "margin-bottom:10px;" })
+                                    @Html.ValidationMessageFor(model => model.Funcionario.Cedula)
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="form-group">
+                                    <label id="lbl_formulario" name="lbl_formulario">Seleccione Formulario <i class="fa fa-arrow-right"></i></label>
+                                </div>
+                            </div>
+                            <div class="col-3 row">
+                                <div class="form-group">
+                                    <select class="form-control custom-select-sm" name="Fformulario" required id="Fformulario">
+                                        <option value="0"></option>
+                                        <option value="1">PI-568   Asignación</option>
+                                        <option value="2">PI-1104  Deducción</option>
+                                        <option value="3">PI-1103  Eliminación</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <input class="btn btn-secondary " id="btnBuscar" name="SubmitButton" type="submit" value="Buscar" />
+                            </div>
+                        </form>
+                    </div>
+                </center>
+
+                <div class="row" style="margin-bottom:25px;">
+                    <!-- Estado del Viático Corrido -->
+                </div>
+
+                <div class="row">
+                    <div class="col-5"></div>
+                    <div id="preloader" class="loader" hidden></div>
+                </div>
+            </div>
+        </div>
+
+    }
+    <div id="dvResultadoBusqueda"></div>
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+
+<script src="~/Scripts/sidebar.js" type="text/javascript"></script>
+<script src="~/scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/SearchViaticoCorrido.js" type="text/javascript"></script>
+<script src="~/Scripts/datetimepicker.js" type="text/javascript"></script>
+<script src="~/Scripts/datetimepicker-es.js" type="text/javascript"></script>
+
+

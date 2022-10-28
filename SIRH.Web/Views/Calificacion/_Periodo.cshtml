@@ -1,0 +1,31 @@
+﻿@model SIRH.Web.ViewModels.FormularioCalificacionVM
+
+<script type="text/javascript" src="~/Scripts/funciones-dialogos.js"></script>
+<script type="text/javascript" src="~/Scripts/funciones-generales.js"></script>
+
+@if (Model.Error == null)
+{
+    <div class="alert alert-success" role="alert">
+        <i class="fa fa-check-circle d-inline" style="font-size:48px;"></i>
+        <h4 class="d-inline"> Los parámetros del Periodo se han guardado correctamente.</h4>
+    </div>
+    <br />
+}
+else
+{
+    <div class="alert alert-danger" role="alert">
+        <i class="fa fa-times-circle d-inline" style="font-size:48px;"></i>
+        <h4 class="d-inline"> Ocurrió un error al momento de guardar los parámetros del Periodo.</h4>
+    </div>
+    <br />
+
+    <div class="card">
+        <h5 class="card-header">Detalles</h5>
+        <div class="card-body">
+            <div>Los parámetros del Periodo no pudieron ser guardados debido al siguiente error: </div>
+            <br /><div><b>@Html.Encode(Model.Error.MensajeError)</b></div>
+            <br /><div>Si conoce la causa de este error, por favor revise los datos que intentó almacenar e intentelo de nuevo.</div>
+            <br /><div>De lo contrario le invitamos a ponerse en contacto con nuestro equipo de soporte, mediante el sistema de <a href="http://sisrh.mopt.go.cr:83/" target="_blank">Ayuda y Soporte</a></div>
+        </div>
+    </div>
+}

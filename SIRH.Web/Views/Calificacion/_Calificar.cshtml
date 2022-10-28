@@ -1,0 +1,383 @@
+﻿@model SIRH.Web.ViewModels.FormularioCalificacionVM
+<div id="respuesta" class="jumbotron">
+    <center>
+        <h3 class="display-4">@Model.NombreFormulario</h3>
+        <br />
+
+        @using (Ajax.BeginForm("DetailsCalificacion", "Calificacion", new AjaxOptions {
+            UpdateTargetId = "respuesta",
+            HttpMethod = "POST",
+            OnComplete = "CompleteGuardarCalificacion",
+            OnBegin = "BeginGuardarCalificacion"
+        }))
+        {
+            <div class="card" id="datosFuncionario">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="card-header text-center">
+                    <strong>1.IDENTIFICACIÓN DEL COLABORADOR (A) Y DE SUS SUPERIORES</strong>
+                </div>
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label"><b>Periodo Evaluación</b></label>
+                        <div class="col-sm-3">
+                            <label class="form" id="periodo1">@Model.Periodos</label>
+                            @Html.HiddenFor(model => model.Periodos)
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label"><b>Cédula</b></label>
+                        <div class="col-sm-3">
+                            @Html.DisplayFor(model => model.Funcionario.Cedula, new { @class = "form-control" })
+                            @Html.HiddenFor(model => model.Funcionario.Cedula)
+                        </div>
+                        <label class="col-sm-3 col-form-label"><b>Nombre</b></label>
+                        <div class="col-sm-3">
+                            <label class="form">@Model.Funcionario.Nombre @Model.Funcionario.PrimerApellido @Model.Funcionario.SegundoApellido</label>
+                            @Html.HiddenFor(model => model.Funcionario.Nombre)
+                            @Html.HiddenFor(model => model.Funcionario.SegundoApellido)
+                            @Html.HiddenFor(model => model.Funcionario.PrimerApellido)
+                            @Html.HiddenFor(model => model.Funcionario.EstadoFuncionario)
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label"><b>Núm. Puesto</b></label>
+                        <div class="col-sm-3">
+                            @Html.DisplayFor(model => model.Puesto.CodPuesto, new { @class = "form-control" })
+                        </div>
+                        <label class="col-sm-3 col-form-label"><b>Núm. Expediente</b></label>
+                        <div class="col-sm-3">
+                            @Html.DisplayFor(model => model.Expediente.NumeroExpediente, new { @class = "form-control" })
+                            @Html.HiddenFor(model => model.Expediente.NumeroExpediente)
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label"><b>Clase</b></label>
+                        <div class="col-sm-3">
+                            @Html.DisplayFor(model => model.DetallePuesto.Clase.DesClase, new { @class = "form-control" })
+                            @Html.HiddenFor(model => model.DetallePuesto.Clase.DesClase)
+                            @Html.HiddenFor(model => model.DetallePuesto.Clase.IndEstClase)
+                            @Html.HiddenFor(model => model.DetallePuesto.Clase.IdEntidad)
+                        </div>
+                        <label class="col-sm-3 col-form-label"><b>Especialidad</b></label>
+                        <div class="col-sm-3">
+                            @Html.DisplayFor(model => model.DetallePuesto.Especialidad.DesEspecialidad, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label"><b>División</b></label>
+                        <div class="col-sm-3">
+                            @Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision, new { @class = "form-control" })
+                            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Division.IdEntidad)
+                            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion)
+                            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Seccion.IndEstSeccion)
+                            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Seccion.IdEntidad)
+                        </div>
+                        <label class="col-sm-3 col-form-label"><b>Dirección</b></label>
+                        <div class="col-sm-3">
+                            @Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion, new { @class = "form-control" })
+                            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label"><b>Departamento</b></label>
+                        <div class="col-sm-3">
+                            @Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento, new { @class = "form-control" })
+                            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                        </div>
+                        <label class="col-sm-3 col-form-label"><b>Sección</b></label>
+                        <div class="col-sm-3">
+                            @if (Model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion != null)
+                            {
+                                @Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion, new { @class = "form-control" })
+                            }
+                            else
+                            {
+                                <label class="form">No posee una sección.</label>
+                            }
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label"><b>Nombre del Jefe Inmediato</b></label>
+                        <div class="col-sm-3">
+                            @Html.DisplayFor(model => model.CalificacionNombramiento.JefeInmediato.Nombre, new { @class = "form-control" })
+                        </div>
+                        <label class="col-sm-3 col-form-label"><b>Nombre del Superior del Jefe Inmediato</b></label>
+                        <div class="col-sm-3">
+                            @Html.DisplayFor(model => model.CalificacionNombramiento.JefeSuperior.Nombre, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        @*<button id="btnValidarDatos" type="submit" class="btn btn-primary float-right" name="SubmitButton" value="Validar Datos" >Validar Datos</button>*@
+                        <input class="btn btn-info" name="btnValidar" id="btnValidarDatos" value="Validar Datos" type="button"/>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="card" id="datosEvaluacion" hidden>
+                <div class="card-header text-center">
+                    <strong>2.COMPONENTES, DIMENSIONES Y NIVELES DEL DESEMPEÑO</strong>
+                </div>
+                <br />
+                <label>
+                    Seleccione dando click en el nivel que mejor corresponda al desempeño del colaborador (a). (Ver la guía de aplicación para la Evaluación del Desempeño).
+                </label>
+                <table class="table table-bordered">
+                    <thead class="thead-dark"> 
+                        <th colspan="6" class="thead-light text-center">Información sobre puntuación</th>
+                        <tr>
+                            <th scope="col">Nivel</th>
+                            <th scope="col">1</th>
+                            <th scope="col">2</th>
+                            <th scope="col">3</th>
+                            <th scope="col">4</th>
+                            <th scope="col">5</th>
+                        </tr>
+                    </thead>
+                     <tbody>
+                        <tr>
+                           <th scope="row">Puntos</th>
+                           <td>4</td>
+                           <td>6</td>
+                           <td>7,5</td>
+                           <td>8,5</td>
+                           <td>10</td>
+                         </tr>
+                     </tbody>
+                 </table>
+
+                <br />
+                <div class="card-body">
+                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="pill" role="tab" aria-controls="pills-home" aria-selected="true" href="#ParteI"> SERVICIO AL USUARIO Y AL CIUDADANO</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="pill" role="tab" aria-controls="pills-profile" aria-selected="false" href="#ParteII"> EFICIENCIA</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" role="tab" aria-controls="pills-profile" aria-selected="false" data-toggle="pill" href="#ParteIII">COMPETENCIA</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" role="tab" aria-controls="pills-profile" aria-selected="false" data-toggle="pill" href="#ParteVI">FLEXIBILIDAD</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" role="tab" aria-controls="pills-profile" aria-selected="false" data-toggle="pill" href="#ParteV">MÉRITO</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" role="tab" aria-controls="pills-profile" aria-selected="false" data-toggle="pill" href="#Nota">NOTA</a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content" id="pills-tabContent">
+                        <div id="ParteI" class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                            <h6>COMPONENTE:</h6><h3>SERVICIO AL USUARIO Y AL CIUDADANO</h3>
+                            <h4>@Model.CatalogoPregunta[0].DesTituloPDTO.ToString()</h4>
+                            @Html.HiddenFor(model => model.CatalogoPregunta[0].IdEntidad)
+                            <label class="card text-justify p-lg-4 ">@Model.CatalogoPregunta[0].DesPreguntaDTO.ToString()</label>
+                            <div class="col-md-10">
+                                <label>Niveles:&nbsp</label><input type="button" class="btn btn-info btn-sm text-center" id="btnI" value="1" placeholder="4 pts">
+                                <input type="button" class="btn btn-info btn-sm text-center" id="btnI" value="2" placeholder="6 pts"> <input type="button" class="btn btn-info btn-sm text-center" id="btnI" value="3" placeholder="7,5 pts">
+                                <input type="button" class="btn btn-info btn-sm text-center" id="btnI" value="4" placeholder="8,5 pts"> <input type="button" class="btn btn-info btn-sm text-center" id="btnI" value="5" placeholder="10 pts">
+                                @Html.TextBoxFor(model => model.Detalle[0].NumNotasPorPreguntaDTO, new { @id = "notaI", name = "notaI", @class = "text-center", @readonly = "readonly" }) PUNTOS
+                            </div>
+                            <br />
+                            <h4> @Model.CatalogoPregunta[1].DesTituloPDTO.ToString()</h4>
+                            <label class="card text-justify p-lg-4">@Model.CatalogoPregunta[1].DesPreguntaDTO.ToString()</label>
+                            @Html.HiddenFor(model => model.CatalogoPregunta[1].IdEntidad)
+                            <div class="col-md-10">
+                                <label>Niveles:&nbsp</label><input type="button" class="btn btn-info btn-sm text-center" id="btnII" value="1" placeholder="4 pts">
+                                <input type="button" class="btn btn-info btn-sm text-center" id="btnII" value="2" placeholder="6 pts"> <input type="button" class="btn btn-info btn-sm text-center" id="btnII" value="3" placeholder="7,5 pts">
+                                <input type="button" class="btn btn-info btn-sm text-center" id="btnII" value="4" placeholder="8,5 pts"> <input type="button" class="btn btn-info btn-sm text-center" id="btnII" value="5" placeholder="10 pts">
+                                @Html.TextBoxFor(model => model.Detalle[1].NumNotasPorPreguntaDTO, new { @id = "notaII", name = "notaII", @class = "text-center", @readonly = "readonly" }) PUNTOS
+                            </div>
+                            <br />
+                        </div>
+                        <div id="ParteII" class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                            <br />
+                            <h6>COMPONENTE:</h6><h3>EFICIENCIA</h3>
+                            <h4>@Model.CatalogoPregunta[2].DesTituloPDTO.ToString()</h4>
+                            <label class="card text-justify p-lg-4">@Model.CatalogoPregunta[2].DesPreguntaDTO.ToString()</label>
+                            @Html.HiddenFor(model => model.CatalogoPregunta[2].IdEntidad)
+                            <div class="col-md-10">
+                                <label>Niveles:&nbsp</label><input type="button" class="btn btn-info btn-sm text-center" id="btnIII" value="1" placeholder="4 pts">
+                                <input type="button" class="btn btn-info btn-sm text-center" id="btnIII" value="2" placeholder="6 pts"> <input type="button" class="btn btn-info btn-sm text-center" id="btnIII" value="3" placeholder="7,5 pts">
+                                <input type="button" class="btn btn-info btn-sm text-center" id="btnIII" value="4" placeholder="8,5 pts"> <input type="button" class="btn btn-info btn-sm text-center" id="btnIII" value="5" placeholder="10 pts">
+                                @Html.TextBoxFor(model => model.Detalle[2].NumNotasPorPreguntaDTO, new { @id = "notaIII", name = "notaIII", @class = "text-center", @readonly = "readonly" }) PUNTOS
+                            </div>
+                            <br />
+                            <h4>@Model.CatalogoPregunta[3].DesTituloPDTO.ToString()</h4>
+                            <label class="card text-justify p-lg-4">@Model.CatalogoPregunta[3].DesPreguntaDTO.ToString()</label>
+                            @Html.HiddenFor(model => model.CatalogoPregunta[3].IdEntidad)
+                            <div class="col-md-10">
+                                <label>Niveles:&nbsp</label><input type="button" class="btn btn-info btn-sm text-center" id="btnIV" value="1" placeholder="4 pts">
+                                <input type="button" class="btn btn-info btn-sm text-center" id="btnIV" value="2" placeholder="6 pts"> <input type="button" class="btn btn-info btn-sm text-center" id="btnIV" value="3" placeholder="7,5 pts">
+                                <input type="button" class="btn btn-info btn-sm text-center" id="btnIV" value="4" placeholder="8,5 pts"> <input type="button" class="btn btn-info btn-sm text-center" id="btnIV" value="5" placeholder="10 pts">
+                                @Html.TextBoxFor(model => model.Detalle[3].NumNotasPorPreguntaDTO, new { @id = "notaIV", name = "notaIV", @class = "text-center", @readonly = "readonly" }) PUNTOS
+                            </div>
+                            <br />
+                        </div>
+                        <div id="ParteIII" class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                            <h6>COMPONENTE:</h6><h3>COMPETENCIA</h3>
+                            <h4>@Model.CatalogoPregunta[4].DesTituloPDTO.ToString()</h4>
+                            @Html.HiddenFor(model => model.CatalogoPregunta[4].IdEntidad)
+                            <label class="card text-justify p-lg-4">@Model.CatalogoPregunta[4].DesPreguntaDTO.ToString()</label>
+                            <div class="col-md-10">
+                                <label>Niveles:&nbsp</label><input type="button" class="btn btn-info btn-sm text-center" id="btnV" value="1" placeholder="4 pts">
+                                <input type="button" class="btn btn-info btn-sm text-center" id="btnV" value="2" placeholder="6 pts"> <input type="button" class="btn btn-info btn-sm text-center" id="btnV" value="3" placeholder="7,5 pts">
+                                <input type="button" class="btn btn-info btn-sm text-center" id="btnV" value="4" placeholder="8,5 pts"> <input type="button" class="btn btn-info btn-sm text-center" id="btnV" value="5" placeholder="10 pts">
+                                @Html.TextBoxFor(model => model.Detalle[4].NumNotasPorPreguntaDTO, new { @id = "notaV", name = "notaV", @class = "text-center", @readonly = "readonly" }) PUNTOS
+                            </div>
+                            <br />
+                            <h4>@Model.CatalogoPregunta[5].DesTituloPDTO.ToString()</h4>
+                            <label class="card text-justify p-lg-4">@Model.CatalogoPregunta[5].DesPreguntaDTO.ToString()</label>
+                            @Html.HiddenFor(model => model.CatalogoPregunta[5].IdEntidad)
+                            <div class="col-md-10">
+                                <label>Niveles:&nbsp</label><input type="button" class="btn btn-info btn-sm text-center" id="btnVI" value="1" placeholder="4 pts">
+                                <input type="button" class="btn btn-info btn-sm text-center" id="btnVI" value="2" placeholder="6 pts"> <input type="button" class="btn btn-info btn-sm text-center" id="btnVI" value="3" placeholder="7,5 pts">
+                                <input type="button" class="btn btn-info btn-sm text-center" id="btnVI" value="4" placeholder="8,5 pts"> <input type="button" class="btn btn-info btn-sm text-center" id="btnVI" value="5" placeholder="10 pts">
+                                @Html.TextBoxFor(model => model.Detalle[5].NumNotasPorPreguntaDTO, new { @id = "notaVI", name = "notaVI", @class = "text-center", @readonly = "readonly" }) PUNTOS
+                            </div>
+                            <br />
+                        </div>
+                        <div id="ParteVI" class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                            <h6>COMPONENTE:</h6><h3>FLEXIBILIDAD</h3>
+                            <h4>@Model.CatalogoPregunta[6].DesTituloPDTO.ToString()</h4>
+                            <label class="card text-justify p-lg-4">@Model.CatalogoPregunta[6].DesPreguntaDTO.ToString()</label>
+                            @Html.HiddenFor(model => model.CatalogoPregunta[6].IdEntidad)
+                            <div class="col-md-10">
+                                <label>Niveles:&nbsp</label><input type="button" class="btn btn-info btn-sm text-center" id="btnVII" value="1" placeholder="4 pts">
+                                <input type="button" class="btn btn-info btn-sm text-center" id="btnVII" value="2" placeholder="6 pts"> <input type="button" class="btn btn-info btn-sm text-center" id="btnVII" value="3" placeholder="7,5 pts">
+                                <input type="button" class="btn btn-info btn-sm text-center" id="btnVII" value="4" placeholder="8,5 pts"> <input type="button" class="btn btn-info btn-sm text-center" id="btnVII" value="5" placeholder="10 pts">
+                                @Html.TextBoxFor(model => model.Detalle[6].NumNotasPorPreguntaDTO, new { @id = "notaVII", name = "notaVII", @class = "text-center", @readonly = "readonly" }) PUNTOS
+                            </div>
+                            <br />
+                            <h4>@Model.CatalogoPregunta[7].DesTituloPDTO.ToString()</h4>
+                            <label class="card text-justify p-lg-4">@Model.CatalogoPregunta[7].DesPreguntaDTO.ToString()</label>
+                            @Html.HiddenFor(model => model.CatalogoPregunta[7].IdEntidad)
+                            <div class="col-md-10">
+                                <label>Niveles:&nbsp</label><input type="button" class="btn btn-info btn-sm text-center" id="btnVIII" value="1" placeholder="4 pts">
+                                <input type="button" class="btn btn-info btn-sm text-center" id="btnVIII" value="2" placeholder="6 pts"> <input type="button" class="btn btn-info btn-sm text-center" id="btnVIII" value="3" placeholder="7,5 pts">
+                                <input type="button" class="btn btn-info btn-sm text-center" id="btnVIII" value="4" placeholder="8,5 pts"> <input type="button" class="btn btn-info btn-sm text-center" id="btnVIII" value="5" placeholder="10 pts">
+                                @Html.TextBoxFor(model => model.Detalle[7].NumNotasPorPreguntaDTO, new { @id = "notaVIII", name = "notaVIII", @class = "text-center", @readonly = "readonly" }) PUNTOS
+                            </div>
+                            <br />
+                        </div>
+                        <div id="ParteV" class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                            <h6>COMPONENTE:</h6><h3>MÉRITO</h3>
+                            <h4>@Model.CatalogoPregunta[8].DesTituloPDTO.ToString()</h4>
+                            <label class="card text-justify p-lg-4">@Model.CatalogoPregunta[8].DesPreguntaDTO.ToString()</label>
+                            @Html.HiddenFor(model => model.CatalogoPregunta[8].IdEntidad)
+                            <div class="col-md-10">
+                                <label>Niveles:&nbsp</label><input type="button" class="btn btn-info btn-sm text-center" id="btnIX" value="1" placeholder="4 pts">
+                                <input type="button" class="btn btn-info btn-sm text-center" id="btnIX" value="2" placeholder="6 pts"> <input type="button" class="btn btn-info btn-sm text-center" id="btnIX" value="3" placeholder="7,5 pts">
+                                <input type="button" class="btn btn-info btn-sm text-center" id="btnIX" value="4" placeholder="8,5 pts"> <input type="button" class="btn btn-info btn-sm text-center" id="btnIX" value="5" placeholder="10 pts">
+                                @Html.TextBoxFor(model => model.Detalle[8].NumNotasPorPreguntaDTO, new { @id = "notaIX", name = "notaIX", @class = "text-center", @readonly = "readonly" }) PUNTOS
+                            </div>
+                            <br />
+                            <h4>@Model.CatalogoPregunta[9].DesTituloPDTO.ToString()</h4>
+                            <label class="card text-justify p-lg-4">@Model.CatalogoPregunta[9].DesPreguntaDTO.ToString()</label>
+                            @Html.HiddenFor(model => model.CatalogoPregunta[9].IdEntidad)
+                            <div class="col-md-10">
+                                <label>Niveles:&nbsp</label><input type="button" class="btn btn-info btn-sm text-center" id="btnX" value="1" placeholder="4 pts">
+                                <input type="button" class="btn btn-info btn-sm text-center" id="btnX" value="2" placeholder="6 pts"> <input type="button" class="btn btn-info btn-sm text-center" id="btnX" value="3" placeholder="7,5 pts">
+                                <input type="button" class="btn btn-info btn-sm text-center" id="btnX" value="4" placeholder="8,5 pts"> <input type="button" class="btn btn-info btn-sm text-center" id="btnX" value="5" placeholder="10 pts">
+                                @Html.TextBoxFor(model => model.Detalle[9].NumNotasPorPreguntaDTO, new { @id = "notaX", name = "notaX", @class = "text-center", @readonly = "readonly" }) PUNTOS
+                            </div>
+                            <br />
+                        </div>
+                        <br />
+                        <div id="Nota" class="tab-pane fade"  role="tabpanel" aria-labelledby="pills-profile-tab">
+                            <div class="card-body">
+                                <br />
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.CalificacionNombramiento.ObsGeneralDTO, new { @for = "ObsGeneralDTO"})
+                                    @Html.TextAreaFor(model => model.CalificacionNombramiento.ObsGeneralDTO, new { @id = "ObsGeneralDTO", @class = "form-control", @rows = 5, @maxlength = 1000 })
+                                </div>
+
+                                <br />
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.CalificacionNombramiento.ObsCapacitacionDTO, new { @for = "ObsCapacitacionDTO" })
+                                    @Html.TextAreaFor(model => model.CalificacionNombramiento.ObsCapacitacionDTO, new { @id = "ObsCapacitacionDTO", @class = "form-control", @rows = 5, @maxlength = 1000 })
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.CalificacionNombramiento.ObsJustificacionCapacitacionDTO, new { @for = "ObsJustificacionCapacitacionDTO" })
+                                    @Html.TextAreaFor(model => model.CalificacionNombramiento.ObsJustificacionCapacitacionDTO, new { @id = "ObsJustificacionCapacitacionDTO", @class = "form-control", @rows = 5, @maxlength = 1000 })
+                                </div>
+                                <br />
+                                <input type="button" class="btn btn-info" name="btnNota" id="calcular" onclick="NotaFinal();" value="Calcular">
+                                <div class="form-group">
+                                    <br />
+                                    <br />
+                                    @*<input type="text" class="text-center" name="notafinal" id="notafinal" value="0" disabled> Puntos Obtenidos*@
+                                    @Html.TextBoxFor(model => model.PuntuacionFinal, new { @id = "notafinal", name = "notafinal", @class = "form-control text-center", @readonly = "readonly" }) Puntos Obtenidos
+                                    <br />
+                                    <br />
+                                    @*<input type="text" class="text-center" name="notafinalletra" id="notafinalletra" value="N/D" readonly="readonly" /> Nota Final*@
+                                    @Html.TextBoxFor(model => model.CalificacionFinalLetra, new { @id = "notafinalletra", name = "notafinalletra", @class = "form-control text-center", @readonly = "readonly" }) Calificación Final
+                                    @Html.HiddenFor(model => model.CalificacionFinal, new { @id = "notanumero", name = "notanumero", @class = "form-control text-center", @readonly = "readonly" })
+
+                                    <br />
+                                    <br />
+                                    @for (int i = 0; i < Model.CatalogoPregunta.Count(); i++)
+                                    {
+                                        @Html.HiddenFor(model => model.CatalogoPregunta[i].DesTituloPDTO);
+                                        @Html.HiddenFor(model => model.CatalogoPregunta[i].DesPreguntaDTO);
+                                        @Html.HiddenFor(model => model.CatalogoPregunta[i].IndEstadoDTO);
+                                        @Html.HiddenFor(model => model.CatalogoPregunta[i].IndTipoFormularioDTO);
+                                        @Html.HiddenFor(model => model.CalificacionNombramiento.DetalleCalificacion[i].CatalogoPreguntaDTO.IdEntidad);
+                                        @Html.HiddenFor(model => model.CalificacionNombramiento.DetalleCalificacion[i].CatalogoPreguntaDTO.IdEntidad);
+                                        @Html.HiddenFor(model => model.CalificacionNombramiento.DetalleCalificacion[i].NumNotasPorPreguntaDTO);
+                                        @*@Html.HiddenFor(model => model.DEvaluacion[i].NumNotasPorPreguntaDTO);*@
+                                    }
+                                    @Html.HiddenFor(model => model.CalificacionNombramiento.UsrEvaluadorDTO)
+                                    @Html.HiddenFor(model => model.CalificacionNombramiento.IndEstadoDTO)
+                                    @Html.HiddenFor(model => model.CalificacionNombramiento.FecCreacionDTO)
+                                    @Html.HiddenFor(model => model.CalificacionNombramiento.ObsGeneralDTO)
+                                    @Html.HiddenFor(model => model.CalificacionNombramiento.ObsCapacitacionDTO)
+                                    @*@Html.HiddenFor(model => model.CalificacionNombramiento.Periodo.IdEntidad)*@
+                                    @Html.HiddenFor(model => model.CalificacionNombramiento.Periodo.FecRige)
+                                    @Html.HiddenFor(model => model.CalificacionNombramiento.Periodo.FecRigeReglaTecnica)
+                                    @Html.HiddenFor(model => model.CalificacionNombramiento.Periodo.FecVence)
+                                    @Html.HiddenFor(model => model.CalificacionNombramiento.Periodo.FecVenceReglaTecnica)
+                                    @Html.HiddenFor(model => model.CalificacionNombramiento.JefeInmediato.IdEntidad)
+                                    @Html.HiddenFor(model => model.CalificacionNombramiento.JefeInmediato.Cedula)
+                                    @Html.HiddenFor(model => model.CalificacionNombramiento.JefeInmediato.Nombre)
+                                    @Html.HiddenFor(model => model.CalificacionNombramiento.JefeSuperior.IdEntidad)
+                                    @Html.HiddenFor(model => model.CalificacionNombramiento.JefeSuperior.Cedula)
+                                    @Html.HiddenFor(model => model.CalificacionNombramiento.JefeSuperior.Nombre)
+
+                                    @for (int i = 0; i < Model.CNombramientoB.Count(); i++)
+                                    {
+                                        @Html.HiddenFor(model => model.CNombramientoB[i].IdEntidad);
+                                        @Html.HiddenFor(model => model.CNombramientoB[i].NombramientoDTO.IdEntidad);
+                                    }
+
+                                    @Html.HiddenFor(model => model.CalificacionNombramiento.NombramientoDTO)
+                                    
+                                    <p id="error" style="color: Red" hidden>Ha dejado algún componente sin calificar, favor calificar todas las preguntas.</p>
+                                    <input type="submit" class="btn btn-info" name="btnGuardar" id="btnGuardarCalificacion" value="Guardar" hidden/>
+                                    <div id="preloaderCalificacion" class="loader" style="display: none"></div>
+                                    <br />
+                                    <br />
+                                    </div>
+                                </div>
+                            <br />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div id="respuesta"></div>
+        }
+          
+    </center>
+</div>
+
+<script src="~/Scripts/Pages/Calificar.js"></script>
+<script src="~/Scripts/Pages/FuncionesCalificacion.js"></script>

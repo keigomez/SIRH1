@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="0830a0b8-062a-489d-9323-da0bb9344965" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://sisrh.mopt.go.cr:85/CManualCargosService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CManualCargosService.wsdl" MetadataType="Wsdl" ID="89f1f5f8-5046-4fe0-8205-eb6d9d42d137" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CManualCargosService.svc?wsdl" />
+    <MetadataFile FileName="CManualCargosService.xsd" MetadataType="Schema" ID="bf94e916-4e5d-4129-a363-31a17b6180cf" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CManualCargosService.svc?xsd=xsd2" />
+    <MetadataFile FileName="CManualCargosService.disco" MetadataType="Disco" ID="be9536c2-1012-4274-aa79-cd13bf187137" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CManualCargosService.svc?disco" />
+    <MetadataFile FileName="CManualCargosService1.xsd" MetadataType="Schema" ID="1e745ce9-1191-487d-b896-7c68b9525e91" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CManualCargosService.svc?xsd=xsd3" />
+    <MetadataFile FileName="CManualCargosService2.xsd" MetadataType="Schema" ID="0a2bed0c-6645-4ad3-aa23-c628278d7a89" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CManualCargosService.svc?xsd=xsd1" />
+    <MetadataFile FileName="CManualCargosService3.xsd" MetadataType="Schema" ID="d3a7189f-fe56-4bf4-a229-b0ed993c888b" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CManualCargosService.svc?xsd=xsd0" />
+    <MetadataFile FileName="CManualCargosService4.xsd" MetadataType="Schema" ID="a19bcc86-05dd-4af4-96be-45013af59939" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CManualCargosService.svc?xsd=xsd4" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

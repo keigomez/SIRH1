@@ -1,0 +1,125 @@
+﻿@model SIRH.Web.ViewModels.FormularioNombramientoVM
+
+@{
+    ViewBag.Title = "DetalleNombramiento";
+    Layout = "~/Views/Shared/Vacantes.cshtml";
+}
+
+<blockquote><h3>Detalle del nombramiento</h3></blockquote>
+<br />
+        @using (Html.BeginForm("ReporteDetalleCaucion", "Caucion", FormMethod.Post, new { @id = "thisForm" }))
+        {
+            <div class="card">
+                <div class="card-header text-left">
+                    <b>Datos del nombramiento</b>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <span>
+                                <b>Funcionario: </b> @Model.Funcionario.Cedula - @Model.Funcionario.Nombre @Model.Funcionario.PrimerApellido @Model.Funcionario.SegundoApellido
+                                @Html.HiddenFor(model => model.Funcionario.Cedula)
+                                @Html.HiddenFor(model => model.Funcionario.Nombre)
+                                @Html.HiddenFor(model => model.Funcionario.PrimerApellido)
+                                @Html.HiddenFor(model => model.Funcionario.SegundoApellido)
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>
+                                <b>@Html.LabelFor(model => model.Puesto.CodPuesto): </b> @Model.Puesto.CodPuesto
+                                @Html.HiddenFor(model => model.Puesto.CodPuesto)
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>
+                                <b>@Html.LabelFor(model => model.Nombramiento.FecRige): </b> @Model.Nombramiento.FecRige.ToShortDateString()
+                                @Html.HiddenFor(model => model.Nombramiento.FecRige)
+                            </span>
+                        </li>
+                        @if (Model.Nombramiento.FecVence.Year != 1)
+                        {
+                            <li class="list-group-item">
+                                <span>
+                                    <b>@Html.LabelFor(model => model.Nombramiento.FecVence): </b> @Model.Nombramiento.FecVence.ToShortDateString()
+                                    @Html.HiddenFor(model => model.Nombramiento.FecVence)
+                                </span>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="list-group-item">
+                                <span>
+                                    <b>@Html.LabelFor(model => model.Nombramiento.FecVence): </b> 
+                                </span>
+                            </li>
+                        }
+                        <li class="list-group-item">
+                            <span>
+                                <b>@Html.LabelFor(model => model.DetallePuesto.Clase.DesClase): </b>@Model.DetallePuesto.Clase.DesClase
+                                @Html.HiddenFor(model => model.DetallePuesto.Clase.IdEntidad)
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>
+                                <b>@Html.LabelFor(model => model.DetallePuesto.Especialidad.DesEspecialidad): </b>@Model.DetallePuesto.Especialidad.DesEspecialidad
+                                @Html.HiddenFor(model => model.DetallePuesto.Especialidad.IdEntidad)
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>
+                                
+                                @if (Model.DetalleAccion != null)
+                                {
+                                    <b>@Html.LabelFor(model => model.DetalleAccion.Accion.NumAccion): </b>@Model.DetalleAccion.Accion.NumAccion
+                                    <div style="display: inline">
+                                        <div class="link_view"> @Html.ActionLink("Ver Detalle", "", "AccionPersonal", null, new { @onclick = "return ObtenerDetalle('" + Model.DetalleAccion.Accion.NumAccion + "');", @type = "button", @class = "btn btn-primary btn-sm" })</div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <b>@Html.LabelFor(model => model.AccionHistorica.NumAccion): </b>@Model.AccionHistorica.NumAccion
+                                    <div style="display: inline">
+                                        <div class="link_view"> @Html.ActionLink("Ver Detalle", "", "AccionPersonal", null, new { @onclick = "return ObtenerDetalleH('" + Model.AccionHistorica.IdEntidad + "');", @type = "button", @class = "btn btn-primary btn-sm" })</div>
+                                    </div>
+                                }
+                                @Html.HiddenFor(model => model.DetalleAccion.Accion.NumAccion)
+                            </span>
+                        </li>
+                    </ul>
+                    <br />
+                    @*<button class="btn btn-danger" type="submit"><i class="fa fa-file-pdf-o"></i> Exportar a PDF</button>*@
+                </div>
+            </div>
+        }
+<br />
+
+<div class="modal fade" id="detalle-historico" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Detalle</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="card-body">
+                    <div id="target"></div>
+                    <span id="error" style="color: Red"></span>
+                    <br />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="CacelarCalculoPopUp" type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<a href="javascript:history.back()" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Regresar</a>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+<script src="~/Scripts/Pages/FormularioAccionPersonal.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/SearchAccionPersonal.js" type="text/javascript"></script>
+

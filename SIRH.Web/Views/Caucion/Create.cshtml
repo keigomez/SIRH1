@@ -1,0 +1,62 @@
+﻿
+@model SIRH.Web.ViewModels.FormularioCaucionVM
+
+@{
+    ViewBag.Title = "Agregar Caución";
+    Layout = "~/Views/Shared/Cauciones.cshtml";
+}
+
+@*<link rel="stylesheet" href="~/Content/datetimepicker.css">*@
+<script src="~/Content/bootstrap-datepicker/js/jquery-3.4.1.slim.min.js"></script>
+<link id="bsdp-css" href="~/Content/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+
+
+@using (Ajax.BeginForm("Create", "Caucion", new AjaxOptions
+{
+    HttpMethod = "Post",
+    UpdateTargetId = "dvResultadoBusqueda",
+    InsertionMode = InsertionMode.Replace,
+    OnSuccess = "SuccessCargarFuncionario",
+    OnComplete = "CompleteCargarFuncionario",
+    OnBegin = "BeginCargarFuncionario"
+}))
+{
+    <div class="jumbotron">
+        <center>
+            <h3 class="display-4">Agregar Caución</h3>
+            <br />
+            <div class="card">
+                <div class="card-header text-left">
+                    Digite el número de cédula de funcionario
+                </div>
+
+                <div class="card-body">
+
+                    <div class="form-group">
+                        @Html.TextBoxFor(model => model.Funcionario.Cedula, new { @class = "form-control", @placeholder = "Cédula", style = "width: 280px;" })
+                        @Html.ValidationMessageFor(model => model.Funcionario.Cedula)
+                    </div>
+                    <input id="btnBuscar" name="SubmitButton" class="btn btn-primary" type="submit" value="Buscar" />
+                    <div id="preloader" class="loader" style="display: none"></div>
+
+                </div>
+            </div>
+
+        </center>
+    </div>
+}
+
+<div id="dvResultadoBusqueda"></div>
+
+ 
+@Scripts.Render("~/bundles/jquery")
+<script src="~/Scripts/popper.min.js"></script>
+@Scripts.Render("~/bundles/bootstrap")
+<script src="~/Scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/FormularioCaucion.js" type="text/javascript"></script>
+@*<script src="~/Scripts/datetimepicker.js" type="text/javascript"></script>
+<script src="~/Scripts/datetimepicker-es.js" type="text/javascript"></script>*@
+<script src="~/Content/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script src="~/Content/bootstrap-datepicker/locales/bootstrap-datepicker.es.min.js" charset="UTF-8"></script>
+
+

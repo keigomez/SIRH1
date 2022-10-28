@@ -1,0 +1,290 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{ABD541C9-A08D-4215-A5BE-BADF1F3731E2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SIRH.Logica</RootNamespace>
+    <AssemblyName>SIRH.Logica</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>%24/SIRH/SIRH.Logica</SccProjectName>
+    <SccLocalPath>.</SccLocalPath>
+    <SccAuxPath>http://ea-mj07creh:8080/tfs/defaultcollection</SccAuxPath>
+    <SccProvider>{4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}</SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Scaffolding.EntityFramework.12.0, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=x86" />
+    <Reference Include="Microsoft.Data.Entity.Design.Extensibility, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Entity">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Entity.Design" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IdentityModel.Selectors" />
+    <Reference Include="System.identitymodel.services" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Entity.Design" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CAccionPersonalL.cs" />
+    <Compile Include="CActividadFuncionarioL.cs" />
+    <Compile Include="CAddendumPrestamoPuestoL.cs" />
+    <Compile Include="CAdministracionPuestoL.cs" />
+    <Compile Include="CAguinaldoL.cs" />
+    <Compile Include="CBitacoraUsuarioL.cs" />
+    <Compile Include="CBoletaPrestamoL.cs" />
+    <Compile Include="CBorradorAccionPersonalL.cs" />
+    <Compile Include="CCalificacionCapacitacionL.cs" />
+    <Compile Include="CCalificacionEncargadoL.cs" />
+    <Compile Include="CCalificacionObservacionesL.cs" />
+    <Compile Include="CCargoL.cs" />
+    <Compile Include="CCarreraProfesionalL.cs" />
+    <Compile Include="CCatCampoL.cs" />
+    <Compile Include="CCatMetaEstadoL.cs" />
+    <Compile Include="CCatMetaPrioridadL.cs" />
+    <Compile Include="CComponentePresupuestarioL.cs" />
+    <Compile Include="CCursoL.cs" />
+    <Compile Include="CDecretoL.cs" />
+    <Compile Include="CDeduccionTemporalL.cs" />
+    <Compile Include="CDetalleAsignacionGastoTransporteModificadaL.cs" />
+    <Compile Include="CDetalleCalificacionSeguimientoL.cs" />
+    <Compile Include="CDetalleEliminacionViaticoCorridoGastoTransporteL.cs" />
+    <Compile Include="CCalificacionL.cs" />
+    <Compile Include="CCalificacionNombramientoL.cs" />
+    <Compile Include="CCantonL.cs" />
+    <Compile Include="CCaracteristicasPuestoL.cs" />
+    <Compile Include="CCartaPresentacionL.cs" />
+    <Compile Include="CCatalogoDeduccionL.cs" />
+    <Compile Include="CCatalogoDiaL.cs" />
+    <Compile Include="CCatalogoPreguntaL.cs" />
+    <Compile Include="CCatEstadoCivilL.cs" />
+    <Compile Include="CCatPermisoL.cs" />
+    <Compile Include="CCaucionL.cs" />
+    <Compile Include="CClaseL.cs" />
+    <Compile Include="CContenidoPresupuestarioL.cs" />
+    <Compile Include="CContratoArrendamientoL.cs" />
+    <Compile Include="CCuentaBancariaL.cs" />
+    <Compile Include="CCursoCapacitacionL.cs" />
+    <Compile Include="CCursoGradoL.cs" />
+    <Compile Include="CDeduccionEfectuadaL.cs" />
+    <Compile Include="CDepartamentoL.cs" />
+    <Compile Include="CDesarraigoL.cs" />
+    <Compile Include="CDesgloseSalarialL.cs" />
+    <Compile Include="CDetalleAccesoL.cs" />
+    <Compile Include="CDetalleAsignacionGastoTransporteL.cs" />
+    <Compile Include="CDetalleBorradorAccionPersonalL.cs" />
+    <Compile Include="CDetalleCalificacionNombramientoL.cs" />
+    <Compile Include="CDetalleContratacionL.cs" />
+    <Compile Include="CDetalleDeduccionGastoTransporteL.cs" />
+    <Compile Include="CDetalleDeduccionViaticoCorridoL.cs" />
+    <Compile Include="CDetalleNombramientoL.cs" />
+    <Compile Include="CDetallePuestoL.cs" />
+    <Compile Include="CDiaPagadoL.cs" />
+    <Compile Include="CDireccionGeneralL.cs" />
+    <Compile Include="CDireccionL.cs" />
+    <Compile Include="CDispositivoL.cs" />
+    <Compile Include="CDistritoL.cs" />
+    <Compile Include="CDivisionL.cs" />
+    <Compile Include="CEmpleadoDispositivoL.cs" />
+    <Compile Include="CEmpleadoL.cs" />
+    <Compile Include="CEntidadAdscritaL.cs" />
+    <Compile Include="CEntidadEducativaL.cs" />
+    <Compile Include="CEntidadFinancieraL.cs" />
+    <Compile Include="CEntidadGubernamentalL.cs" />
+    <Compile Include="CEntidadMedicaL.cs" />
+    <Compile Include="CEntidadSegurosL.cs" />
+    <Compile Include="CEscalaSalarialL.cs" />
+    <Compile Include="CEspecialidadL.cs" />
+    <Compile Include="CEstadoBorradorL.cs" />
+    <Compile Include="CEstadoGastoTransporteL.cs" />
+    <Compile Include="CEstadoTramiteL.cs" />
+    <Compile Include="CEstadoViaticoCorridoL.cs" />
+    <Compile Include="CEstudioPuestoL.cs" />
+    <Compile Include="CExpedienteL.cs" />
+    <Compile Include="CExperienciaProfesionalL.cs" />
+    <Compile Include="CFactorL.cs" />
+    <Compile Include="CFacturaDesarraigoL.cs" />
+    <Compile Include="CFormacionAcademicaL.cs" />
+    <Compile Include="CFuncionarioL.cs" />
+    <Compile Include="CGastoTransporteL.cs" />
+    <Compile Include="CHistorialEstadoCivilL.cs" />
+    <Compile Include="CHistoricoPlanillaL.cs" />
+    <Compile Include="CInformacionContactoL.cs" />
+    <Compile Include="CListaNombramientoActivoL.cs" />
+    <Compile Include="CMarcacionesL.cs" />
+    <Compile Include="CMetaIndividualCalificacionL.cs" />
+    <Compile Include="CMetaIndividualEvidenciaL.cs" />
+    <Compile Include="CMetaIndividualInformeL.cs" />
+    <Compile Include="CMetaObjetivoCalificacionL.cs" />
+    <Compile Include="CModalidadL.cs" />
+    <Compile Include="CMontoCaucionL.cs" />
+    <Compile Include="CMotivoBajaL.cs" />
+    <Compile Include="CMotivoMovimientoL.cs" />
+    <Compile Include="CMovimientoGastoTransporteL.cs" />
+    <Compile Include="CMovimientoPuestoL.cs" />
+    <Compile Include="CMovimientoViaticoCorridoL.cs" />
+    <Compile Include="CNombramientoL.cs" />
+    <Compile Include="CNotificacionUsuarioL.cs" />
+    <Compile Include="CObjetivoCalificacionL.cs" />
+    <Compile Include="COcupacionRealL.cs" />
+    <Compile Include="COrdenMovimientoL.cs" />
+    <Compile Include="CPagoExtraordinarioL.cs" />
+    <Compile Include="CPagoFeriadoL.cs" />
+    <Compile Include="CPedimentoPuestoL.cs" />
+    <Compile Include="CPerfilL.cs" />
+    <Compile Include="CPeriodoEscalaSalarialL.cs" />
+    <Compile Include="CPeriodoVacacionesL.cs" />
+    <Compile Include="CPlanificacionL.cs" />
+    <Compile Include="CPrestacionLegalL.cs" />
+    <Compile Include="CPrestamoPuestoL.cs" />
+    <Compile Include="CPresupuestoL.cs" />
+    <Compile Include="CProvinciaL.cs" />
+    <Compile Include="CPuestoL.cs" />
+    <Compile Include="CPuntosL.cs" />
+    <Compile Include="CRegistroIncapacidadL.cs" />
+    <Compile Include="CRegistroTEL.cs" />
+    <Compile Include="CRegistroVacacionesL.cs" />
+    <Compile Include="CReintegroVacacionesL.cs" />
+    <Compile Include="CRemuneracionEfectuadaPFL.cs" />
+    <Compile Include="CRescisionL.cs" />
+    <Compile Include="CSalarioL.cs" />
+    <Compile Include="CSeccionL.cs" />
+    <Compile Include="CServiciosGeneralesL.cs" />
+    <Compile Include="CSubEspecialidadL.cs" />
+    <Compile Include="CTareasPuestoL.cs" />
+    <Compile Include="CTipoAccionPersonalL.cs" />
+    <Compile Include="CTipoDeduccionL.cs" />
+    <Compile Include="CTipoDiaL.cs" />
+    <Compile Include="CTipoIncapacidadL.cs" />
+    <Compile Include="CTipoIndicadorMetaL.cs" />
+    <Compile Include="CTipoJornadaL.cs" />
+    <Compile Include="CTipoPoliticaPublicaL.cs" />
+    <Compile Include="CTipoPrestacionL.cs" />
+    <Compile Include="CTipoPuestoL.cs" />
+    <Compile Include="CTituloFactorL.cs" />
+    <Compile Include="CTomoL.cs" />
+    <Compile Include="CUbicacionAdministrativaL.cs" />
+    <Compile Include="CUbicacionAsuetoL.cs" />
+    <Compile Include="CUbicacionPuestoL.cs" />
+    <Compile Include="CUsuarioL.cs" />
+    <Compile Include="CViaticoCorridoL.cs" />
+    <Compile Include="ObjetosEntidad.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VariablesGlobales.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>VariablesGlobales.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Debug\SIRH.Logica.csprojResolveAssemblyReference.cache" />
+    <None Include="packages.config" />
+    <None Include="VariablesGlobales.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>VariablesGlobales.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SIRH.DatosMarcasReloj\SIRH.DatosMarcasReloj.csproj">
+      <Project>{4f6fa142-4f2f-4c18-9e70-35aabdaed7d7}</Project>
+      <Name>SIRH.DatosMarcasReloj</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SIRH.Datos\SIRH.Datos.csproj">
+      <Project>{fa43575a-c53a-42f6-a81b-5f479bf2e4c0}</Project>
+      <Name>SIRH.Datos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SIRH.DTO\SIRH.DTO.csproj">
+      <Project>{8458c6ca-6642-4cb2-a361-d065534b57fb}</Project>
+      <Name>SIRH.DTO</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="obj\Debug\SIRH.Logica.csproj.FileListAbsolute.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Debug\" />
+    <Folder Include="obj\Debug\TempPE\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

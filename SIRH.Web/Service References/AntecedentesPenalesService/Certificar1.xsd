@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://Pj.SACEJ.Publico/" elementFormDefault="qualified" targetNamespace="http://Pj.SACEJ.Publico/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="PersonasConsultaEn">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="PersonaId" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Nombre" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Apellido1" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Apellido2" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="FechaNacimiento" type="xs:dateTime" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Sexo" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PadreNombre" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PadreApellido1" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PadreApellido2" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="MadreNombre" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="MadreApellido1" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="MadreApellido2" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="TiposIdentificacionId" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="NacionalidadCodigo" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Identificacion" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="NoExpediente" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Tribunal" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Nacionalidad" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Foto" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="EsJudicial" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="1" name="NombreCompleto" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="EstadoCivil" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ConocidosComo" type="tns:ArrayOfConocidoComoEN" />
+      <xs:element minOccurs="0" maxOccurs="1" name="LugarNacimiento" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="TelHabitacion" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="TelCelular" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="TelFax" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Email" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CedulaVieja" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CedulaNueva" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="FechaRenovacion" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="FechaEmision" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="DedoDerecha" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="DedoIzquierda" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Provincia" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Canton" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Distrito" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="DescripcionDireccion" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="FechaActualizacion" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="FechaInsercion" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="TipoAnotacion" type="xs:short" />
+      <xs:element minOccurs="1" maxOccurs="1" name="IdAnotacion" type="xs:long" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Origen" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfConocidoComoEN">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ConocidoComoEN" nillable="true" type="tns:ConocidoComoEN" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ConocidoComoEN">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" default="false" name="EsNuevoRegistro" type="xs:boolean" />
+      <xs:element minOccurs="1" maxOccurs="1" name="ConocidoComoId" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Nombre" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Apellido1" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Apellido2" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Eliminado" type="xs:boolean" />
+      <xs:element minOccurs="1" maxOccurs="1" name="PersonasId" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Usuario" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

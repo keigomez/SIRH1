@@ -1,0 +1,91 @@
+﻿@model SIRH.DTO.CHistoricoPlanillaDTO
+
+@{
+    ViewBag.Title = "SearchHistoricoPlanilla";
+    Layout = "~/Views/Shared/Planilla.cshtml";
+}
+
+@*<link rel="stylesheet" href="~/Content/datetimepicker.css">*@
+@*<link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>*@
+<script src="~/Content/bootstrap-datepicker/js/jquery-3.4.1.slim.min.js"></script>
+<link id="bsdp-css" href="~/Content/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+
+@using (Ajax.BeginForm("SearchHistoricoPlanilla", "Planilla", new AjaxOptions
+{
+    HttpMethod = "Post",
+    UpdateTargetId = "dvResultadoBusqueda",
+    InsertionMode = InsertionMode.Replace,
+    OnComplete = "CompleteHistorico",
+    OnBegin = "BeginHistorico"
+}))
+{
+    <div class="jumbotron">
+        <center>
+            <h1>Búsqueda - Historial de Planilla</h1>
+            <h1>(1991 - Junio 2020)</h1>
+            <br />
+            <div class="card">
+                <div class="card-header text-left">
+                    Parámetros de búsqueda
+                </div>
+
+                <div class="card-body">
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.Cedula, new { @for = "Cedula", @class = "col-sm-3 col-form-label" })
+                        <div class="col-sm-3">
+                            @Html.TextBoxFor(model => model.Cedula, new { @id = "Cedula", @class = "form-control", @maxlength = "10" })
+                        </div>
+                        <div class="col-sm-3">
+                        </div>
+                        <div class="col-sm-3">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.FechaInicio, new { @for = "FechaInicio", @class = "col-sm-3 col-form-label" })
+                        <div class="col-sm-3">
+                            @Html.TextBoxFor(model => model.FechaInicio, new { @id = "FechaInicio", @class = "form-control", @maxlength = "10", @readonly = "true" })
+                        </div>
+                        @Html.LabelFor(model => model.FechaFinal, new { @for = "FechaFinal", @class = "col-sm-3 col-form-label" })
+                        <div class="col-sm-3">
+                           @Html.TextBoxFor(model => model.FechaFinal, new { @id = "FechaFinal", @class = "form-control", @readonly = "true" })
+                        </div>
+                    </div>
+                    <input id="btnBuscar" name="SubmitButton" type="submit" value="Buscar" class="btn btn-primary float-right" />
+                    <div id="preloader" class="loader float-right" style="display: none"></div>
+            </div>
+        </div>
+        </center>
+    </div>
+}
+
+<div id="dvResultadoBusqueda"></div>
+
+
+@Scripts.Render("~/bundles/jquery")
+<script src="~/Scripts/popper.min.js"></script>
+@Scripts.Render("~/bundles/bootstrap")
+<script src="~/Scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/SearchHistoricoPlanilla.js" type="text/javascript"></script>
+@*<script src="~/Scripts/datetimepicker.js" type="text/javascript"></script>
+<script src="~/Scripts/datetimepicker-es.js" type="text/javascript"></script>*@
+<script src="~/Content/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script src="~/Content/bootstrap-datepicker/locales/bootstrap-datepicker.es.min.js" charset="UTF-8"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#FechaInicio').val('');
+        $('#FechaInicio').datepicker(
+        {
+            language: "es",
+            autoclose: true
+        });
+
+        $('#FechaFinal').val('');
+        $('#FechaFinal').datepicker(
+        {
+            language: "es",
+            autoclose: true
+        });
+    });
+</script>
+

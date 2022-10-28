@@ -1,0 +1,552 @@
+﻿@model SIRH.Web.ViewModels.FormularioViaticoCorridoVM
+@{
+    if (Model != null)
+    {
+        <b>@Html.LabelFor(model => model.Formulario)</b> <label>@Model.Formulario</label>
+        <!--Datos Personales-->
+        <div id="tabs">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a id="tab1" class="nav-link " href="#tabs-1" data-toggle="tab" role="tab" aria-controls="tabs-1" aria-selected="true">Datos Funcionario</a>
+                </li>
+                <li class="nav-item">
+                    <a id="tab2" class="nav-link active" href="#tabs-2" data-toggle="tab" role="tab" aria-controls="tabs-2" aria-selected="false">Datos Viático</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div id="tabs-1" class="tab-pane fade " role="tabpanel" aria-labelledby="tab1">
+                    <table class="table table-hover">
+                        <thead class="thead-light">
+                            <tr>
+                                <th colspan="6">Información del Funcionario</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><b>@Html.LabelFor(model => model.Funcionario.Cedula)</b></td>
+                                <td>
+                                    @Html.DisplayFor(model => model.Funcionario.Cedula)
+                                    @Html.HiddenFor(model => model.Funcionario.Cedula)
+                                <td><b>@Html.LabelFor(model => model.Funcionario.Nombre)</b></td>
+                                <td>
+                                    @Model.Funcionario.Nombre @Model.Funcionario.PrimerApellido @Model.Funcionario.SegundoApellido
+                                    @Html.HiddenFor(model => model.Funcionario.Nombre)
+                                    @Html.HiddenFor(model => model.Funcionario.PrimerApellido)
+                                    @Html.HiddenFor(model => model.Funcionario.SegundoApellido)
+                                </td>
+                                <td><b>@Html.LabelFor(model => model.Puesto.CodPuesto)</b></td>
+                                <td>
+                                    @Html.DisplayFor(model => model.Puesto.CodPuesto)
+                                    @Html.HiddenFor(model => model.Puesto.CodPuesto)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><b>@Html.LabelFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)</b></td>
+                                <td>
+                                    @Html.DisplayFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)
+                                    @Html.HiddenFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)
+                                </td>
+                                <td><b>@Html.LabelFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal)</b></td>
+                                <td>
+                                    @Html.DisplayFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal)
+                                    @Html.HiddenFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><b>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)</b></td>
+                                <td>
+                                    @Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                                    @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                                </td>
+                                <td><b>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)</b></td>
+                                <td>
+                                    @Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                                    @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                                </td>
+                                <td><b>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)</b></td>
+                                <td>
+                                    @Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                                    @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><b>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto)</b></td>
+                                <td>
+                                    @Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto)
+                                    @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto)
+                                </td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                    <!--Lugar de Trabajo-->
+                    <table class="table table-hover">
+                        <thead class="thead-light">
+                            <tr>
+                                <th colspan="6">Lugar de Trabajo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><b>@Html.LabelFor(model => model.UbicacionTrabajo.Distrito.Canton.Provincia)</b></td>
+                                <td>
+                                    @Model.UbicacionTrabajo.Distrito.Canton.Provincia.NomProvincia
+                                <td><b>@Html.LabelFor(model => model.UbicacionTrabajo.Distrito.Canton)</b></td>
+                                <td>
+                                    @Model.UbicacionTrabajo.Distrito.Canton.NomCanton
+                                </td>
+                                <td><b>@Html.LabelFor(model => model.UbicacionTrabajo.Distrito)</b></td>
+                                <td>
+                                    @Model.UbicacionTrabajo.Distrito.NomDistrito
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!--Lugar de Contrato-->
+                    <table class="table table-hover">
+                        <thead class="thead-light">
+                            <tr>
+                                <th colspan="6">Lugar de Contrato</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><b>@Html.LabelFor(model => model.UbicacionTrabajo.Distrito.Canton.Provincia)</b></td>
+                                <td>
+                                    @Model.UbicacionContrato.Distrito.Canton.Provincia.NomProvincia
+                                <td><b>@Html.LabelFor(model => model.UbicacionTrabajo.Distrito.Canton)</b></td>
+                                <td>
+                                    @Model.UbicacionContrato.Distrito.Canton.NomCanton
+                                </td>
+                                <td><b>@Html.LabelFor(model => model.UbicacionTrabajo.Distrito)</b></td>
+                                <td>
+                                    @Model.UbicacionContrato.Distrito.NomDistrito
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+                    <!--Detalles del Domicilio-->
+                    <table class="table table-hover">
+                        <thead class="thead-light">
+                            <tr>
+                                <th colspan="6">Detalles del Domicilio</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><b>@Html.LabelFor(model => model.UbicacionTrabajo.Distrito.Canton.Provincia)</b></td>
+                                <td>
+                                    @Model.Direccion.Distrito.Canton.Provincia.NomProvincia
+                                <td><b>@Html.LabelFor(model => model.UbicacionTrabajo.Distrito.Canton)</b></td>
+                                <td>
+                                    @Model.Direccion.Distrito.Canton.NomCanton
+                                </td>
+                                <td><b>@Html.LabelFor(model => model.UbicacionTrabajo.Distrito)</b></td>
+                                <td>
+                                    @Model.Direccion.Distrito.NomDistrito
+                                </td>
+                                <td>@Model.Direccion.DirExacta</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="tabs-2" class="tab-pane fade show active" role="tabpanel" aria-labelledby="tab2">
+                    <div class="card">
+                        @*<h5 class="card-header">Datos de la Incapacidad</h5>*@
+                        <div class="card-body">
+                            <div class="row">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="jumbotron">
+            @{
+                using (Ajax.BeginForm("CreateRegistroViaticoCorrido", new AjaxOptions
+                {
+                    HttpMethod = "POST",
+                    UpdateTargetId = "Div3",
+                    OnBegin = "BeginGuardarDesarraigo",
+                    OnComplete = "CompleteGuardarDesarraigo",
+                    OnSuccess = "SuccessGuardarDesarraigo",
+                    OnFailure = "SuccessGuardarDesarraigo"
+                }))
+                {
+                    Html.ValidationSummary(true);
+                     <!--Formulario de Viatico Corrido-->
+                    <div id="Div1">
+
+                        <div id="setForm">
+                           
+                            <!--Se mantienen los datos para no volver a hacer la busqueda-->
+                            @Html.HiddenFor(model => model.Funcionario.Nombre)
+                            @Html.HiddenFor(model => model.Funcionario.Cedula)
+                            @Html.HiddenFor(model => model.Funcionario.PrimerApellido)
+                            @Html.HiddenFor(model => model.Funcionario.SegundoApellido)
+                            @Html.HiddenFor(model => model.Funcionario.Nombre)
+                            @Html.HiddenFor(model => model.UbicacionTrabajo.Distrito.Canton.Provincia.NomProvincia)
+                            @Html.HiddenFor(model => model.UbicacionTrabajo.Distrito.Canton.NomCanton)
+                            @Html.HiddenFor(model => model.UbicacionTrabajo.Distrito.NomDistrito)
+                            @Html.HiddenFor(model => model.UbicacionContrato.Distrito.Canton.Provincia.NomProvincia)
+                            @Html.HiddenFor(model => model.UbicacionContrato.Distrito.Canton.NomCanton)
+                            @Html.HiddenFor(model => model.UbicacionContrato.Distrito.NomDistrito)
+                            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                            @Html.HiddenFor(model => model.Puesto.CodPuesto)
+                            @Html.HiddenFor(model => model.DetallePuesto.Clase.DesClase)
+                            @Html.HiddenFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)
+                            @Html.HiddenFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal)
+                            @Html.HiddenFor(model => model.ViaticoCorrido.DesSenasDTO)
+                            @Html.HiddenFor(model => model.ViaticoCorrido.CodigoViaticoCorrido)
+                            @Html.HiddenFor(model => model.ViaticoCorrido.NombramientoDTO)
+                            @Html.HiddenFor(model => model.ViaticoCorrido.NumTelDomicilioDTO)
+                            @*@Html.HiddenFor(model => model.ViaticoCorrido.HojaIndividualizadaDTO)*@
+                            @Html.ValidationMessageFor(model => model.ViaticoCorrido.NumTelDomicilioDTO)
+                            @Html.ValidationMessageFor(model => model.ViaticoCorrido.DesSenasDTO)
+                            @Html.ValidationMessageFor(model => model.DistritoSeleccion)
+                            @Html.ValidationMessageFor(model => model.Nombramiento.IdEntidad)
+                            @Html.ValidationMessageFor(model => model.Nombramiento.FecRige)
+                            @Html.ValidationMessageFor(model => model.Nombramiento.FecVence)
+                            @Html.ValidationMessageFor(model => model.Nombramiento.EstadoNombramiento.IdEntidad)
+                            @Html.ValidationMessageFor(model => model.Nombramiento.EstadoNombramiento.DesEstado)
+                            @Html.ValidationMessageFor(model => model.Direccion.Distrito.IdEntidad)
+                            @Html.ValidationMessageFor(model => model.Direccion.Distrito.NomDistrito)
+                            @Html.HiddenFor(model => model.Direccion.Distrito.IdEntidad)
+                            @Html.HiddenFor(model => model.Direccion.Distrito.NomDistrito)
+           
+                            <!--Almacena los datos de la lista de Facturas-->
+                            <div id="facturasData"></div>
+                            <!--Almacena los datos de la lista de Contratos-->
+                            <div id="contratosData"></div>
+
+                            <!--Tablas de los datos del desarraigo-->
+                            <form>
+                                
+                                <div class="card" style="margin-bottom:20px;">
+                                    <h5 class="card-header">Insertar Registro de Viático Corrido</h5>
+                                    <div class="card-body">
+                                        <center>
+                                            <div class="row">
+                                                <div class="col-3">
+                                                    <div class="form-group">
+                                                        <b>@Html.Label("Fecha del Viático Corrido")</b>
+                                                        <div class="start_date input-group mb-4">
+                                                            @Html.TextBoxFor(model => model.ViaticoCorrido.FecInicioDTO, new { @id = "FechaInicio", @class = "form-control start_date", @readonly = "readonly", @placeholder = "Fecha de Inicio" })
+                                                            @Html.ValidationMessageFor(model => model.ViaticoCorrido.FecInicioDTO)
+                                                        </div>
+                                                        <label hidden>@Model.Nombramiento.IdEntidad</label>
+                                                        <label hidden>@Model.Nombramiento.EstadoNombramiento.IdEntidad</label>
+                                                        @Html.HiddenFor(model => model.Nombramiento.IdEntidad)
+                                                        @Html.HiddenFor(model => model.Nombramiento.EstadoNombramiento)
+                                                        @Html.HiddenFor(model => model.Nombramiento.Funcionario)
+                                                        @Html.HiddenFor(model => model.Nombramiento.Puesto)
+                                                        @Html.HiddenFor(model => model.Nombramiento.FecRige)
+                                                        @Html.HiddenFor(model => model.Nombramiento.FecVence)
+                                                        @Html.ValidationMessageFor(model => model.Nombramiento.IdEntidad)
+                                                        @Html.ValidationMessageFor(model => model.Nombramiento.EstadoNombramiento.IdEntidad)
+                                                        @Html.ValidationMessageFor(model => model.Nombramiento.Funcionario.IdEntidad)
+                                                        @Html.ValidationMessageFor(model => model.Nombramiento.Puesto.IdEntidad)
+                                                        @Html.ValidationMessageFor(model => model.Nombramiento.FecRige)
+                                                        @Html.ValidationMessageFor(model => model.Nombramiento.FecVence)
+                                                    </div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="form-group">
+                                                        <div class="end_date input-group mb-4" id="fechaUno" hidden>
+                                                            <b><label>Fecha Final</label></b>
+                                                            @Html.TextBoxFor(model => model.ViaticoCorrido.FecFinDTO, new { @id = "FechaFin", @class = "form-control start_date", @readonly = "readonly", @placeholder = "Fecha de Finalización" })
+                                                            @Html.ValidationMessageFor(model => model.ViaticoCorrido.FecFinDTO)
+                                                        </div>
+
+                                                        @Html.HiddenFor(model => model.Nombramiento.EstadoNombramiento.DesEstado, new { @id = "EstadoN" })
+
+                                                        <div class="end_date input-group mb-4" hidden id="fechaDos">
+                                                            <label>La Fecha Límite es la siguiente: </label>
+                                                            <label>@Model.Nombramiento.FecVence.ToShortDateString()</label>
+                                                            @Html.ValidationMessageFor(model => model.Nombramiento.FecVence)
+                                                            @Html.HiddenFor(model => model.Fechalimite, new { @id = "fechal" })
+
+                                                            <div class="end_date input-group mb-4">
+                                                                @Html.TextBoxFor(model => model.ViaticoCorrido.FecFinDTO, new { @id = "FechaFinMax", @class = "form-control start_date", @readonly = "readonly", @placeholder = "Fecha de Finalización" })
+                                                                @Html.ValidationMessageFor(model => model.ViaticoCorrido.FecFinDTO)
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <label>Tipo de nombramiento</label>
+                                                    <b>@Model.Nombramiento.EstadoNombramiento.DesEstado</b>
+                                                    @if (Model.Nombramiento.EstadoNombramiento.DesEstado == "Propiedad")
+                                                    {
+                                                        <b hidden>@Model.Nombramiento.EstadoNombramiento.IdEntidad</b>
+                                                        @Html.ValidationMessageFor(model => model.Nombramiento.EstadoNombramiento.IdEntidad)
+                                                        @Html.ValidationMessageFor(model => model.Nombramiento.EstadoNombramiento.DesEstado)
+                                                        @Html.HiddenFor(model => model.Nombramiento.EstadoNombramiento.IdEntidad)
+                                                        @Html.HiddenFor(model => model.Nombramiento.EstadoNombramiento.DesEstado)
+                                                        @Html.HiddenFor(model => model.Nombramiento.IdEntidad, new { @id = "FecVenceNom", @class = "form-control start_date", @readonly = "readonly", @placeholder = "Fecha de Finalización", @value = @Model.Nombramiento.IdEntidad })
+                                                    }
+                                                    else if (Model.Nombramiento.EstadoNombramiento.DesEstado == "Nombramiento interino")
+                                                    {
+                                                        <label>Rige Desde</label>
+                                                        <b>@Model.Nombramiento.FecRige.ToShortDateString()</b>
+                                                        <label>Hasta</label>
+                                                        <b>@Model.Nombramiento.FecVence.ToShortDateString()</b>
+                                                    }
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="form-group">
+                                                        <b>@Html.LabelFor(model => model.NumCartaPresentacion)</b>
+                                                        @Html.TextBoxFor(model => model.NumCartaPresentacion, new { @class = "form-control" })
+                                                        @Html.ValidationMessageFor(model => model.NumCartaPresentacion)
+                                                    </div>
+                                                </div>
+                                            </div>             
+                                            <br />
+                                            <div class="row">
+                                                <div class="col-3">
+                                                    <label>¿Utiliza cabinas del MOPT u otros entes públicos o privados?</label>
+
+                                                    <select class="form-control custom-select-sm" name="FCabinas" required id="FCabinas">
+                                                        <option value="0"></option>
+                                                        <option value="1">Sí</option>
+                                                        <option value="2">No</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-7" id="TCabinas" hidden>
+                                                    <label>Si la respuesta fue "No"</label>
+                                                    <div class="form-group input-group mb-3">
+                                                        <label>Lugar del Pernocte</label>
+                                                        <div class="form-group input-group mb-3">
+                                                           @Html.TextBoxFor(model => model.ViaticoCorrido.PernocteDTO, new { @class = "form-control" })
+                                                           @Html.ValidationMessageFor(model => model.ViaticoCorrido.PernocteDTO)
+                                                        </div>
+                                                        <div class="form-group input-group mb-4">
+                                                            <label>Nombre de lugar de hospedaje</label> 
+                                                            @Html.TextBoxFor(model => model.ViaticoCorrido.HospedajeDTO, new { @class = "form-control" })
+                                                            @Html.ValidationMessageFor(model => model.ViaticoCorrido.HospedajeDTO)
+                                                        </div>
+                                                        <table class="table table-bordered">
+                                                            <thead class="thead-light">
+                                                                <tr><th colspan="3" class="encabezadoTabla">Detallar Lugar de Pernocte u Hospedaje</th></tr>
+                                                                <tr>
+                                                                    <th>Provincia</th>
+                                                                    <th>Cantón</th>
+                                                                    <th>Distrito</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>@Html.DropDownListFor(model => model.ProvinciaSeleccion, Model.Provincias, "Provincias", new { @id = "DropP", @class = "btn btn-secondary dropdown-toggle", @onchange = "ObtenerCantones(this.value)" })</td>
+                                                                    <td>@Html.DropDownListFor(model => model.CantonSeleccion, Model.Cantones, "Cantones", new { @id = "DropC", @class = "btn btn-secondary dropdown-toggle", @onchange = "ObtenerDistritos(this.value)" })</td>
+                                                                    <td>@Html.DropDownListFor(model => model.DistritoSeleccion, Model.Distritos, "Distritos", new { @id = "DropD", @class = "btn btn-secondary dropdown-toggle" })</td>
+                                                                    @Html.ValidationMessageFor(model => model.DistritoSeleccion)
+                                                                    @Html.HiddenFor(model => model.Dist.IdEntidad, new { @id = "IdD" })
+                                                                    @Html.ValidationMessageFor(model => model.Dist.IdEntidad)
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Otras Señas</th>
+                                                                    <td>@Html.TextBoxFor(model => model.ViaticoCorrido.DesSenasDTO, new { @class = "form-control" })</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Teléfono</th>
+                                                                    <td>@Html.TextBoxFor(model => model.ViaticoCorrido.NumTelDomicilioDTO, new { @class = "form-control" })</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <div class="row">
+                                                <div class="col-3">
+                                                    <b>@Html.LabelFor(model => model.ViaticoCorrido.MontViaticoCorridoDTO)</b>
+                                                    <input type="text" class="form-control" id="Monto" name="Monto" value="₡188 982,86"  readonly="readonly" style="text-align: right" />
+                                                    <input type="text" class = "form-control" id="montoreal" name="montoreal" value="188982.86" hidden="hidden"/>
+                                                </div>
+                                                <div class="col-3">
+                                                    <b>Total</b>
+                                                    <input type="text" class="form-control" id="montoTotal" name="montoTotal" readonly="readonly" align="right"/>
+                                                    @Html.TextBoxFor(model => model.ViaticoCorrido.MontViaticoCorridoDTO, new { @class = "form-control", @readonly = "readonly", @id = "MontoResultado", @name = "MontoResultado", @hidden = "hidden" })
+                                                    @Html.ValidationMessageFor(model => model.ViaticoCorrido.MontViaticoCorridoDTO)
+                                                </div>
+                                                @*<div class="col-4">
+                                                    @*<input class="btn btn-secondary" id="btnCalcularRetroactivo" type="button" value="Calcular Retroactivo" />*@
+
+                                                <!--</div>-->
+                                                <div class="col-3">
+                                                    <b>@Html.LabelFor(model => model.EstadoSeleccion)</b><br/>
+                                                    @Html.DropDownListFor(model => model.EstadoSeleccion, Model.Estado, "Seleccione un Estado", new { @name= "estados",@class = "btn btn-secondary dropdown-toggle" })
+                                                    @Html.ValidationMessageFor(model => model.EstadoSeleccion)
+                                                </div>
+                                                <div class="col-3">
+                                                    <b>@Html.Label("N° Informe")</b>
+                                                    @Html.TextBoxFor(model => model.ViaticoCorrido.CodigoViaticoCorrido, new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.ViaticoCorrido.CodigoViaticoCorrido)
+                                                    @Html.HiddenFor(model => model.ViaticoCorrido.CodigoViaticoCorrido)
+                                                </div>
+                                            </div>
+                                        </center>
+                                    </div>
+                                </div>
+                            </form>
+                            <div>
+                               
+                            </div>
+
+                            <!--Tabla Meses Anteriores-->
+                            <table class="table" id="tablaMAnteriores" style="margin-bottom:70px;">
+                                <thead class="table-active">
+                                    <tr class="table-active">
+                                        <th colspan="6" class="encabezadoTabla text-center">
+                                            Información Pago Meses Anteriores
+                                        </th>
+                                    </tr>
+                                    <tr class="table-active">
+                                        <th  class="encabezadoTablaEspecialRegistro text-left">Mes</th>
+                                        <th  class="encabezadoTablaEspecialRegistro text-left">Monto</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.ViaticoCorridoList)
+                                    {
+                                        if (item.HospedajeDTO != null)
+                                        {
+                                            <tr class="text-left">
+                                                <td>@item.HospedajeDTO</td>
+                                                <td>@item.MontViaticoCorridoDTO</td>
+                                            </tr>
+                                        }
+                                        else
+                                        {
+                                            <tr class="text-left">
+                                                <td>Cabinas Propiedad Ente Público</td>
+                                                <td>@String.Format("{0:#,##0.00}", Convert.ToDecimal(item.MontViaticoCorridoDTO))</td>
+                                            </tr>
+                                        }
+                                    }
+                                    <tr class="text-left">
+                                        <td><b>Total de Meses Anteriores</b></td>
+                                        <td id="totalMA"><b>@Html.Encode(Model.TotalMA.ToString("#,##0.00"))</b></td>
+                                    </tr>
+                            </tbody>
+                                @for (int i = 0; i < Model.ViaticoCorridoList.Count(); i++)
+                                {
+                                    @Html.HiddenFor(model => model.ViaticoCorridoList[i].IdEntidad)
+                                    @Html.HiddenFor(model => model.ViaticoCorridoList[i].NombramientoDTO)
+                                    @*@Html.HiddenFor(model => model.ViaticoCorridoList[i].HojaIndividualizadaDTO)*@
+                                    @Html.HiddenFor(model => model.ViaticoCorridoList[i].EstadoViaticoCorridoDTO)
+                                    @Html.HiddenFor(model => model.ViaticoCorridoList[i].MontViaticoCorridoDTO)
+                                    @Html.HiddenFor(model => model.ViaticoCorridoList[i].ObsViaticoCorridoDTO)
+                                    @Html.HiddenFor(model => model.ViaticoCorridoList[i].FecInicioDTO)
+                                    @Html.HiddenFor(model => model.ViaticoCorridoList[i].FecFinDTO)
+                                    @Html.HiddenFor(model => model.ViaticoCorridoList[i].DesSenasDTO)
+                                    @Html.HiddenFor(model => model.ViaticoCorridoList[i].NumTelDomicilioDTO)
+                                    @Html.HiddenFor(model => model.ViaticoCorridoList[i].NomDistritoDTO)
+                                    @Html.HiddenFor(model => model.ViaticoCorridoList[i].PernocteDTO)
+                                    @Html.HiddenFor(model => model.ViaticoCorridoList[i].HospedajeDTO)
+                                    @Html.ValidationMessageFor(model => model.ViaticoCorridoList[i].IdEntidad)
+                                    @Html.ValidationMessageFor(model => model.ViaticoCorridoList[i].NombramientoDTO)
+                                    @Html.ValidationMessageFor(model => model.ViaticoCorridoList[i].EstadoViaticoCorridoDTO)
+                                    @Html.ValidationMessageFor(model => model.ViaticoCorridoList[i].MontViaticoCorridoDTO)
+                                    @Html.ValidationMessageFor(model => model.ViaticoCorridoList[i].FecInicioDTO)
+                                    @Html.ValidationMessageFor(model => model.ViaticoCorridoList[i].FecFinDTO)
+                                    @Html.ValidationMessageFor(model => model.ViaticoCorridoList[i].DesSenasDTO)
+                                    @Html.ValidationMessageFor(model => model.ViaticoCorridoList[i].NumTelDomicilioDTO)
+                                    @Html.ValidationMessageFor(model => model.ViaticoCorridoList[i].NomDistritoDTO)
+                                    @Html.ValidationMessageFor(model => model.ViaticoCorridoList[i].PernocteDTO)
+                                    @Html.ValidationMessageFor(model => model.ViaticoCorridoList[i].HospedajeDTO)
+                                    @Html.ValidationMessageFor(model => model.ViaticoCorridoList[i].ObsViaticoCorridoDTO)
+                                }
+                            </table>
+                            <!--Tabla Facturas-->
+                            <table class="table" id="tablaFacturas" style="margin-bottom:70px;">
+                                <thead class="table-active">
+                                    <tr class="table-active">
+                                        <th colspan="6" class="encabezadoTabla">
+                                            Información Facturas
+                                            <div style="float:right;"><input class="btn btn-secondary " id="btnAgregarFactura" type="button" value="+ Agregar Factura" /></div>
+                                        </th>
+                                    </tr>
+                                    <tr class="table-active">
+                                        <th class="encabezadoTablaEspecialRegistro">Código de Factura</th>
+                                        <th class="encabezadoTablaEspecialRegistro">Monto de Factura</th>
+                                        <th class="encabezadoTablaEspecialRegistro">Fecha de Facturación</th>
+                                        <th class="encabezadoTablaEspecialRegistro">Emisor de la Factura</th>
+                                        <th class="encabezadoTablaEspecialRegistro">Concepto de la Factura</th>
+                                        <th class="encabezadoTablaEspecialRegistro"></th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                            <!--Tabla Contratos-->
+                            <div id="Dcontrato" hidden>
+                                <table class="table" id="tablaContratos" style="margin-bottom:70px;">
+                                    <thead class="table-active">
+                                        <tr class="table-active">
+                                            <th colspan="6" class="encabezadoTabla">
+                                                Información Contrato Arrendamiento
+                                                <div style="float:right;"><input class="btn btn-secondary" id="btnAgregarContrato" type="button" value="+ Agregar Contrato" /></div>
+                                            </th>
+                                        </tr>
+                                        <tr class="table-active">
+                                            <th class="encabezadoTablaEspecialRegistro">Código del Contrato</th>
+                                            <th class="encabezadoTablaEspecialRegistro">Monto del Contrato</th>
+                                            <th class="encabezadoTablaEspecialRegistro">Fecha de Inicio</th>
+                                            <th class="encabezadoTablaEspecialRegistro">Fecha de Vencimiento</th>
+                                            <th class="encabezadoTablaEspecialRegistro">Emisor del Contrato</th>
+                                            <th class="encabezadoTablaEspecialRegistro"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div> 
+                            <div class="card" style="margin-bottom:20px;">
+                                <h5 class="card-header">Observaciones</h5>
+                                <div class="card-body">
+                                    <center>
+                                        <div class="form-group">
+                                            <label for="comment">Comentarios:</label>
+                                            @Html.TextAreaFor(model => model.ViaticoCorrido.ObsViaticoCorridoDTO, new { @class = "form-control", @rows = "5", id = "comment" })
+                                            @Html.HiddenFor(model => model.ViaticoCorrido.ObsViaticoCorridoDTO)
+                                            @Html.ValidationMessageFor(model => model.ViaticoCorrido.ObsViaticoCorridoDTO)
+                                        </div>
+                                    </center>
+                                </div>
+                            </div>
+                                <div class="row">
+                                    <div class="col-2">
+                                        <input class="btn btn-info" id="btnGuardar" name="SubmitButton" type="submit" value="Registrar Viático Corrido" onclick="agregarFacturasContratos()" />
+
+                                    </div>
+                                    <div class="col-10">
+                                        <div id="preloader1" class="loader" hidden></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                    </div>
+                }
+                <!--Errores del formulario-->
+
+                <div id="Div3" style="margin-top:15px;">
+
+                </div>
+            }
+        </div>
+    }
+}

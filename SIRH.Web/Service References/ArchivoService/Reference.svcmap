@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="98ca5972-78d1-4692-b3d0-bd3100eed961" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://sisrh.mopt.go.cr:85/CArchivoService.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CArchivoService.xsd" MetadataType="Schema" ID="63931736-ac2e-4e63-a045-b6a24c529595" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CArchivoService.svc?xsd=xsd1" />
+    <MetadataFile FileName="CArchivoService1.xsd" MetadataType="Schema" ID="d70b3473-5465-40cb-b74b-fe607e5ae7e1" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CArchivoService.svc?xsd=xsd2" />
+    <MetadataFile FileName="CArchivoService2.xsd" MetadataType="Schema" ID="8bea7502-7fe3-4877-8aed-d7c2037a3f97" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CArchivoService.svc?xsd=xsd3" />
+    <MetadataFile FileName="CArchivoService3.xsd" MetadataType="Schema" ID="ef2857d6-afa1-4cb3-a28d-23049e70ecb5" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CArchivoService.svc?xsd=xsd0" />
+    <MetadataFile FileName="CArchivoService4.xsd" MetadataType="Schema" ID="445d4367-86de-4cbe-bb36-df7bcfcaaf63" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CArchivoService.svc?xsd=xsd4" />
+    <MetadataFile FileName="CArchivoService.wsdl" MetadataType="Wsdl" ID="ba8d26e3-4aa5-4ea7-9fee-f4be91f05208" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CArchivoService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

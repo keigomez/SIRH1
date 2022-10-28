@@ -1,0 +1,87 @@
+﻿@model SIRH.Web.ViewModels.CandidatoPuestoVM
+
+@{ 
+    if (Model.PedimentoPuesto != null)
+    {
+        Html.EnableClientValidation();
+        using (Ajax.BeginForm("AsignarCandidatoPedimento", "Vacantes", new AjaxOptions
+        {
+            UpdateTargetId = "dvResultadoBusqueda",
+            HttpMethod = "POST",
+            OnSuccess = "SuccessCargarFuncionario",
+            OnComplete = "CompleteCargarFuncionario",
+            OnBegin = "BeginCargarFuncionario"
+        }))
+        {
+            <table class="table table-hover">
+                <thead class="thead-light">
+                    <tr>
+                        <th colspan="6">Información del pedimento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>@Html.LabelFor(model => model.PedimentoPuesto.NumeroPedimento)</b></td>
+                        <td >@Html.DisplayFor(model => model.PedimentoPuesto.NumeroPedimento)</td>
+                        <td><b>@Html.LabelFor(model => model.PedimentoPuesto.FechaPedimento)</b></td>
+                        <td >@Model.PedimentoPuesto.FechaPedimento.ToShortDateString()</td>
+                        <td><b>@Html.LabelFor(model => model.PedimentoPuesto.ObservacionesPedimento)</b></td>
+                        <td >@Html.DisplayFor(model => model.PedimentoPuesto.ObservacionesPedimento)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            @Html.HiddenFor(model => model.PedimentoPuesto.NumeroPedimento)
+            @Html.HiddenFor(model => model.Puesto.CodPuesto)
+            @Html.HiddenFor(model => model.Funcionario.Cedula)
+
+            <table class="table table-hover">
+                <thead class="thead-light">
+                    <tr>
+                        <th colspan="6">Información del puesto</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>@Html.LabelFor(model => model.Puesto.CodPuesto)</b></td>
+                        <td >@Html.DisplayFor(model => model.Puesto.CodPuesto)</td>
+                        <td><b>@Html.LabelFor(model => model.DetallePuesto.Clase.DesClase)</b></td>
+                        <td >@Html.DisplayFor(model => model.DetallePuesto.Clase.DesClase)</td>
+                        <td><b>@Html.LabelFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)</b></td>
+                        <td >@Html.DisplayFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)</td>
+                    </tr>
+                    <tr>
+                        <td><b>@Html.LabelFor(model => model.Puesto.EstadoPuesto.DesEstadoPuesto)</b></td>
+                        <td >@Html.DisplayFor(model => model.Puesto.EstadoPuesto.DesEstadoPuesto)</td>
+                        <td><b>@Html.LabelFor(model => model.UbicacionAdministrativa.Division.NomDivision)</b></td>
+                        <td >@Html.DisplayFor(model => model.UbicacionAdministrativa.Division.NomDivision)</td>
+                        <td><b>@Html.LabelFor(model => model.UbicacionAdministrativa.DireccionGeneral.NomDireccion)</b></td>
+                        <td >@Html.DisplayFor(model => model.UbicacionAdministrativa.DireccionGeneral.NomDireccion)</td>
+
+                    </tr>
+                    <tr>
+                        <td><b>@Html.LabelFor(model => model.UbicacionAdministrativa.Departamento.NomDepartamento)</b></td>
+                        <td >@Html.DisplayFor(model => model.UbicacionAdministrativa.Departamento.NomDepartamento)</td>
+                        <td><b>@Html.LabelFor(model => model.UbicacionAdministrativa.Seccion.NomSeccion)</b></td>
+                        <td >@Html.DisplayFor(model => model.UbicacionAdministrativa.Seccion.NomSeccion)</td>
+                        <td><b>@Html.LabelFor(model => model.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto)</b></td>
+                        <td >@Html.DisplayFor(model => model.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="row">
+                <div class="form-group col-4">
+                    <input class="btn btn-secondary" id="btnGuardarContinuar" name="SubmitButton" type="submit" value="Asignar" />
+                    
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-4">
+                    <div id="preloader" class="loader" hidden></div>
+                </div>
+            </div>
+        }
+    }
+}

@@ -1,0 +1,44 @@
+<publishData>
+  <publishTarget publishUrl="C:\Users\dguiltrc\Desktop\SIRHWS\">
+    <file relUrl="SIRH.Servicios.CServiciosGeneralesService.svc" publishTime="07/22/2020 10:50:16" />
+    <file relUrl="bin/SIRH.DatosMarcasReloj.pdb" publishTime="07/22/2020 10:29:08" />
+    <file relUrl="SIRH.Servicios.CBorradorAccionPersonalService.svc" publishTime="07/22/2020 10:50:16" />
+    <file relUrl="bin/SIRH.DatosMarcasReloj.dll" publishTime="07/22/2020 10:29:08" />
+    <file relUrl="SIRH.Servicios.CDesarraigoService.svc" publishTime="07/22/2020 10:50:16" />
+    <file relUrl="SIRH.Servicios.CPlanillaService.svc" publishTime="07/22/2020 10:50:16" />
+    <file relUrl="SIRH.Servicios.CComponentePresupuestarioService.svc" publishTime="07/22/2020 10:50:16" />
+    <file relUrl="SIRH.Servicios.CPagoFeriadoService.svc" publishTime="07/22/2020 10:50:16" />
+    <file relUrl="obj\Debug/SIRH.Servicios.csproj.FileListAbsolute.txt" publishTime="07/22/2020 10:29:10" />
+    <file relUrl="bin/SIRH.Servicios.dll" publishTime="07/22/2020 10:29:10" />
+    <file relUrl="SIRH.Servicios.CPerfilUsuarioService.svc" publishTime="07/22/2020 10:50:16" />
+    <file relUrl="SIRH.Servicios.CEntidadMedicaService.svc" publishTime="07/22/2020 10:50:16" />
+    <file relUrl="SIRH.Servicios.CRegistroTEService.svc" publishTime="07/22/2020 10:50:16" />
+    <file relUrl="SIRH.Servicios.CTipoAccionPersonalService.svc" publishTime="07/22/2020 10:50:16" />
+    <file relUrl="SIRH.Servicios.CFuncionarioService.svc" publishTime="07/22/2020 10:50:16" />
+    <file relUrl="SIRH.Servicios.CCalificacionService.svc" publishTime="07/22/2020 10:50:16" />
+    <file relUrl="SIRH.Servicios.CMarcacionService.svc" publishTime="07/22/2020 10:50:16" />
+    <file relUrl="SIRH.Servicios.CVacacionesService.svc" publishTime="07/22/2020 10:50:16" />
+    <file relUrl="SIRH.Servicios.CPuestoService.svc" publishTime="07/22/2020 10:50:16" />
+    <file relUrl="SIRH.Servicios.CFormacionAcademicaService.svc" publishTime="07/22/2020 10:50:16" />
+    <file relUrl="bin/EntityFramework.xml" publishTime="11/23/2018 14:32:22" />
+    <file relUrl="bin/SIRH.DTO.pdb" publishTime="07/22/2020 10:29:05" />
+    <file relUrl="SIRH.Servicios.CEstadoBorradorService.svc" publishTime="07/22/2020 10:50:16" />
+    <file relUrl="bin/SIRH.Logica.pdb" publishTime="07/22/2020 10:29:09" />
+    <file relUrl="bin/SIRH.Datos.dll" publishTime="07/22/2020 10:29:08" />
+    <file relUrl="SIRH.Servicios.CTipoIncapacidadService.svc" publishTime="07/22/2020 10:50:16" />
+    <file relUrl="bin/SIRH.Servicios.pdb" publishTime="07/22/2020 10:29:10" />
+    <file relUrl="bin/SIRH.Servicios.dll.config" publishTime="07/22/2020 10:28:45" />
+    <file relUrl="SIRH.Servicios.CNombramientoService.svc" publishTime="07/22/2020 10:50:16" />
+    <file relUrl="SIRH.Servicios.CViaticoCorridoGastoTransporteService.svc" publishTime="07/22/2020 10:50:16" />
+    <file relUrl="bin/SIRH.Datos.pdb" publishTime="07/22/2020 10:29:08" />
+    <file relUrl="SIRH.Servicios.CCaucionesService.svc" publishTime="07/22/2020 10:50:16" />
+    <file relUrl="SIRH.Servicios.CAccionPersonalService.svc" publishTime="07/22/2020 10:50:16" />
+    <file relUrl="Web.config" publishTime="07/22/2020 10:28:45" />
+    <file relUrl="bin/SIRH.Logica.dll" publishTime="07/22/2020 10:29:09" />
+    <file relUrl="SIRH.Servicios.CTipoJornadaService.svc" publishTime="07/22/2020 10:50:16" />
+    <file relUrl="bin/EntityFramework.dll" publishTime="11/23/2018 14:32:22" />
+    <file relUrl="bin/SIRH.DTO.dll" publishTime="07/22/2020 10:29:05" />
+    <file relUrl="SIRH.Servicios.CRegistroIncapacidadService.svc" publishTime="07/22/2020 10:50:16" />
+    <file relUrl="SIRH.Servicios.CArchivoService.svc" publishTime="07/22/2020 10:50:16" />
+  </publishTarget>
+</publishData>

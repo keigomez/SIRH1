@@ -1,0 +1,212 @@
+﻿@model SIRH.Web.ViewModels.FormularioCalificacionVM
+@{
+    ViewBag.Title = "Calificar";
+    Layout = "~/Views/Shared/Calificacion.cshtml";
+}
+
+<div id="formularioC" class="jumbotron">
+    <center>
+        <h4 class="display-4">FORMULARIO PARA LA EVALUACIÓN DEL DESEMPEÑO</h4>
+        <h4 class="display-5">MINISTERIO DE OBRAS PÚBLICAS Y TRANSPORTES</h4>
+        <br />
+        <div class="card">
+            <div class="card-header text-left">
+                <strong>Parámetros de Formulario</strong>
+            </div>
+            @using (Ajax.BeginForm("Calificar", "Calificacion", new AjaxOptions { UpdateTargetId = "detalle", HttpMethod = "POST" }))
+            {
+                <div class="card-body">
+
+                    <div class="form-group row">
+                        <label for="ced" class="col-sm-3 col-form-label">Funcionario a Evaluar:</label>
+                        <div class="col-sm-6">
+                            <input type="text" name="cedula" value="" id="cedula" hidden="hidden" class="form-control" oninput="check_text(this);" placeholder="Cédula" pattern="[0-9]{10}" />
+                            @Html.DropDownListFor(model => model.FuncionarioSeleccionado, Model.Funcionarios, "Seleccionar Funcionario", new { @id = "idFuncionario", @class = "btn btn-secondary dropdown-toggle form-control", @onchange = "MostrarDatos(this.value)" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label id="lbl_formulario" class="col-sm-3 col-form-label" name="lbl_formulario" hidden>Seleccione Formulario <i class="fa fa-arrow-right"></i></label>
+                        <div class="col-sm-6">
+                            <select class="form-control custom-select-sm float-right" name="Fpregunta" onchange="MostrarListaClaseFormulario();" required id="Fpregunta" hidden>
+                                <option value="0"></option>
+                                <option value="1">FED-1 GRUPO LABORAL A: JEFATURAS</option>
+                                <option value="2">FED-2 GRUPO LABORAL B: PROFESIONAL</option>
+                                <option value="3">FED-3 GRUPO LABORAL C: TÉCNICO</option>
+                                <option value="4">FED-4 GRUPO LABORAL D: CALIFICADO</option>
+                                <option value="5">FED-5 GRUPO LABORAL E: OPERATIVO</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button id="CargarC" type="submit" class="btn btn-primary float-right" name="SubmitButton" value="CargarC" hidden>Cargar Formulario</button>
+                    <div id="preloader" name="preloader" class="loader" hidden></div>
+                    <br />
+                </div>
+            }
+
+            <div class="card" id="ListaClase">
+                <div class="card-body">
+                    <div class="card-header text-left">
+                        <strong>Listado de clases</strong>
+                    </div>
+                    <div class="card-body" id="ListaClase1" hidden="hidden">
+                        JEFATURAS
+                        <div class="form-group row">
+                            <div class="col-sm-4">Gerente de Servicio Civil</div>
+                            <div class="col-sm-4">Presidente del Tribunal Administrativo de Transporte.</div>
+                            <div class="col-sm-4">Presidente del Tribunal Fiscal Administrativo</div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-4">Profesional Jefe de Servicio Civil</div>
+                            <div class="col-sm-4">Profesional Jefe en Informática (G. de E.)</div>
+                            <div class="col-sm-4">Profesional Bachiller Jefe</div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-4">Médico Jefe</div>
+                            <div class="col-sm-4">Jefe de Artes Gráficas (G.de E.)</div>
+                            <div class="col-sm-4"></div>
+                        </div>
+                        <div class="form-group row">
+                            INCLUYE EMPLEOS CON RESPONSABILIDAD DE LÍNEA, es decir con supervisión de personal o lo que es lo mismo con personal a cargo,  EN LOS ESTRATOS OPERATIVO, CALIFICADO, TÉCNICO, PROFESIONAL, es decir, en todos los niveles y clasificaciones. De conformidad con lo establecido en la Resolución DG-304-2009 del 23 de octubre del año 2009, emitida por la Dirección General de Servicio Civil.
+                        </div>
+                    </div>
+                    <div class="card-body" id="ListaClase2" hidden="hidden">
+                        <div class="form-group row">
+                            <div class="col-sm-5">Jefe Administrativo Financiero del Tribunal Administrativo de Transportes</div>
+                            <div class="col-sm-4">Auditor Supervisor del Tribunal Fiscal Administrativo</div>
+                            <div class="col-sm-3">Profesional Jefe de Servicio Civil</div>         
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-5">Asistente Administrativo de Tribunal Administrativo de Transportes</div>
+                            <div class="col-sm-4">Auditor de Tribunal Fiscal Administrativo</div>
+                            <div class="col-sm-3">Profesional de Servicio Civil (G.de E.)</div>       
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-5">Miembro del Tribunal Administrativo de Transporte</div>
+                            <div class="col-sm-4">Miembro del Tribunal Fiscal Administrativo</div>
+                            <div class="col-sm-3">Profesional Jefe en Informática (G. de E.)</div>                   
+                        </div>            
+                        <div class="form-group row">
+                            <div class="col-sm-5">Abogado Instructor del Tribunal Administrativo de Transporte</div>
+                            <div class="col-sm-4">Abogado (a) Instructor del Tribunal Fiscal Administrativo</div>
+                            <div class="col-sm-3">Profesional en Informática (G.de E.)</div>   
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-5">Abogado Asistente de Tribunal Administrativo de Transporte</div>
+                            <div class="col-sm-4">Abogado Asistente del Tribunal Fiscal Administrativo</div>
+                            <div class="col-sm-3">Profesional Bachiller Jefe</div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-5">Médico Asistente General</div>
+                            <div class="col-sm-4">Enfermera (o)</div>
+                            <div class="col-sm-3">Odontólogo (a)</div>                           
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-5">Psicólogo (a) Clínico</div>
+                            <div class="col-sm-4">Formador para el Trabajo</div>
+                            <div class="col-sm-3"></div>
+                        </div>   
+                    </div>
+                    <div class="card-body" id="ListaClase3" hidden="hidden">
+                        TÉCNICO
+                        <div class="form-group row">
+                            <div class="col-sm-3">Secretario de Servicio Civil</div>
+                            <div class="col-sm-3">Técnico de Servicio Civil (G. de E.)</div>
+                            <div class="col-sm-3">Asistente de Salud de Servicio Civil (G. de E.)</div>
+                            <div class="col-sm-3">Técnico en Informática</div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-3">Operador de Computador</div>
+                            <div class="col-sm-3">Programador de Computador</div>
+                            <div class="col-sm-3">Auxiliar de Enfermería</div>
+                        </div> 
+                    </div>
+                    <div class="card-body" id="ListaClase4" hidden="hidden">
+                        CALIFICADO
+                        <div class="form-group row">
+                            <div class="col-sm-4">Jefe de Artes Gráficas (G.de E.)</div>
+                            <div class="col-sm-4">Oficinista Tribunal Administrativo de Transportes</div>
+                            <div class="col-sm-4">Trabajador Calificado de Servicio Civil (G. de E.) </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-4">Trabajador de Artes Gráficas 3 (G. de E.)</div>
+                            <div class="col-sm-4">Auxiliar de Tribunal Administrativo de Transportes</div>
+                            <div class="col-sm-4">Oficinista de Servicio Civil (G. de E.)</div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-4">Trabajador de Artes Gráficas 4 (G. de E.)</div>
+                            <div class="col-sm-4">Notificador de Tribunal Administrativo de Transportes</div>
+                            <div class="col-sm-4">Auxiliar de Tribunal Fiscal Administrativo</div>  
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-4">Trabajador de Artes Gráficas 5 (G. de E.)</div>
+                            <div class="col-sm-4">Administrador (G. de E.)</div>
+                            <div class="col-sm-4"></div>
+                        </div>
+                    </div>
+                    <div class="card-body" id="ListaClase5" hidden="hidden">
+                        OPERATIVO
+                        <div class="form-group row">
+                            <div class="col-sm-3">Trabajador de Artes Gráficas 1 (G. de E.)</div>
+                            <div class="col-sm-3">Misceláneo de Servicio Civil (G. de E.)</div>
+                            <div class="col-sm-3">Oficial de Seguridad de Servicio Civil</div>
+                            <div class="col-sm-3">Conductor de Servicio Civil</div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-3">Trabajador de Artes Gráficas 2 (G. de E.)</div>
+                            <div class="col-sm-3">Chofer Tribunal Administrativo de Transportes</div>
+                            <div class="col-sm-3">Operador de Maquinaria de Servicio Civil</div> 
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+     </center>
+</div>
+
+<div id="detalle">
+</div>
+
+<div class="modal fade" id="mostrar-mensaje" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Mensaje</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="idMensaje">Debe incluir la información de Justificaciones, Capacitación y demás Observaciones</div>
+            </div>
+            <div class="modal-footer">
+                <button id="CacelarCalculoPopUp" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*<div class="modal fade" id="buscar-jefe" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Búsqueda por Jefatura</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @{Html.RenderPartial("~/Views/Calificacion/FuncionarioDetalle.cshtml"); }
+            </div>
+            <div class="modal-footer">
+                <button id="CacelarCalculoPopUp" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>*@
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+<script src="~/scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/FuncionesCalificacion.js"></script>

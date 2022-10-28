@@ -1,0 +1,136 @@
+﻿@model SIRH.Web.ViewModels.PerfilBasicoFuncionarioVM
+@{ 
+    if (Model != null)
+    {
+        using (Ajax.BeginForm("RegistrarCandidato","Vacantes",null, new AjaxOptions
+        {
+            HttpMethod = "POST",
+            UpdateTargetId = "resultado",
+            OnBegin = "BeginGuardarCandidato",
+            OnComplete = "CompleteGuardarCandidato",
+            OnSuccess = "SuccessGuardarCandidato",
+            OnFailure = "SuccessGuardarCandidato"
+        }, new { @id = "thisform" }))
+        {
+            Html.ValidationSummary(true);
+             <div id="formulario">
+                 @if (Model.MensajeTSE != null)
+                 {
+                    <div class="alert alert-primary" role="alert">
+                       @Model.MensajeTSE.
+                    </div>
+                 }
+                                 
+                <div class="alert alert-primary" role="alert">
+                @Model.MensajePoderJudicial.
+                </div>
+                 <ul class="nav nav-tabs" id="myTab" role="tablist">
+                     <li class="nav-item">
+                         <a class="nav-link active" id="info-tab" data-toggle="tab" href="#info" role="tab" aria-controls="info" aria-selected="true">Información General</a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link" id="campos-tab" data-toggle="tab" href="#campos" role="tab" aria-controls="campos" aria-selected="false">Campos por completar</a>
+                     </li>
+
+                 </ul>
+                 <div class="tab-content" id="myTabContent">
+                     <div class="tab-pane fade show active" id="info" role="tabpanel" aria-labelledby="info-tab">
+                         <div>
+                             <table class="table table-hover">
+                                 <thead class="thead-light">
+                                     <tr>
+                                         <th colspan="6">Información del oferente</th>
+                                     </tr>
+                                 </thead>
+                                 <tbody>
+                                     <tr>
+                                         <td><b>@Html.LabelFor(model => model.Funcionario.Cedula)</b></td>
+                                         <td>@Html.DisplayFor(model => model.Funcionario.Cedula)</td>
+                                         <td><b>@Html.LabelFor(model => model.Funcionario.Nombre)</b></td>
+                                         <td>@Model.Funcionario.Nombre @Model.Funcionario.PrimerApellido @Model.Funcionario.SegundoApellido</td>
+                                         <td><b>@Html.LabelFor(model => model.Funcionario.Sexo)</b></td>
+                                         <td>@Html.DisplayFor(model => model.Funcionario.Sexo)</td>
+                                     </tr>
+                                     <tr>
+                                         <td><b>@Html.LabelFor(model => model.Funcionario.FechaNacimiento)</b></td>
+                                         <td>@Html.DisplayFor(model => model.Funcionario.FechaNacimiento)</td>
+                                         <td><b>Edad</b></td>
+                                         <td>@Html.DisplayFor(model => model.Edad)</td>
+                                         <td><b>@Html.LabelFor(model => model.EstadoCivil.CatEstadoCivil.DesEstadoCivil)</b></td>
+                                         <td>@Html.DisplayFor(model => model.EstadoCivil.CatEstadoCivil.DesEstadoCivil)</td>
+                                     </tr>
+                                 </tbody>
+                             </table>
+                             @Html.HiddenFor(model => model.Funcionario.Cedula)
+                             @Html.HiddenFor(model => model.Funcionario.Nombre)
+                             @Html.HiddenFor(model => model.Funcionario.PrimerApellido)
+                             @Html.HiddenFor(model => model.Funcionario.SegundoApellido)
+                             @Html.HiddenFor(model => model.Funcionario.Sexo)
+                             @Html.HiddenFor(model => model.Funcionario.FechaNacimiento)
+                             @Html.HiddenFor(model => model.EstadoCivil.CatEstadoCivil.DesEstadoCivil)
+                             @Html.HiddenFor(model => model.MensajeTSE)
+                         </div>
+
+                     </div>
+                     <div class="tab-pane fade" id="campos" role="tabpanel" aria-labelledby="campos-tab">
+                         <div class="card">
+                             <h5 class="card-header">Información de contacto</h5>
+                             <div class="card-body">
+                                 <div class="row">
+                                     @for (int i = 0; i < Model.TiposContacto.Count; i++)
+                                     {
+                                         if (i % 2 != 0)
+                                         {
+                                            <div class="form-group col-4">
+                                                @Html.DisplayFor(model => model.TiposContacto[i].DesTipoContacto)
+                                               
+                                                <span>:</span>
+                                                @Html.TextBoxFor(model => model.DatosContacto[i].DesContenido, new { @class = "form-control" })
+                                            </div>
+                                         }else
+                                         {
+                                             @:</div>
+                                             @:<div class="row">
+                                                <div class="form-group col-4">
+                                                    @Html.DisplayFor(model => model.TiposContacto[i].DesTipoContacto)
+                                                    
+                                                    <span>:</span>
+                                                    @Html.TextBoxFor(model => model.DatosContacto[i].DesContenido, new { @class = "form-control" })
+                                                </div>
+                                         }
+
+                                        @Html.HiddenFor(model => model.TiposContacto[i].DesTipoContacto)
+
+                                     }
+                                </div>
+
+                                 <div class="row">
+                                     <div class="form-group col-4">
+                                         <input class="btn btn-secondary" id="btnGuardar" name="SubmitButton" type="submit" value="Guardar" />
+                                     </div>
+                                 </div>
+                                 <div class="row">
+                                     <div class="form-group col-4">
+                                         <input class="btn btn-secondary" id="btnGuardarContinuar" name="SubmitButton" type="submit" value="Guardar y Continuar" />
+                                     </div>
+                                 </div>
+                                 <div class="row">
+                                     <div class="form-group col-4">
+                                         <input class="btn btn-secondary" id="btnSiguiente" name="SubmitButton" type="submit" value="Siguiente" onclick="$('#thisform').attr('data-ajax-update','#dvResultadoBusqueda');" />
+                                     </div>
+                                 </div>
+                                 <div class="row">
+                                     <div id="progressbarGuardar" class="loader" hidden></div>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+
+                 </div>
+                 
+             </div>
+        }
+    }
+}
+
+<div id="resultado"></div>

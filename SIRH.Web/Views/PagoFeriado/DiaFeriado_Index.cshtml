@@ -1,0 +1,41 @@
+﻿@model SIRH.Web.ViewModels.FormularioPagoFeriadoVM
+
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="modalFeriadoLabel">Catálogo de días feriados:</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">@Html.LabelFor(model => model.CatalogoDiaAuxiliar.Dia)</th>
+                        <th scope="col">@Html.LabelFor(model => model.CatalogoDiaAuxiliar.Mes)</th>
+                        <th scope="col">@Html.LabelFor(model => model.CatalogoDiaAuxiliar.DescripcionDia)</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var dia in Model.CatalogoDiaFeriado)
+                    {
+                        <tr>
+                            @if (dia.Dia == "00")
+                            {
+                                <td></td>
+                            }
+                            else {
+                                <td>@dia.Dia</td>
+                            }
+                            <td>@dia.Mes</td>
+                            <td>@dia.DescripcionDia</td>
+                            <td><button id ="@dia.IdEntidad" class="btn btn-primary" onclick = 'return CargarDatoF("@dia.DescripcionDia", "@dia.IdEntidad");'>Agregar</button></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

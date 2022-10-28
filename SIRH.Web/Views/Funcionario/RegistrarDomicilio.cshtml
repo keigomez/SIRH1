@@ -1,0 +1,126 @@
+﻿@model SIRH.Web.ViewModels.DireccionFuncionarioVM
+@{
+    ViewBag.Title = "Registrar Domicilio";
+    Layout = "~/Views/Shared/Vacantes.cshtml";
+}
+
+<h2>Registrar Domicilio</h2>
+@{
+    if (Model.Error == null)
+    {
+        if (Request.QueryString["accion"] == "guardar")
+        {
+            <div class="success">
+                El oferente se ha guardado correctamente.
+            </div>
+        }
+        else
+        {
+            if (Request.QueryString["accion"] == "modificar")
+            {
+                <div class="success">
+                    El oferente se ha guardado correctamente.
+                </div>
+            }
+        }
+        using (Ajax.BeginForm("RegistrarDomicilio", new AjaxOptions
+        {
+            HttpMethod = "POST",
+            UpdateTargetId = "formulario",
+            OnBegin = "BeginGuardarCandidato",
+            OnComplete = "CompleteGuardarCandidato",
+            OnSuccess = "SuccessGuardarCandidato",
+            OnFailure = "SuccessGuardarCandidato"
+        }))
+        {
+            <div id="formulario" class="jumbotron">
+                <table class="table" id="datos_funcionario">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th colspan="6">Información del oferente</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><b>@Html.LabelFor(model => model.Funcionario.Cedula)</b></td>
+                            <td class="columna_info">@Html.DisplayFor(model => model.Funcionario.Cedula)</td>
+                            @Html.HiddenFor(model => model.Funcionario.Cedula)
+                            <td><b>@Html.LabelFor(model => model.Funcionario.Nombre)</b></td>
+                            <td class="columna_info">@Model.Funcionario.Nombre + " " + Model.Funcionario.PrimerApellido + " " + Model.Funcionario.SegundoApellido</td>
+                            <td><b>@Html.LabelFor(model => model.Funcionario.Sexo)</b></td>
+                            <td class="columna_info">@Html.DisplayFor(model => model.Funcionario.Sexo)</td>
+                        </tr>
+                        <tr>
+                            <td><b>@Html.LabelFor(model => model.Funcionario.FechaNacimiento)</b></td>
+                            <td class="columna_info">@Html.DisplayFor(model => model.Funcionario.FechaNacimiento)</td>
+                            <td><b>Edad</b></td>
+                            <td class="columna_info">@Html.DisplayFor(model => model.Edad)</td>
+                            <td><b>@Html.LabelFor(model => model.EstadoCivil.CatEstadoCivil.DesEstadoCivil)</b></td>
+                            <td class="columna_info">@Html.DisplayFor(model => model.EstadoCivil.CatEstadoCivil.DesEstadoCivil)</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table id="datos_direccion" class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th colspan="6">Direccion física del candidato</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><b>@Html.LabelFor(model => model.Provincias)</b></td>
+                            <td class="columna_info">@Html.DropDownListFor(model => model.ProvinciaSeleccionada, Model.Provincias)</td>
+                            <td><b>@Html.LabelFor(model => model.Cantones)%></b></td>
+                            <td class="columna_info">@Html.DropDownListFor(model => model.CantonSeleccionado, Model.Cantones, "Seleccionar...")</td>
+                            <td><b>@Html.LabelFor(model => model.Distritos)</b></td>
+                            <td class="columna_info">@Html.DropDownListFor(model => model.DistritoSeleccionado, Model.Distritos, "Seleccionar...")</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">@Html.LabelFor(model => model.Direccion.DirExacta)</td>
+                            <td colspan="3" class="columna_info">@Html.TextAreaFor(model => model.Direccion.DirExacta, new { @class = "justificacionTA" })</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="enviar">
+                    <tr>
+                        <td>
+                            <input class="btn btn-secondary" id="btnGuardar" name="SubmitButton" type="submit" value="Guardar" />
+                            <div id="preloader" class="loader" hidden></div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="error">
+            El oferente no se pudo guardar.
+        </div>
+
+        <fieldset>
+            <legend>Detalles</legend>
+
+            <div>Se produjo el siguiente error: </div>
+            <br /><div><b>@Html.Encode(Model.Error.MensajeError)</b></div>
+            <br /><div>Si conoce la causa de este error, por favor revise los datos que intentó almacenar e intentelo de nuevo.</div>
+            <br /><div>De lo contrario le invitamos a ponerse en contacto con nuestro equipo de soporte, mediante el sistema de <a href="http://sisrh.mopt.go.cr:83/" target="_blank">Ayuda y Soporte</a></div>
+        </fieldset>
+        <br />
+        <p>
+            <div class="link_return">
+                <a href="javascript:history.back()" id="A2">Regresar</a>
+            </div>
+        </p>
+    }
+}
+
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+<script src="~/Scripts/funciones-generales.js" type="text/javascript"></script>
+<script src="~/Scripts/sidebar.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/IndexFuncionario.js" type="text/javascript"></script>
+<script src="~/scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/FormularioPerfilFuncionario.js" type="text/javascript"></script>

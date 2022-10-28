@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://sisrh.mopt.go.cr:85/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:i0="http://sisrh.mopt.go.cr:85" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="CServiciosGeneralesService" targetNamespace="http://sisrh.mopt.go.cr:85/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:import namespace="http://sisrh.mopt.go.cr:85" location="http://sisrh.mopt.go.cr:85/CServiciosGeneralesService.svc?wsdl=wsdl0" />
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://sisrh.mopt.go.cr:85/Imports">
+      <xsd:import schemaLocation="http://sisrh.mopt.go.cr:85/CServiciosGeneralesService.svc?xsd=xsd0" namespace="http://sisrh.mopt.go.cr:85/" />
+      <xsd:import schemaLocation="http://sisrh.mopt.go.cr:85/CServiciosGeneralesService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://sisrh.mopt.go.cr:85/CServiciosGeneralesService.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://sisrh.mopt.go.cr:85/CServiciosGeneralesService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/SIRH.DTO" />
+      <xsd:import schemaLocation="http://sisrh.mopt.go.cr:85/CServiciosGeneralesService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ICServiciosGeneralesService_ConsultaFuncionario_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaFuncionario" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_ConsultaFuncionario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaFuncionarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_ConsultaFuncionarioClase_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaFuncionarioClase" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_ConsultaFuncionarioClase_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaFuncionarioClaseResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_ConsultaFuncionarioPolicial_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaFuncionarioPolicial" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_ConsultaFuncionarioPolicial_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaFuncionarioPolicialResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_ConsultaFuncionarioPolicialCedula_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaFuncionarioPolicialCedula" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_ConsultaFuncionarioPolicialCedula_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaFuncionarioPolicialCedulaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_ConsultaFuncionarioNombre_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaFuncionarioNombre" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_ConsultaFuncionarioNombre_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaFuncionarioNombreResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_ConsultaFuncionariosDireccion_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaFuncionariosDireccion" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_ConsultaFuncionariosDireccion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaFuncionariosDireccionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_ConsultaFuncionariosOcupacionReal_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaFuncionariosOcupacionReal" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_ConsultaFuncionariosOcupacionReal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaFuncionariosOcupacionRealResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_ConsultaJefaturaDependencia_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaJefaturaDependencia" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_ConsultaJefaturaDependencia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaJefaturaDependenciaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_ConsultaExFuncionarios_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaExFuncionarios" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_ConsultaExFuncionarios_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaExFuncionariosResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_ConsultaFuncionarioCalificaciones_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaFuncionarioCalificaciones" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_ConsultaFuncionarioCalificaciones_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaFuncionarioCalificacionesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_ConsultaFuncionarioAccionPersonal_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaFuncionarioAccionPersonal" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_ConsultaFuncionarioAccionPersonal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaFuncionarioAccionPersonalResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_ConsultaFuncionarioPermisoSinSalario_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaFuncionarioPermisoSinSalario" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_ConsultaFuncionarioPermisoSinSalario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaFuncionarioPermisoSinSalarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_ConsultaFuncionarioPermisoVacaciones_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaFuncionarioPermisoVacaciones" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_ConsultaFuncionarioPermisoVacaciones_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaFuncionarioPermisoVacacionesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_ConsultaViaticoCorrido_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaViaticoCorrido" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_ConsultaViaticoCorrido_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaViaticoCorridoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_ActualizarViaticoCorrido_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarViaticoCorrido" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_ActualizarViaticoCorrido_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarViaticoCorridoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_ConsultaVacaciones_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaVacaciones" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_ConsultaVacaciones_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaVacacionesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_ConsultaSaldoVacaciones_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaSaldoVacaciones" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_ConsultaSaldoVacaciones_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaSaldoVacacionesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_ListarFuncionariosActivos_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarFuncionariosActivos" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_ListarFuncionariosActivos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarFuncionariosActivosResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_ListarFuncionariosTotal_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarFuncionariosTotal" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_ListarFuncionariosTotal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarFuncionariosTotalResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_ConsultaFuncionarioPago_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaFuncionarioPago" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_ConsultaFuncionarioPago_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaFuncionarioPagoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_ConsultaFuncionarioPuntosCarrera_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaFuncionarioPuntosCarrera" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_ConsultaFuncionarioPuntosCarrera_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaFuncionarioPuntosCarreraResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_SaldosVacacionesFraccionamiento_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaldosVacacionesFraccionamiento" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_SaldosVacacionesFraccionamiento_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaldosVacacionesFraccionamientoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_GuardarRegistroVacaciones_InputMessage">
+    <wsdl:part name="parameters" element="tns:GuardarRegistroVacaciones" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_GuardarRegistroVacaciones_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GuardarRegistroVacacionesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_RegistrarPeriodoVacaciones_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarPeriodoVacaciones" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_RegistrarPeriodoVacaciones_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarPeriodoVacacionesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_RegistrarReintegroVacaciones_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarReintegroVacaciones" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_RegistrarReintegroVacaciones_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarReintegroVacacionesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_ConsultaEstadoVacaciones_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaEstadoVacaciones" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_ConsultaEstadoVacaciones_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaEstadoVacacionesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_GuardarEnvioCorreos_InputMessage">
+    <wsdl:part name="parameters" element="tns:GuardarEnvioCorreos" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_GuardarEnvioCorreos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GuardarEnvioCorreosResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_VerificarCorreosEnviados_InputMessage">
+    <wsdl:part name="parameters" element="tns:VerificarCorreosEnviados" />
+  </wsdl:message>
+  <wsdl:message name="ICServiciosGeneralesService_VerificarCorreosEnviados_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VerificarCorreosEnviadosResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ICServiciosGeneralesService">
+    <wsdl:operation name="ConsultaFuncionario">
+      <wsdl:input wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaFuncionario" message="tns:ICServiciosGeneralesService_ConsultaFuncionario_InputMessage" />
+      <wsdl:output wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaFuncionarioResponse" message="tns:ICServiciosGeneralesService_ConsultaFuncionario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaFuncionarioClase">
+      <wsdl:input wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaFuncionarioClase" message="tns:ICServiciosGeneralesService_ConsultaFuncionarioClase_InputMessage" />
+      <wsdl:output wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaFuncionarioClaseResponse" message="tns:ICServiciosGeneralesService_ConsultaFuncionarioClase_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaFuncionarioPolicial">
+      <wsdl:input wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaFuncionarioPolicial" message="tns:ICServiciosGeneralesService_ConsultaFuncionarioPolicial_InputMessage" />
+      <wsdl:output wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaFuncionarioPolicialResponse" message="tns:ICServiciosGeneralesService_ConsultaFuncionarioPolicial_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaFuncionarioPolicialCedula">
+      <wsdl:input wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaFuncionarioPolicialCedula" message="tns:ICServiciosGeneralesService_ConsultaFuncionarioPolicialCedula_InputMessage" />
+      <wsdl:output wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaFuncionarioPolicialCedulaResponse" message="tns:ICServiciosGeneralesService_ConsultaFuncionarioPolicialCedula_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaFuncionarioNombre">
+      <wsdl:input wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaFuncionarioNombre" message="tns:ICServiciosGeneralesService_ConsultaFuncionarioNombre_InputMessage" />
+      <wsdl:output wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaFuncionarioNombreResponse" message="tns:ICServiciosGeneralesService_ConsultaFuncionarioNombre_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaFuncionariosDireccion">
+      <wsdl:input wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaFuncionariosDireccion" message="tns:ICServiciosGeneralesService_ConsultaFuncionariosDireccion_InputMessage" />
+      <wsdl:output wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaFuncionariosDireccionResponse" message="tns:ICServiciosGeneralesService_ConsultaFuncionariosDireccion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaFuncionariosOcupacionReal">
+      <wsdl:input wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaFuncionariosOcupacionReal" message="tns:ICServiciosGeneralesService_ConsultaFuncionariosOcupacionReal_InputMessage" />
+      <wsdl:output wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaFuncionariosOcupacionRealResponse" message="tns:ICServiciosGeneralesService_ConsultaFuncionariosOcupacionReal_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaJefaturaDependencia">
+      <wsdl:input wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaJefaturaDependencia" message="tns:ICServiciosGeneralesService_ConsultaJefaturaDependencia_InputMessage" />
+      <wsdl:output wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaJefaturaDependenciaResponse" message="tns:ICServiciosGeneralesService_ConsultaJefaturaDependencia_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaExFuncionarios">
+      <wsdl:input wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaExFuncionarios" message="tns:ICServiciosGeneralesService_ConsultaExFuncionarios_InputMessage" />
+      <wsdl:output wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaExFuncionariosResponse" message="tns:ICServiciosGeneralesService_ConsultaExFuncionarios_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaFuncionarioCalificaciones">
+      <wsdl:input wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaFuncionarioCalificaciones" message="tns:ICServiciosGeneralesService_ConsultaFuncionarioCalificaciones_InputMessage" />
+      <wsdl:output wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaFuncionarioCalificacionesResponse" message="tns:ICServiciosGeneralesService_ConsultaFuncionarioCalificaciones_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaFuncionarioAccionPersonal">
+      <wsdl:input wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaFuncionarioAccionPersonal" message="tns:ICServiciosGeneralesService_ConsultaFuncionarioAccionPersonal_InputMessage" />
+      <wsdl:output wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaFuncionarioAccionPersonalResponse" message="tns:ICServiciosGeneralesService_ConsultaFuncionarioAccionPersonal_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaFuncionarioPermisoSinSalario">
+      <wsdl:input wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaFuncionarioPermisoSinSalario" message="tns:ICServiciosGeneralesService_ConsultaFuncionarioPermisoSinSalario_InputMessage" />
+      <wsdl:output wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaFuncionarioPermisoSinSalarioResponse" message="tns:ICServiciosGeneralesService_ConsultaFuncionarioPermisoSinSalario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaFuncionarioPermisoVacaciones">
+      <wsdl:input wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaFuncionarioPermisoVacaciones" message="tns:ICServiciosGeneralesService_ConsultaFuncionarioPermisoVacaciones_InputMessage" />
+      <wsdl:output wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaFuncionarioPermisoVacacionesResponse" message="tns:ICServiciosGeneralesService_ConsultaFuncionarioPermisoVacaciones_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaViaticoCorrido">
+      <wsdl:input wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaViaticoCorrido" message="tns:ICServiciosGeneralesService_ConsultaViaticoCorrido_InputMessage" />
+      <wsdl:output wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaViaticoCorridoResponse" message="tns:ICServiciosGeneralesService_ConsultaViaticoCorrido_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarViaticoCorrido">
+      <wsdl:input wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ActualizarViaticoCorrido" message="tns:ICServiciosGeneralesService_ActualizarViaticoCorrido_InputMessage" />
+      <wsdl:output wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ActualizarViaticoCorridoResponse" message="tns:ICServiciosGeneralesService_ActualizarViaticoCorrido_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaVacaciones">
+      <wsdl:input wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaVacaciones" message="tns:ICServiciosGeneralesService_ConsultaVacaciones_InputMessage" />
+      <wsdl:output wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaVacacionesResponse" message="tns:ICServiciosGeneralesService_ConsultaVacaciones_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaSaldoVacaciones">
+      <wsdl:input wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaSaldoVacaciones" message="tns:ICServiciosGeneralesService_ConsultaSaldoVacaciones_InputMessage" />
+      <wsdl:output wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaSaldoVacacionesResponse" message="tns:ICServiciosGeneralesService_ConsultaSaldoVacaciones_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarFuncionariosActivos">
+      <wsdl:input wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ListarFuncionariosActivos" message="tns:ICServiciosGeneralesService_ListarFuncionariosActivos_InputMessage" />
+      <wsdl:output wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ListarFuncionariosActivosResponse" message="tns:ICServiciosGeneralesService_ListarFuncionariosActivos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarFuncionariosTotal">
+      <wsdl:input wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ListarFuncionariosTotal" message="tns:ICServiciosGeneralesService_ListarFuncionariosTotal_InputMessage" />
+      <wsdl:output wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ListarFuncionariosTotalResponse" message="tns:ICServiciosGeneralesService_ListarFuncionariosTotal_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaFuncionarioPago">
+      <wsdl:input wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaFuncionarioPago" message="tns:ICServiciosGeneralesService_ConsultaFuncionarioPago_InputMessage" />
+      <wsdl:output wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaFuncionarioPagoResponse" message="tns:ICServiciosGeneralesService_ConsultaFuncionarioPago_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaFuncionarioPuntosCarrera">
+      <wsdl:input wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaFuncionarioPuntosCarrera" message="tns:ICServiciosGeneralesService_ConsultaFuncionarioPuntosCarrera_InputMessage" />
+      <wsdl:output wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaFuncionarioPuntosCarreraResponse" message="tns:ICServiciosGeneralesService_ConsultaFuncionarioPuntosCarrera_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaldosVacacionesFraccionamiento">
+      <wsdl:input wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/SaldosVacacionesFraccionamiento" message="tns:ICServiciosGeneralesService_SaldosVacacionesFraccionamiento_InputMessage" />
+      <wsdl:output wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/SaldosVacacionesFraccionamientoResponse" message="tns:ICServiciosGeneralesService_SaldosVacacionesFraccionamiento_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GuardarRegistroVacaciones">
+      <wsdl:input wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/GuardarRegistroVacaciones" message="tns:ICServiciosGeneralesService_GuardarRegistroVacaciones_InputMessage" />
+      <wsdl:output wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/GuardarRegistroVacacionesResponse" message="tns:ICServiciosGeneralesService_GuardarRegistroVacaciones_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarPeriodoVacaciones">
+      <wsdl:input wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/RegistrarPeriodoVacaciones" message="tns:ICServiciosGeneralesService_RegistrarPeriodoVacaciones_InputMessage" />
+      <wsdl:output wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/RegistrarPeriodoVacacionesResponse" message="tns:ICServiciosGeneralesService_RegistrarPeriodoVacaciones_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarReintegroVacaciones">
+      <wsdl:input wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/RegistrarReintegroVacaciones" message="tns:ICServiciosGeneralesService_RegistrarReintegroVacaciones_InputMessage" />
+      <wsdl:output wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/RegistrarReintegroVacacionesResponse" message="tns:ICServiciosGeneralesService_RegistrarReintegroVacaciones_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaEstadoVacaciones">
+      <wsdl:input wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaEstadoVacaciones" message="tns:ICServiciosGeneralesService_ConsultaEstadoVacaciones_InputMessage" />
+      <wsdl:output wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaEstadoVacacionesResponse" message="tns:ICServiciosGeneralesService_ConsultaEstadoVacaciones_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GuardarEnvioCorreos">
+      <wsdl:input wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/GuardarEnvioCorreos" message="tns:ICServiciosGeneralesService_GuardarEnvioCorreos_InputMessage" />
+      <wsdl:output wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/GuardarEnvioCorreosResponse" message="tns:ICServiciosGeneralesService_GuardarEnvioCorreos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VerificarCorreosEnviados">
+      <wsdl:input wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/VerificarCorreosEnviados" message="tns:ICServiciosGeneralesService_VerificarCorreosEnviados_InputMessage" />
+      <wsdl:output wsaw:Action="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/VerificarCorreosEnviadosResponse" message="tns:ICServiciosGeneralesService_VerificarCorreosEnviados_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:service name="CServiciosGeneralesService">
+    <wsdl:port name="BasicHttpBinding_ICServiciosGeneralesService" binding="i0:BasicHttpBinding_ICServiciosGeneralesService">
+      <soap:address location="http://sisrh.mopt.go.cr:85/CServiciosGeneralesService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

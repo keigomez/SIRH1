@@ -1,0 +1,105 @@
+﻿@model SIRH.Web.ViewModels.PedimentoPuestoVM
+
+@{
+    ViewBag.Title = "DetallePedimento";
+    Layout = "~/Views/Shared/Vacantes.cshtml";
+}
+
+
+<center>
+    <h1>Detalle Pedimento de Puesto</h1>
+    <h2>@Model.PedimentoPuesto.NumeroPedimento</h2>
+</center>
+<br />
+<div class="card">
+    <div class="card-header">
+        <strong>Información del Puesto</strong>
+    </div>
+    <div class="card-body">
+        <table class="table" id="datos_funcionario">
+            <tr>
+                <td>
+                    <strong>@Html.LabelFor(model => model.Puesto.CodPuesto): </strong>@Html.DisplayFor(model => model.Puesto.CodPuesto)
+                    @Html.HiddenFor(model => model.Puesto.CodPuesto)
+                </td>
+                <td>
+                    <strong>@Html.LabelFor(model => model.DetallePuesto.Clase.DesClase): </strong>@Html.DisplayFor(model => model.DetallePuesto.Clase.DesClase)
+                    @Html.HiddenFor(model => model.DetallePuesto.Clase.DesClase)
+                </td>
+                <td>
+                    <strong>@Html.LabelFor(model => model.DetallePuesto.Especialidad.DesEspecialidad): </strong>@Html.DisplayFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)
+                    @Html.HiddenFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.LabelFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal): </strong>@Html.DisplayFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal)
+                    @Html.HiddenFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal)
+                </td>
+                <td>
+                    <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                    @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                </td>
+                <td>
+                    <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                    @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                    @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                </td>
+                <td>
+                    <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion)
+                    @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion)
+                </td>
+                <td>
+                    <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto)
+                    @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.LabelFor(model => model.Puesto.EstadoPuesto.DesEstadoPuesto): </strong>@Html.DisplayFor(model => model.Puesto.EstadoPuesto.DesEstadoPuesto)
+                    @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+</div>
+<br />
+<div class="card">
+    <div class="card-header">
+        <strong>Información del Pedimento</strong>
+    </div>
+    <div class="card-body">
+        <table class="table" id="datos_funcionario">
+            <tr>
+                <td>
+                    <strong>@Html.LabelFor(model => model.PedimentoPuesto.NumeroPedimento): </strong>@Html.DisplayFor(model => model.PedimentoPuesto.NumeroPedimento)
+                    @Html.HiddenFor(model => model.PedimentoPuesto.NumeroPedimento)
+                </td>
+                <td>
+                    <strong>@Html.LabelFor(model => model.PedimentoPuesto.FechaPedimento): </strong>@Model.PedimentoPuesto.FechaPedimento.ToShortDateString()
+                    @Html.HiddenFor(model => model.PedimentoPuesto.FechaPedimento)
+                </td>
+                <td>
+
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <strong>@Html.LabelFor(model => model.PedimentoPuesto.ObservacionesPedimento): </strong>@Html.DisplayFor(model => model.PedimentoPuesto.ObservacionesPedimento)
+                    @Html.HiddenFor(model => model.PedimentoPuesto.ObservacionesPedimento)
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<br />
+<a class="btn btn-danger" href="/Vacantes/SearchPedimento"><i class="fa fa-arrow-circle-o-left"></i> Regresar</a>
+
+

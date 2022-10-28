@@ -1,0 +1,320 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8458C6CA-6642-4CB2-A361-D065534B57FB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SIRH.DTO</RootNamespace>
+    <AssemblyName>SIRH.DTO</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>%24/SIRH/SIRH.DTO</SccProjectName>
+    <SccLocalPath>.</SccLocalPath>
+    <SccAuxPath>http://ea-mj07creh:8080/tfs/defaultcollection</SccAuxPath>
+    <SccProvider>{4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}</SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CAccionPersonalDTO.cs" />
+    <Compile Include="CAccionPersonalHistoricoDTO.cs" />
+    <Compile Include="CActividadFuncionarioDTO.cs" />
+    <Compile Include="CAguinaldoDTO.cs" />
+    <Compile Include="CBitacoraIncidenciaDTO.cs" />
+    <Compile Include="CBoletaPrestamoDTO.cs" />
+    <Compile Include="CCalificacionCapacitacionDTO.cs" />
+    <Compile Include="CCalificacionEncargadoDTO.cs" />
+    <Compile Include="CCalificacionNombramientoFuncionarioDTO.cs" />
+    <Compile Include="CCalificacionObservacionesDTO.cs" />
+    <Compile Include="CCalificacionReglaTecnicaDTO.cs" />
+    <Compile Include="CCargoDTO.cs" />
+    <Compile Include="CCarreraProfesionalDTO.cs" />
+    <Compile Include="CCatalogoIncidenciaDTO.cs" />
+    <Compile Include="CCatCampoDTO.cs" />
+    <Compile Include="CCatDiaViaticoGastoDTO.cs" />
+    <Compile Include="CCatMetaEstadoDTO.cs" />
+    <Compile Include="CCatMetaPrioridadDTO.cs" />
+    <Compile Include="CCompetenciaGrupoOcupacionalDTO.cs" />
+    <Compile Include="CCompetenciaTransversalCargoDTO.cs" />
+    <Compile Include="CComponenteSalarialDTO.cs" />
+    <Compile Include="CCursoDTO.cs" />
+    <Compile Include="CDecretoDTO.cs" />
+    <Compile Include="CDeduccionTemporalDTO.cs" />
+    <Compile Include="CDetalleAsignacionGastoTransporteModificadaDTO.cs" />
+    <Compile Include="CDetalleCalificacionSeguimientoDTO.cs" />
+    <Compile Include="CDetalleDesarraigoEliminacionDTO.cs" />
+    <Compile Include="CDetalleIncapacidadDTO.cs" />
+    <Compile Include="CDetallePagoGastoTransporteDTO.cs" />
+    <Compile Include="CDetallePagoViaticoCorridoDTO.cs" />
+    <Compile Include="CDetallePrestacionAfiliacionDTO.cs" />
+    <Compile Include="CDetallePrestacionCuadroDTO.cs" />
+    <Compile Include="CDetallePrestacionDTO.cs" />
+    <Compile Include="CDetallePuestoRubroDTO.cs" />
+    <Compile Include="CDetallePuntosDTO.cs" />
+    <Compile Include="CDetalleSolicitudCambioDTO.cs" />
+    <Compile Include="CEMUExfuncionarioDTO.cs" />
+    <Compile Include="CEstadoOrdenDTO.cs" />
+    <Compile Include="CExpedienteFuncionarioDTO.cs" />
+    <Compile Include="CActividadDTO.cs" />
+    <Compile Include="CAddendumPrestamoPuestoDTO.cs" />
+    <Compile Include="CAreaDTO.cs" />
+    <Compile Include="CBitacoraUsuarioDTO.cs" />
+    <Compile Include="CBorradorAccionPersonalDTO.cs" />
+    <Compile Include="CCaracteristicasPuestoDTO.cs" />
+    <Compile Include="CCartaPresentacionDTO.cs" />
+    <Compile Include="CCatalogoDeduccionDTO.cs" />
+    <Compile Include="CCatalogoDiaDTO.cs" />
+    <Compile Include="CCatalogoPreguntaDTO.cs" />
+    <Compile Include="CCatalogoRemuneracionDTO.cs" />
+    <Compile Include="CCatMovimientoPresupuestoDTO.cs" />
+    <Compile Include="CCaucionDTO.cs" />
+    <Compile Include="CBaseDTO.cs" />
+    <Compile Include="CCalificacionDTO.cs" />
+    <Compile Include="CComponentePresupuestarioDTO.cs" />
+    <Compile Include="CDetalleAsignacionGastoTransporteDTO.cs" />
+    <Compile Include="CDetalleAccionPersonalDTO.cs" />
+    <Compile Include="CDetalleBorradorAccionPersonalDTO.cs" />
+    <Compile Include="CDetalleCalificacionNombramientoDTO.cs" />
+    <Compile Include="CDetalleDeduccionGastoTransporteDTO.cs" />
+    <Compile Include="CDetalleDeduccionViaticoCorridoDTO.cs" />
+    <Compile Include="CDetalleEliminacionViaticoCorridoGastoTransporteDTO.cs" />
+    <Compile Include="CDetalleEvaluacionDTO.cs" />
+    <Compile Include="CEntidadMedicaDTO.cs" />
+    <Compile Include="CEscalaSalarialDTO.cs" />
+    <Compile Include="CEstadoBorradorDTO.cs" />
+    <Compile Include="CEstadoGastoTransporteDTO.cs" />
+    <Compile Include="CEstadoViaticoCorridoDTO.cs" />
+    <Compile Include="CFactorClasificacionCargoDTO.cs" />
+    <Compile Include="CFamiliaPuestoDTO.cs" />
+    <Compile Include="CFolioDTO.cs" />
+    <Compile Include="CGastoTransporteDTO.cs" />
+    <Compile Include="CGastoTransporteReintegroDTO.cs" />
+    <Compile Include="CGastoTransporteRutasDTO.cs" />
+    <Compile Include="CIncidenciaDTO.cs" />
+    <Compile Include="CListaNombramientosActivosDTO.cs" />
+    <Compile Include="CMetaIndividualCalificacionDTO.cs" />
+    <Compile Include="CMetaIndividualEvidenciaDTO.cs" />
+    <Compile Include="CMetaIndividualInformeDTO.cs" />
+    <Compile Include="CMetaObjetivoCalificacionDTO.cs" />
+    <Compile Include="CMovimientoBorradorAccionPersonalDTO.cs" />
+    <Compile Include="CMovimientoGastoTransporteDTO.cs" />
+    <Compile Include="CMovimientoViaticoCorridoDTO.cs" />
+    <Compile Include="CNotificacionUsuarioDTO.cs" />
+    <Compile Include="CObjetivoCalificacionDTO.cs" />
+    <Compile Include="CObjetoGastoDTO.cs" />
+    <Compile Include="COrdenMovimientoDeclaracionDTO.cs" />
+    <Compile Include="COrdenMovimientoDTO.cs" />
+    <Compile Include="CPagoGastoTransporteDTO.cs" />
+    <Compile Include="CPagoViaticoCorridoDTO.cs" />
+    <Compile Include="CParametrosDTO.cs" />
+    <Compile Include="CPartidaDTO.cs" />
+    <Compile Include="CPeriodoCalificacionDTO.cs" />
+    <Compile Include="CPeriodoEscalaSalarialDTO.cs" />
+    <Compile Include="CPeriodoVacacionesDTO.cs" />
+    <Compile Include="CHistoricoPlanillaDTO.cs" />
+    <Compile Include="CPrestacionLegalDTO.cs" />
+    <Compile Include="CProcAlmacenadoDatosGeneralesDTO.cs" />
+    <Compile Include="CProcAlmacenadoDTO.cs" />
+    <Compile Include="CPuntosDTO.cs" />
+    <Compile Include="CRegistroIncapacidadDTO.cs" />
+    <Compile Include="CRegistroVacacionesDTO.cs" />
+    <Compile Include="CReintegroVacacionesDTO.cs" />
+    <Compile Include="CRequerimientoEspecificoCargoDTO.cs" />
+    <Compile Include="CResultadoCargoDTO.cs" />
+    <Compile Include="CSalarioDTO.cs" />
+    <Compile Include="CSolicitudCambioDTO.cs" />
+    <Compile Include="CSubPartidaDTO.cs" />
+    <Compile Include="CTemp_EnviarCorreoDTO.cs" />
+    <Compile Include="CTipoAccionPersonalDTO.cs" />
+    <Compile Include="CTipoDeduccionTemporalDTO.cs" />
+    <Compile Include="CTipoDetallePagoGastoDTO.cs" />
+    <Compile Include="CTipoDetallePagoViaticoDTO.cs" />
+    <Compile Include="CTipoIncapacidadDTO.cs" />
+    <Compile Include="CCalificacionNombramientoDTO.cs" />
+    <Compile Include="CCantonDTO.cs" />
+    <Compile Include="CCatEstadoCivilDTO.cs" />
+    <Compile Include="CCatPermisoDTO.cs" />
+    <Compile Include="CClaseDTO.cs" />
+    <Compile Include="CContenidoPresupuestarioDTO.cs" />
+    <Compile Include="CContratoArrendamientoDTO.cs" />
+    <Compile Include="CCuentaBancariaDTO.cs" />
+    <Compile Include="CCursoCapacitacionDTO.cs" />
+    <Compile Include="CCursoGradoDTO.cs" />
+    <Compile Include="CDeduccionEfectuadaDTO.cs" />
+    <Compile Include="CDepartamentoDTO.cs" />
+    <Compile Include="CDesarraigoDTO.cs" />
+    <Compile Include="CDesgloseSalarialDTO.cs" />
+    <Compile Include="CDetalleAccesoDTO.cs" />
+    <Compile Include="CDetalleCambioPedimentoDTO.cs" />
+    <Compile Include="CDetalleContratacionDTO.cs" />
+    <Compile Include="CDetalleNombramientoDTO.cs" />
+    <Compile Include="CDetallePuestoDTO.cs" />
+    <Compile Include="CDetalleTiempoExtraDTO.cs" />
+    <Compile Include="CDiaPagadoDTO.cs" />
+    <Compile Include="CDireccionDTO.cs" />
+    <Compile Include="CDireccionGeneralDTO.cs" />
+    <Compile Include="CDispositivoDTO.cs" />
+    <Compile Include="CDistritoDTO.cs" />
+    <Compile Include="CDivisionDTO.cs" />
+    <Compile Include="CEmpleadoDispositivoDTO.cs" />
+    <Compile Include="CEmpleadoDTO.cs" />
+    <Compile Include="CEntidadAdscritaDTO.cs" />
+    <Compile Include="CEntidadEducativaDTO.cs" />
+    <Compile Include="CEntidadFinancieraDTO.cs" />
+    <Compile Include="CEntidadGubernamentalDTO.cs" />
+    <Compile Include="CEntidadSegurosDTO.cs" />
+    <Compile Include="CErrorDTO.cs" />
+    <Compile Include="CEspecialidadDTO.cs" />
+    <Compile Include="CEstadoDesarraigoDTO.cs" />
+    <Compile Include="CEstadoFuncionarioDTO.cs" />
+    <Compile Include="CEstadoMovimientoPuestoDTO.cs" />
+    <Compile Include="CEstadoNombramientoDTO.cs" />
+    <Compile Include="CEstadoPedimentoDTO.cs" />
+    <Compile Include="CEstadoPuestoDTO.cs" />
+    <Compile Include="CEstadoTramiteDTO.cs" />
+    <Compile Include="CEstudioPuestoDTO.cs" />
+    <Compile Include="CExperienciaProfesionalDTO.cs" />
+    <Compile Include="CFactorDTO.cs" />
+    <Compile Include="CFacturaDesarraigoDTO.cs" />
+    <Compile Include="CFormacionAcademicaDTO.cs" />
+    <Compile Include="CFuncionarioDTO.cs" />
+    <Compile Include="CHistorialEstadoCivilDTO.cs" />
+    <Compile Include="CHorarioRangoDTO.cs" />
+    <Compile Include="CIncentivoDTO.cs" />
+    <Compile Include="CInformacionContactoDTO.cs" />
+    <Compile Include="CMarcacionesDTO.cs" />
+    <Compile Include="CModalidadDTO.cs" />
+    <Compile Include="CMotivoBajaDTO.cs" />
+    <Compile Include="CMotivoMovimientoDTO.cs" />
+    <Compile Include="CMovimientoPuestoDTO.cs" />
+    <Compile Include="CNombramientoDTO.cs" />
+    <Compile Include="COcupacionRealDTO.cs" />
+    <Compile Include="CPagoExtraordinarioDTO.cs" />
+    <Compile Include="CPagoFeriadoDTO.cs" />
+    <Compile Include="CPedimentoPuestoDTO.cs" />
+    <Compile Include="CPerfilAccesoDTO.cs" />
+    <Compile Include="CPerfilDTO.cs" />
+    <Compile Include="CPlantillaEmpleadoDTO.cs" />
+    <Compile Include="CPrestamoPuestoDTO.cs" />
+    <Compile Include="CPresupuestoDTO.cs" />
+    <Compile Include="CProgramaDTO.cs" />
+    <Compile Include="CProvinciaDTO.cs" />
+    <Compile Include="CPuestoDTO.cs" />
+    <Compile Include="CRegistroTiempoExtraDTO.cs" />
+    <Compile Include="CRelPresupuestoExtraDTO.cs" />
+    <Compile Include="CRelPuestoUbicacionDTO.cs" />
+    <Compile Include="CRemuneracionEfectuadaPFDTO.cs" />
+    <Compile Include="CRescisionDTO.cs" />
+    <Compile Include="CResolucionPedimentoDTO.cs" />
+    <Compile Include="CRespuestaDTO.cs" />
+    <Compile Include="CSeccionDTO.cs" />
+    <Compile Include="CSubEspecialidadDTO.cs" />
+    <Compile Include="CTareasPuestoDTO.cs" />
+    <Compile Include="CTipoContactoDTO.cs" />
+    <Compile Include="CTipoDeduccionDTO.cs" />
+    <Compile Include="CTipoDiaDTO.cs" />
+    <Compile Include="CTipoExtraDTO.cs" />
+    <Compile Include="CTipoIncentivoDTO.cs" />
+    <Compile Include="CTipoIndicadorMetaDTO.cs" />
+    <Compile Include="CTipoJornadaDTO.cs" />
+    <Compile Include="CTipoPoliticaPublicaDTO.cs" />
+    <Compile Include="CTipoPrestacionCuadroDTO.cs" />
+    <Compile Include="CTipoPrestacionDTO.cs" />
+    <Compile Include="CTipoPuestoDTO.cs" />
+    <Compile Include="CTipoResolucionPedimentoDTO.cs" />
+    <Compile Include="CTipoUbicacionDTO.cs" />
+    <Compile Include="CTituloFactorDTO.cs" />
+    <Compile Include="CTomoDTO.cs" />
+    <Compile Include="CUbicacionAdministrativaDTO.cs" />
+    <Compile Include="CUbicacionAsuetoDTO.cs" />
+    <Compile Include="CUbicacionPuestoDTO.cs" />
+    <Compile Include="CUbicacionRealDTO.cs" />
+    <Compile Include="CustomValidation.cs" />
+    <Compile Include="CUsuarioDTO.cs" />
+    <Compile Include="CMontoCaucionDTO.cs" />
+    <Compile Include="CViaticoCorridoDTO.cs" />
+    <Compile Include="CViaticoCorridoReintegroDTO.cs" />
+    <Compile Include="EEstadoDTO.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="obj\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

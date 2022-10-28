@@ -1,0 +1,301 @@
+﻿@model SIRH.Web.ViewModels.FormularioViaticoCorridoVM
+@using (Html.BeginForm("ReporteDetalleDeduccionVC", "ViaticoCorrido", FormMethod.Post))
+{
+if (Model.Mensaje == "DetalleD")
+{
+    {
+        ViewBag.Title = "DetailsViaticoCorrido";
+        Layout = "~/Views/Shared/ViaticoCorrido.cshtml";
+    }
+    <b>@Html.LabelFor(model => model.Formulario)</b> <label>@Model.Formulario</label>
+        <!--Datos Personales-->
+    <table id="item1" class="table table-bordered" style="margin-bottom:70px;margin-top:20px;">
+        <thead class="thead-light">
+            <tr><th colspan="4" class="encabezadoTabla">Datos Personales</th></tr>
+            <tr>
+                <th># Cédula</th>
+                <th>Primer Apellido</th>
+                <th>Segundo Apellido</th>
+                <th>Nombre</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td> @Model.Funcionario.Cedula </td>
+                <td> @Model.Funcionario.PrimerApellido </td>
+                <td> @Model.Funcionario.SegundoApellido </td>
+                <td> @Model.Funcionario.Nombre</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <!--Lugar de Trabajo-->
+    <table class="table table-bordered" style="margin-bottom:70px;">
+        <thead class="thead-light">
+            <tr><th colspan="3" class="encabezadoTabla">Lugar de Trabajo</th></tr>
+            <tr>
+                <th>Provincia</th>
+                <th>Cantón</th>
+                <th>Distrito</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.UbicacionTrabajo.Distrito.Canton.Provincia.NomProvincia </td>
+                <td>@Model.UbicacionTrabajo.Distrito.Canton.NomCanton</td>
+                <td>@Model.UbicacionTrabajo.Distrito.NomDistrito</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <!--Lugar de Trabajo-->
+        <table class="table table-bordered" style="margin-bottom:70px;">
+            <thead class="thead-light">
+                <tr><th colspan="3" class="encabezadoTabla">Lugar de Contrato</th></tr>
+                <tr>
+                    <th>Provincia</th>
+                    <th>Cantón</th>
+                    <th>Distrito</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@Model.UbicacionContrato.Distrito.Canton.Provincia.NomProvincia</td>
+                    <td>@Model.UbicacionContrato.Distrito.Canton.NomCanton</td>
+                    <td>@Model.UbicacionContrato.Distrito.NomDistrito</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <!--Dependencia-->
+        <table class="table table-bordered" style="margin-bottom:70px;">
+            <thead class="thead-light">
+                <tr><th colspan="3" class="encabezadoTabla">Dependencia</th></tr>
+                <tr>
+                    <th>División</th>
+                    <th>Dirección</th>
+                    <th>Departamento</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@Model.Puesto.UbicacionAdministrativa.Division.NomDivision</td>
+                    <td>@Model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion</td>
+                    <td>@Model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento</td>
+                </tr>
+            </tbody>
+        </table>
+        <!--Detalles del Puesto-->
+        <table class="table table-bordered " style="margin-bottom:70px;">
+            <thead class="thead-light">
+                <tr><th colspan="8" class="encabezadoTabla">Detalles del Puesto</th></tr>
+                <tr>
+                    <th># Puesto </th>
+                    <th>Clase</th>
+                    <th>Especialidad</th>
+                    <th>Ocupación Real</th>
+                    <th>Telefono</th>
+                    <th>Programa Presupuestario</th>
+                    <th>Area</th>
+                    <th>Actividad</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@Model.Puesto.CodPuesto </td>
+                    <td>@Model.DetallePuesto.Clase.DesClase </td>
+                    <td>@Model.DetallePuesto.Especialidad.DesEspecialidad </td>
+                    <td>@Model.DetallePuesto.OcupacionReal.DesOcupacionReal </td>
+                    <td>No Disponible</td>
+                    <td>@Model.Puesto.UbicacionAdministrativa.Presupuesto.Programa.DesPrograma </td>
+                    <td>@Model.Puesto.UbicacionAdministrativa.Presupuesto.Area </td>
+                    <td>@Model.Puesto.UbicacionAdministrativa.Presupuesto.Actividad </td>
+                </tr>
+            </tbody>
+        </table>
+}
+<div class="jumbotron">
+@if (Model.Mensaje != "DetalleD")
+{
+    <div class="alert alert-success" role="alert">
+        <i class="fa fa-check-circle d-inline" style="font-size:48px;"></i>
+        <h4 class="d-inline"> La solicitudo PI-1104  Deducción se ha guardado correctamente.</h4>
+    </div>
+}
+    <div class="card" style="margin-bottom:20px;">
+        <h5 class="card-header">Detalle del Movimiento</h5>
+
+        <div class="col-12">
+
+            <div class="form-group">
+                <b>@Html.Label("Motivos de Deducción")</b>
+                <div class="card-body">
+                    <center>
+                        <table class="table" id="tablaMotivos" style="margin-bottom:70px;">
+                            <thead class="table-active">
+                                <tr class="table-active">
+                             
+                                </tr>
+                                <tr class="table-active">
+                                    <th class="encabezadoTablaEspecialRegistro">Motivo</th>
+                                    <th class="encabezadoTablaEspecialRegistro">Fecha Rige</th>
+                                    <th class="encabezadoTablaEspecialRegistro">Fecha Vence</th>
+                                    <th class="encabezadoTablaEspecialRegistro">No.Días</th>
+                                    <th class="encabezadoTablaEspecialRegistro">Monto a bajar</th>
+                                    <th class="encabezadoTablaEspecialRegistro">Monto a Rebajar</th>
+                                    <th class="encabezadoTablaEspecialRegistro">Total a bajar</th>
+                                    <th class="encabezadoTablaEspecialRegistro">No.Solicitud Acción de Personal</th>
+                                    <th class="encabezadoTablaEspecialRegistro"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Deduccion)
+                                {
+                                    <tr class="text-left">
+                                        <td>@item.DesMotivoDTO</td>
+                                        @Html.Hidden(item.DesMotivoDTO)
+                                        @Html.ValidationMessageFor(model => item.DesMotivoDTO)
+                                        <td>@item.FecRigeDTO</td>
+                                        <td>@item.FecVenceDTO</td>
+                                        <td>@item.NumNoDiaDTO</td>
+                                        <td>@item.MontMontoBajarDTO</td>
+                                        <td>@item.MontMontoRebajarDTO</td>
+                                        <td>@item.TotRebajarDTO</td>
+                                        <td>@item.NumSolicitudAccionPDTO</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </center>
+                </div>
+                <div class="card-body">
+                    <center>
+                        <div class="end_date input-group mb-4">
+                            <b>@Html.Label("Observaciones del Movimiento")</b>
+                            <br />
+                            <br />
+                            @Html.TextAreaFor(model => model.MovimientoViaticoCorrido.ObsObservacionesDTO, new { @class = "form-control", @rows = "5", id = "comment", @readonly = "readonly", @value = Model.MovimientoViaticoCorrido.ObsObservacionesDTO })
+                            @Html.ValidationMessageFor(model => model.MovimientoViaticoCorrido.ObsObservacionesDTO)
+                        </div>
+                    </center>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <div>
+        <!--Se mantienen los datos para no volver a hacer la busqueda-->
+        @Html.HiddenFor(model => model.Funcionario.Nombre)
+        @Html.HiddenFor(model => model.Funcionario.Cedula)
+        @Html.HiddenFor(model => model.Funcionario.PrimerApellido)
+        @Html.HiddenFor(model => model.Funcionario.SegundoApellido)
+        @Html.HiddenFor(model => model.Funcionario.Nombre)
+        @Html.HiddenFor(model => model.UbicacionTrabajo.Distrito.Canton.Provincia.NomProvincia)
+        @Html.HiddenFor(model => model.UbicacionTrabajo.Distrito.Canton.NomCanton)
+        @Html.HiddenFor(model => model.UbicacionTrabajo.Distrito.NomDistrito)
+        @Html.HiddenFor(model => model.UbicacionContrato.Distrito.Canton.Provincia.NomProvincia)
+        @Html.HiddenFor(model => model.UbicacionContrato.Distrito.Canton.NomCanton)
+        @Html.HiddenFor(model => model.UbicacionContrato.Distrito.NomDistrito)
+        @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+        @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+        @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+        @Html.HiddenFor(model => model.Puesto.CodPuesto)
+        @Html.HiddenFor(model => model.DetallePuesto.Clase.DesClase)
+        @Html.HiddenFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)
+        @Html.HiddenFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal)
+        @Html.HiddenFor(model => model.ViaticoCorrido.DesSenasDTO)
+        @Html.HiddenFor(model => model.ViaticoCorrido.CodigoViaticoCorrido)
+        @Html.HiddenFor(model => model.ViaticoCorrido.NombramientoDTO)
+        @Html.HiddenFor(model => model.ViaticoCorrido.NumTelDomicilioDTO)
+        @Html.ValidationMessageFor(model => model.ViaticoCorrido.NumTelDomicilioDTO)
+        @Html.ValidationMessageFor(model => model.ViaticoCorrido.DesSenasDTO)
+        @Html.ValidationMessageFor(model => model.DistritoSeleccion)
+        @Html.ValidationMessageFor(model => model.Nombramiento.IdEntidad)
+        @Html.ValidationMessageFor(model => model.Nombramiento.FecRige)
+        @Html.ValidationMessageFor(model => model.Nombramiento.FecVence)
+        @Html.ValidationMessageFor(model => model.Nombramiento.EstadoNombramiento.IdEntidad)
+        @Html.ValidationMessageFor(model => model.Nombramiento.EstadoNombramiento.DesEstado)
+        @Html.ValidationMessageFor(model => model.Direccion.Distrito.IdEntidad)
+        @Html.ValidationMessageFor(model => model.Direccion.Distrito.NomDistrito)
+        @Html.HiddenFor(model => model.Direccion.Distrito.IdEntidad)
+        @Html.HiddenFor(model => model.Direccion.Distrito.NomDistrito)
+        @Html.HiddenFor(model => model.Nombramiento.IdEntidad)
+        @Html.HiddenFor(model => model.Nombramiento.EstadoNombramiento)
+        @Html.HiddenFor(model => model.Nombramiento.Funcionario)
+        @Html.HiddenFor(model => model.Nombramiento.Puesto)
+        @Html.HiddenFor(model => model.Nombramiento.FecRige)
+        @Html.HiddenFor(model => model.Nombramiento.FecVence)
+        @Html.HiddenFor(model => model.NumCartaPresentacion, new { @class = "form-control" })
+        @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.IdUnidadPresupuestaria)
+        @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.Area)
+        @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.Actividad)
+        @Html.HiddenFor(model => model.Eliminacion.FecFinDTO)
+        @Html.HiddenFor(model => model.Eliminacion.FecInicioDTO)
+        @Html.HiddenFor(model => model.MovimientoViaticoCorrido.IdEntidad)
+        @Html.ValidationMessageFor(model => model.MovimientoViaticoCorrido.IdEntidad)
+        @Html.ValidationMessageFor(model => model.Nombramiento.IdEntidad)
+        @Html.ValidationMessageFor(model => model.Nombramiento.EstadoNombramiento.IdEntidad)
+        @Html.ValidationMessageFor(model => model.Nombramiento.Funcionario.IdEntidad)
+        @Html.ValidationMessageFor(model => model.Nombramiento.Puesto.IdEntidad)
+        @Html.ValidationMessageFor(model => model.Nombramiento.FecRige)
+        @Html.ValidationMessageFor(model => model.Nombramiento.FecVence)
+        @Html.ValidationMessageFor(model => model.NumCartaPresentacion)
+        @Html.ValidationMessageFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.IdUnidadPresupuestaria)
+        @Html.ValidationMessageFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.Area)
+        @Html.ValidationMessageFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.Actividad)
+        @Html.ValidationMessageFor(model => model.Eliminacion.FecFinDTO)
+        @Html.ValidationMessageFor(model => model.Eliminacion.FecInicioDTO)
+
+        
+
+    </div>
+    @for (int i = 0; i < Model.Deduccion.Count; i++)
+    {
+
+        @Html.Hidden(Model.Deduccion[i].FecRigeDTO)
+        @Html.Hidden(Model.Deduccion[i].FecVenceDTO)
+        @Html.Hidden(Model.Deduccion[i].MontMontoBajarDTO)
+        @Html.Hidden(Model.Deduccion[i].MontMontoRebajarDTO)
+        @Html.Hidden(Model.Deduccion[i].NumNoDiaDTO.ToString())
+        @Html.Hidden(Model.Deduccion[i].TotRebajarDTO)
+        @Html.Hidden(Model.Deduccion[i].NumSolicitudAccionPDTO.ToString())
+
+
+        @Html.ValidationMessageFor(model => model.Deduccion[i].FecRigeDTO)
+        @Html.ValidationMessageFor(model => model.Deduccion[i].FecVenceDTO)
+        @Html.ValidationMessageFor(model => model.Deduccion[i].MontMontoBajarDTO)
+        @Html.ValidationMessageFor(model => model.Deduccion[i].MontMontoRebajarDTO)
+        @Html.ValidationMessageFor(model => model.Deduccion[i].NumNoDiaDTO)
+        @Html.ValidationMessageFor(model => model.Deduccion[i].TotRebajarDTO)
+        @Html.ValidationMessageFor(model => model.Deduccion[i].NumSolicitudAccionPDTO)
+
+
+    }
+    <br /><br />
+    <p>
+        <button class="btn btn-danger" type="submit"><i class="fa fa-file-pdf-o"></i> Exportar a PDF</button>
+
+        <i class="fa fa-ellipsis-v" style="font-size:20px;"></i>
+
+        <a href="@Url.Action("AnularMovimientoViaticoCorrido", "ViaticoCorrido", new { codigo = Model.MovimientoViaticoCorrido.IdEntidad })" class="btn btn-warning">
+            <i class="fa fa-edit"></i> Editar
+        </a>
+        <i class="fa fa-ellipsis-v" style="font-size:20px;"></i>
+        <button class="btn btn-info" type="submit"><i class="fa fa-send-o"></i> Enviar Correo</button>
+    </p>
+</div>
+}
+@if (Model.Mensaje == "DetalleD")
+{
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    <script src="~/Scripts/sidebar.js" type="text/javascript"></script>
+    <script src="~/scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+    <script src="~/Scripts/Pages/EditViaticoCorrido.js" type="text/javascript"></script>
+    <script src="~/Scripts/datetimepicker.js" type="text/javascript"></script>
+    <script src="~/Scripts/datetimepicker-es.js" type="text/javascript"></script>
+
+}

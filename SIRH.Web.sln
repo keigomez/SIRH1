@@ -1,0 +1,129 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SIRH.Web", "SIRH.Web\SIRH.Web.csproj", "{296D0C94-1C4C-4699-866B-6C34BB796EEF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B4979A6C-4698-493A-BCE0-A6828FA2EFEC} = {B4979A6C-4698-493A-BCE0-A6828FA2EFEC}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SIRH.DTO", "SIRH.DTO\SIRH.DTO.csproj", "{8458C6CA-6642-4CB2-A361-D065534B57FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SIRH.Datos", "SIRH.Datos\SIRH.Datos.csproj", "{FA43575A-C53A-42F6-A81B-5F479BF2E4C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SIRH.DatosMarcasReloj", "SIRH.DatosMarcasReloj\SIRH.DatosMarcasReloj.csproj", "{4F6FA142-4F2F-4C18-9E70-35AABDAED7D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SIRH.DeamonServicios", "SIRH.DeamonServicios\SIRH.DeamonServicios.csproj", "{816FF411-A088-41AD-9F4E-CDD5CF6205E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SIRH.Servicios", "SIRH.Servicios\SIRH.Servicios.csproj", "{B4979A6C-4698-493A-BCE0-A6828FA2EFEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SIRH.Logica", "SIRH.Logica\SIRH.Logica.csproj", "{ABD541C9-A08D-4215-A5BE-BADF1F3731E2}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SIRH.DeamonSetup", "SIRH.DeamonSetup\SIRH.DeamonSetup.vdproj", "{2FCB8488-7AF1-4ED6-9FAB-D078A2795F97}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{296D0C94-1C4C-4699-866B-6C34BB796EEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{296D0C94-1C4C-4699-866B-6C34BB796EEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{296D0C94-1C4C-4699-866B-6C34BB796EEF}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{296D0C94-1C4C-4699-866B-6C34BB796EEF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{296D0C94-1C4C-4699-866B-6C34BB796EEF}.Debug|x86.Build.0 = Debug|Any CPU
+		{296D0C94-1C4C-4699-866B-6C34BB796EEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{296D0C94-1C4C-4699-866B-6C34BB796EEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{296D0C94-1C4C-4699-866B-6C34BB796EEF}.Release|x86.ActiveCfg = Release|Any CPU
+		{296D0C94-1C4C-4699-866B-6C34BB796EEF}.Release|x86.Build.0 = Release|Any CPU
+		{8458C6CA-6642-4CB2-A361-D065534B57FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8458C6CA-6642-4CB2-A361-D065534B57FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8458C6CA-6642-4CB2-A361-D065534B57FB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8458C6CA-6642-4CB2-A361-D065534B57FB}.Debug|x86.Build.0 = Debug|Any CPU
+		{8458C6CA-6642-4CB2-A361-D065534B57FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8458C6CA-6642-4CB2-A361-D065534B57FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8458C6CA-6642-4CB2-A361-D065534B57FB}.Release|x86.ActiveCfg = Release|Any CPU
+		{8458C6CA-6642-4CB2-A361-D065534B57FB}.Release|x86.Build.0 = Release|Any CPU
+		{FA43575A-C53A-42F6-A81B-5F479BF2E4C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA43575A-C53A-42F6-A81B-5F479BF2E4C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA43575A-C53A-42F6-A81B-5F479BF2E4C0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FA43575A-C53A-42F6-A81B-5F479BF2E4C0}.Debug|x86.Build.0 = Debug|Any CPU
+		{FA43575A-C53A-42F6-A81B-5F479BF2E4C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA43575A-C53A-42F6-A81B-5F479BF2E4C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA43575A-C53A-42F6-A81B-5F479BF2E4C0}.Release|x86.ActiveCfg = Release|Any CPU
+		{FA43575A-C53A-42F6-A81B-5F479BF2E4C0}.Release|x86.Build.0 = Release|Any CPU
+		{4F6FA142-4F2F-4C18-9E70-35AABDAED7D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F6FA142-4F2F-4C18-9E70-35AABDAED7D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F6FA142-4F2F-4C18-9E70-35AABDAED7D7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4F6FA142-4F2F-4C18-9E70-35AABDAED7D7}.Debug|x86.Build.0 = Debug|Any CPU
+		{4F6FA142-4F2F-4C18-9E70-35AABDAED7D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F6FA142-4F2F-4C18-9E70-35AABDAED7D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F6FA142-4F2F-4C18-9E70-35AABDAED7D7}.Release|x86.ActiveCfg = Release|Any CPU
+		{4F6FA142-4F2F-4C18-9E70-35AABDAED7D7}.Release|x86.Build.0 = Release|Any CPU
+		{816FF411-A088-41AD-9F4E-CDD5CF6205E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{816FF411-A088-41AD-9F4E-CDD5CF6205E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{816FF411-A088-41AD-9F4E-CDD5CF6205E7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{816FF411-A088-41AD-9F4E-CDD5CF6205E7}.Debug|x86.Build.0 = Debug|Any CPU
+		{816FF411-A088-41AD-9F4E-CDD5CF6205E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{816FF411-A088-41AD-9F4E-CDD5CF6205E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{816FF411-A088-41AD-9F4E-CDD5CF6205E7}.Release|x86.ActiveCfg = Release|Any CPU
+		{816FF411-A088-41AD-9F4E-CDD5CF6205E7}.Release|x86.Build.0 = Release|Any CPU
+		{B4979A6C-4698-493A-BCE0-A6828FA2EFEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4979A6C-4698-493A-BCE0-A6828FA2EFEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4979A6C-4698-493A-BCE0-A6828FA2EFEC}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{B4979A6C-4698-493A-BCE0-A6828FA2EFEC}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B4979A6C-4698-493A-BCE0-A6828FA2EFEC}.Debug|x86.Build.0 = Debug|Any CPU
+		{B4979A6C-4698-493A-BCE0-A6828FA2EFEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4979A6C-4698-493A-BCE0-A6828FA2EFEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4979A6C-4698-493A-BCE0-A6828FA2EFEC}.Release|x86.ActiveCfg = Release|Any CPU
+		{B4979A6C-4698-493A-BCE0-A6828FA2EFEC}.Release|x86.Build.0 = Release|Any CPU
+		{ABD541C9-A08D-4215-A5BE-BADF1F3731E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABD541C9-A08D-4215-A5BE-BADF1F3731E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABD541C9-A08D-4215-A5BE-BADF1F3731E2}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{ABD541C9-A08D-4215-A5BE-BADF1F3731E2}.Debug|x86.Build.0 = Debug|Any CPU
+		{ABD541C9-A08D-4215-A5BE-BADF1F3731E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABD541C9-A08D-4215-A5BE-BADF1F3731E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABD541C9-A08D-4215-A5BE-BADF1F3731E2}.Release|x86.ActiveCfg = Release|Any CPU
+		{ABD541C9-A08D-4215-A5BE-BADF1F3731E2}.Release|x86.Build.0 = Release|Any CPU
+		{2FCB8488-7AF1-4ED6-9FAB-D078A2795F97}.Debug|Any CPU.ActiveCfg = Debug
+		{2FCB8488-7AF1-4ED6-9FAB-D078A2795F97}.Debug|x86.ActiveCfg = Debug
+		{2FCB8488-7AF1-4ED6-9FAB-D078A2795F97}.Release|Any CPU.ActiveCfg = Release
+		{2FCB8488-7AF1-4ED6-9FAB-D078A2795F97}.Release|x86.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 9
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://ea-mj07creh:8080/tfs/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = SIRH.Datos\\SIRH.Datos.csproj
+		SccProjectName1 = SIRH.Datos
+		SccLocalPath1 = SIRH.Datos
+		SccProjectUniqueName2 = SIRH.DTO\\SIRH.DTO.csproj
+		SccProjectName2 = SIRH.DTO
+		SccLocalPath2 = SIRH.DTO
+		SccProjectUniqueName3 = SIRH.Logica\\SIRH.Logica.csproj
+		SccProjectName3 = SIRH.Logica
+		SccLocalPath3 = SIRH.Logica
+		SccProjectUniqueName4 = SIRH.DatosMarcasReloj\\SIRH.DatosMarcasReloj.csproj
+		SccProjectName4 = SIRH.DatosMarcasReloj
+		SccLocalPath4 = SIRH.DatosMarcasReloj
+		SccProjectUniqueName5 = SIRH.DeamonServicios\\SIRH.DeamonServicios.csproj
+		SccProjectName5 = SIRH.DeamonServicios
+		SccLocalPath5 = SIRH.DeamonServicios
+		SccProjectUniqueName6 = SIRH.Servicios\\SIRH.Servicios.csproj
+		SccProjectName6 = SIRH.Servicios
+		SccLocalPath6 = SIRH.Servicios
+		SccProjectUniqueName7 = SIRH.Web\\SIRH.Web.csproj
+		SccProjectName7 = SIRH.Web
+		SccLocalPath7 = SIRH.Web
+		SccProjectUniqueName8 = SIRH.DeamonSetup\\SIRH.DeamonSetup.vdproj
+		SccProjectName8 = SIRH.DeamonSetup
+		SccLocalPath8 = SIRH.DeamonSetup
+	EndGlobalSection
+EndGlobal

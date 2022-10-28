@@ -1,0 +1,133 @@
+﻿@model SIRH.Web.ViewModels.PedimentoPuestoVM
+@{
+    ViewBag.Title = "Registrar Pedimento Puesto";
+    Layout = "~/Views/Shared/Vacantes.cshtml";
+}
+<link href="~/Content/datetimepicker.css" rel="stylesheet" />
+@using (Ajax.BeginForm("RegistrarPedimentoPuesto", new AjaxOptions
+{
+    HttpMethod = "POST",
+    UpdateTargetId = "formulario"
+}))
+{
+    <div class="jumbotron">
+        <center>
+            <h3 class="display-4">Registrar pedimento de puesto</h3>
+            <br />
+            <div class="card">
+                <div class="card-header text-left">
+                    Digite el código de puesto
+                </div>
+
+                <div class="card-body">
+
+                    <div class="form-group">
+                        @Html.TextBoxFor(model => model.Puesto.CodPuesto, new { @class = "form-control", @placeholder = "# Puesto", style = "width: 280px;" })
+                        @Html.ValidationMessageFor(model => model.Puesto.CodPuesto)
+                    </div>
+                    <input id="btnBuscar" name="SubmitButton" class="btn btn-primary" type="submit" value="Buscar" />
+                    <div id="preloader" class="loader" style="display: none"></div>
+
+                </div>
+            </div>
+
+        </center>
+    </div>
+    @*<ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="info-tab" data-toggle="tab" href="#info" role="tab" aria-controls="info" aria-selected="true">Información General</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="campos-tab" data-toggle="tab" href="#campos" role="tab" aria-controls="campos" aria-selected="false">Campos por completar</a>
+        </li>
+
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="info" role="tabpanel" aria-labelledby="info-tab">
+            <table class="table table-hover">
+                <thead class="thead-light">
+                    <tr>
+                        <th colspan="6">Información del puesto</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>@Html.LabelFor(model => model.Puesto.CodPuesto)</b></td>
+                        <td>@Html.DisplayFor(model => model.Puesto.CodPuesto)</td>
+                        <td><b>@Html.LabelFor(model => model.DetallePuesto.Clase.DesClase)</b></td>
+                        <td>@Html.DisplayFor(model => model.DetallePuesto.Clase.DesClase)</td>
+                        <td><b>@Html.LabelFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)</b></td>
+                        <td>@Html.DisplayFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)</td>
+                    </tr>
+                    <tr>
+                        <td><b>@Html.LabelFor(model => model.Puesto.EstadoPuesto.DesEstadoPuesto)</b></td>
+                        <td>@Html.DisplayFor(model => model.Puesto.EstadoPuesto.DesEstadoPuesto)</td>
+                        <td><b>@Html.LabelFor(model => model.UbicacionAdministrativa.Division.NomDivision)</b></td>
+                        <td>@Html.DisplayFor(model => model.UbicacionAdministrativa.Division.NomDivision)</td>
+                        <td><b>@Html.LabelFor(model => model.UbicacionAdministrativa.DireccionGeneral.NomDireccion)</b></td>
+                        <td>@Html.DisplayFor(model => model.UbicacionAdministrativa.DireccionGeneral.NomDireccion)</td>
+
+                    </tr>
+                    <tr>
+                        <td><b>@Html.LabelFor(model => model.UbicacionAdministrativa.Departamento.NomDepartamento)</b></td>
+                        <td>@Html.DisplayFor(model => model.UbicacionAdministrativa.Departamento.NomDepartamento)</td>
+                        <td><b>@Html.LabelFor(model => model.UbicacionAdministrativa.Seccion.NomSeccion)</b></td>
+                        <td>@Html.DisplayFor(model => model.UbicacionAdministrativa.Seccion.NomSeccion)</td>
+                        <td><b>@Html.LabelFor(model => model.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto)</b></td>
+                        <td>@Html.DisplayFor(model => model.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto)</td>
+                    </tr>
+                </tbody>
+            </table>
+            @Html.HiddenFor(model => model.Puesto.CodPuesto)
+        </div>
+        <div class="tab-pane fade" id="campos" role="tabpanel" aria-labelledby="campos-tab">
+            <div class="card">
+                <h5 class="card-header">Detalle del pedimento de puesto</h5>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="form-group col-4">
+                            @Html.LabelFor(model => model.PedimentoPuesto.NumeroPedimento)
+                            <span>:</span>
+                            @Html.TextBoxFor(model => model.PedimentoPuesto.NumeroPedimento, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-4">
+                            @Html.LabelFor(model => model.PedimentoPuesto.FechaPedimento)
+                            <span>:</span>
+                            @Html.TextBoxFor(model => model.PedimentoPuesto.FechaPedimento, new { @id = "FechaR", @class = "form-control start_date", @readonly = "readonly", @placeholder = "Fecha de Pedimento" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-4">
+                            @Html.LabelFor(model => model.PedimentoPuesto.ObservacionesPedimento)
+                            <span>:</span>
+                            @Html.TextAreaFor(model => model.PedimentoPuesto.ObservacionesPedimento, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-4">
+                            <input class="btn btn-secondary" id="btnGuardarContinuar" name="SubmitButton" type="submit" value="Guardar" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-4">
+                            <div id="preloader" class="loader" hidden></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>*@
+}
+<div id="formulario"></div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+<script src="~/Scripts/sidebar.js" type="text/javascript"></script>
+<script src="~/scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script src="~/Scripts/datetimepicker.js" type="text/javascript"></script>
+<script src="~/Scripts/datetimepicker-es.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/FormularioPerfilFuncionario.js" type="text/javascript"></script>

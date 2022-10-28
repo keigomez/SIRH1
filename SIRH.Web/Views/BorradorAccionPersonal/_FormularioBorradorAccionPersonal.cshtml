@@ -1,0 +1,431 @@
+﻿@model SIRH.Web.ViewModels.FormularioBorradorAccionPersonalVM
+
+@{ 
+    if (Model.Detalle != null)
+    {
+        using (Ajax.BeginForm("Create", new AjaxOptions
+        {
+            HttpMethod = "POST",
+            UpdateTargetId = "detalleResultado",
+            OnBegin = "BeginGuardarBorrador",
+            OnComplete = "CompleteGuardarBorrador",
+            OnSuccess = "SuccessGuardarBorrador"
+            
+        }))
+        {
+            Html.ValidationSummary(true);
+            <div id="formulario">
+                <div id="tabs">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a id="tab1" class="nav-link active" href="#tabs-1" data-toggle="tab" role="tab" aria-controls="tabs-1" aria-selected="true">Datos Funcionario</a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="tab2" class="nav-link" href="#tabs-2" data-toggle="tab" role="tab" aria-controls="tabs-2" aria-selected="false">Datos Borrador</a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="tab3" class="nav-link" href="#tabs-3" data-toggle="tab" role="tab" aria-controls="tabs-3" aria-selected="false">Detalles</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div id="tabs-1" class="tab-pane fade show active" role="tabpanel" aria-labelledby="tab1">
+                            <table class="table table-hover" id="datos_funcionario">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th colspan="6">Información del Funcionario</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><b>@Html.LabelFor(model => model.Funcionario.Cedula)</b></td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.Funcionario.Cedula)
+                                            @Html.HiddenFor(model => model.Funcionario.Cedula)
+                                        <td><b>@Html.LabelFor(model => model.Funcionario.Nombre)</b></td>
+                                        <td>
+                                            @Model.Funcionario.Nombre @Model.Funcionario.PrimerApellido @Model.Funcionario.SegundoApellido
+                                            @Html.HiddenFor(model => model.Funcionario.Nombre)
+                                            @Html.HiddenFor(model => model.Funcionario.PrimerApellido)
+                                            @Html.HiddenFor(model => model.Funcionario.SegundoApellido)
+                                        </td>
+                                        <td><b>@Html.LabelFor(model => model.Puesto.CodPuesto)</b></td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.Puesto.CodPuesto)
+                                            @Html.HiddenFor(model => model.Puesto.CodPuesto)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>@Html.LabelFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)</b></td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)
+                                            @Html.HiddenFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)
+                                        </td>
+                                        <td><b>@Html.LabelFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal)</b></td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal)
+                                            @Html.HiddenFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)</b></td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                                            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                                        </td>
+                                        <td><b>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)</b></td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                                            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                                        </td>
+                                        <td><b>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)</b></td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                                            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto)</b></td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto)
+                                            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto)
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="tabs-2" class="tab-pane fade" role="tabpanel" aria-labelledby="tab2">
+                            <table class="table table-hover">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th colspan="4"> 
+                                            Datos del Borrador de Acción de Personal
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td> @Html.HiddenFor(model => model.Borrador.IdEntidad)</td>
+                                        <td> @Html.HiddenFor(model => model.Borrador.NumOficio)</td>
+                                        <td> @Html.HiddenFor(model => model.Borrador.UsuarioAsignado)</td>
+                                        <td> @Html.HiddenFor(model => model.Borrador.ObsJustificacion)</td>
+                                    </tr>
+                                    <tr>
+                                        <td> @Html.LabelFor(model => model.Borrador.NumOficio)</td>
+                                        <td>
+                                            @Html.DisplayTextFor(model => model.Borrador.NumOficio)
+                                        </td>
+                                        <td>@Html.LabelFor(model => model.UsuarioAsignado)</td>
+                                        <td>
+                                            @Html.DropDownListFor(model => model.UsuarioAsignado, Model.Usuarios,new { @class="btn btn-secondary dropdown-toggle" })
+                                            @Html.ValidationMessageFor(model => model.UsuarioAsignado)
+                                            @Html.HiddenFor(model => model.UsuarioAsignado)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.LabelFor(model => model.Borrador.ObsJustificacion)</td>
+                                        @Html.TextAreaFor(model => model.Borrador.ObsJustificacion)
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="tabs-3" class="tab-pane fade" role="tabpanel" aria-labelledby="tab3">
+                            <div class="card">
+                                <h5 class="card-header">Detalles</h5>
+                                <div class="card-body">
+                                   <div class="row">
+                                       <div class="form-group col-4">
+                                           <b>@Html.LabelFor(model => model.TipoSeleccionado)</b>
+                                           <span>:</span>
+                                           @Html.DropDownListFor(model => model.TipoSeleccionado, Model.Tipos,new { @class="btn btn-secondary dropdown-toggle form-control" })
+                                           @Html.ValidationMessageFor(model => model.TipoSeleccionado)
+                                       </div>
+                                   </div>
+                                    <div class="row">
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.Detalle.FecRige)</b>
+                                            <span>:</span>
+                                            @Html.TextBoxFor(model => model.Detalle.FecRige, new { @id = "FecRige", @class = "form-control", @readonly = "readonly", @placeholder = "Fecha Rige" })
+                                            @Html.ValidationMessageFor(model => model.Detalle.FecRige)
+                                        </div>
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.Detalle.FecVence)</b>
+                                            <span>:</span>
+                                            @Html.TextBoxFor(model => model.Detalle.FecVence, new { @id = "FecVence", @class = "form-control", @readonly = "readonly", @placeholder = "Fecha Vence" })
+                                            @Html.ValidationMessageFor(model => model.Detalle.FecVence)
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.Detalle.FecRigeIntegra)</b>
+                                            <span>:</span>
+                                            @Html.TextBoxFor(model => model.Detalle.FecRigeIntegra, new { @id = "FecRigeIntegra", @class = "form-control", @readonly = "readonly", @placeholder = "Fecha Rige Integra" })
+                                            @Html.ValidationMessageFor(model => model.Detalle.FecRigeIntegra)
+                                        </div>
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.Detalle.FecVenceIntegra)</b>
+                                            <span>:</span>
+                                            @Html.TextBoxFor(model => model.Detalle.FecVenceIntegra, new { @id = "FecVenceIntegra", @class = "form-control", @readonly = "readonly", @placeholder = "Fecha Vence Integra" })
+                                            @Html.ValidationMessageFor(model => model.Detalle.FecVenceIntegra)
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.Programa.DesPrograma)</b>
+                                            <span>:</span>
+                                            @Html.DisplayFor(model => model.Programa.DesPrograma)
+                                            @*@Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.Programa.IdEntidad)
+                                            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.Programa.DesPrograma)*@
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.Programa.IdEntidad, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.Detalle.Programa)
+                                            @Html.HiddenFor(model => model.Programa.IdEntidad)
+                                            @Html.HiddenFor(model => model.Detalle.Programa.IdEntidad)
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion)</b>
+                                            <span>:</span>
+                                            @Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion)
+                                            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Seccion.IdEntidad)
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.DropDownListFor(model => model.SeccionSeleccionada, Model.Secciones, Model.SeccionSeleccionada,new { @class="btn btn-secondary dropdown-toggle form-control" })
+                                            @Html.ValidationMessageFor(model => model.SeccionSeleccionada)
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.Detalle.CodClase)</b>
+                                            <span>:</span>
+                                            @Html.DisplayFor(model => model.DetallePuesto.Clase.DesClase)
+                                            @Html.HiddenFor(model => model.DetallePuesto.Clase.DesClase)
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.DropDownListFor(model => model.ClaseSeleccionada, Model.Clases, Model.ClaseSeleccionada,new { @class= "btn btn-secondary dropdown-toggle form-control" })
+                                            @Html.ValidationMessageFor(model => model.ClaseSeleccionada)
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.Detalle.Categoria)</b>
+                                            <span>:</span>
+                                            @Html.DisplayFor(model => model.DetallePuesto.EscalaSalarial.CategoriaEscala)
+                                            @Html.HiddenFor(model => model.DetallePuesto.EscalaSalarial.CategoriaEscala)
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.DropDownListFor(model => model.CategoriaSeleccionada, Model.Categorias, Model.CategoriaSeleccionada, new { @class= "btn btn-secondary dropdown-toggle form-control", @onchange = "ActualizarCategoria(this.value)" })
+                                            @Html.ValidationMessageFor(model => model.CategoriaSeleccionada)
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.Detalle.CodPuesto)</b>
+                                            <span>:</span>
+                                            @Html.DisplayFor(model => model.Puesto.CodPuesto)
+                                            @Html.HiddenFor(model => model.Puesto.CodPuesto)
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.Detalle.CodPuesto,new { @class="form-control" })
+                                            @Html.ValidationMessageFor(model => model.Detalle.CodPuesto)
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.Detalle.Disfrutado)</b>
+                                            <span>:</span>
+                                            @Html.DisplayFor(model => model.Contrato.NumeroAnualidades)
+                                            @Html.HiddenFor(model => model.Contrato.NumeroAnualidades)
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.Detalle.Disfrutado, new { @class="form-control" })
+                                            @Html.ValidationMessageFor(model => model.Detalle.Disfrutado)
+                                            @Html.HiddenFor(model => model.Detalle.Disfrutado)
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.Detalle.Autorizado)</b>
+                                            <span>:</span>
+                                            @Html.DisplayFor(model => model.Contrato.NumeroAnualidades)
+                                            @Html.HiddenFor(model => model.Contrato.NumeroAnualidades)
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.Detalle.Autorizado, new { @class="form-control", @id = "NumAnualidad", @onblur = "ActualizarMontos();" })
+                                            @Html.ValidationMessageFor(model => model.Detalle.Autorizado)
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.Detalle.MtoSalarioBase)</b>
+                                            <span>:</span>
+                                            @Html.DisplayFor(model => model.DetallePuesto.EscalaSalarial.SalarioBase)
+                                            @Html.HiddenFor(model => model.DetallePuesto.EscalaSalarial.SalarioBase)
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.Detalle.MtoSalarioBase, new { @class="form-control", @id = "MtoSalBase", @readonly = "readonly", @disabled = "disabled", @onblur = "ActualizarMontos();" })
+                                            @Html.ValidationMessageFor(model => model.Detalle.MtoSalarioBase)
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.Detalle.MtoAnual)</b>
+                                            <span>:</span>
+                                            @Html.DisplayFor(model => model.DetallePuesto.EscalaSalarial.MontoAumentoAnual)
+                                            @Html.HiddenFor(model => model.DetallePuesto.EscalaSalarial.MontoAumentoAnual)
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.DetallePuesto.EscalaSalarial.MontoAumentoAnual, new { @class="form-control" ,@id = "MtoAnual", @readonly = "readonly", @disabled = "disabled" })
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.Detalle.MtoAumentosAnuales)</b>
+                                            <span>:</span>
+                                            @Html.DisplayFor(model => model.Detalle.MtoAumentosAnuales)
+                                            @Html.HiddenFor(model => model.DetallePuesto.EscalaSalarial.MontoAumentoAnual)
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.Detalle.MtoAumentosAnuales, new { @class="form-control" ,@id = "MtoAnuales", @readonly = "readonly", @disabled = "disabled" })
+                                            @Html.ValidationMessageFor(model => model.Detalle.MtoAumentosAnuales)   
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.Detalle.MtoRecargo)</b>
+                                            <span>:</span>
+                                            @Html.Display("0")                 
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.Detalle.MtoRecargo, new { @class="form-control" ,@id = "MtoRecargo", @onblur = "ActualizarMontos();" })
+                                            @Html.ValidationMessageFor(model => model.Detalle.MtoRecargo)
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.Detalle.MtoPunto)</b>
+                                            <span>:</span>
+                                            @Html.DisplayFor(model => model.DetallePuesto.EscalaSalarial.Periodo.MontoPuntoCarrera)      
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.DetallePuesto.EscalaSalarial.Periodo.MontoPuntoCarrera, new { @class="form-control" ,@id = "NumPtoCarrera", @readonly = "readonly", @style = "display: none;" })
+                                            @Html.HiddenFor(model => model.DetallePuesto.EscalaSalarial.Periodo.MontoPuntoCarrera)
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.Detalle.NumGradoGrupo)</b>
+                                            <span>:</span>
+                                            @Html.DisplayFor(model => model.PuntosCarrera)
+                                            @Html.HiddenFor(model => model.PuntosCarrera)
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.Detalle.NumGradoGrupo, new { @class="form-control", @id = "NumPto", @onblur = "ActualizarMontos();" })
+                                            @Html.ValidationMessageFor(model => model.Detalle.NumGradoGrupo)
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.Detalle.MtoGradoGrupo)</b>
+                                            <span>:</span>
+                                            @Html.DisplayFor(model => model.Detalle.MtoGradoGrupo)
+                                            
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.Detalle.MtoGradoGrupo, new { @class="form-control" ,@id = "MtoPtos", @readonly = "readonly", @disabled = "disabled" })
+                                            @Html.ValidationMessageFor(model => model.Detalle.MtoGradoGrupo)
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.Detalle.PorProhibicion)</b>
+                                            <span>:</span>
+                                            @Html.DisplayFor(model => model.DetallePuesto.PorProhibicion)
+                                            @Html.HiddenFor(model => model.DetallePuesto.PorProhibicion)
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @if(Model.DetallePuesto.PorDedicacion > 0)
+                                            {
+                                               @Html.DropDownListFor(model => model.Detalle.PorProhibicion, Model.Porcentajes, new { @class="form-control" ,@id = "PorList", @onchange = "ActualizarPorcentaje(this.value)" })
+                                            }
+                                            else
+                                            {
+                                               @Html.TextBoxFor(model => model.Detalle.PorProhibicion, new { @class="form-control",@id = "PorProh", @onblur = "ActualizarMontos();" })
+                                            }
+                                            @Html.ValidationMessageFor(model => model.Detalle.PorProhibicion)
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.Detalle.MtoProhibicion)</b>
+                                            <span>:</span>
+                                            @Html.DisplayFor(model => model.Detalle.MtoProhibicion)
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.Detalle.MtoProhibicion, new { @class="form-control",@id = "MtoProh", @readonly = "readonly", @disabled = "disabled" })
+                                            @Html.ValidationMessageFor(model => model.Detalle.MtoProhibicion)
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-4">
+                                            <b>@Html.LabelFor(model => model.Detalle.MtoOtros)</b>
+                                            <span>:</span>
+                                            @Html.Display("0")
+                                            
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.TextBoxFor(model => model.Detalle.MtoOtros, new { @class="form-control",@id = "MtoOtros", @onblur = "ActualizarMontos();" })
+                                            @Html.ValidationMessageFor(model => model.Detalle.MtoOtros)
+                                        </div>  
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-4">
+                                            <b>@Html.Label("TOTAL")</b>
+                                            <span>:</span>
+                                            @String.Format("{0:n}", Model.DetallePuesto.EscalaSalarial.SalarioBase + Model.Detalle.MtoAumentosAnuales + Model.Detalle.MtoProhibicion + Model.Detalle.MtoGradoGrupo)
+                                        </div>
+                                        <div class="form-group col-4">
+                                            <div id="1">
+                                                <input id='total' class="form-control" disabled value=@String.Format("{0:n}", Model.Detalle.MtoSalarioBase + Model.Detalle.MtoAumentosAnuales + Model.Detalle.MtoProhibicion + Model.Detalle.MtoGradoGrupo)>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-4">
+                                            <input id="btnGuardar" class="btn btn-secondary" name="SubmitButton" type="submit" value="Guardar Borrador" />
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-4">
+                                            <div id="progressbarGuardar" class="loader" hidden></div>
+                                        </div>
+                                    </div>    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                
+
+            </div>
+        }
+    }
+
+    <div id="detalleResultado">
+        
+    </div>
+}
+@*<script type="text/javascript" src="~/Scripts/Pages/FormularioBorradorAccionPersonal.js"> </script>*@ 

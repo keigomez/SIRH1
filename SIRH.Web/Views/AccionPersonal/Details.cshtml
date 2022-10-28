@@ -1,0 +1,726 @@
+﻿@model SIRH.Web.ViewModels.FormularioAccionPersonalVM
+
+@{
+    ViewBag.Title = "Detalle de Acción de Personal";
+    if((Request.QueryString["accion"] == "guardar"))
+    {
+        Layout = "~/Views/Shared/AccionPersonal.cshtml";
+    }
+    else
+    {
+        Layout = null;
+    }
+
+}
+
+<blockquote><h3>Detalle de Acción de Personal</h3></blockquote>
+<br />
+@if (Request.QueryString["accion"] == "guardar")
+{
+    if (Model.Error == null)
+    {
+        <div class="alert alert-success" role="alert">
+            <i class="fa fa-check-circle d-inline" style="font-size:48px;"></i>
+            <h4 class="d-inline"> La Acción de Personal se ha guardado correctamente.</h4>
+        </div>
+        <br />
+
+        <div class="card">
+            <h5 class="card-header">Detalles</h5>
+            <div class="card-body">
+                <div>Se ha almacenado la Acción de Personal # <b>@Html.Encode(Model.Accion.NumAccion)</b> para el funcionario: </div>
+                <br /><div><b>@Html.Encode(Model.Funcionario.Cedula) - @Html.Encode(Model.Funcionario.Nombre) @Html.Encode(Model.Funcionario.PrimerApellido) @Html.Encode(Model.Funcionario.SegundoApellido)</b></div>
+                <br /><div>Correspondiente al periodo: <b>@Html.Encode(Model.Accion.FecRige.ToShortDateString()) - @Html.Encode((Model.Accion.FecVence.HasValue) ? Convert.ToDateTime(Model.Accion.FecVence).ToShortDateString() : Model.Accion.FecVence.ToString())</b></div>
+                <br /><div>Para el tipo de: @Html.AttributeEncode(Model.TipoAccion.IdEntidad) - @Html.AttributeEncode(Model.TipoAccion.DesTipoAccion) </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-danger" role="alert">
+            <i class="fa fa-times-circle d-inline" style="font-size:48px;"></i>
+            <h4 class="d-inline"> Ocurrió un error al momento de guardar la Acción de Personal.</h4>
+        </div>
+        <br />
+
+        <div class="card">
+            <h5 class="card-header">Detalles</h5>
+            <div class="card-body">
+                <div>La Acción de Personal no pudo ser guardada debido al siguiente error: </div>
+                <br /><div><b>@Html.Encode(Model.Error.MensajeError)</b></div>
+                <br /><div>Si conoce la causa de este error, por favor revise los datos que intentó almacenar e intentelo de nuevo.</div>
+                <br /><div>De lo contrario le invitamos a ponerse en contacto con nuestro equipo de soporte, mediante el sistema de <a href="http://sisrh.mopt.go.cr:83/" target="_blank">Ayuda y Soporte</a></div>
+            </div>
+        </div>
+    }
+}
+else
+{
+    if (Request.QueryString["accion"] == "modificar")
+    {
+        if (Model.Error == null)
+        {
+            <div class="alert alert-primary" role="alert">
+                <i class="fa fa-exclamation-circle d-inline" style="font-size:48px;"></i>
+                <h4 class="d-inline"> La Acción de Personal se ha anulado.</h4>
+            </div>
+            <br />
+            <div class="card">
+                <h5 class="card-header">Detalles</h5>
+                <div class="card-body">
+                    <div>Se ha anulado la Acción de Personal # <b>@Html.Encode(Model.Accion.NumAccion)</b> para el funcionario: </div>
+                    <br /><div><b>@Html.Encode(Model.Funcionario.Cedula) - @Html.Encode(Model.Funcionario.Nombre) @Html.Encode(Model.Funcionario.PrimerApellido) @Html.Encode(Model.Funcionario.SegundoApellido)</b></div>
+                    <br /><div>Correspondiente al periodo: <b>@Html.Encode(Model.Accion.FecRige.ToShortDateString()) - @Html.Encode((Model.Accion.FecVence.HasValue) ? Convert.ToDateTime(Model.Accion.FecVence).ToShortDateString() : "")</b></div>
+                    <br /><div>Para el tipo de: @Html.AttributeEncode(Model.TipoAccion.IdEntidad) - @Html.AttributeEncode(Model.TipoAccion.DesTipoAccion) </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-danger" role="alert">
+                <i class="fa fa-times-circle d-inline" style="font-size:48px;"></i>
+                <h4 class="d-inline"> Ocurrió un error al momento de anular la Acción de Personal.</h4>
+            </div>
+            <br />
+
+            <div class="card">
+                <h5 class="card-header">Detalles</h5>
+                <div class="card-body">
+                    <div>La Acción de Personal no pudo ser anulada debido al siguiente error: </div>
+                    <br /><div><b>@Html.Encode(Model.Error.MensajeError)</b></div>
+                    <br /><div>Si conoce la causa de este error, por favor revise los datos que intentó almacenar e intentelo de nuevo.</div>
+                    <br /><div>De lo contrario le invitamos a ponerse en contacto con nuestro equipo de soporte, mediante el sistema de <a href="http://sisrh.mopt.go.cr:83/" target="_blank">Ayuda y Soporte</a></div>
+                </div>
+            </div>
+        }
+    }
+
+    else
+    {
+        if (Request.QueryString["accion"] == "aprobar")
+        {
+            if (Model.Error == null)
+            {
+                <div class="alert alert-primary" role="alert">
+                    <i class="fa fa-exclamation-circle d-inline" style="font-size:48px;"></i>
+                    <h4 class="d-inline"> La Acción de Personal se ha aprobado.</h4>
+                </div>
+                <br />
+                <div class="card">
+                    <h5 class="card-header">Detalles</h5>
+                    <div class="card-body">
+                        <div>Se ha aprobado la Acción de Personal # <b>@Html.Encode(Model.Accion.NumAccion)</b> para el funcionario: </div>
+                        <br /><div><b>@Html.Encode(Model.Funcionario.Cedula) - @Html.Encode(Model.Funcionario.Nombre) @Html.Encode(Model.Funcionario.PrimerApellido) @Html.Encode(Model.Funcionario.SegundoApellido)</b></div>
+                        <br /><div>Correspondiente al periodo: <b>@Html.Encode(Model.Accion.FecRige.ToShortDateString()) - @Html.Encode((Model.Accion.FecVence.HasValue) ? Convert.ToDateTime(Model.Accion.FecVence).ToShortDateString() : "")</b></div>
+                        <br /><div>Para el tipo de: @Html.AttributeEncode(Model.TipoAccion.IdEntidad) - @Html.AttributeEncode(Model.TipoAccion.DesTipoAccion) </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-danger" role="alert">
+                    <i class="fa fa-times-circle d-inline" style="font-size:48px;"></i>
+                    <h4 class="d-inline"> Ocurrió un error al momento de aprobar la Acción de Personal.</h4>
+                </div>
+                <br />
+
+                <div class="card">
+                    <h5 class="card-header">Detalles</h5>
+                    <div class="card-body">
+                        <div>La Acción de Personal no pudo ser aprobada debido al siguiente error: </div>
+                        <br /><div><b>@Html.Encode(Model.Error.MensajeError)</b></div>
+                        <br /><div>Si conoce la causa de este error, por favor revise los datos que intentó almacenar e intentelo de nuevo.</div>
+                        <br /><div>De lo contrario le invitamos a ponerse en contacto con nuestro equipo de soporte, mediante el sistema de <a href="http://sisrh.mopt.go.cr:83/" target="_blank">Ayuda y Soporte</a></div>
+                    </div>
+                </div>
+            }
+        }
+
+        else
+        {
+
+            using (Html.BeginForm("ReporteDetalleAccion", "AccionPersonal", FormMethod.Post, new { @id = "thisForm", target = "_blank" }))
+            {
+            <div class="card">
+                <div class="card-header text-left">
+                    <b>Acción de Personal # @Model.Accion.NumAccion</b>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <span>
+                                <b>Funcionario: </b> @Model.Funcionario.Cedula - @Model.Funcionario.Nombre @Model.Funcionario.PrimerApellido @Model.Funcionario.SegundoApellido
+                                @Html.HiddenFor(model => model.Funcionario.Cedula)
+                                @Html.HiddenFor(model => model.Funcionario.Nombre)
+                                @Html.HiddenFor(model => model.Funcionario.PrimerApellido)
+                                @Html.HiddenFor(model => model.Funcionario.SegundoApellido)
+                                
+                                @Html.HiddenFor(model => model.Puesto.CodPuesto)
+                                @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.Programa.IdEntidad)
+                                @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.Programa.DesPrograma)
+                                @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Seccion.IdEntidad)
+                                @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion)
+
+                                @Html.HiddenFor(model => model.Programa.IdEntidad)
+                                @Html.HiddenFor(model => model.Programa.DesPrograma)
+                                @Html.HiddenFor(model => model.Seccion.IdEntidad)
+                                @Html.HiddenFor(model => model.Seccion.NomSeccion)
+
+                                @Html.HiddenFor(model => model.DetallePuesto.Clase.IdEntidad)
+                                @Html.HiddenFor(model => model.DetallePuesto.Clase.DesClase)
+                                @Html.HiddenFor(model => model.DetallePuesto.Especialidad.IdEntidad)
+                                @Html.HiddenFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)
+                                @Html.HiddenFor(model => model.DetallePuesto.SubEspecialidad.IdEntidad)
+                                @Html.HiddenFor(model => model.DetallePuesto.SubEspecialidad.DesSubEspecialidad)
+                                @Html.HiddenFor(model => model.DetallePuesto.EscalaSalarial.CategoriaEscala)
+                                @Html.HiddenFor(model => model.DetallePuesto.EscalaSalarial.SalarioBase)
+                                @Html.HiddenFor(model => model.DetallePuesto.EscalaSalarial.MontoAumentoAnual)
+                                @Html.HiddenFor(model => model.DetallePuesto.EscalaSalarial.Periodo.MontoPuntoCarrera)
+                                @Html.HiddenFor(model => model.DetallePuesto.PorProhibicion)
+                                @Html.HiddenFor(model => model.DetallePuesto.PorDedicacion)
+
+                                @Html.HiddenFor(model => model.Contrato.NumeroAnualidades)
+                                @Html.HiddenFor(model => model.PuntosCarrera)
+
+                                @Html.HiddenFor(model => model.Detalle.CodClase)
+                                @Html.HiddenFor(model => model.Detalle.CodPuesto)
+                                @Html.HiddenFor(model => model.Detalle.IndCategoria)
+                                @Html.HiddenFor(model => model.Detalle.NumAnualidad)
+
+                                @Html.HiddenFor(model => model.Detalle.MtoSalarioBase)
+                                @Html.HiddenFor(model => model.Detalle.MtoAnual)
+                                @Html.HiddenFor(model => model.Detalle.MtoAumentosAnuales)
+                                @Html.HiddenFor(model => model.Detalle.NumAnualidad)
+                                @Html.HiddenFor(model => model.Detalle.MtoRecargo)
+                                @Html.HiddenFor(model => model.Detalle.MtoGradoGrupo)
+                                @Html.HiddenFor(model => model.PuntosCarrera)
+                                @Html.HiddenFor(model => model.Detalle.NumGradoGrupo)
+                                @Html.HiddenFor(model => model.Detalle.MtoProhibicion)
+                                @Html.HiddenFor(model => model.Detalle.PorProhibicion)
+                                @Html.HiddenFor(model => model.Detalle.MtoOtros)
+                                @Html.HiddenFor(model => model.Detalle.PorCarreraPolicial)
+                                @Html.HiddenFor(model => model.Detalle.PorCurso)
+                                @Html.HiddenFor(model => model.Detalle.PorRiesgo)
+                                @Html.HiddenFor(model => model.Detalle.PorDisponibilidad)
+                                @Html.HiddenFor(model => model.Detalle.PorQuinquenio)
+                                @Html.HiddenFor(model => model.Detalle.PorBonificacion)
+                                @Html.HiddenFor(model => model.Detalle.PorConsulta)
+                                @Html.HiddenFor(model => model.Detalle.PorPeligrosidad)
+                                @Html.HiddenFor(model => model.Detalle.PorGradoPolicial)
+                                @Html.HiddenFor(model => model.Detalle.MtoTotal)
+
+                               
+                                @Html.HiddenFor(model => model.Detalle.DetallePuestoAnterior.Especialidad.IdEntidad)
+                                @Html.HiddenFor(model => model.Detalle.DetallePuestoAnterior.Especialidad.DesEspecialidad)
+                                @Html.HiddenFor(model => model.Detalle.DetallePuestoAnterior.SubEspecialidad.IdEntidad)
+                                @Html.HiddenFor(model => model.Detalle.DetallePuestoAnterior.SubEspecialidad.DesSubEspecialidad)
+                                @Html.HiddenFor(model => model.Detalle.DetallePuestoAnterior.EscalaSalarial.CategoriaEscala)
+                                @Html.HiddenFor(model => model.Detalle.DetallePuestoAnterior.EscalaSalarial.SalarioBase)
+                                @Html.HiddenFor(model => model.Detalle.DetallePuestoAnterior.EscalaSalarial.MontoAumentoAnual)
+                                @Html.HiddenFor(model => model.Detalle.DetallePuestoAnterior.EscalaSalarial.Periodo.MontoPuntoCarrera)
+                                @Html.HiddenFor(model => model.Detalle.DetallePuestoAnterior.PorProhibicion)
+                                @Html.HiddenFor(model => model.Detalle.DetallePuestoAnterior.PorDedicacion)
+                                
+                                @Html.HiddenFor(model => model.Detalle.PorProhOriginal)
+                                @Html.HiddenFor(model => model.Detalle.PorRiesgoAnterior)
+                                @Html.HiddenFor(model => model.Detalle.MtoProhibicionAnterior)
+                                @Html.HiddenFor(model => model.Detalle.PorDisponibilidadAnterior)
+                                @Html.HiddenFor(model => model.Detalle.PorPeligrosidadAnterior)
+                                @Html.HiddenFor(model => model.Detalle.PorGradoPolicialAnterior)
+                                @Html.HiddenFor(model => model.Detalle.PorConsultaAnterior)
+                                @Html.HiddenFor(model => model.Detalle.PorBonificacionAnterior)
+                                @Html.HiddenFor(model => model.Detalle.PorCarreraPolicialAnterior)
+                                @Html.HiddenFor(model => model.Detalle.PorCursoAnterior)
+                                @Html.HiddenFor(model => model.Detalle.PorQuinquenioAnterior)
+                                @Html.HiddenFor(model => model.Detalle.MtoOtrosAnterior)
+                                @Html.HiddenFor(model => model.Detalle.MtoTotalAnterior)
+
+                                @Html.HiddenFor(model => model.Detalle.MtoRecargo)
+                                @Html.HiddenFor(model => model.Detalle.MtoGradoGrupo)
+                                @Html.HiddenFor(model => model.Detalle.PorProhibicion)
+                                @Html.HiddenFor(model => model.Detalle.MtoOtros)
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>
+                                <b>@Html.Label("Núm.Expediente"): </b> @Model.Expediente.NumeroExpediente
+                                @Html.HiddenFor(model => model.Expediente.NumeroExpediente)
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>
+                                <b>@Html.LabelFor(model => model.Accion.NumAccion): </b> @Model.Accion.NumAccion
+                                @Html.HiddenFor(model => model.Accion.NumAccion)
+                                @Html.HiddenFor(model => model.Accion.IndDato)
+
+                                @Html.HiddenFor(model => model.Detalle.Accion.NumAccion)
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>
+                                <b>@Html.Label("Estado de la Acción"): </b>@Model.Estado.DesEstadoBorrador
+                                @Html.HiddenFor(model => model.Estado.IdEntidad)
+                                @Html.HiddenFor(model => model.Estado.DesEstadoBorrador)
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>
+                                <b>@Html.LabelFor(model => model.Accion.FecRige): </b>@Html.Encode(Model.Accion.FecRige.ToShortDateString()) <b>@Html.Label( " al "):   </b>@Html.Encode((Model.Accion.FecVence.HasValue) ? Convert.ToDateTime(Model.Accion.FecVence).ToShortDateString() : "")
+                                @Html.HiddenFor(model => model.Accion.FecRige)
+                                @Html.HiddenFor(model => model.Accion.FecVence)
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>
+                                <b>@Html.LabelFor(model => model.Accion.FecRigeIntegra): </b>@Html.Encode(Model.Accion.FecRigeIntegra.ToShortDateString()) <b>@Html.Label(" al "):   </b>@Html.Encode((Model.Accion.FecVenceIntegra.HasValue) ? Convert.ToDateTime(Model.Accion.FecVenceIntegra).ToShortDateString() : "")
+                                @Html.HiddenFor(model => model.Accion.FecRigeIntegra)
+                                @Html.HiddenFor(model => model.Accion.FecVenceIntegra)
+                            </span>
+                        </li>
+                        @*<li class="list-group-item">
+                            <span>
+                                <b>@Html.LabelFor(model => model.Accion.FecRigeIntegra): </b>@Html.Encode((Model.Accion.FecRigeIntegra.HasValue) ?  Convert.ToDateTime(Model.Accion.FecRigeIntegra).ToShortDateString() : "")
+                                @Html.HiddenFor(model => model.Accion.FecVence)
+                                @Html.HiddenFor(model => model.Accion.FecVenceIntegra)
+                            </span>
+                        </li>*@
+                        <li class="list-group-item">
+                            <span>
+                                <b>@Html.LabelFor(model => model.TipoAccion.DesTipoAccion): </b>@Model.TipoAccion.DesTipoAccion
+                                @Html.HiddenFor(model => model.TipoAccion.IdEntidad)
+                                @Html.HiddenFor(model => model.TipoAccion.DesTipoAccion)
+                            </span>
+                        </li>
+                        @*Modificación de fecha de A.A(Aumento Anual)*@
+                        @Html.HiddenFor(model => model.Contrato.FechaMesAumento)
+                        @Html.HiddenFor(model => model.MesSeleccionado)
+                        @if(Model.Accion.TipoAccion.IdEntidad == 88)
+                        {
+                            <li class="list-group-item">
+                                <span>
+                                    <b>@Html.LabelFor(model => model.MesSeleccionado): </b>@Model.MesSeleccionado 
+                                </span>
+                            </li>
+                        }
+                        <li class="list-group-item">
+                            <span>
+                                <b>@Html.LabelFor(model => model.Accion.Observaciones): </b>@Model.Accion.Observaciones
+                                @Html.HiddenFor(model => model.Accion.Observaciones)
+                            </span>
+                        </li>
+                    </ul>
+                    <br />
+                    <table class="table table-hover">
+                        <thead class="thead-light">
+                            <tr class="text-center">
+                                <th></th>
+                                <th>Anterior</th>
+                                <th></th>
+                                <th>Actual</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-center">
+                            <tr>
+                                <td>
+                                    @*<b>@Html.LabelFor(model => model.Detalle.DetallePuestoAnterior.Puesto.CodPuesto):</b>*@
+                                    <b>@Html.Label("Núm.Puesto"):</b>
+                                </td>
+                                <td>
+                                    @Html.Encode(Model.Detalle.DetallePuestoAnterior.Puesto.CodPuesto)
+                                    @Html.HiddenFor(model => model.Detalle.DetallePuestoAnterior.Puesto.CodPuesto)
+                                </td>
+                                <td></td>
+                                <td>
+                                    @*@Html.Encode(Model.Accion.Nombramiento.Puesto.CodPuesto)*@
+                                    @Html.Encode(Model.Puesto.CodPuesto)
+                                    @Html.HiddenFor(model => model.Accion.Nombramiento.Puesto.CodPuesto)
+                                    @Html.HiddenFor(model => model.Puesto.CodPuesto)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>@Html.LabelFor(model => model.Clase):</b>
+                                </td>
+                                <td>
+                                    @Model.Detalle.DetallePuestoAnterior.Clase.IdEntidad - @Model.Detalle.DetallePuestoAnterior.Clase.DesClase
+                                    @Html.HiddenFor(model => model.Detalle.DetallePuestoAnterior.Clase.IdEntidad)
+                                    @Html.HiddenFor(model => model.Detalle.DetallePuestoAnterior.Clase.DesClase)
+                                </td>
+                                <td></td>
+                                <td>
+                                    @Model.Clase.IdEntidad - @Model.Clase.DesClase
+                                    @*<b>@Html.LabelFor(model => model.Clase): </b>@Model.DetallePuesto.Clase.IdEntidad - @Model.DetallePuesto.Clase.DesClase*@
+                                    @Html.HiddenFor(model => model.Clase.IdEntidad)
+                                    @Html.HiddenFor(model => model.Clase.DesClase)
+                                </td>
+                            </tr>
+                           
+                            <tr>
+                                <td>
+                                    <b>@Html.LabelFor(model => model.Detalle.IndCategoria):</b>
+                                </td>
+                                <td>
+                                    @if (Model.Detalle.IndCategoria > 0)
+                                    {
+                                        @Model.Detalle.IndCategoria
+                                    }
+                                    else
+                                    {
+                                        @Model.DetallePuesto.EscalaSalarial.CategoriaEscala
+                                    }
+                                    @Html.HiddenFor(model => model.Detalle.IndCategoria)
+                                </td>
+                                <td></td>
+                                <td>
+                                    @if (Model.TipoAccion.IdEntidad == 54) // Reasignación
+                                    {
+                                        @Model.Detalle.IndCategoria
+                                    }
+                                    else
+                                    {
+                                        @Model.DetallePuesto.EscalaSalarial.CategoriaEscala
+                                    }
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <br/>
+                    @if (Model.Detalle != null)
+                    {                       
+                        @*<ul class="list-group">
+                            <li class="list-group-item">
+                                <span>
+                                    <b>@Html.LabelFor(model => model.Detalle.MtoSalarioBase): </b>
+                                </span>  
+                                <span>
+                                    @String.Format("{0:n}", @Model.Detalle.MtoSalarioBase)
+                                    @Html.HiddenFor(model => model.Detalle.MtoSalarioBase)
+                                </span>  
+                            </li>
+                            <li class="list-group-item">
+                                <span>
+                                    <b>@Html.LabelFor(model => model.Detalle.MtoAumentosAnuales): </b>@String.Format("{0:n}", @Model.Detalle.MtoAumentosAnuales)
+                                    @Html.HiddenFor(model => model.Detalle.MtoAnual)
+                                    @Html.HiddenFor(model => model.Detalle.MtoAumentosAnuales)
+                                </span>
+                                <span>
+                                    <b>(@Model.Detalle.NumAnualidad)</b>
+                                    @Html.HiddenFor(model => model.Detalle.NumAnualidad)
+                                </span>
+                            </li>
+                            <li class="list-group-item">
+                                <span>
+                                    <b>@Html.LabelFor(model => model.Detalle.MtoRecargo): </b>
+                                </span>
+                                <span>
+                                    @String.Format("{0:n}", @Model.Detalle.MtoRecargo)
+                                    @Html.HiddenFor(model => model.Detalle.MtoRecargo)
+                                </span>
+                            </li>
+                            <li class="list-group-item">
+                                <span>
+                                    <b>@Html.LabelFor(model => model.Detalle.MtoGradoGrupo): </b>@String.Format("{0:n}", @Model.Detalle.MtoGradoGrupo)
+                                    @Html.HiddenFor(model => model.Detalle.MtoGradoGrupo)
+                                </span>
+                                <span>
+                                    <b>(@Model.PuntosCarrera)</b>
+                                    @Html.HiddenFor(model => model.PuntosCarrera)
+                                    @Html.HiddenFor(model => model.Detalle.NumGradoGrupo)
+                                </span>
+                            </li>
+                            <li class="list-group-item">
+                                <span>
+                                    <b>@Html.LabelFor(model => model.Detalle.MtoProhibicion): </b>@String.Format("{0:n}", @Model.Detalle.MtoProhibicion)
+                                    @Html.HiddenFor(model => model.Detalle.MtoProhibicion)
+                                </span>
+                                <span>
+                                    <b>(@Model.Detalle.PorProhibicion%)</b>
+                                    @Html.HiddenFor(model => model.Detalle.PorProhibicion)
+                                </span>
+                            </li>
+                            <li class="list-group-item">
+                                <span>
+                                    <b>@Html.LabelFor(model => model.Detalle.MtoOtros): </b>@String.Format("{0:n}", @Model.Detalle.MtoOtros)
+                                    @Html.HiddenFor(model => model.Detalle.MtoOtros)
+                                </span>
+                                <span>
+                                    @if (Model.Detalle.PorCurso > 0) { <b>@Html.LabelFor(model => model.Detalle.PorCurso):(@Model.Detalle.PorCurso%)</b>}
+                                    @if (Model.Detalle.PorRiesgo > 0) {<b>@Html.LabelFor(model => model.Detalle.PorRiesgo):(@Model.Detalle.PorRiesgo%)</b>}
+                                    @if (Model.Detalle.PorDisponibilidad > 0) {<b>@Html.LabelFor(model => model.Detalle.PorDisponibilidad):(@Model.Detalle.PorDisponibilidad%)</b>}
+                                    @if (Model.Detalle.PorQuinquenio > 0) {<b>@Html.LabelFor(model => model.Detalle.PorQuinquenio):(@Model.Detalle.PorQuinquenio%)</b>}
+                                    @if (Model.Detalle.PorBonificacion > 0) {<b>@Html.LabelFor(model => model.Detalle.PorBonificacion):(@Model.Detalle.PorBonificacion%)</b>}
+                                    @if (Model.Detalle.PorConsulta > 0)  {<b>@Html.LabelFor(model => model.Detalle.PorConsulta):(@Model.Detalle.PorConsulta%)</b>}
+                                    @if (Model.Detalle.PorPeligrosidad > 0)  {<b>@Html.LabelFor(model => model.Detalle.PorPeligrosidad):(@Model.Detalle.PorPeligrosidad%)</b>}
+                                    @Html.HiddenFor(model => model.Detalle.PorCurso)
+                                    @Html.HiddenFor(model => model.Detalle.PorRiesgo)
+                                    @Html.HiddenFor(model => model.Detalle.PorDisponibilidad)
+                                    @Html.HiddenFor(model => model.Detalle.PorQuinquenio)
+                                    @Html.HiddenFor(model => model.Detalle.PorBonificacion)
+                                    @Html.HiddenFor(model => model.Detalle.PorConsulta)
+                                    @Html.HiddenFor(model => model.Detalle.PorPeligrosidad)
+                                </span>
+                            </li>
+                            <li class="list-group-item">
+                                <span>
+                                    <b>@Html.LabelFor(model => model.Detalle.MtoTotal): </b>@String.Format("{0:n}", Model.Detalle.MtoTotal)
+                                    @Html.HiddenFor(model => model.Detalle.MtoTotal)
+                                </span>
+                            </li>
+                        </ul>*@
+
+                        <table class="table table-hover">
+                            <thead class="thead-light">
+                                <tr class="text-center">
+                                    <th></th>
+                                    <th>Anterior</th>
+                                    <th></th>
+                                    <th>Actual</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-center">
+                                <tr>
+                                    <td>
+                                        <b>@Html.LabelFor(model => model.Detalle.MtoSalarioBase):</b>
+                                    </td>
+                                    <td>
+                                        @Html.Encode(Model.Detalle.DetallePuestoAnterior.EscalaSalarial.SalarioBase.ToString("#,##0.00"))
+                                    </td>
+                                    <td></td>
+                                    <td>
+                                        @Html.Encode(Model.Detalle.MtoSalarioBase.ToString("#,##0.00"))
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <b>@Html.LabelFor(model => model.Detalle.MtoAumentosAnuales):</b>
+                                    </td>
+                                    <td>
+                                        @Html.Encode(Model.Detalle.MtoAumentosAnualesAnterior.ToString("#,##0.00"))
+                                        <b>(@Model.Detalle.NumAnualidadAnterior)</b>
+                                    </td>
+                                    <td></td>
+                                    <td>
+                                        @Html.Encode(Model.Detalle.MtoAumentosAnuales.ToString("#,##0.00"))
+                                        <b>(@Model.Detalle.NumAnualidad)</b>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <b>@Html.LabelFor(model => model.Detalle.MtoRecargo):</b>
+                                    </td>
+                                    <td>
+                                        @Html.Encode("0.00")
+                                    </td>
+                                    <td></td>
+                                    <td>
+                                        @Html.Encode(Model.Detalle.MtoRecargo.ToString("#,##0.00"))
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <b>@Html.LabelFor(model => model.Detalle.MtoGradoGrupo):</b>
+                                    </td>
+                                    <td>
+                                        @Html.Encode(Model.Detalle.MtoGradoGrupo.ToString("#,##0.00"))
+                                        <b>(@Model.PuntosCarrera)</b>
+                                    </td>
+                                    <td></td>
+                                    <td>
+                                        @Html.Encode(Model.Detalle.MtoGradoGrupo.ToString("#,##0.00"))
+                                        <b>(@Model.PuntosCarrera)</b>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <b>@Html.LabelFor(model => model.Detalle.MtoProhibicion):</b>
+                                    </td>
+                                    <td>
+                                        @Html.Encode(Model.Detalle.MtoProhibicionAnterior.ToString("#,##0.00"))
+                                        <b>(@Model.Detalle.PorProhOriginal%)</b>
+                                    </td>
+                                    <td></td>
+                                    <td>
+                                        @Html.Encode(Model.Detalle.MtoProhibicion.ToString("#,##0.00"))
+                                        <b>(@Model.Detalle.PorProhibicion%)</b>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <b>@Html.LabelFor(model => model.Detalle.MtoOtros):</b>
+                                    </td>
+                                    <td>
+                                        @Html.Encode(Model.Detalle.MtoOtrosAnterior.ToString("#,##0.00"))
+                                    </td>
+                                    <td></td>
+                                    <td>
+                                        @Html.Encode(Model.Detalle.MtoOtros.ToString("#,##0.00"))
+                                    </td>
+                                </tr>
+                                @if (Model.Detalle.PorCarreraPolicial > 0 || Model.Detalle.PorCarreraPolicialAnterior > 0)
+                                {
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td align="left">
+                                            @Html.LabelFor(model => model.Detalle.PorCarreraPolicial):(@Model.Detalle.PorCarreraPolicialAnterior%)
+                                        </td>
+                                        <td></td>
+                                        <td align="left">
+                                            @Html.LabelFor(model => model.Detalle.PorCarreraPolicial):(@Model.Detalle.PorCarreraPolicial%)
+                                        </td>
+                                    </tr>
+                                }
+                                @if (Model.Detalle.PorCurso > 0 || Model.Detalle.PorCursoAnterior > 0)
+                                {
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td align="left">
+                                            @Html.LabelFor(model => model.Detalle.PorCurso):(@Model.Detalle.PorCursoAnterior%)
+                                        </td>
+                                        <td></td>
+                                        <td align="left">
+                                            @Html.LabelFor(model => model.Detalle.PorCurso):(@Model.Detalle.PorCurso%)
+                                        </td>
+                                    </tr>
+                                }
+                                @if (Model.Detalle.PorRiesgo > 0 || Model.Detalle.PorRiesgoAnterior > 0)
+                                {
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td align="left">
+                                            @Html.LabelFor(model => model.Detalle.PorRiesgo):(@Model.Detalle.PorRiesgoAnterior%)
+                                        </td>
+                                        <td></td>
+                                        <td align="left">
+                                            @Html.LabelFor(model => model.Detalle.PorRiesgo):(@Model.Detalle.PorRiesgo%)
+                                        </td>
+                                    </tr>
+                                }
+                                @if (Model.Detalle.PorDisponibilidad > 0 || Model.Detalle.PorDisponibilidadAnterior > 0)
+                                {
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td align="left">
+                                            @Html.LabelFor(model => model.Detalle.PorDisponibilidad):(@Model.Detalle.PorDisponibilidadAnterior%)
+                                        </td>
+                                        <td></td>
+                                        <td align="left">
+                                            @Html.LabelFor(model => model.Detalle.PorDisponibilidad):(@Model.Detalle.PorDisponibilidad%)
+                                        </td>
+                                    </tr>
+                                }                                                                      
+                                @if (Model.Detalle.PorQuinquenio > 0 || Model.Detalle.PorQuinquenioAnterior > 0)
+                                {
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td align="left">
+                                            @Html.LabelFor(model => model.Detalle.PorQuinquenio):(@Model.Detalle.PorQuinquenioAnterior%)
+                                        </td>
+                                        <td></td>
+                                        <td align="left">
+                                            @Html.LabelFor(model => model.Detalle.PorQuinquenio):(@Model.Detalle.PorQuinquenio%)
+                                        </td>
+                                    </tr>
+                                } 
+                                @if (Model.Detalle.PorBonificacion > 0 || Model.Detalle.PorBonificacionAnterior > 0)
+                                {
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td align="left">
+                                            @Html.LabelFor(model => model.Detalle.PorBonificacion):(@Model.Detalle.PorBonificacionAnterior%)
+                                        </td>
+                                        <td></td>
+                                        <td align="left">
+                                            @Html.LabelFor(model => model.Detalle.PorBonificacion):(@Model.Detalle.PorBonificacion%)
+                                        </td>
+                                    </tr>
+                                }
+                                @if (Model.Detalle.PorConsulta > 0 || Model.Detalle.PorConsultaAnterior > 0)
+                                {
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td align="left">
+                                            @Html.LabelFor(model => model.Detalle.PorConsulta):(@Model.Detalle.PorConsultaAnterior%)
+                                        </td>
+                                        <td></td>
+                                        <td align="left">
+                                            @Html.LabelFor(model => model.Detalle.PorConsulta):(@Model.Detalle.PorConsulta%)
+                                        </td>
+                                    </tr>
+                                }
+                                @if (Model.Detalle.PorPeligrosidad > 0 || Model.Detalle.PorPeligrosidadAnterior > 0)
+                                {
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td align="left">
+                                            @Html.LabelFor(model => model.Detalle.PorPeligrosidad):(@Model.Detalle.PorPeligrosidadAnterior%)
+                                        </td>
+                                        <td></td>
+                                        <td align="left">
+                                            @Html.LabelFor(model => model.Detalle.PorPeligrosidad):(@Model.Detalle.PorPeligrosidad%)
+                                        </td>
+                                    </tr>
+                                }
+                                @if (Model.Detalle.PorGradoPolicial > 0 || Model.Detalle.PorGradoPolicialAnterior > 0)
+                                {
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td align="left">
+                                            @Html.LabelFor(model => model.Detalle.PorGradoPolicial):(@Model.Detalle.PorGradoPolicialAnterior%)
+                                        </td>
+                                        <td></td>
+                                        <td align="left">
+                                            @Html.LabelFor(model => model.Detalle.PorGradoPolicial):(@Model.Detalle.PorGradoPolicial%)
+                                        </td>
+                                    </tr>
+                                }
+                                <tr>
+                                    <td>
+                                        <b>@Html.LabelFor(model => model.Detalle.MtoTotal):</b>
+                                    </td>
+                                    <td>
+                                        @Html.Encode(Model.Detalle.MtoTotalAnterior.ToString("#,##0.00"))
+                                    </td>
+                                    <td></td>
+                                    <td>
+                                        @Html.Encode(Model.Detalle.MtoTotal.ToString("#,##0.00"))
+                                    </td>
+                                </tr>          
+                            </tbody>
+                        </table>
+                    }
+
+                    <button class="btn btn-danger" type="submit"><i class="fa fa-file-pdf-o"></i> Exportar a PDF</button>
+                    @if (Model.Accion.Estado.IdEntidad == 7)
+                    {
+                        @*<a href="@Url.Action("Edit", "AccionPersonal", new { @numAccion = Model.Accion.NumAccion })" class="btn btn-warning">
+                            <i class="fa fa-pencil-square-o"></i> Anular
+                        </a>*@
+
+                        <div style="display: inline">
+                            <div class="link_view"> @Html.ActionLink("Anular", "", "AccionPersonal", null, new { @onclick = "return ObtenerAnular('" + Model.Accion.NumAccion + "');", @type = "button", @class = "btn btn-warning" })</div>
+                        </div>
+                    }
+                </div>
+            </div>
+            }
+        }
+    }
+}
+<br />
+
+@*<a href="javascript:history.back()" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Regresar</a>*@
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")

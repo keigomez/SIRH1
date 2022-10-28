@@ -1,0 +1,32 @@
+﻿@model SIRH.Web.ViewModels.FormularioCalificacionVM
+<div id="respuesta" class="jumbotron">
+    <center>
+        @{
+            if (Model != null)
+            {
+                <div class="alert alert-danger" role="alert">
+                    <h5>Ya existe una calificación para el funcionario en el periodo correspondiente</h5>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-3">
+                        <a href="@Url.Action("Details", "Calificacion", new { codigo = Model.CalificacionNombramiento.IdEntidad })" class="btn btn-primary">
+                            <i class="fa fa-search"></i> Ver Detalle
+                        </a>
+                    </div>
+                    <div class="col-sm-3">
+                        
+                    </div>
+                    <div class="col-sm-3">
+                        @if (Model.CalificacionNombramiento.IndEstadoDTO == 1 && Model.EsAnulable == true)
+                        {
+                        <a href="@Url.Action("EditHistorialDetalle", "Calificacion", new { codigo = @Model.CalificacionNombramiento.IdEntidad, codigoDCN = Model.CalificacionNombramiento.IdEntidad })" class="btn btn-warning">
+                            <i class="fa fa-edit"></i> Anular
+                        </a>
+                        }
+                    </div>
+                </div>
+            }
+        }
+    </center>
+</div>

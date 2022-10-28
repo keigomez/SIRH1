@@ -1,0 +1,176 @@
+﻿@model SIRH.Web.ViewModels.ComponentePresupuestarioVM
+
+@{
+    ViewBag.Title = "Agregar decreto";
+    Layout = "~/Views/Shared/ComponentePresupuestario.cshtml";
+}
+
+
+@*<link rel="stylesheet" href="~/Content/datetimepicker.css">*@
+<link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+<script src="~/Content/bootstrap-datepicker/js/jquery-3.4.1.slim.min.js"></script>
+<link id="bsdp-css" href="~/Content/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+
+<blockquote><h3>Agregar Decreto</h3></blockquote>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <div class="card">
+        <div class="card-header">
+            <strong>Datos del Decreto</strong>
+        </div>
+        <div class="card-body">
+
+            <div class="form-group row">
+                <div class="col-sm-2">
+                    @Html.LabelFor(model => model.ComponentePresupuestario.ObjetoGasto, new { @for = "ObjetoGasto", @class = "col-form-label" })
+                    <i class="fa fa-info-circle" data-toggle="tooltip" data-placement="bottom" title="Este campo es obligatorio ."></i>
+                    <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="bottom" title="Idicador de objeto gasto para decretos. Ej. 01, 02, 03, 05, 06, etc."></i>
+                </div>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.ComponentePresupuestario.ObjetoGasto.IdEntidad, new { @id = "ObjetoGasto", @class = "form-control", @maxlength = "3" })
+                    @Html.ValidationMessageFor(model => model.ComponentePresupuestario.ObjetoGasto.IdEntidad)
+                </div>
+            </div>
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.ComponentePresupuestario.Programa, new { @for = "Programa", @class = "col-sm-2 col-form-label" })
+                @*<i class="fa fa-info-circle" data-toggle="tooltip" data-placement="bottom" title="Este campo es obligatorio ."></i>
+                    <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="bottom" title="Idicador del programa. Ej. 32600, 32700, 32800, 32900, , etc."></i>*@
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.ComponentePresupuestario.Programa.IdEntidad, new { @id = "Programa", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ComponentePresupuestario.Programa.IdEntidad)
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.ComponentePresupuestario.AnioPresupuesto, new { @for = "AnioPresupuesto", @class = "col-sm-2 col-form-label" })
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.ComponentePresupuestario.AnioPresupuesto, new { @id = "AnioPresupuesto", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ComponentePresupuestario.AnioPresupuesto)
+                </div>
+            </div>
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.ComponentePresupuestario.MontoComponente, new { @for = "MtoComponentePresupuestario", @class = "col-sm-2 col-form-label" })
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.ComponentePresupuestario.MontoComponente, new { @id = "MtoComponentePresupuestario", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ComponentePresupuestario.MontoComponente)
+                </div>
+
+            </div>
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.ComponentePresupuestario.TipoMovimiento, new { @for = "TipoMovimiento", @class = "col-sm-2 col-form-label" })
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.ComponentePresupuestario.TipoMovimiento.IdEntidad, new { @id = "TipoMovimiento", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ComponentePresupuestario.TipoMovimiento.IdEntidad)
+                </div>
+            </div>
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.ComponentePresupuestario.Detalle, new { @for = "ObsComponentePresupuestario", @class = "col-sm-2 col-form-label" })
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.ComponentePresupuestario.Detalle, new { @id = "ObsComponentePresupuestario", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ComponentePresupuestario.Detalle)
+                </div>
+            </div>
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.ComponentePresupuestario.TituloComponente, new { @for = "TituloComponentePresupuestario", @class = "col-sm-2 col-form-label" })
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.ComponentePresupuestario.TituloComponente, new { @id = "TituloComponentePresupuestario", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ComponentePresupuestario.TituloComponente)
+                </div>
+            </div>
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.ComponentePresupuestario.NumeroComponentePresupuestario, new { @for = "NumeroComponentePresupuestario", @class = "col-sm-2 col-form-label" })
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.ComponentePresupuestario.NumeroComponentePresupuestario, new { @id = "NumeroComponentePresupuestario", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ComponentePresupuestario.NumeroComponentePresupuestario)
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-2" id="trFechaDecreto">
+                    @Html.LabelFor(model => model.ComponentePresupuestario.FechaDecreto, new { @for = "FechaDecreto", @class = "col-form-label" })
+                    <i class="fa fa-info-circle" data-toggle="tooltip" data-placement="bottom" title="Este campo es obligatorio."></i>
+                </div>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.ComponentePresupuestario.FechaDecreto, new { @id = "FechaDecreto", @class = "form-control", @readonly = "readonly" })
+                    @Html.ValidationMessageFor(model => model.ComponentePresupuestario.FechaDecreto)
+                </div>
+            </div>
+
+
+            <input id="btnGuardar" name="SubmitButton" type="submit" value="Guardar Decreto" class="btn btn-primary float-right" />
+            <div id="preloader" class="loader float-right" style="display: none"></div>
+        </div>
+    </div>
+
+
+
+    <br />
+    if (!Html.ViewData.ModelState.IsValid)
+    {
+        <div class="card border-danger">
+            <div class="card-header"><strong>El formulario contiene los siguientes errores:</strong></div>
+            <div class="card-body text-danger">
+                @foreach (var modelError in Html.ViewData.ModelState.SelectMany(keyValuePair => keyValuePair.Value.Errors))
+                {
+                    <div class="alert alert-danger" role="alert">
+                        <h5>@modelError.ErrorMessage</h5>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+    
+
+}
+
+<br />
+
+<a href="@Url.Action("Index", "ComponentePresupuestario")" class="btn btn-primary">
+    <i class="fa fa-home"></i> Regresar al inicio
+</a>
+
+
+@Scripts.Render("~/bundles/jquery")
+<script src="~/Scripts/popper.min.js"></script>
+@Scripts.Render("~/bundles/bootstrap")
+<script src="~/Scripts/Pages/CreateMontoCaucion.js" type="text/javascript"></script>
+@*<script src="~/Scripts/datetimepicker.js" type="text/javascript"></script>
+    <script src="~/Scripts/datetimepicker-es.js" type="text/javascript"></script>*@
+<script src="~/Content/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script src="~/Content/bootstrap-datepicker/locales/bootstrap-datepicker.es.min.js" charset="UTF-8"></script>
+<script src="~/Scripts/funciones-generales.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("body").tooltip({ selector: '[data-toggle=tooltip]' });
+    });
+
+    $(function () {
+        $('#FechaDecreto').val('');
+        $('#FechaDecreto').datepicker(
+            {
+                language: "es",
+                autoclose: true
+            });
+
+
+    });
+
+
+
+
+
+
+</script>
+
+
+

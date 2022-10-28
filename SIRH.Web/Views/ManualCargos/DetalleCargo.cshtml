@@ -1,0 +1,340 @@
+﻿@model SIRH.Web.ViewModels.ManualCargosVM
+
+@{
+    ViewBag.Title = "DetalleCargo";
+    Layout = "~/Views/Shared/ManualCargos.cshtml";
+}
+
+<center>
+    <h1>Detalle del Cargo</h1>
+    <h4>@Model.Cargo.NombreCargo</h4>
+</center>
+<div id="tabs">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a id="tab1" class="nav-link active" href="#tabs-1" data-toggle="tab" role="tab" aria-controls="tabs-1" aria-selected="true">Descripción</a>
+        </li>
+        <li class="nav-item">
+            <a id="tab2" class="nav-link" href="#tabs-2" data-toggle="tab" role="tab" aria-controls="tabs-2" aria-selected="false">Actividades</a>
+        </li>
+        <li class="nav-item">
+            <a id="tab3" class="nav-link" href="#tabs-3" data-toggle="tab" role="tab" aria-controls="tabs-3" aria-selected="false">Factores</a>
+        </li>
+        <li class="nav-item">
+            <a id="tab4" class="nav-link" href="#tabs-4" data-toggle="tab" role="tab" aria-controls="tabs-4" aria-selected="false">Requerimientos</a>
+        </li>
+        <li class="nav-item">
+            <a id="tab5" class="nav-link" href="#tabs-5" data-toggle="tab" role="tab" aria-controls="tabs-5" aria-selected="false">Competencias Transversales</a>
+        </li>
+        <li class="nav-item">
+            <a id="tab6" class="nav-link" href="#tabs-6" data-toggle="tab" role="tab" aria-controls="tabs-6" aria-selected="false">Competencias Grupo Ocupacional</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div id="tabs-1" class="tab-pane fade  show active" role="tabpanel" aria-labelledby="tab1">
+            <br />
+            <div class="card">
+                <div class="card-header"><strong>Descripción del cargo</strong></div>
+                <div class="card-body">
+                    <table class="table">
+                        <tr>
+                            <td colspan="2"><b>@Html.LabelFor(model => model.Cargo.NombreCargo)</b></td>
+                            <td colspan="2">@Html.DisplayFor(model => model.Cargo.NombreCargo)</td>
+                        </tr>
+                        <tr>
+                            <td><b>@Html.LabelFor(model => model.Cargo.ClaseCargo.DesClase)</b></td>
+                            <td>@Html.DisplayFor(model => model.Cargo.ClaseCargo.DesClase)</td>
+                            <td><b>@Html.LabelFor(model => model.Cargo.EspecialidadCargo.DesEspecialidad)</b></td>
+                            <td>@Html.DisplayFor(model => model.Cargo.EspecialidadCargo.DesEspecialidad)</td>
+                        </tr>
+                        <tr>
+                            <td><b>@Html.LabelFor(model => model.Cargo.SubespecialidadCargo.DesSubEspecialidad)</b></td>
+                            <td>@Html.DisplayFor(model => model.Cargo.SubespecialidadCargo.DesSubEspecialidad)</td>
+                            <td><b>@Html.LabelFor(model => model.Cargo.SeccionCargo.NomSeccion)</b></td>
+                            <td>@Html.DisplayFor(model => model.Cargo.SeccionCargo.NomSeccion)</td>
+                        </tr>
+                        <tr>
+                            <td colspan="1"><b>@Html.LabelFor(model => model.Cargo.ProcesoTrabajo)</b></td>
+                            <td colspan="3">@Html.DisplayFor(model => model.Cargo.ProcesoTrabajo)</td>
+                        </tr>
+                        <tr>
+                            <td><b>@Html.LabelFor(model => model.Cargo.JefaturaInmediata)</b></td>
+                            <td>@Html.DisplayFor(model => model.Cargo.JefaturaInmediata)</td>
+                            <td><b>@Html.LabelFor(model => model.Cargo.JefaturaSuperiorInmediata)</b></td>
+                            <td>@Html.DisplayFor(model => model.Cargo.JefaturaSuperiorInmediata)</td>
+                        </tr>
+                        <tr>
+                            <td colspan="1"><b>@Html.LabelFor(model => model.Cargo.Proposito)</b></td>
+                            <td colspan="3">@Html.DisplayFor(model => model.Cargo.Proposito)</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="tabs-2" class="tab-pane fade" role="tabpanel" aria-labelledby="tab2">
+            <br />
+            @if (Model.Resultados != null && Model.Resultados.Count > 0)
+            {
+                <div class="card">
+                    <div class="card-header text-left">
+                        <strong>Actividades Claves según los Resultados de la Clase</strong>
+                        @Html.HiddenFor(model => model.Cargo.Mensaje)
+                    </div>
+                    <div class="card-body">
+                        @for (int i = 0; i < Model.Resultados.Count; i++)
+                        {
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <td><b>Resultado N° @(i + 1)</b></td>
+                                        <td>@Model.Resultados[i].ResultadoCargo</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="2">
+                                            <table class="table">
+                                                @for (int j = 0; j < Model.Resultados[i].ActividadesResultado.Count; j++)
+                                                {
+                                                    <tr>
+                                                        <td><b>Actividad N° @(j + 1)</b></td>
+                                                        <td>@Model.Resultados[i].ActividadesResultado[j].ActividadResultadoCargo</td>
+                                                    </tr>
+                                                }
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        }
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-info">No se tienen actividades registradas</div>
+            }
+        </div>
+        <div id="tabs-3" class="tab-pane fade" role="tabpanel" aria-labelledby="tab3">
+            <br />
+            <div class="card">
+                <div class="card-header"><strong>Factores de especificación asociados</strong></div>
+                <div class="card-body">
+                    @if (ViewBag.Factor == null)
+                    {
+                    <table class="table">
+                        <tr>
+                            <td><b>@Html.LabelFor(model => model.Factor.Independencia)</b></td>
+                            <td>@Html.DisplayFor(model => model.Factor.Independencia)</td>
+                        </tr>
+                        <tr>
+                            <td><b>@Html.LabelFor(model => model.Factor.SupervisionEjercida)</b></td>
+                            <td>@Html.DisplayFor(model => model.Factor.SupervisionEjercida)</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><b>Entorno de trabajo</b></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"></td>
+                        </tr>
+                        <tr>
+                            <td><b>@Html.LabelFor(model => model.Factor.Lugares)</b></td>
+                            <td>@Html.DisplayFor(model => model.Factor.Lugares)</td>
+                        </tr>
+                        <tr>
+                            <td><b>@Html.LabelFor(model => model.Factor.Ambiente)</b></td>
+                            <td>@Html.DisplayFor(model => model.Factor.Ambiente)</td>
+                        </tr>
+                        <tr>
+                            <td><b>@Html.LabelFor(model => model.Factor.Condiciones)</b></td>
+                            <td>@Html.DisplayFor(model => model.Factor.Condiciones)</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"></td>
+                        </tr>
+                        <tr>
+                            <td><b>@Html.LabelFor(model => model.Factor.ModalidadTrabajo)</b></td>
+                            <td>@Html.DisplayFor(model => model.Factor.ModalidadTrabajo)</td>
+                        </tr>
+                        <tr>
+                            <td><b>@Html.LabelFor(model => model.Factor.ImpactoGestion)</b></td>
+                            <td>@Html.DisplayFor(model => model.Factor.ImpactoGestion)</td>
+                        </tr>
+                        <tr>
+                            <td><b>@Html.LabelFor(model => model.Factor.RelacionesTrabajo)</b></td>
+                            <td>@Html.DisplayFor(model => model.Factor.RelacionesTrabajo)</td>
+                        </tr>
+                        <tr>
+                            <td><b>@Html.LabelFor(model => model.Factor.ActivosEquiposInsumos)</b></td>
+                            <td>@Html.DisplayFor(model => model.Factor.ActivosEquiposInsumos)</td>
+                        </tr>
+                    </table>
+                    }
+                    else
+                    {
+                        <div class="alert alert-info">@ViewBag.Factor</div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div id="tabs-4" class="tab-pane fade" role="tabpanel" aria-labelledby="tab4">
+            <br />
+            <div class="card">
+                <div class="card-header"><strong>Requerimientos específicos</strong></div>
+                <div class="card-body">
+                    @if (ViewBag.Requerimiento == null)
+                    {
+                    <table class="table">
+                        <tr>
+                            <td><b>@Html.LabelFor(model => model.RequerimientoEspecifico.RequisitosEspecificos)</b></td>
+                            <td>@Html.DisplayFor(model => model.RequerimientoEspecifico.RequisitosEspecificos)</td>
+                        </tr>
+                        <tr>
+                            <td><b>@Html.LabelFor(model => model.RequerimientoEspecifico.Conocimientos)</b></td>
+                            <td>@Html.DisplayFor(model => model.RequerimientoEspecifico.Conocimientos)</td>
+                        </tr>
+                    </table>
+                    }
+                    else
+                    {
+                        <div class="alert alert-info">@ViewBag.Requerimiento</div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div id="tabs-5" class="tab-pane fade" role="tabpanel" aria-labelledby="tab5">
+            <br />
+            @if (Model.CompetenciasTransversales != null && Model.CompetenciasTransversales.Count > 0)
+            {
+                <br />
+                <div class="card">
+                    <div class="card-header text-left">
+                        <strong>Competencias transversales y evidencias</strong>
+                        @Html.HiddenFor(model => model.Cargo.Mensaje)
+                    </div>
+                    <div class="card-body">
+                        @for (int i = 0; i < Model.CompetenciasTransversales.Count; i++)
+                        {
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr class="card-header">
+                                        <td><b>Competencia: @(Model.CompetenciasTransversales[i].TipoCompetencia == 1 ? "Compromiso con el servicio público" : "Integridad en el desempeño de la función pública")</b></td>
+                                        <td>
+                                            Nivel de dominio: @(Model.CompetenciasTransversales[i].NivelDominio == 1 ? "Basico" :
+@Model.CompetenciasTransversales[i].NivelDominio == 2 ? "Intermedio" :
+@Model.CompetenciasTransversales[i].NivelDominio == 3 ? "Avanzado" : "Destacado")
+                                        </td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="2">
+                                            <table class="table table-hover">
+                                                @for (int j = 0; j < Model.CompetenciasTransversales[i].ComportamientosTransversales.Count; j++)
+                                                {
+                                                    <tr>
+                                                        <td><b>Comportamiento N° @(j + 1)</b></td>
+                                                        <td>@Model.CompetenciasTransversales[i].ComportamientosTransversales[j].ComportamientoTransversal</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2">
+                                                            <table class="table table-hover">
+                                                                @for (int k = 0; k < Model.CompetenciasTransversales[i].ComportamientosTransversales[j].EvidenciasComportamientoTransversal.Count; k++)
+                                                                {
+                                                                    <tr>
+                                                                        <td><b>Evidencia N° @(k + 1)</b></td>
+                                                                        <td>@Model.CompetenciasTransversales[i].ComportamientosTransversales[j].EvidenciasComportamientoTransversal[k].Evidencia</td>
+                                                                    </tr>
+                                                                }
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        }
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-info">No se tienen competencias transversales registradas</div>
+            }
+        </div>
+        <div id="tabs-6" class="tab-pane fade" role="tabpanel" aria-labelledby="tab6">
+            <br />
+            @if (Model.CompetenciasGrupo != null && Model.CompetenciasGrupo.Count > 0)
+            {
+                <br />
+                <div class="card">
+                    <div class="card-header text-left">
+                        <strong>Histórico Grupo Ocupacional</strong>
+                        @Html.HiddenFor(model => model.Cargo.Mensaje)
+                    </div>
+                    <div class="card-body">
+                        @for (int i = 0; i < Model.CompetenciasGrupo.Count; i++)
+                        {
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr class="card-header">
+                                        <td><b>Competencia: @(Model.CompetenciasGrupo[i].TipoGrupoOcupacional)</b></td>
+                                        <td>
+                                            Nivel de dominio: @(Model.CompetenciasGrupo[i].Nivel == 1 ? "Basico" :
+                                                               @Model.CompetenciasGrupo[i].Nivel == 2 ? "Intermedio" :
+                                                               @Model.CompetenciasGrupo[i].Nivel == 3 ? "Avanzado" : "Destacado")
+                                        </td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="3">
+                                            <table class="table table-hover">
+                                                @for (int j = 0; j < Model.CompetenciasGrupo[i].ComportamientosGrupo.Count; j++)
+                                                {
+                                                    <tr>
+                                                        <td><b>Comportamiento N° @(j + 1)</b></td>
+                                                        <td>@Model.CompetenciasGrupo[i].ComportamientosGrupo[j].Comportamiento</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="3">
+                                                            <table class="table table-hover">
+                                                                @for (int k = 0; k < Model.CompetenciasGrupo[i].ComportamientosGrupo[j].EvidenciasGrupo.Count; k++)
+                                                                {
+                                                                    <tr>
+                                                                        <td><b>Evidencia N° @(k + 1)</b></td>
+                                                                        <td>@Model.CompetenciasGrupo[i].ComportamientosGrupo[j].EvidenciasGrupo[k].Evidencia</td>
+                                                                    </tr>
+                                                                }
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        }
+                    </div>
+                </div>
+                <br />
+            }
+            else
+            {
+                <div class="alert alert-info">No se tienen competencias de grupo ocupacional registradas</div>
+            }
+        </div>
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+<script src="~/Scripts/popper.min.js"></script>
+@Scripts.Render("~/bundles/bootstrap")
+<script src="~/Scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+

@@ -1,0 +1,30 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SIRH.Logica" GeneratedClassName="VariablesGlobales">
+  <Profiles />
+  <Settings>
+    <Setting Name="sCampoNombre" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Nombre</Value>
+    </Setting>
+    <Setting Name="sCampoApellido1" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">PrimerApellido</Value>
+    </Setting>
+    <Setting Name="sCampoApellido2" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">SegundoApellido</Value>
+    </Setting>
+    <Setting Name="sCampoCedula" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Cedula</Value>
+    </Setting>
+    <Setting Name="sCampoSexo" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Sexo</Value>
+    </Setting>
+    <Setting Name="sCampoFecNac" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">FechaNacimiento</Value>
+    </Setting>
+    <Setting Name="sCampoEstado" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">EstadoFuncionario</Value>
+    </Setting>
+    <Setting Name="scampootro" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+  </Settings>
+</SettingsFile>

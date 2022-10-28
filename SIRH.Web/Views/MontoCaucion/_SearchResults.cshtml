@@ -1,0 +1,73 @@
+﻿@model IList<SIRH.DTO.CMontoCaucionDTO>
+@{
+    using (Html.BeginForm("ReporteMontoCaucion", "MontoCaucion", FormMethod.Post, new { @id = "thisForm" }))
+    {
+        <div class="card">
+            <div class="card-body">
+                <table class="table detalle">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nivel</th>
+                            <th scope="col">Monto en colones</th>
+                            <th scope="col">Descripción</th>
+                            <th scope="col">Justificación</th>
+                            <th scope="col">Fecha rige</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < Model.Count; i++)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.Encode(Model[i].Nivel)
+                                    @Html.HiddenFor(model => model[i].Nivel)
+                                </td>
+                                <td>
+                                    ₡ @Html.Encode(String.Format("{0:F}", Model[i].MontoColones.ToString("#,#.00#;(#,#.00#)")))
+                                    @Html.HiddenFor(model => model[i].MontoColones)
+                                </td>
+                                <td>
+                                    @Html.AttributeEncode(Model[i].Descripcion)
+                                    @Html.HiddenFor(model => model[i].Descripcion)
+                                </td>
+                                <td>
+                                    @Html.Encode(Model[i].Justificacion)
+                                    @Html.HiddenFor(model => model[i].Justificacion)
+                                </td>
+                                <td>
+                                    @Model[i].FechaRige.ToShortDateString()
+                                    @Html.HiddenFor(model => model[i].FechaRige)
+                                </td>
+                                <td>
+                                    @Html.Encode(Model[i].DetalleEstadoMonto)
+                                    @Html.HiddenFor(model => model[i].DetalleEstadoMonto)
+                                    @Html.HiddenFor(model => model[i].FechaInactiva)
+                                    @Html.HiddenFor(model => model[i].JustificacionInactiva)
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("Details", "MontoCaucion", new { id = Model[i].IdEntidad })" class="btn btn-primary btn-sm">
+                                        <i class="fa fa-search"></i> Ver Detalles
+                                    </a>
+                                </td>                               
+                                    @if (Model[i].EstadoMonto == 1)
+                                    {
+                                        <td>
+                                            <a href="@Url.Action("Edit", "MontoCaucion", new { id = Model[i].IdEntidad })" class="btn btn-warning btn-sm">
+                                                <i class="fa fa-edit"></i> Editar
+                                            </a>
+                                        </td>
+                                        
+                                    }                                                                                                 
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <br />
+                <button class="btn btn-danger" type="submit"><i class="fa fa-file-pdf-o"></i> Exportar a pdf</button>
+            </div>
+        </div>
+    }
+}

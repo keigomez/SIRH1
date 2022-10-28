@@ -1,0 +1,273 @@
+﻿@model  SIRH.Web.ViewModels.HistoricoCarreraVM
+
+@{
+    using (Html.BeginForm("ReporteDesgloseHistoricoCarrera", "Carrera", FormMethod.Post, new { @id = "thisForm" }))
+    {
+
+    <fieldset>
+        <legend>Resultados (@Model.TotalCarreras)</legend>
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Cédula</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Fecha rige de pago</th>
+                    <th scope="col"># Resolución</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>                
+                @for (int i = 0; i < Model.Carreras.Count(); i++)
+                {
+                    <tr>
+                        <td>@Html.AttributeEncode(((Model.PaginaActual - 1) * 10) + i + 1) </td>
+                        <td>
+                            @Html.AttributeEncode(Model.Carreras.ElementAt(i).Cedula)
+                        </td>
+                        <td>
+                            @Html.AttributeEncode(Model.Carreras.ElementAt(i).Nombre)
+                        </td>
+                        <td>
+                            @if (Model.Carreras.ElementAt(i).FecRigePago.Year > 1) { @Html.AttributeEncode(Model.Carreras.ElementAt(i).FecRigePago.ToShortDateString()); }
+                        </td>
+                        <td>
+                            @Html.AttributeEncode(Model.Carreras.ElementAt(i).NumResolucion)
+                        </td>
+                        <td>
+
+                            <a href="@Url.Action("DetailsHistoricoCarrera", "Carrera", new { id = Model.Carreras.ElementAt(i).ID })" class="btn btn-primary btn-sm">
+                                <i class="fa fa-search"></i> Ver Detalle
+                            </a>
+                        </td>
+                        <td></td>
+
+
+
+                        @Html.HiddenFor(model => model.Carreras[i].Cedula)
+                        @Html.HiddenFor(model => model.Carreras[i].Nombre)
+                        @Html.HiddenFor(model => model.Carreras[i].Puesto)
+                        @Html.HiddenFor(model => model.Carreras[i].Clase)
+                        @Html.HiddenFor(model => model.Carreras[i].Codigo)
+                        @Html.HiddenFor(model => model.Carreras[i].Division)
+                        @Html.HiddenFor(model => model.Carreras[i].Direccion)
+                        @Html.HiddenFor(model => model.Carreras[i].Ubicacion)
+                        @Html.HiddenFor(model => model.Carreras[i].TotalPuntos)
+                        @Html.HiddenFor(model => model.Carreras[i].Departamento)
+                        @Html.HiddenFor(model => model.Carreras[i].ValorPunto)
+                        @Html.HiddenFor(model => model.Carreras[i].AnnoExperienciaPR)
+                        @Html.HiddenFor(model => model.Carreras[i].Aprovechamiento)
+                        @Html.HiddenFor(model => model.Carreras[i].Participacion)
+                        @Html.HiddenFor(model => model.Carreras[i].ParticipacionInstruccion)
+                        @Html.HiddenFor(model => model.Carreras[i].CalificacionServicio)
+                        @Html.HiddenFor(model => model.Carreras[i].HorasAprovechamiento)
+                        @Html.HiddenFor(model => model.Carreras[i].HorasParticipacion)
+                        @Html.HiddenFor(model => model.Carreras[i].HorasInstruccion)
+                        @Html.HiddenFor(model => model.Carreras[i].PtosGrado)
+                        @Html.HiddenFor(model => model.Carreras[i].PtosAprovechamiento)
+                        @Html.HiddenFor(model => model.Carreras[i].PtosExperienciaPR)
+                        @Html.HiddenFor(model => model.Carreras[i].PtosParticipacion)
+                        @Html.HiddenFor(model => model.Carreras[i].PtosInstruccion)
+                        @Html.HiddenFor(model => model.Carreras[i].PtosOtros)
+                        @Html.HiddenFor(model => model.Carreras[i].ExplicacionOtros)
+                        @Html.HiddenFor(model => model.Carreras[i].Observacion)
+                        @Html.HiddenFor(model => model.Carreras[i].PSS1Feri)
+                        @Html.HiddenFor(model => model.Carreras[i].PSS1Feve)
+                        @Html.HiddenFor(model => model.Carreras[i].PSS2Feri)
+                        @Html.HiddenFor(model => model.Carreras[i].PSS2Feve)
+                        @Html.HiddenFor(model => model.Carreras[i].PSS3Feri)
+                        @Html.HiddenFor(model => model.Carreras[i].PSS3Feve)
+                        @Html.HiddenFor(model => model.Carreras[i].MesCarrera)
+                        @Html.HiddenFor(model => model.Carreras[i].AnnoCarrera)
+                        @Html.HiddenFor(model => model.Carreras[i].FecRigePago)
+                        @Html.HiddenFor(model => model.Carreras[i].HorasExcParticipacion)
+                        @Html.HiddenFor(model => model.Carreras[i].HorasExcAprovechamiento)
+                        @Html.HiddenFor(model => model.Carreras[i].NumResolucion)
+                        @Html.HiddenFor(model => model.Carreras[i].FecResolucion)
+                        @Html.HiddenFor(model => model.Carreras[i].Periodo)
+                        @Html.HiddenFor(model => model.Carreras[i].Grado)
+                        @Html.HiddenFor(model => model.Carreras[i].Nivel)
+                        @Html.HiddenFor(model => model.Carreras[i].AnnoExperienciaEst)
+                        @Html.HiddenFor(model => model.Carreras[i].AprovechamientoEst)
+                        @Html.HiddenFor(model => model.Carreras[i].ParticipacionEst)
+                        @Html.HiddenFor(model => model.Carreras[i].ParticipacionInstruccionEst)
+                        @Html.HiddenFor(model => model.Carreras[i].HorasAprovechamientoEst)
+                        @Html.HiddenFor(model => model.Carreras[i].HorasParticipacionEst)
+                        @Html.HiddenFor(model => model.Carreras[i].HorasInstruccionEst)
+                        @Html.HiddenFor(model => model.Carreras[i].PtosGradoEst)
+                        @Html.HiddenFor(model => model.Carreras[i].PtosAprovechamientoEst)
+                        @Html.HiddenFor(model => model.Carreras[i].PtosExperienciaEst)
+                        @Html.HiddenFor(model => model.Carreras[i].PtosParticipacionEst)
+                        @Html.HiddenFor(model => model.Carreras[i].PtosInstruccionEst)
+                        @Html.HiddenFor(model => model.Carreras[i].PtosOtroEst)
+                        @Html.HiddenFor(model => model.Carreras[i].ExcParticipacionEst)
+                        @Html.HiddenFor(model => model.Carreras[i].ExcAprovechamientoEst)
+                        @Html.HiddenFor(model => model.Carreras[i].Marca)
+                        @Html.HiddenFor(model => model.Carreras[i].Curso1)
+                        @Html.HiddenFor(model => model.Carreras[i].Curso2)
+                        @Html.HiddenFor(model => model.Carreras[i].Curso3)
+                        @Html.HiddenFor(model => model.Carreras[i].Curso4)
+                        @Html.HiddenFor(model => model.Carreras[i].Curso5)
+                        @Html.HiddenFor(model => model.Carreras[i].Curso6)
+                        @Html.HiddenFor(model => model.Carreras[i].Curso7)
+                        @Html.HiddenFor(model => model.Carreras[i].Curso8)
+                        @Html.HiddenFor(model => model.Carreras[i].Movimiento)
+                        @Html.HiddenFor(model => model.Carreras[i].Observacion1)
+                        @Html.HiddenFor(model => model.Carreras[i].Observacion2)
+                        @Html.HiddenFor(model => model.Carreras[i].Observacion3)
+                        @Html.HiddenFor(model => model.Carreras[i].Fecha)
+
+
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td align="left" colspan="2">
+                        <button class="btn btn-danger" type="submit"><i class="fa fa-file-pdf-o"></i> Exportar a pdf</button>
+                    </td>
+                    <td colspan="4" align="right">
+                        Página (@Model.PaginaActual.ToString() de @Model.TotalPaginas.ToString())
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-end">
+                                @if (Model.PaginaActual == 1)
+                                {
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#" tabindex="-1">Atras</a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="page-item">
+                                        @Ajax.ActionLink("Atras", "SearchHistoricoCarrera", new
+                                   {
+                                       @page = Model.PaginaActual - 1,
+
+                                       @cedula = Model.paramBusqueda.Carrera.Cedula,
+                                       @curso = Model.paramBusqueda.Curso,
+                                       @puesto = Model.paramBusqueda.Carrera.Puesto,
+                                       @nombre = Model.paramBusqueda.Carrera.Nombre,
+
+                                       @diaDesde = Model.paramBusqueda.FechaDesde.Day,
+                                       @mesDesde = Model.paramBusqueda.FechaDesde.Month,
+                                       @annoDesde = Model.paramBusqueda.FechaDesde.Year,
+
+                                       @diaHasta = Model.paramBusqueda.FechaHasta.Day,
+                                       @mesHasta = Model.paramBusqueda.FechaHasta.Month,
+                                       @annoHasta = Model.paramBusqueda.FechaHasta.Year,
+
+                                       @model = Model.paramBusqueda
+                                   }, new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "dvResultadoBusqueda" }, new { @class = "page-link" })
+                                    </li>
+                                }
+                                @{ if (Model.TotalPaginas > 10)
+                                    {
+                                        var indice = Model.PaginaActual > 6 ? (Model.PaginaActual + 4 <= Model.TotalPaginas ? Model.PaginaActual - 5 : Model.PaginaActual - 5 - ((Model.PaginaActual + 4) - Model.TotalPaginas)) : 1;
+                                        var final = Model.PaginaActual > 6 ? (Model.PaginaActual + 4 >= Model.TotalPaginas ? Model.TotalPaginas : Model.PaginaActual + 4) : 10;
+
+                                        for (int i = indice; i <= final; i++)
+                                        {
+                                            <li class="page-item">
+                                                @Ajax.ActionLink(i.ToString(), "SearchHistoricoCarrera", new
+                                           {
+                                               @page = i,
+
+                                               @cedula = Model.paramBusqueda.Carrera.Cedula,
+                                               @curso = Model.paramBusqueda.Curso,
+                                               @puesto = Model.paramBusqueda.Carrera.Puesto,
+                                               @nombre = Model.paramBusqueda.Carrera.Nombre,
+
+                                               @diaDesde = Model.paramBusqueda.FechaDesde.Day,
+                                               @mesDesde = Model.paramBusqueda.FechaDesde.Month,
+                                               @annoDesde = Model.paramBusqueda.FechaDesde.Year,
+
+                                               @diaHasta = Model.paramBusqueda.FechaHasta.Day,
+                                               @mesHasta = Model.paramBusqueda.FechaHasta.Month,
+                                               @annoHasta = Model.paramBusqueda.FechaHasta.Year,
+
+                                               @model = Model.paramBusqueda
+                                           }, new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "dvResultadoBusqueda" }, new { @class = "page-link" })
+                                            </li>
+                                        }
+                                        if (Model.PaginaActual + 4 < Model.TotalPaginas)
+                                        {
+                                            <li class="page-item disabled">
+                                                <a class="page-link" href="#">...</a>
+                                            </li>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        for (int i = 1; i <= Model.TotalPaginas; i++)
+                                        {
+                                            <li class="page-item ">
+                                                @Ajax.ActionLink(i.ToString(), "SearchHistoricoCarrera", new
+                                           {
+                                               @page = i,
+
+                                               @cedula = Model.paramBusqueda.Carrera.Cedula,
+                                               @curso = Model.paramBusqueda.Curso,
+                                               @puesto = Model.paramBusqueda.Carrera.Puesto,
+                                               @nombre = Model.paramBusqueda.Carrera.Nombre,
+
+                                               @diaDesde = Model.paramBusqueda.FechaDesde.Day,
+                                               @mesDesde = Model.paramBusqueda.FechaDesde.Month,
+                                               @annoDesde = Model.paramBusqueda.FechaDesde.Year,
+
+                                               @diaHasta = Model.paramBusqueda.FechaHasta.Day,
+                                               @mesHasta = Model.paramBusqueda.FechaHasta.Month,
+                                               @annoHasta = Model.paramBusqueda.FechaHasta.Year,
+
+                                               @model = Model.paramBusqueda
+                                           }, new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "dvResultadoBusqueda" }, new { @class = "page-link" })
+                                            </li>
+                                            }
+                                        }
+                                    }
+
+                                    @if (Model.TotalPaginas == 1 || Model.PaginaActual == Model.TotalPaginas)
+                                    {
+                                        <li class="page-item disabled">
+                                            <a class="page-link" href="#">Siguiente</a>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li class="page-item">
+                                            @Ajax.ActionLink("Siguiente", "SearchHistoricoCarrera", new
+                                       {
+                                           @page = Model.PaginaActual + 1,
+
+                                           @cedula = Model.paramBusqueda.Carrera.Cedula,
+                                           @curso = Model.paramBusqueda.Curso,
+                                           @puesto = Model.paramBusqueda.Carrera.Puesto,
+                                           @nombre = Model.paramBusqueda.Carrera.Nombre,
+
+                                           @diaDesde = Model.paramBusqueda.FechaDesde.Day,
+                                           @mesDesde = Model.paramBusqueda.FechaDesde.Month,
+                                           @annoDesde = Model.paramBusqueda.FechaDesde.Year,
+
+                                           @diaHasta = Model.paramBusqueda.FechaHasta.Day,
+                                           @mesHasta = Model.paramBusqueda.FechaHasta.Month,
+                                           @annoHasta = Model.paramBusqueda.FechaHasta.Year,
+
+                                           @model = Model.paramBusqueda
+                                       }, new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "dvResultadoBusqueda" }, new { @class = "page-link" })
+                                        </li>
+                                    }
+                                
+                            </ul>
+                        </nav>
+                    </td>
+                </tr>
+            </tfoot>
+
+        </table>
+
+        <br />
+        
+    </fieldset>
+
+    }
+}

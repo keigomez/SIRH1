@@ -1,0 +1,133 @@
+﻿@model SIRH.Web.ViewModels.PedimentoPuestoVM
+@{
+    ViewBag.Title = "Registrar oferente en puesto";
+    Layout = "~/Views/Shared/Vacantes.cshtml";
+}
+
+<h2>Registrar oferente en puesto</h2>
+@{ 
+    if (Model.Error == null)
+    {
+        using (Ajax.BeginForm("AsignarPuestoOferente", new AjaxOptions
+        {
+            HttpMethod = "POST",
+            UpdateTargetId = "dvResultadoBusqueda",
+            OnBegin = "BeginGuardarCandidato",
+            OnComplete = "CompleteGuardarCandidato",
+            OnSuccess = "SuccessGuardarCandidato",
+            OnFailure = "SuccessGuardarCandidato"
+        }))
+        {
+            <div id="formulario" class="jumbotron">
+                <table class="table" id="datos_puesto">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th colspan="6">Información del puesto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><b>@Html.LabelFor(model => model.Puesto.CodPuesto)</b></td>
+                            <td class="columna_info">@Html.DisplayFor(model => model.Puesto.CodPuesto)</td>
+                            <td><b>@Html.LabelFor(model => model.DetallePuesto.Clase.DesClase)</b></td>
+                            <td class="columna_info">@Html.DisplayFor(model => model.DetallePuesto.Clase.DesClase)</td>
+                            <td><b>@Html.LabelFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)</b></td>
+                            <td class="columna_info">@Html.DisplayFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)</td>
+                        </tr>
+                        <tr>
+                            <td><b>@Html.LabelFor(model => model.Puesto.EstadoPuesto.DesEstadoPuesto)</b></td>
+                            <td class="columna_info">@Html.DisplayFor(model => model.Puesto.EstadoPuesto.DesEstadoPuesto)</td>
+                            <td><b>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)</b></td>
+                            <td class="columna_info">@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)</td>
+                            <td><b>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)</b></td>
+                            <td class="columna_info">@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)</td>
+
+                        </tr>
+                        <tr>
+                            <td><b>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)</b></td>
+                            <td class="columna_info">@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)</td>
+                            <td><b>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion)</b></td>
+                            <td class="columna_info">@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion)</td>
+                            <td><b>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto)</b></td>
+                            <td class="columna_info">@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto)</td>
+                        </tr>
+                        <tr>
+                            <td><b>@Html.LabelFor(model => model.UbicacionPuesto.Distrito.Canton.Provincia.NomProvincia)</b></td>
+                            <td class="columna_info">@Html.DisplayFor(model => model.UbicacionPuesto.Distrito.Canton.Provincia.NomProvincia)</td>
+                            <td><b>@Html.LabelFor(model => model.UbicacionPuesto.Distrito.Canton.NomCanton)</b></td>
+                            <td class="columna_info">@Html.DisplayFor(model => model.UbicacionPuesto.Distrito.Canton.NomCanton)</td>
+                            <td><b>@Html.LabelFor(model => model.UbicacionPuesto.Distrito.NomDistrito)</b></td>
+                            <td class="columna_info">@Html.DisplayFor(model => model.UbicacionPuesto.Distrito.NomDistrito)</td>
+                        </tr>
+                        <tr>
+                            <td><b>@Html.LabelFor(model => model.PedimentoPuesto.NumeroPedimento)</b></td>
+                            <td class="columna_info">@Html.DisplayFor(model => model.PedimentoPuesto.NumeroPedimento)</td>
+                            @Html.HiddenFor(model => model.PedimentoPuesto.NumeroPedimento)
+                            <td><b>@Html.LabelFor(model => model.PedimentoPuesto.FechaPedimento)</b></td>
+                            <td class="columna_info">@Model.PedimentoPuesto.FechaPedimento.ToShortDateString()</td>
+                            <td><b>@Html.LabelFor(model => model.PedimentoPuesto.ObservacionesPedimento)</b></td>
+                            <td class="columna_info">@Html.DisplayFor(model => model.PedimentoPuesto.ObservacionesPedimento)</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><b>Oferente</b></p>
+                <table class="table" id="datos_pedimentoPuesto">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th colspan="6">Búsqueda de Oferente</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><b>@Html.LabelFor(model => model.Funcionario.Cedula)</b></td>
+                            <td class="columna_info">@Html.TextBoxFor(model => model.Funcionario.Cedula)</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="enviar">
+                    <tr>
+                        <td>
+                            <input class="btn btn-secondary" id="btnGuardar" name="SubmitButton" type="submit" value="Buscar" />
+                            <div id="preloader" class="loader" hidden></div>
+                        </td>
+                    </tr>
+                </table>
+
+
+            </div>
+        }
+        <div id="dvResultadoBusqueda">
+            @{
+                Html.RenderPartial("_FormularioOferente", Model);
+            }
+        </div>
+    }
+     else{
+            <div class="error">
+                No se puede registrar el pedimento del puesto.
+            </div>
+        
+        <fieldset>
+            <legend>Detalles</legend>
+            
+            <div>Se produjo el siguiente error: </div>
+            <br /><div><b>@Html.Encode(Model.Error.MensajeError)</b></div>
+            <br /><div>Si conoce la causa de este error, por favor revise los datos que intentó almacenar e intentelo de nuevo.</div>
+            <br /><div>De lo contrario le invitamos a ponerse en contacto con nuestro equipo de soporte, mediante el sistema de <a href="http://sisrh.mopt.go.cr:83/" target="_blank">Ayuda y Soporte</a></div>
+        </fieldset>
+        <br />
+        <p>
+            <div class="link_return">
+                <a href="javascript:history.back()" id="A2">Regresar</a>
+            </div>
+        </p>
+     }
+
+}
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+<script src="~/Scripts/sidebar.js" type="text/javascript"></script>
+<script src="~/scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/FormularioPerfilFuncionario.js" type="text/javascript"></script>

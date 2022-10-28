@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<usuarios>
+  <!-- Ronny Solano Rojas -->
+  <usuario>
+		<cedula>0034140411</cedula>
+		<contra>rqs82z</contra>
+	</usuario>
+  <!-- Jorge Luis Matarrita Jimenez -->
+  <usuario>
+		<cedula>0052680598</cedula>
+		<contra>r3bnde</contra>
+	</usuario>
+  <!-- Adonay Céspedes Carrillo -->
+  <usuario>
+		<cedula>0052250754</cedula>
+		<contra>9zsybk</contra>
+	</usuario>
+  <!-- Osvaldo Marchena Rodriguez  -->
+  <usuario>
+		<cedula>0052010245</cedula>
+		<contra>mw58ym</contra>
+	</usuario>
+  <!-- Bernal Rodríguez Morales -->
+  <usuario>
+		<cedula>0061900957</cedula>
+		<contra>w3pqfn</contra>
+	</usuario>
+  <!-- JOSE ESTEBAN REYES REYES	 -->
+  <usuario>
+		<cedula>0018870287</cedula>
+		<contra>xg2k3y</contra>
+	</usuario>
+  <!-- JOHNNY VINDAS LOPEZ	 -->
+  <usuario>
+		<cedula>0061890464</cedula>
+		<contra>b3svvx</contra>
+	</usuario>
+  <!-- FELIX CARMONA ROJAS	 -->
+  <usuario>
+		<cedula>0051720548</cedula>
+		<contra>5mzhvt</contra>
+	</usuario>
+ <!-- Roger Quesada Sancho -->
+  <usuario>
+		<cedula>0023600330</cedula>
+		<contra>68vrfq</contra>
+	</usuario>
+ <!-- RAFAEL VARGAS LOBO -->
+  <usuario>
+		<cedula>0061720674</cedula>
+		<contra>d4t2tt</contra>
+	</usuario>
+ <!-- Diego Hidalgo Quesada -->
+  <usuario>
+		<cedula>0112140333</cedula>
+		<contra>8nb632</contra>
+	</usuario>
+ <!-- Melvin Barquero Hidalgo -->
+  <usuario>
+		<cedula>0017130648</cedula>
+		<contra>bkzq5f</contra>
+	</usuario>
+  <!-- SOPHIA MEINOTT GRAHAM -->
+  <usuario>
+		<cedula>0070800188</cedula>
+		<contra>m3auwe</contra>
+	</usuario>
+  <!-- JOSEGHINE RUGAMA GONZÁLEZ -->
+  <usuario>
+		<cedula>0071860278</cedula>
+		<contra>b7jw6p</contra>
+	</usuario>
+  <!-- JUAN DIEGO CHÁVEZ FLORES -->
+  <usuario>
+		<cedula>0032560834</cedula>
+		<contra>2e7vqz</contra>
+	</usuario>
+  <!-- LUIS SALAZAR -->
+  <usuario>
+		<cedula>0062420042</cedula>
+		<contra>2f9lsz</contra>
+	</usuario>
+  <!-- Gustavo Arce Mora -->
+  <usuario>
+		<cedula>0024340608</cedula>
+		<contra>7ZcZuY</contra>
+	</usuario>
+  <!-- Daniel Gomez Araya-->
+  <usuario>
+		<cedula>0025350281</cedula>
+		<contra>j9xWsn</contra>
+	</usuario>
+  <!-- Fabián Valverde Suárez-->
+  <usuario>
+    <cedula>0018700117</cedula>
+    <contra>4nnY6p</contra>
+  </usuario>
+  <!-- Roy Gilberto Arrieta  Ugalde -->
+  <usuario>
+    <cedula>0019530651</cedula>
+    <contra>Ca2Grp</contra>
+  </usuario>
+  <!-- Ronald Espinoza  Barrantes -->
+  <usuario>
+    <cedula>0024170114</cedula>
+    <contra>Ka3Grp</contra>
+  </usuario>
+  <!-- Diego Rugama Monge  -->
+  <usuario>
+    <cedula>0019530814</cedula>
+    <contra>p5okun</contra>
+  </usuario>
+  <!-- Roberth Leal Quirós  -->
+  <usuario>
+    <cedula>0052520493</cedula>
+    <contra>rk7Hsn</contra>
+  </usuario>
+  <!-- Giovani León  -->
+  <usuario>
+    <cedula>0018480553</cedula>
+    <contra>gl7jsn</contra>
+  </usuario>
+  <!-- Rolando Alfaro Oreamuno -->
+  <usuario>
+    <cedula>0110580679</cedula>
+    <contra>gl7jsn</contra>
+  </usuario>
+  <!-- José Alberto Montero FAllas -->
+  <usuario>
+    <cedula>0110910103</cedula>
+    <contra>hl7jsx</contra>
+  </usuario>
+  <!-- ALFREDO ARIAS BADILLA -->
+  <usuario>
+    <cedula>0062580799</cedula>
+    <contra>4L29vs</contra>
+  </usuario>
+  <!-- GERARDO CUBERO CASTRO -->
+  <usuario>
+    <cedula>0061430924</cedula>
+    <contra>XkHj7t</contra>
+  </usuario>
+  <!-- JUAN VARGAS FONSECA -->
+  <usuario>
+    <cedula>0062500466</cedula>
+    <contra>vTM7xE</contra>
+  </usuario>
+  <!-- HERALDO WILLIAMSON -->
+  <usuario>
+    <cedula>0017570284</cedula>
+    <contra>arf56a</contra>
+  </usuario>
+  <!-- ******* -->
+  <!-- TOBIAS BARRANTES -->
+  <usuario>
+    <cedula>0061400266</cedula>
+    <contra>per34os</contra>
+  </usuario>
+  <!-- CARLOS ROJAS -->
+  <usuario>
+    <cedula>0016360178</cedula>
+    <contra>alr321</contra>
+  </usuario>
+  <!-- GEORGINA SANCHEZ -->
+  <usuario>
+    <cedula>0041390716</cedula>
+    <contra>yur23k</contra>
+  </usuario>
+  <!-- YHOJAMESS MORA -->
+  <usuario>
+    <cedula>0019220195</cedula>
+    <contra>tur931</contra>
+  </usuario>
+  <!-- ROGER QUESADA -->
+  <usuario>
+    <cedula>0023600330</cedula>
+    <contra>img34k</contra>
+  </usuario>
+  <!-- ASDRUBAL MORA -->
+  <usuario>
+    <cedula>0023710380</cedula>
+    <contra>khq35n</contra>
+  </usuario>
+  <!-- WALTER MONGE -->
+  <usuario>
+    <cedula>0015030361</cedula>
+    <contra>yuk3n3</contra>
+  </usuario>
+  <!-- MINOR ROJAS -->
+  <usuario>
+    <cedula>0017240930</cedula>
+    <contra>ung251</contra>
+  </usuario>
+  <!-- LUIS SALAZAR -->
+  <usuario>
+    <cedula>0062420042</cedula>
+    <contra>98ugv1</contra>
+  </usuario>
+  <!-- JOSE VASQUEZ -->
+  <usuario>
+    <cedula>0023850202</cedula>
+    <contra>y7hkga</contra>
+  </usuario>
+  <!-- ELADIO FERNANDEZ -->
+  <usuario>
+    <cedula>0062690463</cedula>
+    <contra>pnbm23</contra>
+  </usuario>
+  <!-- ALEXIS SOLANO -->
+  <usuario>
+    <cedula>0061690717</cedula>
+    <contra>zxc21a</contra>
+  </usuario>
+  <!-- CARLOS BARRERA -->
+  <usuario>
+    <cedula>0090700328</cedula>
+    <contra>pt45ab</contra>
+  </usuario>
+  <!-- ORLANDO MOREIRA -->
+  <usuario>
+    <cedula>0041420002</cedula>
+    <contra>7ykres</contra>
+  </usuario>
+  <!-- ROCIO ARAYA -->
+  <usuario>
+    <cedula>0025560204</cedula>
+    <contra>rae3qp</contra>
+  </usuario>
+  <!-- ROCIO SALAS -->
+  <usuario>
+    <cedula>0025740045</cedula>
+    <contra>kaq67m</contra>
+  </usuario>
+  <!-- EDUARDO BOLAÑOS -->
+  <usuario>
+    <cedula>0019390655</cedula>
+    <contra>khgbvn</contra>
+  </usuario>
+  <!-- JOSE MIGUEL CALVO -->
+  <usuario>
+    <cedula>0053130903</cedula>
+    <contra>typ7qr</contra>
+  </usuario>
+  <!-- TATIANA ARROYO -->
+  <usuario>
+    <cedula>0019340457</cedula>
+    <contra>rat765</contra>
+  </usuario>
+  <!-- FREDDY EDUARDO BORRAS VARGAS -->
+  <usuario>
+    <cedula>0018130499</cedula>
+    <contra>p3Ve5d</contra>
+  </usuario>
+  <!-- ACOSTA GOMEZ ALEJANDRA --> 
+  <usuario>
+    <cedula>0110890063</cedula>
+    <contra>Xd2vdj</contra>
+  </usuario>
+</usuarios>

@@ -1,0 +1,79 @@
+﻿@model SIRH.Web.ViewModels.FormularioCalificacionVM
+@{
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+    if (Model != null)
+    {
+        if (Model.FuncionariosCalificar.Count == 0)
+        {
+            <div class="card border-danger">
+                <div class="card-header"><strong>La búsqueda contiene los siguientes errores</strong></div>
+                <div class="card-body text-danger">
+                    <p>No se encontraron resultados para la búsqueda solicitada.</p>
+                </div>
+            </div>
+        }
+        else
+        {
+            <fieldset>
+                <legend>Resultados (@Model.FuncionariosCalificar.Count)</legend>
+                <table class="table">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Cédula</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Jefe Inmediato</th>
+                            <th scope="col">Jefe Superior</th>
+                            <th scope="col">--</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            @Html.TextBox("codPeriodo", String.Empty, new { @readonly = "readonly", @hidden="hidden", @class = "form-control" })
+                            @Html.TextBox("codFuncionario", String.Empty, new { @readonly = "readonly", @hidden = "hidden", @class = "form-control" })
+
+                            int cuenta = 0;
+                            foreach (var item in Model.FuncionariosCalificar)
+                            {
+                                cuenta++;
+                                <tr>
+                                    <td>
+                                       @* @(((Model.PaginaActual - 1) * 10) + cuenta)*@
+                                    </td>
+
+                                    <td>@item.Funcionario.Cedula</td>
+
+                                    <td>@item.Funcionario.Nombre</td>
+
+                                    <td>@item.JefeInmediato.Nombre
+                                        @*@Html.DropDownList("listado", Model.Funcionarios, new { @class = "form-control" })*@                                       
+                                    </td>
+
+                                    <td>@item.JefeSuperior.Nombre</td>
+
+                                    <td>@Html.ActionLink("Asignar Jefe", "", "Calificacion", null, new { @onclick = "return CargarDato('" + Model.Periodos + "','" + item.Funcionario.IdEntidad + "');", @type="button", @class = "btn btn-outline-primary"}) </td>
+                                    @*<td>
+                                        <button class="btn btn-outline-primary" type="button" id="dialog-jefe"><i class="fa fa-search"></i> Asignar Jefe</button>
+                                    </td>*@
+                                </tr>
+                            }
+                            <tr>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </fieldset>
+        }
+
+    }
+
+        <script type="text/javascript">
+        function onBeginNew() {
+                //alert("algo");
+                document.getElementById("form_reportar").submit();
+        }
+        </script>
+
+        <script src="~/Scripts/Pages/FuncionesCalificacion.js" type="text/javascript"></script>
+}

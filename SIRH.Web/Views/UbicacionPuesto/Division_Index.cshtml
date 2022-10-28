@@ -1,0 +1,42 @@
+﻿@model SIRH.Web.Models.DivisionModel
+@{
+    using (Ajax.BeginForm("Division_Index", "UbicacionPuesto", new AjaxOptions { UpdateTargetId = "target-division", HttpMethod = "POST", OnSuccess = "successDataDivision", OnBegin = "beginDataDivision" }))
+    {
+        <div class="card">
+            <div class="card-header">
+                Parámetros de búsqueda:
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="form-group col-6">
+                        @Html.Label("Código de división")
+                        <span>:</span>
+                        @Html.TextBox("codigodivision", String.Empty, new { @onkeypress="return IsNumeric(event,'division', 'código de división')",@class="form-control" })
+                    </div>
+                    
+                </div>
+                <div class="row">
+                    <div class="form-group col-6">
+                        @Html.Label("Nombre de división")
+                        <span>:</span>
+                        @Html.TextBox("nomdivision", String.Empty, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-8">
+                        <input class="btn btn-secondary" type="submit" value="Buscar" id="btnBuscaDivision" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-5">
+                        <div id="progressbardivision" class="loader" hidden></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    <div id="error-division" class="alert alert-danger" role="alert" hidden></div>
+    <div id="target-division"></div>
+
+}

@@ -1,0 +1,90 @@
+﻿@model SIRH.Web.ViewModels.BusquedaEntidadEducativaVM
+
+@{
+    ViewBag.Title = "DetailsEntidadEducativa";
+    Layout = "~/Views/Shared/Carrera.cshtml";
+}
+
+@{
+    if (Request.QueryString["accion"] == "guardar")
+    {
+        <div class="alert alert-success" role="alert">
+            <i class="fa fa-check-circle d-inline" style="font-size:48px;"></i>
+            <h4 class="d-inline"> La entidad educativa se ha guardado correctamente.</h4>
+        </div>
+        <br />
+
+        <div class="card">
+            <h5 class="card-header">Detalle</h5>
+            <div class="card-body">
+                <div>Se ha almacenado la entidad educativa: </div>
+                <ul class="list-group">
+                    <li class="list-group-item"><span><strong>@Html.LabelFor(model => model.EntidadEducativa.DescripcionEntidad): </strong>@Html.AttributeEncode(Model.EntidadEducativa.DescripcionEntidad)</span></li>
+                    <li class="list-group-item"><span><strong>@Html.LabelFor(model => model.EntidadEducativa.NombreTipo): </strong>@Html.AttributeEncode(Model.EntidadEducativa.NombreTipo)</span></li>
+                </ul>
+                <br />
+                <a href="javascript:history.back()" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Regresar</a>
+            </div>
+        </div>
+        <br />
+    }
+    else
+    {
+        if (Request.QueryString["accion"] == "modificar")
+        {
+            <div class="alert alert-info" role="alert">
+                <i class="fa fa-check-circle d-inline" style="font-size:48px;"></i>
+                <h4 class="d-inline">La entidad educativa se ha anulado correctamente.</h4>
+            </div>
+            <br />
+
+            <div class="card">
+                <h5 class="card-header">Detalle</h5>
+                <div class="card-body">
+                    <div>Se ha anulado la entidad educativa: </div>
+                    <ul class="list-group">
+                        <li class="list-group-item"><span><strong>@Html.LabelFor(model => model.EntidadEducativa.DescripcionEntidad): </strong>@Html.AttributeEncode(Model.EntidadEducativa.DescripcionEntidad)</span></li>
+                        <li class="list-group-item"><span><strong>@Html.LabelFor(model => model.EntidadEducativa.NombreTipo): </strong>@Html.AttributeEncode(Model.EntidadEducativa.NombreTipo)</span></li>
+                    </ul>
+                    <br />
+                    <a href="@Url.Action("SearchEntidadEducativa", "Carrera", null)" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Regresar</a>
+                </div>
+            </div>
+            <br />
+        }
+        else
+        {
+            using (Html.BeginForm())
+            {
+                <blockquote><h3>Detalle de entidad educativa</h3></blockquote>
+
+                <div class="card">
+                    <div class="card-header">
+                        <b>Entidad educativa</b>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item"><span><strong>@Html.LabelFor(model => model.EntidadEducativa.DescripcionEntidad): </strong>@Html.AttributeEncode(Model.EntidadEducativa.DescripcionEntidad)</span></li>
+                            <li class="list-group-item"><span><strong>@Html.LabelFor(model => model.EntidadEducativa.NombreTipo): </strong>@Html.AttributeEncode(Model.EntidadEducativa.NombreTipo)</span></li>
+                            @Html.HiddenFor(model => model.EntidadEducativa.IdEntidad)
+                        </ul>
+                        <br />
+                        <a href="javascript:history.back()" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Regresar</a>
+                        @if (Model.EntidadEducativa.Estado == 1)
+                        {
+                        <input id="btnAnular" name="SubmitButton" type="submit" value="Anular" class="btn btn-danger" />
+                        }
+                    </div>
+                </div>
+                <br />
+
+
+            }
+        }
+    }
+
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+

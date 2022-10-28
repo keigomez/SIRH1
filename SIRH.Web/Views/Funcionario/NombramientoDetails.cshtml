@@ -1,0 +1,98 @@
+﻿@model SIRH.Web.ViewModels.PedimentoPuestoVM
+
+@{
+    ViewBag.Title = "Detalle asignación oferente";
+    Layout = "~/Views/Shared/Vacantes.cshtml";
+}
+
+<h2>Detalle asignación oferente</h2>
+<table id="datos_puesto" class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th colspan="6">Información del puesto</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><b> @Html.LabelFor(model => model.Puesto.CodPuesto)</b></td>
+            <td class="columna_info">@Html.DisplayFor(model => model.Puesto.CodPuesto)</td>
+            <td><b>@Html.LabelFor(model => model.DetallePuesto.Clase.DesClase)</b></td>
+            <td class="columna_info">@Html.DisplayFor(model => model.DetallePuesto.Clase.DesClase)</td>
+            <td><b>@Html.LabelFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)</b></td>
+            <td class="columna_info">@Html.DisplayFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)</td>
+        </tr>
+        <tr>
+            <td><b>@Html.LabelFor(model => model.Puesto.EstadoPuesto.DesEstadoPuesto)</b></td>
+            <td class="columna_info">@Html.DisplayFor(model => model.Puesto.EstadoPuesto.DesEstadoPuesto)</td>
+            <td><b>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)</b></td>
+            <td class="columna_info">@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)</td>
+            <td><b>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)</b></td>
+            <td class="columna_info">@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)</td>
+
+        </tr>
+        <tr>
+            <td><b>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)</b></td>
+            <td class="columna_info">@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)</td>
+            <td><b>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion)</b></td>
+            <td class="columna_info">@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion)</td>
+            <td><b>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto)</b></td>
+            <td class="columna_info">@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto)</td>
+        </tr>
+        <tr>
+            <td><b>@Html.LabelFor(model => model.UbicacionPuesto.Distrito.Canton.Provincia.NomProvincia)</b></td>
+            <td class="columna_info">@Html.DisplayFor(model => model.UbicacionPuesto.Distrito.Canton.Provincia.NomProvincia)</td>
+            <td><b>@Html.LabelFor(model => model.UbicacionPuesto.Distrito.Canton.NomCanton)</b></td>
+            <td class="columna_info">@Html.DisplayFor(model => model.UbicacionPuesto.Distrito.Canton.NomCanton)</td>
+            <td><b>@Html.LabelFor(model => model.UbicacionPuesto.Distrito.NomDistrito)</b></td>
+            <td class="columna_info">@Html.DisplayFor(model => model.UbicacionPuesto.Distrito.NomDistrito)</td>
+        </tr>
+        <tr>
+            <td><b>@Html.LabelFor(model => model.PedimentoPuesto.NumeroPedimento)</b></td>
+            <td class="columna_info">@Html.DisplayFor(model => model.PedimentoPuesto.NumeroPedimento)</td>
+            @Html.HiddenFor(model => model.PedimentoPuesto.NumeroPedimento)
+            <td><b>@Html.LabelFor(model => model.PedimentoPuesto.FechaPedimento)</b></td>
+            <td class="columna_info">@Model.PedimentoPuesto.FechaPedimento.ToShortDateString() </td>
+            <td><b>@Html.LabelFor(model => model.PedimentoPuesto.ObservacionesPedimento)</b></td>
+            <td class="columna_info">@Html.DisplayFor(model => model.PedimentoPuesto.ObservacionesPedimento)</td>
+        </tr>
+    </tbody>
+</table>
+<table id="datos_funcionario" class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th colspan="6">Información del oferente</th>
+            @Html.HiddenFor(model => model.PedimentoPuesto.NumeroPedimento)
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><b>@Html.LabelFor(model => model.Funcionario.Cedula)</b></td>
+            <td class="columna_info">@Html.DisplayFor(model => model.Funcionario.Cedula)</td>
+            @Html.HiddenFor(model => model.Funcionario.Cedula)
+            <td><b>@Html.LabelFor(model => model.Funcionario.Nombre)</b></td>
+            <td class="columna_info">@Model.Funcionario.Nombre + " " + Model.Funcionario.PrimerApellido + " " + Model.Funcionario.SegundoApellido</td>
+            <td><b>@Html.LabelFor(model => model.Funcionario.Sexo)</b></td>
+            <td class="columna_info">@Html.DisplayFor(model => model.Funcionario.Sexo)</td>
+        </tr>
+        <tr>
+            <td><b>@Html.LabelFor(model => model.Funcionario.FechaNacimiento)</b></td>
+            <td class="columna_info">@Html.DisplayFor(model => model.Funcionario.FechaNacimiento)</td>
+            <td><b>Edad</b></td>
+            <td class="columna_info">@Html.DisplayFor(model => model.Edad)</td>
+            <td><b>@Html.LabelFor(model => model.EstadoCivil.CatEstadoCivil.DesEstadoCivil)</b></td>
+            <td class="columna_info">@Html.DisplayFor(model => model.EstadoCivil.CatEstadoCivil.DesEstadoCivil)</td>
+        </tr>
+    </tbody>
+</table>
+<div class="link_assign">
+    @*<a href="/Vacantes/RegistrarFormacionCandidato?cedula=<%= Model.Funcionario.Cedula %>" id="A2">Completar perfil oferente</a>*@
+    @Html.ActionLink("Completar perfil oferente","RegistrarFormacionCandidato","Vacantes",new { @id="A2" });
+</div> |
+<div class="link_carta">
+    <a href="#" id="A1">Generar carta de presentación</a>
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+<script src="~/Scripts/sidebar.js" type="text/javascript"></script>
+<script src="~/scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>

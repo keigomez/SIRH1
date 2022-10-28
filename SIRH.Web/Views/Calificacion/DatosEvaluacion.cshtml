@@ -1,0 +1,52 @@
+﻿@model IEnumerable<SIRH.Web.ViewModels.FormularioDatosEvaluacionVM>
+
+@{
+    ViewBag.Title = "DatosEvaluacion";
+    Layout = "~/Views/Shared/Calificacion.cshtml";
+}
+
+<div class="jumbotron">
+    <center>
+        <h3 class="display-4">Datos Evaluación</h3>
+        <br />
+        <div class="card">
+            <div class="card-header text-left">
+                <strong>Datos a Solicitar</strong>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-group row">
+                        <div class="col-lg-6">
+                            <p class="col-lg-12 p-lg-4"> 1. Imprime Datos Generales Institucionales.</p>
+                        </div>
+                        <div class="col-lg-6">
+                            <p class="col-lg-8 p-lg-4 "> 2. Imprimir Datos Cuantitativos y Cualitativos de los Funcionarios Evaluados dentro del RSC.</p>
+                        </div>
+                        
+                    </div>
+                   
+                    @using (Ajax.BeginForm("ReporteDatos", "Calificacion", new AjaxOptions
+                    {
+                        HttpMethod = "Post",
+                        InsertionMode = InsertionMode.Replace,
+                        OnSuccess = "SuccessCargarFuncionario",
+                        OnComplete = "CompleteCargarFuncionario",
+                        OnBegin = "BeginCargarFuncionario"
+                    }))
+                    {
+                        <button class="btn btn-danger" type="submit"><i class="fa fa-file-pdf-o"></i> Exportar a PDF</button>
+                        <br />
+                    }
+                </div>
+            </div>
+        </div>
+        </center>
+</div>
+    <div id="formularioC" class="container">
+        @{
+
+            //Html.RenderPartial("_Calificar", Model);
+        }
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")

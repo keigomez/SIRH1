@@ -1,0 +1,77 @@
+﻿@model SIRH.Web.ViewModels.PedimentoPuestoVM
+@{ 
+    if (Model.Funcionario != null) {
+        if (Model.Error == null)
+        {
+            using (Ajax.BeginForm("NombrarOferente", new AjaxOptions
+            {
+                HttpMethod = "POST",
+                UpdateTargetId = "dvResultadoBusqueda",
+                OnBegin = "BeginGuardarCandidato",
+                OnComplete = "CompleteGuardarCandidato",
+                OnSuccess = "SuccessGuardarCandidato",
+                OnFailure = "SuccessGuardarCandidato"
+            }))
+            {
+                <table id="datos_funcionario" class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th colspan="6">Información del oferente</th>
+                            @Html.HiddenFor(model => model.PedimentoPuesto.NumeroPedimento)
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><b>@Html.LabelFor(model => model.Funcionario.Cedula)</b></td>
+                            <td class="columna_info">@Html.DisplayFor(model => model.Funcionario.Cedula)</td>
+                            @Html.HiddenFor(model => model.Funcionario.Cedula)
+                            <td><b>@Html.LabelFor(model => model.Funcionario.Nombre)%></b></td>
+                            <td class="columna_info">@Model.Funcionario.Nombre @Model.Funcionario.PrimerApellido @Model.Funcionario.SegundoApellido</td>
+                            <td><b>@Html.LabelFor(model => model.Funcionario.Sexo)</b></td>
+                            <td class="columna_info">@Html.DisplayFor(model => model.Funcionario.Sexo)</td>
+                        </tr>
+                        <tr>
+                            <td><b>@Html.LabelFor(model => model.Funcionario.FechaNacimiento)</b></td>
+                            <td class="columna_info">@Html.DisplayFor(model => model.Funcionario.FechaNacimiento)</td>
+                            <td><b>Edad</b></td>
+                            <td class="columna_info">@Html.DisplayFor(model => model.Edad)</td>
+                            <td><b>@Html.LabelFor(model => model.EstadoCivil.CatEstadoCivil.DesEstadoCivil)</b></td>
+                            <td class="columna_info">@Html.DisplayFor(model => model.EstadoCivil.CatEstadoCivil.DesEstadoCivil)</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+                <table class="enviar">
+                    <tr>
+                        <td>
+                            <input class="btn btn-secondary" id="btnGuardar" name="SubmitButton" type="submit" value="Asignar a pedimento" />
+                            <div id="preloader" class="loader" hidden></div>
+                        </td>
+                    </tr>
+                </table>
+            }
+        }
+        else
+        {
+            <div class="error">
+                No se puede buscar el oferente.
+            </div>
+
+            <fieldset>
+                <legend>Detalles</legend>
+
+                <div>Se produjo el siguiente error: </div>
+                <br /><div><b>@Html.Encode(Model.Error.MensajeError)    </b></div>
+                <br /><div>Si conoce la causa de este error, por favor revise los datos que intentó almacenar e intentelo de nuevo.</div>
+                <br /><div>De lo contrario le invitamos a ponerse en contacto con nuestro equipo de soporte, mediante el sistema de <a href="http://sisrh.mopt.go.cr:83/" target="_blank">Ayuda y Soporte</a></div>
+            </fieldset>
+            <br />
+            <p>
+                <div class="link_return">
+                    <a href="javascript:history.back()" id="A2">Regresar</a>
+                </div>
+            </p>
+        }
+    }
+}

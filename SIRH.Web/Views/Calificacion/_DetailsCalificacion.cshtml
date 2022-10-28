@@ -1,0 +1,247 @@
+﻿@model SIRH.Web.ViewModels.FormularioCalificacionVM
+
+@if (Model.Error == null)
+{
+    <div class="alert alert-success" role="alert">
+        <i class="fa fa-check-circle d-inline" style="font-size:48px;"></i>
+        <h4 class="d-inline"> La calificación se ha guardado correctamente.</h4>
+        <h3 class="d-inline"> Debe imprimir y firmar el Formulario</h3>
+    </div>
+    <br />
+
+    <div class="card">
+        <div class="card-header text-left">
+            <strong>Detalle Calificación Recién Ingresada</strong>
+            <strong>@Model.NombreFormulario</strong>
+        </div>
+        <div class="card-body">
+            @using (Html.BeginForm("ReporteDetalleCalificacion", "Calificacion", FormMethod.Post))
+            {
+                <div>
+                    <div class="card-body">
+                        <h5 class="h5 text-center">1.IDENTIFICACIÓN DEL COLABORADOR (A) Y DE SUS SUPERIORES</h5>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label"><b>Periodo Evaluación</b></label>
+                            <div class="col-sm-3">
+                                <label class="form" id="periodo1">@Model.Periodos</label>
+                                @Html.HiddenFor(model => model.Periodos)
+                            </div>
+                            <label class="col-sm-3 col-form-label"><b>Cédula</b></label>
+                            <div class="col-sm-3">
+                                @Html.DisplayFor(model => model.Funcionario.Cedula, new { @class = "form-control" })
+                                @Html.HiddenFor(model => model.Funcionario.Cedula)
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label"><b>Nombre</b></label>
+                            <div class="col-sm-3">
+                                <label class="form">@Model.Funcionario.Nombre @Model.Funcionario.PrimerApellido @Model.Funcionario.SegundoApellido</label>
+                                @Html.HiddenFor(model => model.Funcionario.Nombre)
+                                @Html.HiddenFor(model => model.Funcionario.SegundoApellido)
+                                @Html.HiddenFor(model => model.Funcionario.PrimerApellido)
+                                @Html.HiddenFor(model => model.Funcionario.EstadoFuncionario)
+                            </div>
+
+                            <label class="col-sm-3 col-form-label"><b>Clase</b></label>
+                            <div class="col-sm-3">
+                                @Html.DisplayFor(model => model.DetallePuesto.Clase.DesClase, new { @class = "form-control" })
+                                @Html.HiddenFor(model => model.DetallePuesto.Clase.DesClase)
+                                @Html.HiddenFor(model => model.DetallePuesto.Clase.IndEstClase)
+                                @Html.HiddenFor(model => model.DetallePuesto.Clase.IdEntidad)
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label"><b>Expediente Funcionario</b></label>
+                            <div class="col-sm-3">
+                                @Html.DisplayFor(model => model.Expediente.NumeroExpediente, new { @class = "form-control" })
+                                @Html.HiddenFor(model => model.Expediente.NumeroExpediente)
+                            </div>
+
+                            <label class="col-sm-3 col-form-label"><b>División</b></label>
+                            <div class="col-sm-3">
+                                @Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision, new { @class = "form-control" })
+                                @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                                @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Division.IdEntidad)
+                                @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion)
+                                @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Seccion.IndEstSeccion)
+                                @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Seccion.IdEntidad)
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label"><b>Dirección</b></label>
+                            <div class="col-sm-3">
+                                @Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion, new { @class = "form-control" })
+                                @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                            </div>
+
+                            <label class="col-sm-3 col-form-label"><b>Departamento</b></label>
+                            <div class="col-sm-3">
+                                @Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento, new { @class = "form-control" })
+                                @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label"><b>Sección</b></label>
+                            <div class="col-sm-3">
+                                @if (Model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion != null)
+                                {
+                                    @Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion, new { @class = "form-control" })
+                                    @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion)
+                                }
+                                else
+                                {
+                                    <label class="form">No posee una sección.</label>
+                                    @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion)
+                                }
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label"><b>Nombre del Jefe Inmediato</b></label>
+                            <div class="col-sm-3">
+                                @Html.DisplayFor(model => model.CalificacionNombramiento.JefeInmediato.Nombre, new { @class = "form-control" })
+                            </div>
+                            <label class="col-sm-3 col-form-label"><b>Nombre del Superior del Jefe Inmediato</b></label>
+                            <div class="col-sm-3">
+                                @Html.DisplayFor(model => model.CalificacionNombramiento.JefeSuperior.Nombre, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="card-body">
+                        <table class="table table-bordered">
+                            <thead>
+                            <th colspan="11" class="thead-light text-center">Información detallada sobre Puntuación</th>
+                            <tr>
+                                <th scope="col">Pregunta</th>
+                                @foreach (var item in @Model.CatalogoPregunta)
+                                {
+                                    <th scope="col">@item.DesTituloPDTO.ToString()</th>
+                                }
+                            </tr>
+                            <tr>
+                                <th scope="col">Descripción</th>
+                                @foreach (var item in @Model.CatalogoPregunta)
+                                {
+                                    <th scope="col">@item.DesPreguntaDTO.ToString()</th>
+                                }
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Nota</th>
+                                    @foreach (var item in @Model.Detalle)
+                                    {
+                                        <td>@item.NumNotasPorPreguntaDTO</td>
+                                        @Html.HiddenFor(model => item.NumNotasPorPreguntaDTO)
+                                    }
+                                </tr>
+                            </tbody>
+                            <td colspan="6" class="text-center">Puntuación: @Model.PuntuacionFinal pts</td>
+                            @Html.HiddenFor(model => Model.PuntuacionFinal)
+                            <td colspan="6" class="text-center">Calificación final: @Model.CalificacionFinalLetra</td>
+                            @Html.HiddenFor(model => Model.CalificacionFinalLetra)
+                            <td colspan="6" class="text-center">Fecha: @Model.CalificacionNombramiento.FecCreacionDTO</td>
+                            @Html.HiddenFor(model => Model.CalificacionNombramiento.FecCreacionDTO)
+                        </table>
+
+                        <div class="card">
+                            <div class="card-header">
+                                @Html.LabelFor(model => model.CalificacionNombramiento.ObsGeneralDTO)
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">@Model.CalificacionNombramiento.ObsGeneralDTO</p>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="card">
+                            <div class="card-header">
+                                @Html.LabelFor(model => model.CalificacionNombramiento.ObsCapacitacionDTO, new { @for = "ObsCapacitacionDTO" })
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">@Model.CalificacionNombramiento.ObsCapacitacionDTO</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                @Html.LabelFor(model => model.CalificacionNombramiento.ObsJustificacionCapacitacionDTO, new { @for = "ObsJustificacionCapacitacionDTO" })
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">@Model.CalificacionNombramiento.ObsJustificacionCapacitacionDTO</p>
+                            </div>
+                        </div>
+
+                        @Html.HiddenFor(model => Model.Periodos)
+                        @Html.HiddenFor(model => Model.CalificacionNombramiento.Periodo.IdEntidad)
+                        @Html.HiddenFor(model => Model.CalificacionNombramiento.CalificacionDTO.IdEntidad)
+                        @Html.HiddenFor(model => Model.CalificacionNombramiento.JefeInmediato.IdEntidad)
+                        @Html.HiddenFor(model => Model.CalificacionNombramiento.JefeInmediato.Cedula)
+                        @Html.HiddenFor(model => Model.CalificacionNombramiento.JefeInmediato.Nombre)
+                        @Html.HiddenFor(model => Model.CalificacionNombramiento.JefeSuperior.IdEntidad)
+                        @Html.HiddenFor(model => Model.CalificacionNombramiento.JefeSuperior.Cedula)
+                        @Html.HiddenFor(model => Model.CalificacionNombramiento.JefeSuperior.Nombre)
+                        
+                        @* @for (int i = 0; i < Model.CatalogoPregunta.Count(); i++) *@
+                        @for (int i = 0; i < Model.Detalle.Count(); i++)
+                        {
+                            @Html.HiddenFor(model => model.CatalogoPregunta[i].DesTituloPDTO)
+                            @Html.HiddenFor(model => model.CatalogoPregunta[i].DesPreguntaDTO)
+                            @Html.HiddenFor(model => model.CatalogoPregunta[i].IndEstadoDTO)
+                            @Html.HiddenFor(model => model.CatalogoPregunta[i].IndTipoFormularioDTO)
+                            @Html.HiddenFor(model => model.Detalle[i].NumNotasPorPreguntaDTO)
+                            @Html.HiddenFor(model => model.CalificacionNombramiento.FecCreacionDTO)
+                            @Html.HiddenFor(model => model.CalificacionNombramiento.ObsGeneralDTO)
+                            @Html.HiddenFor(model => model.CalificacionNombramiento.ObsCapacitacionDTO)
+                            @Html.HiddenFor(model => model.CalificacionNombramiento.ObsJustificacionCapacitacionDTO)
+                            @Html.HiddenFor(model => model.CalificacionNombramiento.DetalleCalificacion[i].CatalogoPreguntaDTO.IdEntidad)
+                            @Html.HiddenFor(model => model.CalificacionNombramiento.DetalleCalificacion[i].CatalogoPreguntaDTO.IndTipoFormularioDTO)
+                            @Html.HiddenFor(model => model.CalificacionNombramiento.DetalleCalificacion[i].CatalogoPreguntaDTO.DesTituloPDTO)
+                            @Html.HiddenFor(model => model.CalificacionNombramiento.DetalleCalificacion[i].CatalogoPreguntaDTO.DesPreguntaDTO)
+                            @Html.HiddenFor(model => model.CalificacionNombramiento.DetalleCalificacion[i].NumNotasPorPreguntaDTO)
+                            @*@Html.HiddenFor(model => model.DEvaluacion[i].NumNotasPorPreguntaDTO);*@
+                        }
+                        @for (int i = 0; i < Model.CalificacionNombramiento.DetalleCalificacionModificado.Count(); i++)
+                        {
+                            @Html.HiddenFor(model => model.CalificacionNombramiento.DetalleCalificacionModificado[i].CatalogoPreguntaDTO.IdEntidad)
+                            @Html.HiddenFor(model => model.CalificacionNombramiento.DetalleCalificacionModificado[i].CatalogoPreguntaDTO.IndTipoFormularioDTO)
+                            @Html.HiddenFor(model => model.CalificacionNombramiento.DetalleCalificacionModificado[i].CatalogoPreguntaDTO.DesTituloPDTO)
+                            @Html.HiddenFor(model => model.CalificacionNombramiento.DetalleCalificacionModificado[i].CatalogoPreguntaDTO.DesPreguntaDTO)
+                            @Html.HiddenFor(model => model.CalificacionNombramiento.DetalleCalificacionModificado[i].NumNotasPorPreguntaDTO)
+                            @*@Html.HiddenFor(model => model.DEvaluacion[i].NumNotasPorPreguntaDTO);*@
+                        }
+                        @Html.HiddenFor(model => model.CalificacionNombramiento.CalificacionDTO.IdEntidad)
+                        @Html.HiddenFor(model => model.CalificacionNombramiento.CalificacionDTO.DesCalificacion)
+                        @Html.HiddenFor(model => model.NombreFormulario)
+                        <br /><br />
+                        <p>
+                            <button class="btn btn-danger" type="submit"><i class="fa fa-file-pdf-o"></i> Exportar a PDF</button>
+
+                            <i class="fa fa-ellipsis-v" style="font-size:20px;"></i>
+
+                            <a href="@Url.Action("AnularCalificacion", "Calificacion",  new { codigo = Model.CalificacionNombramiento.IdEntidad, codigoDCN = Model.CalificacionNombramiento.IdEntidad })" class="btn btn-warning">
+                                <i class="fa fa-edit"></i> Anular
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}
+else
+{
+    <div class="alert alert-danger" role="alert">
+        <i class="fa fa-times-circle d-inline" style="font-size:48px;"></i>
+        <h4 class="d-inline"> Ocurrió un error al momento de guardar la calificación.</h4>
+    </div>
+    <br />
+
+    <div class="card">
+        <h5 class="card-header">Detalles</h5>
+        <div class="card-body">
+            <div>La calificación no pudo ser guardada debido al siguiente error: </div>
+            <br /><div><b>@Html.AttributeEncode(Model.Error.MensajeError)</b></div>
+            <br /><div>Si conoce la causa de este error, por favor revise los datos que intentó almacenar e intentelo de nuevo.</div>
+            <br /><div>De lo contrario le invitamos a ponerse en contacto con nuestro equipo de soporte, mediante el sistema de <a href="http://sisrh.mopt.go.cr:83/" target="_blank">Ayuda y Soporte</a></div>
+        </div>
+    </div>
+}

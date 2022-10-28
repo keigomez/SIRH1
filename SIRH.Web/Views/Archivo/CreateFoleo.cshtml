@@ -1,0 +1,49 @@
+﻿
+@model SIRH.Web.ViewModels.FoleoVM
+@{
+    ViewBag.Title = "CreateFoleo";
+    Layout = "~/Views/Shared/Archivo.cshtml";
+}
+<link href="~/Content/foleo.css" rel="stylesheet" />
+<center><h2>Foleo</h2></center>
+@using (Ajax.BeginForm("CreateFoleo", "Archivo", new AjaxOptions
+{
+    UpdateTargetId = "UpdateFoleo",
+    InsertionMode = InsertionMode.Replace,
+    HttpMethod = "POST",
+    OnSuccess = "SuccesFoleo",
+    OnComplete = "CompleteFoleo",
+    OnBegin = "BeginFoleo"
+}))
+{
+    <div class="card">
+        <h5 class="card-header">Foleo de tomos de funcionario.</h5>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-3">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CedulaABuscar)
+                        @Html.TextBoxFor(model => model.CedulaABuscar, new { @class = "form-control" })
+                        @Html.HiddenFor(model => model.CedulaABuscar)
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <input id="btnBuscar" name="SubmitButton" type="submit" value="Buscar" class="btn btn-success" />
+                    <div id="preloaderBuscar" class="loader float-left"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div id="UpdateFoleo"></div>
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+<script src="~/Scripts/sidebar.js" type="text/javascript"></script>
+<script src="~/scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/CreateFoleo.js" type="text/javascript"></script>

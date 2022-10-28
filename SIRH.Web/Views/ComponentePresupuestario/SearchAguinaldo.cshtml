@@ -1,0 +1,102 @@
+﻿@model SIRH.Web.ViewModels.BusquedaPagoFeriadoVM
+
+@{
+    ViewBag.Title = "SearchAguinaldo";
+    Layout = "~/Views/Shared/ComponentePresupuestario.cshtml";
+}
+
+<h2> Buscar Aguinaldo</h2>
+
+
+
+@*<link rel="stylesheet" href="~/Content/datetimepicker.css">*@
+<script src="~/Content/bootstrap-datepicker/js/jquery-3.4.1.slim.min.js"></script>
+<link id="bsdp-css" href="~/Content/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+
+@using (Ajax.BeginForm("Search", "SearchAguinaldo", new AjaxOptions
+{
+    UpdateTargetId = "target",
+    HttpMethod = "GET",
+    OnBegin = "Begin('btnBuscar','preloader')",
+    OnComplete = "Complete('btnBuscar','preloader')"
+}))
+
+{
+    <div class="jumbotron">
+        <center>
+            <h3 class="display-4">Buscar datos de Aguinaldo</h3>
+        </center>
+        <br />
+        <div class="card">
+            <div class="card-header text-left">
+                <strong>Parámetros de búsqueda</strong>
+            </div>
+
+            <div class="card-body">
+                <div class="form-group row">
+
+                    <div class="col-sm-6">
+                        @Html.LabelFor(model => model.Funcionario.Cedula, new { @for = "cedula", @class = "col-form-label" })
+                        @Html.TextBox("cedula", String.Empty, new { @id = "cedula", @class = "form-control", @maxlength = "10" })
+                    </div>
+                    <div class="col-sm-6">
+                        @{
+                            List<string> listaPeriodos = new List<string>();
+                            listaPeriodos.Add("2022");
+                            listaPeriodos.Add("2021");
+                            listaPeriodos.Add("2020");
+                            listaPeriodos.Add("2019");
+                            listaPeriodos.Add("2018");
+
+                            var periodos = new SelectList(listaPeriodos);
+                        }
+                        @Html.Label("Periodo", new { @id = "idEstado", @for = "estado", @class = "col-form-label" })
+                        @Html.DropDownList("estado", periodos as SelectList, "Seleccione una opción", new { @id = "estado", @class = "form-control" })
+
+                    </div>
+
+                </div>
+
+                <br />
+                <center><input id="btnBuscar" name="SubmitButton" type="submit" value="Buscar" class="btn btn-primary" /></center>
+                <center><div id="preloader" class="loader" style="display: none"></div></center>
+
+            </div>
+        </div>
+
+
+
+
+        <br />
+    </div>
+}
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+<script type="text/javascript" src="~/Scripts/funciones-dialogos.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/SearchTiempoExtra.js" type="text/javascript"></script>
+@*<script src="~/Scripts/datetimepicker.js" type="text/javascript"></script>
+    <script src="~/Scripts/datetimepicker-es.js" type="text/javascript"></script>*@
+<script src="~/Content/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script src="~/Content/bootstrap-datepicker/locales/bootstrap-datepicker.es.min.js" charset="UTF-8"></script>
+<script type="text/javascript">
+        $(function () {
+            $('#fechaDesde').val('');
+            $('#fechaDesde').datepicker(
+                {
+                    language: "es",
+                    autoclose: true
+                });
+
+            $('#fechaHasta').val('');
+            $('#fechaHasta').datepicker(
+                {
+                    language: "es",
+                    autoclose: true
+                });
+        });
+
+
+

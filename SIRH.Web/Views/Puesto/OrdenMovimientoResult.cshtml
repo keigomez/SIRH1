@@ -1,0 +1,319 @@
+﻿@model SIRH.Web.ViewModels.OrdenMovimientoVM
+
+<link rel="stylesheet" href="~/Content/datetimepicker.css">
+<script src="~/Scripts/datetimepicker.js" type="text/javascript"></script>
+<script src="~/Scripts/datetimepicker-es.js" type="text/javascript"></script>
+
+@{
+    if (Model != null)
+    {
+        using (Html.BeginForm("ReporteOrdenMovimiento", "Puesto", FormMethod.Post, new { @id = "thisForm", target = "_blank" }))
+        {
+            @Html.ValidationSummary(true)
+            <div id="formulario">
+                <div class="card-body text-warning">
+                    @Html.LabelFor(model => model.ObservacionesNombramiento)
+                    <div class="alert alert-warning" role="alert">
+                        <h6>@Model.ObservacionesNombramiento </h6>
+                        @Html.HiddenFor(model => model.ObservacionesNombramiento)
+                    </div>
+                </div>
+                <table class="table table-hover" id="datos_funcionario">
+                    <thead class="thead-light">
+                        <tr>
+                            <th colspan="6">Información del Funcionario</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><b>@Html.LabelFor(model => model.Funcionario.Cedula)</b></td>
+                            <td>
+                                @Html.DisplayFor(model => model.Funcionario.Cedula)
+                                @Html.HiddenFor(model => model.Funcionario.Cedula)
+                                @Html.HiddenFor(model => model.Funcionario.Cedula, new { @class = "form-control", @id = "cedula", @readonly = "readonly", @disabled = "disabled" })
+                            <td><b>@Html.LabelFor(model => model.Funcionario.Nombre)</b></td>
+                            <td>
+                                @Model.Funcionario.Nombre
+                                @Html.HiddenFor(model => model.Funcionario.Nombre)
+                                @Html.HiddenFor(model => model.Funcionario.PrimerApellido)
+                                @Html.HiddenFor(model => model.Funcionario.SegundoApellido)
+                            </td>
+                            <td><b>@Html.LabelFor(model => model.Puesto.CodPuesto)</b></td>
+                            <td>
+                                @Html.DisplayFor(model => model.Puesto.CodPuesto)
+                                @Html.HiddenFor(model => model.Puesto.CodPuesto)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>@Html.LabelFor(model => model.Puesto.DetallePuesto.Clase.DesClase)</b></td>
+                            <td>
+                                @Html.DisplayFor(model => model.Puesto.DetallePuesto.Clase.DesClase)
+                                @Html.HiddenFor(model => model.Puesto.DetallePuesto.Clase.DesClase)
+                            </td>
+                            <td><b>@Html.LabelFor(model => model.Puesto.DetallePuesto.Especialidad.DesEspecialidad)</b></td>
+                            <td>
+                                @Html.DisplayFor(model => model.Puesto.DetallePuesto.Especialidad.DesEspecialidad)
+                                @Html.HiddenFor(model => model.Puesto.DetallePuesto.Especialidad.DesEspecialidad)
+                            </td>
+                            <td><b>@Html.LabelFor(model => model.Puesto.DetallePuesto.OcupacionReal.DesOcupacionReal)</b></td>
+                            <td>
+                                @Html.DisplayFor(model => model.Puesto.DetallePuesto.OcupacionReal.DesOcupacionReal)
+                                @Html.HiddenFor(model => model.Puesto.DetallePuesto.OcupacionReal.DesOcupacionReal)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)</b></td>
+                            <td>
+                                @Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                                @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                            </td>
+                            <td><b>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)</b></td>
+                            <td>
+                                @Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                                @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)</b></td>
+                            <td>
+                                @Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                                @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                            </td>
+                            <td><b>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion)</b></td>
+                            <td>
+                                @Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion)
+                                @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto)</b></td>
+                            <td>
+                                @Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto)
+                                @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td> 
+                            </td>
+                        </tr>
+                    </tbody>
+
+                    <tbody>
+                        <tr>
+                            <td colspan="8">
+                                <div id="tabs">
+                                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                        <li class="nav-item">
+                                            <a id="tab1" class="nav-link active" href="#tabs-1" data-toggle="tab" role="tab" aria-controls="tabs-1" aria-selected="true">Orden Movimiento</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a id="tab2" class="nav-link " href="#tabs-2" data-toggle="tab" role="tab" aria-controls="tabs-2" aria-selected="false">Declaración Jurada</a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content" id="myTabContent">
+                                        <div id="tabs-1" class="tab-pane fade show active" role="tabpanel" aria-labelledby="tab1">
+                                            <table class="table table-hover">
+                                                <thead class="thead-light">
+                                                    <tr>
+                                                        <td><b>@Html.LabelFor(model => model.Cuenta)</b></td>
+                                                        <td>
+                                                            @Html.TextBoxFor(model => model.Cuenta, new { @class = "form-control" })
+                                                            @Html.HiddenFor(model => model.Cuenta)
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>@Html.LabelFor(model => model.CodOrden)</b></td>
+                                                        <td>
+                                                            @Html.TextBoxFor(model => model.CodOrden, new { @class = "form-control" })
+                                                            @Html.HiddenFor(model => model.CodOrden)
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>@Html.LabelFor(model => model.TipoSeleccionado)</b></td>
+                                                        <td colspan="4">
+                                                            @Html.DropDownListFor(model => model.TipoSeleccionado, Model.Tipos, "Seleccionar Tipo", new { @id = "tipoAP", @class = "btn btn-secondary dropdown-toggle form-control" })
+                                                            @Html.HiddenFor(model => model.TipoSeleccionado)
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>@Html.LabelFor(model => model.FechaRige)</b></td>
+                                                        <td>
+                                                            @Html.TextBoxFor(model => model.FechaRige, new { @id = "FecRige", @class = "form-control", @readonly = "readonly", @placeholder = "Fecha Rige" })
+                                                            @Html.ValidationMessageFor(model => model.FechaRige)
+                                                        </td>
+                                                        <td><b>@Html.LabelFor(model => model.FechaVence)</b></td>
+                                                        <td>
+                                                            @Html.TextBoxFor(model => model.FechaVence, new { @id = "FecVence", @class = "form-control", @readonly = "readonly", @placeholder = "Fecha Vence" })
+                                                            @Html.ValidationMessageFor(model => model.FechaVence)
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>@Html.LabelFor(model => model.Partida)</b></td>
+                                                        <td>
+                                                            @Html.TextBoxFor(model => model.Partida, new { @class = "form-control" })
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>@Html.LabelFor(model => model.CodPedimento)</b></td>
+                                                        <td>
+                                                            @Html.TextBoxFor(model => model.CodPedimento, new { @class = "form-control" })
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>@Html.LabelFor(model => model.Motivos)</b></td>
+                                                        <td colspan="4">
+                                                            @Html.DropDownListFor(model => model.MotivoSeleccionado, Model.Motivos, "Seleccionar Motivo", new { @id = "tipoAP", @class = "btn btn-secondary dropdown-toggle form-control" })
+                                                            @Html.HiddenFor(model => model.MotivoSeleccionado)
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>@Html.LabelFor(model => model.Sustituye)</b></td>
+                                                        <td colspan="4">
+                                                            @Html.TextBoxFor(model => model.Sustituye, new { @class = "form-control" })
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>@Html.LabelFor(model => model.Observaciones)</b></td>
+                                                        <td colspan="8">
+                                                            @Html.TextAreaFor(model => model.Observaciones, new { @class = "form-control", @rows = "5" })
+                                                            @Html.ValidationMessageFor(model => model.Observaciones)
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>@Html.LabelFor(model => model.CedResponsable)</b></td>
+                                                        <td>
+                                                            @Html.TextBoxFor(model => model.CedResponsable, new { @class = "form-control" })
+                                                        </td>
+                                                        <td><b>@Html.LabelFor(model => model.Responsable)</b></td>
+                                                        <td>
+                                                            @Html.TextBoxFor(model => model.Responsable, new { @class = "form-control" })
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>@Html.LabelFor(model => model.CedRevisado)</b></td>
+                                                        <td>
+                                                            @Html.TextBoxFor(model => model.CedRevisado, new { @class = "form-control" })
+                                                        </td>
+                                                        <td><b>@Html.LabelFor(model => model.Revisado)</b></td>
+                                                        <td>
+                                                            @Html.TextBoxFor(model => model.Revisado, new { @class = "form-control" })
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>@Html.LabelFor(model => model.CedJefatura)</b></td>
+                                                        <td>
+                                                            @Html.TextBoxFor(model => model.CedJefatura, new { @class = "form-control" })
+                                                        </td>
+                                                        <td><b>@Html.LabelFor(model => model.Jefatura)</b></td>
+                                                        <td>
+                                                            @Html.TextBoxFor(model => model.Jefatura, new { @class = "form-control" })
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2">
+                                                            <button class="btn btn-danger" type="submit" value="PDForden" name="SubmitButton"><i class="fa fa-file-pdf-o"></i> Orden Movimiento</button>
+                                                        </td>
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                        <div id="tabs-2" class="tab-pane fade" role="tabpanel" aria-labelledby="tab2">
+                                            <table class="table table-hover">
+                                                <thead class="thead-light">
+                                                    <tr>
+                                                        <td><b>@Html.LabelFor(model => model.FechaCertificacion)</b></td>
+                                                        <td>
+                                                            @Html.TextBoxFor(model => model.FechaCertificacion, new { @id = "FecCertifica", @class = "form-control", @readonly = "readonly", @placeholder = "Fecha Rige" })
+                                                            @Html.ValidationMessageFor(model => model.FechaCertificacion)
+                                                        </td>
+                                                        <td><b>@Html.Label("")</b></td>
+                                                        <td><b>@Html.Label("")</b></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>@Html.LabelFor(model => model.Academica)</b></td>
+                                                        <td colspan="6">
+                                                            @Html.TextAreaFor(model => model.Academica, new { @class = "form-control", @rows = "5" })
+                                                            @Html.ValidationMessageFor(model => model.Academica)
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>@Html.LabelFor(model => model.Experiencia)</b></td>
+                                                        <td colspan="8">
+                                                            @Html.TextAreaFor(model => model.Experiencia, new { @class = "form-control", @rows = "5" })
+                                                            @Html.ValidationMessageFor(model => model.Experiencia)
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>@Html.LabelFor(model => model.Capacitacion)</b></td>
+                                                        <td colspan="8">
+                                                            @Html.TextAreaFor(model => model.Capacitacion, new { @class = "form-control", @rows = "5" })
+                                                            @Html.ValidationMessageFor(model => model.Capacitacion)
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>@Html.LabelFor(model => model.Licencias)</b></td>
+                                                        <td colspan="8">
+                                                            @Html.TextAreaFor(model => model.Licencias, new { @class = "form-control", @rows = "5" })
+                                                            @Html.ValidationMessageFor(model => model.Licencias)
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>@Html.LabelFor(model => model.Colegiaturas)</b></td>
+                                                        <td colspan="8">
+                                                            @Html.TextAreaFor(model => model.Colegiaturas, new { @class = "form-control", @rows = "5" })
+                                                            @Html.ValidationMessageFor(model => model.Colegiaturas)
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2">
+                                                            <button class="btn btn-danger" type="submit" value="PDFdeclaracion" name="SubmitButton"><i class="fa fa-file-pdf-o"></i> Declaración Jurada</button>
+                                                        </td>
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                @if (!Html.ViewData.ModelState.IsValid)
+                {
+                    <div class="card border-danger">
+                        <div class="card-header"><strong>El formulario contiene los siguientes errores:</strong></div>
+                        <div class="card-body text-danger">
+                            @foreach (var modelError in Html.ViewData.ModelState.SelectMany(keyValuePair => keyValuePair.Value.Errors))
+                            {
+                                <div class="alert alert-danger" role="alert">
+                                    <h5>@modelError.ErrorMessage</h5>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    }
+}
+<div id="detalleResultado">
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        var config = {
+            locale: 'es-es',
+            uiLibrary: 'bootstrap4',
+            format: 'dd/mm/yyyy'
+        }
+
+        $("#FecRige").datepicker(config);
+        $("#FecVence").datepicker(config);
+        $("#FecCertifica").datepicker(config);
+        
+        $("#FecRige").val('');
+        $("#FecVence").val('');
+        $("#FecCertifica").val('');
+    });
+</script>

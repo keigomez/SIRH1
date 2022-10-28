@@ -1,0 +1,130 @@
+﻿@model SIRH.DTO.CHistoricoPlanillaDTO
+
+@{
+    ViewBag.Title = "DetailsHistorico";
+    Layout = "~/Views/Shared/Home.cshtml";
+}
+
+<div id="formulario">
+    <center><h5 class="display-4">Detalle de pago</h5></center>
+    <div class="card">
+        <div class="card-header">
+            <i class="fa fa-money"></i> Detalle para la quincena del @Model.FechaPeriodo
+        </div>
+    <div class="card-body">
+        <table class="table">
+            <tr>
+                <td><b>@Html.LabelFor(model => model.Cedula)</b></td>
+                <td>@Html.DisplayFor(model => model.Cedula)</td>
+                <td><b>@Html.LabelFor(model => model.Nombre)</b></td>
+                <td>@Html.DisplayFor(model => model.Nombre)</td>
+            </tr>
+            <tr>
+                <td><b>@Html.LabelFor(model => model.NumeroPuesto)</b></td>
+                <td>@Html.DisplayFor(model => model.NumeroPuesto)</td>
+                <td><b>@Html.LabelFor(model => model.ClasePuesto)</b></td>
+                <td>@Html.DisplayFor(model => model.ClasePuesto)</td>
+            </tr>
+            <tr>
+                <td><b>@Html.LabelFor(model => model.CodigoPresupuestario)</b></td>
+                <td>@Html.DisplayFor(model => model.CodigoPresupuestario)</td>
+                <td><b>@Html.LabelFor(model => model.FechaPeriodo)</b></td>
+                <td>@Html.DisplayFor(model => model.FechaPeriodo)</td>
+            </tr>
+            <tr>
+                <td><b>@Html.LabelFor(model => model.SalarioBase)</b></td>
+                <td>@Html.DisplayFor(model => model.SalarioBase)</td>
+                <td><b>@Html.LabelFor(model => model.Categoria)</b></td>
+                <td>@Html.DisplayFor(model => model.Categoria)</td>
+            </tr>
+            <tr>
+                <td><b>@Html.LabelFor(model => model.PorProhibicion)</b></td>
+                <td>@Html.DisplayFor(model => model.PorProhibicion)</td>
+                <td><b>@Html.LabelFor(model => model.Prohibicion)</b></td>
+                <td>@Html.DisplayFor(model => model.Prohibicion)</td>
+            </tr>
+            <tr>
+                <td><b>@Html.LabelFor(model => model.PagoDesarraigo)</b></td>
+                <td>@Html.DisplayFor(model => model.PagoDesarraigo)</td>
+                <td><b>@Html.LabelFor(model => model.OtrosIncentivos)</b></td>
+                <td>@Html.DisplayFor(model => model.OtrosIncentivos)</td>
+            </tr>
+            <tr>
+                <td><b>@Html.LabelFor(model => model.PorDisponibilidad)</b></td>
+                <td>@Html.DisplayFor(model => model.PorDisponibilidad)</td>
+                <td><b>@Html.LabelFor(model => model.Disponibilidad)</b></td>
+                <td>@Html.DisplayFor(model => model.Disponibilidad)</td>
+            </tr>
+            <tr>
+                <td><b>@Html.LabelFor(model => model.PorGradoAcademico)</b></td>
+                <td>@Html.DisplayFor(model => model.PorGradoAcademico)</td>
+                <td><b>@Html.LabelFor(model => model.GradoAcademico)</b></td>
+                <td>@Html.DisplayFor(model => model.GradoAcademico)</td>
+            </tr>
+            <tr>
+                <td><b>@Html.LabelFor(model => model.PorInstruccionPolicial)</b></td>
+                <td>@Html.DisplayFor(model => model.PorInstruccionPolicial)</td>
+                <td><b>@Html.LabelFor(model => model.InstruccionPolicial)</b></td>
+                <td>@Html.DisplayFor(model => model.InstruccionPolicial)</td>
+            </tr>
+            <tr>
+                <td><b>@Html.LabelFor(model => model.PorBonificacion)</b></td>
+                <td>@Html.DisplayFor(model => model.PorBonificacion)</td>
+                <td><b>@Html.LabelFor(model => model.Bonificacion)</b></td>
+                <td>@Html.DisplayFor(model => model.Bonificacion)</td>
+            </tr>
+            <tr>
+                <td><b>@Html.LabelFor(model => model.PorQuinquenio)</b></td>
+                <td>@Html.DisplayFor(model => model.PorQuinquenio)</td>
+                <td><b>@Html.LabelFor(model => model.Quinquenio)</b></td>
+                <td>@Html.DisplayFor(model => model.Quinquenio)</td>
+            </tr>
+            <tr>
+                <td><b>@Html.LabelFor(model => model.PorDedicacionExclusiva)</b></td>
+                <td>@Html.DisplayFor(model => model.PorDedicacionExclusiva)</td>
+                <td><b>@Html.LabelFor(model => model.DedicacionExclusiva)</b></td>
+                <td>@Html.DisplayFor(model => model.DedicacionExclusiva)</td>
+            </tr>
+            <tr>
+                <td><b>@Html.LabelFor(model => model.PorRiesgoPolicial)</b></td>
+                <td>@Html.DisplayFor(model => model.PorRiesgoPolicial)</td>
+                <td><b>@Html.LabelFor(model => model.RiesgoPolicial)</b></td>
+                <td>@Html.DisplayFor(model => model.RiesgoPolicial)</td>
+            </tr>
+            <tr>
+                <td><b>@Html.LabelFor(model => model.PorCursoBasico)</b></td>
+                <td>@Html.DisplayFor(model => model.PorCursoBasico)</td>
+                <td><b>@Html.LabelFor(model => model.CursoBasico)</b></td>
+                <td>@Html.DisplayFor(model => model.CursoBasico)</td>
+            </tr>
+            <tr>
+                <td><b>@Html.LabelFor(model => model.PorPeligrosidad)</b></td>
+                <td>@Html.DisplayFor(model => model.PorPeligrosidad)</td>
+                <td><b>@Html.LabelFor(model => model.Peligrosidad)</b></td>
+                <td>@Html.DisplayFor(model => model.Peligrosidad)</td>
+            </tr>
+            <tr>
+                <td><b>@Html.LabelFor(model => model.Aumentos)</b></td>
+                <td>@Html.DisplayFor(model => model.Aumentos)</td>
+                <td><b>@Html.LabelFor(model => model.Sobresueldos)</b></td>
+                <td>@Html.DisplayFor(model => model.Sobresueldos)</td>
+            </tr>
+            <tr>
+                <td><b>@Html.LabelFor(model => model.Puntos)</b></td>
+                <td>@Html.DisplayFor(model => model.Puntos)</td>
+                <td><b>@Html.LabelFor(model => model.Grupo)</b></td>
+                <td>@Html.DisplayFor(model => model.Grupo)</td>
+            </tr>
+            <tr>
+                <td><b>@Html.LabelFor(model => model.SalarioMensual)</b></td>
+                <td>@Html.DisplayFor(model => model.SalarioMensual)</td>
+                <td><b>@Html.LabelFor(model => model.SalarioQuincenal)</b></td>
+                <td>@Html.DisplayFor(model => model.SalarioQuincenal)</td>
+            </tr>
+        </table>
+    </div>
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")

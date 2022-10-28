@@ -1,0 +1,260 @@
+﻿@model SIRH.Web.ViewModels.BusquedaExtrasVM
+@{
+    if (Model != null)
+    {
+        if (Model.Registros.Count() < 1)
+        {
+            <div class="alert alert-danger" role="alert">
+                No se encontraron resultados para la búsqueda solicitada.
+            </div>
+        }
+        else
+        {
+            <div class="card">
+                <h5 class="card-header">Resultados (@Model.Registros.Count())</h5>
+                <div class="card-body">
+                    <table class="table">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>#</th>
+                                <th>Cédula</th>
+                                <th>Nombre</th>
+                                <th>Primer Apellido</th>
+                                <th>Sección</th>
+                                <th>@(Model.PagoDoble == "Jornada Doble" ? "Fecha de emisión":"Fecha de pago")</th>
+                                <th>Monto total</th>
+                                <th>Estado</th>
+                                <th><center>--</center></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                for (int i = 0; i < Model.Registros.Count(); i++)
+                                {
+                                                        <tr>
+                                                            <td>@(i+1)</td>
+                                                            <td>@Model.Registros[i].Funcionario.Cedula</td>
+                                                            <td>@Model.Registros[i].Funcionario.Nombre</td>
+                                                            <td>@Model.Registros[i].Funcionario.PrimerApellido</td>
+                                                            <td>@Model.Registros[i].Seccion.NomSeccion</td>
+                                                            @if (Model.PagoDoble == "Jornada Doble")
+                                                            {
+                                                                <td>@Model.Registros[i].FecRegistroDetalles.ToShortDateString()</td>
+                                                            }
+                                                            else
+                                                            {
+                                                                <td>@Model.Registros[i].FecPago.ToShortDateString()</td>
+                                                            }
+
+                                                            <td>@Html.DisplayFor(model => model.Registros[i].MontoTotal)</td>
+                                                            @if (Model.PagoDoble == "Jornada Doble")
+                                                            {
+                                                                <td>@Model.Registros[i].EstadoDetalles.ToString()</td>
+                                                            }
+                                                            else
+                                                            {
+                                                                <td>@Model.Registros[i].Estado.ToString()</td>
+                                                            }
+                                                            <td>@Html.ActionLink("Detalle", "Details", "RegistroTiempoExtra", new { @fechaRegistro = Model.Registros[i].FecRegistroDetalles, @id = Model.Registros[i].IdEntidad, @doble = Model.PagoDoble }, new { @class = "btn btn-outline-primary", @target = "_blank" })</td>
+                                                        </tr>
+                                }
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td align="left" colspan="3">
+                                    @using (Html.BeginForm("ReporteGeneralHorasExtras", "RegistroTiempoExtra", FormMethod.Post, new { id = "form_reportar", @target="_blank" }))
+                                    {
+                                        @Html.HiddenFor(model => model.Cedula)
+                                        @Html.HiddenFor(model => model.FechaDesde)
+                                        @Html.HiddenFor(model => model.FechaHasta)
+                                        @Html.HiddenFor(model => model.CodDivision)
+                                        @Html.HiddenFor(model => model.CodDireccion)
+                                        @Html.HiddenFor(model => model.CodDepartamento)
+                                        @Html.HiddenFor(model => model.CodSeccion)
+                                        @Html.HiddenFor(model => model.Estado)
+                                        @Html.HiddenFor(model => model.PagoDoble)
+                                        @Html.HiddenFor(model => model.PagoDoble)
+                                        for (int i = 0; i < Model.Registros.Count(); i++)
+                                        {   
+                                            @Html.HiddenFor(model => model.Registros[i].Periodo)
+                                            @Html.HiddenFor(model => model.Registros[i].EstadoDetalles)
+                                            @Html.HiddenFor(model => model.Registros[i].Funcionario.Cedula)
+                                            @Html.HiddenFor(model => model.Registros[i].Mensaje)
+                                            @Html.HiddenFor(model => model.Registros[i].MontoTotal)
+                                            @Html.HiddenFor(model => model.Registros[i].Presupuesto.IdUnidadPresupuestaria)
+                                            @Html.HiddenFor(model => model.Registros[i].FechaEmision)
+                                            @Html.HiddenFor(model => model.Registros[i].IdEntidad)
+                                            @Html.HiddenFor(model => model.Registros[i].Seccion.NomSeccion)
+                                            @Html.HiddenFor(model => model.Registros[i].Funcionario.Nombre)
+                                            @Html.HiddenFor(model => model.Registros[i].Funcionario.PrimerApellido)
+                                            @Html.HiddenFor(model => model.Registros[i].Funcionario.SegundoApellido)
+                                        }
+
+                                        <button type="submit" class="btn btn-success"><i class="fa fa-file-pdf-o"></i>&nbsp;&nbsp;Exportar a PDF</button>
+                                        }
+                                </td>
+
+                                @*<td colspan="6" align="right">
+
+                                    Página (@Model.PaginaActual.ToString() de @Model.TotalPaginas.ToString())
+
+                                    <nav aria-label="Page navigation example">
+                                        <ul class="pagination justify-content-end">
+                                            @if (Model.PaginaActual == 1)
+                                            {
+                                                <li class="page-item disabled">
+                                                    <a class="page-link" href="#" tabindex="-1">Atras</a>
+                                                </li>
+                                            }
+                                            else
+                                            {
+                                                <li class="page-item">
+                                                    @Ajax.ActionLink("Atras", "Index", new
+                                               {
+                                                   @page = Model.PaginaActual - 1,
+                                                   @cedula = Model.Cedula,
+                                                   @fechaDesde = Model.FechaDesde,
+                                                   @fechaHasta = Model.FechaHasta?.ToShortDateString(),
+                                                   @hasta = Model.FechaHasta?.ToShortDateString(),
+                                                   @coddivision = Model.CodDivision,
+                                                   @coddireccion = Model.CodDireccion,
+                                                   @coddepartamento = Model.CodDepartamento,
+                                                   @codseccion = Model.CodSeccion,
+                                                   @estado = Model.Estado,
+                                                   @pagoDoble = Model.PagoDoble
+                                               }, new AjaxOptions { UpdateTargetId = "target" }, new { @class = "page-link" })
+                                                </li>
+                                            }
+
+                                            @{if (Model.TotalPaginas > 10)
+                                                {
+                                                    var indice = Model.PaginaActual > 6 ? (Model.PaginaActual + 4 <= Model.TotalPaginas ? Model.PaginaActual - 5 : Model.PaginaActual - 5 - ((Model.PaginaActual + 4) - Model.TotalPaginas)) : 1;
+                                                    var final = Model.PaginaActual > 6 ? (Model.PaginaActual + 4 >= Model.TotalPaginas ? Model.TotalPaginas : Model.PaginaActual + 4) : 10;
+
+                                                    for (int i = indice; i <= final; i++)
+                                                    {
+                                                        <li class="page-item ">
+                                                            @if (Model.PaginaActual != i)
+                                                            {
+                                                                @Ajax.ActionLink(i.ToString(), "Index", new
+                                                           {
+                                                               @page = i,
+                                                               @cedula = Model.Cedula,
+                                                               @fechaHasta = Model.FechaHasta?.ToShortDateString(),
+                                                               @hasta = Model.FechaHasta?.ToShortDateString(),
+                                                               @coddivision = Model.CodDivision,
+                                                               @coddireccion = Model.CodDireccion,
+                                                               @coddepartamento = Model.CodDepartamento,
+                                                               @codseccion = Model.CodSeccion,
+                                                               @estado = Model.Estado,
+                                                               @pagoDoble = Model.PagoDoble
+                                                           }, new AjaxOptions { UpdateTargetId = "target" }, new { @class = "page-link" })
+                                                            }
+                                                            else
+                                                            {
+                                                                @Ajax.ActionLink(i.ToString(), "Index", new
+                                                           {
+                                                               @page = i,
+                                                               @cedula = Model.Cedula,
+                                                               @fechaHasta = Model.FechaHasta?.ToShortDateString(),
+                                                               @hasta = Model.FechaHasta?.ToShortDateString(),
+                                                               @coddivision = Model.CodDivision,
+                                                               @coddireccion = Model.CodDireccion,
+                                                               @coddepartamento = Model.CodDepartamento,
+                                                               @codseccion = Model.CodSeccion,
+                                                               @estado = Model.Estado,
+                                                               @pagoDoble = Model.PagoDoble
+                                                           }, new AjaxOptions { UpdateTargetId = "target" }, new { @class = "page-link", @style = "color:#9b9b9b;" })
+                                                            }
+                                                        </li>
+                                                    }
+                                                    if (Model.PaginaActual + 4 < Model.TotalPaginas)
+                                                    {
+                                                        <li class="page-item disabled">
+                                                            <a class="page-link" href="#">...</a>
+                                                        </li>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    for (int i = 1; i <= Model.TotalPaginas; i++)
+                                                    {
+                                                        <li class="page-item ">
+                                                            @if (Model.PaginaActual != i)
+                                                            {
+                                                                @Ajax.ActionLink(i.ToString(), "Index", new
+                                                           {
+                                                               @page = i,
+                                                               @cedula = Model.Cedula,
+                                                               @fechaHasta = Model.FechaHasta?.ToShortDateString(),
+                                                               @hasta = Model.FechaHasta?.ToShortDateString(),
+                                                               @coddivision = Model.CodDivision,
+                                                               @coddireccion = Model.CodDireccion,
+                                                               @coddepartamento = Model.CodDepartamento,
+                                                               @codseccion = Model.CodSeccion,
+                                                               @estado = Model.Estado,
+                                                               @pagoDoble = Model.PagoDoble
+                                                           }, new AjaxOptions { UpdateTargetId = "target" }, new { @class = "page-link" })
+                                                            }
+                                                            else
+                                                            {
+                                                                @Ajax.ActionLink(i.ToString(), "Index", new
+                                                           {
+                                                               @page = i,
+                                                               @cedula = Model.Cedula,
+                                                               @fechaHasta = Model.FechaHasta?.ToShortDateString(),
+                                                               @hasta = Model.FechaHasta?.ToShortDateString(),
+                                                               @coddivision = Model.CodDivision,
+                                                               @coddireccion = Model.CodDireccion,
+                                                               @coddepartamento = Model.CodDepartamento,
+                                                               @codseccion = Model.CodSeccion,
+                                                               @estado = Model.Estado,
+                                                               @pagoDoble = Model.PagoDoble
+                                                           }, new AjaxOptions { UpdateTargetId = "target" }, new { @class = "page-link", @style = "color:#9b9b9b;" })
+                                                            }
+                                                        </li>
+                                                    }
+
+                                                }
+
+
+                                            }
+                                            @if (Model.TotalPaginas == 1 || Model.PaginaActual == Model.TotalPaginas)
+                                            {
+                                                <li class="page-item disabled">
+                                                    <a class="page-link" href="#">Siguiente</a>
+                                                </li>
+                                            }
+                                            else
+                                            {
+                                                <li class="page-item">
+                                                    @Ajax.ActionLink("Siguiente", "Index", new
+                                               {
+                                                   @page = Model.PaginaActual + 1,
+                                                   @cedula = Model.Cedula,
+                                                   @fechaHasta = Model.FechaHasta?.ToShortDateString(),
+                                                   @hasta = Model.FechaHasta?.ToShortDateString(),
+                                                   @coddivision = Model.CodDivision,
+                                                   @coddireccion = Model.CodDireccion,
+                                                   @coddepartamento = Model.CodDepartamento,
+                                                   @codseccion = Model.CodSeccion,
+                                                   @estado = Model.Estado,
+                                                   @pagoDoble = Model.PagoDoble
+                                               }, new AjaxOptions { UpdateTargetId = "target" }, new { @class = "page-link" })
+                                                </li>
+                                            }
+                                        </ul>
+                                    </nav>
+
+                                </td>*@
+                            </tr>
+
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        }
+    }
+}
+

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="9b666a3b-7134-4b99-b3f1-e71de6a74b86" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://sisrh.mopt.go.cr:85/CAccionPersonalService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CAccionPersonalService.wsdl" MetadataType="Wsdl" ID="8938682e-e230-450f-a656-bf03fef331bc" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CAccionPersonalService.svc?wsdl" />
+    <MetadataFile FileName="CAccionPersonalService.disco" MetadataType="Disco" ID="118d3eef-ddc7-4fcb-9cd1-38c20b2e0059" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CAccionPersonalService.svc?disco" />
+    <MetadataFile FileName="CAccionPersonalService.xsd" MetadataType="Schema" ID="1836fdcf-bf50-4379-95e1-89148ae18534" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CAccionPersonalService.svc?xsd=xsd0" />
+    <MetadataFile FileName="CAccionPersonalService1.xsd" MetadataType="Schema" ID="d6775ee9-8f1d-439b-9f58-85847455ee61" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CAccionPersonalService.svc?xsd=xsd1" />
+    <MetadataFile FileName="CAccionPersonalService2.xsd" MetadataType="Schema" ID="d606df75-8ca8-4ede-8756-bcb61470143f" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CAccionPersonalService.svc?xsd=xsd2" />
+    <MetadataFile FileName="CAccionPersonalService3.xsd" MetadataType="Schema" ID="93f3d03d-9f29-47fd-8ddf-5d7affc86f9b" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CAccionPersonalService.svc?xsd=xsd3" />
+    <MetadataFile FileName="CAccionPersonalService4.xsd" MetadataType="Schema" ID="680e2760-404e-47ef-9837-b56ff3035a75" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CAccionPersonalService.svc?xsd=xsd4" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

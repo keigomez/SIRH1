@@ -1,0 +1,130 @@
+﻿@model SIRH.Web.ViewModels.FuncionarioCarreraVM
+@{
+    ViewBag.Title = "Registrar Formación Candidato";
+    Layout = "~/Views/Shared/Vacantes.cshtml";
+}
+<link href="~/Content/datetimepicker.css" rel="stylesheet" />
+<center><h2>Registrar entrevista</h2></center>
+@if (Model.Funcionario != null)
+{
+    using (Ajax.BeginForm("RegistrarFormacionCandidato", new AjaxOptions
+    {
+        HttpMethod = "POST",
+        UpdateTargetId = "detalleResultado",
+        OnBegin = "BeginGuardarCarrera",
+        OnComplete = "CompleteGuardarCarrera"
+    }))
+    {
+        <div>
+            <table class="table table-hover">
+                <thead class="thead-light">
+                    <tr>
+                        <th colspan="6">Información del oferente</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>@Html.LabelFor(model => model.Funcionario.Cedula)</b></td>
+                        <td>@Html.DisplayFor(model => model.Funcionario.Cedula)</td>
+                        <td><b>@Html.LabelFor(model => model.Funcionario.Nombre)</b></td>
+                        <td>@Model.Funcionario.Nombre @Model.Funcionario.PrimerApellido @Model.Funcionario.SegundoApellido</td>
+                        <td><b>@Html.LabelFor(model => model.Funcionario.Sexo)</b></td>
+                        <td>@Html.DisplayFor(model => model.Funcionario.Sexo)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card">
+            <h5 class="card-header"><i class="fa fa-paperclip"></i> Detalle de la entrevista</h5>
+            <div class="card-body">
+                @if (Model.CursoCapacitacion != null)
+                {
+
+
+                    <div class="row">
+                        <div class="form-group col-4">
+                            @Html.LabelFor(model => model.CursoCapacitacion.FechaInicio)
+                            <span>:</span>
+                            @Html.TextBoxFor(model => model.CursoCapacitacion.FechaInicio, new { @id = "FechaI", @class = "form-control start_date", @readonly = "readonly", @placeholder = "Hora de Inicio" })
+                        </div>
+                        <div class="form-group col-4">
+                            @Html.LabelFor(model => model.CursoCapacitacion.FechaFinal)
+                            <span>:</span>
+                            @Html.TextBoxFor(model => model.CursoCapacitacion.FechaFinal, new { @id = "FechaF", @class = "form-control start_date", @readonly = "readonly", @placeholder = "Hora de Finalización" })
+                        </div>
+                    </div>
+
+                                        <div class="row">
+                        <div class="form-group col-4">
+                            <label>Nombre de la empresa</label>
+                            <span>:</span>
+                            @Html.TextBoxFor(model => model.CursoCapacitacion.DescripcionCapacitacion, new { @class = "form-control" })
+                        </div>
+                        <div class="form-group col-4">
+                            @Html.LabelFor(model => model.EntidadEducativaSeleccionada)
+                            <span>:</span>
+                            @Html.DropDownListFor(model => model.EntidadEducativaSeleccionada, Model.EntidadesEducativas, "Seleccionar...", new { @class = "btn btn-secondary dropdown-toggle form-control" })
+                        </div>
+                    </div>
+                    <div class="row">
+
+                    </div>
+                }
+                else
+                {
+
+                    <div class="row">
+
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-4">
+                            <label>Hora de inicio</label>
+                            <span>:</span>
+                            @Html.TextBoxFor(model => model.CursoGrado.FechaEmision, new { @id = "FechaE", @class = "form-control start_date", @readonly = "readonly", @placeholder = "Fecha de Emisión" })
+                        </div>
+                        <div class="form-group col-4">
+                            <label>Hora de finalización</label>
+                            <span>:</span>
+                            @Html.TextBoxFor(model => model.CursoGrado.FechaEmision, new { @id = "FechaEmi", @class = "form-control start_date", @readonly = "readonly", @placeholder = "Fecha de Vence" })
+                        </div>
+                    </div>
+                        <div class="row">
+                            <div class="form-group col-12">
+                                <label>Observaciones de la entrevista</label>
+                                <span>:</span>
+                                @Html.TextAreaFor(model => model.CursoGrado.CursoGrado, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    <div class="row">
+
+                    </div>
+                }
+                <br />
+                <div class="row">
+                    <div>
+                        <input class="btn btn-success" id="btnGuardar" name="SubmitButton" type="submit" value="Guardar" />
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-2">
+                            <div id="preloaderGuardar" class="loader" hidden></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    }
+    <div id="detalleResultado">
+
+    </div>
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+<script src="~/Scripts/sidebar.js" type="text/javascript"></script>
+<script src="~/scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script src="~/Scripts/datetimepicker.js" type="text/javascript"></script>
+<script src="~/Scripts/datetimepicker-es.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/FormularioCarrera.js"></script>

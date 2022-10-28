@@ -1,0 +1,205 @@
+﻿@model SIRH.Web.ViewModels.HistoricoPuntosVM
+
+@{
+    using (Html.BeginForm("ReporteDesgloseHistoricoPuntos", "Carrera", FormMethod.Post, new { @id = "thisForm" }))
+    {
+    <fieldset>
+        <legend>Resultados (@Model.TotalPuntos)</legend>
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Cédula</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Fecha rige de pago</th>
+                    <th scope="col"># Resolución</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Puntos.Count(); i++)
+                {
+                    <tr>
+                        <td>@Html.AttributeEncode(i + 1) </td>
+                        <td>
+                            @Html.AttributeEncode(Model.Puntos.ElementAt(i).Cedula)
+                        </td>
+                        <td>
+                            @Html.AttributeEncode(Model.Puntos.ElementAt(i).Nombre)
+                        </td>
+                        <td>
+                            @if (Model.Puntos.ElementAt(i).FecRigePago.Year > 1)
+                            {@Html.AttributeEncode(Model.Puntos.ElementAt(i).FecRigePago.ToShortDateString());
+                        }
+                        </td>
+                        <td>
+                            @Html.AttributeEncode(Model.Puntos.ElementAt(i).NumResolucion)
+                        </td>
+                        <td>
+                            <a href="@Url.Action("DetailsHistoricoPuntos", "Carrera", new { id = Model.Puntos.ElementAt(i).ID })" class="btn btn-primary btn-sm">
+                                <i class="fa fa-search"></i> Ver Detalle
+                            </a>
+                        </td>
+                        <td></td>
+
+                        @Html.HiddenFor(model => model.Puntos[i].Cedula)
+                        @Html.HiddenFor(model => model.Puntos[i].Nombre)
+                        @Html.HiddenFor(model => model.Puntos[i].TotalPuntos)
+                        @Html.HiddenFor(model => model.Puntos[i].ValorPunto)
+                        @Html.HiddenFor(model => model.Puntos[i].AnnoExpPR)
+                        @Html.HiddenFor(model => model.Puntos[i].Aprovechamiento)
+                        @Html.HiddenFor(model => model.Puntos[i].Participacion)
+                        @Html.HiddenFor(model => model.Puntos[i].ParticipacionInstruccion)
+                        @Html.HiddenFor(model => model.Puntos[i].CalificacionServicio)
+                        @Html.HiddenFor(model => model.Puntos[i].HorasAprovechamiento)
+                        @Html.HiddenFor(model => model.Puntos[i].HorasParticipacion)
+                        @Html.HiddenFor(model => model.Puntos[i].HorasInstruccion)
+                        @Html.HiddenFor(model => model.Puntos[i].PtosGrado)
+                        @Html.HiddenFor(model => model.Puntos[i].PtosAprovechamiento)
+                        @Html.HiddenFor(model => model.Puntos[i].PtosExpPR)
+                        @Html.HiddenFor(model => model.Puntos[i].PtosParticipacion)
+                        @Html.HiddenFor(model => model.Puntos[i].PtosInstruccion)
+                        @Html.HiddenFor(model => model.Puntos[i].PtosOtros)
+                        @Html.HiddenFor(model => model.Puntos[i].ExplOtros)
+                        @Html.HiddenFor(model => model.Puntos[i].Observacion)
+                        @Html.HiddenFor(model => model.Puntos[i].MesCarrera)
+                        @Html.HiddenFor(model => model.Puntos[i].AnnoCarrera)
+                        @Html.HiddenFor(model => model.Puntos[i].FecRigePago)
+                        @Html.HiddenFor(model => model.Puntos[i].HsExcPar)
+                        @Html.HiddenFor(model => model.Puntos[i].HsExcApr)
+                        @Html.HiddenFor(model => model.Puntos[i].NumResolucion)
+                        @Html.HiddenFor(model => model.Puntos[i].FecResolucion)
+                        @Html.HiddenFor(model => model.Puntos[i].Periodo)
+                        @Html.HiddenFor(model => model.Puntos[i].Grado)
+                        @Html.HiddenFor(model => model.Puntos[i].Nivel)
+                        @Html.HiddenFor(model => model.Puntos[i].AnnoExpEst)
+                        @Html.HiddenFor(model => model.Puntos[i].AprovechamientoEst)
+                        @Html.HiddenFor(model => model.Puntos[i].ParticipacionEst)
+                        @Html.HiddenFor(model => model.Puntos[i].HoraAprEst)
+                        @Html.HiddenFor(model => model.Puntos[i].HoraParEst)
+                        @Html.HiddenFor(model => model.Puntos[i].PtosGrEst)
+                        @Html.HiddenFor(model => model.Puntos[i].PtosAprEst)
+                        @Html.HiddenFor(model => model.Puntos[i].PtosExpEst)
+                        @Html.HiddenFor(model => model.Puntos[i].PtosParEst)
+                        @Html.HiddenFor(model => model.Puntos[i].PtosOtrosEst)
+                        @Html.HiddenFor(model => model.Puntos[i].ExcParEst)
+                        @Html.HiddenFor(model => model.Puntos[i].ExcAprEst)
+                        @Html.HiddenFor(model => model.Puntos[i].CAprovechamiento)
+                        @Html.HiddenFor(model => model.Puntos[i].CParticipacion)
+                        @Html.HiddenFor(model => model.Puntos[i].CInstruccion)
+                        @Html.HiddenFor(model => model.Puntos[i].ExpDoc)
+                        @Html.HiddenFor(model => model.Puntos[i].Movimiento)
+                        @Html.HiddenFor(model => model.Puntos[i].Observacion1)
+                        @Html.HiddenFor(model => model.Puntos[i].Observacion2)
+                        @Html.HiddenFor(model => model.Puntos[i].Observacion3)
+                        @Html.HiddenFor(model => model.Puntos[i].Fecha)
+                        @Html.HiddenFor(model => model.Puntos[i].PtosPublicacion)
+                        @Html.HiddenFor(model => model.Puntos[i].PtosExpDoc)
+                        @Html.HiddenFor(model => model.Puntos[i].PtosOrgInt)
+                        @Html.HiddenFor(model => model.Puntos[i].RigeEst)
+                        @Html.HiddenFor(model => model.Puntos[i].CalificacionEst)
+
+
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td align="left" colspan="2">
+                        <button class="btn btn-danger" type="submit"><i class="fa fa-file-pdf-o"></i> Exportar a pdf</button>
+                    </td>
+                    <td colspan="4" align="right">
+                        Página (@Model.PaginaActual.ToString() de @Model.TotalPaginas.ToString())
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-end">
+                                @if (Model.PaginaActual == 1)
+                                {
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#" tabindex="-1">Atras</a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="page-item">
+                                        @Ajax.ActionLink("Atras", "SearchHistoricoPuntos", new
+                                   {
+                                       @page = Model.PaginaActual - 1,
+                                       @cedula = Model.paramBusqueda.Puntos.Cedula,
+                                       @nombre = Model.paramBusqueda.Puntos.Nombre,
+                                       @model = Model.paramBusqueda
+                                   }, new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "dvResultadoBusqueda" }, new { @class = "page-link" })
+                                    </li>
+                                }
+                                @{ if (Model.TotalPaginas > 10)
+                                    {
+                                        var indice = Model.PaginaActual > 6 ? (Model.PaginaActual + 4 <= Model.TotalPaginas ? Model.PaginaActual - 5 : Model.PaginaActual - 5 - ((Model.PaginaActual + 4) - Model.TotalPaginas)) : 1;
+                                        var final = Model.PaginaActual > 6 ? (Model.PaginaActual + 4 >= Model.TotalPaginas ? Model.TotalPaginas : Model.PaginaActual + 4) : 10;
+
+                                        for (int i = indice; i <= final; i++)
+                                        {
+                                            <li class="page-item">
+                                                @Ajax.ActionLink(i.ToString(), "SearchHistoricoPuntos", new
+                                           {
+                                               @page = i,
+                                               @cedula = Model.paramBusqueda.Puntos.Cedula,
+                                               @nombre = Model.paramBusqueda.Puntos.Nombre,
+                                               @model = Model.paramBusqueda
+                                           }, new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "dvResultadoBusqueda" }, new { @class = "page-link" })
+                                            </li>
+                                        }
+                                        if (Model.PaginaActual + 4 < Model.TotalPaginas)
+                                        {
+                                            <li class="page-item disabled">
+                                                <a class="page-link" href="#">...</a>
+                                            </li>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        for (int i = 1; i <= Model.TotalPaginas; i++)
+                                        {
+                                            <li class="page-item ">
+                                                @Ajax.ActionLink(i.ToString(), "SearchHistoricoPuntos", new
+                                           {
+                                               @page = i,
+                                               @cedula = Model.paramBusqueda.Puntos.Cedula,
+                                               @nombre = Model.paramBusqueda.Puntos.Nombre,
+                                               @model = Model.paramBusqueda
+                                           }, new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "dvResultadoBusqueda" }, new { @class = "page-link" })
+                                            </li>
+                                        }
+                                    }
+                                }
+
+                                @if (Model.TotalPaginas == 1 || Model.PaginaActual == Model.TotalPaginas)
+                                {
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#">Siguiente</a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="page-item">
+                                        @Ajax.ActionLink("Siguiente", "SearchHistoricoPuntos", new
+                                   {
+                                       @page = Model.PaginaActual + 1,
+                                       @cedula = Model.paramBusqueda.Puntos.Cedula,
+                                       @nombre = Model.paramBusqueda.Puntos.Nombre,
+                                       @model = Model.paramBusqueda
+                                   }, new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "dvResultadoBusqueda" }, new { @class = "page-link" })
+                                    </li>
+                                }
+
+                            </ul>
+                        </nav>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <br />
+        
+    </fieldset>
+    }
+}

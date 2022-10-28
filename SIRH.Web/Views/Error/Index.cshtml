@@ -1,0 +1,37 @@
+﻿@model SIRH.Web.Models.ErrorModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Errores.cshtml";
+}
+
+<h2>Error</h2>
+<br />
+<div class="card">
+    <div class="card-header">
+        Detalles
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">@Html.AttributeEncode(Model.Modulo)</h5>
+        <p class="card-text">@Html.AttributeEncode(Model.Mensaje)</p>
+
+
+        @if (ViewData["sinRegreso"] == null)
+        {
+            if (ViewData["mode"] != null && ViewData["mode"].ToString() == "regreso")
+            {
+                <a href="javascript:history.back()" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Regresar</a>
+            }
+            else
+            {
+                <a href="@Url.Action("Index", "Home")" class="btn btn-primary">
+                    <i class="fa fa-home"></i> Regresar al inicio
+                </a>
+            }
+        }
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+

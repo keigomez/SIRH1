@@ -1,0 +1,100 @@
+﻿@model SIRH.Web.ViewModels.FormularioGastoTransporteVM
+@{
+    <form id="AgregarFacturaForm">
+        @Html.ValidationSummary(true)
+        <div class="card">
+            <div class="card-header">
+                Agregar Factura
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label>Motivo</label>
+                    <span>:</span>
+                    <div class="form-group">
+                        <select class="btn btn-secondary dropdown-toggle" name="SMotivos" required id="SMotivos">
+                            <option value="0"></option>
+                            <option value="1">Incapacidades</option>
+                            <option value="2">Vacaciones</option>
+                            <option value="3">Traslados</option>
+                            <option value="4">Otros</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="inc" hidden="hidden">
+                    @using(Ajax.BeginForm("ActualizarGastoTransporte", "ViaticoCorrido",
+                              new AjaxOptions
+                              {
+                                  HttpMethod = "Post"
+
+                              },new { @id = "thisformtwo" }))
+                    {
+                        <label>Incapacidades:</label> 
+                         @Html.DropDownListFor(model => model.IncapacidadSeleccion, Model.Incapacidades, "Incapacidades", new {@id="incs", @class = "btn btn-secondary dropdown-toggle", @onchange = "update();" })
+                         @Html.ValidationMessageFor(model => model.Incapacidades)
+                    }
+                    </div>
+ 
+
+                    <label>Detalle:</label>        
+                    <input type="text" value="@Model.GastoTransporteList[0].MontGastoTransporteDTO" id="Monto" hidden />      
+                    @Html.TextBoxFor(model => model.DetalleD[0].DesMotivoDTO, new { @id = "motivo", @class = "form-control", @disabled = "disabled" })
+                    @Html.ValidationMessageFor(model => model.DetalleD[0].DesMotivoDTO)
+                    @Html.HiddenFor(model => model.DetalleD[0].DesMotivoDTO)
+                </div>
+                <div class="form-group">
+                    <label>Agregar Fecha de Motivo</label>
+                    <span>:</span>
+                    <div class="start_date input-group mb-4">
+                        @Html.TextBoxFor(model => model.DetalleD[0].FecRigeDTO, new { @id = "FechaRige", @class = "form-control start_date", @readonly = "readonly", @placeholder = "Fecha de Rige" })
+                        @Html.ValidationMessageFor(model => model.DetalleD[0].FecRigeDTO)
+                        @Html.HiddenFor(model => model.DetalleD[0].FecRigeDTO)
+                    </div>
+                    <div class="start_date input-group mb-4">
+                        @Html.TextBoxFor(model => model.DetalleD[0].FecVenceDTO, new { @id = "FechaVence", @class = "form-control end_date", @readonly = "readonly", @placeholder = "Fecha de Fecha vence" })
+                        @Html.ValidationMessageFor(model => model.DetalleD[0].FecVenceDTO)
+                        @Html.HiddenFor(model => model.DetalleD[0].FecVenceDTO)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>No. Días</label>
+                    <span>:</span>
+                    @Html.TextBoxFor(model => model.DetalleD[0].NumNoDiaDTO, new { @id = "dias", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.DetalleD[0].NumNoDiaDTO)
+                    @Html.HiddenFor(model => model.DetalleD[0].NumNoDiaDTO)
+
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DetalleD[0].MontMontoBajarDTO)
+                    <span>:</span>
+                    <b>₡</b>
+                    @Html.TextBoxFor(model => model.DetalleD[0].MontMontoBajarDTO, new { @id = "montobajar", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.DetalleD[0].MontMontoBajarDTO)
+                    @Html.HiddenFor(model => model.DetalleD[0].MontMontoBajarDTO)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DetalleD[0].MontMontoRebajarDTO)
+                    <span>:</span>
+                    <b>₡</b>
+                    @Html.TextBoxFor(model => model.DetalleD[0].MontMontoRebajarDTO, new { @id = "montorebajar", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.DetalleD[0].MontMontoRebajarDTO)
+                    @Html.HiddenFor(model => model.DetalleD[0].MontMontoRebajarDTO)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DetalleD[0].TotRebajarDTO)
+                    <span>:</span>
+                    <b>₡</b>
+                    @Html.TextBoxFor(model => model.DetalleD[0].TotRebajarDTO, new { @id = "total", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.DetalleD[0].TotRebajarDTO)
+                    @Html.HiddenFor(model => model.DetalleD[0].TotRebajarDTO)
+                </div>
+                <div class="form-group">
+                    <label>Numero de Solicitante</label>
+                    <span>:</span>
+                    @Html.TextBoxFor(model => model.DetalleD[0].NumSolicitudAccionPDTO, new { @id = "solicitud", @class = "form-control", @value= "@Model.ViaticoCorridoList[0]." })
+                    @Html.ValidationMessageFor(model => model.DetalleD[0].NumSolicitudAccionPDTO)
+                    @Html.HiddenFor(model => model.DetalleD[0].NumSolicitudAccionPDTO)
+                </div>
+            </div>
+        </div>
+    </form>
+}
+

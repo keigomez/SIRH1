@@ -1,0 +1,2382 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{296D0C94-1C4C-4699-866B-6C34BB796EEF}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SIRH.Web</RootNamespace>
+    <AssemblyName>SIRH.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>3.0</TypeScriptToolsVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accessibility" />
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Data.AdoDotNetInterop, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\CrystalDecisions.Data.AdoDotNetInterop.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.VSDesigner, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\CrystalDecisions.VSDesigner.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.Web, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.0.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.0.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.0.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.0.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.0.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.0.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AccionPersonalController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ArchivoController.cs" />
+    <Compile Include="Controllers\BorradorAccionPersonalController.cs" />
+    <Compile Include="Controllers\CarreraController.cs" />
+    <Compile Include="Controllers\CaucionController.cs" />
+    <Compile Include="Controllers\DesarraigoController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\CalificacionController.cs" />
+    <Compile Include="Controllers\FuncionarioController.cs" />
+    <Compile Include="Controllers\GestionUsuarioController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JornadasController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MarcasAsistenciaController.cs" />
+    <Compile Include="Controllers\MontoCaucionController.cs" />
+    <Compile Include="Controllers\NombramientoController.cs" />
+    <Compile Include="Controllers\NotificacionController.cs" />
+    <Compile Include="Controllers\PagoFeriadoController.cs" />
+    <Compile Include="Controllers\PerfilUsuarioController.cs" />
+    <Compile Include="Controllers\PlanillaController.cs" />
+    <Compile Include="Controllers\PuestoController.cs" />
+    <Compile Include="Controllers\RegistroIncapacidadController.cs" />
+    <Compile Include="Controllers\RegistroTiempoExtraController.cs" />
+    <Compile Include="Controllers\UbicacionGeograficaController.cs" />
+    <Compile Include="Controllers\UbicacionPuestoController.cs" />
+    <Compile Include="Controllers\VacantesController.cs" />
+    <Compile Include="Controllers\VacioController.cs" />
+    <Compile Include="Controllers\ViaticoCorridoController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\DiasFestivosHelper.cs" />
+    <Compile Include="Helpers\EAccionesHelper.cs" />
+    <Compile Include="Helpers\EmailWebHelper.cs" />
+    <Compile Include="Helpers\ETipoAccionesHelper.cs" />
+    <Compile Include="Helpers\FuncionarioHelper.cs" />
+    <Compile Include="Helpers\GestionUsuariosHelper.cs" />
+    <Compile Include="Helpers\HtmlUserHelper.cs" />
+    <Compile Include="Helpers\NotificacionesEmailHelper.cs" />
+    <Compile Include="Helpers\RegistroTiempoExtraHelper.cs" />
+    <Compile Include="Models\DivisionModel.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CatalogoDiaModel.cs" />
+    <Compile Include="Models\ClaseModel.cs" />
+    <Compile Include="Models\DepartamentoModel.cs" />
+    <Compile Include="Models\DireccionGeneralModel.cs" />
+    <Compile Include="Models\ErrorModel.cs" />
+    <Compile Include="Models\EspecialidadModel.cs" />
+    <Compile Include="Models\FuncionarioModel.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MovimientoPuestoModel.cs" />
+    <Compile Include="Models\OcupacionModel.cs" />
+    <Compile Include="Models\PresupuestoModel.cs" />
+    <Compile Include="Models\SeccionModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\AccionPersonal\AccionRpt.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AccionRpt.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\AccionPersonal\AccionRptData.cs" />
+    <Compile Include="Reports\AccionPersonal\BorradorRpt.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\AccionPersonal\BorradorRptData.cs" />
+    <Compile Include="Reports\AccionPersonal\ReporteBorradoresRPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\AccionPersonal\ReporteHistoricoRPT.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReporteHistoricoRPT.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Boletas\BoletaRpt2.cs">
+      <DependentUpon>BoletaRpt.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Reports\Boletas\BoletaRptData.cs" />
+    <Compile Include="Reports\Boletas\BusquedaBoletaRpt2.cs">
+      <DependentUpon>BusquedaBoletaRpt.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Reports\Boletas\BusquedaBoletaRptData.cs" />
+    <Compile Include="Reports\Calificacion\CalificacionRPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Calificacion\CalificacionRPT1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CalificacionRPT.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Calificacion\CalificacionRptData.cs" />
+    <Compile Include="Reports\Calificacion\DatosCuantitativosCualitativosFEDRSCRPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Calificacion\DatosCuantitativosCualitativosFEDRSCRPT1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DatosCuantitativosCualitativosFEDRSCRPT.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Calificacion\DatosMEDRptDat.cs" />
+    <Compile Include="Reports\Calificacion\HistorialDetalleRPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Calificacion\HistorialDetalleRPT1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HistorialDetalleRPT.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Calificacion\HistorialRptDat.cs" />
+    <Compile Include="Reports\Carrera\CursoCapacitacionRPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Carrera\CursoCapacitacionRptData.cs" />
+    <Compile Include="Reports\Carrera\CursoGradoRPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Carrera\CursoGradoRptData.cs" />
+    <Compile Include="Reports\Carrera\DesgloseCursoCapacitacionRPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Carrera\DesgloseCursoGradoRPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Cauciones\CaucionRPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Cauciones\CaucionRptData.cs" />
+    <Compile Include="Reports\Cauciones\DesgloceCaucionesRPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Cauciones\MontoCaucionRPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Cauciones\MontoCaucionRptData.cs" />
+    <Compile Include="Reports\Desarraigos\ContratoDesarraigoRPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Desarraigos\ContratosDesarraigoRptData.cs" />
+    <Compile Include="Reports\Desarraigos\DesarraigoFacturaRptData.cs" />
+    <Compile Include="Reports\Desarraigos\DesarraigoRPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Desarraigos\DesarraigoRptData.cs" />
+    <Compile Include="Reports\Desarraigos\DetalleBusquedaDesarraigoPRT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Desarraigos\FacturasDesarraigoRPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Funcionarios\FuncionariosRptData.cs" />
+    <Compile Include="Reports\Funcionarios\ReporteFuncionario.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Funcionarios\ReporteFuncionarios.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\GastoTransporte\AsignacionPI-555.cs">
+      <DependentUpon>AsignacionPI-555.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\GastoTransporte\AsignacionPI555RptData.cs" />
+    <Compile Include="Reports\GastoTransporte\DeduccionPI-1105.cs">
+      <DependentUpon>DeduccionPI-1105.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\GastoTransporte\DeduccionPI1105RptData.cs" />
+    <Compile Include="Reports\GastoTransporte\EliminacionPI-1106.cs">
+      <DependentUpon>EliminacionPI-1106.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\GastoTransporte\EliminacionPI1106RptData.cs" />
+    <Compile Include="Reports\MarcasAsistencia\ConsolidadoFuncionarioRPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\MarcasAsistencia\ConsolidadoFuncionarioRptData.cs" />
+    <Compile Include="Reports\MarcasAsistencia\FuncionarioDepartamento.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\MarcasAsistencia\FuncionariosPorDepartamentoRPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\MarcasAsistencia\FuncionariosPorDepartamentosRptData.cs" />
+    <Compile Include="Reports\MarcasAsistencia\MarcasCompletasRptData.cs" />
+    <Compile Include="Reports\MarcasAsistencia\ReporteConsolidadoDepartamentoRPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\MarcasAsistencia\ReporteEncabezadoRptData.cs" />
+    <Compile Include="Reports\MarcasAsistencia\ReporteEncabezadoSimpleRptData.cs" />
+    <Compile Include="Reports\MarcasAsistencia\ReporteFuncionariosDepartamentoRPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\MarcasAsistencia\ReporteMarcasCompletasRPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\PagoFeriado\DeduccionesObreroSubreporteRPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\PagoFeriado\DeduccionesPatronalesSubreporteRPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\PagoFeriado\DetallesPagoFeriadoRPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\PagoFeriado\DiasPagadosSubreporteRPF.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\PagoFeriado\PagoFeriadoRPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\PagoFeriado\PagoFeriadoRptData.cs" />
+    <Compile Include="Reports\PagoFeriado\VerDetallesPagoFeriadoRPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\PDF\CrystalReportPdfResult.cs" />
+    <Compile Include="Reports\Planilla\DetalleMovimientoRpt.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DetalleMovimientoRpt.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Planilla\DetalleMovimientoRptData.cs" />
+    <Compile Include="Reports\RegistroIncapacidad\IncapacidadRpt.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RegistroIncapacidad\IncapacidadRptData.cs" />
+    <Compile Include="Reports\RegistroIncapacidad\ReporteIncapacidadesRPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RegistroTiempoExtra\RegistroTiempoExtraRPT.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RegistroTiempoExtraRPT.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RegistroTiempoExtra\RegistroTiempoExtraRptData.cs" />
+    <Compile Include="Reports\ViaticoCorrido\AsignacionPI-568.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AsignacionPI-568.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ViaticoCorrido\AsignacionPI568RptData.cs" />
+    <Compile Include="Reports\ViaticoCorrido\DetallePagoRptData.cs" />
+    <Compile Include="Reports\ViaticoCorrido\DetallePagoVC.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DetallePagoVC.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ViaticoCorrido\EliminacionPI1103RptData.cs" />
+    <Compile Include="Reports\ViaticoCorrido\DeduccionPI1104RptData.cs" />
+    <Compile Include="Reports\ViaticoCorrido\EliminacionPI-1103.cs">
+      <DependentUpon>EliminacionPI-1103.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\ViaticoCorrido\DeduccionPI-1104.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DeduccionPI-1104.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Service References\AccionPersonalLocal\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\AccionPersonalService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\AntecedentesPenalesService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ArchivoLocal\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ArchivoService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\BorradorAccionPersonalLocal\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\CalificacionLocal\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\CalificacionService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\CaucionesLocal\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\CaucionService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ComponentePresupuestarioLocal\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\DesarraigoLocal\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\EstadoBorradorLocal\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\EstadoBorradorService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\FormacionAcademicaLocal\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\FuncionarioLocal\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\FuncionarioService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\MarcacionesLocal\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\MarcacionLocal\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\NombramientoLocal\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\PagoFeriadoLocal\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\PerfilUsuarioLocal\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\PerfilUsuarioService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\PuestoLocal\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\PuestoService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\RegistroIncapacidadLocal\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\RegistroIncapacidadService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\RegistroTELocal\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ServicioCalificacion\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ServicioGeneral\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ServicioTSE\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\TipoAccionPersonalLocal\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\TipoAccionPersonalService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\TipoJornadaLocal\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ViaticoGastosLocal\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ViaticoGastosService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Startup.cs" />
+    <Compile Include="UserValidation\CAccesoWeb.cs" />
+    <Compile Include="ViewModels\BoletasRecuperadasVM.cs" />
+    <Compile Include="ViewModels\BusquedaAccionPersonalVM.cs" />
+    <Compile Include="ViewModels\BusquedaAsuetoVM.cs" />
+    <Compile Include="ViewModels\BusquedaBorradorAccionPersonalVM.cs" />
+    <Compile Include="ViewModels\BusquedaCarreraVM.cs" />
+    <Compile Include="ViewModels\BusquedaCaucionVM.cs" />
+    <Compile Include="ViewModels\BusquedaExpedienteVM.cs" />
+    <Compile Include="ViewModels\BusquedaGastoTransporteVM.cs" />
+    <Compile Include="ViewModels\BusquedaViaticoCorridoVM.cs" />
+    <Compile Include="ViewModels\BusquedaDesarraigoVM.cs" />
+    <Compile Include="ViewModels\BusquedaEmpleadosMarcasAsistenciaVM.cs" />
+    <Compile Include="ViewModels\BusquedaHistorialCalificacionVM.cs" />
+    <Compile Include="ViewModels\BusquedaIncapacidadVM.cs" />
+    <Compile Include="ViewModels\BusquedaMontosVM.cs" />
+    <Compile Include="ViewModels\BusquedaPagoFeriadoVM.cs" />
+    <Compile Include="ViewModels\CandidatoPuestoVM.cs" />
+    <Compile Include="ViewModels\CaracteristicasPuestoVM.cs" />
+    <Compile Include="ViewModels\ContenidoPresupuestarioPuestoVM.cs" />
+    <Compile Include="ViewModels\DetallePuestoVM.cs" />
+    <Compile Include="ViewModels\DireccionFuncionarioVM.cs" />
+    <Compile Include="ViewModels\EstudioPuestoVM.cs" />
+    <Compile Include="ViewModels\FoleoVM.cs" />
+    <Compile Include="ViewModels\FormularioAccionPersonalVM.cs" />
+    <Compile Include="ViewModels\FormularioAsuetoVM.cs" />
+    <Compile Include="ViewModels\FormularioBoletaPrestamoVM.cs" />
+    <Compile Include="ViewModels\FormularioBorradorAccionPersonalVM.cs" />
+    <Compile Include="ViewModels\FormularioCalculoRetroactivo.cs" />
+    <Compile Include="ViewModels\FormularioCalificacionVM.cs" />
+    <Compile Include="ViewModels\FormularioCatalogoDiasVM.cs" />
+    <Compile Include="ViewModels\FormularioCaucionVM.cs" />
+    <Compile Include="ViewModels\FormularioContratoArrendamientoVM.cs" />
+    <Compile Include="ViewModels\FormularioDatosEvaluacionVM.cs" />
+    <Compile Include="ViewModels\FormularioGastoTransporteVM.cs" />
+    <Compile Include="ViewModels\FormularioMotivoDeduccionVM.cs" />
+    <Compile Include="ViewModels\FormularioNombramientoVM.cs" />
+    <Compile Include="ViewModels\FormularioPlanillaVM.cs" />
+    <Compile Include="ViewModels\FormularioViaticoCorridoVM.cs" />
+    <Compile Include="ViewModels\FormularioDesarraigoVM.cs" />
+    <Compile Include="ViewModels\FormularioFacturaDesarraigoVM.cs" />
+    <Compile Include="ViewModels\FormularioMarcasAsistenciaVM.cs" />
+    <Compile Include="ViewModels\FormularioPagoFeriadoVM.cs" />
+    <Compile Include="ViewModels\FormularioRegistroIncapacidadVM.cs" />
+    <Compile Include="ViewModels\FormularioReporteMarcas.cs" />
+    <Compile Include="ViewModels\FormularioSalarioEscolarVM.cs" />
+    <Compile Include="ViewModels\FuncionarioCarreraVM.cs" />
+    <Compile Include="ViewModels\FuncionarioDetalleContratacionVM.cs" />
+    <Compile Include="ViewModels\FuncionarioExperienciaVM.cs" />
+    <Compile Include="ViewModels\FuncionarioJornadaVM.cs" />
+    <Compile Include="ViewModels\FuncionarioNombramientoVM.cs" />
+    <Compile Include="ViewModels\FuncionarioPuestoVM.cs" />
+    <Compile Include="ViewModels\FuncionarioRegistroExtrasVM.cs" />
+    <Compile Include="ViewModels\FuncionarioUbicacionVM.cs" />
+    <Compile Include="ViewModels\JornadaFuncionarioVM.cs" />
+    <Compile Include="ViewModels\MovimientoPuestoVM.cs" />
+    <Compile Include="ViewModels\NotificacionesCorreoVM.cs" />
+    <Compile Include="ViewModels\PedimentoPuestoVM.cs" />
+    <Compile Include="ViewModels\PerfilBasicoFuncionarioVM.cs" />
+    <Compile Include="ViewModels\PerfilFuncionarioVM.cs" />
+    <Compile Include="ViewModels\PerfilUsuarioVM.cs" />
+    <Compile Include="ViewModels\PrestamoPuestoVM.cs" />
+    <Compile Include="ViewModels\PresupuestoPuestoVM.cs" />
+    <Compile Include="ViewModels\PuestoUbicacionGeograficaVM.cs" />
+    <Compile Include="ViewModels\TareasPuestosVM.cs" />
+    <Compile Include="ViewModels\UbicacionGeograficaVM.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-datepicker3.css" />
+    <Content Include="Content\bootstrap-datetimepicker.css" />
+    <Content Include="Content\bootstrap-datetimepicker.min.css" />
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrapv3.min.css" />
+    <Content Include="Content\datetimepicker.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\Fonts\gijgo-material.svg" />
+    <Content Include="Content\Fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Images\0cdb1c26a4b1de81b53bb11c034f9ffb.png" />
+    <Content Include="Content\Images\Actions-view-refresh-icon.png" />
+    <Content Include="Content\Images\actividad_exprimidor_jugo_unidad_4.png" />
+    <Content Include="Content\Images\add.png" />
+    <Content Include="Content\Images\aprobacion.png" />
+    <Content Include="Content\Images\aprobacion_ico.png" />
+    <Content Include="Content\Images\back.png" />
+    <Content Include="Content\Images\calendar.gif" />
+    <Content Include="Content\Images\carpres_add.png" />
+    <Content Include="Content\Images\carta_ico.png" />
+    <Content Include="Content\Images\cf.ico" />
+    <Content Include="Content\Images\checkMark.png" />
+    <Content Include="Content\Images\check_ico.png" />
+    <Content Include="Content\Images\dependencia_review.png" />
+    <Content Include="Content\Images\edit.png" />
+    <Content Include="Content\Images\edit_page.png" />
+    <Content Include="Content\Images\email.png" />
+    <Content Include="Content\Images\email2.png" />
+    <Content Include="Content\Images\encabezado-carrera.png" />
+    <Content Include="Content\Images\encabezado-cauciones.png" />
+    <Content Include="Content\Images\encabezado-desarraigo.png" />
+    <Content Include="Content\Images\encabezado-extras.png" />
+    <Content Include="Content\Images\encabezado-pago-feriados.png" />
+    <Content Include="Content\Images\encabezadodiseno.jpg" />
+    <Content Include="Content\Images\encabezado_cauciones.png" />
+    <Content Include="Content\Images\encabezado_error.png" />
+    <Content Include="Content\Images\encabezado_jornadas.png" />
+    <Content Include="Content\Images\encabezado_usuarios.png" />
+    <Content Include="Content\Images\encabezado_vacantes.jpg" />
+    <Content Include="Content\Images\equipo-mucr.png" />
+    <Content Include="Content\Images\error emulacion.png" />
+    <Content Include="Content\Images\error.png" />
+    <Content Include="Content\Images\error_ico.png" />
+    <Content Include="Content\Images\estudio_puesto.png" />
+    <Content Include="Content\Images\estudio_puestoico.png" />
+    <Content Include="Content\Images\estudio_puesto_review.png" />
+    <Content Include="Content\Images\folder_exp.png" />
+    <Content Include="Content\Images\folder_policial.png" />
+    <Content Include="Content\Images\folder_prof.png" />
+    <Content Include="Content\Images\history.png" />
+    <Content Include="Content\Images\Info.png" />
+    <Content Include="Content\Images\location_ico.png" />
+    <Content Include="Content\Images\location_review.png" />
+    <Content Include="Content\Images\logo.ico" />
+    <Content Include="Content\Images\logo.png" />
+    <Content Include="Content\Images\look.png" />
+    <Content Include="Content\Images\new.png" />
+    <Content Include="Content\Images\nota.gif" />
+    <Content Include="Content\Images\oferente_add.png" />
+    <Content Include="Content\Images\oferente_ico.png" />
+    <Content Include="Content\Images\office_change.png" />
+    <Content Include="Content\Images\pbar-ani.gif" />
+    <Content Include="Content\Images\pdf.png" />
+    <Content Include="Content\Images\pdf_download.png" />
+    <Content Include="Content\Images\pie-gris.png" />
+    <Content Include="Content\Images\pie_error.png" />
+    <Content Include="Content\Images\pie_gris.png" />
+    <Content Include="Content\Images\pie_usuarios.png" />
+    <Content Include="Content\Images\presupuesto_history.png" />
+    <Content Include="Content\Images\presupuesto_ico.png" />
+    <Content Include="Content\Images\progressbar.gif" />
+    <Content Include="Content\Images\puesto_ask.png" />
+    <Content Include="Content\Images\puesto_askico.png" />
+    <Content Include="Content\Images\puesto_ask_edit.png" />
+    <Content Include="Content\Images\puesto_ask_review.png" />
+    <Content Include="Content\Images\puesto_assign.png" />
+    <Content Include="Content\Images\puesto_change.png" />
+    <Content Include="Content\Images\puesto_pencil.png" />
+    <Content Include="Content\Images\puesto_prestamo.png" />
+    <Content Include="Content\Images\puesto_prestamoico.png" />
+    <Content Include="Content\Images\puesto_prestamo_review.png" />
+    <Content Include="Content\Images\puesto_search.png" />
+    <Content Include="Content\Images\swap_puesto.png" />
+    <Content Include="Content\Images\table_add.png" />
+    <Content Include="Content\Images\table_edit.png" />
+    <Content Include="Content\Images\tarea_ico.png" />
+    <Content Include="Content\Images\task_review.png" />
+    <Content Include="Content\Images\ui-anim.basic.16x16.gif" />
+    <Content Include="Content\Images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\Images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\Images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\Images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\Images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\Images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\Images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\Images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\Images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\Images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\Images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\Images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\Images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\Images\user.png" />
+    <Content Include="Content\Images\view.png" />
+    <Content Include="Content\Images\warning.png" />
+    <Content Include="Content\sidebar.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Helpers\fueraDominio.xml" />
+    <Content Include="Scripts\ai.0.22.9-build00167.js" />
+    <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Properties\DataSources\SIRH.DTO.CBaseDTO.datasource" />
+    <Content Include="Properties\DataSources\SIRH.DTO.CFuncionarioDTO.datasource" />
+    <Content Include="Properties\DataSources\SIRH.DTO.CClaseDTO.datasource" />
+    <Content Include="Properties\DataSources\SIRH.DTO.CDepartamentoDTO.datasource" />
+    <Content Include="Properties\DataSources\SIRH.DTO.CDireccionGeneralDTO.datasource" />
+    <Content Include="Properties\DataSources\SIRH.DTO.CDivisionDTO.datasource" />
+    <Content Include="Properties\DataSources\SIRH.DTO.CEspecialidadDTO.datasource" />
+    <Content Include="Properties\DataSources\SIRH.DTO.CMotivoMovimientoDTO.datasource" />
+    <Content Include="Properties\DataSources\SIRH.DTO.CMovimientoPuestoDTO.datasource" />
+    <Content Include="Properties\DataSources\SIRH.DTO.COcupacionRealDTO.datasource" />
+    <Content Include="Properties\DataSources\SIRH.DTO.CPuestoDTO.datasource" />
+    <Content Include="Properties\DataSources\SIRH.DTO.CSeccionDTO.datasource" />
+    <Content Include="Properties\DataSources\SIRH.DTO.CTipoPuestoDTO.datasource" />
+    <Content Include="Properties\DataSources\SIRH.DTO.CRelPresupuestoExtraDTO.datasource" />
+    <Content Include="Properties\DataSources\SIRH.DTO.CRespuestaDTO.datasource" />
+    <Content Include="Properties\DataSources\System.Data.DataSet.datasource" />
+    <Content Include="Reports\Cauciones\CaucionRPT.rpt" />
+    <Content Include="Reports\Cauciones\DesgloceCaucionesRPT.rpt" />
+    <Content Include="Reports\Cauciones\MontoCaucionRPT.rpt" />
+    <Content Include="Reports\Desarraigos\ContratoDesarraigoRPT.rpt" />
+    <Content Include="Reports\Desarraigos\DesarraigoRPT.rpt" />
+    <Content Include="Reports\Desarraigos\DetalleBusquedaDesarraigoPRT.rpt" />
+    <Content Include="Reports\Desarraigos\FacturasDesarraigoRPT.rpt" />
+    <Content Include="Reports\MarcasAsistencia\ConsolidadoFuncionarioRPT.rpt" />
+    <Content Include="Reports\MarcasAsistencia\FuncionarioDepartamento.rpt" />
+    <Content Include="Reports\MarcasAsistencia\FuncionariosPorDepartamentoRPT.rpt" />
+    <Content Include="Reports\MarcasAsistencia\ReporteConsolidadoDepartamentoRPT.rpt" />
+    <Content Include="Reports\MarcasAsistencia\ReporteFuncionariosDepartamentoRPT.rpt" />
+    <Content Include="Reports\MarcasAsistencia\ReporteMarcasCompletasRPT.rpt" />
+    <Content Include="Reports\PagoFeriado\DeduccionesObreroSubreporteRPT.rpt" />
+    <Content Include="Reports\PagoFeriado\DeduccionesPatronalesSubreporteRPT.rpt" />
+    <Content Include="Reports\PagoFeriado\DetallesPagoFeriadoRPT.rpt" />
+    <Content Include="Reports\PagoFeriado\DiasPagadosSubreporteRPF.rpt" />
+    <Content Include="Reports\PagoFeriado\PagoFeriadoRPT.rpt" />
+    <Content Include="Reports\PagoFeriado\VerDetallesPagoFeriadoRPT.rpt" />
+    <Content Include="Reports\RegistroIncapacidad\IncapacidadRpt.rpt" />
+    <Content Include="Reports\RegistroIncapacidad\ReporteIncapacidadesRPT.rpt" />
+    <Content Include="Scripts\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\datetimepicker-es.js" />
+    <Content Include="Scripts\datetimepicker.js" />
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Content\Fonts\gijgo-material.eot" />
+    <Content Include="Content\Fonts\gijgo-material.ttf" />
+    <Content Include="Content\Fonts\gijgo-material.woff" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="Properties\DataSources\SIRH.DTO.CProcAlmacenadoDatosGeneralesDTO.datasource" />
+    <Content Include="Properties\DataSources\SIRH.DTO.CProcAlmacenadoDTO.datasource" />
+    <Content Include="Reports\AccionPersonal\BorradorRpt.rpt" />
+    <Content Include="Reports\AccionPersonal\ReporteBorradoresRPT.rpt" />
+    <Content Include="Reports\Funcionarios\ReporteFuncionario.rpt" />
+    <Content Include="Reports\Funcionarios\ReporteFuncionarios.rpt" />
+    <Content Include="Content\Fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\Fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\Fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\Fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap\wells.less" />
+    <Content Include="Content\bootstrap\variables.less" />
+    <Content Include="Content\bootstrap\utilities.less" />
+    <Content Include="Content\bootstrap\type.less" />
+    <Content Include="Content\bootstrap\tooltip.less" />
+    <Content Include="Content\bootstrap\thumbnails.less" />
+    <Content Include="Content\bootstrap\theme.less" />
+    <Content Include="Content\bootstrap\tables.less" />
+    <Content Include="Content\bootstrap\scaffolding.less" />
+    <Content Include="Content\bootstrap\responsive-utilities.less" />
+    <Content Include="Content\bootstrap\responsive-embed.less" />
+    <Content Include="Content\bootstrap\progress-bars.less" />
+    <Content Include="Content\bootstrap\print.less" />
+    <Content Include="Content\bootstrap\popovers.less" />
+    <Content Include="Content\bootstrap\panels.less" />
+    <Content Include="Content\bootstrap\pagination.less" />
+    <Content Include="Content\bootstrap\pager.less" />
+    <Content Include="Content\bootstrap\normalize.less" />
+    <Content Include="Content\bootstrap\navs.less" />
+    <Content Include="Content\bootstrap\navbar.less" />
+    <Content Include="Content\bootstrap\modals.less" />
+    <Content Include="Content\bootstrap\mixins\vendor-prefixes.less" />
+    <Content Include="Content\bootstrap\mixins\text-overflow.less" />
+    <Content Include="Content\bootstrap\mixins\text-emphasis.less" />
+    <Content Include="Content\bootstrap\mixins\table-row.less" />
+    <Content Include="Content\bootstrap\mixins\tab-focus.less" />
+    <Content Include="Content\bootstrap\mixins\size.less" />
+    <Content Include="Content\bootstrap\mixins\responsive-visibility.less" />
+    <Content Include="Content\bootstrap\mixins\resize.less" />
+    <Content Include="Content\bootstrap\mixins\reset-text.less" />
+    <Content Include="Content\bootstrap\mixins\reset-filter.less" />
+    <Content Include="Content\bootstrap\mixins\progress-bar.less" />
+    <Content Include="Content\bootstrap\mixins\panels.less" />
+    <Content Include="Content\bootstrap\mixins\pagination.less" />
+    <Content Include="Content\bootstrap\mixins\opacity.less" />
+    <Content Include="Content\bootstrap\mixins\nav-vertical-align.less" />
+    <Content Include="Content\bootstrap\mixins\nav-divider.less" />
+    <Content Include="Content\bootstrap\mixins\list-group.less" />
+    <Content Include="Content\bootstrap\mixins\labels.less" />
+    <Content Include="Content\bootstrap\mixins\image.less" />
+    <Content Include="Content\bootstrap\mixins\hide-text.less" />
+    <Content Include="Content\bootstrap\mixins\grid.less" />
+    <Content Include="Content\bootstrap\mixins\grid-framework.less" />
+    <Content Include="Content\bootstrap\mixins\gradients.less" />
+    <Content Include="Content\bootstrap\mixins\forms.less" />
+    <Content Include="Content\bootstrap\mixins\clearfix.less" />
+    <Content Include="Content\bootstrap\mixins\center-block.less" />
+    <Content Include="Content\bootstrap\mixins\buttons.less" />
+    <Content Include="Content\bootstrap\mixins\border-radius.less" />
+    <Content Include="Content\bootstrap\mixins\background-variant.less" />
+    <Content Include="Content\bootstrap\mixins\alerts.less" />
+    <Content Include="Content\bootstrap\mixins.less" />
+    <Content Include="Content\bootstrap\media.less" />
+    <Content Include="Content\bootstrap\list-group.less" />
+    <Content Include="Content\bootstrap\labels.less" />
+    <Content Include="Content\bootstrap\jumbotron.less" />
+    <Content Include="Content\bootstrap\input-groups.less" />
+    <Content Include="Content\bootstrap\grid.less" />
+    <Content Include="Content\bootstrap\glyphicons.less" />
+    <Content Include="Content\bootstrap\forms.less" />
+    <Content Include="Content\bootstrap\dropdowns.less" />
+    <Content Include="Content\bootstrap\component-animations.less" />
+    <Content Include="Content\bootstrap\code.less" />
+    <Content Include="Content\bootstrap\close.less" />
+    <Content Include="Content\bootstrap\carousel.less" />
+    <Content Include="Content\bootstrap\buttons.less" />
+    <Content Include="Content\bootstrap\button-groups.less" />
+    <Content Include="Content\bootstrap\breadcrumbs.less" />
+    <Content Include="Content\bootstrap\bootstrap.less" />
+    <Content Include="Content\bootstrap\badges.less" />
+    <Content Include="Content\bootstrap\alerts.less" />
+    <Content Include="Content\_bootstrap-datetimepicker.less" />
+    <Content Include="Content\bootstrap-datetimepicker-build.less" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Properties\DataSources\SIRH.DTO.CPresupuestoDTO1.datasource" />
+    <Content Include="Properties\DataSources\SIRH.DTO.CProgramaDTO1.datasource" />
+    <Content Include="Properties\DataSources\SIRH.DTO.CSubEspecialidadDTO.datasource" />
+    <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
+    <Content Include="Scripts\funciones-dialogos.js" />
+    <Content Include="Scripts\funciones-generales.js" />
+    <Content Include="Scripts\home.js" />
+    <Content Include="Scripts\jquery-3.0.0.js" />
+    <Content Include="Scripts\jquery-3.0.0.min.js" />
+    <Content Include="Scripts\jquery-3.0.0.slim.js" />
+    <Content Include="Scripts\jquery-3.0.0.slim.min.js" />
+    <Content Include="Scripts\jquery-3.0.0.slim.min.map" />
+    <Content Include="Scripts\jquery-3.0.0.min.map" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\Pages\AsuetoIndex.js" />
+    <Content Include="Scripts\Pages\Calificar.js" />
+    <Content Include="Scripts\Pages\CreateAsueto.js" />
+    <Content Include="Scripts\Pages\CreateBoletaPrestamo.js" />
+    <Content Include="Scripts\Pages\CreateBusquedaExpediente.js" />
+    <Content Include="Scripts\Pages\CreateBusquedaPrestamo.js" />
+    <Content Include="Scripts\Pages\CreateFoleo.js" />
+    <Content Include="Scripts\Pages\CreateMarcasAsistencia.js" />
+    <Content Include="Scripts\Pages\CreateMontoCaucion.js" />
+    <Content Include="Scripts\Pages\CreateRegistroTE.js" />
+    <Content Include="Scripts\Pages\CreateSalarioEscolar.js" />
+    <Content Include="Scripts\Pages\CreateTrasladoArchivoCentral.js" />
+    <Content Include="Scripts\Pages\DetailsFuncionario.js" />
+    <Content Include="Scripts\Pages\EditCaucion.js" />
+    <Content Include="Scripts\Pages\EditGastoTransporte.js" />
+    <Content Include="Scripts\Pages\EditViaticoCorrido.js" />
+    <Content Include="Scripts\Pages\EditDesarraigo.js" />
+    <Content Include="Scripts\Pages\EditMontoCaucion.js" />
+    <Content Include="Scripts\Pages\EditPagoFeriado.js" />
+    <Content Include="Scripts\Pages\FormularioAccionPersonal.js" />
+    <Content Include="Scripts\Pages\FormularioAnularCurso.js" />
+    <Content Include="Scripts\Pages\FormularioBorradorAccionPersonal.js" />
+    <Content Include="Scripts\Pages\FormularioCarrera.js" />
+    <Content Include="Scripts\Pages\FormularioCaucion.js" />
+    <Content Include="Scripts\Pages\FormularioDesarraigo.js" />
+    <Content Include="Scripts\Pages\FormularioEditarCurso.js" />
+    <Content Include="Scripts\Pages\FormularioExperiencia.js" />
+    <Content Include="Scripts\Pages\FormularioIncapacidad.js" />
+    <Content Include="Scripts\Pages\FormularioMarcaciones.js" />
+    <Content Include="Scripts\Pages\FormularioPagoFeriado.js" />
+    <Content Include="Scripts\Pages\FormularioPerfilFuncionario.js" />
+    <Content Include="Scripts\Pages\FormularioGastoTransporte.js" />
+    <Content Include="Scripts\Pages\FormularioVacantes.js" />
+    <Content Include="Scripts\Pages\FuncionesCalificacion.js" />
+    <Content Include="Scripts\Pages\IndexFuncionario.js" />
+    <Content Include="Scripts\Pages\PerfilUsuario.js" />
+    <Content Include="Scripts\Pages\ReportsMarcaciones.js" />
+    <Content Include="Scripts\Pages\SearchAccionPersonal.js" />
+    <Content Include="Scripts\Pages\SearchBorradorAccionPersonal.js" />
+    <Content Include="Scripts\Pages\SearchCarrera.js" />
+    <Content Include="Scripts\Pages\SearchCaucion.js" />
+    <Content Include="Scripts\Pages\SearchGastoTransporte.js" />
+    <Content Include="Scripts\Pages\FormularioViaticoCorrido.js" />
+    <Content Include="Scripts\Pages\SearchViaticoCorrido.js" />
+    <Content Include="Scripts\Pages\SearchDesarraigo.js" />
+    <Content Include="Scripts\Pages\SearchMarcasAsistencia.js" />
+    <Content Include="Scripts\Pages\SearchMontoCaucion.js" />
+    <Content Include="Scripts\Pages\SearchPagoFeriado.js" />
+    <Content Include="Scripts\Pages\_FormularioCarrera.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\puesto-control.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\sidebar.js" />
+    <Content Include="Scripts\ubicacion-control.js" />
+    <Content Include="Scripts\umd\popper-utils.js" />
+    <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper.js" />
+    <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper-utils.js.map" />
+    <None Include="Service References\AccionPersonalLocal\Arrays.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccionPersonalLocal\service.wsdl" />
+    <None Include="Service References\AccionPersonalLocal\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccionPersonalLocal\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccionPersonalLocal\service2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccionPersonalLocal\SIRH.DTO.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccionPersonalService\CAccionPersonalService.wsdl" />
+    <None Include="Service References\AccionPersonalService\CAccionPersonalService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccionPersonalService\CAccionPersonalService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccionPersonalService\CAccionPersonalService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccionPersonalService\CAccionPersonalService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccionPersonalService\CAccionPersonalService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AntecedentesPenalesService\Certificar.wsdl" />
+    <None Include="Service References\AntecedentesPenalesService\Certificar.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AntecedentesPenalesService\Certificar1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccionPersonalLocal\configuration91.svcinfo" />
+    <None Include="Service References\AccionPersonalLocal\configuration.svcinfo" />
+    <None Include="Service References\AccionPersonalLocal\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\AccionPersonalService\CAccionPersonalService.disco" />
+    <None Include="Service References\AccionPersonalService\configuration91.svcinfo" />
+    <None Include="Service References\AccionPersonalService\configuration.svcinfo" />
+    <None Include="Service References\AccionPersonalService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Service References\AntecedentesPenalesService\SIRH.Web.AntecedentesPenalesService.CertificacionEn.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\AntecedentesPenalesService\SIRH.Web.AntecedentesPenalesService.ObtenerCertificacionPdfResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\AntecedentesPenalesService\SIRH.Web.AntecedentesPenalesService.SolicitudEn.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\ArchivoLocal\Arrays.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ArchivoLocal\service.wsdl" />
+    <None Include="Service References\ArchivoLocal\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ArchivoLocal\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ArchivoLocal\service2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ArchivoLocal\SIRH.DTO.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ArchivoService\CArchivoService.wsdl" />
+    <None Include="Service References\ArchivoService\CArchivoService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ArchivoService\CArchivoService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ArchivoService\CArchivoService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ArchivoService\CArchivoService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ArchivoService\CArchivoService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BorradorAccionPersonalLocal\Arrays.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BorradorAccionPersonalLocal\service.wsdl" />
+    <None Include="Service References\BorradorAccionPersonalLocal\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BorradorAccionPersonalLocal\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BorradorAccionPersonalLocal\SIRH.DTO.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CalificacionLocal\Arrays.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CalificacionLocal\service.wsdl" />
+    <None Include="Service References\CalificacionLocal\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CalificacionLocal\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CalificacionLocal\service2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CalificacionLocal\SIRH.DTO.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CalificacionService\CCalificacionService.wsdl" />
+    <None Include="Service References\CalificacionService\CCalificacionService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CalificacionService\CCalificacionService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CalificacionService\CCalificacionService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CalificacionService\CCalificacionService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CalificacionService\CCalificacionService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CaucionesLocal\Arrays.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CaucionesLocal\service.wsdl" />
+    <None Include="Service References\CaucionesLocal\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CaucionesLocal\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CaucionesLocal\service2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CaucionesLocal\SIRH.DTO.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CaucionService\CCaucionesService.wsdl" />
+    <None Include="Service References\CaucionService\CCaucionesService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CaucionService\CCaucionesService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CaucionService\CCaucionesService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CaucionService\CCaucionesService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CaucionService\CCaucionesService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ComponentePresupuestarioLocal\Arrays.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ComponentePresupuestarioLocal\service.wsdl" />
+    <None Include="Service References\ComponentePresupuestarioLocal\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ComponentePresupuestarioLocal\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ComponentePresupuestarioLocal\service2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ComponentePresupuestarioLocal\SIRH.DTO.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DesarraigoLocal\Arrays.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DesarraigoLocal\service.wsdl" />
+    <None Include="Service References\DesarraigoLocal\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DesarraigoLocal\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DesarraigoLocal\SIRH.DTO.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EstadoBorradorLocal\service.wsdl" />
+    <None Include="Service References\EstadoBorradorLocal\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EstadoBorradorLocal\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EstadoBorradorLocal\SIRH.DTO.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EstadoBorradorService\CEstadoBorradorService.wsdl" />
+    <None Include="Service References\EstadoBorradorService\CEstadoBorradorService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EstadoBorradorService\CEstadoBorradorService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EstadoBorradorService\CEstadoBorradorService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EstadoBorradorService\CEstadoBorradorService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FormacionAcademicaLocal\Arrays.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FormacionAcademicaLocal\service.wsdl" />
+    <None Include="Service References\FormacionAcademicaLocal\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FormacionAcademicaLocal\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FormacionAcademicaLocal\SIRH.DTO.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FuncionarioLocal\Arrays.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FuncionarioLocal\service.wsdl" />
+    <None Include="Service References\FuncionarioLocal\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FuncionarioLocal\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FuncionarioLocal\service2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FuncionarioLocal\SIRH.DTO.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FuncionarioService\CFuncionarioService.wsdl" />
+    <None Include="Service References\FuncionarioService\CFuncionarioService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FuncionarioService\CFuncionarioService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FuncionarioService\CFuncionarioService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FuncionarioService\CFuncionarioService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FuncionarioService\CFuncionarioService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MarcacionesLocal\Arrays.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MarcacionesLocal\service.wsdl" />
+    <None Include="Service References\MarcacionesLocal\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MarcacionesLocal\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MarcacionesLocal\SIRH.DTO.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MarcacionLocal\Arrays.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MarcacionLocal\service.wsdl" />
+    <None Include="Service References\MarcacionLocal\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MarcacionLocal\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MarcacionLocal\SIRH.DTO.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\NombramientoLocal\service.wsdl" />
+    <None Include="Service References\NombramientoLocal\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\NombramientoLocal\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\NombramientoLocal\SIRH.DTO.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PagoFeriadoLocal\Arrays.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PagoFeriadoLocal\service.wsdl" />
+    <None Include="Service References\PagoFeriadoLocal\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PagoFeriadoLocal\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PagoFeriadoLocal\SIRH.DTO.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PerfilUsuarioLocal\Arrays1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PerfilUsuarioLocal\service.wsdl" />
+    <None Include="Service References\PerfilUsuarioLocal\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PerfilUsuarioLocal\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PerfilUsuarioLocal\SIRH.DTO.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PerfilUsuarioService\Arrays.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PerfilUsuarioService\service.wsdl" />
+    <None Include="Service References\PerfilUsuarioService\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PerfilUsuarioService\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PerfilUsuarioService\SIRH.DTO.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PuestoLocal\Arrays2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PuestoLocal\service.wsdl" />
+    <None Include="Service References\PuestoLocal\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PuestoLocal\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PuestoLocal\SIRH.DTO.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PuestoService\Arrays1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PuestoService\service.wsdl" />
+    <None Include="Service References\PuestoService\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PuestoService\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PuestoService\SIRH.DTO.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AntecedentesPenalesService\Certificar.disco" />
+    <None Include="Service References\AntecedentesPenalesService\configuration91.svcinfo" />
+    <None Include="Service References\AntecedentesPenalesService\configuration.svcinfo" />
+    <None Include="Service References\AntecedentesPenalesService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\DesarraigoLocal\configuration91.svcinfo" />
+    <None Include="Service References\DesarraigoLocal\configuration.svcinfo" />
+    <None Include="Service References\DesarraigoLocal\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\FuncionarioLocal\configuration91.svcinfo" />
+    <None Include="Service References\FuncionarioLocal\configuration.svcinfo" />
+    <None Include="Service References\FuncionarioLocal\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\MarcacionesLocal\configuration91.svcinfo" />
+    <None Include="Service References\MarcacionesLocal\configuration.svcinfo" />
+    <None Include="Service References\MarcacionesLocal\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\MarcacionLocal\configuration91.svcinfo" />
+    <None Include="Service References\MarcacionLocal\configuration.svcinfo" />
+    <None Include="Service References\MarcacionLocal\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\NombramientoLocal\configuration91.svcinfo" />
+    <None Include="Service References\NombramientoLocal\configuration.svcinfo" />
+    <None Include="Service References\NombramientoLocal\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\PagoFeriadoLocal\configuration91.svcinfo" />
+    <None Include="Service References\PagoFeriadoLocal\configuration.svcinfo" />
+    <None Include="Service References\PagoFeriadoLocal\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\PerfilUsuarioLocal\configuration91.svcinfo" />
+    <None Include="Service References\PerfilUsuarioLocal\configuration.svcinfo" />
+    <None Include="Service References\PerfilUsuarioLocal\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\PuestoLocal\configuration91.svcinfo" />
+    <None Include="Service References\PuestoLocal\configuration.svcinfo" />
+    <None Include="Service References\PuestoLocal\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\PuestoService\configuration91.svcinfo" />
+    <None Include="Service References\PuestoService\configuration.svcinfo" />
+    <None Include="Service References\PuestoService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\RegistroIncapacidadLocal\Arrays.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RegistroIncapacidadLocal\service.wsdl" />
+    <None Include="Service References\RegistroIncapacidadLocal\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RegistroIncapacidadLocal\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RegistroIncapacidadLocal\service2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RegistroIncapacidadLocal\SIRH.DTO.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RegistroIncapacidadService\CRegistroIncapacidadService.wsdl" />
+    <None Include="Service References\RegistroIncapacidadService\CRegistroIncapacidadService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RegistroIncapacidadService\CRegistroIncapacidadService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RegistroIncapacidadService\CRegistroIncapacidadService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RegistroIncapacidadService\CRegistroIncapacidadService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RegistroIncapacidadService\CRegistroIncapacidadService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RegistroTELocal\configuration91.svcinfo" />
+    <None Include="Service References\RegistroTELocal\configuration.svcinfo" />
+    <None Include="Service References\RegistroTELocal\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\BorradorAccionPersonalLocal\configuration91.svcinfo" />
+    <None Include="Service References\BorradorAccionPersonalLocal\configuration.svcinfo" />
+    <None Include="Service References\BorradorAccionPersonalLocal\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\EstadoBorradorLocal\configuration91.svcinfo" />
+    <None Include="Service References\EstadoBorradorLocal\configuration.svcinfo" />
+    <None Include="Service References\EstadoBorradorLocal\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\ServicioCalificacion\configuration91.svcinfo" />
+    <None Include="Service References\ServicioCalificacion\configuration.svcinfo" />
+    <None Include="Service References\ServicioCalificacion\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\PerfilUsuarioService\configuration91.svcinfo" />
+    <None Include="Service References\PerfilUsuarioService\configuration.svcinfo" />
+    <None Include="Service References\PerfilUsuarioService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\FormacionAcademicaLocal\configuration91.svcinfo" />
+    <None Include="Service References\FormacionAcademicaLocal\configuration.svcinfo" />
+    <None Include="Service References\FormacionAcademicaLocal\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\CaucionService\CCaucionesService.disco" />
+    <None Include="Service References\CaucionService\configuration91.svcinfo" />
+    <None Include="Service References\CaucionService\configuration.svcinfo" />
+    <None Include="Service References\CaucionService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\ServicioGeneral\CServiciosGeneralesService.disco" />
+    <None Include="Service References\ServicioGeneral\configuration91.svcinfo" />
+    <None Include="Service References\ServicioGeneral\configuration.svcinfo" />
+    <None Include="Service References\ServicioGeneral\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\EstadoBorradorService\CEstadoBorradorService.disco" />
+    <None Include="Service References\EstadoBorradorService\configuration91.svcinfo" />
+    <None Include="Service References\EstadoBorradorService\configuration.svcinfo" />
+    <None Include="Service References\EstadoBorradorService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\RegistroIncapacidadService\CRegistroIncapacidadService.disco" />
+    <None Include="Service References\RegistroIncapacidadService\configuration91.svcinfo" />
+    <None Include="Service References\RegistroIncapacidadService\configuration.svcinfo" />
+    <None Include="Service References\RegistroIncapacidadService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\ArchivoLocal\configuration91.svcinfo" />
+    <None Include="Service References\ArchivoLocal\configuration.svcinfo" />
+    <None Include="Service References\ArchivoLocal\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\ComponentePresupuestarioLocal\configuration91.svcinfo" />
+    <None Include="Service References\ComponentePresupuestarioLocal\configuration.svcinfo" />
+    <None Include="Service References\ComponentePresupuestarioLocal\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\RegistroIncapacidadLocal\configuration91.svcinfo" />
+    <None Include="Service References\RegistroIncapacidadLocal\configuration.svcinfo" />
+    <None Include="Service References\RegistroIncapacidadLocal\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\FuncionarioService\CFuncionarioService.disco" />
+    <None Include="Service References\FuncionarioService\configuration91.svcinfo" />
+    <None Include="Service References\FuncionarioService\configuration.svcinfo" />
+    <None Include="Service References\FuncionarioService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\ArchivoService\configuration91.svcinfo" />
+    <None Include="Service References\ArchivoService\configuration.svcinfo" />
+    <None Include="Service References\ArchivoService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\CalificacionLocal\configuration91.svcinfo" />
+    <None Include="Service References\CalificacionLocal\configuration.svcinfo" />
+    <None Include="Service References\CalificacionLocal\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\CaucionesLocal\configuration91.svcinfo" />
+    <None Include="Service References\CaucionesLocal\configuration.svcinfo" />
+    <None Include="Service References\CaucionesLocal\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\CalificacionService\CCalificacionService.disco" />
+    <None Include="Service References\CalificacionService\configuration91.svcinfo" />
+    <None Include="Service References\CalificacionService\configuration.svcinfo" />
+    <None Include="Service References\CalificacionService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Service References\ServicioTSE\SIRH.Web.ServicioTSE.Persona.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\RegistroTELocal\service.wsdl" />
+    <None Include="Service References\RegistroTELocal\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RegistroTELocal\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RegistroTELocal\SIRH.DTO.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServicioCalificacion\service.wsdl" />
+    <None Include="Service References\ServicioCalificacion\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServicioCalificacion\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServicioCalificacion\SIRH.DTO.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServicioGeneral\CServiciosGeneralesService.wsdl" />
+    <None Include="Service References\ServicioGeneral\CServiciosGeneralesService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServicioGeneral\CServiciosGeneralesService1.wsdl" />
+    <None Include="Service References\ServicioGeneral\CServiciosGeneralesService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServicioGeneral\CServiciosGeneralesService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServicioTSE\wsConsultaPersona.wsdl" />
+    <None Include="Service References\ServicioTSE\configuration91.svcinfo" />
+    <None Include="Service References\ServicioTSE\configuration.svcinfo" />
+    <None Include="Service References\ServicioTSE\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\TipoAccionPersonalLocal\service.wsdl" />
+    <None Include="Service References\TipoAccionPersonalLocal\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TipoAccionPersonalLocal\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TipoAccionPersonalLocal\SIRH.DTO.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TipoAccionPersonalService\CTipoAccionPersonalService.wsdl" />
+    <None Include="Service References\TipoAccionPersonalService\CTipoAccionPersonalService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TipoAccionPersonalService\CTipoAccionPersonalService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TipoAccionPersonalService\CTipoAccionPersonalService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TipoAccionPersonalService\CTipoAccionPersonalService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TipoJornadaLocal\configuration91.svcinfo" />
+    <None Include="Service References\TipoJornadaLocal\configuration.svcinfo" />
+    <None Include="Service References\TipoJornadaLocal\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\TipoAccionPersonalLocal\configuration91.svcinfo" />
+    <None Include="Service References\TipoAccionPersonalLocal\configuration.svcinfo" />
+    <None Include="Service References\TipoAccionPersonalLocal\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\ViaticoGastosLocal\Arrays.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ViaticoGastosLocal\service.wsdl" />
+    <None Include="Service References\ViaticoGastosLocal\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ViaticoGastosLocal\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ViaticoGastosLocal\service2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ViaticoGastosLocal\SIRH.DTO.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ViaticoGastosService\configuration91.svcinfo" />
+    <None Include="Service References\ViaticoGastosService\configuration.svcinfo" />
+    <None Include="Service References\ViaticoGastosService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\TipoAccionPersonalService\CTipoAccionPersonalService.disco" />
+    <None Include="Service References\TipoAccionPersonalService\configuration91.svcinfo" />
+    <None Include="Service References\TipoAccionPersonalService\configuration.svcinfo" />
+    <None Include="Service References\TipoAccionPersonalService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\ViaticoGastosLocal\configuration91.svcinfo" />
+    <None Include="Service References\ViaticoGastosLocal\configuration.svcinfo" />
+    <None Include="Service References\ViaticoGastosLocal\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Views\BorradorAccionPersonal\Buscar.aspx" />
+    <Content Include="Views\BorradorAccionPersonal\Cancel.aspx" />
+    <Content Include="Views\BorradorAccionPersonal\Create.aspx" />
+    <Content Include="Views\BorradorAccionPersonal\Details.aspx" />
+    <Content Include="Views\BorradorAccionPersonal\Edit.aspx" />
+    <Content Include="Views\BorradorAccionPersonal\Index.aspx" />
+    <Content Include="Views\BorradorAccionPersonal\Search.aspx" />
+    <Content Include="Views\BorradorAccionPersonal\Solicitud.aspx" />
+    <Content Include="Views\BorradorAccionPersonal\_BuscarResults.ascx" />
+    <Content Include="Views\BorradorAccionPersonal\_ErrorBorrador.ascx" />
+    <Content Include="Views\BorradorAccionPersonal\_FormularioBorradorAccionPersonal.ascx" />
+    <Content Include="Views\BorradorAccionPersonal\_FormularioSolicitud.ascx" />
+    <Content Include="Views\BorradorAccionPersonal\_SearchResults.ascx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <None Include="Service References\TipoJornadaLocal\service.wsdl" />
+    <None Include="Service References\TipoJornadaLocal\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TipoJornadaLocal\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TipoJornadaLocal\SIRH.DTO.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Views\Caucion\Create.cshtml" />
+    <Content Include="Views\Caucion\Details.cshtml" />
+    <Content Include="Views\Caucion\Edit.cshtml" />
+    <Content Include="Views\Caucion\Index.cshtml" />
+    <Content Include="Views\Caucion\List.cshtml" />
+    <Content Include="Views\Caucion\Search.cshtml" />
+    <Content Include="Views\Caucion\_ErrorCaucion.cshtml" />
+    <Content Include="Views\Caucion\_FormularioCaucion.cshtml" />
+    <Content Include="Views\Caucion\_SearchResults.cshtml" />
+    <Content Include="Views\Shared\Cauciones.cshtml" />
+    <Content Include="Views\Shared\Errores.cshtml" />
+    <Content Include="Views\MontoCaucion\Create.cshtml" />
+    <Content Include="Views\MontoCaucion\Details.cshtml" />
+    <Content Include="Views\MontoCaucion\Edit.cshtml" />
+    <Content Include="Views\MontoCaucion\Search.cshtml" />
+    <Content Include="Views\MontoCaucion\_ErrorMontoCaucion.cshtml" />
+    <Content Include="Views\Error\Index.cshtml" />
+    <Content Include="Views\MontoCaucion\_SearchResults.cshtml" />
+    <Content Include="Views\Shared\PagoFeriado.cshtml" />
+    <Content Include="Views\PagoFeriado\Index.cshtml" />
+    <Content Include="Views\PagoFeriado\Create.cshtml" />
+    <Content Include="Views\PagoFeriado\_FormularioPagoFeriado.cshtml" />
+    <Content Include="Views\PagoFeriado\Asueto_Index.cshtml" />
+    <Content Include="Views\PagoFeriado\DiaFeriado_Index.cshtml" />
+    <Content Include="Views\PagoFeriado\Search.cshtml" />
+    <Content Include="Views\PagoFeriado\CreateAsueto.cshtml" />
+    <Content Include="Views\PagoFeriado\CreateSalarioEscolar.cshtml" />
+    <Content Include="Views\PagoFeriado\DetailsSalarioEscolar.cshtml" />
+    <Content Include="Views\PagoFeriado\DetailsAsueto.cshtml" />
+    <Content Include="Views\PagoFeriado\_ErrorPagoFeriado.cshtml" />
+    <Content Include="Views\PagoFeriado\Details.cshtml" />
+    <Content Include="Views\Shared\Calificacion.cshtml" />
+    <Content Include="Views\Calificacion\Historial.cshtml" />
+    <Content Include="Views\Calificacion\_Historial.cshtml" />
+    <Content Include="Views\Calificacion\Index.cshtml" />
+    <Content Include="Views\Calificacion\Calificar.cshtml" />
+    <Content Include="Views\Calificacion\DetailsHistorial.cshtml" />
+    <Content Include="Views\Calificacion\DatosEvaluacion.cshtml" />
+    <Content Include="Views\Calificacion\_EditHistorialDetalle.cshtml" />
+    <Content Include="Views\Calificacion\_Calificar.cshtml" />
+    <Content Include="Views\Calificacion\__ErrorCalificacion.cshtml" />
+    <Content Include="Views\Calificacion\_DetailsCalificacion.cshtml" />
+    <Content Include="Views\BorradorAccionPersonal\Buscar.cshtml" />
+    <Content Include="Views\BorradorAccionPersonal\Create.cshtml" />
+    <Content Include="Views\BorradorAccionPersonal\Index.cshtml" />
+    <Content Include="Views\BorradorAccionPersonal\Solicitud.cshtml" />
+    <Content Include="Views\BorradorAccionPersonal\_BuscarResults.cshtml" />
+    <Content Include="Views\BorradorAccionPersonal\_ErrorBorrador.cshtml" />
+    <Content Include="Views\BorradorAccionPersonal\_FormularioBorradorAccionPersonal.cshtml" />
+    <Content Include="Views\BorradorAccionPersonal\_FormularioSolicitud.cshtml" />
+    <Content Include="Views\Carrera\Create.cshtml" />
+    <Content Include="Views\Carrera\CreateExperiencia.cshtml" />
+    <Content Include="Views\Carrera\DetailsExperiencia.cshtml" />
+    <Content Include="Views\Carrera\Index.cshtml" />
+    <Content Include="Views\Carrera\_ErrorCarrera.cshtml" />
+    <Content Include="Views\Carrera\_FormularioCarrera.cshtml" />
+    <Content Include="Views\Carrera\_FormularioExperiencia.cshtml" />
+    <Content Include="Views\Shared\BorradorAccionPersonal.cshtml" />
+    <Content Include="Views\Shared\Carrera.cshtml" />
+    <Content Include="Views\Shared\Desarraigo.cshtml" />
+    <Content Include="Views\Shared\Home.cshtml" />
+    <Content Include="Views\Shared\MarcasAsistencia.cshtml" />
+    <Content Include="Views\Shared\Vacantes.cshtml" />
+    <Content Include="Views\Shared\ViaticoCorridoGastoTransporte.cshtml" />
+    <Content Include="Views\ViaticoCorrido\Index.cshtml" />
+    <Content Include="Views\Shared\ViaticoCorrido.cshtml" />
+    <Content Include="Views\ViaticoCorrido\IndexViaticoCorrido.cshtml" />
+    <Content Include="Views\Shared\GastoTransporte.cshtml" />
+    <Content Include="Views\ViaticoCorrido\IndexGastoTransporte.cshtml" />
+    <Content Include="Views\Desarraigo\Create.cshtml" />
+    <Content Include="Views\Desarraigo\Details.cshtml" />
+    <Content Include="Views\Desarraigo\Edit.cshtml" />
+    <Content Include="Views\Desarraigo\Index.cshtml" />
+    <Content Include="Views\Desarraigo\NotifyByEmail.cshtml" />
+    <Content Include="Views\Desarraigo\Nullify.cshtml" />
+    <Content Include="Views\Desarraigo\Search.cshtml" />
+    <Content Include="Views\Desarraigo\_AgregarContrato.cshtml" />
+    <Content Include="Views\Desarraigo\_AgregarFactura.cshtml" />
+    <Content Include="Views\Desarraigo\_CalcularRetroactivo.cshtml" />
+    <Content Include="Views\Desarraigo\_ErrorDesarraigo.cshtml" />
+    <Content Include="Views\Desarraigo\_FormularioDesarraigo.cshtml" />
+    <Content Include="Views\Desarraigo\_SearchResults.cshtml" />
+    <Content Include="Views\Calificacion\List.cshtml" />
+    <Content Include="Views\Home\_ErrorHome.cshtml" />
+    <Content Include="Views\Home\Result.cshtml" />
+    <Content Include="Views\Home\Result_Details.cshtml" />
+    <Content Include="Views\MarcasAsistencia\Create.cshtml" />
+    <Content Include="Views\MarcasAsistencia\Details.cshtml" />
+    <Content Include="Views\MarcasAsistencia\Edit.cshtml" />
+    <Content Include="Views\MarcasAsistencia\Index.cshtml" />
+    <Content Include="Views\MarcasAsistencia\ReportesMarcasAsistencia.cshtml" />
+    <Content Include="Views\MarcasAsistencia\Search.cshtml" />
+    <Content Include="Views\MarcasAsistencia\_Dispositivos_Dialog.cshtml" />
+    <Content Include="Views\MarcasAsistencia\_ErrorMarcasAsistencia.cshtml" />
+    <Content Include="Views\MarcasAsistencia\_FormularioMarcasAsistencia.cshtml" />
+    <Content Include="Views\MarcasAsistencia\_SearchResults.cshtml" />
+    <Content Include="Views\PagoFeriado\DiaAsueto_Dialog.cshtml" />
+    <Content Include="Views\PagoFeriado\Edit.cshtml" />
+    <Content Include="Views\PagoFeriado\_SearchResults.cshtml" />
+    <Content Include="Views\ViaticoCorrido\SearchViaticoCorrido.cshtml" />
+    <Content Include="Views\ViaticoCorrido\SearchGastoTransporte.cshtml" />
+    <Content Include="Views\ViaticoCorrido\CreateRegistroViaticoCorrido.cshtml" />
+    <Content Include="Views\ViaticoCorrido\CreateRegistroGastoTransporte.cshtml" />
+    <Content Include="Views\ViaticoCorrido\_CalcularRetroactivoViaticoCorrido.cshtml" />
+    <Content Include="Views\ViaticoCorrido\_CalcularRetroactivoGastoTransporte.cshtml" />
+    <Content Include="Views\ViaticoCorrido\_FormularioAsignacionViaticoCorrido.cshtml" />
+    <Content Include="Views\ViaticoCorrido\_ErrorViaticoCorrido.cshtml" />
+    <Content Include="Views\ViaticoCorrido\_ErrorGastoTransporte.cshtml" />
+    <Content Include="Views\UbicacionPuesto\Departamento_Index.cshtml" />
+    <Content Include="Views\UbicacionPuesto\Departamento_Index_Result.cshtml" />
+    <Content Include="Views\UbicacionPuesto\Direccion_Index.cshtml" />
+    <Content Include="Views\UbicacionPuesto\Direccion_Index_Result.cshtml" />
+    <Content Include="Views\UbicacionPuesto\Division_Index.cshtml" />
+    <Content Include="Views\UbicacionPuesto\Division_Index_Result.cshtml" />
+    <Content Include="Views\UbicacionPuesto\Index.cshtml" />
+    <Content Include="Views\UbicacionPuesto\Index_Result.cshtml" />
+    <Content Include="Views\UbicacionPuesto\Seccion_Index.cshtml" />
+    <Content Include="Views\UbicacionPuesto\Seccion_Index_Result.cshtml" />
+    <Content Include="Views\UbicacionPuesto\_ErrorUbicacionPuesto.cshtml" />
+    <Content Include="Views\Puesto\Clase_Index.cshtml" />
+    <Content Include="Views\Puesto\Clase_Index_Result.cshtml" />
+    <Content Include="Views\Puesto\Especialidad_Index.cshtml" />
+    <Content Include="Views\Puesto\Especialidad_Index_Result.cshtml" />
+    <Content Include="Views\Puesto\Index.cshtml" />
+    <Content Include="Views\Puesto\Index_Result.cshtml" />
+    <Content Include="Views\Puesto\Ocupacion_Index.cshtml" />
+    <Content Include="Views\Puesto\Ocupacion_Index_Result.cshtml" />
+    <Content Include="Views\Puesto\_ErrorPuesto.cshtml" />
+    <Content Include="Views\Funcionario\AsignarPuestoOferente.cshtml" />
+    <Content Include="Views\Funcionario\Details.cshtml" />
+    <Content Include="Views\Funcionario\Index.cshtml" />
+    <Content Include="Views\Funcionario\Index_Result.cshtml" />
+    <Content Include="Views\Funcionario\NombramientoDetails.cshtml" />
+    <Content Include="Views\Funcionario\OferenteDetails.cshtml" />
+    <Content Include="Views\Funcionario\RegistrarCandidato.cshtml" />
+    <Content Include="Views\Funcionario\RegistrarDomicilio.cshtml" />
+    <Content Include="Views\Funcionario\_ErrorCandidato.cshtml" />
+    <Content Include="Views\Funcionario\_ErrorFuncionario.cshtml" />
+    <Content Include="Views\Funcionario\_FormularioCandidato.cshtml" />
+    <Content Include="Views\Funcionario\_FormularioOferente.cshtml" />
+    <Content Include="Views\ViaticoCorrido\_FormularioDeduccionViaticoCorrido.cshtml" />
+    <Content Include="Views\ViaticoCorrido\_FormularioEliminacionViaticoCorrido.cshtml" />
+    <Content Include="Views\ViaticoCorrido\_FormularioAsignacionGastoTransporte.cshtml" />
+    <Content Include="Views\ViaticoCorrido\_FormularioDeduccionGastoTransporte.cshtml" />
+    <Content Include="Views\ViaticoCorrido\_FormularioEliminacionGastoTransporte.cshtml" />
+    <Content Include="Views\ViaticoCorrido\DetailsGastoTransporte.cshtml" />
+    <Content Include="Views\ViaticoCorrido\_AgregarContratoViaticoCorrido.cshtml" />
+    <Content Include="Views\ViaticoCorrido\_AgregarFacturaViaticoCorrido.cshtml" />
+    <Content Include="Views\ViaticoCorrido\DetailsViaticoCorrido.cshtml" />
+    <Content Include="Views\ViaticoCorrido\_SearchResultsViaticoCorrido.cshtml" />
+    <Content Include="Views\Carrera\Details.cshtml" />
+    <Content Include="Views\Shared\TiempoExtra.cshtml" />
+    <Content Include="Views\RegistroTiempoExtra\_DetalleExtras.cshtml" />
+    <Content Include="Views\RegistroTiempoExtra\Create.cshtml" />
+    <Content Include="Views\RegistroTiempoExtra\Index.cshtml" />
+    <Content Include="Views\RegistroTiempoExtra\Saved.cshtml" />
+    <Content Include="Views\PerfilUsuario\AgregarPermiso.cshtml" />
+    <Content Include="Views\PerfilUsuario\AsignarPermisos.cshtml" />
+    <Content Include="Views\PerfilUsuario\Create.cshtml" />
+    <Content Include="Views\PerfilUsuario\Deshabilitar.cshtml" />
+    <Content Include="Views\PerfilUsuario\List.cshtml" />
+    <Content Include="Views\PerfilUsuario\Perfil.cshtml" />
+    <Content Include="Views\PerfilUsuario\_AsignarPermisosResult.cshtml" />
+    <Content Include="Views\PerfilUsuario\_ErrorUsuario.cshtml" />
+    <Content Include="Views\PerfilUsuario\_ListResult.cshtml" />
+    <Content Include="Views\PerfilUsuario\_Success.cshtml" />
+    <Content Include="Views\ViaticoCorrido\_AgregarMotivo.cshtml" />
+    <Content Include="Views\RegistroTiempoExtra\_ErrorBusqueda.cshtml" />
+    <Content Include="Views\Shared\PerfilUsuario.cshtml" />
+    <Content Include="Views\ViaticoCorrido\_AgregarContratoGastoTransporte.cshtml" />
+    <Content Include="Views\ViaticoCorrido\_AgregarFacturaGastoTransporte.cshtml" />
+    <Content Include="Views\ViaticoCorrido\_SearchResultsGastoTransporte.cshtml" />
+    <Content Include="Views\ViaticoCorrido\_AgregarMotivoGastoTransporte.cshtml" />
+    <Content Include="Views\ViaticoCorrido\_DetailsDeleteViaticoCorrido.cshtml" />
+    <Content Include="Views\ViaticoCorrido\_DetailsDeduccionViaticoCorrido.cshtml" />
+    <Content Include="Views\ViaticoCorrido\_DetailsDeleteGastoTransporte.cshtml" />
+    <Content Include="Views\ViaticoCorrido\_DetailsDeduccionGastoTransporte.cshtml" />
+    <Content Include="Views\ViaticoCorrido\_DetailsAnularViaticoCorrido.cshtml" />
+    <Content Include="Views\ViaticoCorrido\_DetailsAnularGastoTransporte.cshtml" />
+    <None Include="Service References\ViaticoGastosService\Arrays.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ViaticoGastosService\service.wsdl" />
+    <None Include="Service References\ViaticoGastosService\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ViaticoGastosService\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ViaticoGastosService\SIRH.DTO.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Views\ViaticoCorrido\_SearchResultsMovimientoViaticoCorrido.cshtml" />
+    <Content Include="Views\ViaticoCorrido\_SearchResultsMovimientoGastoTransporte.cshtml" />
+    <Content Include="Views\ViaticoCorrido\_AgregarRutas.cshtml" />
+    <Content Include="Views\AccionPersonal\BuscarH.cshtml" />
+    <Content Include="Views\AccionPersonal\Create.cshtml" />
+    <Content Include="Views\AccionPersonal\Details.cshtml" />
+    <Content Include="Views\AccionPersonal\DetailsH.cshtml" />
+    <Content Include="Views\AccionPersonal\Edit.cshtml" />
+    <Content Include="Views\AccionPersonal\Index.cshtml" />
+    <Content Include="Views\AccionPersonal\Search.cshtml" />
+    <Content Include="Views\AccionPersonal\_BuscarResults.cshtml" />
+    <Content Include="Views\AccionPersonal\_ErrorAccion.cshtml" />
+    <Content Include="Views\AccionPersonal\_FormularioAccionPersonal.cshtml" />
+    <Content Include="Views\AccionPersonal\_SearchResults.cshtml" />
+    <Content Include="Views\Vacantes\AsignarCandidatoPedimento.cshtml" />
+    <Content Include="Views\Vacantes\AsignarContenidoPresupuestario.cshtml" />
+    <Content Include="Views\Vacantes\DetalleCandidato.cshtml" />
+    <Content Include="Views\Vacantes\Index.cshtml" />
+    <Content Include="Views\Vacantes\NombrarCandidato.cshtml" />
+    <Content Include="Views\Vacantes\RegistrarAddendumPrestamo.cshtml" />
+    <Content Include="Views\Vacantes\RegistrarCandidato.cshtml" />
+    <Content Include="Views\Vacantes\RegistrarDireccionCandidato.cshtml" />
+    <Content Include="Views\Vacantes\RegistrarEstudioPuesto.cshtml" />
+    <Content Include="Views\Vacantes\RegistrarFormacionCandidato.cshtml" />
+    <Content Include="Views\Vacantes\RegistrarPedimentoPuesto.cshtml" />
+    <Content Include="Views\Vacantes\RegistrarPrestamoPuesto.cshtml" />
+    <Content Include="Views\Vacantes\RegistrarRescisionPrestamo.cshtml" />
+    <Content Include="Views\Vacantes\Vacante_Prepare.cshtml" />
+    <Content Include="Views\Vacantes\Vacante_Save.cshtml" />
+    <Content Include="Views\Vacantes\_DesgloseCandidato.cshtml" />
+    <Content Include="Views\Vacantes\_DesglosePedimento.cshtml" />
+    <Content Include="Views\Vacantes\_ErrorVacantes.cshtml" />
+    <Content Include="Views\Vacantes\_FormularioCandidato.cshtml" />
+    <Content Include="Views\Vacantes\_FormularioDireccionCandidato.cshtml" />
+    <Content Include="Views\Vacantes\_Success.cshtml" />
+    <Content Include="Views\UbicacionPuesto\Presupuesto_Index.cshtml" />
+    <Content Include="Views\UbicacionPuesto\Presupuesto_Index_Result.cshtml" />
+    <Content Include="Views\Shared\AccionPersonal.cshtml" />
+    <Content Include="Views\Shared\RegistroIncapacidad.cshtml" />
+    <Content Include="Views\RegistroIncapacidad\Create.cshtml" />
+    <Content Include="Views\RegistroIncapacidad\Details.cshtml" />
+    <Content Include="Views\RegistroIncapacidad\Edit.cshtml" />
+    <Content Include="Views\RegistroIncapacidad\Index.cshtml" />
+    <Content Include="Views\RegistroIncapacidad\Search.cshtml" />
+    <Content Include="Views\RegistroIncapacidad\_ErrorIncapacidad.cshtml" />
+    <Content Include="Views\RegistroIncapacidad\_FormularioIncapacidad.cshtml" />
+    <Content Include="Views\RegistroIncapacidad\_SearchResults.cshtml" />
+    <Content Include="Views\Puesto\Browse.cshtml" />
+    <Content Include="Views\Puesto\Browse_Result.cshtml" />
+    <Content Include="Views\Puesto\Browse_Test.cshtml" />
+    <Content Include="Views\Vacio\Index.cshtml" />
+    <Content Include="Views\Planilla\DetailsMovimiento.cshtml" />
+    <Content Include="Views\AccionPersonal\Aprobar.cshtml" />
+    <Content Include="Views\AccionPersonal\Clase_Index.cshtml" />
+    <Content Include="Views\AccionPersonal\Clase_Index_Result.cshtml" />
+    <Content Include="Views\AccionPersonal\SearchProrroga.cshtml" />
+    <Content Include="Views\AccionPersonal\_SearchResultsProrroga.cshtml" />
+    <Content Include="Views\BorradorAccionPersonal\Cancel.cshtml" />
+    <Content Include="Views\BorradorAccionPersonal\Details.cshtml" />
+    <Content Include="Views\BorradorAccionPersonal\Edit.cshtml" />
+    <Content Include="Views\BorradorAccionPersonal\Search.cshtml" />
+    <Content Include="Views\BorradorAccionPersonal\_SearchResults.cshtml" />
+    <Content Include="Views\Carrera\Edit.cshtml" />
+    <Content Include="Views\Carrera\EditCurso.cshtml" />
+    <Content Include="Views\Carrera\Search.cshtml" />
+    <Content Include="Views\Carrera\_SearchCarreraResults.cshtml" />
+    <Content Include="Views\Error\ErrorGeneral.cshtml" />
+    <Content Include="Views\RegistroIncapacidad\Aprobar.cshtml" />
+    <Content Include="Views\RegistroIncapacidad\Prorroga.cshtml" />
+    <Content Include="Views\RegistroIncapacidad\_FormularioDetalle.cshtml" />
+    <Content Include="Views\RegistroIncapacidad\_FormularioIncapacidad - Copy.cshtml" />
+    <Content Include="Views\RegistroIncapacidad\_FormularioProrroga - Copy.cshtml" />
+    <Content Include="Views\RegistroIncapacidad\_FormularioProrroga.cshtml" />
+    <Content Include="Views\ViaticoCorrido\CreatePagoViaticoCorrido.cshtml" />
+    <Content Include="Views\ViaticoCorrido\DetailsPagoViaticoCorrido.cshtml" />
+    <Content Include="Views\ViaticoCorrido\EditPagoViaticoCorrido.cshtml" />
+    <Content Include="Views\ViaticoCorrido\_FormularioPagoViaticoCorrido.cshtml" />
+    <Content Include="Views\Funcionario\Clase_Index.cshtml" />
+    <Content Include="Views\Funcionario\Clase_Index_Result.cshtml" />
+    <Content Include="Views\Funcionario\Especialidad_Index.cshtml" />
+    <Content Include="Views\Funcionario\Especialidad_Index_Result.cshtml" />
+    <Content Include="Views\Funcionario\Ocupacion_Index.cshtml" />
+    <Content Include="Views\Funcionario\Ocupacion_Index_Result.cshtml" />
+    <Content Include="Views\Funcionario\Division_Index.cshtml" />
+    <Content Include="Views\Funcionario\Division_Index_Result.cshtml" />
+    <Content Include="Views\Funcionario\Direccion_Index.cshtml" />
+    <Content Include="Views\Funcionario\Direccion_Index_Result.cshtml" />
+    <Content Include="Views\Funcionario\Departamento_Index.cshtml" />
+    <Content Include="Views\Funcionario\Departamento_Index_Result.cshtml" />
+    <Content Include="Views\Funcionario\Presupuesto_Index.cshtml" />
+    <Content Include="Views\Funcionario\Presupuesto_Index_Result.cshtml" />
+    <Content Include="Views\Funcionario\Seccion_Index.cshtml" />
+    <Content Include="Views\Funcionario\Seccion_Index_Result.cshtml" />
+    <Content Include="Views\Funcionario\_ParametrosReportes.cshtml" />
+    <Content Include="Views\Funcionario\IndexPrueba.cshtml" />
+    <Content Include="Views\Caucion\SetPuestoCaucion.cshtml" />
+    <Content Include="Views\Caucion\_ResultadoSetPuestoCaucion.cshtml" />
+    <Content Include="Views\Archivo\CreateBoletaPrestamo.cshtml" />
+    <Content Include="Views\Archivo\CreateBusquedaExpediente.cshtml" />
+    <Content Include="Views\Archivo\CreateBusquedaPrestamo.cshtml" />
+    <Content Include="Views\Archivo\CreateFoleo.cshtml" />
+    <Content Include="Views\Archivo\CreateTrasladoArchivoCentral.cshtml" />
+    <Content Include="Views\Archivo\Details.cshtml" />
+    <Content Include="Views\Archivo\DetailsCambioEstadoExpediente.cshtml" />
+    <Content Include="Views\Archivo\DetailsTrasladoArchivoCentral.cshtml" />
+    <Content Include="Views\Archivo\Index.cshtml" />
+    <Content Include="Views\Archivo\_DetailsBusquedaPrestamo.cshtml" />
+    <Content Include="Views\Archivo\_DetailsFoleo.cshtml" />
+    <Content Include="Views\Archivo\_ErrorBoletaPrestamo.cshtml" />
+    <Content Include="Views\Archivo\_ErrorBusquedaExpediente.cshtml" />
+    <Content Include="Views\Archivo\_FormularioBoleta.cshtml" />
+    <Content Include="Views\Archivo\_FormularioBusquedaExpediente.cshtml" />
+    <Content Include="Views\Archivo\_FormularioTrasladoArchivoCentral.cshtml" />
+    <Content Include="Views\Calificacion\Details.cshtml" />
+    <Content Include="Views\Calificacion\ListFuncionario.cshtml" />
+    <Content Include="Views\Calificacion\Periodo.cshtml" />
+    <Content Include="Views\Calificacion\Ratificar.cshtml" />
+    <Content Include="Views\Calificacion\Jefatura_Index.cshtml" />
+    <Content Include="Views\Calificacion\Jefatura_Index_Result.cshtml" />
+    <Content Include="Views\Calificacion\_ListFuncionario.cshtml" />
+    <Content Include="Views\Calificacion\_Periodo.cshtml" />
+    <Content Include="Views\Calificacion\_Ratificar.cshtml" />
+    <Content Include="Views\Calificacion\_ErrorCalificacion.cshtml" />
+    <Content Include="Views\Calificacion\_ErrorJefatura.cshtml" />
+    <Content Include="Views\Calificacion\EvaluacionFueraDominio.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Scripts\locales\" />
+    <Folder Include="Views\GastoTransporte\" />
+    <Folder Include="Views\GestionUsuario\" />
+    <Folder Include="Views\Jornadas\" />
+    <Folder Include="Views\Nombramiento\" />
+    <Folder Include="Views\Notificacion\" />
+    <Folder Include="Views\UbicacionGeografica\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\AccionPersonalLocal\" />
+    <WCFMetadataStorage Include="Service References\AccionPersonalService\" />
+    <WCFMetadataStorage Include="Service References\AntecedentesPenalesService\" />
+    <WCFMetadataStorage Include="Service References\ArchivoLocal\" />
+    <WCFMetadataStorage Include="Service References\ArchivoService\" />
+    <WCFMetadataStorage Include="Service References\BorradorAccionPersonalLocal\" />
+    <WCFMetadataStorage Include="Service References\CalificacionLocal\" />
+    <WCFMetadataStorage Include="Service References\CalificacionService\" />
+    <WCFMetadataStorage Include="Service References\CaucionesLocal\" />
+    <WCFMetadataStorage Include="Service References\CaucionService\" />
+    <WCFMetadataStorage Include="Service References\ComponentePresupuestarioLocal\" />
+    <WCFMetadataStorage Include="Service References\DesarraigoLocal\" />
+    <WCFMetadataStorage Include="Service References\EstadoBorradorLocal\" />
+    <WCFMetadataStorage Include="Service References\EstadoBorradorService\" />
+    <WCFMetadataStorage Include="Service References\FormacionAcademicaLocal\" />
+    <WCFMetadataStorage Include="Service References\FuncionarioLocal\" />
+    <WCFMetadataStorage Include="Service References\FuncionarioService\" />
+    <WCFMetadataStorage Include="Service References\MarcacionesLocal\" />
+    <WCFMetadataStorage Include="Service References\MarcacionLocal\" />
+    <WCFMetadataStorage Include="Service References\NombramientoLocal\" />
+    <WCFMetadataStorage Include="Service References\PagoFeriadoLocal\" />
+    <WCFMetadataStorage Include="Service References\PerfilUsuarioLocal\" />
+    <WCFMetadataStorage Include="Service References\PerfilUsuarioService\" />
+    <WCFMetadataStorage Include="Service References\PuestoLocal\" />
+    <WCFMetadataStorage Include="Service References\PuestoService\" />
+    <WCFMetadataStorage Include="Service References\RegistroIncapacidadLocal\" />
+    <WCFMetadataStorage Include="Service References\RegistroIncapacidadService\" />
+    <WCFMetadataStorage Include="Service References\RegistroTELocal\" />
+    <WCFMetadataStorage Include="Service References\ServicioCalificacion\" />
+    <WCFMetadataStorage Include="Service References\ServicioGeneral\" />
+    <WCFMetadataStorage Include="Service References\ServicioTSE\" />
+    <WCFMetadataStorage Include="Service References\TipoAccionPersonalLocal\" />
+    <WCFMetadataStorage Include="Service References\TipoAccionPersonalService\" />
+    <WCFMetadataStorage Include="Service References\TipoJornadaLocal\" />
+    <WCFMetadataStorage Include="Service References\ViaticoGastosLocal\" />
+    <WCFMetadataStorage Include="Service References\ViaticoGastosService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Reports\AccionPersonal\AccionRpt.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>AccionRpt.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\AccionPersonal\ReporteHistoricoRPT.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReporteHistoricoRPT.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Boletas\BoletaRpt.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>BoletaRpt2.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Boletas\BusquedaBoletaRpt.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>BusquedaBoletaRpt2.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Calificacion\CalificacionRPT.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CalificacionRPT1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Calificacion\DatosCuantitativosCualitativosFEDRSCRPT.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DatosCuantitativosCualitativosFEDRSCRPT1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Calificacion\HistorialDetalleRPT.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>HistorialDetalleRPT1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Carrera\CursoCapacitacionRPT.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CursoCapacitacionRPT1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Carrera\CursoGradoRPT.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CursoGradoRPT1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Carrera\DesgloseCursoCapacitacionRPT.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DesgloseCursoCapacitacionRPT1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Carrera\DesgloseCursoGradoRPT.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DesgloseCursoGradoRPT1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Cauciones\CaucionRPT.resx">
+      <DependentUpon>CaucionRPT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\GastoTransporte\AsignacionPI-555.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>AsignacionPI-555.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\GastoTransporte\DeduccionPI-1105.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DeduccionPI-1105.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\GastoTransporte\EliminacionPI-1106.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EliminacionPI-1106.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Planilla\DetalleMovimientoRpt.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DetalleMovimientoRpt.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RegistroTiempoExtra\RegistroTiempoExtraRPT.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RegistroTiempoExtraRPT.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ViaticoCorrido\AsignacionPI-568.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>AsignacionPI-568.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ViaticoCorrido\DetallePagoVC.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DetallePagoVC.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ViaticoCorrido\EliminacionPI-1103.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EliminacionPI-1103.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ViaticoCorrido\DeduccionPI-1104.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DeduccionPI-1104.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SIRH.DTO\SIRH.DTO.csproj">
+      <Project>{8458c6ca-6642-4cb2-a361-d065534b57fb}</Project>
+      <Name>SIRH.DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SIRH.Servicios\SIRH.Servicios.csproj">
+      <Project>{b4979a6c-4698-493a-bce0-a6828fa2efec}</Project>
+      <Name>SIRH.Servicios</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:51785/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

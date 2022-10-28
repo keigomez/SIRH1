@@ -1,0 +1,258 @@
+﻿@model SIRH.Web.ViewModels.FormularioViaticoCorridoVM
+@{
+
+    if (Model != null)
+    {
+        <b>@Html.LabelFor(model => model.Formulario)</b> <label>@Model.Formulario</label>
+        <!--Datos Personales-->
+        <table id="item1" class="table table-bordered" style="margin-bottom:70px;margin-top:20px;">
+            <thead class="thead-light">
+                <tr><th colspan="4" class="encabezadoTabla">Datos Personales</th></tr>
+                <tr>
+                    <th># Cédula</th>
+                    <th>Primer Apellido</th>
+                    <th>Segundo Apellido</th>
+                    <th>Nombre</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td> @Model.Funcionario.Cedula </td>
+                    <td> @Model.Funcionario.PrimerApellido </td>
+                    <td> @Model.Funcionario.SegundoApellido </td>
+                    <td> @Model.Funcionario.Nombre</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!--Lugar de Trabajo-->
+        <table class="table table-bordered" style="margin-bottom:70px;">
+            <thead class="thead-light">
+                <tr><th colspan="3" class="encabezadoTabla">Lugar de Trabajo</th></tr>
+                <tr>
+                    <th>Provincia</th>
+                    <th>Cantón</th>
+                    <th>Distrito</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@Model.UbicacionTrabajo.Distrito.Canton.Provincia.NomProvincia </td>
+                    <td>@Model.UbicacionTrabajo.Distrito.Canton.NomCanton</td>
+                    <td>@Model.UbicacionTrabajo.Distrito.NomDistrito</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!--Lugar de Trabajo-->
+        <table class="table table-bordered" style="margin-bottom:70px;">
+            <thead class="thead-light">
+                <tr><th colspan="3" class="encabezadoTabla">Lugar de Contrato</th></tr>
+                <tr>
+                    <th>Provincia</th>
+                    <th>Cantón</th>
+                    <th>Distrito</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@Model.UbicacionContrato.Distrito.Canton.Provincia.NomProvincia</td>
+                    <td>@Model.UbicacionContrato.Distrito.Canton.NomCanton</td>
+                    <td>@Model.UbicacionContrato.Distrito.NomDistrito</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <!--Dependencia-->
+        <table class="table table-bordered" style="margin-bottom:70px;">
+            <thead class="thead-light">
+                <tr><th colspan="3" class="encabezadoTabla">Dependencia</th></tr>
+                <tr>
+                    <th>División</th>
+                    <th>Dirección</th>
+                    <th>Departamento</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@Model.Puesto.UbicacionAdministrativa.Division.NomDivision</td>
+                    <td>@Model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion</td>
+                    <td>@Model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento</td>
+                </tr>
+            </tbody>
+        </table>
+        <!--Detalles del Puesto-->
+        <table class="table table-bordered " style="margin-bottom:70px;">
+            <thead class="thead-light">
+                <tr><th colspan="8" class="encabezadoTabla">Detalles del Puesto</th></tr>
+                <tr>
+                    <th># Puesto </th>
+                    <th>Clase</th>
+                    <th>Especialidad</th>
+                    <th>Ocupación Real</th>
+                    <th>Telefono</th>
+                    <th>Programa Presupuestario</th>
+                    <th>Area</th>
+                    <th>Actividad</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@Model.Puesto.CodPuesto </td>
+                    <td>@Model.DetallePuesto.Clase.DesClase </td>
+                    <td>@Model.DetallePuesto.Especialidad.DesEspecialidad </td>
+                    <td>@Model.DetallePuesto.OcupacionReal.DesOcupacionReal </td>
+                    <td>No Disponible</td>
+                    <td>@Model.Puesto.UbicacionAdministrativa.Presupuesto.Programa.DesPrograma </td>
+                    <td>@Model.Puesto.UbicacionAdministrativa.Presupuesto.Area </td>
+                    <td>@Model.Puesto.UbicacionAdministrativa.Presupuesto.Actividad </td>
+                </tr>
+            </tbody>
+        </table>
+           <!--Lugar de Domicilio-->
+        @*<table class="table table-bordered" style="margin-bottom:70px;">
+            <thead class="thead-light">
+                <tr><th colspan="5" class="encabezadoTabla">Lugar de Domicilio</th></tr>
+                <tr>
+                    <th>Provincia</th>
+                    <th>Cantón</th>
+                    <th>Distrito</th>
+                    <th>Otras Señas</th>
+                    <th>Telefono</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@/*Html.DropDownListFor(model => model.ProvinciaSeleccion, Model.Provincias, "Provincia", new { @class = "btn btn-secondary dropdown-toggle" })*/</td>
+                    @/*Html.ValidationMessageFor(model => model.ProvinciaSeleccion)*/
+                    <td>@/*Html.DropDownListFor(model => model.CantonSeleccion, Model.Cantones, "Cantón", new { @class = "btn btn-secondary dropdown-toggle" })*/</td>
+                    @/*Html.ValidationMessageFor(model => model.CantonSeleccion)*/
+                    <td>@/*Html.DropDownListFor(model => model.DistritoSeleccion, Model.Distritos, "Distritos", new { @class = "btn btn-secondary dropdown-toggle" })*/</td>
+                    @/*Html.ValidationMessageFor(model => model.DistritoSeleccion)*/
+                    <td>@/*Html.TextBoxFor(model => model.ViaticoCorrido.DesSenasDTO, new { @class = "form-control" })*/</td>
+                    <td>@/*Html.TextBoxFor(model => model.ViaticoCorrido.NumTelDomicilioDTO, new { @class = "form-control" })*/</td>
+
+                </tr>
+            </tbody>
+        </table>*@
+        <div class="jumbotron" id="Conetedor">
+            @{
+                using (Ajax.BeginForm("CreateDeleteViaticoCorrido", new AjaxOptions
+                {
+                    HttpMethod = "POST",
+                    UpdateTargetId = "Div3",
+                    OnBegin = "BeginGuardarDesarraigo",
+                    OnComplete = "CompleteGuardarDesarraigo",
+                    OnSuccess = "SuccessGuardarDesarraigo",
+                    OnFailure = "SuccessGuardarDesarraigo"
+                }))
+                {
+                    Html.ValidationSummary(true);
+                     <!--Formulario de Viatico Corrido-->
+                    <div id="Div1">
+                        <div id="setForm">
+                            <!--Se mantienen los datos para no volver a hacer la busqueda-->
+                            @Html.HiddenFor(model => model.Funcionario.Nombre)
+                            @Html.HiddenFor(model => model.Funcionario.Cedula)
+                            @Html.HiddenFor(model => model.Funcionario.PrimerApellido)
+                            @Html.HiddenFor(model => model.Funcionario.SegundoApellido)
+                            @Html.HiddenFor(model => model.Funcionario.Nombre)
+                            @Html.HiddenFor(model => model.UbicacionTrabajo.Distrito.Canton.Provincia.NomProvincia)
+                            @Html.HiddenFor(model => model.UbicacionTrabajo.Distrito.Canton.NomCanton)
+                            @Html.HiddenFor(model => model.UbicacionTrabajo.Distrito.NomDistrito)
+                            @Html.HiddenFor(model => model.UbicacionContrato.Distrito.Canton.Provincia.NomProvincia)
+                            @Html.HiddenFor(model => model.UbicacionContrato.Distrito.Canton.NomCanton)
+                            @Html.HiddenFor(model => model.UbicacionContrato.Distrito.NomDistrito)
+                            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                            @Html.HiddenFor(model => model.Puesto.CodPuesto)
+                            @Html.HiddenFor(model => model.DetallePuesto.Clase.DesClase)
+                            @Html.HiddenFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)
+                            @Html.HiddenFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal)
+                            @Html.HiddenFor(model => model.ViaticoCorrido.DesSenasDTO)
+                            @Html.HiddenFor(model => model.ViaticoCorrido.NumTelDomicilioDTO)
+                            @Html.HiddenFor(model => model.ViaticoCorrido.IdEntidad)
+                            @Html.HiddenFor(model => model.ViaticoCorrido.PernocteDTO)
+                            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.Programa.DesPrograma)
+                            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.Area)
+                            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.Actividad)
+                            @Html.HiddenFor(model => model.Carta.NumeroCarta, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Carta.NumeroCarta)
+                            @Html.HiddenFor(model => model.NumCartaPresentacion, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.NumCartaPresentacion)
+                          
+
+
+                            <div class="card" style="margin-bottom:20px;">
+                                <h5 class="card-header">Periodo Correspondiente</h5>
+                                <div class="card-body">
+                                    <center>
+                                        <div class="start_date input-group mb-4">
+                                            <label for="comment">Fecha Inicio:</label>
+                                            @Html.TextBoxFor(model => model.DetalleEliminacion.FecInicioDTO, new { @id = "FechaInicio", @class = "form-control start_date", @readonly = "readonly", @placeholder = "Fecha de Inicio" })
+                                            @Html.ValidationMessageFor(model => model.DetalleEliminacion.FecInicioDTO)
+                                            @Html.ValidationMessageFor(model => model.ViaticoCorrido.IdEntidad)
+                                        </div>
+                                        <div class="end_date input-group mb-4">
+                                            <label for="comment">Fecha Fin:</label>
+                                            @Html.TextBoxFor(model => model.DetalleEliminacion.FecFinDTO, new { @id = "FechaFin", @class = "form-control start_date", @readonly = "readonly", @placeholder = "Fecha de Finalización" })
+                                            @Html.ValidationMessageFor(model => model.DetalleEliminacion.FecFinDTO)
+                                        </div>
+                                        <label for="comment">No.Carta Presentación:</label>
+                                        <label for="comment">@Model.Carta.NumeroCarta</label>
+                                    </center>
+                                </div>
+                            </div>
+                            <div class="card" style="margin-bottom:20px;">
+                                <h5 class="card-header">Justificacion de la Solicitud</h5>
+                                <div class="card-body">
+                                    <center>
+                                        <div class="form-group">
+                                            <label for="comment">Comentarios:</label>
+                                            @Html.TextAreaFor(model => model.DetalleEliminacion.ObsJustificacionDTO, new { @class = "form-control", @rows = "5", id = "comment" })
+                                            @Html.HiddenFor(model => model.DetalleEliminacion.ObsJustificacionDTO)
+                                            @Html.ValidationMessageFor(model => model.DetalleEliminacion.ObsJustificacionDTO)
+                                        </div>
+                                    </center>
+                                </div>
+                            </div>
+                            <div class="card" style="margin-bottom:20px;">
+                                <h5 class="card-header">Observaciones</h5>
+                                <div class="card-body">
+                                    <center>
+                                        <div class="form-group">
+                                            <label for="comment">Comentarios:</label>
+                                            @Html.TextAreaFor(model => model.MovimientoVC.ObsObservacionesDTO, new { @class = "form-control", @rows = "5", id = "comment" })
+                                            @Html.HiddenFor(model => model.MovimientoVC.ObsObservacionesDTO)
+                                            @Html.ValidationMessageFor(model => model.MovimientoVC.ObsObservacionesDTO)
+                                        </div>
+                                    </center>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-2">
+                                    <input class="btn btn-info" id="btnGuardar" name="SubmitButton" type="submit" value="+ Agregar Eliminación"/>
+
+                                </div>
+                                <div class="col-10">
+                                    <div id="preloader1" class="loader" hidden></div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                }
+              
+            }
+        </div>
+          <!--Errores del formulario-->
+
+                <div id="Div3" style="margin-top:15px;">
+
+                </div>
+
+
+                }
+}

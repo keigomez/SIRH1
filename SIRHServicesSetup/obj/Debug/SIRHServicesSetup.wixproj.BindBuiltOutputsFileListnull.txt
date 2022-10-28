@@ -1,0 +1,2 @@
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRHServicesSetup\bin\Debug\SIRHServicesSetup.msi
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRHServicesSetup\bin\Debug\SIRHServicesSetup.wixpdb

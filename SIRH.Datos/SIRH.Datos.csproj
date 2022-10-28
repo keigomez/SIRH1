@@ -1,0 +1,1121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FA43575A-C53A-42F6-A81B-5F479BF2E4C0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SIRH.Datos</RootNamespace>
+    <AssemblyName>SIRH.Datos</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>%24/SIRH/SIRH.Datos</SccProjectName>
+    <SccLocalPath>.</SccLocalPath>
+    <SccAuxPath>http://ea-mj07creh:8080/tfs/defaultcollection</SccAuxPath>
+    <SccProvider>{4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}</SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.DirectoryServices.AccountManagement">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccionPersonal.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ActividadFuncionario.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ActividadMeta.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ActividadResultadoCargo.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AddendumPrestamoPuesto.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Aguinaldo.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BitacoraIncidencia.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BitacoraUsuario.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BoletaPrestamo.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BorradorAccionPersonal.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BotAccionIncidencia.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CAccionPersonalD.cs" />
+    <Compile Include="CActividadFuncionarioD.cs" />
+    <Compile Include="CAddendumPrestamoPuestoD.cs" />
+    <Compile Include="CAguinaldoD.cs" />
+    <Compile Include="Calificacion.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CalificacionCapacitacion.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CalificacionEncargado.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CalificacionNombramiento.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CalificacionNombramientoFuncionarios.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CalificacionObservaciones.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CalificacionReglaTecnica.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CambioPorAccionPersonal.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Canton.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CaracteristicasPuesto.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Cargo.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CartasPresentacion.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatalogoDeduccion.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatalogoDia.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatalogoIncidencia.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatalogoPregunta.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatalogoRemuneracion.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatAnioAccionPersonal.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatAnioBoletaPrestamo.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatCampo.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatDiaViaticoGasto.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatEstadoCivil.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatMetaEstado.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatMetaPrioridad.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatMovimientoPresupuesto.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatOrdenMovimiento.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatPermiso.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatPermisoEvidencia.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Caucion.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CBitacoraUsuarioD.cs" />
+    <Compile Include="CBoletaPrestamoD.cs" />
+    <Compile Include="CBorradorAccionPersonalD.cs" />
+    <Compile Include="CBorradorTramiteD.cs" />
+    <Compile Include="CCalificacionCapacitacionD.cs" />
+    <Compile Include="CCalificacionD.cs" />
+    <Compile Include="CCalificacionEncargadoD.cs" />
+    <Compile Include="CCalificacionNombramientoD.cs" />
+    <Compile Include="CCalificacionObservacionesD.cs" />
+    <Compile Include="CCantonD.cs" />
+    <Compile Include="CCaracteristicasPuestoD.cs" />
+    <Compile Include="CCargoD.cs" />
+    <Compile Include="CCarreraProfesionalD.cs" />
+    <Compile Include="CCartaPresentacionD.cs" />
+    <Compile Include="CCatalogoDeduccionD.cs" />
+    <Compile Include="CCatalogoDiaD.cs" />
+    <Compile Include="CCatalogoPreguntaD.cs" />
+    <Compile Include="CCatCampoD.cs" />
+    <Compile Include="CCatEstadoCivilD.cs" />
+    <Compile Include="CCatMetaEstadoD.cs" />
+    <Compile Include="CCatMetaPrioridadD.cs" />
+    <Compile Include="CCatMovimientoPresupuestoD.cs" />
+    <Compile Include="CCatPermisoD.cs" />
+    <Compile Include="CCaucionD.cs" />
+    <Compile Include="CClaseD.cs" />
+    <Compile Include="CComponentePresupuestarioD.cs" />
+    <Compile Include="CComponenteSalarialD.cs" />
+    <Compile Include="CContenidoPresupuestarioD.cs" />
+    <Compile Include="CContratoArrendamientoD.cs" />
+    <Compile Include="CCuentaBancariaD.cs" />
+    <Compile Include="CCursoCapacitacionD.cs" />
+    <Compile Include="CCursoD.cs" />
+    <Compile Include="CCursoGradoD.cs" />
+    <Compile Include="CDecretoD.cs" />
+    <Compile Include="CDeduccionEfectuadaD.cs" />
+    <Compile Include="CDeduccionTemporalD.cs" />
+    <Compile Include="CDepartamentoD.cs" />
+    <Compile Include="CDesarraigoD.cs" />
+    <Compile Include="CDesgloseSalarialD.cs" />
+    <Compile Include="CDetalleAccesoD.cs" />
+    <Compile Include="CDetalleAsignacionGastoTrasporteD.cs" />
+    <Compile Include="CDetalleAsignacionGastoTrasporteModificadaD.cs" />
+    <Compile Include="CDetalleBorradorAccionPersonalD.cs" />
+    <Compile Include="CDetalleCalificacionNombramientoD.cs" />
+    <Compile Include="CDetalleCalificacionSeguimientoD.cs" />
+    <Compile Include="CDetalleContratacionD.cs" />
+    <Compile Include="CDetalleDeduccionGastoTransporteD.cs" />
+    <Compile Include="CDetalleDeduccionViaticoCorridoD.cs" />
+    <Compile Include="CDetalleDesarraigoEliminacionD.cs" />
+    <Compile Include="CDetalleEliminacionViaticoCorridoGastoTransporteD.cs" />
+    <Compile Include="CDetalleNombramientoD.cs" />
+    <Compile Include="CDetallePuestoD.cs" />
+    <Compile Include="CDiaPagadoD.cs" />
+    <Compile Include="CDireccionD.cs" />
+    <Compile Include="CDireccionGeneralD.cs" />
+    <Compile Include="CDistritoD.cs" />
+    <Compile Include="CDivisionD.cs" />
+    <Compile Include="CEntidadAdscritaD.cs" />
+    <Compile Include="CEntidadEducativaD.cs" />
+    <Compile Include="CEntidadFinancieraD.cs" />
+    <Compile Include="CEntidadGubernamentalD.cs" />
+    <Compile Include="CEntidadMedicaD.cs" />
+    <Compile Include="CEntidadSegurosD.cs" />
+    <Compile Include="CEscalaSalarialD.cs" />
+    <Compile Include="CEspecialidadD.cs" />
+    <Compile Include="CEstadoBorradorD.cs" />
+    <Compile Include="CEstadoDesarraigoD.cs" />
+    <Compile Include="CEstadoFuncionarioD.cs" />
+    <Compile Include="CEstadoGastoTransporteD.cs" />
+    <Compile Include="CEstadoMovimientoPuestoD.cs" />
+    <Compile Include="CEstadoNombramientoD.cs" />
+    <Compile Include="CEstadoPuestoD.cs" />
+    <Compile Include="CEstadoTramiteD.cs" />
+    <Compile Include="CEstadoViaticoCorridoD.cs" />
+    <Compile Include="CEstudioPuestoD.cs" />
+    <Compile Include="CExpedienteD.cs" />
+    <Compile Include="CExperienciaProfesionalD.cs" />
+    <Compile Include="CFactorD.cs" />
+    <Compile Include="CFacturaDesarraigoD.cs" />
+    <Compile Include="CFormacionAcademicaD.cs" />
+    <Compile Include="CFuncionarioD.cs" />
+    <Compile Include="CGastoTransporteD.cs" />
+    <Compile Include="CHistorialEstadoCivilD.cs" />
+    <Compile Include="CHistoricoPlanillaD.cs" />
+    <Compile Include="CInformacionContactoD.cs" />
+    <Compile Include="Clase.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CListaNombramientoActivoD.cs" />
+    <Compile Include="CMetaIndividualCalificacionD.cs" />
+    <Compile Include="CMetaIndividualEvidenciaD.cs" />
+    <Compile Include="CMetaIndividualInformeD.cs" />
+    <Compile Include="CMetaObjetivoCalificacionD.cs" />
+    <Compile Include="CModalidadD.cs" />
+    <Compile Include="CMontoCaucionD.cs" />
+    <Compile Include="CMotivoMovimientoD.cs" />
+    <Compile Include="CMovimientoGastoTransporteD.cs" />
+    <Compile Include="CMovimientoPuestoD.cs" />
+    <Compile Include="CMovimientoViaticoCorridoD.cs" />
+    <Compile Include="CNombramientoD.cs" />
+    <Compile Include="CNotificacionUsuarioD.cs" />
+    <Compile Include="CObjetivoCalificacionD.cs" />
+    <Compile Include="CObjetoGastoD.cs" />
+    <Compile Include="COcupacionRealD.cs" />
+    <Compile Include="CompetenciaGrupoOcupacional.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CompetenciaTransversalCargo.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ComponentePresupuestario.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ComponenteSalarial.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ComportamientoGrupoOcupacional.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ComportamientoTransversal.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ContenidoPresupuestario.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ContratoArrendamiento.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COrdenMovimientoD.cs" />
+    <Compile Include="CPagoExtraordinarioD.cs" />
+    <Compile Include="CPagoFeriadoD.cs" />
+    <Compile Include="CPedimentoPuestoD.cs" />
+    <Compile Include="CPerfilAccesoD.cs" />
+    <Compile Include="CPerfilD.cs" />
+    <Compile Include="CPeriodoEscalaSalarialD.cs" />
+    <Compile Include="CPeriodoVacacionesD.cs" />
+    <Compile Include="CPlanificacionD.cs" />
+    <Compile Include="CPlanillaD.cs" />
+    <Compile Include="CPrestacionLegalD.cs" />
+    <Compile Include="CPrestamoPuestoD.cs" />
+    <Compile Include="CPresupuestoD.cs" />
+    <Compile Include="CProgramaD.cs" />
+    <Compile Include="CProvinciaD.cs" />
+    <Compile Include="CPuestoD.cs" />
+    <Compile Include="CPuntosD.cs" />
+    <Compile Include="CRegistroIncapacidadD.cs" />
+    <Compile Include="CRegistroTiempoExtraD.cs" />
+    <Compile Include="CRegistroVacacionesD.cs" />
+    <Compile Include="CReintegroVacacionesD.cs" />
+    <Compile Include="CRelPuestoUbicacionD.cs" />
+    <Compile Include="CRemuneracionEfectuadaPFD.cs" />
+    <Compile Include="CRescisionD.cs" />
+    <Compile Include="CSeccionD.cs" />
+    <Compile Include="CSubEspecialidadD.cs" />
+    <Compile Include="CTareasPuestoD.cs" />
+    <Compile Include="CTipoAccionPersonalD.cs" />
+    <Compile Include="CTipoContactoD.cs" />
+    <Compile Include="CTipoDeduccionD.cs" />
+    <Compile Include="CTipoDiaD.cs" />
+    <Compile Include="CTipoExtraD.cs" />
+    <Compile Include="CTipoIncapacidadD.cs" />
+    <Compile Include="CTipoIndicadorMetaD.cs" />
+    <Compile Include="CTipoJornadaD.cs" />
+    <Compile Include="CTipoNombramientoD.cs" />
+    <Compile Include="CTipoPoliticaPublicaD.cs" />
+    <Compile Include="CTipoPrestacionD.cs" />
+    <Compile Include="CTipoPuestoD.cs" />
+    <Compile Include="CTipoUbicacionD.cs" />
+    <Compile Include="CTituloFactorD.cs" />
+    <Compile Include="CTomoD.cs" />
+    <Compile Include="CUbicacionAdministrativaD.cs" />
+    <Compile Include="CUbicacionAsuetoD.cs" />
+    <Compile Include="CUbicacionPuestoD.cs" />
+    <Compile Include="CuentaBancaria.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CursoCapacitacion.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CursoGrado.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CUsuarioD.cs" />
+    <Compile Include="CViaticoCorridoD.cs" />
+    <Compile Include="C_AUX_DetallePagoGasto.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C_AUX_DetallePagoViatico.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C_Componentes.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C_EMU_AccionPersonal.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C_EMU_Calificacion.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C_EMU_CarreraProfesional.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C_EMU_Cursos.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C_EMU_EXFUNCIONARIOS.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C_EMU_HistoricoPlanilla.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C_EMU_HistoricoPlanilla_oldie.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C_EMU_Puntos.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C_EMU_Vacaciones_Movimiento.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C_EMU_Vacaciones_Saldo.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C_funcionariosactivos.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C_funcionariosguardia.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C_funcionariospendientes.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C_InicioPlanilla.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C_Nombramiento_Respaldo.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C_PeriodosActualizar.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C_PeriodosBorrar.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C_PeriodosRebaja.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C_planillacargar.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C_Planilla_Anterior.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C_RebajoPendientes.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C_RespaldoNombramiento.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C_RespaldoNombramiento20210225.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C_RespaldoNombramiento20210303.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C_ViaticoCorrido.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatosConexion.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>DatosConexion.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Decreto.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DecretoComponentePresupuestario.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DeduccionEfectuada.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DeduccionTemporal.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Departamento.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Desarraigo.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DesgloseSalarial.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DetalleAcceso.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DetalleAccionPersonal.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DetalleAccionPersonalAnterior.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DetalleAsignacionGastoTransporte.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DetalleAsignacionGastoTransporteModificada.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DetalleBoleta.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DetalleBorradorAccionPersonal.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DetalleCalificacion.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DetalleCalificacionModificada.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DetalleCalificacionSeguimiento.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DetalleCambioPedimento.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DetalleContratacion.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DetalleDeduccion.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DetalleDeduccionGastoTransporte.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DetalleDeduccionViaticoCorrido.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DetalleDesarraigoEliminacion.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DetalleDesgloseSalarial.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DetalleEliminacionViaticoCorridoGastoTransporte.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DetalleIncapacidad.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DetallePagoGastoTransporte.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DetallePagoViaticoCorrido.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DetallePagoViaticoRetroactivo.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DetallePrestacion.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DetallePrestacionAfiliacion.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DetallePrestacionCuadro.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DetallePuesto.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DetallePuestoRubro.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DetallePuntosAdicional.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DetalleTiempoExtra.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DiaPagado.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Direccion.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DireccionGeneral.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Distrito.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Division.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EjecutorActividad.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntidadAdscrita.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntidadEducativa.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntidadFinanciera.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntidadGubernamental.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntidadMedica.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntidadSeguros.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EscalaSalarial.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Especialidad.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EstadoBorrador.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EstadoDesarraigo.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EstadoFuncionario.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EstadoGastoTransporte.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EstadoMovimientoPuesto.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EstadoNombramiento.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EstadoOrdenMovimiento.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EstadoPedimento.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EstadoPuesto.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EstadoTipoJornada.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EstadoTramite.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EstadoViaticoCorrido.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EstudioPuesto.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EvidenciaComportamientoTransversal.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EvidenciaGrupoOcupacional.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExpedienteFuncionario.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExperienciaProfesional.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Factor.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FactorClasificacionCargo.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FacturaDesarraigo.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FamiliaPuestos.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Folio.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FormacionAcademica.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Funcionario.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GastosTransporte.cs" />
+    <Compile Include="GastoTransporte.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GastoTransporteReintegroDias.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GastoTransporteRutas.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\EHelperEnumD.cs" />
+    <Compile Include="HistorialEstadoCivil.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Incidencia.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InformacionContacto.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ListaNombramientosActivos.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mes.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MetaIndividualCalificacion.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MetaIndividualEvidencia.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MetaIndividualInforme.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MetaObjetivoCalificacion.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MetaObjetivoInstitucional.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modalidad.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelSIRH.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelSIRH.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelSIRH.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelSIRH.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelSIRH.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="MontoCaucion.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MotivoMovimiento.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MotivoPedimento.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MovimientoBorradorAccionPersonal.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MovimientoGastosTransporte.cs" />
+    <Compile Include="MovimientoGastoTransporte.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MovimientoPuesto.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MovimientoViaticoCorrido.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Nombramiento.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NotificacionUsuario.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ObjetivoCalificacion.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ObjetivoInstitucional.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ObjetoGasto.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="OcupacionReal.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrdenMovimiento.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrdenMovimientoDeclaracion.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PagoExtraordinario.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PagoFeriado.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PagoGastoTransporte.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PagoPrestacion.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PagoViaticoCorrido.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PagoViaticoRetroactivo.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Partida.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PedimentoPuesto.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Perfil.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PerfilAcceso.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PeriodoCalificacion.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PeriodoEscalaSalarial.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PeriodoVacaciones.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PLANILLA_SPPP.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PrestacionLegal.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PrestamoPuesto.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Presupuesto.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Programa.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Provincia.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Puesto.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RegistroIncapacidad.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RegistroPrestacionReal.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RegistroTiempoExtra.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RegistroVacaciones.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReintegroVacaciones.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RelPuestoUbicacion.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RemuneracionEfectuadaPF.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteEstadistico.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RequerimientoEspecificoCargo.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Rescision.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ResolucionPedimento.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ResultadoCargo.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Seccion.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubEspecialidad.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubPartida.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TareasPuesto.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TEMP_EnviarCorreo.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TipoAccionPersonal.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TipoCambioPorAccionPersonal.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TipoContacto.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TipoDeduccion.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TipoDeduccionTemporal.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TipoDetalleGastoTransporte.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TipoDetallePagoViatico.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TipoDia.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TipoExtra.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TipoIncapacidad.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TipoIndicadorMeta.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TipoJornada.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TipoPoliticaPublica.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TipoPrestacion.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TipoPrestacionCuadro.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TipoPuesto.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TipoResolucionPedimento.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TipoUbicacion.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TituloFactor.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tomo.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UbicacionAdministrativa.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UbicacionAsueto.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UbicacionPuesto.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USP_CALCULAR_VIATICO_PAGO_MES_Result.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USP_LISTAR_FUNCIONARIOS_CALIFICACION_Result.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USP_LISTAR_FUNCIONARIOS_JEFATURA_Result.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USP_OBTENER_ACCION_PERSONAL_PRORROGA_Result.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USP_OBTENER_DATOS_CALIFICACION_Result.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USP_OBTENER_JEFATURA_FUNCIONARIO_Result.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USP_OBTENER_RESULTADOS_CALIFICACION_Result.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Usuario.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViaticoCorrido.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViaticoCorridoReintegroDias.cs">
+      <DependentUpon>ModelSIRH.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bin\Debug\SIRH.Datos.dll.config" />
+    <None Include="DatosConexion.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>DatosConexion.Designer.cs</LastGenOutput>
+    </None>
+    <EntityDeploy Include="ModelSIRH.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelSIRH.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ModelSIRH.edmx.diagram">
+      <DependentUpon>ModelSIRH.edmx</DependentUpon>
+    </None>
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Debug\edmxResourcesToEmbed\Model.csdl" />
+    <None Include="obj\Debug\edmxResourcesToEmbed\Model.msl" />
+    <None Include="obj\Debug\edmxResourcesToEmbed\Model.ssdl" />
+    <None Include="obj\Debug\SIRH.Datos.csprojResolveAssemblyReference.cache" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SIRH.DTO\SIRH.DTO.csproj">
+      <Project>{8458C6CA-6642-4CB2-A361-D065534B57FB}</Project>
+      <Name>SIRH.DTO</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\EntityFramework.dll" />
+    <Content Include="bin\Debug\EntityFramework.SqlServer.dll" />
+    <Content Include="bin\Debug\EntityFramework.SqlServer.xml" />
+    <Content Include="bin\Debug\EntityFramework.xml" />
+    <Content Include="bin\Debug\SIRH.Datos.dll" />
+    <Content Include="bin\Debug\SIRH.Datos.pdb" />
+    <Content Include="bin\Debug\SIRH.DTO.dll" />
+    <Content Include="bin\Debug\SIRH.DTO.pdb" />
+    <Content Include="ModelSIRH.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelSIRH.edmx</DependentUpon>
+      <LastGenOutput>ModelSIRH.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ModelSIRH.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelSIRH.edmx</DependentUpon>
+      <LastGenOutput>ModelSIRH.cs</LastGenOutput>
+    </Content>
+    <Content Include="obj\Debug\SIRH.Datos.csproj.FileListAbsolute.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="obj\Debug\TempPE\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

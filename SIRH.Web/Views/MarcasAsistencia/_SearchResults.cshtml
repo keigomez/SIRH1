@@ -1,0 +1,153 @@
+﻿@model SIRH.Web.ViewModels.BusquedaEmpleadosMarcasAsistenciaVM
+@{
+    if (Model != null)
+    {
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Resultados</h5>
+                
+                <table class="table">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>
+                                Cédula
+                            </th>
+                            <th>
+                                Nombre
+                            </th>
+                            <th>
+                                Estado
+                            </th>
+                            <th>
+                                -
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < Model.ListaResultados.Count(); i++)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.AttributeEncode(Model.ListaResultados[i].CodigoEmpleado)
+                                </td>
+                                <td>
+                                    @Html.AttributeEncode(Model.ListaResultados[i].PrimerNombre)
+                                    @Html.AttributeEncode(Model.ListaResultados[i].SegundoNombre)
+                                    @Html.AttributeEncode(Model.ListaResultados[i].ApellidoPaterno)
+                                    @Html.AttributeEncode(Model.ListaResultados[i].ApellidoMaterno)
+                                </td>
+                                @if (Model.ListaResultados[i].Estado == 1)
+                                {
+                                    <td>
+                                        Activo
+                                    </td>
+                                    <td>
+                                        <div class="link_edit">
+                                            @Html.ActionLink("Editar", "Edit", "MarcasAsistencia", new { codigo = Model.ListaResultados.ElementAt(i).CodigoEmpleado, accion = "edit1" }, new { @class = "btn btn-outline-primary" })
+                                        </div>
+                                        @if (Model.ListaResultados[i].CodigoEmpleado.Length == 10)
+                                        {
+                                            <div class="link_view">
+                                                @Html.ActionLink("Ver detalles", "Details", "MarcasAsistencia", new { codigo = Model.ListaResultados.ElementAt(i).CodigoEmpleado, accion = "search" },new { @class="btn btn-outline-primary" })
+                                            </div>
+                                        }
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>
+                                        Anulado
+                                    </td>
+                                    <td>
+                                        @if (Model.ListaResultados[i].CodigoEmpleado.Length == 10)
+                                        {
+                                            <div class="link_edit">
+                                                @Html.ActionLink("Editar", "Edit", "MarcasAsistencia", new { codigo = Model.ListaResultados.ElementAt(i).CodigoEmpleado, accion = "edit2" }, new { @class = "btn btn-outline-primary" })
+                                            </div>
+                                            
+                                            <div class="link_view">
+                                                @Html.ActionLink("Ver detalles", "Details", "MarcasAsistencia", new { codigo = Model.ListaResultados.ElementAt(i).CodigoEmpleado, accion = "search" }, new { @class = "btn btn-outline-primary" })
+                                            </div>
+                                        }
+                                    </td>
+                                }
+                            </tr>
+                        }
+
+                        <tr>
+                            <td colspan="6" align="right">
+
+                                Página (@ViewBag.PaginaActual.ToString() de @ViewBag.TotalPaginas.ToString())
+
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination justify-content-end">
+                                        @if (ViewBag.PaginaActual == 1)
+                                        {
+                                            <li class="page-item disabled">
+                                                <a class="page-link" href="#" tabindex="-1">Atras</a>
+                                            </li>
+                                        }
+                                        else
+                                        {
+                                            
+                                            <li class="page-item">
+                                                @Ajax.ActionLink("Atras", "Search", "MarcasAsistencia", new { page = ViewBag.PaginaActual - 1 }, new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "dvResultadoBusqueda" }, new { @class = "page-link"})
+                                            </li>
+                                        }
+                                        @if (ViewBag.TotalPaginas < 5)
+                                        {
+                                            for (int i = 1; i <= ViewBag.TotalPaginas; i++)
+                                            {
+
+                                                <li class="page-item ">
+                                                    @Ajax.ActionLink(i.ToString(), "Search", "MarcasAsistencia", new { page = i }, new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "dvResultadoBusqueda" }, new { @class = "page-link" })
+                                                </li>
+                                            }
+                                        }
+                                        else
+                                        {
+                                
+                                            for (int i = ViewBag.PaginaActual; i <= ViewBag.PaginaActual + 5; i++)
+                                            {
+
+                                                <li class="page-item ">
+                                                    @Ajax.ActionLink(i.ToString(), "Search", "MarcasAsistencia", new { page = i }, new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "dvResultadoBusqueda" }, new { @class = "page-link" })
+                                                </li>
+                                            }
+                                            
+                                            <li class="page-item disabled">
+                                                <a class="page-link" href="#">...</a>
+                                            </li>
+
+                                        }
+
+                                        @if (ViewBag.TotalPaginas == 1 || ViewBag.PaginaActual == ViewBag.TotalPaginas)
+                                        {
+                                            <li class="page-item disabled">
+                                                <a class="page-link" href="#">Siguiente</a>
+                                            </li>
+                                        }
+                                        else
+                                        {
+                                            
+                                            <li class="page-item">                                                 
+                                                @Ajax.ActionLink("Siguiente", "Search", "MarcasAsistencia", new { page = ViewBag.PaginaActual + 1 }, new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "dvResultadoBusqueda" }, new { @class = "page-link" })
+                                            </li>
+                                        }
+                                    </ul>
+                                </nav>
+
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+        
+        
+    }
+}

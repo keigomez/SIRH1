@@ -1,0 +1,24 @@
+﻿@model SIRH.Web.ViewModels.NotificacionesCorreoVM
+
+@{
+    ViewBag.Title = "EmailDetails";
+    Layout = "~/Views/Shared/Desarraigo.cshtml";
+}
+
+<div class="card">
+    <div class="card-header alert-success">
+        <h3>
+            <i class="fa fa-check-circle"></i>  Correo electronico enviado con exito
+        </h3>
+    </div>
+    <div class="card-body alert-light">
+        <p class="card-text"></p>
+        El funcionario fue notificado que el desarraigo se encuentra en estado de espera.
+    </div>
+</div>
+<br>
+
+<a href="@Url.Action("Search", "Desarraigo")" class="btn btn-primary"> <i class="fa fa-arrow-circle-left"></i> Regresar</a>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")

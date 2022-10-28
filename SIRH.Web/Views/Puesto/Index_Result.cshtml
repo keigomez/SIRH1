@@ -1,0 +1,181 @@
+﻿@model SIRH.Web.ViewModels.FuncionarioPuestoVM
+@{
+    if (Model != null)
+    {
+        if (Model.TotalPuestos < 1)
+        {
+            <div class="alert alert-danger" role="alert">
+                No se encontraron resultados para la búsqueda solicitada.
+            </div>
+        }
+        else
+        {
+            <div class="card">
+                <h5 class="card-header">Resultados (@Model.TotalPuestos)</h5>
+                <div class="card-body">
+                   <table class="table">
+                       <thead class="thead-light">
+                           <tr>
+                               <th>#</th>
+                               <th># Puesto</th>
+                               <th>Estado</th>
+                               <th>Clase</th>
+                               <th>Especialidad</th>
+                               <th>Detalles</th>
+                           </tr>
+                       </thead>
+                       <tbody>
+                           @{
+                               int cuenta = 0;
+                               foreach (var item in Model.Puestos)
+                               {
+                                   cuenta++;
+                                <tr>
+                                    <td>@(((Model.PaginaActual - 1) * 10) + cuenta)</td>
+                                    <td>
+                                        @item.CodPuesto
+                                    </td>
+                                    @*@{ 
+                                        string nombreCompleto = "";
+                                        if (item.Nombramiento != null)
+                                        {
+                                            nombreCompleto = item.Nombramiento.Funcionario.Nombre + item.Nombramiento.Funcionario.PrimerApellido + item.Nombramiento.Funcionario.SegundoApellido;
+                                        }
+                                        else
+                                        {
+                                            nombreCompleto = "Vacante";
+                                        }
+                                    }
+                                    <td>@nombreCompleto</td>*@
+                                    <td>@item.EstadoPuesto.DesEstadoPuesto</td>
+                                    <td>@item.DetallePuesto.Clase.DesClase</td>
+                                    <td>@item.DetallePuesto.Especialidad.DesEspecialidad</td>
+                                    <td>@Html.ActionLink("Ver Perfil", "Details", "Puesto", new { @codPuesto = item.CodPuesto }, new { @class="btn btn-outline-primary", @target = "_blank" })</td>
+                                </tr>
+                               }
+                          }
+                       </tbody>
+                       <tfoot>
+                           <tr>
+                               <td align="left" colspan="2">
+                                   @using (Html.BeginForm("GenerarReportePuestos", "Puesto", Model, FormMethod.Post, null))
+                                   {
+                                       <input type="submit" class="btn btn-primary" value="Generar Reporte" />
+                                   }
+                               </td>
+
+                               <td colspan="4" align="right">
+
+                                   Página (@Model.PaginaActual.ToString() de @Model.TotalPaginas.ToString())
+
+                                   <nav aria-label="Page navigation example">
+                                       <ul class="pagination justify-content-end">
+                                           @if (Model.PaginaActual == 1)
+                                           {
+                                               <li class="page-item disabled">
+                                                   <a class="page-link" href="#" tabindex="-1">Atras</a>
+                                               </li>
+                                           }
+                                           else
+                                           {
+                                               <li class="page-item">
+                                                   @Ajax.ActionLink("Atrás", "Index", new
+                                              {
+                                                  @page = Model.PaginaActual - 1,
+                                                  @codpuesto = Model.CodPuestoSearch,
+                                                  @codclase = Model.CodClaseSearch,
+                                                  @codocupacion = Model.CodOcupacionRealSearch,
+                                                  @codespecialidad = Model.CodEspecialidadSearch,
+                                                  @estadoPuestoSeleccionado = Model.CodEstadoPuestoSearch,
+                                                  @confianzaSeleccionada = Model.CodConfianzaSearch,
+                                                  @codNivel = Model.CodNivelSearch
+                                                }, new AjaxOptions { UpdateTargetId = "target" }, new { @class = "page-link" })
+                                               </li>
+                                           }
+
+                                           @{if (Model.TotalPaginas > 10)
+                                               {
+                                                   var indice = Model.PaginaActual > 6 ? (Model.PaginaActual + 4 <= Model.TotalPaginas ? Model.PaginaActual - 5 : Model.PaginaActual - 5 - ((Model.PaginaActual + 4) - Model.TotalPaginas)) : 1;
+                                                   var final = Model.PaginaActual > 6 ? (Model.PaginaActual + 4 >= Model.TotalPaginas ? Model.TotalPaginas : Model.PaginaActual + 4) : 10;
+
+                                                   for (int i = indice; i <= final; i++)
+                                                   {
+                                                       <li class="page-item ">
+                                                           @Ajax.ActionLink(i.ToString(), "Index", new
+                                                      {
+                                                          @page = i,
+                                                          @codpuesto = Model.CodPuestoSearch,
+                                                          @codclase = Model.CodClaseSearch,
+                                                          @codocupacion = Model.CodOcupacionRealSearch,
+                                                          @codespecialidad = Model.CodEspecialidadSearch,
+                                                          @estadoPuestoSeleccionado = Model.CodEstadoPuestoSearch,
+                                                          @confianzaSeleccionada = Model.CodConfianzaSearch,
+                                                          @codNivel = Model.CodNivelSearch
+                                                      }, new AjaxOptions { UpdateTargetId = "target" }, new { @class = "page-link" })
+                                                       </li>
+                                                   }
+                                                   if (Model.PaginaActual + 4 < Model.TotalPaginas)
+                                                   {
+                                                       <li class="page-item disabled">
+                                                           <a class="page-link" href="#">...</a>
+                                                       </li>
+                                                   }
+                                               }
+                                               else
+                                               {
+                                                   for (int i = 1; i <= Model.TotalPaginas; i++)
+                                                   {
+                                                       <li class="page-item ">
+                                                           @Ajax.ActionLink(i.ToString(), "Index", new
+                                                      {
+                                                          @page = i,
+                                                          @codpuesto = Model.CodPuestoSearch,
+                                                          @codclase = Model.CodClaseSearch,
+                                                          @codocupacion = Model.CodOcupacionRealSearch,
+                                                          @codespecialidad = Model.CodEspecialidadSearch,
+                                                          @estadoPuestoSeleccionado = Model.CodEstadoPuestoSearch,
+                                                          @confianzaSeleccionada = Model.CodConfianzaSearch,
+                                                          @codNivel = Model.CodNivelSearch
+                                                      }, new AjaxOptions { UpdateTargetId = "target" }, new { @class = "page-link" })
+                                                       </li>
+                                                   }
+
+                                               }
+
+
+                                           }
+                                           @if (Model.TotalPaginas == 1 || Model.PaginaActual == Model.TotalPaginas)
+                                           {
+                                               <li class="page-item disabled">
+                                                   <a class="page-link" href="#">Siguiente</a>
+                                               </li>
+                                           }
+                                           else
+                                           {
+                                               <li class="page-item">
+                                                   @Ajax.ActionLink("Siguiente", "Index", new
+                                              {
+                                                  @page = Model.PaginaActual + 1,
+                                                  @codpuesto = Model.CodPuestoSearch,
+                                                  @codclase = Model.CodClaseSearch,
+                                                  @codocupacion = Model.CodOcupacionRealSearch,
+                                                  @codespecialidad = Model.CodEspecialidadSearch,
+                                                  @estadoPuestoSeleccionado = Model.CodEstadoPuestoSearch,
+                                                  @confianzaSeleccionada = Model.CodConfianzaSearch,
+                                                  @codNivel = Model.CodNivelSearch
+                                              }, new AjaxOptions { UpdateTargetId = "target" }, new { @class = "page-link" })
+                                               </li>
+                                           }
+                                       </ul>
+                                   </nav>
+
+                               </td>
+                           </tr>
+
+                       </tfoot>
+                   </table>
+                </div>
+            </div>
+        }
+    }
+}

@@ -1,0 +1,71 @@
+﻿@model SIRH.Web.ViewModels.BusquedaEntidadEducativaVM
+
+@{
+    ViewBag.Title = "CreateEntidadEducativa";
+    Layout = "~/Views/Shared/Carrera.cshtml";
+}
+
+<link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+
+<blockquote><h3>Agregar entidad educativa</h3></blockquote>
+
+@using (Html.BeginForm())
+{
+    
+    <div class="card">
+        <div class="card-header text-left">
+            <strong>Datos de entidad educativa </strong>
+        </div>
+
+        <div class="card-body">
+
+            <div class="form-group row">
+                <div class="col-sm-3">
+                    @Html.LabelFor(model => model.EntidadEducativa.DescripcionEntidad, new { @for = "DescripcionEntidad", @class = "col-form-label" })
+                </div>
+                <div class="col-sm-3">
+                    @Html.TextBoxFor(model => model.EntidadEducativa.DescripcionEntidad, new { @id = "DescripcionEntidad", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.EntidadEducativa.DescripcionEntidad)
+                </div>
+
+                @Html.LabelFor(model => model.TipoEntidadSeleccionado, new { @for = "TipoEntidadSeleccionado", @class = "col-sm-3 col-form-label" })
+                    <div class="col-sm-3">
+                        @Html.DropDownListFor(model => model.TipoEntidadSeleccionado,
+                    Model.TiposEntidad as SelectList,
+                    "Seleccionar...", new { @id = "Estado", @class = "form-control" })
+                    </div>
+
+            </div>
+
+            <input id="btnGuardar" name="SubmitButton" type="submit" value="Guardar entidad educativa" class="btn btn-primary float-right" />
+            <div id="preloader" class="loader float-right" style="display: none"></div>
+
+        </div>
+
+    </div>
+
+    <br />
+    if (!Html.ViewData.ModelState.IsValid)
+    {
+        <div class="card border-danger">
+            <div class="card-header"><strong>El formulario contiene los siguientes errores:</strong></div>
+            <div class="card-body text-danger">
+                @foreach (var modelError in Html.ViewData.ModelState.SelectMany(keyValuePair => keyValuePair.Value.Errors))
+                {
+                    <div class="alert alert-danger" role="alert">
+                        <h5>@modelError.ErrorMessage</h5>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+}
+
+
+@Scripts.Render("~/bundles/jquery")
+<script src="~/Scripts/popper.min.js"></script>
+@Scripts.Render("~/bundles/bootstrap")
+<script src="~/Scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/CreateEntidadEducativa.js" type="text/javascript"></script>
+

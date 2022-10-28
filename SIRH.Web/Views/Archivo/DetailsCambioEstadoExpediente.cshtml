@@ -1,0 +1,23 @@
+﻿@model SIRH.Web.ViewModels.BusquedaExpedienteVM
+
+@{
+    ViewBag.Title = "Resultados Actualización";
+    Layout = "~/Views/Shared/Archivo.cshtml";
+}
+
+<blockquote><h3>Detalle de préstamo</h3></blockquote>
+<br />
+    @if (Model.Error == null)
+    {
+        <div class="alert alert-success" role="alert">
+            <i class="fa fa-check-circle d-inline" style="font-size:48px;"></i>
+            <h4 class="d-inline"> El estado del expediente se ha actualizado correctamente.</h4>
+        </div>
+        <br />
+    }
+<br />
+
+<a href="javascript:history.back()" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Regresar</a>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")

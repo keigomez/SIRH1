@@ -1,0 +1,116 @@
+﻿@model SIRH.Web.ViewModels.PerfilUsuarioVM
+@{
+    ViewBag.Title = "AgregarPermiso";
+    Layout = "~/Views/Shared/PerfilUsuario.cshtml";
+}
+
+<center><h2>Agregar Perfiles y Permisos</h2></center>
+<nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-perfil-tab" data-toggle="tab" href="#nav-perfil" role="tab" aria-controls="nav-perfil" aria-selected="true">Agregar Perfiles</a>
+        <a class="nav-item nav-link" id="nav-permiso-tab" data-toggle="tab" href="#nav-permiso" role="tab" aria-controls="nav-permiso" aria-selected="false">Agregar Permisos</a>
+    </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-perfil" role="tabpanel" aria-labelledby="nav-perfil-tab">
+        <div class="card">
+            <div class="card-header">
+                Agregar nuevos perfiles
+            </div>
+            <div class="card-body">
+                @using (Ajax.BeginForm("AgregarPerfil", "PerfilUsuario", new AjaxOptions
+                {
+                    UpdateTargetId = "resultadoUser",
+                    HttpMethod = "POST",
+                    OnSuccess = "OnSuccess",
+                    OnBegin = "OnBegin"
+                })) {
+                    <div class="row">
+                        <div class="form-group col-4">
+                            @Html.LabelFor(model => model.PerfilNuevo.NomPerfil)
+                            <span>:</span>
+                            @Html.TextBoxFor(model => model.PerfilNuevo.NomPerfil,new { @class="form-control" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-4">
+                            @Html.LabelFor(model => model.PerfilNuevo.DesPerfil)
+                            <span>:</span>
+                            @Html.TextAreaFor(model => model.PerfilNuevo.DesPerfil, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-4">
+                            <input id="btnRegistrar" class="btn btn-secondary" name="SubmitButton" type="submit" value="Registrar Perfil" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-4">
+                            <div id="preloader" class="loader" hidden></div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-pane fade" id="nav-permiso" role="tabpanel" aria-labelledby="nav-permiso-tab">
+        <div class="card">
+            <div class="card-header">
+                Agregar nuevos permisos
+            </div>
+            <div class="card-body">
+                @using (Ajax.BeginForm("AgregarPermiso", "PerfilUsuario", new AjaxOptions
+                {
+                    UpdateTargetId = "resultadoUser",
+                    HttpMethod = "POST",
+                    OnSuccess = "OnSuccess",
+                    OnBegin = "OnBegin"
+                }))
+                {
+                    <div class="row">
+                        <div class="form-group col-4">
+                            @Html.LabelFor(model => model.PermisoNuevo.NomPermiso)
+                            <span>:</span>
+                            @Html.TextBoxFor(model => model.PermisoNuevo.NomPermiso, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-4">
+                            @Html.LabelFor(model => model.PermisoNuevo.DesPermiso)
+                            <span>:</span>
+                            @Html.TextAreaFor(model => model.PermisoNuevo.DesPermiso, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-4">
+                            @Html.LabelFor(model => model.PerfilNuevo.NomPerfil)
+                            <span>:</span>
+                            @Html.DropDownListFor(model => model.PerfilSeleccionado, Model.Perfil, "Seleccione el Perfil", new { @class = "btn btn-secondary dropdown-toggle form-control"})
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-4">
+                            <input id="btnRegistrar" class="btn btn-secondary" name="SubmitButton" type="submit" value="Registrar Permiso" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-4">
+                            <div id="preloader" class="loader" hidden></div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<div id="resultadoUser"></div>
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+<script src="~/Scripts/sidebar.js" type="text/javascript"></script>
+<script src="~/scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/PerfilUsuario.js" type="text/javascript"></script>

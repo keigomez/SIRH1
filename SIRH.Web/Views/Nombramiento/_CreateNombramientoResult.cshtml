@@ -1,0 +1,701 @@
+﻿@model SIRH.Web.ViewModels.ListaFormularioNombramientoVM
+
+@if (Model.Lista.Count < 2)
+{
+    <div class="alert alert-danger">
+        <strong><i class="fa fa-stop"></i> No fue posible cargar los datos según los parámetros de búsqueda establecidos</strong>
+    </div>
+}
+else
+{
+    using (Ajax.BeginForm("GuardarNombramiento", "Nombramiento", new AjaxOptions
+    {
+        HttpMethod = "Post",
+        UpdateTargetId = "targetResult",
+        InsertionMode = InsertionMode.Replace,
+        OnComplete = "CompleteGuardarNombramiento",
+        OnBegin = "BeginGuardarNombramiento"
+    }))
+    {
+    @*@{
+        System.Security.Principal.WindowsPrincipal principal = new System.Security.Principal.WindowsPrincipal(System.Security.Principal.WindowsIdentity.GetCurrent());
+    }*@
+System.Security.Principal.WindowsPrincipal principal = new System.Security.Principal.WindowsPrincipal(System.Security.Principal.WindowsIdentity.GetCurrent());
+if (principal.Identity.Name.Contains("roxana.montoya") || principal.Identity.Name.Contains("johanna.rodriguez"))
+{
+    <div class="card-body">
+            <div class="alert alert-warning">
+                <strong><i class="fa fa-warning"></i>Esta pantalla es únicamente de consulta.</strong>
+            </div>
+        <table class="table" id="datos_puesto">
+            <tr>
+                <td>
+                    <strong>@Html.LabelFor(model => model.Lista[0].Puesto.CodPuesto): </strong>@Html.DisplayFor(model => model.Lista[0].Puesto.CodPuesto)
+                    @Html.HiddenFor(model => model.Lista[0].Puesto.CodPuesto)
+                </td>
+                <td>
+                    <strong>@Html.LabelFor(model => model.Lista[0].Puesto.EstadoPuesto.DesEstadoPuesto): </strong>@Html.DisplayFor(model => model.Lista[0].Puesto.EstadoPuesto.DesEstadoPuesto)
+                    @Html.HiddenFor(model => model.Lista[0].Puesto.EstadoPuesto.DesEstadoPuesto)
+                </td>
+                <td>
+                    <strong>@Html.LabelFor(model => model.Lista[0].DetallePuesto.Clase.DesClase): </strong>@Html.DisplayFor(model => model.Lista[0].DetallePuesto.Clase.DesClase)
+                    @Html.HiddenFor(model => model.Lista[0].DetallePuesto.Clase.IdEntidad)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.LabelFor(model => model.Lista[0].DetallePuesto.Especialidad.DesEspecialidad): </strong>@Html.DisplayFor(model => model.Lista[0].DetallePuesto.Especialidad.DesEspecialidad)
+                    @Html.HiddenFor(model => model.Lista[0].DetallePuesto.Especialidad.IdEntidad)
+                    @Html.HiddenFor(model => model.Lista[0].DetallePuesto.SubEspecialidad.IdEntidad)
+                </td>
+                <td>
+                    <strong>@Html.LabelFor(model => model.Lista[0].Puesto.UbicacionAdministrativa.Division.NomDivision): </strong>@Html.DisplayFor(model => model.Lista[0].Puesto.UbicacionAdministrativa.Division.NomDivision)
+                    @Html.HiddenFor(model => model.Lista[0].Puesto.UbicacionAdministrativa.Division.IdEntidad)
+                </td>
+                <td>
+                    <strong>@Html.LabelFor(model => model.Lista[0].Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion): </strong>@Html.DisplayFor(model => model.Lista[0].Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                    @Html.HiddenFor(model => model.Lista[0].Puesto.UbicacionAdministrativa.DireccionGeneral.IdEntidad)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.LabelFor(model => model.Lista[0].Puesto.UbicacionAdministrativa.Departamento.NomDepartamento): </strong>@Html.DisplayFor(model => model.Lista[0].Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                    @Html.HiddenFor(model => model.Lista[0].Puesto.UbicacionAdministrativa.Departamento.IdEntidad)
+                </td>
+                <td>
+                    <strong>@Html.LabelFor(model => model.Lista[0].Puesto.UbicacionAdministrativa.Seccion.NomSeccion): </strong>@Html.DisplayFor(model => model.Lista[0].Puesto.UbicacionAdministrativa.Seccion.NomSeccion)
+                    @Html.HiddenFor(model => model.Lista[0].Puesto.UbicacionAdministrativa.Seccion.IdEntidad)
+                </td>
+                <td>
+                    <strong>@Html.LabelFor(model => model.Lista[0].Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto): </strong>@Html.DisplayFor(model => model.Lista[0].Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto)
+                    @Html.HiddenFor(model => model.Lista[0].Puesto.UbicacionAdministrativa.Presupuesto.IdEntidad)
+                    @Html.HiddenFor(model => model.Lista[0].Puesto.UbicacionAdministrativa.Presupuesto.Programa.IdEntidad)
+                </td>
+            </tr>
+            @if (Model.Lista[0].Nombramiento != null)
+            {
+                <tr>
+                    <td>
+                        <strong>@Html.LabelFor(model => model.Lista[0].Nombramiento.EstadoNombramiento.DesEstado): </strong>@Html.DisplayFor(model => model.Lista[0].Nombramiento.EstadoNombramiento.DesEstado)
+                        @Html.HiddenFor(model => model.Lista[0].Nombramiento.EstadoNombramiento.IdEntidad)
+                        @Html.HiddenFor(model => model.Lista[0].Nombramiento.IdEntidad)
+                    </td>
+                    <td>
+                        <strong>@Html.LabelFor(model => model.Lista[0].Nombramiento.FecRige): </strong>@Model.Lista[0].Nombramiento.FecRige.ToShortDateString()
+                        @Html.HiddenFor(model => model.Lista[0].Nombramiento.FecRige)
+                    </td>
+                    <td>
+                        <strong>@Html.LabelFor(model => model.Lista[0].Nombramiento.FecVence): </strong>
+                        @if (Model.Lista[0].Nombramiento.FecVence.Year != 1)
+                        {
+                            @Model.Lista[0].Nombramiento.FecVence.ToShortDateString()
+                            @Html.HiddenFor(model => model.Lista[0].Nombramiento.FecVence)
+                        }
+                    </td>
+                </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Cedula ocupante: </strong>@Html.DisplayFor(model => model.Lista[0].Funcionario.Cedula)
+                                            @Html.HiddenFor(model => model.Lista[0].Funcionario.Cedula)
+                                        </td>
+                                        <td>
+                                            <strong>Nombre ocupante: </strong>@(Model.Lista[0].Funcionario.Nombre + " " + Model.Lista[0].Funcionario.PrimerApellido + " " + Model.Lista[0].Funcionario.SegundoApellido)
+                                        </td>
+                                        <td>
+                                            <strong>@Html.LabelFor(model => model.Lista[0].Funcionario.EstadoFuncionario.DesEstadoFuncionario): </strong>@Html.DisplayFor(model => model.Lista[0].Funcionario.EstadoFuncionario.DesEstadoFuncionario)
+                                            @Html.HiddenFor(model => model.Lista[0].Funcionario.EstadoFuncionario.IdEntidad)
+                                        </td>
+                                    </tr>
+            }
+        </table>
+    </div>
+        }
+        else
+        {
+    <div id="formulario">
+        <div id="tabs">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a id="tab1" class="nav-link active" href="#tabs-1" data-toggle="tab" role="tab" aria-controls="tabs-1" aria-selected="true">Datos Puesto-Funcionario</a>
+                </li>
+                <li class="nav-item">
+                    <a id="tab2" class="nav-link" href="#tabs-2" data-toggle="tab" role="tab" aria-controls="tabs-2" aria-selected="false">Detalle de incentivos salariales</a>
+                </li>
+                <li class="nav-item">
+                    <a id="tab3" class="nav-link" href="#tabs-3" data-toggle="tab" role="tab" aria-controls="tabs-3" aria-selected="false">Detalle de movimiento</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div id="tabs-1" class="tab-pane fade show active" role="tabpanel" aria-labelledby="tab1">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong><i class="fa fa-briefcase"></i> Información del Puesto</strong>
+                        </div>
+                        <div class="card-body">
+                            @for (int i = 0; i < Model.Lista[0].ListaWarnings.Count; i++)
+                            {
+                                <div class="alert alert-warning">
+                                    <strong><i class="fa fa-warning"></i> @Model.Lista[0].ListaWarnings.ElementAt(i).MensajeError</strong>
+                                </div>
+                            }
+                            <table class="table" id="datos_puesto">
+                                <tr>
+                                    <td>
+                                        <strong>@Html.LabelFor(model => model.Lista[0].Puesto.CodPuesto): </strong>@Html.DisplayFor(model => model.Lista[0].Puesto.CodPuesto)
+                                        @Html.HiddenFor(model => model.Lista[0].Puesto.CodPuesto)
+                                        @Html.HiddenFor(model => model.Lista[0].Puesto.IdEntidad)
+                                    </td>
+                                    <td>
+                                        <strong>@Html.LabelFor(model => model.Lista[0].Puesto.EstadoPuesto.DesEstadoPuesto): </strong>@Html.DisplayFor(model => model.Lista[0].Puesto.EstadoPuesto.DesEstadoPuesto)
+                                        @Html.HiddenFor(model => model.Lista[0].Puesto.EstadoPuesto.DesEstadoPuesto)
+                                        @Html.HiddenFor(model => model.Lista[0].Puesto.EstadoPuesto.IdEntidad)
+                                    </td>
+                                    <td>
+                                        <strong>@Html.LabelFor(model => model.Lista[0].DetallePuesto.Clase.DesClase): </strong>@Html.DisplayFor(model => model.Lista[0].DetallePuesto.Clase.DesClase)
+                                        @Html.HiddenFor(model => model.Lista[0].DetallePuesto.Clase.IdEntidad)
+                                        @Html.HiddenFor(model => model.Lista[0].DetallePuesto.OcupacionReal.IdEntidad)
+                                        @Html.HiddenFor(model => model.Lista[0].DetallePuesto.IdEntidad)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>@Html.LabelFor(model => model.Lista[0].DetallePuesto.Especialidad.DesEspecialidad): </strong>@Html.DisplayFor(model => model.Lista[0].DetallePuesto.Especialidad.DesEspecialidad)
+                                        @Html.HiddenFor(model => model.Lista[0].DetallePuesto.Especialidad.IdEntidad)
+                                        @Html.HiddenFor(model => model.Lista[0].DetallePuesto.SubEspecialidad.IdEntidad)
+                                    </td>
+                                    <td>
+                                        <strong>@Html.LabelFor(model => model.Lista[0].Puesto.UbicacionAdministrativa.Division.NomDivision): </strong>@Html.DisplayFor(model => model.Lista[0].Puesto.UbicacionAdministrativa.Division.NomDivision)
+                                        @Html.HiddenFor(model => model.Lista[0].Puesto.UbicacionAdministrativa.Division.IdEntidad)
+                                    </td>
+                                    <td>
+                                        <strong>@Html.LabelFor(model => model.Lista[0].Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion): </strong>@Html.DisplayFor(model => model.Lista[0].Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                                        @Html.HiddenFor(model => model.Lista[0].Puesto.UbicacionAdministrativa.DireccionGeneral.IdEntidad)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>@Html.LabelFor(model => model.Lista[0].Puesto.UbicacionAdministrativa.Departamento.NomDepartamento): </strong>@Html.DisplayFor(model => model.Lista[0].Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                                        @Html.HiddenFor(model => model.Lista[0].Puesto.UbicacionAdministrativa.Departamento.IdEntidad)
+                                    </td>
+                                    <td>
+                                        <strong>@Html.LabelFor(model => model.Lista[0].Puesto.UbicacionAdministrativa.Seccion.NomSeccion): </strong>@Html.DisplayFor(model => model.Lista[0].Puesto.UbicacionAdministrativa.Seccion.NomSeccion)
+                                        @Html.HiddenFor(model => model.Lista[0].Puesto.UbicacionAdministrativa.Seccion.IdEntidad)
+                                    </td>
+                                    <td>
+                                        <strong>@Html.LabelFor(model => model.Lista[0].Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto): </strong>@Html.DisplayFor(model => model.Lista[0].Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto)
+                                        @Html.HiddenFor(model => model.Lista[0].Puesto.UbicacionAdministrativa.Presupuesto.IdEntidad)
+                                        @Html.HiddenFor(model => model.Lista[0].Puesto.UbicacionAdministrativa.Presupuesto.Programa.IdEntidad)
+                                    </td>
+                                </tr>
+                                @if (Model.Lista[0].Nombramiento != null)
+                                {
+                                    <tr>
+                                        <td>
+                                            <strong>@Html.LabelFor(model => model.Lista[0].Nombramiento.EstadoNombramiento.DesEstado): </strong>@Html.DisplayFor(model => model.Lista[0].Nombramiento.EstadoNombramiento.DesEstado)
+                                            @Html.HiddenFor(model => model.Lista[0].Nombramiento.EstadoNombramiento.IdEntidad)
+                                            @Html.HiddenFor(model => model.Lista[0].Nombramiento.IdEntidad)
+                                        </td>
+                                        <td>
+                                            <strong>@Html.LabelFor(model => model.Lista[0].Nombramiento.FecRige): </strong>@Model.Lista[0].Nombramiento.FecRige.ToShortDateString()
+                                            @Html.HiddenFor(model => model.Lista[0].Nombramiento.FecRige)
+                                        </td>
+                                        <td>
+                                            <strong>@Html.LabelFor(model => model.Lista[0].Nombramiento.FecVence): </strong>
+                                            @if (Model.Lista[0].Nombramiento.FecVence.Year != 1)
+                                            {
+                                                @Model.Lista[0].Nombramiento.FecVence.ToShortDateString()
+                                                @Html.HiddenFor(model => model.Lista[0].Nombramiento.FecVence)
+                                            }
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Cedula ocupante: </strong>@Html.DisplayFor(model => model.Lista[0].Funcionario.Cedula)
+                                            @Html.HiddenFor(model => model.Lista[0].Funcionario.Cedula)
+                                        </td>
+                                        <td>
+                                            <strong>Nombre ocupante: </strong>@(Model.Lista[0].Funcionario.Nombre + " " + Model.Lista[0].Funcionario.PrimerApellido + " " + Model.Lista[0].Funcionario.SegundoApellido)
+                                        </td>
+                                        <td>
+                                            <strong>@Html.LabelFor(model => model.Lista[0].Funcionario.EstadoFuncionario.DesEstadoFuncionario): </strong>@Html.DisplayFor(model => model.Lista[0].Funcionario.EstadoFuncionario.DesEstadoFuncionario)
+                                            @Html.HiddenFor(model => model.Lista[0].Funcionario.EstadoFuncionario.IdEntidad)
+                                        </td>
+                                    </tr>
+                                }
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <strong><i class="fa fa-user"></i> Información del Funcionario</strong>
+                        </div>
+                        <div class="card-body">
+                            @for (int i = 0; i < Model.Lista[1].ListaWarnings.Count; i++)
+                            {
+                                <div class="alert alert-warning">
+                                    <strong><i class="fa fa-warning"></i> @Model.Lista[1].ListaWarnings.ElementAt(i).MensajeError</strong>
+                                </div>
+                            }
+                            <table class="table" id="datos_puesto">
+                                <tr>
+                                    <td>
+                                        <strong>@Html.LabelFor(model => model.Lista[1].Funcionario.Cedula): </strong>@Html.DisplayFor(model => model.Lista[1].Funcionario.Cedula)
+                                        @Html.HiddenFor(model => model.Lista[1].Funcionario.Cedula)
+                                    </td>
+                                    <td>
+                                        <strong>Nombre ocupante: </strong>@(Model.Lista[1].Funcionario.Nombre + " " + Model.Lista[1].Funcionario.PrimerApellido + " " + Model.Lista[1].Funcionario.SegundoApellido)
+                                    </td>
+                                    <td>
+                                        <strong>@Html.LabelFor(model => model.Lista[1].Funcionario.EstadoFuncionario.DesEstadoFuncionario): </strong>@Html.DisplayFor(model => model.Lista[1].Funcionario.EstadoFuncionario.DesEstadoFuncionario)
+                                        @Html.HiddenFor(model => model.Lista[1].Funcionario.EstadoFuncionario.IdEntidad)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>@Html.LabelFor(model => model.Lista[1].DetalleContratacion.FechaIngreso): </strong>@Html.DisplayFor(model => model.Lista[1].DetalleContratacion.FechaIngreso)
+                                        @Html.HiddenFor(model => model.Lista[1].DetalleContratacion.FechaIngreso)
+                                    </td>
+                                    <td>
+                                        <strong>@Html.LabelFor(model => model.Lista[1].DetalleContratacion.FechaCese): </strong>
+                                        @if (Model.Lista[1].DetalleContratacion.FechaCese.Year != 1)
+                                        {
+                                            @Html.DisplayFor(model => model.Lista[1].DetalleContratacion.FechaCese)
+                                            @Html.HiddenFor(model => model.Lista[1].DetalleContratacion.FechaCese)
+                                        }
+                                    </td>
+                                    <td>
+                                        @if (Model.Lista[1].DetalleContratacion.CodigoPolicial != 0)
+                                        {
+                                            <strong>@Html.LabelFor(model => model.Lista[1].DetalleContratacion.CodigoPolicial): </strong>
+                                            @Html.DisplayFor(model => model.Lista[1].DetalleContratacion.CodigoPolicial)
+                                            @Html.HiddenFor(model => model.Lista[1].DetalleContratacion.CodigoPolicial)
+                                        }
+                                    </td>
+                                </tr>
+                                @if (Model.Lista[1].Nombramiento != null)
+                                {
+                                    <tr>
+                                        <td>
+                                            <strong>Puesto ocupado: </strong>@Html.DisplayFor(model => model.Lista[1].Puesto.CodPuesto)
+                                            @Html.HiddenFor(model => model.Lista[1].Puesto.CodPuesto)
+                                            @Html.HiddenFor(model => model.Lista[1].Nombramiento.IdEntidad)
+                                        </td>
+                                        <td>
+                                            <strong>@Html.LabelFor(model => model.Lista[1].Puesto.EstadoPuesto.DesEstadoPuesto): </strong>@Html.DisplayFor(model => model.Lista[1].Puesto.EstadoPuesto.DesEstadoPuesto)
+                                            @Html.HiddenFor(model => model.Lista[1].Puesto.EstadoPuesto.DesEstadoPuesto)
+                                            @Html.HiddenFor(model => model.Lista[1].Puesto.EstadoPuesto.IdEntidad)
+                                            @*@Html.DisplayFor(model => model.Lista[1].Puesto.EstadoPuesto.IdEntidad)*@
+                                        </td>
+                                        <td>
+                                            <strong>@Html.LabelFor(model => model.Lista[1].DetallePuesto.Clase.DesClase): </strong>@Html.DisplayFor(model => model.Lista[1].DetallePuesto.Clase.DesClase)
+                                            @Html.HiddenFor(model => model.Lista[1].DetallePuesto.Clase.IdEntidad)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>@Html.LabelFor(model => model.Lista[1].DetallePuesto.Especialidad.DesEspecialidad): </strong>@Html.DisplayFor(model => model.Lista[1].DetallePuesto.Especialidad.DesEspecialidad)
+                                            @Html.HiddenFor(model => model.Lista[1].DetallePuesto.Especialidad.IdEntidad)
+                                        </td>
+                                        <td>
+                                            <strong>@Html.LabelFor(model => model.Lista[1].Puesto.UbicacionAdministrativa.Division.NomDivision): </strong>@Html.DisplayFor(model => model.Lista[1].Puesto.UbicacionAdministrativa.Division.NomDivision)
+                                            @Html.HiddenFor(model => model.Lista[1].Puesto.UbicacionAdministrativa.Division.IdEntidad)
+                                        </td>
+                                        <td>
+                                            <strong>@Html.LabelFor(model => model.Lista[1].Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion): </strong>@Html.DisplayFor(model => model.Lista[1].Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                                            @Html.HiddenFor(model => model.Lista[1].Puesto.UbicacionAdministrativa.DireccionGeneral.IdEntidad)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>@Html.LabelFor(model => model.Lista[1].Puesto.UbicacionAdministrativa.Departamento.NomDepartamento): </strong>@Html.DisplayFor(model => model.Lista[1].Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                                            @Html.HiddenFor(model => model.Lista[1].Puesto.UbicacionAdministrativa.Departamento.IdEntidad)
+                                        </td>
+                                        <td>
+                                            <strong>@Html.LabelFor(model => model.Lista[1].Puesto.UbicacionAdministrativa.Seccion.NomSeccion): </strong>@Html.DisplayFor(model => model.Lista[1].Puesto.UbicacionAdministrativa.Seccion.NomSeccion)
+                                            @Html.HiddenFor(model => model.Lista[1].Puesto.UbicacionAdministrativa.Seccion.IdEntidad)
+                                        </td>
+                                        <td>
+                                            <strong>@Html.LabelFor(model => model.Lista[1].Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto): </strong>@Html.DisplayFor(model => model.Lista[1].Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto)
+                                            @Html.HiddenFor(model => model.Lista[1].Puesto.UbicacionAdministrativa.Presupuesto.IdEntidad)
+                                        </td>
+                                    </tr>
+                                }
+                            </table>
+                            </div>
+                    </div>
+                </div>
+                <div id="tabs-2" class="tab-pane fade " role="tabpanel" aria-labelledby="tab2">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong><i class="fa fa-money"></i> Detalle de incentivos</strong>
+                        </div>
+                        <div class="card-body">
+                            <table class="table" id="datos_puesto">
+                                <tr>
+                                    <td>
+                                        <strong>@Html.LabelFor(model => model.Lista[0].DetalleAccion.IndCategoria): </strong>@Html.DisplayFor(model => model.Lista[0].DetallePuesto.EscalaSalarial.CategoriaEscala)
+                                        @Html.HiddenFor(model => model.Lista[0].DetallePuesto.EscalaSalarial.CategoriaEscala)
+                                        @Html.HiddenFor(model => model.Lista[0].DetallePuesto.EscalaSalarial.IdEntidad)
+                                        @Html.HiddenFor(model => model.Lista[0].DetallePuesto.IdEntidad)
+                                    </td>
+                                    <td>
+                                        <strong>@Html.LabelFor(model => model.Lista[1].DetalleContratacion.NumeroAnualidades): </strong>@Html.DisplayFor(model => model.Lista[1].DetalleContratacion.NumeroAnualidades)
+                                        @Html.HiddenFor(model => model.Lista[1].DetalleContratacion.NumeroAnualidades)
+                                    </td>
+                                    <td>
+                                        <strong>@Html.LabelFor(model => model.Lista[1].DetalleContratacion.FechaMesAumento): </strong>@Html.DisplayFor(model => model.Lista[1].DetalleContratacion.FechaMesAumento)
+                                        @Html.HiddenFor(model => model.Lista[1].DetalleContratacion.FechaMesAumento)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>@Html.LabelFor(model => model.Lista[0].DetalleAccion.MtoSalarioBase): </strong>@Html.DisplayFor(model => model.Lista[0].DetallePuesto.EscalaSalarial.SalarioBase)
+                                        @Html.HiddenFor(model => model.Lista[0].DetallePuesto.EscalaSalarial.SalarioBase, new { @id = "idSalarioBase" })
+                                    </td>
+                                    <td>
+                                        <strong>@Html.LabelFor(model => model.Lista[0].DetallePuesto.EscalaSalarial.MontoAumentoAnual): </strong>@Html.DisplayFor(model => model.Lista[0].DetallePuesto.EscalaSalarial.MontoAumentoAnual)
+                                        @Html.HiddenFor(model => model.Lista[0].DetallePuesto.EscalaSalarial.MontoAumentoAnual)
+                                    </td>
+                                    <td>
+                                        <strong>@Html.LabelFor(model => model.Lista[0].DetalleAccion.MtoAumentosAnuales): </strong>@(Model.Lista[0].DetallePuesto.EscalaSalarial.MontoAumentoAnual * Model.Lista[1].DetalleContratacion.NumeroAnualidades)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>@Html.LabelFor(model => model.Lista[0].DetalleAccion.PorBonificacion) (%): </strong>
+                                    </td>
+                                    <td>
+                                        <input id="chkBonificacion" type="checkbox" onclick="return ValidarCheck(this)" /> Aplica 
+                                    </td>
+                                    <td>
+                                        @Html.TextBoxFor(model => model.Lista[0].DetalleAccion.PorBonificacion, new { @onkeypress = "return IsNumericMonto(event,'por', 'idBonificacion')", @id = "idBonificacion", @class = "form-control col-8", @hidden = "true" })
+                                        @Html.HiddenFor(model => model.Lista[0].DetalleAccion.PorBonificacion)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>@Html.LabelFor(model => model.Lista[0].DetalleAccion.PorCurso) (%): </strong>
+                                    </td>
+                                    <td>
+                                        <input id="chkCurso" type="checkbox" onclick="return ValidarCheck(this)" /> Aplica
+                                    </td>
+                                    <td>
+                                        @Html.TextBoxFor(model => model.Lista[0].DetalleAccion.PorCurso, new { @onkeypress = "return IsNumericMonto(event,'por', 'idCurso')", @id = "idCurso", @class = "form-control", @hidden = "true" })
+                                        @Html.HiddenFor(model => model.Lista[0].DetalleAccion.PorCurso)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>@Html.LabelFor(model => model.Lista[0].DetalleAccion.PorConsulta) (%): </strong>
+                                    </td>
+                                    <td>
+                                        <input id="chkConsulta" type="checkbox" onclick="return ValidarCheck(this)" /> Aplica
+                                    </td>
+                                    <td>
+                                        @Html.TextBoxFor(model => model.Lista[0].DetalleAccion.PorConsulta, new { @onkeypress = "return IsNumericMonto(event,'por', 'idConsulta')", @id = "idConsulta", @class = "form-control", @hidden = "true" })
+                                        @Html.HiddenFor(model => model.Lista[0].DetalleAccion.PorConsulta)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>@Html.LabelFor(model => model.Lista[0].DetalleAccion.PorDisponibilidad) (%): </strong>
+                                    </td>
+                                    <td>
+                                        <input id="chkDisponibilidad" type="checkbox" onclick="return ValidarCheck(this)" /> Aplica
+                                    </td>
+                                    <td>
+                                        @Html.TextBoxFor(model => model.Lista[0].DetalleAccion.PorDisponibilidad, new { @onkeypress = "return IsNumericMonto(event,'por', 'idDisponibilidad')", @id = "idDisponibilidad", @class = "form-control", @hidden = "true" })
+                                        @Html.HiddenFor(model => model.Lista[0].DetalleAccion.PorDisponibilidad)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>@Html.LabelFor(model => model.Lista[0].DetalleAccion.MtoPunto): </strong>
+                                    </td>
+                                    <td>
+                                        2273.00
+                                    </td>
+                                    <td>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>@Html.LabelFor(model => model.Lista[0].DetalleAccion.NumGradoGrupo) (Puntos): </strong>
+                                    </td>
+                                    <td>
+                                        <input id="chkNumGrado" type="checkbox" onclick="return ValidarCheck(this)" /> Aplica
+                                    </td>
+                                    <td>
+                                        @Html.TextBoxFor(model => model.Lista[0].DetalleAccion.NumGradoGrupo, new { @onkeypress = "return IsNumericMonto(event,'por', 'idNumGrado')", @id = "idNumGrado", @class = "form-control", @hidden = "true" })
+                                        @Html.HiddenFor(model => model.Lista[0].DetalleAccion.NumGradoGrupo)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>@Html.LabelFor(model => model.Lista[0].DetalleAccion.MtoGradoGrupo) (Monto en colones): </strong>
+                                    </td>
+                                    <td>
+                                        @Html.TextBoxFor(model => model.Lista[0].DetalleAccion.MtoGradoGrupo, new { @id = "idMtoGradoGrupo", @class = "form-control", @readonly = "true" })
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                @if (Model.Lista[0].DetallePuesto.Especialidad.IdEntidad == 90
+            || Model.Lista[0].DetallePuesto.Especialidad.IdEntidad == 210
+            || Model.Lista[0].DetallePuesto.Especialidad.IdEntidad == 449)
+                                {
+                                    <tr>
+                                        <td>
+                                            <strong>@Html.LabelFor(model => model.Lista[0].DetalleAccion.PorProhibicion) (%): </strong>
+                                        </td>
+                                        <td>
+                                            <input id="chkProhibicion" type="checkbox" onclick="return ValidarCheck(this)" /> Aplica
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(model => model.Lista[0].DetalleAccion.PorProhibicion, new { @onkeypress = "return IsNumericMonto(event,'por', 'idProhibicion')", @id = "idProhibicion", @class = "form-control", @hidden = "true" })
+                                            @Html.HiddenFor(model => model.Lista[0].DetalleAccion.PorProhibicion)
+                                        </td>
+                                    </tr>
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td>
+                                            <strong>Dedicación exclusiva (%): </strong>
+                                        </td>
+                                        <td>
+                                            <input id="chkDedicacion" type="checkbox" onclick="return ValidarCheck(this)" /> Aplica
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(model => model.Lista[0].DetalleAccion.PorProhibicion, new { @onkeypress = "return IsNumericMonto(event,'por', 'idDedicacion')", @id = "idDedicacion", @class = "form-control", @hidden = "true" })
+                                            @Html.HiddenFor(model => model.Lista[0].DetalleAccion.PorProhibicion)
+                                        </td>
+                                    </tr>
+                                }
+                                <tr>
+                                    <td>
+                                        <strong>@Html.LabelFor(model => model.Lista[0].DetalleAccion.MtoProhibicion) (Monto en colones): </strong>
+                                    </td>
+                                    <td>
+                                        @Html.TextBoxFor(model => model.Lista[0].DetalleAccion.MtoProhibicion, new { @id = "idProhibicionDedicacion", @class = "form-control", @readonly = "true" })
+                                        @Html.HiddenFor(model => model.Lista[0].DetalleAccion.MtoProhibicion)
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>@Html.LabelFor(model => model.Lista[0].DetalleAccion.PorQuinquenio) (%): </strong>
+                                    </td>
+                                    <td>
+                                        <input id="chkQuinquenio" type="checkbox" onclick="return ValidarCheck(this)" /> Aplica
+                                    </td>
+                                    <td>
+                                        @Html.TextBoxFor(model => model.Lista[0].DetalleAccion.PorQuinquenio, new { @onkeypress = "return IsNumericMonto(event,'por', 'idQuinquenio')", @id = "idQuinquenio", @class = "form-control", @hidden = "true" })
+                                        @Html.HiddenFor(model => model.Lista[0].DetalleAccion.PorQuinquenio)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>@Html.LabelFor(model => model.Lista[0].DetalleAccion.MtoRecargo) (Monto en colones): </strong>
+                                    </td>
+                                    <td>
+                                        <input id="chkRecargo" type="checkbox" onclick="return ValidarCheck(this)" /> Aplica
+                                    </td>
+                                    <td>
+                                        @Html.TextBoxFor(model => model.Lista[0].DetalleAccion.MtoRecargo, new { @onkeypress = "return IsNumericMonto(event,'', 'idRecargo')", @id = "idRecargo", @class = "form-control", @hidden = "true" })
+                                        @Html.HiddenFor(model => model.Lista[0].DetalleAccion.MtoRecargo)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>@Html.LabelFor(model => model.Lista[0].DetalleAccion.PorRiesgo) (%): </strong>
+                                    </td>
+                                    <td>
+                                        <input id="chkRiesgo" type="checkbox" onclick="return ValidarCheck(this)" /> Aplica
+                                    </td>
+                                    <td>
+                                        @Html.TextBoxFor(model => model.Lista[0].DetalleAccion.PorRiesgo, new { @onkeypress = "return IsNumericMonto(event,'por', 'idRiesgo')", @id = "idRiesgo", @class = "form-control", @hidden = "true" })
+                                        @Html.HiddenFor(model => model.Lista[0].DetalleAccion.PorRiesgo)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>@Html.LabelFor(model => model.Lista[0].DetalleAccion.MtoOtros) (Monto en colones): </strong>
+                                    </td>
+                                    <td>
+                                        <input id="chkOtros" type="checkbox" onclick="return ValidarCheck(this)" /> Aplica
+                                    </td>
+                                    <td>
+                                        @Html.TextBoxFor(model => model.Lista[0].DetalleAccion.MtoOtros, new { @onkeypress = "return IsNumericMonto(event,'', 'idOtros')", @id = "idOtros", @class = "form-control", @hidden = "true" })
+                                        @Html.HiddenFor(model => model.Lista[0].DetalleAccion.MtoOtros)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>@Html.LabelFor(model => model.Lista[0].DetalleAccion.MtoTotal) (Monto en colones): </strong>
+                                    </td>
+                                    <td>
+                                        @Html.TextBoxFor(model => model.Lista[0].DetalleAccion.MtoTotal, new { @id = "idTotal", @class = "form-control", @readonly = "true" })
+                                        @Html.HiddenFor(model => model.Lista[0].DetalleAccion.MtoTotal, new { @id = "idTotalInicial" })
+                                        @Html.HiddenFor(model => model.Lista[1].Puesto.CodPuesto)
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-success" id="btnCalcularRetroactivo" type="button" value="Calcular" onclick="return recalcularSalario();" disabled>
+                                            <i class="fa fa-calculator"></i>
+                                            Salario sin variaciones
+                                        </button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div id="tabs-3" class="tab-pane fade " role="tabpanel" aria-labelledby="tab3">
+                    <div class="card">
+                        <div class="card-header">
+                            Datos del nombramiento
+                        </div>
+                        <div class="card-body">
+                            <div class="alert alert-warning">
+                                <strong><i class="fa fa-warning"></i> Está apunto de nombrar al funcionario @(Model.Lista[1].Funcionario.Nombre + " " + Model.Lista[1].Funcionario.PrimerApellido + " " + Model.Lista[1].Funcionario.SegundoApellido) (@Model.Lista[1].Funcionario.Cedula) en el puesto # @Model.Lista[0].Puesto.CodPuesto</strong>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-6">
+                                    N° Oficio
+                                    <span>:</span>
+                                    @Html.TextBoxFor(model => model.Lista[0].CodOficio, new { @id = "NumeroOficio", @class = "form-control" })
+                                    @Html.HiddenFor(model => model.Lista[0].CodOficio)
+                                    @Html.HiddenFor(model => model.Lista[0].TextoMotivo, new { @id = "TextoMotivo" })
+                                </div>
+                            </div>
+                            <div class="row" id="divMovimientoPuesto">
+                                <div class="form-group col-6">
+                                    Tipo de Nombramiento
+                                    <span>:</span>
+                                    @Html.DropDownListFor(model => model.Lista[0].MotivoSeleccionado, Model.Lista[0].MotivosMovimiento, "Seleccione...", new { @id = "MotivoVacante", @onchange = "return checkNombramiento(this);", @class = "form-control" })
+                                    @Html.HiddenFor(model => model.Lista[0].MotivoSeleccionado, new { @id = "setMotivo" })
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-6">
+                                    @Html.LabelFor(model => model.Lista[0].NombramientoNuevo.FecRige)
+                                    <i class="fa fa-info-circle" data-toggle="tooltip" data-placement="bottom" title="Haga click en el campo de texto para seleccionar la fecha."></i>
+                                    <span>:</span>
+                                    @Html.TextBoxFor(model => model.Lista[0].NombramientoNuevo.FecRige, new { @id = "FechaMovimiento", @class = "form-control", @readonly = "readonly" })
+                                    @Html.HiddenFor(model => model.Lista[0].NombramientoNuevo.FecRige)
+                                </div>
+                            </div>
+                            <div class="row" id="divFechaVencimiento" hidden>
+                                <div class="form-group col-6">
+                                    @Html.LabelFor(model => model.Lista[0].NombramientoNuevo.FecVence)
+                                    <i class="fa fa-info-circle" data-toggle="tooltip" data-placement="bottom" title="Haga click en el campo de texto para seleccionar la fecha."></i>
+                                    <span>:</span>
+                                    @Html.TextBoxFor(model => model.Lista[0].NombramientoNuevo.FecVence, new { @id = "FecVencimiento", @class = "form-control", @readonly = "readonly" })
+                                    @Html.HiddenFor(model => model.Lista[0].NombramientoNuevo.FecVence)
+                                </div>
+                            </div>
+                            <div class="row" id="divExplicacion">
+                                <div class="form-group col-12">
+                                    @Html.LabelFor(model => model.Lista[0].Explicacion)
+                                    <span>:</span>
+                                    @Html.TextAreaFor(model => model.Lista[0].Explicacion, new { @class = "form-control", @rows = 3, @cols = 12 })
+                                    @Html.HiddenFor(model => model.Lista[0].Explicacion)
+                                </div>
+                            </div>
+                            <div class="card-footer" id="targetResult"></div>
+                            <br />
+                        </div>
+                    </div>
+                    <br />
+                    @if (Model.Lista[0].Nombramiento == null || (Model.Lista[0].Puesto != null && Model.Lista[1].Puesto != null && Model.Lista[0].Puesto.CodPuesto == Model.Lista[1].Puesto.CodPuesto @*&& Model.Lista[1].Funcionario.EstadoFuncionario.DesEstadoFuncionario.Contains("interino a otra institución")*@)
+                || (Model.Lista[0].Nombramiento != null && Model.Lista[0].Nombramiento.EstadoNombramiento.DesEstado == "Ad Honorem") || (Model.Lista[0].Nombramiento.EstadoNombramiento.DesEstado.Contains("Traslado interino")) || (Model.Lista[0].Puesto.EstadoPuesto.DesEstadoPuesto.StartsWith("VAC")))
+                    {
+                        <div>
+                        <input id="btnBuscar" name="SubmitButton" type="submit" value="Realizar Nombramiento" class="btn btn-success float-right" />
+                        </div>
+                        <div id="preloader" class="loader float-right" style="display: none"></div>
+                    }
+                    <br />
+                </div>
+            </div>
+        </div>
+        <br />
+        @if (Model.Lista[0].Nombramiento != null && !(Model.Lista[0].Puesto != null && Model.Lista[1].Puesto != null && Model.Lista[0].Puesto.CodPuesto == Model.Lista[1].Puesto.CodPuesto @*&& Model.Lista[1].Funcionario.EstadoFuncionario.DesEstadoFuncionario.Contains("interino a otra institución")*@)
+                && (Model.Lista[0].Puesto != null && Model.Lista[0].Puesto.EstadoPuesto.DesEstadoPuesto == "Ad Honorem") && !(Model.Lista[1].Puesto == null && (Model.Lista[0].Puesto.CodPuesto != Model.Lista[1].Puesto.CodPuesto)))
+        {
+            <div class="alert alert-danger">
+                <strong><i class="fa fa-stop"></i> No es posible realizar un nombramiento en este puesto hasta que no sea liberado para su uso</strong>
+            </div>
+        }
+        else
+        {
+        }
+    </div>
+        }
+    }
+}
+
+
+            @*<div class="modal fade" id="dialog-form" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalCenterTitle">Registrar Nombramiento</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                        @{Html.RenderPartial("_CreateNombramientoModal",
+                                    new SIRH.Web.ViewModels.FormularioNombramientoVM
+                                    {
+                                        MotivosMovimiento = Model.Lista[0].MotivosMovimiento,
+                                        Puesto = Model.Lista[0].Puesto,
+                                        PuestoFuncionario = Model.Lista[1].Puesto,
+                                        Funcionario = Model.Lista[1].Funcionario,
+                                        Nombramiento = Model.Lista[1].Nombramiento,
+                                        DetalleAccion = Model.Lista[0].DetalleAccion,
+                                        CodOficio = ""
+                                    });
+                        }
+                        </div>
+                        <div class="modal-footer">
+                            <button id="CacelarCalculoPopUp" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+            <!--script src="~/Scripts/Pages/FormularioVacantes.js" type="text/javascript"></!--script-->
+
+            @*<script>
+                $(document).ready(function () {
+                    $('#btnModal').click(function () {
+                        $("#dialog-form").appendTo("body");
+                        $('#dialog-form').modal('show');
+                        LimpiarFormNombramiento();
+                        return false;
+                    });
+                });
+            </script>*@
+
+            <!--script src="~/Scripts/datetimepicker.js" type="text/javascript"></!--script>
+            <script src="~/Scripts/datetimepicker-es.js" type="text/javascript"></script-->
+
+<script type="text/javascript">
+    $(function () {
+        $('#FechaMovimiento').val('');
+        $('#FechaMovimiento').datepicker(
+        {
+            language: "es",
+            autoclose: true
+        });
+
+        $('#FecVencimiento').val('');
+        $('#FecVencimiento').datepicker(
+        {
+            language: "es",
+            autoclose: true
+        });
+    });
+</script>

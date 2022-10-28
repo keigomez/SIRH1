@@ -1,0 +1,96 @@
+﻿@model IList<SIRH.Web.ViewModels.FormularioBorradorAccionPersonalVM>
+
+@{ 
+    using (Html.BeginForm("ReporteBorradores", "BorradorAccionPersonal", FormMethod.Post, new { @id = "thisForm", target = "_blank" }))
+    {
+        <table class="table table-hover">
+            <thead class="thead-light">
+                <tr>
+                    <th>Cédula</th>
+                    <th>Nombre</th>
+                    <th>Oficio</th>
+                    <th>Tipo</th>
+                    <th>Estado</th>
+                    <th>Fecha Rige</th>
+                    <th></th>
+                    <th>Fecha Integra</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.AttributeEncode(item.Funcionario.Cedula)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Funcionario.Cedula)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Funcionario.Nombre)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Funcionario.PrimerApellido)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Funcionario.SegundoApellido)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Funcionario.SegundoApellido)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Borrador.IdEntidad)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Borrador.ObsJustificacion)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Asignado.Nombre)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Asignado.PrimerApellido)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Asignado.SegundoApellido)
+                            </td>
+                           
+                            <td>
+                                @item.Funcionario.Nombre @item.Funcionario.PrimerApellido @item.Funcionario.SegundoApellido
+                            </td>
+                            <td>
+                                @Html.AttributeEncode(item.Borrador.NumOficio)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Borrador.NumOficio)
+                            </td>
+                            <td>
+                                @Html.AttributeEncode(item.Detalle.TipoAccion.DesTipoAccion)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Detalle.TipoAccion.DesTipoAccion)
+                            </td>
+                            <td>
+                                @Html.AttributeEncode(item.Borrador.EstadoBorrador.DesEstadoBorrador)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Borrador.EstadoBorrador.DesEstadoBorrador)
+                            </td>
+                            <td>
+                                @Html.AttributeEncode(item.Detalle.FecRige.ToShortDateString())
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Detalle.FecRige)
+                            </td>
+                            <td>
+                                @Html.AttributeEncode(item.Detalle.FecVence.ToShortDateString())
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Detalle.FecVence)
+                            </td>
+                            <td>
+                                @Html.AttributeEncode(item.Detalle.FecRigeIntegra.ToShortDateString())
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Detalle.FecRigeIntegra)
+                            </td>
+                            <td>
+                                @Html.AttributeEncode(item.Detalle.FecVenceIntegra.ToShortDateString())
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Detalle.FecVenceIntegra)
+                            </td>
+                            <td style="width:180px">
+                                <div style="display:inline">
+                                    @if (item.Estado.IdEntidad != 4 && item.Estado.IdEntidad != 5)
+                                    {
+                                        <div class="link_edit">@Html.ActionLink("Asignar", "Edit", new { @codigo = item.Borrador.IdEntidad }, new { @class = "btn btn-outline-primary" })</div>
+                                        <div class="link_cancel">@Html.ActionLink("Anular", "Cancel", new { @codigo = item.Borrador.IdEntidad }, new { @class = "btn btn-outline-primary" })</div>
+                                    } 
+                                    <div class="link_view">@Html.ActionLink("Ver Detalle", "Details", new { @codigo = item.Borrador.IdEntidad }, new { @class = "btn btn-outline-primary" })</div>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                    <tr>
+                        <td colspan="7"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="7"><div class="link_pdf"><a href="javascript:void(0)" id="submit_link" class="btn btn-outline-primary" onclick="return ExportarAPdf();">Exportar resultados a PDF</a></div></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+}
+

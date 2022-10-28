@@ -1,0 +1,17 @@
+﻿@model SIRH.Web.ViewModels.FormularioCalificacionVM
+
+<div class="alert alert-success" role="alert">
+    <i class="fa fa-check-circle d-inline" style="font-size:48px;"></i>
+    <h4 class="d-inline"> Se generó la lista correctamente.</h4>
+</div>
+<br />
+
+<div class="card">
+    <h5 class="card-header">Detalles</h5>
+    <div class="card-body">
+        <div>Se ha generado la lista con <b>@Html.Encode(Model.Periodos)</b> funcionarios a calificar </div>
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")

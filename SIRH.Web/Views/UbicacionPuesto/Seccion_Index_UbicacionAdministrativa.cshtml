@@ -1,0 +1,28 @@
+﻿@model SIRH.Web.Models.UbicacionAdministrativaModel
+@{
+    using (Ajax.BeginForm("Seccion_Index_UbicacionAdministrativa", "UbicacionPuesto", new AjaxOptions { UpdateTargetId = "target-ubicacion-admin", HttpMethod = "POST", OnSuccess = "successDataUbicacion", OnBegin = "beginDataUbicacion", OnComplete = "successDataUbicacion", OnFailure = "successDataUbicacion" }))
+    {
+        <center>
+            <div class="card">
+                <div class="card-header">
+                    Parámetros de búsqueda:
+                </div>
+                <div class="card-body">
+                    <div class="form-group col-6">
+                        @Html.Label("Código de sección")
+                        <span>:</span>
+                        @Html.TextBox("codigoseccion", String.Empty, new { @onkeypress = "return IsNumeric(event,'seccion', 'código de sección')", @class = "form-control" })
+                    </div>
+                    <div class="form-group col-6">
+                        <input class="btn btn-secondary" type="submit" value="Buscar" id="btnBuscaUbicacion" />
+                    </div>
+                    <div class="form-group col-6">
+                        <div id="progressbarubicacion" class="loader" hidden></div>
+                    </div>
+                </div>
+            </div>
+        </center>
+    }
+    <div id="error-ubicacion-admin" class="alert alert-danger" role="alert" hidden></div>
+    <div id="target-ubicacion-admin"></div>
+}

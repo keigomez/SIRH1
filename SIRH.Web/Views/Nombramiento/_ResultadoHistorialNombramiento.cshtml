@@ -1,0 +1,68 @@
+﻿@model IList<SIRH.Web.ViewModels.FormularioNombramientoVM>
+
+@{
+    using (Html.BeginForm("ReporteDesgloseCaucion", "Caucion", FormMethod.Post, new { @id = "thisForm" }))
+    {
+        <div class="card">
+            <div class="card-body">
+                <table class="table detalle">
+                    <thead>
+                        <tr>
+                            <th scope="col">Puesto</th>
+                            <th scope="col">Cédula</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Tipo nombramiento</th>
+                            <th scope="col">Fecha rige</th>
+                            <th scope="col">Fecha vence</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < Model.Count(); i++)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.Encode(Model.ElementAt(i).Puesto.CodPuesto)
+                                    @Html.HiddenFor(model => model[i].Puesto.CodPuesto)
+                                </td>
+                                <td>
+                                    @Html.Encode(Model.ElementAt(i).Funcionario.Cedula)
+                                    @Html.HiddenFor(model => model[i].Funcionario.Cedula)
+                                    @Html.HiddenFor(model => model[i].Funcionario.Nombre)
+                                    @Html.HiddenFor(model => model[i].Funcionario.PrimerApellido)
+                                    @Html.HiddenFor(model => model[i].Funcionario.SegundoApellido)
+                                </td>
+                                <td>
+                                    @Model.ElementAt(i).Funcionario.Nombre @Model.ElementAt(i).Funcionario.PrimerApellido @Model.ElementAt(i).Funcionario.SegundoApellido
+                                </td>
+                                <td>
+                                    @Model.ElementAt(i).Nombramiento.EstadoNombramiento.DesEstado
+                                    @Html.HiddenFor(model => model[i].Nombramiento.EstadoNombramiento.DesEstado)
+                                </td>
+                                <td>
+                                    @Html.Encode(Model.ElementAt(i).Nombramiento.FecRige.ToShortDateString())
+                                    @Html.HiddenFor(model => model[i].Nombramiento.FecRige)
+                                </td>
+                                <td>
+                                    @if (Model.ElementAt(i).Nombramiento.FecVence.Year != 1)
+                                    {
+                                        @Html.Encode(Model.ElementAt(i).Nombramiento.FecVence.ToShortDateString())
+                                        @Html.HiddenFor(model => model[i].Nombramiento.FecVence)
+                                    }
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("DetalleNombramiento", "Nombramiento", new { codigo = Model.ElementAt(i).Nombramiento.IdEntidad })" class="btn btn-primary btn-sm">
+                                        <i class="fa fa-search"></i> Ver Detalle
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <br />
+                @*<button class="btn btn-danger" type="submit"><i class="fa fa-file-pdf-o"></i> Exportar a pdf</button>*@
+            </div>
+        </div>
+    }
+    <br />
+}

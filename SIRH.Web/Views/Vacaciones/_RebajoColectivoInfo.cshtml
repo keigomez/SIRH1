@@ -1,0 +1,69 @@
+﻿
+
+@model SIRH.Web.ViewModels.RebajoColectivoVM
+@{ if (Model != null)
+    {
+        using (Ajax.BeginForm("RebajoColectivoInfo", new AjaxOptions
+        {
+            UpdateTargetId = "dvResultadoBusqueda",
+            HttpMethod = "POST",
+            OnComplete = "CompleteInfo",
+            OnBegin = "BeginCargarAnular"
+        }))
+        {
+            Html.ValidationSummary(true);
+            @Html.HiddenFor(model => model.Registro.NumeroTransaccion)
+            @Html.HiddenFor(model => model.Registro.Dias)
+            @Html.HiddenFor(model => model.seleccionPolicial)
+            @Html.HiddenFor(model => model.seleccionSeguridad)
+            if (Model.funcionariosInconsistencias != null)
+            {
+                for (int i = 0; i < Model.funcionariosInconsistencias.Count(); i++)
+                {
+                    @Html.HiddenFor(model => Model.funcionariosInconsistencias[i].Cedula)
+                    @Html.HiddenFor(model => Model.funcionariosInconsistencias[i].Nombre)
+                    @Html.HiddenFor(model => Model.funcionariosInconsistencias[i].PrimerApellido)
+                    @Html.HiddenFor(model => Model.funcionariosInconsistencias[i].SegundoApellido)
+                }
+            }
+            <div class="card border-success">
+                <div class="card-header"><strong>El rebajo colectivo se realizó satisfactoriamente!</strong></div>
+                <div class="card-body">
+                    <button id="btnBuscar" type="submit" class="btn btn-danger  " name="SubmitButton" value="Anular">
+                        <i class="fa fa-calendar-minus-o"></i>
+                        Anular
+                    </button>
+                    @*<button id="btnBuscar" type="submit" class="btn btn-primary " name="SubmitButton" value="Inconsistencias">
+                        <i class="fa fa-exclamation-triangle "></i>
+                        Inconsistencias
+                    </button>*@
+                        <a href="@Url.Action("ReporteInconsistencias", "Vacaciones",  new
+                            {
+                                fechaInic= Model.Registro.FechaRige,
+                                fechaVence= Model.Registro.FechaVence,
+                                seguridad= Model.seleccionSeguridad,
+                                transito=Model.seleccionPolicial
+
+                            })" class="btn btn-success">
+                            <i class="fa fa-exclamation-triangle"></i>Inconsistencias
+
+                        </a>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-10">
+                    <center>
+                        <div id="preloader" class="loader" hidden></div>
+                    </center>
+                </div>
+
+
+            </div>
+        }
+    }
+    <div id="dvResultadoBusqueda"></div>
+}
+
+
+

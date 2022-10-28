@@ -1,0 +1,180 @@
+﻿@model SIRH.Web.ViewModels.BusquedaHistorialCalificacionVM
+<div id="respuesta" class="jumbotron">
+    <center>
+        @{
+            if (Model != null)
+            {
+                if (Model.CedulaSearch != "")
+                {
+                    if (Model.Funcionario == null)
+                    {
+                        <p style="color: Red">No se encontraron resultados para la búsqueda solicitada.</p>
+                    }
+                    else
+                    {
+                        <div class="card">
+                            <div class="card-header text-center">
+                                <strong>IDENTIFICACIÓN DEL COLABORADOR (A)</strong>
+                                @Html.HiddenFor(model => model.Funcionario.IdEntidad)
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-1">
+                                    <label><b>Cédula:</b></label>
+                                </div>
+                                <div class="col-sm-2">
+                                    @Html.DisplayFor(model => model.Funcionario.Cedula, new { @class = "form-control" })
+                                </div>
+                                <div class="col-sm-1">
+                                    <label><b>Nombre:</b></label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label class="form">@Model.Funcionario.Nombre @Model.Funcionario.PrimerApellido @Model.Funcionario.SegundoApellido</label>
+                                </div>
+                                <div class="col-sm-3">
+                                    <label><b>Núm. Expediente:</b></label>
+                                </div>
+                                <div class="col-sm-1">
+                                    @Html.DisplayFor(model => model.Expediente.NumeroExpediente, new { @class = "form-control" })
+                                    @Html.HiddenFor(model => model.Expediente.NumeroExpediente)
+                                </div>
+                            </div>
+                            @*<div class="form-group row">
+                                <label class="col-sm-2 col-form-label"><b>Núm. Puesto</b></label>
+                                <div class="col-sm-2">
+                                    @Html.DisplayFor(model => model.Puesto.CodPuesto, new { @class = "form-control" })
+                                </div>
+                                <label class="col-sm-2 col-form-label"><b>Núm. Expediente</b></label>
+                                <div class="col-sm-2">
+                                    @Html.DisplayFor(model => model.Expediente.NumeroExpediente, new { @class = "form-control" })
+                                    @Html.HiddenFor(model => model.Expediente.NumeroExpediente)
+                                </div>
+                            </div>*@
+                            @*<div class="form-group row">
+                                <label class="col-sm-3 col-form-label"><b>Clase</b></label>
+                                <div class="col-sm-3">
+                                    @Html.DisplayFor(model => model.DetallePuesto.Clase.DesClase, new { @class = "form-control" })
+                                </div>
+                                <label class="col-sm-3 col-form-label"><b>Especialidad</b></label>
+                                <div class="col-sm-3">
+                                    @Html.DisplayFor(model => model.DetallePuesto.Especialidad.DesEspecialidad, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label"><b>Ocupación</b></label>
+                                <div class="col-sm-3">
+                                    @Html.DisplayFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label"><b>División</b></label>
+                                <div class="col-sm-3">
+                                    @Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision, new { @class = "form-control" })
+                                </div>
+                                <label class="col-sm-3 col-form-label"><b>Dirección</b></label>
+                                <div class="col-sm-3">
+                                    @Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label"><b>Departamento</b></label>
+                                <div class="col-sm-3">
+                                    @Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento, new { @class = "form-control" })
+                                </div>
+
+                                <label class="col-sm-3 col-form-label"><b>Sección</b></label>
+                                <div class="col-sm-3">
+                                    @Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion, new { @class = "form-control" })
+                                </div>
+                            </div>*@
+                        </div>
+                        <br />
+
+                        <div class="card">
+                            <div class="card-header text-center">
+                                <strong>Calificaciones</strong>
+                            </div>
+                            @Html.ValidationSummary(true)
+
+                            <fieldset>
+                                <table class="table">
+                                    <thead class="thead">
+                                        <tr>
+                                            <th hidden>ID</th>
+                                            <th>Periodo</th>
+                                            <th>Calificación</th>
+                                            <th>Nota</th>
+                                            <th>Detalle</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.Calificaciones.Where(Q => Q.Periodo != null).ToList().OrderByDescending(Q => Q.Periodo.IdEntidad))
+                                        {
+                                            <tr>
+                                                <td hidden id="id">@item.IdEntidad</td>
+                                                @if (item.CalificacionDTO != null)
+                                                {
+                                                    if (item.NombramientoDTO.IdEntidad > 0) // Si no tiene nombramiento, es una registro histórico, por eso no se puede ver el detalle
+                                                    {
+                                                        if (item.IndEstadoDTO == 1)
+                                                        {
+                                                            <td>@item.Periodo.IdEntidad</td>
+                                                            <td>@item.CalificacionModificadoDTO.DesCalificacion</td>
+                                                            <td>@item.Nota</td>
+                                                            <td>
+                                                                <a href="@Url.Action("Details", "Calificacion", new { codigo = @item.IdEntidad })" class="btn btn-primary btn-sm">
+                                                                    <i class="fa fa-search"></i> Ver Detalle
+                                                                </a>
+                                                            </td>
+                                                            @*<td>
+                                                                <a href="@Url.Action("EditHistorialDetalle", "Calificacion", new { codigo = @item.IdEntidad })" class="btn btn-warning">
+                                                                    <i class="fa fa-edit"></i> Anular
+                                                                </a>
+                                                            </td>*@
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        <td>@item.Periodo.IdEntidad</td>
+                                                        <td>@item.CalificacionDTO.DesCalificacion</td>
+                                                        <td>@item.Nota</td>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                }
+                                                <!--More properties-->
+                                            </tr>
+                                        }
+                                    </tbody>
+                                    <!--Add footer for totals-->
+                                    <tr>
+                                        @* <td colspan="7"><div class="link_pdf"><a href="#" id="submit_link" onclick="return ExportarAPdf();">Exportar resultados a PDF</a></div></td>*@
+                                    </tr>
+                                </table>
+                            </fieldset>
+
+                        </div>
+
+                        if (Model.EsAdministrador == true)
+                        {
+                            <div class="form-group row">
+                                <div class="col-sm-12 align-right">
+                                    @Html.ActionLink("Agregar Calificación", "", "Calificacion", null, new { @onclick = "return CargarDatoHistorico('" + Model.Funcionario.Cedula + "');", @type = "button", @class = "btn btn-outline-primary" })
+                                </div>
+                            </div>
+                        }
+                    }
+                }
+            }
+            else
+            {
+                <p style="color: red">Advertencia: Introduzca Cedula.</p>
+            }
+        }
+    </center>
+</div>

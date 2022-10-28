@@ -1,0 +1,37 @@
+﻿@model SIRH.Web.Models.EspecialidadModel
+@{
+    using (Ajax.BeginForm("Especialidad_Index", "Puesto", new AjaxOptions { UpdateTargetId = "target-especialidad", HttpMethod = "POST", OnSuccess = "successDataEspecialidad", OnBegin = "beginDataEspecialidad" }))
+    {
+        <div class="card">
+            <h5 class="card-header">Parámetros de búsqueda:</h5>
+            <div class="card-body">
+                <div class="row">
+                    <div class="form-group col-7">
+                         @Html.Label("Código de especialidad")
+                         <span>:</span>
+                         @Html.TextBox("codigoEspecialidad", String.Empty, new { @class="form-control", @onkeypress = "return IsNumeric(event, 'especialidad', 'código de especialidad')" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-7">
+                        @Html.Label("Nombre de especialidad")
+                        <span>:</span>
+                        @Html.TextBox("nomEspecialidad",String.Empty,new { @class="form-control" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-3">
+                        <input type="submit" value="Buscar" id="btnBuscaEspecialidad" class="btn btn-primary" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-3">
+                        <div id="progressbarespecialidad" class="loader" hidden></div>
+                    </div>
+                </div>
+                <div id="error-especialidad" class="alert alert-danger" role="alert" hidden></div>
+            </div>
+        </div>
+    }
+    <div id="target-especialidad"></div>
+}

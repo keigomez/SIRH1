@@ -1,0 +1,68 @@
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Datos\bin\Debug\SIRH.Datos.dll.config
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Datos\bin\Debug\SIRH.Datos.dll
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Datos\bin\Debug\SIRH.Datos.pdb
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Datos\bin\Debug\SIRH.DTO.dll
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Datos\bin\Debug\SIRH.DTO.pdb
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Datos\obj\Debug\SIRH.Datos.csprojResolveAssemblyReference.cache
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Datos\obj\Debug\SIRH.Datos.dll
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Datos\obj\Debug\SIRH.Datos.pdb
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Datos\obj\Debug\SIRH.Datos.csproj.AssemblyReference.cache
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Datos\obj\Debug\SIRH.Datos.csproj.CoreCompileInputs.cache
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Datos\bin\Debug\SIRH.Datos.dll.config
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Datos\bin\Debug\SIRH.Datos.dll
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Datos\bin\Debug\SIRH.Datos.pdb
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Datos\bin\Debug\SIRH.DTO.dll
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Datos\bin\Debug\SIRH.DTO.pdb
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Datos\obj\Debug\SIRH.Datos.csproj.CopyComplete
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Datos\obj\Debug\SIRH.Datos.dll
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Datos\obj\Debug\SIRH.Datos.pdb
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Datos\bin\Debug\SIRH.Datos.dll.config
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Datos\bin\Debug\SIRH.Datos.dll
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Datos\bin\Debug\SIRH.Datos.pdb
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Datos\bin\Debug\SIRH.DTO.dll
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Datos\bin\Debug\SIRH.DTO.pdb
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Datos\obj\Debug\SIRH.Datos.csproj.AssemblyReference.cache
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Datos\obj\Debug\SIRH.Datos.csproj.CoreCompileInputs.cache
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Datos\obj\Debug\SIRH.Datos.csproj.CopyComplete
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Datos\obj\Debug\SIRH.Datos.dll
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Datos\obj\Debug\SIRH.Datos.pdb
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Datos\bin\Debug\SIRH.Datos.dll.config
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Datos\bin\Debug\SIRH.Datos.dll
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Datos\bin\Debug\SIRH.Datos.pdb
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Datos\bin\Debug\SIRH.DTO.dll
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Datos\bin\Debug\SIRH.DTO.pdb
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Datos\obj\Debug\SIRH.Datos.csproj.AssemblyReference.cache
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Datos\obj\Debug\SIRH.Datos.csproj.CoreCompileInputs.cache
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Datos\obj\Debug\SIRH.Datos.csproj.CopyComplete
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Datos\obj\Debug\SIRH.Datos.dll
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Datos\obj\Debug\SIRH.Datos.pdb
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Datos\bin\Debug\SIRH.Datos.dll.config
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Datos\bin\Debug\SIRH.Datos.dll
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Datos\bin\Debug\SIRH.Datos.pdb
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Datos\bin\Debug\SIRH.DTO.dll
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Datos\bin\Debug\SIRH.DTO.pdb
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Datos\obj\Debug\SIRH.Datos.csproj.AssemblyReference.cache
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Datos\obj\Debug\SIRH.Datos.csproj.CoreCompileInputs.cache
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Datos\obj\Debug\SIRH.Datos.csproj.CopyComplete
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Datos\obj\Debug\SIRH.Datos.dll
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Datos\obj\Debug\SIRH.Datos.pdb
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Datos\bin\Debug\SIRH.Datos.dll.config
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Datos\bin\Debug\SIRH.Datos.dll
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Datos\bin\Debug\SIRH.Datos.pdb
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Datos\bin\Debug\SIRH.DTO.dll
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Datos\bin\Debug\SIRH.DTO.pdb
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Datos\obj\Debug\SIRH.Datos.csproj.AssemblyReference.cache
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Datos\obj\Debug\SIRH.Datos.csproj.CoreCompileInputs.cache
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Datos\obj\Debug\SIRH.Datos.csproj.CopyComplete
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Datos\obj\Debug\SIRH.Datos.dll
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Datos\obj\Debug\SIRH.Datos.pdb
+C:\Users\ramir\Videos\SIRH-main\SIRH.Datos\bin\Debug\SIRH.Datos.dll.config
+C:\Users\ramir\Videos\SIRH-main\SIRH.Datos\bin\Debug\SIRH.Datos.dll
+C:\Users\ramir\Videos\SIRH-main\SIRH.Datos\bin\Debug\SIRH.Datos.pdb
+C:\Users\ramir\Videos\SIRH-main\SIRH.Datos\bin\Debug\SIRH.DTO.dll
+C:\Users\ramir\Videos\SIRH-main\SIRH.Datos\bin\Debug\SIRH.DTO.pdb
+C:\Users\ramir\Videos\SIRH-main\SIRH.Datos\obj\Debug\SIRH.Datos.csproj.AssemblyReference.cache
+C:\Users\ramir\Videos\SIRH-main\SIRH.Datos\obj\Debug\SIRH.Datos.csproj.CoreCompileInputs.cache
+C:\Users\ramir\Videos\SIRH-main\SIRH.Datos\obj\Debug\SIRH.Datos.csproj.CopyComplete
+C:\Users\ramir\Videos\SIRH-main\SIRH.Datos\obj\Debug\SIRH.Datos.dll
+C:\Users\ramir\Videos\SIRH-main\SIRH.Datos\obj\Debug\SIRH.Datos.pdb

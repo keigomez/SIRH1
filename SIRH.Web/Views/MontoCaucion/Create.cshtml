@@ -1,0 +1,174 @@
+﻿@model SIRH.Web.ViewModels.BusquedaMontosVM
+
+@{
+    ViewBag.Title = "Agregar nivel de caución";
+    Layout = "~/Views/Shared/Cauciones.cshtml";
+}
+
+@*<link rel="stylesheet" href="~/Content/datetimepicker.css">*@
+<link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+<script src="~/Content/bootstrap-datepicker/js/jquery-3.4.1.slim.min.js"></script>
+<link id="bsdp-css" href="~/Content/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+
+<blockquote><h3>Agregar nivel de caución</h3></blockquote>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <div class="card">
+        <div class="card-header">
+            <strong>Datos del nivel</strong>
+        </div>
+        <div class="card-body">
+
+            <div class="form-group row">
+                <div class="col-sm-2">
+                    @Html.LabelFor(model => model.MontoCaucion.Nivel, new { @for = "Nivel", @class = "col-form-label" }) 
+                    <i class="fa fa-info-circle" data-toggle="tooltip" data-placement="bottom" title="Este campo es obligatorio y su longitud máxima es de 3 caracteres."></i>
+                    <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="bottom" title="Idicador de nivel para las pólizas de caución. Ej. A, B, C, I, II, III, etc."></i>
+                </div>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.MontoCaucion.Nivel, new { @id = "Nivel", @class = "form-control", @maxlength = "3" })
+                    @Html.ValidationMessageFor(model => model.MontoCaucion.Nivel)
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-2">
+                    @Html.LabelFor(model => model.MontoCaucion.Descripcion, new { @for = "Descripcion", @class = "col-form-label" })
+                </div>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.MontoCaucion.Descripcion, new { @id = "Descripcion", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.MontoCaucion.Descripcion)
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-2">
+                    @Html.LabelFor(model => model.MontoCaucion.MontoColones, new { @for = "MontoColones", @class = "col-form-label" })
+                    <i class="fa fa-info-circle" data-toggle="tooltip" data-placement="bottom" title="Este campo es obligatorio."></i>
+                    <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="bottom" title="Valor numérico del monto en colones de la póliza."></i>
+                </div>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.MontoCaucion.MontoColones, new { @id = "MontoColones", @class = "form-control", @onkeypress = "return IsNumeric(event, '', 'campo de monto')" })
+                    @Html.ValidationMessageFor(model => model.MontoCaucion.MontoColones)
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-2">
+                    @Html.LabelFor(model => model.MontoCaucion.FechaRige, new { @for = "FechaRige", @class = "col-form-label" })
+                    <i class="fa fa-info-circle" data-toggle="tooltip" data-placement="bottom" title="Este campo es obligatorio."></i>
+                </div>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.MontoCaucion.FechaRige, new { @id = "FechaRige", @class = "form-control", @readonly = "readonly" })
+                    @Html.ValidationMessageFor(model => model.MontoCaucion.FechaRige)
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-2">
+                    @Html.LabelFor(model => model.MontoCaucion.Justificacion, new { @for = "Justificacion", @class = "col-form-label"})
+                    <i class="fa fa-info-circle" data-toggle="tooltip" data-placement="bottom" title="Este campo es obligatorio."></i>
+                    <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="bottom" title="Base justificativa (Decreto, ley, etc) para el monto de caución."></i>
+                </div>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.MontoCaucion.Justificacion, new { @id = "Justificacion", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.MontoCaucion.Justificacion)
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-2">
+                    @Html.LabelFor(model => model.MontoCaucion.DetalleEstadoMonto, new { @for = "ddlEstado", @class = "col-form-label" })
+                    <i class="fa fa-info-circle" data-toggle="tooltip" data-placement="bottom" title="Este campo es obligatorio."></i>
+                    <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="bottom" title="En caso de ingresar un nivel inactivo se debe indicar la fecha de vencimiento y la justificación de inactividad."></i>
+                </div>
+                <div class="col-sm-10">
+                    @Html.DropDownListFor(model => model.EstadoSeleccionado,
+                            Model.Estados as SelectList,
+                            null, new { @id = "ddlEstado", @class = "form-control", onChange = "RegistrarInactividad()" })
+                    @Html.ValidationMessageFor(model => model.EstadoSeleccionado)
+                </div>
+            </div>
+
+            <div class="form-group row" id="trFechaInactividad">
+                <div class="col-sm-2">
+                    @Html.LabelFor(model => model.MontoCaucion.FechaInactiva, new { @for = "FechaInactiva", @class = "col-form-label" })
+                    <i class="fa fa-info-circle" data-toggle="tooltip" data-placement="bottom" title="Este campo es obligatorio."></i>
+                </div>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.MontoCaucion.FechaInactiva, new { @id = "FechaInactiva", @class = "form-control", @readonly = "readonly" })
+                    @Html.ValidationMessageFor(model => model.MontoCaucion.FechaInactiva)
+                </div>
+            </div>
+
+            <div class="form-group row" id="trJustificacionInactividad">
+                @Html.LabelFor(model => model.MontoCaucion.JustificacionInactiva, new { @for = "JustificacionInactiva", @class = "col-sm-2 col-form-label" })
+                <div class="col-sm-10">
+                    @Html.TextAreaFor(model => model.MontoCaucion.JustificacionInactiva, new { @id = "JustificacionInactiva", @class = "form-control", rows = "5"})
+                    @Html.ValidationMessageFor(model => model.MontoCaucion.JustificacionInactiva)
+                </div>
+            </div>
+
+            <input id="btnGuardar" name="SubmitButton" type="submit" value="Guardar nivel" class="btn btn-primary float-right" />
+            <div id="preloader" class="loader float-right" style="display: none"></div>
+        </div>
+    </div>
+
+    <br />
+    if (!Html.ViewData.ModelState.IsValid)
+    {
+        <div class="card border-danger">
+            <div class="card-header"><strong>El formulario contiene los siguientes errores:</strong></div>
+            <div class="card-body text-danger">
+                @foreach (var modelError in Html.ViewData.ModelState.SelectMany(keyValuePair => keyValuePair.Value.Errors))
+                {
+                    <div class="alert alert-danger" role="alert">
+                        <h5>@modelError.ErrorMessage</h5>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+}
+
+<br />
+
+<a href="@Url.Action("Index", "Caucion")" class="btn btn-primary">
+    <i class="fa fa-home"></i> Regresar al inicio
+</a>
+
+
+@Scripts.Render("~/bundles/jquery")
+<script src="~/Scripts/popper.min.js"></script>
+@Scripts.Render("~/bundles/bootstrap")
+<script src="~/Scripts/Pages/CreateMontoCaucion.js" type="text/javascript"></script>
+@*<script src="~/Scripts/datetimepicker.js" type="text/javascript"></script>
+<script src="~/Scripts/datetimepicker-es.js" type="text/javascript"></script>*@
+<script src="~/Content/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script src="~/Content/bootstrap-datepicker/locales/bootstrap-datepicker.es.min.js" charset="UTF-8"></script>
+<script src="~/Scripts/funciones-generales.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("body").tooltip({ selector: '[data-toggle=tooltip]' });
+    });
+
+    $(function () {
+        $('#FechaRige').val('');
+        $('#FechaRige').datepicker(
+        {
+            language: "es",
+            autoclose: true
+        });
+
+        $('#FechaInactiva').val('');
+        $('#FechaInactiva').datepicker(
+        {
+            language: "es",
+            autoclose: true
+        });
+    });
+</script>
+

@@ -1,0 +1,224 @@
+﻿@model SIRH.Web.ViewModels.FormularioCalificacionVM
+
+@{
+    ViewBag.Title = "DetailsHistorial";
+    Layout = "~/Views/Shared/Calificacion.cshtml";
+}
+
+<div id="respuesta" class="jumbotron">
+    <center>
+        <h3 class="display-5">Calificación de @Model.Funcionario.Nombre   @Model.Funcionario.PrimerApellido  @Model.Funcionario.SegundoApellido del periodo @Model.CalificacionNombramiento.Periodo.IdEntidad</h3>
+        <br />
+        @using (Ajax.BeginForm("ReporteDetalleCalificacion", "Calificacion", new AjaxOptions
+        {
+            HttpMethod = "Post",
+            InsertionMode = InsertionMode.Replace,
+            OnSuccess = "SuccessCargarFuncionario",
+            OnComplete = "CompleteCargarFuncionario",
+            OnBegin = "BeginCargarFuncionario"
+        }))
+        {
+            <div class="card">
+                <div class="card-header text-center">
+                    <strong>IDENTIFICACIÓN DEL COLABORADOR (A)</strong>
+                    @Html.HiddenFor(model => model.Funcionario.IdEntidad)
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label"><b>Cédula</b></label>
+                    <div class="col-sm-3">
+                        @Html.DisplayFor(model => model.Funcionario.Cedula, new { @class = "form-control" })
+                    </div>
+                    <label class="col-sm-3 col-form-label"><b>Nombre</b></label>
+                    <div class="col-sm-3">
+                        <label class="form">@Model.Funcionario.Nombre @Model.Funcionario.PrimerApellido @Model.Funcionario.SegundoApellido</label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label"><b>Núm. Puesto</b></label>
+                    <div class="col-sm-3">
+                        @Html.DisplayFor(model => model.Puesto.CodPuesto, new { @class = "form-control" })
+                    </div>
+                    <label class="col-sm-3 col-form-label"><b>Núm. Expediente</b></label>
+                    <div class="col-sm-3">
+                        <label class="form">@Model.Expediente.NumeroExpediente</label>
+                    </div>
+                    @*<label class="col-sm-3 col-form-label"><b>Sexo</b></label>
+                    <div class="col-sm-3">
+                        <label class="form">@Model.Funcionario.Sexo</label>
+                    </div>*@
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label"><b>Clase</b></label>
+                    <div class="col-sm-3">
+                        @Html.DisplayFor(model => model.DetallePuesto.Clase.DesClase, new { @class = "form-control" })
+                    </div>
+                    <label class="col-sm-3 col-form-label"><b>Especialidad</b></label>
+                    <div class="col-sm-3">
+                        @Html.DisplayFor(model => model.DetallePuesto.Especialidad.DesEspecialidad, new { @class = "form-control" })
+                    </div>
+                </div>
+                @*<div class="form-group row">
+                    <label class="col-sm-3 col-form-label"><b>Ocupación</b></label>
+                    <div class="col-sm-3">
+                        @Html.DisplayFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal, new { @class = "form-control" })
+                    </div>
+                    <label class="col-sm-3 col-form-label"><b>Código Presupuestario</b></label>
+                    <div class="col-sm-3">
+                        @Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto, new { @class = "form-control" })
+                    </div>
+                </div>*@
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label"><b>División</b></label>
+                    <div class="col-sm-3">
+                        @Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision, new { @class = "form-control" })
+                    </div>
+
+                    <label class="col-sm-3 col-form-label"><b>Dirección</b></label>
+                    <div class="col-sm-3">
+                        @Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label"><b>Departamento</b></label>
+                    <div class="col-sm-3">
+                        @Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento, new { @class = "form-control" })
+                    </div>
+
+                    <label class="col-sm-3 col-form-label"><b>Sección</b></label>
+                    <div class="col-sm-3">
+                        @Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div class="card">
+                <table class="table">
+                    <thead class="thead">
+                        <tr>
+                            <th hidden>ID</th>
+                            <th>Nota</th>
+                            <th>Calificación</th>
+                            <th>Periodo</th>
+                            @if (Model.CalificacionNombramiento != null)
+                            {
+                                <th>Estado</th>
+                            }
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td hidden id="id">@Model.CalificacionNombramiento.IdEntidad</td>
+                            <td>@Model.PuntuacionFinal</td>
+                            @*<td>@Model.CalificacionNombramiento.CalificacionDTO.DesCalificacion</td>*@
+                            <td>@Model.CalificacionFinalLetra</td>
+                            <td>@Model.CalificacionNombramiento.Periodo.IdEntidad</td>
+                            @if (Model.CalificacionNombramiento != null)
+                            {
+                                if (Model.CalificacionNombramiento.IndEstadoDTO == 1)
+                                {
+                                    <td>Activo</td>
+                                }
+                                else if (Model.CalificacionNombramiento.IndEstadoDTO == 2)
+                                {
+                                    <td>Anulado</td>
+                                }
+                            }
+                        </tr>
+                        @Html.HiddenFor(model => model.Periodos)
+                        @Html.HiddenFor(model => model.CalificacionNombramiento.IdEntidad)
+                        @Html.HiddenFor(model => model.CalificacionNombramiento.CalificacionDTO.DesCalificacion)
+                        @Html.HiddenFor(model => model.CalificacionNombramiento.Periodo.IdEntidad)
+                        @Html.HiddenFor(model => model.Funcionario.Nombre)
+                        @Html.HiddenFor(model => model.Funcionario.PrimerApellido)
+                        @Html.HiddenFor(model => model.Funcionario.SegundoApellido)
+                        @Html.HiddenFor(model => model.Funcionario.Cedula)
+                        @Html.HiddenFor(model => model.Puesto.CodPuesto)
+                        @Html.HiddenFor(model => model.Puesto.EstadoPuesto)
+                        @Html.HiddenFor(model => model.Puesto.EstudioPuesto)
+                        @Html.HiddenFor(model => model.Puesto.ObservacionesPuesto)
+                        @Html.HiddenFor(model => model.DetallePuesto.Clase.DesClase)
+                        @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto)
+                        @Html.HiddenFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal)
+                        @Html.HiddenFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)
+                        @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                        @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                        @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                        @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion)
+                        @Html.HiddenFor(model => model.Expediente.NumeroExpediente)
+
+                        @Html.HiddenFor(model => model.CalificacionNombramiento.JefeInmediato.IdEntidad)
+                        @Html.HiddenFor(model => model.CalificacionNombramiento.JefeInmediato.Cedula)
+                        @Html.HiddenFor(model => model.CalificacionNombramiento.JefeInmediato.Nombre)
+                        @Html.HiddenFor(model => model.CalificacionNombramiento.JefeInmediato.PrimerApellido)
+                        @Html.HiddenFor(model => model.CalificacionNombramiento.JefeInmediato.SegundoApellido)
+                        @Html.HiddenFor(model => model.CalificacionNombramiento.JefeSuperior.IdEntidad)
+                        @Html.HiddenFor(model => model.CalificacionNombramiento.JefeSuperior.Cedula)
+                        @Html.HiddenFor(model => model.CalificacionNombramiento.JefeSuperior.Nombre)
+                        @Html.HiddenFor(model => model.CalificacionNombramiento.JefeSuperior.PrimerApellido)
+                        @Html.HiddenFor(model => model.CalificacionNombramiento.JefeSuperior.SegundoApellido)
+                        @Html.HiddenFor(model => model.CalificacionNombramiento.ObsGeneralDTO)
+                        @Html.HiddenFor(model => model.CalificacionNombramiento.ObsCapacitacionDTO)
+                        @Html.HiddenFor(model => model.CalificacionNombramiento.ObsJustificacionCapacitacionDTO)
+                        @Html.HiddenFor(model => model.CalificacionNombramiento.IndFormularioDTO)
+                        @Html.HiddenFor(model => model.CalificacionNombramiento.IndEntregadoDTO)
+                        @Html.HiddenFor(model => model.CalificacionNombramiento.IndConformidadDTO)
+                        @Html.HiddenFor(model => model.CalificacionNombramiento.IndRatificacionDTO)
+                        @Html.HiddenFor(model => model.CalificacionNombramiento.FecCreacionDTO)
+                        @Html.HiddenFor(model => model.CalificacionNombramiento.FecRatificacionDTO)
+
+                        @for (int i = 0; i < Model.CalificacionNombramiento.DetalleCalificacion.Count(); i++)
+                        {
+                            @Html.HiddenFor(model => model.CalificacionNombramiento.DetalleCalificacion[i].CatalogoPreguntaDTO.DesTituloPDTO)
+                            @Html.HiddenFor(model => model.CalificacionNombramiento.DetalleCalificacion[i].CatalogoPreguntaDTO.DesPreguntaDTO)
+                            @Html.HiddenFor(model => model.CalificacionNombramiento.DetalleCalificacion[i].CatalogoPreguntaDTO.IndTipoFormularioDTO)
+                            @Html.HiddenFor(model => model.CalificacionNombramiento.DetalleCalificacion[i].NumNotasPorPreguntaDTO)
+                            @Html.HiddenFor(model => model.Detalle[i].NumNotasPorPreguntaDTO)
+                            @*@Html.HiddenFor(model => model.DEvaluacion[i].NumNotasPorPreguntaDTO);*@
+                        }
+
+                        @for (int i = 0; i < Model.CalificacionNombramiento.DetalleCalificacionModificado.Count(); i++)
+                        {
+                            @Html.HiddenFor(model => model.CalificacionNombramiento.DetalleCalificacionModificado[i].CatalogoPreguntaDTO.DesTituloPDTO)
+                            @Html.HiddenFor(model => model.CalificacionNombramiento.DetalleCalificacionModificado[i].CatalogoPreguntaDTO.DesPreguntaDTO)
+                            @Html.HiddenFor(model => model.CalificacionNombramiento.DetalleCalificacionModificado[i].CatalogoPreguntaDTO.IndTipoFormularioDTO)
+                            @Html.HiddenFor(model => model.CalificacionNombramiento.DetalleCalificacionModificado[i].NumNotasPorPreguntaDTO)
+                        }
+
+                        @Html.HiddenFor(model => model.NombreFormulario)
+
+                    </tbody>
+                    <!--Add footer for totals-->
+
+                </table>
+                <hr />
+                <div class="form-group row">
+                    <div class="col-sm-7">
+                        <button class="btn btn-danger" type="submit"><i class="fa fa-file-pdf-o"></i> Exportar a PDF</button>
+                    </div>
+                    <div class="col-sm-3">
+                        @if (Model.CalificacionNombramiento != null)
+                        {
+                            if (Model.CalificacionNombramiento.IndEstadoDTO == 1 && Model.EsAnulable == true)
+                            {
+                                <a href="@Url.Action("EditHistorialDetalle", "Calificacion", new { codigo = @Model.CalificacionNombramiento.IdEntidad, codigoDCN = Model.CalificacionNombramiento.IdEntidad })" class="btn btn-warning">
+                                    <i class="fa fa-edit"></i> Anular
+                                </a>
+                            }
+                            @*else
+                            {
+                                <p id="error" style="color: Red">No se puede Anular, Dato Ya Anulado</p>
+                            }*@
+                        }
+                        else
+                        {
+                            <p id="error" style="color: Red">No se puede Anular, Dato Antiguo</p>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </center>
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")

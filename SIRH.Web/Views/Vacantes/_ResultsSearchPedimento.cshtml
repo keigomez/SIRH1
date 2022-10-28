@@ -1,0 +1,51 @@
+﻿@model List<SIRH.Web.ViewModels.PedimentoPuestoVM>
+
+@{
+    using (Html.BeginForm("ReporteDesglosePedimento", "Vacantes", FormMethod.Post, new { @id = "thisForm" }))
+    {
+        <div class="card">
+            <div class="card-header">
+                <b>Resultados (@Model.Count())</b>
+            </div>
+            <div class="card-body">
+                <table class="table detalle">
+                    <thead>
+                        <tr>
+                            <th scope="col"># Puesto</th>
+                            <th scope="col"># Pedimento</th>
+                            <th scope="col">Fecha movimiento</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < Model.Count(); i++)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.Encode(Model.ElementAt(i).Puesto.CodPuesto)
+                                    @Html.HiddenFor(model => model[i].Puesto.CodPuesto)
+                                </td>
+                                <td>
+                                    @Model.ElementAt(i).PedimentoPuesto.NumeroPedimento
+                                    @Html.HiddenFor(model => model[i].PedimentoPuesto.NumeroPedimento)
+                                </td>
+                                <td>
+                                    @Html.Encode(Model.ElementAt(i).PedimentoPuesto.FechaPedimento.ToShortDateString())
+                                    @Html.HiddenFor(model => model[i].PedimentoPuesto.FechaPedimento)
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("DetallePedimento", "Vacantes", new { idPedimento = Model.ElementAt(i).PedimentoPuesto.IdEntidad })" class="btn btn-primary btn-sm">
+                                        <i class="fa fa-search"></i> Ver Detalle
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <br />
+                @*<button class="btn btn-danger" type="submit"><i class="fa fa-file-pdf-o"></i> Exportar a pdf</button>*@
+            </div>
+        </div>
+    }
+    <br />
+}

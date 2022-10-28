@@ -1,0 +1,368 @@
+﻿@model SIRH.Web.ViewModels.PerfilBasicoFuncionarioVM
+
+@{
+    if (Model != null)
+    {
+        using (Ajax.BeginForm("RegistrarCandidato", null, new AjaxOptions
+        {
+            HttpMethod = "POST",
+            UpdateTargetId = "detalleResultado",
+            OnBegin = "BeginGuardarCandidato",
+            OnComplete = "CompleteGuardarCandidato",
+            OnSuccess = "SuccessGuardarCandidato",
+            OnFailure = "SuccessGuardarCandidato"
+        }, new { @id = "thisForm" }))
+        {
+            <div id="formulario">
+                <div id="tabs">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a id="tab1" class="nav-link" href="#tabs-1" data-toggle="tab" role="tab" aria-controls="tabs-1" aria-selected="true">Datos personales</a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="tab2" class="nav-link" href="#tabs-2" data-toggle="tab" role="tab" aria-controls="tabs-2" aria-selected="false">Información de contacto</a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="tab3" class="nav-link" href="#tabs-3" data-toggle="tab" role="tab" aria-controls="tabs-3" aria-selected="false">Dirección de domicilio</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div id="tabs-1" class="tab-pane fade show active" role="tabpanel" aria-labelledby="tab1">
+                            <div class="card">
+                                <div class="card-body">
+                                    @if (Model.MensajeTSE != null)
+                                    {
+                                        <div class="alert alert-info">
+                                            <i class="fa fa-info-circle"></i> <strong>@Model.MensajeTSE.</strong>
+                                            @Html.HiddenFor(model => model.MensajeTSE)
+                                        </div>
+                                    }
+                                    @if (Model.MensajePoderJudicial != null)
+                                    {
+                                        <div class="alert alert-info">
+                                            <i class="fa fa-info-circle"></i> <strong>@Model.MensajePoderJudicial.</strong>
+                                            @Html.HiddenFor(model => model.MensajePoderJudicial)
+                                        </div>
+                                    }
+                                    @if (Model.MensajeOferente != null)
+                                    {
+                                        <div class="alert alert-info">
+                                            <i class="fa fa-info-circle"></i> <strong>@Model.MensajeOferente.</strong>
+                                            @Html.HiddenFor(model => model.MensajeOferente)
+                                        </div>
+                                    }
+                                    <table id="tableFuncionario" class="table">
+                                        <tr>
+                                            <td>
+                                                <strong>@Html.LabelFor(model => model.Funcionario.Cedula): </strong>@Html.DisplayFor(model => model.Funcionario.Cedula)
+                                                @Html.HiddenFor(model => model.Funcionario.Cedula)
+                                            </td>
+                                            <td>
+                                                <strong>@Html.LabelFor(model => model.Funcionario.Nombre): </strong>@Model.Funcionario.Nombre @Model.Funcionario.PrimerApellido @Model.Funcionario.SegundoApellido
+                                                @Html.HiddenFor(model => model.Funcionario.Nombre)
+                                                @Html.HiddenFor(model => model.Funcionario.PrimerApellido)
+                                                @Html.HiddenFor(model => model.Funcionario.SegundoApellido)
+                                            </td>
+                                            <td>
+                                                <strong>@Html.LabelFor(model => model.Sexo): </strong>@Html.DropDownListFor(model => model.SexoSeleccionado, Model.Sexo, "Seleccione...", new { @class = "btn btn-secondary dropdown-toggle form-control" })
+                                                @Html.HiddenFor(model => model.SexoSeleccionado)
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>@Html.LabelFor(model => model.Funcionario.FechaNacimiento): </strong>@Html.DisplayFor(model => model.Funcionario.FechaNacimiento)
+                                                @Html.HiddenFor(model => model.Funcionario.FechaNacimiento)
+                                            </td>
+                                            <td>
+                                                <strong>Edad: </strong>@Html.DisplayFor(model => model.Edad)
+                                                @Html.HiddenFor(model => model.Edad)
+                                            </td>
+                                            <td>
+                                                <strong>@Html.LabelFor(model => model.EstadoCivil.CatEstadoCivil.DesEstadoCivil): </strong>@Html.DisplayFor(model => model.EstadoCivil.CatEstadoCivil.DesEstadoCivil)
+                                                @Html.HiddenFor(model => model.EstadoCivil.CatEstadoCivil.DesEstadoCivil)
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tabs-2" class="tab-pane fade " role="tabpanel" aria-labelledby="tab2">
+                            <div class="card">
+                                <div class="card-body">
+                                    <table class="table">
+                                        @for (int i = 0; i < Model.DatosContacto.Count(); i++)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    <strong>@Html.DisplayFor(model => model.DatosContacto[i].TipoContacto.DesTipoContacto)</strong>
+                                                </td>
+                                                <td class="columna_info">
+                                                    @Html.TextBoxFor(model => model.DatosContacto[i].DesContenido, new { @class = "form-control" })
+                                                    @Html.HiddenFor(model => model.DatosContacto[i].TipoContacto.IdEntidad)
+                                                </td>
+                                            </tr>
+                                        }
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tabs-3" class="tab-pane fade " role="tabpanel" aria-labelledby="tab3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="form-group col-4">
+                                            @Html.LabelFor(model => model.ProvinciaSeleccionada)
+                                            <span>:</span>
+                                            @if (!Model.MensajeTSE.Contains("Tribunal"))
+                                            {
+                                                <div>Actual: @Model.Direccion.Distrito.Canton.Provincia.NomProvincia</div>
+                                                @Html.HiddenFor(model => model.Direccion.Distrito.Canton.Provincia.NomProvincia)
+                                            }
+                                            @Html.DropDownListFor(model => model.ProvinciaSeleccionada, Model.Provincias, "Seleccionar...", new { @id = "DropProvincias", @class = "btn btn-secondary dropdown-toggle form-control", @onchange = "ObtenerCantones(this.selectedIndex)" })
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.LabelFor(model => model.CantonSeleccionado)
+                                            <span>:</span>
+                                            @if (!Model.MensajeTSE.Contains("Tribunal"))
+                                            {
+                                                <div>Actual: @Model.Direccion.Distrito.Canton.NomCanton</div>
+                                                @Html.HiddenFor(model => model.Direccion.Distrito.Canton.IdEntidad)
+                                            }
+                                            @Html.DropDownListFor(model => model.CantonSeleccionado, Model.Cantones, "Seleccionar...", new { @id = "DropCantones", @class = "btn btn-secondary dropdown-toggle form-control", @onchange = "ObtenerDistritos(this.value)" })
+                                        </div>
+                                        <div class="form-group col-4">
+                                            @Html.LabelFor(model => model.DistritoSeleccionado)
+                                            <span>:</span>
+                                            @if (!Model.MensajeTSE.Contains("Tribunal"))
+                                            {
+                                                <div>Actual: @Model.Direccion.Distrito.NomDistrito</div>
+                                                @Html.HiddenFor(model => model.Direccion.Distrito.IdEntidad)
+                                            }
+                                            @Html.DropDownListFor(model => model.DistritoSeleccionado, Model.Distritos, "Seleccionar...", new { @id = "DropDistritos", @class = "btn btn-secondary dropdown-toggle form-control" })
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-12">
+                                            @Html.LabelFor(model => model.Direccion.DirExacta)
+                                            <span>:</span>
+                                            @Html.TextAreaFor(model => model.Direccion.DirExacta, new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="float-right">
+                    <input class="btn btn-success" id="btnGuardar" name="SubmitButton" type="submit" value="Guardar" />
+                    <div id="preloader1" class="loader" hidden></div>
+                </div>
+            </div>
+        }
+    }
+    <br />
+    <br />
+    <div id="detalleResultado">
+    </div>
+}
+
+                            @*@if (Model.MensajeTSE != null)
+                    {
+                                <div class="alert-info">
+                                    <strong>@Model.MensajeTSE.</strong>
+                                    @Html.HiddenFor(model => model.MensajeTSE)
+                                </div>
+                                <br />
+                                <div class="alert-info">
+                                    <strong>@Model.MensajePoderJudicial.</strong>
+                                    @Html.HiddenFor(model => model.MensajePoderJudicial)
+                                </div>
+                                <table id="tableFuncionarioTSE" class="table">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="6">Información del oferente</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><b>@Html.LabelFor(model => model.Funcionario.Cedula)</b></td>
+                                            <td class="columna_info">@Html.DisplayFor(model => model.Funcionario.Cedula)</td>
+                                            @Html.HiddenFor(model => model.Funcionario.Cedula)
+                                            <td><b>@Html.LabelFor(model => model.Funcionario.Nombre)</b></td>
+                                            <td class="columna_info">@Model.Funcionario.Nombre @Model.Funcionario.PrimerApellido @Model.Funcionario.SegundoApellido</td>
+                                            @Html.HiddenFor(model => model.Funcionario.Nombre)
+                                            @Html.HiddenFor(model => model.Funcionario.PrimerApellido)
+                                            @Html.HiddenFor(model => model.Funcionario.SegundoApellido)
+                                            <td><b>@Html.LabelFor(model => model.Funcionario.Sexo)</b></td>
+                                            <td class="columna_info">@Html.DisplayFor(model => model.Funcionario.Sexo)</td>
+                                            @Html.HiddenFor(model => model.Funcionario.Sexo)
+                                        </tr>
+                                        <tr>
+                                            <td><b>@Html.LabelFor(model => model.Funcionario.FechaNacimiento)</b></td>
+                                            <td class="columna_info">@Html.DisplayFor(model => model.Funcionario.FechaNacimiento)</td>
+                                            @Html.HiddenFor(model => model.Funcionario.FechaNacimiento)
+                                            <td><b>Edad</b></td>
+                                            <td class="columna_info">@Html.DisplayFor(model => model.Edad)</td>
+                                            @Html.HiddenFor(model => model.Edad)
+                                            <td><b>@Html.LabelFor(model => model.EstadoCivil.CatEstadoCivil.DesEstadoCivil)</b></td>
+                                            <td class="columna_info">@Html.DisplayFor(model => model.EstadoCivil.CatEstadoCivil.DesEstadoCivil)</td>
+                                            @Html.HiddenFor(model => model.EstadoCivil.CatEstadoCivil.DesEstadoCivil)
+                                        </tr>
+                                        <tr>
+                                            <td><b>¿Es afrodescendiente?</b></td>
+                                            <td class="columna_info"><center><input type="checkbox" name="chkAfrodescendiente" /></center></td>
+                                            <td><b>¿Tiene necesidades especiales?</b></td>
+                                            <td class="columna_info"><center><input type="checkbox" name="chkDiscapacidad" /></center></td>
+                                            <td><b></b></td>
+                                            <td class="columna_info"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table id="tableContactoTSE" class="table">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th colspan="6">Información de contacto</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            @for (int i = 0; i < Model.DatosContacto.Count(); i++)
+                                            {
+                                                if ((i + 1) % 3 == 0)
+                                                {
+                                                    @:
+                                                </tr>
+                                            <td><b>@Html.DisplayFor(model => model.DatosContacto[i].TipoContacto.DesTipoContacto)</b></td>
+                                            <td class="columna_info">@Html.TextBoxFor(model => model.DatosContacto[i].DesContenido)</td>
+                                            @Html.HiddenFor(model => model.DatosContacto[i].TipoContacto.IdEntidad)
+                                                    @:
+                                                    <tr>
+                                                        }
+                                                        else
+                                                        {
+                                                        <td><b>@Html.DisplayFor(model => model.DatosContacto[i].TipoContacto.DesTipoContacto)</b></td>
+                                                        <td class="columna_info">@Html.TextBoxFor(model => model.DatosContacto[i].DesContenido)</td>
+                                                        @Html.HiddenFor(model => model.DatosContacto[i].TipoContacto.IdEntidad)
+                                                        }
+                                                        }
+                                                    </tr>
+                                </tbody>
+                                                </table>
+                                                <table class="enviar">
+                                                    <tr>
+                                                        <td>
+                                                            <input class="btn btn-secondary" id="btnGuardar" name="SubmitButton" type="submit" value="Guardar" />
+                                                        </td>
+                                                        <td>
+                                                            <input class="btn btn-secondary" id="btnGuardarContinuar" name="SubmitButton" type="submit" value="Guardar y Continuar" />
+                                                            <div id="preloader" class="loader" hidden></div>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                                }
+                                                else
+                                                {
+                                                    <div class="info">
+                                                        @Model.MensajePoderJudicial.
+                                                    </div>
+                                                    <table id="datos_funcionario" class="table">
+                                                        <thead class="thead-dark">
+                                                            <tr>
+                                                                <th colspan="6">Información del oferente</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td><b>@Html.LabelFor(model => model.Funcionario.Cedula)</b></td>
+                                                                <td class="columna_info">@Html.DisplayFor(model => model.Funcionario.Cedula)</td>
+                                                                <td><b>@Html.LabelFor(model => model.Funcionario.Nombre)</b></td>
+                                                                <td class="columna_info">@Model.Funcionario.Nombre @Model.Funcionario.PrimerApellido @Model.Funcionario.SegundoApellido</td>
+                                                                <td><b>@Html.LabelFor(model => model.Funcionario.Sexo)</b></td>
+                                                                <td class="columna_info">@Html.DisplayFor(model => model.Funcionario.Sexo)</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><b>@Html.LabelFor(model => model.Funcionario.FechaNacimiento)</b></td>
+                                                                <td class="columna_info">@Html.DisplayFor(model => model.Funcionario.FechaNacimiento)</td>
+                                                                <td><b>Edad</b></td>
+                                                                <td class="columna_info">@Html.DisplayFor(model => model.Edad)</td>
+                                                                <td><b>@Html.LabelFor(model => model.EstadoCivil.CatEstadoCivil.DesEstadoCivil)</b></td>
+                                                                <td class="columna_info">@Html.DisplayFor(model => model.EstadoCivil.CatEstadoCivil.DesEstadoCivil)</td>
+                                                            </tr>
+                                                        </tbody>
+
+                                                    </table>
+                                                    if (Model.Funcionario.EstadoFuncionario.IdEntidad != 20)
+                                                    {
+                                                        <table class="table">
+                                                            <thead class="thead-dark">
+                                                                <tr>
+                                                                    <th colspan="6">Último nombramiento</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td><b>@Html.LabelFor(model => model.Puesto.CodPuesto)</b></td>
+                                                                    <td class="columna_info">@Html.DisplayFor(model => model.Puesto.CodPuesto)</td>
+                                                                    <td><b>@Html.LabelFor(model => model.Nombramiento.EstadoNombramiento.DesEstado)</b></td>
+                                                                    <td class="columna_info">@Model.Nombramiento.EstadoNombramiento.DesEstado</td>
+                                                                    <td><b>@Html.LabelFor(model => model.Nombramiento.FecVence)</b></td>
+                                                                    <td class="columna_info">@Model.Nombramiento.FecVence.ToShortDateString()</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    }
+
+                                                    <table id="datos_contacto" class="table">
+                                                        <thead class="thead-dark">
+                                                            <tr>
+                                                                <th colspan="6">Información de contacto</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                @if (Model.DatosContacto.FirstOrDefault().Mensaje != null)
+                                                                {
+                                                                    <td colspan="6">@Html.LabelFor(model => model.DatosContacto.ElementAt(0).Mensaje)</td>
+                                                                    @:
+                                                                </tr>
+                                                                }
+                                                                else
+                                                                {
+                                                                    for (int i = 0; i < Model.DatosContacto.Count(); i++)
+                                                                    {
+                                                                        if ((i + 1) % 3 == 0)
+                                                                        {
+                                                                            @:</tr>
+                                                                        <td><b>@Html.DisplayFor(model => model.DatosContacto[i].TipoContacto.DesTipoContacto)</b></td>
+                                                                        <td class="columna_info">@Html.LabelFor(model => model.DatosContacto[i].DesContenido)</td>
+                                                                        @:
+                                                                            <tr>
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                <td><b>@Html.DisplayFor(model => model.DatosContacto[i].TipoContacto.DesTipoContacto)</b></td>
+                                                                                <td class="columna_info">@Html.DisplayFor(model => model.DatosContacto[i].DesContenido)</td>
+                                                                                }
+                                                                                }
+                                                                                }
+                                                                            </tr>
+                                </tbody>
+                                                                        </table>
+                                                                        <table class="enviar">
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <input class="btn btn-secondary" id="btnGuardar" name="SubmitButton" type="submit" value="Asignar a puesto" />
+                                                                                    <div id="preloader" class="loader" hidden></div>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                        }
+            </div>
+                            </div>
+                            <div id="detalleResultado">
+                                @Html.ValidationSummary("El formulario contiene los siguientes errores:")
+                            </div>
+                                                                    }
+                                                                }
+                                                                }*@

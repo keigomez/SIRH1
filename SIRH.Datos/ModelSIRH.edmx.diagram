@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b7e394a28f0842219607252a3685bafe" Name="Diagram1" ZoomLevel="143">
+        <EntityTypeShape EntityType="SIRHModel.C_AUX_DetallePagoGasto" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.C_AUX_DetallePagoViatico" Width="1.5" PointX="9.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.C_EMU_AccionPersonal" Width="1.5" PointX="7.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.C_EMU_Calificacion" Width="1.5" PointX="10.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.C_EMU_CarreraProfesional" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.C_EMU_Cursos" Width="1.5" PointX="9.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.C_EMU_HistoricoPlanilla_oldie" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.C_EMU_Puntos" Width="1.5" PointX="14.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.C_EMU_Vacaciones_Movimiento" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.C_EMU_Vacaciones_Saldo" Width="1.5" PointX="16.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.C_ViaticoCorrido" Width="1.5" PointX="16.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.AccionPersonal" Width="1.5" PointX="16.5" PointY="105.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.ActividadFuncionario" Width="1.5" PointX="5.25" PointY="108.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.ActividadMeta" Width="1.5" PointX="13.5" PointY="129.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.ActividadResultadoCargo" Width="1.5" PointX="5.25" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.AddendumPrestamoPuesto" Width="1.5" PointX="27.5" PointY="78.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.BitacoraIncidencia" Width="1.5" PointX="5.25" PointY="114.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.BitacoraUsuario" Width="1.5" PointX="8.25" PointY="105.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.BoletaPrestamo" Width="1.5" PointX="7.5" PointY="139.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.BorradorAccionPersonal" Width="1.5" PointX="20.25" PointY="151.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.BotAccionIncidencia" Width="1.5" PointX="11.25" PointY="71.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.Calificacion" Width="1.5" PointX="17.25" PointY="83.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.CalificacionCapacitacion" Width="1.5" PointX="11.25" PointY="129.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.CalificacionEncargado" Width="1.5" PointX="8.25" PointY="117" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.CalificacionNombramiento" Width="1.5" PointX="19.5" PointY="107.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.CalificacionNombramientoFuncionarios" Width="1.5" PointX="6" PointY="133.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.CalificacionObservaciones" Width="1.5" PointX="8.25" PointY="172.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.CalificacionReglaTecnica" Width="1.5" PointX="19.5" PointY="136.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.CambioPorAccionPersonal" Width="1.5" PointX="24.75" PointY="112.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.Canton" Width="1.5" PointX="18" PointY="89.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.CaracteristicasPuesto" Width="1.5" PointX="23.25" PointY="84.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.Cargo" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.CartasPresentacion" Width="1.5" PointX="16.5" PointY="118" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.CatalogoDeduccion" Width="1.5" PointX="16.5" PointY="145.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.CatalogoDia" Width="1.5" PointX="10.5" PointY="194.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.CatalogoIncidencia" Width="1.5" PointX="9" PointY="101.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.CatalogoPregunta" Width="1.5" PointX="28.5" PointY="124.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.CatalogoRemuneracion" Width="1.5" PointX="7.5" PointY="185.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.CatAnioAccionPersonal" Width="1.5" PointX="14.25" PointY="99.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.CatAnioBoletaPrestamo" Width="1.5" PointX="9.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.CatCampo" Width="1.5" PointX="11.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.CatDiaViaticoGasto" Width="1.5" PointX="10.5" PointY="198.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.CatEstadoCivil" Width="1.5" PointX="9" PointY="135.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.CatMetaEstado" Width="1.5" PointX="12" PointY="103.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.CatMetaPrioridad" Width="1.5" PointX="12" PointY="95.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.CatMovimientoPresupuesto" Width="1.5" PointX="23.25" PointY="68.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.CatOrdenMovimiento" Width="1.5" PointX="16.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.CatPermiso" Width="1.5" PointX="8.25" PointY="128.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.CatPermisoEvidencia" Width="1.5" PointX="5.25" PointY="118.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.Caucion" Width="1.5" PointX="22.5" PointY="108.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.Clase" Width="1.5" PointX="23.25" PointY="143.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.CompetenciaGrupoOcupacional" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.CompetenciaTransversalCargo" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.ComponentePresupuestario" Width="1.5" PointX="25.5" PointY="85.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.ComponenteSalarial" Width="1.5" PointX="22.5" PointY="79.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.ComportamientoGrupoOcupacional" Width="1.5" PointX="5.25" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.ComportamientoTransversal" Width="1.5" PointX="5.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.ContenidoPresupuestario" Width="1.5" PointX="23.25" PointY="146" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.ContratoArrendamiento" Width="1.5" PointX="32.75" PointY="101.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.CuentaBancaria" Width="1.5" PointX="7.5" PointY="124.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.CursoCapacitacion" Width="1.5" PointX="7.5" PointY="148.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.CursoGrado" Width="1.5" PointX="10.5" PointY="148.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.Decreto" Width="1.5" PointX="5.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.DeduccionEfectuada" Width="1.5" PointX="9.75" PointY="189.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.DeduccionTemporal" Width="1.5" PointX="19.5" PointY="102" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.Departamento" Width="1.5" PointX="7.5" PointY="83.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.Desarraigo" Width="1.5" PointX="22.5" PointY="98.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.DesgloseSalarial" Width="1.5" PointX="16.5" PointY="129.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.DetalleAcceso" Width="1.5" PointX="8.25" PointY="112.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.DetalleAccionPersonal" Width="1.5" PointX="27.75" PointY="113" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.DetalleAccionPersonalAnterior" Width="1.5" PointX="18.75" PointY="121" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.DetalleAsignacionGastoTransporte" Width="1.5" PointX="27" PointY="120.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.DetalleAsignacionGastoTransporteModificada" Width="1.5" PointX="21.75" PointY="120.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.DetalleBoleta" Width="1.5" PointX="9.75" PointY="139.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.DetalleBorradorAccionPersonal" Width="1.5" PointX="22.5" PointY="112.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.DetalleCalificacion" Width="1.5" PointX="24.75" PointY="117" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.DetalleCalificacionModificada" Width="1.5" PointX="30.75" PointY="113" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.DetalleCalificacionSeguimiento" Width="1.5" PointX="8.25" PointY="120.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.DetalleCambioPedimento" Width="1.5" PointX="14.25" PointY="159.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.DetalleContratacion" Width="1.5" PointX="5.25" PointY="122" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.DetalleDeduccion" Width="1.5" PointX="18.75" PointY="129.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.DetalleDeduccionGastoTransporte" Width="1.5" PointX="24" PointY="135.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.DetalleDeduccionViaticoCorrido" Width="1.5" PointX="30" PointY="98.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.DetalleDesarraigoEliminacion" Width="1.5" PointX="24.75" PointY="96.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.DetalleDesgloseSalarial" Width="1.5" PointX="18.75" PointY="126.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.DetalleEliminacionViaticoCorridoGastoTransporte" Width="1.5" PointX="30" PointY="117.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.DetalleIncapacidad" Width="1.5" PointX="27.75" PointY="110" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.DetallePagoGastoTransporte" Width="1.5" PointX="24" PointY="139.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.DetallePagoViaticoCorrido" Width="1.5" PointX="30" PointY="103.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.DetallePagoViaticoRetroactivo" Width="1.5" PointX="32.25" PointY="109.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.DetallePrestacion" Width="1.5" PointX="18.75" PointY="96.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.DetallePrestacionAfiliacion" Width="1.5" PointX="18.75" PointY="93.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.DetallePrestacionCuadro" Width="1.5" PointX="21.75" PointY="94.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.DetallePuesto" Width="1.5" PointX="25.5" PointY="149.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.DetallePuestoRubro" Width="1.5" PointX="29.75" PointY="121.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.DetallePuntosAdicional" Width="1.5" PointX="7.5" PointY="157" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.DetalleTiempoExtra" Width="1.5" PointX="24" PointY="129.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.DiaPagado" Width="1.5" PointX="12.75" PointY="189.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.Direccion" Width="1.5" PointX="11.25" PointY="116.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.DireccionGeneral" Width="1.5" PointX="7.5" PointY="86.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.Distrito" Width="1.5" PointX="20.25" PointY="89.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.Division" Width="1.5" PointX="7.5" PointY="88.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.EjecutorActividad" Width="1.5" PointX="11.25" PointY="114" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.EntidadAdscrita" Width="1.5" PointX="23" PointY="77" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.EntidadEducativa" Width="1.5" PointX="5.25" PointY="146" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.EntidadFinanciera" Width="1.5" PointX="5.25" PointY="99.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.EntidadGubernamental" Width="1.5" PointX="23" PointY="70.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.EntidadMedica" Width="1.5" PointX="21" PointY="74.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.EntidadSeguros" Width="1.5" PointX="20.25" PointY="77.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.EscalaSalarial" Width="1.5" PointX="23.25" PointY="148.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.Especialidad" Width="1.5" PointX="23.25" PointY="151.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.EstadoBorrador" Width="1.5" PointX="14.25" PointY="96.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.EstadoDesarraigo" Width="1.5" PointX="20.25" PointY="86.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.EstadoFuncionario" Width="1.5" PointX="0.75" PointY="117.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.EstadoGastoTransporte" Width="1.5" PointX="17.25" PointY="142.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.EstadoMovimientoPuesto" Width="1.5" PointX="22" PointY="172.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.EstadoNombramiento" Width="1.5" PointX="12" PointY="99" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.EstadoOrdenMovimiento" Width="1.5" PointX="12" PointY="136.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.EstadoPedimento" Width="1.5" PointX="12" PointY="163.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.EstadoPuesto" Width="1.5" PointX="9.75" PointY="78.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.EstadoTipoJornada" Width="1.5" PointX="0.75" PointY="122.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.EstadoTramite" Width="1.5" PointX="5.25" PointY="187" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.EstadoViaticoCorrido" Width="1.5" PointX="23.25" PointY="91.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.EstudioPuesto" Width="1.5" PointX="14.25" PointY="86.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.EvidenciaComportamientoTransversal" Width="1.5" PointX="7.5" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.EvidenciaGrupoOcupacional" Width="1.5" PointX="7.5" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.ExpedienteFuncionario" Width="1.5" PointX="5.25" PointY="139.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.ExperienciaProfesional" Width="1.5" PointX="7.5" PointY="160.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.Factor" Width="1.5" PointX="21" PointY="67.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.FactorClasificacionCargo" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.FacturaDesarraigo" Width="1.5" PointX="32.75" PointY="105.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.FamiliaPuestos" Width="1.5" PointX="9.75" PointY="80.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.Folio" Width="1.5" PointX="9.75" PointY="143.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.FormacionAcademica" Width="1.5" PointX="5.25" PointY="149" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.Funcionario" Width="1.5" PointX="3" PointY="114.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.GastoTransporte" Width="1.5" PointX="19.5" PointY="114.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.GastoTransporteReintegroDias" Width="1.5" PointX="21.75" PointY="123.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.GastoTransporteRutas" Width="1.5" PointX="24.75" PointY="120.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.HistorialEstadoCivil" Width="1.5" PointX="11.25" PointY="120.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.Incidencia" Width="1.5" PointX="11.25" PointY="109" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.InformacionContacto" Width="1.5" PointX="8.25" PointY="108.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.MetaIndividualCalificacion" Width="1.5" PointX="14.25" PointY="114.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.MetaIndividualEvidencia" Width="1.5" PointX="16.5" PointY="121.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.MetaIndividualInforme" Width="1.5" PointX="16.5" PointY="125.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.MetaObjetivoCalificacion" Width="1.5" PointX="12" PointY="153.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.MetaObjetivoInstitucional" Width="1.5" PointX="11.25" PointY="124.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.Modalidad" Width="1.5" PointX="5.25" PointY="153" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.MontoCaucion" Width="1.5" PointX="20.25" PointY="143.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.MotivoMovimiento" Width="1.5" PointX="12" PointY="139.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.MotivoPedimento" Width="1.5" PointX="9.75" PointY="159.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.MovimientoBorradorAccionPersonal" Width="1.5" PointX="22.5" PointY="175.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.MovimientoGastoTransporte" Width="1.5" PointX="21.75" PointY="135.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.MovimientoPuesto" Width="1.5" PointX="24.25" PointY="124.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.MovimientoViaticoCorrido" Width="1.5" PointX="27.75" PointY="99.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.Nombramiento" Width="1.5" PointX="14.25" PointY="107.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.NotificacionUsuario" Width="1.5" PointX="8.25" PointY="164.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.ObjetivoCalificacion" Width="1.5" PointX="9.75" PointY="153.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.ObjetivoInstitucional" Width="1.5" PointX="9" PointY="132.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.ObjetoGasto" Width="1.5" PointX="20.25" PointY="79.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.OcupacionReal" Width="1.5" PointX="23.25" PointY="154.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.OrdenMovimiento" Width="1.5" PointX="14.25" PointY="122.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.OrdenMovimientoDeclaracion" Width="1.5" PointX="16.5" PointY="133.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.PagoExtraordinario" Width="1.5" PointX="5.25" PointY="189.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.PagoFeriado" Width="1.5" PointX="7.5" PointY="188.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.PagoGastoTransporte" Width="1.5" PointX="21.75" PointY="139" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.PagoPrestacion" Width="1.5" PointX="0.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.PagoViaticoCorrido" Width="1.5" PointX="27.75" PointY="102.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.PagoViaticoRetroactivo" Width="1.5" PointX="30" PointY="106.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.Partida" Width="1.5" PointX="15.75" PointY="80.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.PedimentoPuesto" Width="1.5" PointX="12" PointY="159" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.Perfil" Width="1.5" PointX="6.75" PointY="102" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.PerfilAcceso" Width="1.5" PointX="10.5" PointY="106" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.PeriodoCalificacion" Width="1.5" PointX="17.25" PointY="137.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.PeriodoEscalaSalarial" Width="1.5" PointX="21" PointY="148.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.PeriodoVacaciones" Width="1.5" PointX="16.5" PointY="163.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.PrestacionLegal" Width="1.5" PointX="16.5" PointY="101.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.PrestamoPuesto" Width="1.5" PointX="25.25" PointY="79.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.Presupuesto" Width="1.5" PointX="7.5" PointY="91.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.Programa" Width="1.5" PointX="5.25" PointY="91.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.Provincia" Width="1.5" PointX="15.75" PointY="90" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.Puesto" Width="1.5" PointX="12" PointY="85.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.RegistroIncapacidad" Width="1.5" PointX="25.5" PointY="108.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.RegistroPrestacionReal" Width="1.5" PointX="2.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.RegistroTiempoExtra" Width="1.5" PointX="21.75" PointY="128.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.RegistroVacaciones" Width="1.5" PointX="18.75" PointY="163.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.ReintegroVacaciones" Width="1.5" PointX="21" PointY="163.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.RelPuestoUbicacion" Width="1.5" PointX="14.25" PointY="77.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.RemuneracionEfectuadaPF" Width="1.5" PointX="9.75" PointY="186.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.ReporteEstadistico" Width="1.5" PointX="8.25" PointY="168.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.RequerimientoEspecificoCargo" Width="1.5" PointX="3" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.Rescision" Width="1.5" PointX="27.5" PointY="81.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.ResolucionPedimento" Width="1.5" PointX="17.25" PointY="159.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.ResultadoCargo" Width="1.5" PointX="3" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.Seccion" Width="1.5" PointX="7.5" PointY="95.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.SubEspecialidad" Width="1.5" PointX="23.25" PointY="157" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.SubPartida" Width="1.5" PointX="18" PointY="80" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.sysdiagrams" Width="1.5" PointX="4.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.TareasPuesto" Width="1.5" PointX="14.25" PointY="83.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.TEMP_EnviarCorreo" Width="1.5" PointX="16.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.TipoAccionPersonal" Width="1.5" PointX="14.25" PointY="93.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.TipoCambioPorAccionPersonal" Width="1.5" PointX="22.5" PointY="88.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.TipoContacto" Width="1.5" PointX="6" PointY="106.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.TipoDeduccion" Width="1.5" PointX="14.25" PointY="146.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.TipoDeduccionTemporal" Width="1.5" PointX="17.25" PointY="86.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.TipoDetalleGastoTransporte" Width="1.5" PointX="21.75" PointY="167.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.TipoDetallePagoViatico" Width="1.5" PointX="27.75" PointY="96.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.TipoDia" Width="1.5" PointX="8.25" PointY="194.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.TipoExtra" Width="1.5" PointX="21.75" PointY="170.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.TipoIncapacidad" Width="1.5" PointX="23.25" PointY="74.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.TipoIndicadorMeta" Width="1.5" PointX="12" PointY="134.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.TipoJornada" Width="1.5" PointX="3" PointY="122.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.TipoPoliticaPublica" Width="1.5" PointX="9" PointY="99.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.TipoPrestacion" Width="1.5" PointX="14.25" PointY="102.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.TipoPrestacionCuadro" Width="1.5" PointX="19.5" PointY="83.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.TipoPuesto" Width="1.5" PointX="23.25" PointY="159.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.TipoResolucionPedimento" Width="1.5" PointX="15" PointY="156.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.TipoUbicacion" Width="1.5" PointX="9.75" PointY="74.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.TituloFactor" Width="1.5" PointX="18.75" PointY="67.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.Tomo" Width="1.5" PointX="7.5" PointY="143.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.UbicacionAdministrativa" Width="1.5" PointX="9.75" PointY="88.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.UbicacionAsueto" Width="1.5" PointX="26.25" PointY="142.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.UbicacionPuesto" Width="1.5" PointX="12" PointY="73.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.Usuario" Width="1.5" PointX="6" PointY="128.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.ViaticoCorrido" Width="1.5" PointX="25.5" PointY="101" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.ViaticoCorridoReintegroDias" Width="1.5" PointX="27.75" PointY="106.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.C_Componentes" Width="1.5" PointX="18.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.C_EMU_EXFUNCIONARIOS" Width="1.5" PointX="18.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.C_EMU_HistoricoPlanilla" Width="1.5" PointX="18.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.C_funcionariosactivos" Width="1.5" PointX="9.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.C_funcionariosguardia" Width="1.5" PointX="11.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.C_funcionariospendientes" Width="1.5" PointX="20.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.C_InicioPlanilla" Width="1.5" PointX="20.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.C_Nombramiento_Respaldo" Width="1.5" PointX="4.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.C_PeriodosActualizar" Width="1.5" PointX="6.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.C_PeriodosBorrar" Width="1.5" PointX="20.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.C_PeriodosRebaja" Width="1.5" PointX="20.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.C_Planilla_Anterior" Width="1.5" PointX="0.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.C_planillacargar" Width="1.5" PointX="8.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.C_RebajoPendientes" Width="1.5" PointX="10.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.C_RespaldoNombramiento" Width="1.5" PointX="20.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.C_RespaldoNombramiento20210225" Width="1.5" PointX="22.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.C_RespaldoNombramiento20210303" Width="1.5" PointX="22.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.DecretoComponentePresupuestario" Width="1.5" PointX="8" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.ListaNombramientosActivos" Width="1.5" PointX="16.5" PointY="112.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.Mes" Width="1.5" PointX="22.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIRHModel.PLANILLA_SPPP" Width="1.5" PointX="22.75" PointY="11.75" IsExpanded="true" />
+        <AssociationConnector Association="SIRHModel.FK_AccionPersonal_CatAnioAccionPersonal" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_AccionPersonal_EstadoBorrador" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_AccionPersonal_Nombramiento" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_AccionPersonal_TipoAccionPersonal" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_CambioPorAccionPersonal_AccionPersonal" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_DetalleAccionPersonal_AccionPersonal" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_DetalleAccionPersonalAnterior_AccionPersonal" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_ActividadFuncionario_Funcionario" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_Actividades_Metas" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_EjecutorActividad_Actividades" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_ActividadResultadoCargo_ResultadoCargo" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_AddendumPrestamoPuesto_PrestamoPuesto" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_BitacoraIncidencia_Funcionario" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_BitacoraIncidencia_Incidencia" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_BitacoraUsuario_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_BoletaPrestamo_ExpedienteFuncionario" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_BoletaPrestamo_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_DatosBoleta_BoletaPrestamo" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_Borrador_Borrador" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_BorradorAccionPersonal_EstadoBorrador" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_DetalleBorradorAccionPersonal_BorradorAccionPersonal" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_BotAccionIncidencia_CatalogoIncidencia" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_CalificacionNombramiento_Calificacion" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_CalificacionCapacitacion_CalificacionNombramiento" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_CalificacionCapacitacion_TipoPoliticaPublica" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_CalificacionEncargado_Funcionario" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_CalificacionEncargado_Seccion" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_CalificacionNombramiento_CatCalificacion" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_CalificacionNombramiento_Nombramiento" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_DetalleCalificacionModificada_CalificacionNombramiento" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_DetalleEvaluacion_CalificacionNombramiento" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_CalificacionNombramientoFuncionarios_PeriodoCalificacion" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_CalificacionObservaciones_CalificacionNombramientoFuncionarios" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_DetalleCalificacionSeguimiento_CalificacionNombramientoFuncionarios" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_CalificacionReglaTecnica_PeriodoCalificacion" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_CambioPorAccionPersonal_ComponenteSalarial" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_CambioPorAccionPersonal_Nombramiento" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_CambioPorAccionPersonal_TipoCambioPorAccionPersonal" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK__Canton__Provinci__597B3B93" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK__Distrito__Canton__733B0D96" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_dbo_UbicacionAsueto_3" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_CaracteristicasPuesto_Factor" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_CaracteristicasPuesto_Puesto" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_CompetenciaGrupoOcupacional_Cargo" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_CompetenciaTransversalCargo_Cargo" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_FactorClasificacionCargo_Cargo" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_RequerimientoEspecificoCargo_Cargo" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_ResultadoCargo_Cargo" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_Nombramiento_CartasPresentacion" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_dbo_CatalogoDeduccion_2" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_dbo_DeduccionEfectuada_2" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_Planilla_CatalogoDeduccion" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_dbo_CatalogoDia_2" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_dbo_DiaPagado_3" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_dbo_UbicacionAsueto_2" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_Catalogo_Perfil" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_Incidencia_CatalogoIncidencia" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_DetalleCalificacionModificada_CatalogoPregunta" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_detalleEvaluacion_CatalogoPreguntas" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_dbo_RemuneracionEfectuadaPF_3" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_CatDiaViaticoGasto_CatDiaViaticoGasto" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK__Historial__CatEs__65E11278" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_DetalleCalificacionSeguimiento_CatMetaEstado" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_MetaIndividualCalificacion_CatMetaEstado" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_MetaIndividualCalificacion_CatMetaPrioridad" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_ComponentePresupuestario_CatMovimientoPresupuesto" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK__CatPermis__Perfi__024846FC" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK__PerfilAcc__CatPe__033C6B35" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_CatPermisoEvidencia_Funcionario" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_Caucion_EntidadSeguros" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_Caucion_MontoCaucion" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_Caucion_Nombramiento" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_detallePuesto_Clase" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_RegistroTiempoExtra_Clase" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_ComportamientoGrupoOcupacional_CompetenciaGrupoOcupacional" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_ComportamientoTransversal_CompetenciaTransversalCargo" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_ComponentePresupuestario_ObjetoGasto" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_ComponentePresupuestario_Programa" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_ComponenteSalarial_ObjetoGasto" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_DetalleDesgloseSalarial_ComponenteSalarial" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_DetallePuestoRubro_ComponenteSalarial" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_EvidenciaGrupoOcupacional_ComportamientoGrupoOcupacional" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_EvidenciaComportamientoTransversal_ComportamientoTransversal" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_detallePuesto_ContenidoPresupuestario" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_ContratoArrendamiento_Desarraigo" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_ViaticoCorrido_ViaticoCorrido" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_CuentaBancaria_DetalleContratacion" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.Rel_CuentaBancaria_EntidadFinanciera" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_CursoCapacitacion_EntidadEducativa" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_CursoCapacitacion_FormacionAcademica" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_CursoCapacitacion_Modalidad" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_CursoGrado_EntidadEducativa" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_CursoGrado_FormacionAcademica" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_DecretoComponentePresupuestario_Decreto" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_dbo_DeduccionEfectuada_3" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_DeduccionTemporal_Nombramiento" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_DeduccionTemporal_TipoDeduccionTemporal" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK__Ubicacion__Depar__6E765879" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_Desarraigo_Departamento" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_ListaNombramientosActivos_Departamento" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_Desarraigo_DistritoContrato" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_Desarraigo_DistritoPernocte" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_Desarraigo_DistritoTrabajo" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_Desarraigo_EstadoDesarraigo" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_Desarraigo_Presupuesto" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_Desarraigo_Seccion" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_DetalleDesarraigoEliminacion_Desarraigo" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_FacturaDesarraigo_Desarraigo" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_Nombramiento_Desarraigo" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_DetalleDesgloseSalarial_DesgloseSalarial" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_Nombramiento_DesgloseSalarial" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_Planilla_DesgloseSalarial" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_RegistroTiempoExtra_DesgloseSalarialQ1" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_RegistroTiempoExtra_DesgloseSalarialQ2" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK__DetalleAc__Funci__78BEDCC2" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK__DetalleAc__Usuar__79B300FB" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK__PerfilAcc__Detal__7C8F6DA6" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_DetalleAccionPersonal_DetallePuesto" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_DetalleAsignacionGastoTransporte_GastoTransporteRutas" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_DetalleAsignacionGastoTransporteModificada_GastoTransporte" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_DetalleBorradorAccionPersonal_Nombramiento" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_DetalleBorradorAccionPersonal_Programa" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_DetalleBorradorAccionPersonal_Seccion" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_DetalleBorradorAccionPersonal_TipoAccionPersonal" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_DetalleCalificacionSeguimiento_Funcionario" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_DetalleCambioPedimento_EstadoPedimento" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_DetalleCambioPedimento_PedimentoPuesto" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_DetalleContratacion_Funcionario" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_DetalleContratacion_TipoJornada" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_DetalleDeduccionGastoTransporte_MovimientoGastoTransporte" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_DetalleDeduccionViaticoCorrido_MovimientoViaticoCorrido" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_DetalleDesarraigoEliminacion_EstadoDesarraigo" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_EliminacionGastoTransporte_MovimientoGastoTransporte" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_EliminacionViaticoCorrido_MovimientoViaticoCorrido" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_DetalleIncapacidad_RegistroIncapacidad" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_DetallePagoGastoTransporte_PagoGastoTransporte" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_DetallePagoGastoTransporte_TipoDetalleGastoTransporte" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_DetallePagoViaticoCorrido_PagoViaticoCorrido" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_DetallePagoViaticoCorrido_TipoDetallePagoViatico" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_DetallePagoViaticoRetroactivo_PagoViaticoRetroactivo" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_DetallePagoViaticoRetroactivo_TipoDetallePagoViatico" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_DetallePrestacion_PrestacionLegal" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_DetallePrestacionAfiliacion_PrestacionLegal" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_DetallePrestacionCuadro_PrestacionLegal1" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_DetallePrestacionCuadro_TipoPrestacionCuadro" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_detallePuesto_Escala" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_detallePuesto_Especialidad" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_detallePuesto_OcupacionReal" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_detallePuesto_Puesto" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_detallePuesto_Subespecialidad" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_detallePuesto_TipoPuesto" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_DetallePuestoRubro_DetallePuesto" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_ListaNombramientosActivos_DetallePuesto" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_OrdenMovimiento_DetallePuesto" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK__DetallePu__FK_Fo__2C1E8537" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK__DetallePu__FK_Fo__481BA567" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_DetalleTiempoExtra_RegistroTiempoExtra" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_DetalleTiempoExtra_Tipo" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_dbo_DiaPagado_2" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK__Direccion__Distr__7ADC2F5E" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK__Direccion__Funci__79E80B25" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK__Ubicacion__Direc__6D823440" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_ListaNombramientosActivos_DireccionGeneral" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK__Ubicacion__Distr__76177A41" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_GastoTransporte_DistritoC" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_GastoTransporte_DistritoT" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_ViaticoCorrido_Ditrito" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK__Ubicacion__Divis__6C8E1007" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_ListaNombramientosActivos_Division" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_EjecutorActividad_Funcionario" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_PrestamoPuesto_EntidadAdscrita" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_PrestamoPuesto_EntidadGubernamental" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_TipoIncapacidad_EntidadMedica" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_Periodo_EscalaSalarial" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK__Funcionar__Estad__5C57A83E" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_GastosTransporteo_EstadosGastosTransporte" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_GastoTransporteRutas_EstadoGastoTransporte" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_MovimientoPuesto_EstadoMovimientoPuesto" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_Nombramiento_EstadoNombramiento" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_OrdenMovimiento_EstadoOrdenMovimiento" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_Puesto_EstadoPuesto" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK__TipoJorna__FK_Es__216BEC9A" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK__TipoJorna__FK_Es__226010D3" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK__TipoJorna__FK_Es__2354350C" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK__TipoJorna__FK_Es__24485945" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK__TipoJorna__FK_Es__253C7D7E" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK__TipoJorna__FK_Es__2630A1B7" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK__TipoJorna__FK_Es__2724C5F0" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK__TipoJorna__FK_Es__2818EA29" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK__TipoJorna__FK_Es__490FC9A0" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK__TipoJorna__FK_Es__4A03EDD9" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK__TipoJorna__FK_Es__4AF81212" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK__TipoJorna__FK_Es__4BEC364B" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK__TipoJorna__FK_Es__4CE05A84" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK__TipoJorna__FK_Es__4DD47EBD" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK__TipoJorna__FK_Es__4EC8A2F6" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK__TipoJorna__FK_Es__4FBCC72F" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_dbo_PagoFeriado_3" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_ViaticoCorrido_EstadoViaticoCorrido" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_EstudidoPuesto_Puesto" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_ExpedienteFuncionario_Funcionario" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_Tomo_ExpedienteFuncionario" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_ExperienciaProfesional_FormacionAcademica" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_Factor_TituloFactor" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FacturaDesarraigoV_Viatico" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_Puesto_Puesto" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_Folio_Tomo" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_FormacionAcademica_Funcionario" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK__Historial__Funci__64ECEE3F" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK__Informaci__Funci__68BD7F23" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_dbo_PagoExtraordinario_2" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_Incidencia_FuncionarioEmisor" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_Incidencia_FuncionarioUIRH" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_ListaNombramientosActivos_Funcionario" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_MetaIndividualCalificacion_Funcionario" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_Metas_Funcionario" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_Nombramiento_Funcionario" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_OrdenMovimiento_Funcionario" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_GastosTransporte_Nombramiento" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_GastoTransporte_Presupuesto" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_GastoTransporteReintegroDias_GastoTransporte" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_GastoTransporteRutas_GastoTransporte" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_MovimientoGastosTransporte_GastosTransporte" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_PagoGastosTransporte_GastoTransporte" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK__Informaci__TipoC__69B1A35C" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_MetaIndividualCalificacion_MetaIndividualCalificacion" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_MetaIndividualCalificacion_MetaObjetivoCalificacion" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_MetaIndividualCalificacion_PeriodoCalificacion" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_MetaIndividualCalificacion_TipoIndicadorMeta" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_MetaIndividualEvidencia_MetaIndividualCalificacion" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_MetaIndividualInforme_MetaIndividualCalificacion" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_MetaObjetivoCalificacion_ObjetivoCalificacion" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_Metas_ObjetivoInstitucional" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_Metas_UbicacionAdministrativa" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_OrdenMovimiento_TipoMovimiento" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.Rel_MovimientoPuesto_MotivoMovimiento" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_PedimentoPuesto_MotivoPedimento" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_MovimientoPuesto_Puesto" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_MovimientosViaticoCorrido_ViaticoCorrido" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_ListaNombramientosActivos_Nombramiento" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_Nombramiento_Puesto" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_PeriodoVacaciones_Nombramiento" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_PrestacionLegal_Nombramiento" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_ViaticoCorrido_Nombramiento" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.PK_RegistroIncapacidad_Nombramiento" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_NotificacionUsuario_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_NotificacionUsuario_Usuario_Destino" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_ObjetivoCalificacion_PeriodoCalificacion" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_ObjetivoCalificacion_Seccion" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_ObjetivoInstitucional_PeriodoCalificacion" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_ObjetoGasto_SubPartida" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_OrdenMovimiento_PedimentoPuesto" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_OrdenMovimientoDeclaracion_OrdenMovimiento" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_dbo_PagoFeriado_2" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_dbo_RemuneracionEfectuadaPF_2" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_PagoViaticoCorrido_ViaticoCorrido" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_PagoViaticoRetroactivo_PagoViaticoCorrido" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_SubPartida_Partida" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_PedimentoPuesto_Puesto" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_Resolucion_PedimentoPuesto" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_RegistroVacaciones_PeriodoVacaciones" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_PrestacionLegal_TipoPrestacion" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_PrestamoPuesto_Puesto" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_PrestamoPuesto_UbicacionAdministrativa" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_Rescision_PrestamoPuesto" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_presupuesto_Programa" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_RegistroTiempoExtra_Presupuesto" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_Ubicacion_Presupuesto" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_ViaticoCorrido_Presupuesto" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_ListaNombramientosActivos_Puesto" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_Puesto_UbicacionAdministrativa" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_RelPuestoUbicacion_Puesto" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_TareasPuesto_Puesto" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_RegistroIncapacidad_TipoIncapacidad" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_ReintegroVacaciones_RegistroVacaciones" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK__RelPuesto__Ubica__1590259A" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_Resolucion_TipoResolucion" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK__Ubicacion__Secci__6F6A7CB2" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_ListaNombramientosActivos_Seccion" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK__Ubicacion__TipoU__770B9E7A" ManuallyRouted="false" />
+        <AssociationConnector Association="SIRHModel.FK_ViaticoCorridoReintegroDias_ViaticoCorrido" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SIRHModel.Aguinaldo" Width="1.5" PointX="26.75" PointY="128.5" />
+        <AssociationConnector Association="SIRHModel.FK_Aguinaldo_DesgloseSalarial" />
+        <AssociationConnector Association="SIRHModel.FK_Aguinaldo_Funcionario" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,163 @@
+﻿
+
+
+@model SIRH.Web.ViewModels.BusquedaVacacionesReportesVM
+@{
+    using (Html.BeginForm("ReporteDetalle", "Vacaciones", FormMethod.Post, new { @id = "thisForm" }))
+    {
+        if (Model.RegistroVacaciones != null )
+        {
+            <br>
+            <div class="card">
+                @if (Model.RegistroRebajoColectivo)
+                {
+                                    <div class="card-header">
+                    <h2>
+                        <button class="btn btn-success" href="#" id="submit_link">
+                            <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                            Generar PDF
+                        </button>                      Registros de rebajo colectivo
+                    </h2>
+                </div>
+                }
+                else
+                {
+                    <div class="card-header">
+                        <h2>
+                            <button class="btn btn-success" href="#" id="submit_link">
+                                <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                                Generar PDF
+                            </button>                      Registros de vacaciones
+                        </h2>
+                    </div>
+                }
+                <div class="card">
+                    <table class="table" style="margin-bottom:70px;">
+                        <thead class="card-header">
+                            <tr>
+                                <th>Cedula</th>
+                                <th>Funcionario</th>
+                                <th>Periodo</th>
+                                <th>Fecha Inicio</th>
+                                <th>Fecha Fin</th>
+                                <th>Días</th>
+                                <th>N° documento</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (int i = 0; i < Model.RegistroVacaciones.Count; i++)
+                            {
+                                if (Model.RegistroVacaciones[i].Estado == 1)
+                                {
+                                    Model.estadoPeriodo = "Activo";
+                                }
+                                else
+                                 if (Model.RegistroVacaciones[i].Estado == 2)
+                                {
+                                    Model.estadoPeriodo = "Vencido";
+                                }
+                                else
+                                if (Model.RegistroVacaciones[i].Estado == 2)
+                                {
+                                    Model.estadoPeriodo = "Anulado";
+                                }
+                                else
+                                {
+                                    Model.estadoPeriodo = "Desconocido";
+                                }
+                                <tr></tr>
+                                <tr>
+                                    <td>@Model.RegistroFuncionarios[i].Cedula</td>
+                                    @Html.HiddenFor(model => Model.RegistroFuncionarios[i].Cedula)
+
+                                    <td>@Model.RegistroFuncionarios[i].Nombre @Model.RegistroFuncionarios[i].PrimerApellido</td>
+                                    @Html.HiddenFor(model => Model.RegistroFuncionarios[i].PrimerApellido)
+                                    @Html.HiddenFor(model => Model.RegistroFuncionarios[i].Nombre)
+
+                                    <td>@Model.PeriodosVacaciones[i].Periodo</td>
+                                    @Html.HiddenFor(model => Model.PeriodosVacaciones[i].Periodo)
+
+                                    <td>@Model.RegistroVacaciones[i].FechaRige.ToShortDateString()</td>
+                                    @Html.HiddenFor(model => Model.RegistroVacaciones[i].FechaRige)
+
+                                    <td>@Model.RegistroVacaciones[i].FechaVence.ToShortDateString()</td>
+                                    @Html.HiddenFor(model => Model.RegistroVacaciones[i].FechaVence)
+
+                                    <td>@Model.RegistroVacaciones[i].Dias</td>
+                                    @Html.HiddenFor(model => Model.RegistroVacaciones[i].Dias)
+
+                                    <td>@Model.RegistroVacaciones[i].NumeroTransaccion</td>
+                                    @Html.HiddenFor(model => Model.RegistroVacaciones[i].NumeroTransaccion)
+
+                                    <td>@Model.estadoPeriodo</td>
+                                    @Html.HiddenFor(model => Model.RegistroVacaciones[i].Estado)
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <br>
+
+        }
+        if (Model.ReintegrosVacaciones != null)
+        {
+            <br>
+            <div class="card">
+                <div class="card-header">
+                    <h2>
+                        <button class="btn btn-success " id="btnBuscar" name="SubmitButton" type="submit" value="Buscar">
+                            <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                            Generar PDF
+                        </button>                     Reintegros de vacaciones
+                    </h2>
+                </div>
+                <div class="card">
+                    <table class="table" style="margin-bottom:70px;">
+                        <thead class="card-header">
+                            <tr>
+                                <th>Cedula</th>
+                                <th>Funcionario</th>
+                                <th>Periodo</th>
+                                <th>Fecha rige</th>
+                                <th>Observaciones</th>
+                                <th>N° solicitud</th>
+                                <th>Cantidad de dias</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (int i = 0; i < Model.ReintegrosVacaciones.Count; i++)
+                            {
+                                <tr></tr>
+                                <tr>
+                                    <td>@Model.RegistroFuncionarios[i].Cedula</td>
+                                    @Html.HiddenFor(model => Model.RegistroFuncionarios[i].Cedula)
+
+                                    <td>@Model.RegistroFuncionarios[i].Nombre @Model.RegistroFuncionarios[i].PrimerApellido</td>
+                                    @Html.HiddenFor(model => Model.RegistroFuncionarios[i].PrimerApellido)
+                                    @Html.HiddenFor(model => Model.RegistroFuncionarios[i].Nombre)
+
+                                    <td>@Model.PeriodosVacaciones[i].Periodo</td>
+                                    @Html.HiddenFor(model => Model.PeriodosVacaciones[i].Periodo)
+
+                                    <td>@Model.ReintegrosVacaciones[i].FechaRige</td>
+                                    @Html.HiddenFor(model => Model.ReintegrosVacaciones[i].FechaRige)
+
+                                    <td>@Model.ReintegrosVacaciones[i].Observaciones</td>
+                                    @Html.HiddenFor(model => Model.ReintegrosVacaciones[i].Observaciones)
+                                    <td>@Model.ReintegrosVacaciones[i].SolReintegro</td>
+                                    @Html.HiddenFor(model => Model.ReintegrosVacaciones[i].SolReintegro)
+                                    <td>@Model.ReintegrosVacaciones[i].CantidadDias</td>
+                                    @Html.HiddenFor(model => Model.ReintegrosVacaciones[i].CantidadDias)
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <br>
+
+        }
+    }
+}

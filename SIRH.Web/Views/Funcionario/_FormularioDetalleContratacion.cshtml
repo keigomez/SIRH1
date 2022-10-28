@@ -1,0 +1,135 @@
+﻿@model SIRH.Web.ViewModels.DetalleContratacionVM
+
+@{
+    if (Model != null)
+    {
+        using (Ajax.BeginForm("RegistrarCandidato", null, new AjaxOptions
+        {
+            HttpMethod = "POST",
+            UpdateTargetId = "detalleResultado",
+            OnBegin = "BeginGuardarCandidato",
+            OnComplete = "CompleteGuardarCandidato",
+            OnSuccess = "SuccessGuardarCandidato",
+            OnFailure = "SuccessGuardarCandidato"
+        }, new { @id = "thisForm" }))
+        {
+            <div id="formulario" class="card">
+                <div class="card-header">
+                    <i class="fa fa-user"></i> Información del funcionario
+                </div>
+                <div class="card-body">
+                    <table class="table" id="datos_funcionario">
+                        <tr>
+                            <td><b>@Html.LabelFor(model => model.Funcionario.Cedula)</b></td>
+                            <td class="columna_info">@Html.DisplayFor(model => model.Funcionario.Cedula)</td>
+                            @Html.HiddenFor(model => model.Funcionario.Cedula)
+                            <td><b>@Html.LabelFor(model => model.Funcionario.Nombre)</b></td>
+                            <td class="columna_info">@(Model.Funcionario.Nombre + " " + Model.Funcionario.PrimerApellido + " " + Model.Funcionario.SegundoApellido)</td>
+                            <td><b>@Html.LabelFor(model => model.Funcionario.Sexo)</b></td>
+                            <td class="columna_info">@Html.DisplayFor(model => model.Funcionario.Sexo)</td>
+                        </tr>
+                        <tr>
+                            <td><b>@Html.LabelFor(model => model.Funcionario.FechaNacimiento)</b></td>
+                            <td class="columna_info">@Html.DisplayFor(model => model.Funcionario.FechaNacimiento)</td>
+                            <td></td>
+                            <td class="columna_info"></td>
+                            <td></td>
+                            <td class="columna_info"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <br />
+                if(Model.DetalleContratacion.Mensaje == "Actual")
+                {
+                    <div class="alert alert-info"><i class="fa fa-info-circle"></i> El funcionario ya tiene registrado un detalle de contratación, los cambios que realice actualizarán la información previamente ingresada</div>
+                }
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-paperclip"></i> Detalle contratación
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="form-group col-12">
+                            @Html.LabelFor(model => model.DetalleContratacion.FechaIngreso)
+                            <span>:</span>
+                            @Html.TextBoxFor(model => model.DetalleContratacion.FechaIngreso, new { @class = "form-control", @id="datepickerIngreso" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-12">
+                            @Html.LabelFor(model => model.DetalleContratacion.NumeroAnualidades)
+                            <span>:</span>
+                            @Html.TextBoxFor(model => model.DetalleContratacion.NumeroAnualidades, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-12">
+                            @Html.LabelFor(model => model.DetalleContratacion.FechaMesAumento)
+                            <span>:</span>
+                            @Html.TextBoxFor(model => model.DetalleContratacion.FechaMesAumento, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-12">
+                            @Html.LabelFor(model => model.DetalleContratacion.UbicacionReal)
+                            <span>:</span>
+                            @Html.TextBoxFor(model => model.DetalleContratacion.UbicacionReal, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-12">
+                            <label class="form-check-label" for="exampleCheck1">¿El funcionario marca asistencia?</label>
+                            <span> </span>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Html.CheckBoxFor(model => model.EstadoMarca, new { @class = "form-check-input" })
+                        </div>
+                    </div>
+                        <div class="row">
+                            <div class="form-group col-12">
+                                @Html.LabelFor(model => model.DetalleContratacion.CodigoPolicial)
+                                <span>:</span>
+                                @Html.TextBoxFor(model => model.DetalleContratacion.CodigoPolicial, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-12">
+                                @Html.LabelFor(model => model.DetalleContratacion.FechaRegimenPolicial)
+                                <span>:</span>
+                                @Html.TextBoxFor(model => model.DetalleContratacion.FechaRegimenPolicial, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-12">
+                                @Html.LabelFor(model => model.DetalleContratacion.FechaVacaciones)
+                                <span>:</span>
+                                @Html.TextBoxFor(model => model.DetalleContratacion.FechaVacaciones, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-12">
+                                @Html.LabelFor(model => model.Expediente.NumeroExpediente)
+                                <span>:</span>
+                                @Html.TextBoxFor(model => model.Expediente.NumeroExpediente, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <br />
+            <div class="float-right">
+                @if (Model.DetalleContratacion.Mensaje == "Actual")
+                {
+                    <input type="submit" class="btn btn-success" value="Actualizar" />
+                }
+                else
+                {
+                    <input type="submit" class="btn btn-success" value="Guardar" />
+                }
+                </div>
+                <div id="preloader1" class="loader" hidden></div>
+        }
+    }
+    <br />
+    <br />
+    <div id="detalleResultado">
+    </div>
+}

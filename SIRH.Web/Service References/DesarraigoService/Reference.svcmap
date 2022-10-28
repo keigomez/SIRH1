@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="9e1952d1-e56c-4ecc-899e-7e4329e3321b" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://sisrh.mopt.go.cr:85/CDesarraigoService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CDesarraigoService.xsd" MetadataType="Schema" ID="6bf91b6e-3aab-4520-9e06-4074df8e1f76" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CDesarraigoService.svc?xsd=xsd0" />
+    <MetadataFile FileName="CDesarraigoService1.xsd" MetadataType="Schema" ID="047c9df9-eea5-4ace-ace4-693029611914" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CDesarraigoService.svc?xsd=xsd1" />
+    <MetadataFile FileName="CDesarraigoService2.xsd" MetadataType="Schema" ID="01b1db08-fa86-4ddf-ba44-a3759c0c4e4b" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CDesarraigoService.svc?xsd=xsd2" />
+    <MetadataFile FileName="CDesarraigoService3.xsd" MetadataType="Schema" ID="26d0622e-ee33-4b7f-b34c-ef1985a1f082" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CDesarraigoService.svc?xsd=xsd3" />
+    <MetadataFile FileName="CDesarraigoService4.xsd" MetadataType="Schema" ID="4e1f69b4-da26-467e-8958-b0a9a0fe8c43" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CDesarraigoService.svc?xsd=xsd4" />
+    <MetadataFile FileName="CDesarraigoService.disco" MetadataType="Disco" ID="f132820d-5fef-43bb-8a51-d8b41f64dd5c" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CDesarraigoService.svc?disco" />
+    <MetadataFile FileName="CDesarraigoService.wsdl" MetadataType="Wsdl" ID="46d32876-f403-47c4-9301-dc4a98310c4d" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CDesarraigoService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,0 +1,71 @@
+﻿@model SIRH.Web.ViewModels.BusquedaEntidadEducativaVM
+
+@{
+    ViewBag.Title = "SearchEntidadEducativa";
+    Layout = "~/Views/Shared/Carrera.cshtml";
+}
+
+<link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+
+@using (Ajax.BeginForm("SearchEntidadEducativa", "Carrera", new AjaxOptions
+{
+    UpdateTargetId = "dvResultadoBusqueda",
+    HttpMethod = "POST",
+    OnComplete = "CompleteSearch",
+    OnBegin = "BeginSearch"
+}))
+{
+    <div class="jumbotron">
+        <center>
+            <h3 class="display-4">Gestión de Entidades Educativas</h3>
+            <br />
+            <div class="card">
+                <div class="card-header text-left">
+                    <strong>Parámetros de búsqueda </strong>
+                </div>
+
+                <div class="card-body">
+
+                    <div class="form-group row">
+                        <div class="col-sm-3">
+                            @Html.LabelFor(model => model.EntidadEducativa.DescripcionEntidad, new { @for = "DescripcionEntidad", @class = "col-form-label" })
+                        </div>
+                        <div class="col-sm-3">
+                            @Html.TextBoxFor(model => model.EntidadEducativa.DescripcionEntidad, new { @id = "DescripcionEntidad", @class = "form-control" })
+                        </div>
+
+                        @Html.LabelFor(model => model.TipoEntidadSeleccionado, new { @for = "TipoEntidadSeleccionado", @class = "col-sm-3 col-form-label" })
+                        <div class="col-sm-3">
+                            @Html.DropDownListFor(model => model.TipoEntidadSeleccionado,
+                        Model.TiposEntidad as SelectList,
+                        "Seleccionar...", new { @id = "Estado", @class = "form-control" })
+                        </div>
+
+                    </div>
+
+                    <input id="btnBuscar" name="SubmitButton" type="submit" value="Buscar" class="btn btn-primary float-right" />
+                    <div id="preloader" class="loader float-right" style="display: none"></div>
+
+                </div>
+
+            </div>
+
+        </center>
+        <br />
+        <a href="@Url.Action("CreateEntidadEducativa", "Carrera")" class="btn btn-success">
+            <i class="fa fa-plus-circle"></i> Agregar Entidad Educativa
+        </a>
+    </div>
+}
+
+<div id="dvResultadoBusqueda"></div>
+<br />
+
+@Scripts.Render("~/bundles/jquery")
+<script src="~/Scripts/popper.min.js"></script>
+@Scripts.Render("~/bundles/bootstrap")
+<script src="~/Scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/SearchEntidadEducativa.js" type="text/javascript"></script>
+
+

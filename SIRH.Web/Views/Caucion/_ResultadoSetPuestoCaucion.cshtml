@@ -1,0 +1,149 @@
+﻿@model SIRH.Web.ViewModels.DetallePuestoVM
+
+<div class="card">
+    <div class="card-header">
+        <strong>Información del Puesto</strong>
+    </div>
+    <div class="card-body">
+        <table class="table" id="datos_funcionario">
+            <tr>
+                <td colspan="3">
+                    @if (Model.Puesto.PuestoConfianza == true)
+                    {
+                        <div class="alert alert-success">
+                            <center><strong>Este puesto, actualmente, está sujeto al pago de póliza de caución.</strong></center>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-info">
+                            <center><strong>Este puesto, actualmente, NO está sujeto al pago de póliza de caución.</strong></center>
+                        </div>
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.LabelFor(model => model.Puesto.CodPuesto): </strong>@Html.DisplayFor(model => model.Puesto.CodPuesto)
+                    @Html.HiddenFor(model => model.Puesto.CodPuesto)
+                </td>
+                <td>
+                    <strong>@Html.LabelFor(model => model.DetallePuesto.Clase.DesClase): </strong>@Html.DisplayFor(model => model.DetallePuesto.Clase.DesClase)
+                    @Html.HiddenFor(model => model.DetallePuesto.Clase.DesClase)
+                </td>
+                <td>
+                    <strong>@Html.LabelFor(model => model.DetallePuesto.Especialidad.DesEspecialidad): </strong>@Html.DisplayFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)
+                    @Html.HiddenFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.LabelFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal): </strong>@Html.DisplayFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal)
+                    @Html.HiddenFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal)
+                </td>
+                <td>
+                    <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                    @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                </td>
+                <td>
+                    <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                    @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                    @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                </td>
+                <td>
+                    <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion)
+                    @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion)
+                </td>
+                <td>
+                    <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto)
+                    @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto)
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    @if (Model.Funcionario.Mensaje != null)
+                    {
+                        <strong>Nota:</strong><div>@Model.Funcionario.Mensaje.ToString()</div>
+                    }
+                    else
+                    {
+                        <div>Este puesto actualmente está ocupado por: <strong>@Model.Funcionario.Cedula.ToString() - @Model.Funcionario.Nombre.ToString() @Model.Funcionario.PrimerApellido.ToString() @Model.Funcionario.SegundoApellido.ToString()</strong></div>
+                    }
+                </td>
+            </tr>
+        </table>
+        @if (Model.Puesto.PuestoConfianza == true)
+        {
+            <div class="alert alert-warning">
+                <strong>¿Desea actualizar el puesto para que NO esté sujeto al pago de póliza de caución?</strong><span></span><input id="btnFirst" class="btn btn-warning" type="button" value="Sí" onclick="return mostrar('btnFirst');" />
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-warning">
+                <strong>¿Desea actualizar el puesto para que esté sujeto al pago de póliza de caución?</strong>&nbsp;&nbsp;<input id="btnSecond" class="btn btn-warning" type="button" value="Sí" onclick="return mostrar('btnSecond');" />
+            </div>
+        }
+    </div>
+</div>
+<br />
+@using (Ajax.BeginForm("SetPuestoCaucion", "Caucion", new AjaxOptions
+{
+    HttpMethod = "Post",
+    UpdateTargetId = "dvResultadoBusqueda",
+    InsertionMode = InsertionMode.Replace,
+    OnSuccess = "SuccessCargarFuncionario",
+    OnComplete = "CompleteCargarFuncionario",
+    OnBegin = "BeginCargarFuncionario"
+}))
+{
+    <div id="divform" style="display: none;">
+        <div class="card">
+            <div class="card-body">
+                <div class="form-group row">
+                    <b class="col-2 col-form-label">@Html.LabelFor(model => model.Puesto.ObservacionesPuesto, new { @for = "Justificacion" })</b>
+                    <div class="col-10">
+                        @Html.HiddenFor(model => model.Puesto.CodPuesto)
+                        @Html.TextAreaFor(model => model.Puesto.ObservacionesPuesto, new { @id = "Justificacion", @class = "form-control", @rows = 5, @maxlength = 350 })
+                    </div>
+                </div>
+                <br />
+                <input id="btnEditar" name="SubmitButton" type="submit" value="Actualizar puesto" class="btn btn-warning float-right" />
+                <div id="preloader" class="loader float-right" style="display: none"></div>
+            </div>
+        </div>
+    </div>
+}
+
+<div id="dvResultadoBusqueda"></div>
+
+<script type="text/javascript">
+    function mostrar(button)
+    {
+        if (button == 'btnFirst') {
+            if (document.getElementById("btnFirst").value == "Sí") {
+                document.getElementById("btnFirst").value = "No";
+                document.getElementById("divform").style.display = 'inline';
+            }
+            else {
+                document.getElementById("btnFirst").value = "Sí";
+                document.getElementById("divform").style.display = 'none';
+            }
+        } else {
+            if (document.getElementById("btnSecond").value == "Sí") {
+                document.getElementById("btnSecond").value = "No";
+                document.getElementById("divform").style.display = 'inline';
+            }
+            else {
+                document.getElementById("btnSecond").value = "Sí";
+                document.getElementById("divform").style.display = 'none';
+            }
+        }
+    }
+</script>
+<script src="~/Scripts/Pages/FormularioCaucion.js" type="text/javascript"></script>

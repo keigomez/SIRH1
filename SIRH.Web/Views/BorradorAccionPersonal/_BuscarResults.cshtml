@@ -1,0 +1,67 @@
+﻿@model IList<SIRH.Web.ViewModels.FormularioBorradorAccionPersonalVM>
+
+@{ 
+    using (Html.BeginForm("ReporteBorradores", "BorradorAccionPersonal", FormMethod.Post, new { @id = "thisForm" }))
+    {
+        <table class="table table-hover">
+            <thead class="thead-light">
+                <tr>
+                    <th>Oficio</th>
+                    <th>Estado</th>
+                    <th>UsuarioAsignado</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.AttributeEncode(item.Borrador.NumOficio)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Borrador.NumOficio)
+                            </td>
+                            <td>
+                                @Html.AttributeEncode(item.Borrador.EstadoBorrador.DesEstadoBorrador)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Borrador.EstadoBorrador.DesEstadoBorrador)
+                            </td>
+                            <td>
+                                @Html.AttributeEncode(item.Asignado.Nombre + " " + @item.Asignado.PrimerApellido +" "+ @item.Asignado.SegundoApellido)
+                                @Html.HiddenFor(model => model[Model.IndexOf(item)].Borrador.UsuarioAsignado)
+                            </td>
+                            <td>
+                                <div style="display: inline">
+                                    @if (item.Estado.IdEntidad == 1)
+                                    {
+                                        <div class="link_edit">@Html.ActionLink("Registrar Borrador", "Create", new { @codigo = item.Borrador.IdEntidad },new { @class="btn btn-outline-primary" })</div>
+
+                                        <div class="link_cancel"> @Html.ActionLink("Anular", "Cancel", new { @codigo = item.Borrador.IdEntidad }, new { @class = "btn btn-outline-primary" })</div>
+
+                                    }
+                                    @if (item.Detalle != null)
+                                    {
+                                        <div class="link_view"> @Html.ActionLink("Ver Borrador", "Details", new { @codigo = item.Borrador.IdEntidad }, new { @class = "btn btn-outline-primary" })</div>
+                                    }
+                                </div>
+
+                            </td>
+                        </tr>
+
+                    }
+                    <tr>
+                        <td colspan="7"></td>
+                    </tr>
+                    
+                    @*<tr>
+                        <td colspan="7"><div class="link_pdf"><a href="#" id="submit_link" onclick="return ExportarAPdf();">Exportar resultados a PDF</a></div></td>
+                    </tr>*@
+                }
+            </tbody>
+        </table>
+    }
+    <div class="link_guardar">
+    <p>
+        @Html.ActionLink("Crear Nueva", "Solicitud",null,new { @class="btn btn-primary" })
+    </p>
+    </div>
+}

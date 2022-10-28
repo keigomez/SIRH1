@@ -1,0 +1,140 @@
+﻿@model SIRH.Web.ViewModels.BusquedaExpedienteVM
+
+@{
+
+    if (Model != null)
+    {
+        using (Ajax.BeginForm("CreateBusquedaExpediente", "Archivo", new AjaxOptions
+        {
+            UpdateTargetId = "UpdateBusquedaExpediente",
+            InsertionMode = InsertionMode.Replace,
+            HttpMethod = "POST",
+            OnSuccess = "SuccesBusquedaExpediente",
+            OnComplete = "CompleteBusquedaExpediente",
+            OnBegin = "BeginBusquedaExpediente"
+        }))
+        {
+            @Html.HiddenFor(model => model.Expediente.Funcionario.Sexo)
+            @Html.HiddenFor(model => model.Expediente.IdEntidad)
+
+            <link href="~/Content/datetimepicker.css" rel="stylesheet" />
+            <center><h2>Información del Expediente</h2></center>
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="form-group col-3">
+                            @Html.LabelFor(model => model.Expediente.FechaCreacion)
+                            @Html.TextBoxFor(model => model.Expediente.FechaCreacion, "{0:dd/MM/yyyy}", new { @class = "form-control", @readonly = "readonly" })
+                            @Html.HiddenFor(model => model.Expediente.FechaCreacion)
+                        </div>
+                         @if (Model.Expediente.FechaTrasladoArchivoCentral.Date == Convert.ToDateTime(DateTime.MinValue))
+                         {
+                            <div class="form-group col-3">
+                               @Html.LabelFor(model => model.Expediente.FechaTrasladoArchivoCentral)
+                               @Html.TextBox("Fecha Traslado Archivo Central", "Sin Asignar", new { @class = "form-control", @readonly = "readonly"})
+                               @Html.HiddenFor(model => model.Expediente.FechaTrasladoArchivoCentral)
+                            </div>
+                         }
+                         else
+                         {
+                            <div class="form-group col-3">
+                                @Html.LabelFor(model => model.Expediente.FechaTrasladoArchivoCentral)
+                                @Html.TextBoxFor(model => model.Expediente.FechaTrasladoArchivoCentral, "{0:dd/MM/yyyy}", new { @class = "form-control", @readonly = "readonly" })
+                                @Html.HiddenFor(model => model.Expediente.FechaTrasladoArchivoCentral)
+                            </div>
+                         }
+                        @switch (Model.Expediente.Estado)
+                        {
+                            case EstadoEnum.NoPrestado:
+                                <div class="form-group col-3">
+                                    @Html.LabelFor(model => model.Expediente.Estado)
+                                    @Html.TextBox("Estado", "Disponible", new { @class = "form-control", @readonly = "readonly", style = "background:#6CDC70;" })
+                                    @Html.HiddenFor(model => model.Expediente.Estado)
+                                </div>
+                                break;
+                            case EstadoEnum.Prestado:
+                                <div class="form-group col-3">
+                                    @Html.LabelFor(model => model.Expediente.Estado)
+                                    @Html.TextBox("Estado", "En Préstamo", new { @class = "form-control", @readonly = "readonly", style = "background:#FFD700;" })
+                                    @Html.HiddenFor(model => model.Expediente.Estado)
+                                </div>
+                                break;
+                            case EstadoEnum.TrasladadoArchivoCentral:
+                                <div class="form-group col-3">
+                                    @Html.LabelFor(model => model.Expediente.Estado)
+                                    @Html.TextBox("Estado", "Trasladado a Archivo Central", new { @class = "form-control", @readonly = "readonly", style = "background:#FA8072;" })
+                                    @Html.HiddenFor(model => model.Expediente.Estado)
+                                </div>
+                                break;
+
+                            default:
+                                break;
+                        }
+
+                        <div class="form-group col-3">
+                            @Html.LabelFor(model => model.Expediente.NumeroExpediente)
+                            @Html.TextBoxFor(model => model.Expediente.NumeroExpediente, new { @class = "form-control", @readonly = "readonly" })
+                            @Html.HiddenFor(model => model.Expediente.NumeroExpediente)
+                        </div>
+                        <div class="form-group col-3">
+                            @Html.LabelFor(model => model.Expediente.Funcionario.Nombre)
+                            @Html.TextBoxFor(model => model.Expediente.Funcionario.Nombre, new { @class = "form-control", @readonly = "readonly" })
+                            @Html.HiddenFor(model => model.Expediente.Funcionario.Nombre)
+                        </div>
+                        <div class="form-group col-3">
+                            @Html.LabelFor(model => model.Expediente.Funcionario.PrimerApellido)
+                            @Html.TextBoxFor(model => model.Expediente.Funcionario.PrimerApellido, new { @class = "form-control", @readonly = "readonly" })
+                            @Html.HiddenFor(model => model.Expediente.Funcionario.PrimerApellido)
+                        </div>
+                        <div class="form-group col-3">
+                            @Html.LabelFor(model => model.Expediente.Funcionario.SegundoApellido)
+                            @Html.TextBoxFor(model => model.Expediente.Funcionario.SegundoApellido, new { @class = "form-control", @readonly = "readonly" })
+                            @Html.HiddenFor(model => model.Expediente.Funcionario.SegundoApellido)
+                        </div>
+                        <div class="form-group col-3">
+                            @Html.LabelFor(model => model.Expediente.Funcionario.EstadoFuncionario.DesEstadoFuncionario)
+                            @Html.TextBoxFor(model => model.Expediente.Funcionario.EstadoFuncionario.DesEstadoFuncionario, new { @class = "form-control", @readonly = "readonly" })
+                            @Html.HiddenFor(model => model.Expediente.Funcionario.EstadoFuncionario.DesEstadoFuncionario)
+                        </div>
+                        <div class="form-group col-3">
+                            @Html.LabelFor(model => model.Expediente.NumeroExpedienteEnArchivo)
+                            @if (Model.Expediente.NumeroExpedienteEnArchivo == null || Model.Expediente.NumeroExpedienteEnArchivo == "")
+                            {
+                                @Html.TextBox("Número Expediente en Archivo", "Sin Asignar", new { @class = "form-control", @readonly = "readonly" })
+                                @Html.HiddenFor(model => model.Expediente.NumeroExpedienteEnArchivo)
+                            }
+                            else
+                            {
+                                @Html.TextBoxFor(model => model.Expediente.NumeroExpedienteEnArchivo, new { @class = "form-control", @readonly = "readonly" })
+                                @Html.HiddenFor(model => model.Expediente.NumeroExpedienteEnArchivo)
+                            }
+
+                        </div>
+                        <div class="form-group col-3">
+                            @Html.LabelFor(model => model.Expediente.NumeroCaja)
+                            @if (Model.Expediente.NumeroCaja == null || Model.Expediente.NumeroCaja == "")
+                            {
+                                @Html.TextBox("Número Expediente en Archivo", "Sin Asignar", new { @class = "form-control", @readonly = "readonly" })
+                                @Html.HiddenFor(model => model.Expediente.NumeroCaja)
+                            }
+                            else
+                            {
+                                @Html.TextBoxFor(model => model.Expediente.NumeroCaja, new { @class = "form-control", @readonly = "readonly" })
+                                @Html.HiddenFor(model => model.Expediente.NumeroCaja)
+                            }
+
+                        </div>
+                        @if (Model.Expediente.Estado == EstadoEnum.Prestado)
+                        {
+                            <div class="form-group col-3">
+                                @Html.Label("Acción")
+                                <br />
+                                <input id="btnBuscar" name="SubmitButton" type="submit" value="Actualizar Estado Expediente Devuelto" class="btn btn-success" />
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    }
+}

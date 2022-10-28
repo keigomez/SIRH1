@@ -1,0 +1,137 @@
+﻿@model SIRH.Web.ViewModels.BusquedaCarreraVM
+
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/Carrera.cshtml";
+}
+
+<link rel="stylesheet" href="~/Content/datetimepicker.css">
+
+@using (Ajax.BeginForm("Search", "Carrera", new AjaxOptions
+{
+    UpdateTargetId = "dvResultadoBusqueda",
+    HttpMethod = "POST",
+    OnComplete = "CompleteSearch",
+    OnBegin = "BeginSearch"
+}))
+{
+    <div class="jumbotron">
+        <center>
+            <h3 class="display-4">Buscar datos de formación académica</h3>
+            <br />
+            <div class="card">
+                <div class="card-header text-left">
+                    <strong>Parámetros de búsqueda</strong>
+                </div>
+
+                <div class="card-body">
+                    @Html.Hidden("parametro", Request.QueryString["param"])
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.Funcionario.Cedula, new { @for = "Cedula", @class = "col-sm-3 col-form-label" })
+                        <div class="col-sm-3">
+                            @Html.TextBoxFor(model => model.Funcionario.Cedula, new { @id = "Cedula", @class = "form-control", @maxlength = "10" })
+                        </div>
+
+                        @Html.LabelFor(model => model.NumeroResolucion, new { @for = "NumeroResolucion", @class = "col-sm-3 col-form-label" })
+                        <div class="col-sm-3">
+                            @Html.TextBoxFor(model => model.NumeroResolucion, new { @id = "NumeroResolucion", @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.TituloCurso, new { @for = "TituloCurso", @class = "col-sm-3 col-form-label" })
+                        <div class="col-sm-3">
+                            @Html.TextBoxFor(model => model.TituloCurso, new { @id = "TituloCurso", @class = "form-control" })
+                        </div>
+
+                        @Html.LabelFor(model => model.CursoSeleccionado, new { @for = "TipoSelec", @class = "col-sm-3 col-form-label" })
+                        <div class="col-sm-3">
+                            @Html.DropDownListFor(model => model.CursoSeleccionado,
+                            Model.TipoCurso as SelectList,
+                            "Seleccione...", new { @id = "TipoSelec", @class = "form-control", @onChange = "return OnChangeTipo()" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.FechaDesde, new { @for = "FechaDesde", @class = "col-sm-3 col-form-label" })
+                        <div class="col-sm-3">
+                            @Html.TextBoxFor(model => model.FechaDesde, new { @id = "FechaDesde", @class = "form-control", @readonly = "readonly" })
+                        </div>
+
+                        @Html.LabelFor(model => model.FechaHasta, new { @for = "FechaHasta", @class = "col-sm-3 col-form-label" })
+                        <div class="col-sm-3">
+                            @Html.TextBoxFor(model => model.FechaHasta, new { @id = "FechaHasta", @class = "form-control", @readonly = "readonly" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.EntidadEducativaSeleccionada, new { @for = "EntidadEducativaSeleccionada", @class = "col-sm-3 col-form-label" })
+                        <div class="col-sm-3">
+                            @Html.DropDownListFor(model => model.EntidadEducativaSeleccionada,
+                            Model.EntidadesEducativas as SelectList,
+                            "Seleccione...", new { @id = "EntidadEducativaSeleccionada", @class = "form-control" })
+                        </div>
+
+                        @if (Request.QueryString["param"] == "1")
+                        {
+                            @Html.LabelFor(model => model.Contratacion.CodigoPolicial, new { @for = "CodigoPolicial", @class = "col-sm-3 col-form-label" })
+                            <div class="col-sm-3">
+                                @Html.TextBoxFor(model => model.Contratacion.CodigoPolicial, new { @id = "CodigoPolicial", @class = "form-control" })
+                            </div>
+                        }
+                        else
+                        {
+                            @Html.LabelFor(model => model.GradoAcademicoSeleccionado, new { @style = "display: none;", @id = "LabelGradoAcademico", @for = "GradoAcademicoSeleccionado", @class = "col-sm-3 col-form-label" })
+                            <div class="col-sm-3" id="ColGradoAcademico" style="display: none">
+                                @Html.DropDownListFor(model => model.GradoAcademicoSeleccionado,
+                                        Model.GradosAcademicos as SelectList,
+                                        "Todos", new { @id = "GradoAcademicoSeleccionado", @class = "form-control" })
+                            </div>
+
+                            @Html.LabelFor(model => model.ModalidadSeleccionada, new { @style = "display: none;", @id = "LabelModalidad", @for = "ModalidadSeleccionada", @class = "col-sm-3 col-form-label" })
+                            <div class="col-sm-3" id="ColModalidad" style="display: none">
+                                @Html.DropDownListFor(model => model.ModalidadSeleccionada,
+                                        Model.Modalidades as SelectList,
+                                        "Todos", new { @id = "ModalidadSeleccionada", @class = "form-control" })
+                            </div>
+                        }
+                    </div>
+                    <div class="form-group row">
+                        @if (Request.QueryString["param"] == "1")
+                        {
+                            @Html.LabelFor(model => model.GradoAcademicoSeleccionado, new { @style = "display: none;", @id = "LabelGradoAcademico", @for = "GradoAcademicoSeleccionado", @class = "col-sm-3 col-form-label" })
+                            <div class="col-sm-3" id="ColGradoAcademico" style="display: none">
+                                @Html.DropDownListFor(model => model.GradoAcademicoSeleccionado,
+                                        Model.GradosAcademicos as SelectList,
+                                        "Todos", new { @id = "GradoAcademicoSeleccionado", @class = "form-control" })
+                            </div>
+
+                            @Html.LabelFor(model => model.ModalidadSeleccionada, new { @style = "display: none;", @id = "LabelModalidad", @for = "ModalidadSeleccionada", @class = "col-sm-3 col-form-label" })
+                            <div class="col-sm-3" id="ColModalidad" style="display: none">
+                                @Html.DropDownListFor(model => model.ModalidadSeleccionada,
+                                        Model.Modalidades as SelectList,
+                                        "Todos", new { @id = "ModalidadSeleccionada", @class = "form-control" })
+                            </div>
+                        }
+                    </div>
+
+                    <input id="btnBuscar" name="SubmitButton" type="submit" value="Buscar" class="btn btn-primary float-right" />
+                    <div id="preloader" class="loader float-right" style="display: none"></div>
+
+                </div>
+            </div>
+
+        </center>
+    </div>
+    <br />
+}
+
+<div id="dvResultadoBusqueda"></div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+<script src="~/Scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/SearchCarrera.js" type="text/javascript"></script>
+
+<script src="~/Scripts/datetimepicker.js" type="text/javascript"></script>
+<script src="~/Scripts/datetimepicker-es.js" type="text/javascript"></script>

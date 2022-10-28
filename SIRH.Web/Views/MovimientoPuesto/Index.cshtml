@@ -1,0 +1,111 @@
+﻿@model SIRH.Web.ViewModels.MovimientoPuestoVM
+@{
+    ViewBag.Title = "Movimiento Puesto";
+    Layout = "~/Views/Shared/Reporte.cshtml";
+}
+<center><h2>Búsqueda de Movimientos de Puestos</h2></center>
+
+@*<link rel="stylesheet" href="~/Content/datetimepicker.css">*@
+<script src="~/Content/bootstrap-datepicker/js/jquery-3.4.1.slim.min.js"></script>
+<link id="bsdp-css" href="~/Content/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+
+@using (Ajax.BeginForm("Index", "MovimientoPuesto", new AjaxOptions { UpdateTargetId = "target", HttpMethod = "GET", OnSuccess = "successData", OnBegin = "beginData" }))
+{
+    <div class="card">
+        <div class="card-header">
+            Parámetros de búsqueda:
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="form-group col-6">
+                    @Html.Label("Número de puesto:")
+                    @Html.TextBox("codpuesto", String.Empty, new { @onkeypress = "return IsNumeric(event,'', 'codpuesto')", @class = "form-control" })
+                </div>
+                <div class="form-group col-6">
+                    @Html.Label("Número de cédula:")
+                    @Html.TextBox("codcedula", String.Empty, new { @class = "form-control", @onkeypress = "return IsNumeric(event,'', 'codcedula')" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-6">
+                    @Html.Label("Motivo movimiento:")
+                    @*@Html.DropDownListFor(model => model.MotivoSeleccionado,
+                                           Model.MotivosMovimiento as SelectList,
+                                           "Seleccione una opción", new { @id = "motivoSeleccionado", @class = "form-control" })*@
+                    @Html.DropDownListFor(model => model.MotivoSeleccionado, Model.MotivosMovimiento, "Seleccione una opción", new { @id = "motivoSeleccionado", @class = "btn btn-secondary dropdown-toggle form-control" })
+                </div>
+                <div class="form-group col-6"></div>
+            </div>
+            <div class="row">
+                <div class="form-group col-6">
+                        @Html.Label("Fecha Desde")
+                        @Html.TextBox("FechaDesde", null, new { @id = "FechaDesde", @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="form-group col-6">
+                    @Html.Label("Fecha Hasta")
+                    @Html.TextBox("FechaHasta", null, new { @id = "FechaHasta", @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+        </div>
+        <center>
+            <div class="card-footer text-muted">
+                <div class="row">
+                    <div class="form-group col-12">
+                        <input class="btn btn-secondary" type="submit" value="Buscar" id="btnBusca" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-12">
+                        <div id="progressbar" class="loader" hidden></div>
+                    </div>
+                </div>
+            </div>
+        </center>
+    </div>
+    <div id="error" class="alert alert-danger" role="alert" hidden></div>
+    <br/>
+}
+
+<div id="target">
+    @if (Model != null)
+    {
+        if (Model.TotalMovimientos > 0)
+        {
+            Html.RenderPartial("Index_Result", Model);
+        }
+    }
+    @if (Session["errorM"] != null && (string)Session["errorM"] == "error")
+    {
+        Html.RenderPartial("_ErrorMovimientoPuesto");
+    }
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+<script src="~/Scripts/popper.min.js"></script>
+@Scripts.Render("~/bundles/bootstrap")
+
+<script src="~/Scripts/sidebar.js" type="text/javascript"></script>
+<script src="~/scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/RelacionPuestos.js"></script>
+<script src="~/Scripts/funciones-generales.js"></script>
+@*<script src="~/Scripts/datetimepicker.js" type="text/javascript"></script>
+<script src="~/Scripts/datetimepicker-es.js" type="text/javascript"></script>*@
+<script src="~/Content/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script src="~/Content/bootstrap-datepicker/locales/bootstrap-datepicker.es.min.js" charset="UTF-8"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#FechaDesde').val('');
+        $('#FechaDesde').datepicker(
+        {
+            language: "es",
+            autoclose: true
+        });
+
+        $('#FechaHasta').val('');
+        $('#FechaHasta').datepicker(
+        {
+            language: "es",
+            autoclose: true
+        });
+    });
+</script>

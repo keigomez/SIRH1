@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://pjenlinea2.poder-judicial.go.cr/SACEJCertificacionesWCF/Certificar.svc?xsd=xsd1" namespace="http://Pj.SACEJ.Publico/" />
+  <xs:element name="ConsultarAntecedentesPersona">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="tipoIdentificacion" type="tns:TipoIdentificacion" />
+        <xs:element minOccurs="0" maxOccurs="1" name="identificacion" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="nombre" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="apellido1" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="apellido2" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="usuarioSolicitante" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="TipoIdentificacion">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Indocumentado" />
+      <xs:enumeration value="Cedula" />
+      <xs:enumeration value="CedulaResidencia" />
+      <xs:enumeration value="Pasaporte" />
+      <xs:enumeration value="CarneOExpedienteRefugiado" />
+      <xs:enumeration value="CedulaExtranjera" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ConsultarAntecedentesPersonaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="ConsultarAntecedentesPersonaResult" type="tns:SolicitudEn" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="SolicitudEn">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="CodigoSolicitud" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ConsultarAntecedentesDatosPersona">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://Pj.SACEJ.Publico/" minOccurs="0" maxOccurs="1" name="persona" type="q1:PersonasConsultaEn" />
+        <xs:element minOccurs="0" maxOccurs="1" name="usuarioSolicitante" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConsultarAntecedentesDatosPersonaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="ConsultarAntecedentesDatosPersonaResult" type="tns:SolicitudEn" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerDetalleCertificacion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="codigoSolicitud" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerDetalleCertificacionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="ObtenerDetalleCertificacionResult" type="tns:CertificacionEn" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="CertificacionEn">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="CodigoCertificacion" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DetallesCertificacion" type="tns:DetalleCertificacionEn" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DetalleCertificacionEn">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="NumeroExpediente" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Delitos" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Ofendidos" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="TipoPena" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Pena" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CodigoJuzgado" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="NombreJuzgado" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="FechaPerpetracion" type="xs:dateTime" />
+      <xs:element minOccurs="1" maxOccurs="1" name="FechaSentenciaTribunalJuicio" type="xs:dateTime" />
+      <xs:element minOccurs="1" maxOccurs="1" name="FechaSentenciaTribunalApelacion" type="xs:dateTime" />
+      <xs:element minOccurs="1" maxOccurs="1" name="FechaSentenciaTribunalCasacion" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ObtenerCertificacionPdf">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="codigoSolicitud" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerCertificacionPdfResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="ObtenerCertificacionPdfResult" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtengoSolicitudRechazada">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="solicitudId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtengoSolicitudRechazadaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="ObtengoSolicitudRechazadaResult" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModificarSolicitudAntecedentesPersona">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="solicitudId" type="xs:int" />
+        <xs:element xmlns:q2="http://Pj.SACEJ.Publico/" minOccurs="0" maxOccurs="1" name="persona" type="q2:PersonasConsultaEn" />
+        <xs:element minOccurs="0" maxOccurs="1" name="usuarioSolicitante" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModificarSolicitudAntecedentesPersonaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="ModificarSolicitudAntecedentesPersonaResult" type="tns:SolicitudEn" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

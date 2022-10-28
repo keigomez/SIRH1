@@ -1,0 +1,405 @@
+﻿@model SIRH.Web.ViewModels.ManualCargosVM
+
+@{
+    ViewBag.Title = "Competencias";
+    Layout = "~/Views/Shared/ManualCargos.cshtml";
+}
+
+
+@using (Ajax.BeginForm("Competencias", "ManualCargos", new AjaxOptions
+{
+    UpdateTargetId = "dvResultadoBusqueda",
+    HttpMethod = "POST",
+    OnComplete = "CompleteSearch",
+    OnBegin = "BeginSearch"
+}))
+{
+    <div class="jumbotron">
+        <center>
+            <h1>Competencias transversales y evidencias</h1>
+            <h4>Cargo: @Model.Cargo.NombreCargo</h4>
+            @Html.HiddenFor(model => model.Cargo.IdEntidad)
+            @if (Model.CompetenciasTransversales != null && Model.CompetenciasTransversales.Count > 0)
+            {
+                <br />
+                <div class="alert alert-warning"><i class="fa fa-warning"></i> Este cargo ya tiene asociados datos de competencias transversales, por controles de integridad de datos, si desea modificarlos o agregar nuevos, debe eliminar la información que se guardó previamente y registrarla nuevamente. Para esto debe utilizar el botón "Limpiar datos", al final de este formulario.</div>
+                <br />
+                <div class="card">
+                    <div class="card-header text-left">
+                        <strong>Transversales</strong>
+                        @Html.HiddenFor(model => model.Cargo.Mensaje)
+                    </div>
+                    <div class="card-body">
+                        @for (int i = 0; i < Model.CompetenciasTransversales.Count; i++)
+                        {
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr class="card-header">
+                                        <td><b>Competencia: @(Model.CompetenciasTransversales[i].TipoCompetencia == 1 ? "Compromiso con el servicio público" : "Integridad en el desempeño de la función pública")</b></td>
+                                        <td>Nivel de dominio: @(Model.CompetenciasTransversales[i].NivelDominio == 1 ? "Basico" :
+                       @Model.CompetenciasTransversales[i].NivelDominio == 2 ? "Intermedio" :
+                       @Model.CompetenciasTransversales[i].NivelDominio == 3 ? "Avanzado" : "Destacado")</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="2">
+                                            <table class="table table-hover">
+                                                @for (int j = 0; j < Model.CompetenciasTransversales[i].ComportamientosTransversales.Count; j++)
+                                                {
+                                                    <tr>
+                                                        <td><b>Comportamiento N° @(j + 1)</b></td>
+                                                        <td>@Model.CompetenciasTransversales[i].ComportamientosTransversales[j].ComportamientoTransversal</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2">
+                                                            <table class="table table-hover">
+                                                                @for (int k = 0; k < Model.CompetenciasTransversales[i].ComportamientosTransversales[j].EvidenciasComportamientoTransversal.Count; k++)
+                                                                {
+                                                                    <tr>
+                                                                        <td><b>Evidencia N° @(k + 1)</b></td>
+                                                                        <td>@Model.CompetenciasTransversales[i].ComportamientosTransversales[j].EvidenciasComportamientoTransversal[k].Evidencia</td>
+                                                                    </tr>
+                                                                }
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        }
+                    </div>
+                </div>
+            }
+            else
+            {
+            <div class="card">
+                <div class="card-header text-left">
+                    <strong>Transversales</strong>
+                </div>
+                <div class="card-body">
+                    <div id="registros">
+                        <div class="card">
+                            <div class="card-header text-left">
+                                <strong>Competencia N° 1: Compromiso con el servicio público</strong>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group row">
+                                    <div class="col-sm-3">
+                                        Nivel de dominio
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <select id="nivel" name="nivel1" class="form-control">
+                                            <option value="vacio">Seleccione...</option>
+                                            <option value="basico">Básico</option>
+                                            <option value="intermedio">Intermedio</option>
+                                            <option value="avanzado">Avanzado</option>
+                                            <option value="destacado">Destacado</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div id="comportamientos"></div>
+                                <button type="button" id="AgregarComportamiento" class="btn btn-outline-info" onclick="FuncionAgregarComportamiento();"><i class="fa fa-plus-circle"></i> Agregar Comportamiento</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div id="registros">
+                        <div class="card">
+                            <div class="card-header text-left">
+                                <strong>Competencia N° 2: Integridad en el desempeño de la función pública</strong>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group row">
+                                    <div class="col-sm-3">
+                                        Nivel de dominio
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <select id="nivel" name="nivel2" class="form-control">
+                                            <option value="vacio">Seleccione...</option>
+                                            <option value="basico">Básico</option>
+                                            <option value="intermedio">Intermedio</option>
+                                            <option value="avanzado">Avanzado</option>
+                                            <option value="destacado">Destacado</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div id="comportamientos1"></div>
+                                <button type="button" id="AgregarActividadCompromiso1" class="btn btn-outline-info" onclick="FuncionAgregarComportamiento1();"><i class="fa fa-plus-circle"></i> Agregar Comportamiento</button>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                </div>
+            </div>
+            }
+
+        </center>
+        <br />
+        <div class="float-right">
+            <a href="@Url.Action("Requerimientos", "ManualCargos", new { codigo = Model.Cargo.IdEntidad })" class="btn btn-outline-danger">
+                <i class="fa fa-arrow-circle-o-left"></i> Regresar
+            </a>
+            @if (Model.CompetenciasTransversales != null && Model.CompetenciasTransversales.Count > 0)
+            {
+                <button type="button" class="btn btn-warning" onclick="location.href='@Url.Action("EliminarCompetenciasTransversales", new { cargo = Model.Cargo.IdEntidad })'"><i class="fa fa-eraser"></i> Limpiar datos</button>
+            }
+            <button type="submit" class="btn btn-success"><i class="fa fa-floppy-o"></i> Guardar y continuar</button>
+        </div>
+    </div>
+}
+
+<div id="dvResultadoBusqueda"></div>
+<br />
+
+@Scripts.Render("~/bundles/jquery")
+<script src="~/Scripts/popper.min.js"></script>
+@Scripts.Render("~/bundles/bootstrap")
+<script src="~/Scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/SearchMontoCaucion.js" type="text/javascript"></script>
+<script src="~/Scripts/datetimepicker.js" type="text/javascript"></script>
+<script src="~/Scripts/datetimepicker-es.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("body").tooltip({ selector: '[data-toggle=tooltip]' });
+    });
+</script>
+
+<script type="text/javascript">
+    var resultados = 0;
+    var resultadosActividades = new Array();
+
+    function FuncionAgregar() {
+        resultados++;
+        resultadosActividades.push(new Array());
+        var pos = resultados - 1;
+        var div = document.getElementById("registros");
+        var newdiv = document.createElement("comportamiento" + pos);
+        newdiv.innerHTML =
+        //document.getElementById("registros").innerHTML +=
+        "<div class=\"card\">" +
+            "<div class=\"card-header text-left\">" +
+                "Competencia N° " + resultados +
+            "</div>" +
+            "<div class=\"card-body\">" +
+                "<div class=\"form-group row\">" +
+                    "<div class=\"col-sm-3\">" +
+                        "Nombre de la competencia" +
+                    "</div>" +
+                    "<div class=\"col-sm-9\">" +
+                        "<input type=\"text\" id=\"resultado" + pos + "\" class=\"form-control\">" +
+                    "</div>" +
+                "</div>" +
+
+                "<div class=\"form-group row\">" +
+                    "<div class=\"col-sm-3\">" +
+                        "Nivel de dominio" +
+                    "</div>" +
+                    "<div class=\"col-sm-9\">" +
+                        "<select id=\"nivel" + pos + "\" class=\"form-control\">" +
+                        "<option value=\"vacio\">Seleccione...</option>" +
+                        "<option value=\"basico\">Básico</option>" +
+                        "<option value=\"vacio\">Intermedio</option>" +
+                        "<option value=\"vacio\">Avanzado</option>" +
+                        "<option value=\"vacio\">Destacado</option>" +
+                        "</select>" +
+                    "</div>" +
+                "</div>" +
+
+                "<div id=\"actividades" + pos + "\"></div>" +
+                "<button type=\"button\" id=\"AgregarActividad" + pos + "\" class=\"btn btn-outline-info\" onclick=\"FuncionAgregarActividad(" + pos + ");\"><i class=\"fa fa-plus-circle\"></i> Agregar Evidencia</button>" +
+            "</div>" +
+        "</div><br />";
+        div.appendChild(newdiv);
+    }
+
+    //PRIMER COMPETENCIA
+
+    var resultadosComportamiento = new Array();
+    function FuncionAgregarComportamiento() {
+        //resultadosComportamiento.push(resultadosComportamiento.length + 1);
+        resultadosComportamiento.push(new Array());
+        var div = document.getElementById("comportamientos");
+        var newdiv = document.createElement("comportamiento" + resultadosComportamiento.length);
+        //document.getElementById("comportamientos").className = "form-group row";
+        newdiv.innerHTML =
+        //document.getElementById("comportamientos").innerHTML +=
+            //"<div class=\"form-group row\">"
+                "<div class=\"col-sm-3\">" +
+                    "<b>Comportamiento N° " + (resultadosComportamiento.length) +
+                "</b></div>" +
+                "<div class=\"col-sm-9\">" +
+                    "<input type=\"text\" id=\"resultado" + resultadosComportamiento.length + "\" class=\"form-control\" name=\"resultado1_" + resultadosComportamiento.length +"\">" +
+                "</div><br/>"
+                + "<div id=\"evidenciaComportamiento" + resultadosComportamiento.length + "\"></div><br/>"
+                + "<div class=\"col-sm-12\" style=\"margin-top:10px;\"><button type=\"button\" id=\"AgregarEvidenciaCompetencia\" class=\"btn btn-outline-warning\" onclick=\"FuncionAgregarEvidenciaCompetencia(" + resultadosComportamiento.length + ");\"><i class=\"fa fa-plus-circle\"></i> Agregar Evidencia</button><br/>"
+                + "</div>";
+        newdiv.className = "form-group row";
+        div.appendChild(newdiv);
+            //"</div>";
+    }
+
+    var resultadosEvidenciaCompetencia = new Array();
+    function FuncionAgregarEvidenciaCompetencia(d) {
+        //alert(resultadosComportamiento[d-1]);
+        //alert(d);
+        //resultadosEvidenciaCompetencia.push(resultadosEvidenciaCompetencia.length + 1);
+        resultadosComportamiento[d - 1].push(resultadosComportamiento[d - 1].length + 1);
+        //alert(resultadosComportamiento[d - 1]);
+        var div = document.getElementById("evidenciaComportamiento" + d);
+        //var div = document.getElementById("evidenciaComportamiento" + resultadosComportamiento[d-1].length + 1);
+        //var newdiv = document.createElement("evidencia" + (resultadosEvidenciaCompetencia.length));
+        var newdiv = document.createElement("evidencia" + resultadosComportamiento[d-1].length + 1);
+        //document.getElementById("evidenciaComportamiento" + d).className = "form-group row";
+        newdiv.innerHTML =
+       // document.getElementById("evidenciaComportamiento" + d).innerHTML +=
+            //"<div class=\"form-group row\">"
+                "<div class=\"col-sm-3\">" +
+                    //"Evidencia N° " + (resultadosEvidenciaCompetencia.length) +
+                    "Evidencia N° " + (resultadosComportamiento[d-1].length) +
+                "</div>" +
+                "<div class=\"col-sm-9\">" +
+                    //"<input type=\"text\" id=\"resultado" + resultadosEvidenciaCompetencia.length + "\" class=\"form-control\">" +
+                    "<input type=\"text\" id=\"resultado" + (resultadosComportamiento[d - 1].length) + "\" class=\"form-control\" name=\"comportamiento1_" + d + "_" + (resultadosComportamiento[d - 1].length) + "\">" +
+                "</div><div></div>";
+        newdiv.className = "form-group row";
+        newdiv.style = "margin-top:5px";
+        div.className = "col-sm-12";
+        div.appendChild(newdiv);
+        //"</div>";
+    }
+
+    //SEGUNDA COMPETENCIA
+
+    var resultadosComportamiento1 = new Array();
+    function FuncionAgregarComportamiento1() {
+        resultadosComportamiento1.push(new Array());
+        //resultadosComportamiento1.push(resultadosComportamiento1.length + 1);
+        //document.getElementById("comportamientos1").className = "form-group row";
+        var div = document.getElementById("comportamientos1");
+        var newdiv = document.createElement("comportamiento1_" + resultadosComportamiento.length);
+        //document.getElementById("comportamientos1").innerHTML +=
+        newdiv.innerHTML =
+            //"<div class=\"form-group row\">"
+                "<div class=\"col-sm-3\">" +
+                    "<b>Comportamiento N° " + (resultadosComportamiento1.length) +
+                "</b></div>" +
+                "<div class=\"col-sm-9\">" +
+                    "<input type=\"text\" id=\"resultado1_" + resultadosComportamiento1.length + "\" class=\"form-control\" name=\"resultado2_" + resultadosComportamiento1.length + "\">" +
+                "</div><br/>"
+                + "<div id=\"evidenciaComportamiento1" + resultadosComportamiento1.length + "\"></div>"
+                + "<div class=\"col-sm-12\" style=\"margin-top:10px;\"><button type=\"button\" id=\"AgregarEvidenciaCompetencia1\" class=\"btn btn-outline-warning\" onclick=\"FuncionAgregarEvidenciaCompetencia1(" + resultadosComportamiento1.length + ");\"><i class=\"fa fa-plus-circle\"></i> Agregar Evidencia</button><br/>"
+                + "</div>";
+        //"</div>";
+        newdiv.className = "form-group row";
+        div.appendChild(newdiv);
+    }
+
+    var resultadosEvidenciaCompetencia1 = new Array();
+    function FuncionAgregarEvidenciaCompetencia1(d) {
+        resultadosComportamiento1[d - 1].push(resultadosComportamiento1[d - 1].length + 1);
+        var div = document.getElementById("evidenciaComportamiento1" + d);
+        var newdiv = document.createElement("evidenciaComportamiento1_" + resultadosComportamiento1[d - 1].length + 1);
+        newdiv.innerHTML =
+       // document.getElementById("evidenciaComportamiento" + d).innerHTML +=
+            //"<div class=\"form-group row\">"
+                "<div class=\"col-sm-3\">" +
+                    //"Evidencia N° " + (resultadosEvidenciaCompetencia.length) +
+                    "Evidencia N° " + (resultadosComportamiento1[d - 1].length) +
+                "</div>" +
+                "<div class=\"col-sm-9\">" +
+                    //"<input type=\"text\" id=\"resultado" + resultadosEvidenciaCompetencia.length + "\" class=\"form-control\">" +
+                    "<input type=\"text\" id=\"resultado_2_" + (resultadosComportamiento1[d - 1].length) + "\" class=\"form-control\" name=\"comportamiento2_" + d + "_" + (resultadosComportamiento1[d - 1].length) + "\">" +
+                "</div><div></div>";
+        newdiv.className = "form-group row";
+        newdiv.style = "margin-top:5px";
+        div.className = "col-sm-12";
+        div.appendChild(newdiv);
+        //resultadosEvidenciaCompetencia1.push(resultadosEvidenciaCompetencia.length + 1);
+        //document.getElementById("evidenciaComportamiento1" + d).className = "form-group row";
+        //document.getElementById("evidenciaComportamiento1" + d).innerHTML +=
+        //    //"<div class=\"form-group row\">"
+        //        "<div class=\"col-sm-3\">" +
+        //            "Evidencia N° " + (resultadosEvidenciaCompetencia1.length) +
+        //        "</div>" +
+        //        "<div class=\"col-sm-9\">" +
+        //            "<input type=\"text\" id=\"resultado1" + resultadosEvidenciaCompetencia1.length + "\" class=\"form-control\">" +
+        //        "</div>";
+        ////"</div>";
+    }
+
+    var resultadosActividadesCompromiso1 = new Array();
+    function FuncionAgregarActividadCompromiso1() {
+        resultadosActividadesCompromiso1.push(resultadosActividadesCompromiso1.length + 1);
+        document.getElementById("actividadesCompromiso1").className = "form-group row";
+        document.getElementById("actividadesCompromiso1").innerHTML +=
+            //"<div class=\"form-group row\">"
+                "<div class=\"col-sm-3\">" +
+                    "Evidencia N° " + (resultadosActividadesCompromiso1.length) +
+                "</div>" +
+                "<div class=\"col-sm-9\">" +
+                    "<input type=\"text\" id=\"resultado" + resultadosActividadesCompromiso1.length + "\" class=\"form-control\">" +
+                "</div>";
+        //"</div>";
+    }
+
+    var resultados1 = 0;
+    var resultadosActividades1 = new Array();
+
+    function FuncionAgregar1() {
+        resultados1++;
+        resultadosActividades1.push(new Array());
+        var pos1 = resultados1 - 1;
+        document.getElementById("registros1").innerHTML +=
+        "<div class=\"card\">" +
+            "<div class=\"card-header text-left\">" +
+                "Competencia N° " + resultados1 +
+            "</div>" +
+            "<div class=\"card-body\">" +
+                "<div class=\"form-group row\">" +
+                    "<div class=\"col-sm-3\">" +
+                        "Nombre de la competencia" +
+                    "</div>" +
+                    "<div class=\"col-sm-9\">" +
+                        "<input type=\"text\" id=\"resultado1" + pos1 + "\" class=\"form-control\">" +
+                    "</div>" +
+                "</div>" +
+
+                "<div class=\"form-group row\">" +
+                    "<div class=\"col-sm-3\">" +
+                        "Nivel de dominio" +
+                    "</div>" +
+                    "<div class=\"col-sm-9\">" +
+                        "<select id=\"nivel1" + pos1 + "\" class=\"form-control\">" +
+                        "<option value=\"vacio\">Seleccione...</option>" +
+                        "<option value=\"basico\">Básico</option>" +
+                        "<option value=\"vacio\">Intermedio</option>" +
+                        "<option value=\"vacio\">Avanzado</option>" +
+                        "<option value=\"vacio\">Destacado</option>" +
+                        "</select>" +
+                    "</div>" +
+                "</div>" +
+
+                "<div id=\"actividades1" + pos1 + "\"></div>" +
+                "<button type=\"button\" id=\"AgregarActividad1" + pos1 + "\" class=\"btn btn-outline-info\" onclick=\"FuncionAgregarActividad1(" + pos1 + ");\"><i class=\"fa fa-plus-circle\"></i> Agregar Evidencia</button>" +
+            "</div>" +
+        "</div><br />";
+    }
+
+    function FuncionAgregarActividad1(pos1) {
+        resultadosActividades1[pos1].push(resultadosActividades1.length);
+        document.getElementById("actividades1" + pos1).className = "form-group row";
+        document.getElementById("actividades1" + pos1).innerHTML +=
+            "<div class=\"col-sm-3\">" +
+                "Evidencia N° " + (resultadosActividades1[pos1].length) +
+            "</div>" +
+            "<div class=\"col-sm-9\">" +
+                "<input type=\"text\" id=\"resultado1" + resultados1 + "\" class=\"form-control\">" +
+            "</div><div></div>";
+    }
+</script>
+

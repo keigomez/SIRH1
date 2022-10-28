@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MasterTASModelStoreContainer" CdmEntityContainer="MasterTASEntities">
+    <EntitySetMapping Name="BitacoraHP">
+      <EntityTypeMapping TypeName="MasterTASModel.BitacoraHP">
+        <MappingFragment StoreEntitySet="BitacoraHP">
+          <ScalarProperty Name="IdBitacora" ColumnName="IdBitacora" />
+          <ScalarProperty Name="IdAdress" ColumnName="IdAdress" />
+          <ScalarProperty Name="TipoTransaccion" ColumnName="TipoTransaccion" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Hora" ColumnName="Hora" />
+          <ScalarProperty Name="Data1" ColumnName="Data1" />
+          <ScalarProperty Name="Data2" ColumnName="Data2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CatBitacora">
+      <EntityTypeMapping TypeName="MasterTASModel.CatBitacora">
+        <MappingFragment StoreEntitySet="CatBitacora">
+          <ScalarProperty Name="IdCatalogo" ColumnName="IdCatalogo" />
+          <ScalarProperty Name="Format" ColumnName="Format" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CodigoAsistencia">
+      <EntityTypeMapping TypeName="MasterTASModel.CodigoAsistencia">
+        <MappingFragment StoreEntitySet="CodigoAsistencia">
+          <ScalarProperty Name="IdCodigo" ColumnName="IdCodigo" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="output1" ColumnName="output1" />
+          <ScalarProperty Name="output2" ColumnName="output2" />
+          <ScalarProperty Name="output3" ColumnName="output3" />
+          <ScalarProperty Name="output4" ColumnName="output4" />
+          <ScalarProperty Name="output5" ColumnName="output5" />
+          <ScalarProperty Name="output6" ColumnName="output6" />
+          <ScalarProperty Name="output7" ColumnName="output7" />
+          <ScalarProperty Name="output8" ColumnName="output8" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DispositivoAsistencia">
+      <EntityTypeMapping TypeName="MasterTASModel.DispositivoAsistencia">
+        <MappingFragment StoreEntitySet="DispositivoAsistencia">
+          <ScalarProperty Name="IdDispositivo" ColumnName="IdDispositivo" />
+          <ScalarProperty Name="IdTagLectora" ColumnName="IdTagLectora" />
+          <ScalarProperty Name="asistencia" ColumnName="asistencia" />
+          <ScalarProperty Name="acceso" ColumnName="acceso" />
+          <ScalarProperty Name="output1" ColumnName="output1" />
+          <ScalarProperty Name="output2" ColumnName="output2" />
+          <ScalarProperty Name="output3" ColumnName="output3" />
+          <ScalarProperty Name="output4" ColumnName="output4" />
+          <ScalarProperty Name="output5" ColumnName="output5" />
+          <ScalarProperty Name="output6" ColumnName="output6" />
+          <ScalarProperty Name="output7" ColumnName="output7" />
+          <ScalarProperty Name="output8" ColumnName="output8" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DispositivoEmpresa">
+      <EntityTypeMapping TypeName="MasterTASModel.DispositivoEmpresa">
+        <MappingFragment StoreEntitySet="DispositivoEmpresa">
+          <ScalarProperty Name="IdDispositivo" ColumnName="IdDispositivo" />
+          <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+          <ScalarProperty Name="HallaMarcas" ColumnName="HallaMarcas" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dispositivos">
+      <EntityTypeMapping TypeName="MasterTASModel.Dispositivos">
+        <MappingFragment StoreEntitySet="Dispositivos">
+          <ScalarProperty Name="IdDispositivo" ColumnName="IdDispositivo" />
+          <ScalarProperty Name="ModeloBiometrica" ColumnName="ModeloBiometrica" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
+          <ScalarProperty Name="TipoComunicacion" ColumnName="TipoComunicacion" />
+          <ScalarProperty Name="PuertoComm" ColumnName="PuertoComm" />
+          <ScalarProperty Name="DireccionIP" ColumnName="DireccionIP" />
+          <ScalarProperty Name="Velocidad" ColumnName="Velocidad" />
+          <ScalarProperty Name="TiempoEspera" ColumnName="TiempoEspera" />
+          <ScalarProperty Name="PuertoComunicacion" ColumnName="PuertoComunicacion" />
+          <ScalarProperty Name="Capacidad" ColumnName="Capacidad" />
+          <ScalarProperty Name="Verifica" ColumnName="Verifica" />
+          <ScalarProperty Name="NoTelefono" ColumnName="NoTelefono" />
+          <ScalarProperty Name="InitString" ColumnName="InitString" />
+          <ScalarProperty Name="SoloVacia" ColumnName="SoloVacia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Empresa">
+      <EntityTypeMapping TypeName="MasterTASModel.Empresa">
+        <MappingFragment StoreEntitySet="Empresa">
+          <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+          <ScalarProperty Name="NombreComercial" ColumnName="NombreComercial" />
+          <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
+          <ScalarProperty Name="RepresentanteLegal" ColumnName="RepresentanteLegal" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="EntradaTarde" ColumnName="EntradaTarde" />
+          <ScalarProperty Name="RenumeriacionHoraExtra" ColumnName="RenumeriacionHoraExtra" />
+          <ScalarProperty Name="PoliticaHoraExtra" ColumnName="PoliticaHoraExtra" />
+          <ScalarProperty Name="NombreDB" ColumnName="NombreDB" />
+          <ScalarProperty Name="PathDB" ColumnName="PathDB" />
+          <ScalarProperty Name="NombreLogo" ColumnName="NombreLogo" />
+          <ScalarProperty Name="GeneraCodigo" ColumnName="GeneraCodigo" />
+          <ScalarProperty Name="Verifica" ColumnName="Verifica" />
+          <ScalarProperty Name="Usuairo" ColumnName="Usuairo" />
+          <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+          <ScalarProperty Name="AutorizacionHorasExtras" ColumnName="AutorizacionHorasExtras" />
+          <ScalarProperty Name="TomarHorasExtras" ColumnName="TomarHorasExtras" />
+          <ScalarProperty Name="FaltantedeMarca" ColumnName="FaltantedeMarca" />
+          <ScalarProperty Name="MarcarESHE" ColumnName="MarcarESHE" />
+          <ScalarProperty Name="Prefijo" ColumnName="Prefijo" />
+          <ScalarProperty Name="Correlativo" ColumnName="Correlativo" />
+          <ScalarProperty Name="ImageLogo" ColumnName="ImageLogo" />
+          <ScalarProperty Name="PrioridadProcesoMarca" ColumnName="PrioridadProcesoMarca" />
+          <ScalarProperty Name="AgregaMarcaBlanco" ColumnName="AgregaMarcaBlanco" />
+          <ScalarProperty Name="ProcesoMarcas" ColumnName="ProcesoMarcas" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Marcaciones">
+      <EntityTypeMapping TypeName="MasterTASModel.Marcaciones">
+        <MappingFragment StoreEntitySet="Marcaciones">
+          <ScalarProperty Name="IdMarcacion" ColumnName="IdMarcacion" />
+          <ScalarProperty Name="IdDispositivo" ColumnName="IdDispositivo" />
+          <ScalarProperty Name="CodigoEmpleado" ColumnName="CodigoEmpleado" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Hora" ColumnName="Hora" />
+          <ScalarProperty Name="Procesado" ColumnName="Procesado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PlantillaEmpleado">
+      <EntityTypeMapping TypeName="MasterTASModel.PlantillaEmpleado">
+        <MappingFragment StoreEntitySet="PlantillaEmpleado">
+          <ScalarProperty Name="CodigoEmpleado" ColumnName="CodigoEmpleado" />
+          <ScalarProperty Name="Plantilla" ColumnName="Plantilla" />
+          <ScalarProperty Name="Existe" ColumnName="Existe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PlantillaEmpleadoB">
+      <EntityTypeMapping TypeName="MasterTASModel.PlantillaEmpleadoB">
+        <MappingFragment StoreEntitySet="PlantillaEmpleadoB">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CodigoEmpleado" ColumnName="CodigoEmpleado" />
+          <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+          <ScalarProperty Name="senver" ColumnName="senver" />
+          <ScalarProperty Name="temver" ColumnName="temver" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="dedo" ColumnName="dedo" />
+          <ScalarProperty Name="admlev" ColumnName="admlev" />
+          <ScalarProperty Name="schdul" ColumnName="schdul" />
+          <ScalarProperty Name="secthr" ColumnName="secthr" />
+          <ScalarProperty Name="temxof" ColumnName="temxof" />
+          <ScalarProperty Name="temyof" ColumnName="temyof" />
+          <ScalarProperty Name="indexc" ColumnName="indexc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PlantillaEmpleadoB1">
+      <EntityTypeMapping TypeName="MasterTASModel.PlantillaEmpleadoB1">
+        <MappingFragment StoreEntitySet="PlantillaEmpleadoB1">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="posicion" ColumnName="posicion" />
+          <ScalarProperty Name="ubicacion" ColumnName="ubicacion" />
+          <ScalarProperty Name="valor" ColumnName="valor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SeguridadDatos">
+      <EntityTypeMapping TypeName="MasterTASModel.SeguridadDatos">
+        <MappingFragment StoreEntitySet="SeguridadDatos">
+          <ScalarProperty Name="IdSeguridad" ColumnName="IdSeguridad" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+          <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="MasterTASModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TagLectora">
+      <EntityTypeMapping TypeName="MasterTASModel.TagLectora">
+        <MappingFragment StoreEntitySet="TagLectora">
+          <ScalarProperty Name="IdLectora" ColumnName="IdLectora" />
+          <ScalarProperty Name="IdTagLectora" ColumnName="IdTagLectora" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TagSoftware">
+      <EntityTypeMapping TypeName="MasterTASModel.TagSoftware">
+        <MappingFragment StoreEntitySet="TagSoftware">
+          <ScalarProperty Name="IdTag" ColumnName="IdTag" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmpresaParametros">
+      <EntityTypeMapping TypeName="MasterTASModel.EmpresaParametros">
+        <MappingFragment StoreEntitySet="EmpresaParametros">
+          <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+          <ScalarProperty Name="Doblemarcaje" ColumnName="Doblemarcaje" />
+          <ScalarProperty Name="tiempodoblemarcaje" ColumnName="tiempodoblemarcaje" />
+          <ScalarProperty Name="descuentamatutino" ColumnName="descuentamatutino" />
+          <ScalarProperty Name="descuentavespertino" ColumnName="descuentavespertino" />
+          <ScalarProperty Name="descuentaalimentacion" ColumnName="descuentaalimentacion" />
+          <ScalarProperty Name="lviniciadoble" ColumnName="lviniciadoble" />
+          <ScalarProperty Name="lvfindoble" ColumnName="lvfindoble" />
+          <ScalarProperty Name="siniciadoble" ColumnName="siniciadoble" />
+          <ScalarProperty Name="sfindoble" ColumnName="sfindoble" />
+          <ScalarProperty Name="diniciadoble" ColumnName="diniciadoble" />
+          <ScalarProperty Name="dfindoble" ColumnName="dfindoble" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PathDB">
+      <EntityTypeMapping TypeName="MasterTASModel.PathDB">
+        <MappingFragment StoreEntitySet="PathDB">
+          <ScalarProperty Name="PathDB1" ColumnName="PathDB" />
+          <ScalarProperty Name="AutoDB" ColumnName="AutoDB" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FK_DispositivoAsistencia_TagSoftware" TypeName="MasterTASModel.FK_DispositivoAsistencia_TagSoftware" StoreEntitySet="DispositivoAsistencia">
+      <EndProperty Name="TagSoftware">
+        <ScalarProperty Name="IdTag" ColumnName="IdTagSoftware" />
+      </EndProperty>
+      <EndProperty Name="DispositivoAsistencia">
+        <ScalarProperty Name="IdDispositivo" ColumnName="IdDispositivo" />
+        <ScalarProperty Name="IdTagLectora" ColumnName="IdTagLectora" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

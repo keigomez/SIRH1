@@ -1,0 +1,186 @@
+﻿@model SIRH.Web.ViewModels.GenerarResolucionVM
+
+@{
+
+    using (Ajax.BeginForm("CreateResolucion", "Carrera", new AjaxOptions
+    {
+        UpdateTargetId = "divListaCursos",
+        HttpMethod = "POST",
+        OnComplete = "CompleteBuscar",
+        OnBegin = "BeginBuscar"
+    }))
+    {
+
+        <br />
+
+        if (Model.Error != null)
+        {
+            <div class="card border-danger">
+                <div class="card-header"><strong>El formulario contiene los siguientes errores:</strong></div>
+                <div class="card-body text-danger">
+                    <div class="alert alert-danger" role="alert">
+                        <h5>@Model.Error.MensajeError</h5>
+                    </div>
+                </div>
+            </div>
+        }
+
+        <br />
+
+        <div class="card">
+            <h5 class="card-header">Cursos (@Model.ListaCursos.Count())</h5>
+            <div class="card-body">
+                <table class="table">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Cédula</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Curso</th>
+                            <th scope="col">Modalidad</th>
+                            <th scope="col">Resolución</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < Model.ListaCursos.Count(); i++)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.AttributeEncode(i + 1)
+                                    @Html.HiddenFor(model => model.ListaCursos[i].Curso.IdEntidad)
+                                    @Html.HiddenFor(model => model.ListaCursos[i].Curso.Modalidad.IdEntidad)
+                                    @Html.HiddenFor(model => model.ListaCursos[i].Curso.TotalHoras)
+                                </td>
+                                <td>
+                                    @Html.AttributeEncode(Model.ListaCursos.ElementAt(i).Funcionario.Cedula)
+                                    @Html.HiddenFor(model => model.ListaCursos[i].Funcionario.Cedula)
+                                </td>
+                                <td>
+                                    @Html.AttributeEncode(Model.ListaCursos.ElementAt(i).Funcionario.Nombre + Model.ListaCursos.ElementAt(i).Funcionario.PrimerApellido + Model.ListaCursos.ElementAt(i).Funcionario.SegundoApellido)
+                                    @Html.HiddenFor(model => model.ListaCursos[i].Funcionario.Nombre)
+                                    @Html.HiddenFor(model => model.ListaCursos[i].Funcionario.PrimerApellido)
+                                    @Html.HiddenFor(model => model.ListaCursos[i].Funcionario.SegundoApellido)
+                                </td>
+                                <td>
+                                    @Html.AttributeEncode(Model.ListaCursos.ElementAt(i).Curso.DescripcionCapacitacion)
+                                    @Html.HiddenFor(model => model.ListaCursos[i].Curso.DescripcionCapacitacion)
+                                </td>
+                                <td>
+                                    @Html.AttributeEncode(Model.ListaCursos.ElementAt(i).Curso.Modalidad.Descripcion)
+                                    @Html.HiddenFor(model => model.ListaCursos[i].Curso.Modalidad.Descripcion)
+                                </td>
+                                <td>
+                                    @Html.AttributeEncode(Model.ListaCursos.ElementAt(i).Curso.Resolucion)
+                                    @Html.HiddenFor(model => model.ListaCursos[i].Curso.Resolucion)
+                                </td>
+                                @Html.HiddenFor(model => model.ListaCursos[i].Detalle.CodigoPolicial)
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+
+            </div>
+        </div>
+
+        <br />
+
+        <div class="container col-md-auto">
+            <div class="row">
+                <div class="col-auto">
+                    @Html.TextBoxFor(model => model.CursoSeleccionado, new { @class = "form-control", @placeholder = "# de curso", style = "width: 280px;", @Value = "" })
+                    @Html.ValidationMessageFor(model => model.CursoSeleccionado)
+                </div>
+                <div class="col-auto">
+                    <input id="btnAgregar" name="SubmitButton" class="btn btn-primary" type="submit" value="Agregar" />
+                </div>
+                <div class="col-auto">
+                    <input id="btnRemover" name="SubmitButton" class="btn btn-danger" type="submit" value="Remover" />
+                </div>
+            </div>
+
+        </div>
+        @Html.HiddenFor(model => model.CursosSeleccionados)
+        @Html.HiddenFor(model => model.CursoSeleccionado)
+
+        @Html.HiddenFor(model => model.FechaRige)
+        @Html.HiddenFor(model => model.FechaVence)
+        @Html.HiddenFor(model => model.NumResolucion)
+
+    }
+
+    <br />
+
+    using (Html.BeginForm("GenerarResolucion", "Carrera", FormMethod.Post, new { @id = "thisForm" }))
+    {
+
+        <div class="card">
+            <h5 class="card-header">Cursos seleccionados (@Model.CursosSeleccionados.Count())</h5>
+            <div class="card-body">
+                <table class="table">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Cédula</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Curso</th>
+                            <th scope="col">Modalidad</th>
+                            <th scope="col">Resolución</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < Model.CursosSeleccionados.Count(); i++)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.AttributeEncode(i + 1)
+                                    @Html.HiddenFor(model => model.CursosSeleccionados[i].Curso.IdEntidad)
+                                    @Html.HiddenFor(model => model.CursosSeleccionados[i].Curso.Modalidad.IdEntidad)
+                                    @Html.HiddenFor(model => model.CursosSeleccionados[i].Curso.TotalHoras)
+                                </td>
+                                <td>
+                                    @Html.AttributeEncode(Model.CursosSeleccionados.ElementAt(i).Funcionario.Cedula)
+                                    @Html.HiddenFor(model => model.CursosSeleccionados[i].Funcionario.Cedula)
+                                </td>
+                                <td>
+                                    @Html.AttributeEncode(Model.CursosSeleccionados.ElementAt(i).Funcionario.Nombre + Model.CursosSeleccionados.ElementAt(i).Funcionario.PrimerApellido + Model.CursosSeleccionados.ElementAt(i).Funcionario.SegundoApellido)
+                                    @Html.HiddenFor(model => model.CursosSeleccionados[i].Funcionario.Nombre)
+                                    @Html.HiddenFor(model => model.CursosSeleccionados[i].Funcionario.PrimerApellido)
+                                    @Html.HiddenFor(model => model.CursosSeleccionados[i].Funcionario.SegundoApellido)
+                                </td>
+                                <td>
+                                    @Html.AttributeEncode(Model.CursosSeleccionados.ElementAt(i).Curso.DescripcionCapacitacion)
+                                    @Html.HiddenFor(model => model.CursosSeleccionados[i].Curso.DescripcionCapacitacion)
+                                </td>
+                                <td>
+                                    @Html.AttributeEncode(Model.CursosSeleccionados.ElementAt(i).Curso.Modalidad.Descripcion)
+                                    @Html.HiddenFor(model => model.CursosSeleccionados[i].Curso.Modalidad.Descripcion)
+                                </td>
+                                <td>
+                                    @Html.AttributeEncode(Model.CursosSeleccionados.ElementAt(i).Curso.Resolucion)
+                                    @Html.HiddenFor(model => model.CursosSeleccionados[i].Curso.Resolucion)
+                                </td>
+                                @Html.HiddenFor(model => model.CursosSeleccionados[i].Detalle.CodigoPolicial)
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+                <br />
+                <button id="btnGenerar" class="btn btn-danger float-right" type="submit"><i class="fa fa-file-pdf-o"></i> Generar resolución</button>
+                <div id="preloaderGuardar" class="loader float-right" style="display: none"></div>
+
+            </div>
+        </div>
+
+        <br />
+
+        @Html.HiddenFor(model => model.FechaRige)
+        @Html.HiddenFor(model => model.FechaVence)
+        @Html.HiddenFor(model => model.NumResolucion)
+
+
+
+    }
+}
+<script src="~/Scripts/Pages/GenerarResolucion.js"></script>

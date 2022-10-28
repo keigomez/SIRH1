@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B4979A6C-4698-493A-BCE0-A6828FA2EFEC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SIRH.Servicios</RootNamespace>
+    <AssemblyName>SIRH.Servicios</AssemblyName>
+    <ProjectTypeGuids>{3D9AD99F-2412-4246-B90B-4EAA41C64699};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <StartArguments>/client:"WcfTestClient.exe"</StartArguments>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkProfile />
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CAccionPersonalService.cs" />
+    <Compile Include="CArchivoService.cs" />
+    <Compile Include="CBorradorAccionPersonalService.cs" />
+    <Compile Include="CCalificacionService.cs" />
+    <Compile Include="CCaucionesService.cs" />
+    <Compile Include="CComponentePresupuestarioService.cs" />
+    <Compile Include="CConsultorioMedicoService.cs" />
+    <Compile Include="CDesarraigoService.cs" />
+    <Compile Include="CEntidadMedicaService.cs" />
+    <Compile Include="CEstadoBorradorService.cs" />
+    <Compile Include="CFormacionAcademicaService.cs" />
+    <Compile Include="CFuncionarioService.cs" />
+    <Compile Include="CManualCargosService.cs" />
+    <Compile Include="CMarcacionService.cs" />
+    <Compile Include="CNombramientoService.cs" />
+    <Compile Include="CPagoFeriadoService.cs" />
+    <Compile Include="CPerfilUsuarioService.cs" />
+    <Compile Include="CPlanificacionService.cs" />
+    <Compile Include="CPlanillaService.cs" />
+    <Compile Include="CPrestacionLegalService.cs" />
+    <Compile Include="CPuestoService.cs" />
+    <Compile Include="CRegistroIncapacidadService.cs" />
+    <Compile Include="CRegistroTEService.cs" />
+    <Compile Include="CServiciosGeneralesService.cs" />
+    <Compile Include="CTipoAccionPersonalService.cs" />
+    <Compile Include="CTipoIncapacidadService.cs" />
+    <Compile Include="CTipoJornadaService.cs" />
+    <Compile Include="CVacacionesService.cs" />
+    <Compile Include="CViaticoCorridoGastoTransporteService.cs" />
+    <Compile Include="ICAccionPersonalService.cs" />
+    <Compile Include="ICArchivoService.cs" />
+    <Compile Include="ICBorradorAccionPersonalService.cs" />
+    <Compile Include="ICCalificacionService.cs" />
+    <Compile Include="ICCaucionesService.cs" />
+    <Compile Include="ICComponentePresupuestarioService.cs" />
+    <Compile Include="ICConsultorioMedicoService.cs" />
+    <Compile Include="ICDesarraigoService.cs" />
+    <Compile Include="ICEntidadMedicaService.cs" />
+    <Compile Include="ICFormacionAcademicaService.cs" />
+    <Compile Include="ICFuncionarioService.cs" />
+    <Compile Include="ICManualCargosService.cs" />
+    <Compile Include="ICMarcacionService.cs" />
+    <Compile Include="ICNombramientoService.cs" />
+    <Compile Include="ICPagoFeriadoService.cs" />
+    <Compile Include="ICPerfilUsuarioService.cs" />
+    <Compile Include="ICPlanificacionService.cs" />
+    <Compile Include="ICPlanillaService.cs" />
+    <Compile Include="ICPrestacionLegalService.cs" />
+    <Compile Include="ICPuestoService.cs" />
+    <Compile Include="ICRegistroIncapacidadService.cs" />
+    <Compile Include="ICRegistroTEService.cs" />
+    <Compile Include="ICServiciosGeneralesService.cs" />
+    <Compile Include="ICTipoAccionPersonalService.cs" />
+    <Compile Include="ICTipoIncapacidadService.cs" />
+    <Compile Include="ICTipoJornadaService.cs" />
+    <Compile Include="ICEstadoBorradorService.cs" />
+    <Compile Include="ICVacacionesService.cs" />
+    <Compile Include="ICViaticoCorridoGastoTransporteService.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SIRH.DTO\SIRH.DTO.csproj">
+      <Project>{8458C6CA-6642-4CB2-A361-D065534B57FB}</Project>
+      <Name>SIRH.DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SIRH.Logica\SIRH.Logica.csproj">
+      <Project>{abd541c9-a08d-4215-a5be-badf1f3731e2}</Project>
+      <Name>SIRH.Logica</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Debug\SIRH.Servicios.csprojResolveAssemblyReference.cache" />
+    <None Include="Properties\DataSources\SIRH.DTO.CBaseDTO.datasource" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="obj\Debug\SIRH.Servicios.csproj.FileListAbsolute.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Debug\" />
+    <Folder Include="obj\Debug\TempPE\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{3D9AD99F-2412-4246-B90B-4EAA41C64699}">
+        <WcfProjectProperties>
+          <AutoStart>True</AutoStart>
+        </WcfProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

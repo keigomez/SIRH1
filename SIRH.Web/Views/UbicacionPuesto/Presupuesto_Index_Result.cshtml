@@ -1,0 +1,151 @@
+﻿@model SIRH.Web.Models.PresupuestoModel
+
+@{
+    if (Model != null)
+    {
+        if (Model.TotalPresupuestos < 1)
+        {
+            <div class="alert alert-danger" role="alert">
+                No se encontraron resultados para la búsqueda solicitada.
+            </div>
+        }
+        else
+        {
+            
+            <div class="card">
+                <div class="card-header">
+                    Resultados (@Model.TotalPresupuestos)
+                </div>
+                <div class="card-body">
+
+                @using (Ajax.BeginForm("Presupuesto_Index", "UbicacionPuesto", new { reset = false }, new AjaxOptions
+                {
+                    HttpMethod = "Post",
+                    UpdateTargetId = "target-presupuesto",
+                    InsertionMode = InsertionMode.Replace,
+                    OnComplete = "CompleteCargarUnique",
+                    OnBegin = "BeginCargarUnique"
+                }))
+                {
+                    <div class="form-group">
+                        <label for="IdPresupuestoSeleccionada">Filtrar por</label>
+                        @Html.DropDownListFor(model => model.CodigoPresupuesto,
+                            Model.UniqueIdPresupuestos as SelectList,
+                            null, new { @id = "IdPresupuestoSeleccionada", @class = "form-control" })
+                        <br />
+                        <input id="btnBuscarUnique" name="SubmitButton" class="btn btn-primary" type="submit" value="Buscar" />
+                        <div id="preloaderUnique" class="loader" style="display: none"></div>
+                    </div>
+                            }
+
+                    <br />
+                    <table id="detalle" class="table">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>#</th>
+                                <th>Código</th>
+                                <th>-</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                int cuenta = 0;
+                                foreach (var item in Model.Presupuesto)
+                                {
+                                    cuenta++;
+                                    <tr>
+                                        <td>@(((Model.PaginaActual - 1) * 10) + cuenta)</td>
+                                        <td>@item.CodigoPresupuesto</td>
+                                        <td>@Html.ActionLink("Seleccionar", "", "UbicacionPuesto", null, new { @onclick = "return CargarDato('" + item.CodigoPresupuesto + "', 'presupuesto');", @class = "btn btn-outline-primary" }) </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="6" align="right">
+
+                                    Página (@Model.PaginaActual.ToString() de @Model.TotalPaginas.ToString())
+
+                                    <nav aria-label="Page navigation example">
+                                        <ul class="pagination justify-content-end">
+                                            @if (Model.PaginaActual == 1)
+                                            {
+                                                <li class="page-item disabled">
+                                                    <a class="page-link" href="#" tabindex="-1">Atras</a>
+                                                </li>
+                                            }
+                                            else
+                                            {
+                                                <li class="page-item">
+                                                    @Ajax.ActionLink("Atras", "Presupuesto_Index", new
+                                               {
+                                                   @page = Model.PaginaActual - 1,
+                                                   @codigopresupuesto = Model.CodigoSearch,
+                                               }, new AjaxOptions { UpdateTargetId = "target-presupuesto" }, new { @class = "page-link" })
+                                                </li>
+                                            }
+
+                                            @{if (Model.TotalPaginas > 10)
+                                                {
+                                                    for (int i = 1; i <= 6; i++)
+                                                    {
+                                                        <li class="page-item ">
+                                                            @Ajax.ActionLink(i.ToString(), "Presupuesto_Index", new
+                                                       {
+                                                           @page = i,
+                                                           @codigopresupuesto = Model.CodigoSearch,
+                                                       }, new AjaxOptions { UpdateTargetId = "target-presupuesto" }, new { @class = "page-link" })
+                                                        </li>
+                                                    }
+                                                    <li class="page-item disabled">
+                                                        <a class="page-link" href="#">...</a>
+                                                    </li>
+                                                }
+                                                else
+                                                {
+                                                    for (int i = 1; i <= Model.TotalPaginas; i++)
+                                                    {
+                                                        <li class="page-item ">
+                                                            @Ajax.ActionLink(i.ToString(), "Presupuesto_Index", new
+                                                       {
+                                                           @page = i,
+                                                           @codigopresupuesto = Model.CodigoSearch,
+                                                       }, new AjaxOptions { UpdateTargetId = "target-presupuesto" }, new { @class = "page-link" })
+                                                        </li>
+                                                    }
+
+                                                }
+
+
+                                            }
+                                            @if (Model.TotalPaginas == 1 || Model.PaginaActual == Model.TotalPaginas)
+                                            {
+                                                <li class="page-item disabled">
+                                                    <a class="page-link" href="#">Siguiente</a>
+                                                </li>
+                                            }
+                                            else
+                                            {
+                                                <li class="page-item">
+                                                    @Ajax.ActionLink("Siguiente", "Presupuesto_Index", new
+                                               {
+                                                   @page = Model.PaginaActual + 1,
+                                                   @codigopresupuesto = Model.CodigoSearch,
+                                               }, new AjaxOptions { UpdateTargetId = "target-presupuesto" }, new { @class = "page-link" })
+                                                </li>
+                                            }
+                                        </ul>
+                                    </nav>
+
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+                                                    }
+                                                }
+
+}
+

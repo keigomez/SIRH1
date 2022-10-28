@@ -1,0 +1,461 @@
+﻿@model SIRH.Web.ViewModels.FuncionarioExperienciaVM
+
+@{
+    if (Model != null)
+    {
+        if (Model.Error != null)
+        {
+            <div class="alert alert-danger" role="alert">
+                <i class="fa fa-times-circle d-inline" style="font-size:48px;"></i>
+                <h4 class="d-inline"> @Html.AttributeEncode(Model.Error.MensajeError)</h4>
+            </div>
+        }
+        else
+        {
+            if (Model.Experiencia != null)
+            {
+                if (Model.Experiencia.FechaReg.Year > 0001)
+                {
+                    <div class="alert alert-primary" role="alert">
+                        <i class="fa fa-exclamation-circle d-inline" style="font-size:48px;"></i>
+                        <h4 class="d-inline"> @Html.AttributeEncode("Este funcionario ya cuenta con la carrera profesional registrada.")</h4>
+                    </div>
+                    <br />
+
+                    <div class="card">
+                        <h5 class="card-header">Información del Funcionario</h5>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-3 col-md-4">
+                                    <ul class="list-group">
+                                        <li class="list-group-item">
+                                            <span>
+                                                <strong>@Html.LabelFor(model => model.Funcionario.Cedula): </strong>@Html.DisplayFor(model => model.Funcionario.Cedula)
+                                                @Html.HiddenFor(model => model.Funcionario.Cedula)
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span>
+                                                <strong>@Html.LabelFor(model => model.DetallePuesto.Clase.DesClase): </strong>@Html.DisplayFor(model => model.DetallePuesto.Clase.DesClase)
+                                                @Html.HiddenFor(model => model.DetallePuesto.Clase.IdEntidad)
+                                                @Html.HiddenFor(model => model.DetallePuesto.Clase.DesClase)
+                                                @Html.HiddenFor(model => model.DetallePuesto.Categoria)
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span>
+                                                <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                                                @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span>
+                                                <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion)
+                                                @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Seccion.IdEntidad)
+                                                @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion)
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-3 col-md-4">
+                                    <ul class="list-group">
+                                        <li class="list-group-item">
+                                            <span>
+                                                <strong>@Html.LabelFor(model => model.Funcionario.Nombre): </strong>@Model.Funcionario.Nombre @Model.Funcionario.PrimerApellido @Model.Funcionario.SegundoApellido
+                                                @Html.HiddenFor(model => model.Funcionario.Nombre)
+                                                @Html.HiddenFor(model => model.Funcionario.PrimerApellido)
+                                                @Html.HiddenFor(model => model.Funcionario.SegundoApellido)
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span>
+                                                <strong>@Html.LabelFor(model => model.DetallePuesto.Especialidad.DesEspecialidad): </strong>@Html.DisplayFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)
+                                                @Html.HiddenFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span>
+                                                <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                                                @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span>
+                                                <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto)
+                                                @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto)
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-3 col-md-4">
+                                    <ul class="list-group">
+                                        <li class="list-group-item">
+                                            <span>
+                                                <strong>@Html.LabelFor(model => model.Puesto.CodPuesto): </strong>@Html.DisplayFor(model => model.Puesto.CodPuesto)
+                                                @Html.HiddenFor(model => model.Puesto.CodPuesto)
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span>
+                                                <strong>@Html.LabelFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal): </strong>@Html.DisplayFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal)
+                                                @Html.HiddenFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal)
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span>
+                                                <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                                                @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    using (Ajax.BeginForm("CreateExperiencia", new AjaxOptions
+                    {
+                        HttpMethod = "POST",
+                        UpdateTargetId = "formulario_funcionario",
+                        OnBegin = "BeginGuardarExperiencia",
+                        OnComplete = "CompleteGuardarExperiencia",
+                        OnSuccess = "SuccessGuardarExperiencia",
+                        OnFailure = "SuccessGuardarExperiencia"
+                    }))
+                    {
+                        @Html.ValidationSummary(true)
+                        <div id="formulario_funcionario">
+                            <div class="card">
+                                <h5 class="card-header">Información del Funcionario</h5>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-3 col-md-4">
+                                            <ul class="list-group">
+                                                <li class="list-group-item">
+                                                    <span>
+                                                        <strong>@Html.LabelFor(model => model.Funcionario.Cedula): </strong>@Html.DisplayFor(model => model.Funcionario.Cedula)
+                                                        @Html.HiddenFor(model => model.Funcionario.Cedula)
+                                                        @Html.HiddenFor(model => model.Funcionario.Sexo) @*Requerido para guardar (controller)*@
+                                                    </span>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <span>
+                                                        <strong>@Html.LabelFor(model => model.DetallePuesto.Clase.DesClase): </strong>@Html.DisplayFor(model => model.DetallePuesto.Clase.DesClase)
+                                                        @Html.HiddenFor(model => model.DetallePuesto.Clase.IdEntidad)
+                                                        @Html.HiddenFor(model => model.DetallePuesto.Clase.DesClase)
+                                                        @Html.HiddenFor(model => model.DetallePuesto.Categoria)
+                                                    </span>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <span>
+                                                        <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                                                        @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                                                    </span>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <span>
+                                                        <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion)
+                                                        @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Seccion.IdEntidad)
+                                                        @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion)
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-3 col-md-4">
+                                            <ul class="list-group">
+                                                <li class="list-group-item">
+                                                    <span>
+                                                        <strong>@Html.LabelFor(model => model.Funcionario.Nombre): </strong>@Model.Funcionario.Nombre @Model.Funcionario.PrimerApellido @Model.Funcionario.SegundoApellido
+                                                        @Html.HiddenFor(model => model.Funcionario.Nombre)
+                                                        @Html.HiddenFor(model => model.Funcionario.PrimerApellido)
+                                                        @Html.HiddenFor(model => model.Funcionario.SegundoApellido)
+                                                    </span>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <span>
+                                                        <strong>@Html.LabelFor(model => model.DetallePuesto.Especialidad.DesEspecialidad): </strong>@Html.DisplayFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)
+                                                        @Html.HiddenFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)
+                                                    </span>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <span>
+                                                        <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                                                        @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                                                    </span>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <span>
+                                                        <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto)
+                                                        @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto)
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-3 col-md-4">
+                                            <ul class="list-group">
+                                                <li class="list-group-item">
+                                                    <span>
+                                                        <strong>@Html.LabelFor(model => model.Puesto.CodPuesto): </strong>@Html.DisplayFor(model => model.Puesto.CodPuesto)
+                                                        @Html.HiddenFor(model => model.Puesto.CodPuesto)
+                                                    </span>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <span>
+                                                        <strong>@Html.LabelFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal): </strong>@Html.DisplayFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal)
+                                                        @Html.HiddenFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal)
+                                                    </span>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <span>
+                                                        <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                                                        @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <br />
+
+                            <div class="card">
+                                <h5 class="card-header">Datos de experiencia profesional</h5>
+                                <div class="card-body">
+                                    <div class="form-group row">
+                                        @Html.LabelFor(model => model.Experiencia.TipoExp, new { @for = "TipoExperienciaSeleccionada", @class = "col-sm-3 col-form-label" })
+                                        <div class="col-sm-5">
+                                            @Html.DropDownListFor(model => model.TipoExperienciaSeleccionada,
+                                                                           Model.TiposExperiencia as SelectList,
+                                                                           null, new { @id = "TipoExperienciaSeleccionada", @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.TipoExperienciaSeleccionada)
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        @Html.LabelFor(model => model.Experiencia.IndicadorPtsAsignados, new { @for = "IndicadorPtsAsignados", @class = "col-sm-3 col-form-label" })
+                                        <div class="col-sm-5">
+                                            @Html.TextBoxFor(model => model.Experiencia.IndicadorPtsAsignados, new { @id = "IndicadorPtsAsignados", @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.Experiencia.IndicadorPtsAsignados)
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        @Html.LabelFor(model => model.Experiencia.ObservacionesExp, new { @for = "ObservacionesExp", @class = "col-sm-3 col-form-label" })
+                                        <div class="col-sm-5">
+                                            @Html.TextAreaFor(model => model.Experiencia.ObservacionesExp, new { @id = "ObservacionesExp", @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.Experiencia.ObservacionesExp)
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group row">
+                                        @Html.LabelFor(model => model.Experiencia.NumeroResoluc, new { @for = "NumeroResoluc", @class = "col-sm-3 col-form-label" })
+                                        <div class="col-sm-5">
+                                            @Html.TextBoxFor(model => model.Experiencia.NumeroResoluc, new { @id = "NumeroResoluc", @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.Experiencia.NumeroResoluc)
+
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        @Html.LabelFor(model => model.Experiencia.FechaReg, new { @for = "FechaReg", @class = "col-sm-3 col-form-label" })
+                                        <div class="col-sm-5">
+                                            @Html.TextBoxFor(model => model.Experiencia.FechaReg, new { @id = "FechaReg", @class = "form-control", @readonly = "readonly" })
+                                            @Html.ValidationMessageFor(model => model.Experiencia.FechaReg)
+                                        </div>
+                                    </div>
+
+                                    <input id="btnGuardar_reg" name="SubmitButton" type="submit" value="Guardar Experiencia" class="btn btn-primary float-right" />
+                                    <div id="preloader_reg" class="loader float-right" style="display: none"></div>
+                                </div>
+                            </div>
+                            <br />
+                            @if (!Html.ViewData.ModelState.IsValid)
+                            {
+                                <div class="card border-danger">
+                                    <div class="card-header"><strong>El formulario contiene los siguientes errores:</strong></div>
+                                    <div class="card-body text-danger">
+                                        @foreach (var modelError in Html.ViewData.ModelState.SelectMany(keyValuePair => keyValuePair.Value.Errors))
+                                        {
+                                            <div class="alert alert-danger" role="alert">
+                                                <h5>@modelError.ErrorMessage</h5>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                }
+            }
+            else
+            {
+                using (Ajax.BeginForm("CreateExperiencia", new AjaxOptions
+                {
+                    HttpMethod = "POST",
+                    UpdateTargetId = "formulario_funcionario",
+                    OnBegin = "BeginGuardarExperiencia",
+                    OnComplete = "CompleteGuardarExperiencia",
+                    OnSuccess = "SuccessGuardarExperiencia",
+                    OnFailure = "SuccessGuardarExperiencia"
+                }))
+                {
+                    @Html.ValidationSummary(true)
+                    <div id="formulario_funcionario">
+                        <div class="card">
+                            <h5 class="card-header">Información del Funcionario</h5>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-3 col-md-4">
+                                        <ul class="list-group">
+                                            <li class="list-group-item">
+                                                <span>
+                                                    <strong>@Html.LabelFor(model => model.Funcionario.Cedula): </strong>@Html.DisplayFor(model => model.Funcionario.Cedula)
+                                                    @Html.HiddenFor(model => model.Funcionario.Cedula)
+                                                    @Html.HiddenFor(model => model.Funcionario.Sexo) @*Requerido para guardar (controller)*@ 
+                                                </span>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <span>
+                                                    <strong>@Html.LabelFor(model => model.DetallePuesto.Clase.DesClase): </strong>@Html.DisplayFor(model => model.DetallePuesto.Clase.DesClase)
+                                                    @Html.HiddenFor(model => model.DetallePuesto.Clase.IdEntidad)
+                                                    @Html.HiddenFor(model => model.DetallePuesto.Clase.DesClase)
+                                                    @Html.HiddenFor(model => model.DetallePuesto.Categoria)
+                                                </span>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <span>
+                                                    <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                                                    @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                                                </span>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <span>
+                                                    <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion)
+                                                    @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Seccion.IdEntidad)
+                                                    @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Seccion.NomSeccion)
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-3 col-md-4">
+                                        <ul class="list-group">
+                                            <li class="list-group-item">
+                                                <span>
+                                                    <strong>@Html.LabelFor(model => model.Funcionario.Nombre): </strong>@Model.Funcionario.Nombre @Model.Funcionario.PrimerApellido @Model.Funcionario.SegundoApellido
+                                                    @Html.HiddenFor(model => model.Funcionario.Nombre)
+                                                    @Html.HiddenFor(model => model.Funcionario.PrimerApellido)
+                                                    @Html.HiddenFor(model => model.Funcionario.SegundoApellido)
+                                                </span>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <span>
+                                                    <strong>@Html.LabelFor(model => model.DetallePuesto.Especialidad.DesEspecialidad): </strong>@Html.DisplayFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)
+                                                    @Html.HiddenFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)
+                                                </span>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <span>
+                                                    <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                                                    @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                                                </span>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <span>
+                                                    <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto)
+                                                    @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto)
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-3 col-md-4">
+                                        <ul class="list-group">
+                                            <li class="list-group-item">
+                                                <span>
+                                                    <strong>@Html.LabelFor(model => model.Puesto.CodPuesto): </strong>@Html.DisplayFor(model => model.Puesto.CodPuesto)
+                                                    @Html.HiddenFor(model => model.Puesto.CodPuesto)
+                                                    
+                                                </span>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <span>
+                                                    <strong>@Html.LabelFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal): </strong>@Html.DisplayFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal)
+                                                    @Html.HiddenFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal)
+                                                </span>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <span>
+                                                    <strong>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento): </strong>@Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                                                    @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <br />
+
+                        <div class="card">
+                            <h5 class="card-header">Datos de experiencia profesional</h5>
+                            <div class="card-body">
+                                <div class="form-group row">
+                                    @Html.LabelFor(model => model.Experiencia.TipoExp, new { @for = "TipoExperienciaSeleccionada", @class = "col-sm-3 col-form-label" })
+                                    <div class="col-sm-5">
+                                        @Html.DropDownListFor(model => model.TipoExperienciaSeleccionada,                                 
+                                                                           Model.TiposExperiencia as SelectList,
+                                                                           "Seleccionar...", new { @id = "TipoExperienciaSeleccionada", @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.TipoExperienciaSeleccionada)
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    @Html.LabelFor(model => model.Experiencia.IndicadorPtsAsignados, new { @for = "IndicadorPtsAsignados", @class = "col-sm-3 col-form-label" })
+                                    <div class="col-sm-5">
+                                        @Html.TextBoxFor(model => model.Experiencia.IndicadorPtsAsignados, new { @id = "IndicadorPtsAsignados", @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Experiencia.IndicadorPtsAsignados)
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    @Html.LabelFor(model => model.Experiencia.ObservacionesExp, new { @for = "ObservacionesExp", @class = "col-sm-3 col-form-label" })
+                                    <div class="col-sm-5">
+                                        @Html.TextAreaFor(model => model.Experiencia.ObservacionesExp, new { @id = "ObservacionesExp", @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Experiencia.ObservacionesExp)
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row">
+                                    @Html.LabelFor(model => model.Experiencia.NumeroResoluc, new { @for = "NumeroResoluc", @class = "col-sm-3 col-form-label" })
+                                    <div class="col-sm-5">
+                                        @Html.TextBoxFor(model => model.Experiencia.NumeroResoluc, new { @id = "NumeroResoluc", @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Experiencia.NumeroResoluc)
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    @Html.LabelFor(model => model.Experiencia.FechaReg, new { @for = "FechaReg", @class = "col-sm-3 col-form-label" })
+                                    <div class="col-sm-5">
+                                        @Html.TextBoxFor(model => model.Experiencia.FechaReg, new { @id = "FechaReg", @class = "form-control", @readonly = "readonly" })
+                                        @Html.ValidationMessageFor(model => model.Experiencia.FechaReg)
+                                    </div>
+                                </div>
+
+                                <input id="btnGuardar_reg" name="SubmitButton" type="submit" value="Guardar Experiencia" class="btn btn-primary float-right" />
+                                <div id="preloader_reg" class="loader float-right" style="display: none"></div>
+                            </div>
+                        </div>
+                        <br />
+                        <div id="detalleResultado"></div>
+                    </div>
+                }
+            }
+        }
+    }
+}

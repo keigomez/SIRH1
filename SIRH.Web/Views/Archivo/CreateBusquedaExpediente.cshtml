@@ -1,0 +1,58 @@
+﻿
+@model SIRH.Web.ViewModels.BusquedaExpedienteVM
+@{
+    ViewBag.Title = "CreateBusquedaExpediente";
+    Layout = "~/Views/Shared/Archivo.cshtml";
+}
+<link href="~/Content/datetimepicker.css" rel="stylesheet" />
+<center><h2>Búsqueda de Expedientes</h2></center>
+@using (Ajax.BeginForm("CreateBusquedaExpediente", "Archivo", new AjaxOptions
+{
+    UpdateTargetId = "UpdateBusquedaExpediente",
+    InsertionMode = InsertionMode.Replace,
+    HttpMethod = "POST",
+    OnSuccess = "SuccesBusquedaExpediente",
+    OnComplete = "CompleteBusquedaExpediente",
+    OnBegin = "BeginBusquedaExpediente"
+}))
+{
+    <div class="card">
+        <h5 class="card-header">Parámetros de búsqueda</h5>
+        <div class="card-body">
+            <div class="row"><b>@Html.LabelFor(model => model.Expediente.FiltroBusqueda)</b></div>
+            <div class="row">
+                    <div class="form-group">
+                        @Html.RadioButtonFor(model => model.Expediente.FiltroBusqueda, "Cédula Funcionario", new { @onchange = "return OnChangeDeshabilitarCampoFechas()" }) Cédula Funcionario &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        @Html.RadioButtonFor(model => model.Expediente.FiltroBusqueda, "Número Expediente", new { @onchange = "return OnChangeDeshabilitarCampoFechas()" }) Número Expediente &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    </div>
+                </div>
+            <div class="row">
+                <div class="col-3">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Expediente.DatoABuscar)
+                        @Html.TextBoxFor(model => model.Expediente.DatoABuscar, new { @id = "datoABuscar", @class = "form-control" })
+                        @Html.HiddenFor(model => model.Expediente.DatoABuscar)
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <input id="btnBuscar" name="SubmitButton" type="submit" value="Buscar" class="btn btn-success" />
+                    <div id="preloaderBuscar" class="loader float-left"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div id="UpdateBusquedaExpediente"></div>
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+<script src="~/Scripts/sidebar.js" type="text/javascript"></script>
+<script src="~/scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/CreateBusquedaExpediente.js" type="text/javascript"></script>
+<script src="~/Scripts/datetimepicker.js" type="text/javascript"></script>
+<script src="~/Scripts/datetimepicker-es.js" type="text/javascript"></script>

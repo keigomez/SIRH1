@@ -1,0 +1,142 @@
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Servicios\bin\Debug\SIRH.Servicios.dll.config
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Servicios\bin\Debug\SIRH.Servicios.dll
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Servicios\bin\Debug\SIRH.Servicios.pdb
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Servicios\bin\Debug\SIRH.DTO.dll
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Servicios\bin\Debug\SIRH.Logica.dll
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Servicios\bin\Debug\SIRH.Datos.dll
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Servicios\bin\Debug\SIRH.DatosMarcasReloj.dll
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Servicios\bin\Debug\EntityFramework.dll
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Servicios\bin\Debug\SIRH.DTO.pdb
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Servicios\bin\Debug\SIRH.Logica.pdb
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Servicios\bin\Debug\SIRH.Datos.pdb
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Servicios\bin\Debug\SIRH.DatosMarcasReloj.pdb
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Servicios\bin\Debug\EntityFramework.xml
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Servicios\obj\Debug\SIRH.Servicios.csprojResolveAssemblyReference.cache
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Servicios\obj\Debug\SIRH.Servicios.dll
+C:\Users\dguiltrc\Documents\Visual Studio 2015\Projects\SIRH\SIRH.Servicios\obj\Debug\SIRH.Servicios.pdb
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.Servicios.dll.config
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.Servicios.dll
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.Servicios.pdb
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.DTO.dll
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.Logica.dll
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.Datos.dll
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.DatosMarcasReloj.dll
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\EntityFramework.dll
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.DTO.pdb
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.Logica.pdb
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.Logica.dll.config
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.Datos.pdb
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.Datos.dll.config
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.DatosMarcasReloj.pdb
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.DatosMarcasReloj.dll.config
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\EntityFramework.xml
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Servicios\obj\Debug\SIRH.Servicios.csproj.AssemblyReference.cache
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Servicios\obj\Debug\SIRH.Servicios.csproj.CoreCompileInputs.cache
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Servicios\obj\Debug\SIRH.Servicios.csproj.CopyComplete
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Servicios\obj\Debug\SIRH.Servicios.dll
+C:\Users\ramir\Desktop\Inge II\Proyecto 28\SIRH_6_7_2022\SIRH.Servicios\obj\Debug\SIRH.Servicios.pdb
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.Servicios.dll.config
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.Servicios.dll
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.Servicios.pdb
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.DTO.dll
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.Logica.dll
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.Datos.dll
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.DatosMarcasReloj.dll
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\EntityFramework.dll
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.DTO.pdb
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.Logica.pdb
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.Logica.dll.config
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.Datos.pdb
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.Datos.dll.config
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.DatosMarcasReloj.pdb
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.DatosMarcasReloj.dll.config
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\EntityFramework.xml
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Servicios\obj\Debug\SIRH.Servicios.csproj.AssemblyReference.cache
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Servicios\obj\Debug\SIRH.Servicios.csproj.CoreCompileInputs.cache
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Servicios\obj\Debug\SIRH.Servicios.csproj.CopyComplete
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Servicios\obj\Debug\SIRH.Servicios.dll
+C:\Users\ramir\Desktop\Inge II\Copia\SIRH_6_7_2022\SIRH.Servicios\obj\Debug\SIRH.Servicios.pdb
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.Servicios.dll.config
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.Servicios.dll
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.Servicios.pdb
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.DTO.dll
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.Logica.dll
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.Datos.dll
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.DatosMarcasReloj.dll
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\EntityFramework.dll
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.DTO.pdb
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.Logica.pdb
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.Logica.dll.config
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.Datos.pdb
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.Datos.dll.config
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.DatosMarcasReloj.pdb
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.DatosMarcasReloj.dll.config
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\EntityFramework.xml
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Servicios\obj\Debug\SIRH.Servicios.csproj.AssemblyReference.cache
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Servicios\obj\Debug\SIRH.Servicios.csproj.CoreCompileInputs.cache
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Servicios\obj\Debug\SIRH.Servicios.csproj.CopyComplete
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Servicios\obj\Debug\SIRH.Servicios.dll
+C:\Users\ramir\Desktop\Inge II\Copia 4\SIRH_6_7_2022\SIRH.Servicios\obj\Debug\SIRH.Servicios.pdb
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.Servicios.dll.config
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.Servicios.dll
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.Servicios.pdb
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.DTO.dll
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.Logica.dll
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.Datos.dll
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.DatosMarcasReloj.dll
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\EntityFramework.dll
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.DTO.pdb
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.Logica.pdb
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.Logica.dll.config
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.Datos.pdb
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.Datos.dll.config
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.DatosMarcasReloj.pdb
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.DatosMarcasReloj.dll.config
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\EntityFramework.xml
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Servicios\obj\Debug\SIRH.Servicios.csproj.AssemblyReference.cache
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Servicios\obj\Debug\SIRH.Servicios.csproj.CoreCompileInputs.cache
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Servicios\obj\Debug\SIRH.Servicios.csproj.CopyComplete
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Servicios\obj\Debug\SIRH.Servicios.dll
+C:\Users\ramir\Desktop\Inge II\Copia 6\SIRH_6_7_2022\SIRH.Servicios\obj\Debug\SIRH.Servicios.pdb
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.Servicios.dll.config
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.Servicios.dll
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.Servicios.pdb
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.DTO.dll
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.Logica.dll
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.Datos.dll
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.DatosMarcasReloj.dll
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\EntityFramework.dll
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.DTO.pdb
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.Logica.pdb
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.Logica.dll.config
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.Datos.pdb
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.Datos.dll.config
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.DatosMarcasReloj.pdb
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\SIRH.DatosMarcasReloj.dll.config
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Servicios\bin\Debug\EntityFramework.xml
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Servicios\obj\Debug\SIRH.Servicios.csproj.AssemblyReference.cache
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Servicios\obj\Debug\SIRH.Servicios.csproj.CoreCompileInputs.cache
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Servicios\obj\Debug\SIRH.Servicios.csproj.CopyComplete
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Servicios\obj\Debug\SIRH.Servicios.dll
+C:\Users\ramir\Desktop\Inge II\Copia 7\SIRH_6_7_2022\SIRH.Servicios\obj\Debug\SIRH.Servicios.pdb
+C:\Users\ramir\Videos\SIRH-main\SIRH.Servicios\bin\Debug\SIRH.Servicios.dll.config
+C:\Users\ramir\Videos\SIRH-main\SIRH.Servicios\bin\Debug\SIRH.Servicios.dll
+C:\Users\ramir\Videos\SIRH-main\SIRH.Servicios\bin\Debug\SIRH.Servicios.pdb
+C:\Users\ramir\Videos\SIRH-main\SIRH.Servicios\bin\Debug\SIRH.DTO.dll
+C:\Users\ramir\Videos\SIRH-main\SIRH.Servicios\bin\Debug\SIRH.Logica.dll
+C:\Users\ramir\Videos\SIRH-main\SIRH.Servicios\bin\Debug\SIRH.Datos.dll
+C:\Users\ramir\Videos\SIRH-main\SIRH.Servicios\bin\Debug\SIRH.DatosMarcasReloj.dll
+C:\Users\ramir\Videos\SIRH-main\SIRH.Servicios\bin\Debug\EntityFramework.dll
+C:\Users\ramir\Videos\SIRH-main\SIRH.Servicios\bin\Debug\SIRH.DTO.pdb
+C:\Users\ramir\Videos\SIRH-main\SIRH.Servicios\bin\Debug\SIRH.Logica.pdb
+C:\Users\ramir\Videos\SIRH-main\SIRH.Servicios\bin\Debug\SIRH.Logica.dll.config
+C:\Users\ramir\Videos\SIRH-main\SIRH.Servicios\bin\Debug\SIRH.Datos.pdb
+C:\Users\ramir\Videos\SIRH-main\SIRH.Servicios\bin\Debug\SIRH.Datos.dll.config
+C:\Users\ramir\Videos\SIRH-main\SIRH.Servicios\bin\Debug\SIRH.DatosMarcasReloj.pdb
+C:\Users\ramir\Videos\SIRH-main\SIRH.Servicios\bin\Debug\SIRH.DatosMarcasReloj.dll.config
+C:\Users\ramir\Videos\SIRH-main\SIRH.Servicios\bin\Debug\EntityFramework.xml
+C:\Users\ramir\Videos\SIRH-main\SIRH.Servicios\obj\Debug\SIRH.Servicios.csproj.AssemblyReference.cache
+C:\Users\ramir\Videos\SIRH-main\SIRH.Servicios\obj\Debug\SIRH.Servicios.csproj.CoreCompileInputs.cache
+C:\Users\ramir\Videos\SIRH-main\SIRH.Servicios\obj\Debug\SIRH.Servicios.csproj.CopyComplete
+C:\Users\ramir\Videos\SIRH-main\SIRH.Servicios\obj\Debug\SIRH.Servicios.dll
+C:\Users\ramir\Videos\SIRH-main\SIRH.Servicios\obj\Debug\SIRH.Servicios.pdb

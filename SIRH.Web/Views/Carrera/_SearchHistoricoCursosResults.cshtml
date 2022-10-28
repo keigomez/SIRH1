@@ -1,0 +1,214 @@
+﻿@model SIRH.Web.ViewModels.HistoricoCursosVM
+
+@{
+    using (Html.BeginForm("ReporteDesgloseHistoricoCurso", "Carrera", FormMethod.Post, new { @id = "thisForm" }))
+    {
+    <fieldset>
+        <legend>Resultados (@Model.TotalCursos)</legend>
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Cédula</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Fecha rige</th>
+                    <th scope="col">Nombre de curso</th>
+                    <th scope="col">Tipo de curso</th>
+                    <th scope="col">Resolución</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Cursos.Count(); i++)
+                {
+                    <tr>
+                        <td>
+                            @Html.AttributeEncode(i + 1)
+                            @Html.HiddenFor(model => model.Cursos[i].ID)
+                        </td>
+                        <td>
+                            @Html.AttributeEncode(Model.Cursos.ElementAt(i).Cedula)
+                            @Html.HiddenFor(model => model.Cursos[i].Cedula)
+                        </td>
+                        <td>
+                            @Html.AttributeEncode(Model.Cursos.ElementAt(i).Nombre)
+                            @Html.HiddenFor(model => model.Cursos[i].Nombre)
+                        </td>
+                        <td>
+                            @if (Model.Cursos.ElementAt(i).FecRige.Year > 1)
+                            {@Html.AttributeEncode(Model.Cursos.ElementAt(i).FecRige.ToShortDateString());
+                        }
+                            @Html.HiddenFor(model => model.Cursos[i].FecRige)
+                        </td>
+                        <td>
+                            @Html.AttributeEncode(Model.Cursos.ElementAt(i).NombreCurso)
+                            @Html.HiddenFor(model => model.Cursos[i].NombreCurso)
+                        </td>
+                        <td>
+                            @Html.AttributeEncode(Model.Cursos.ElementAt(i).TipoCurso)
+                            @Html.HiddenFor(model => model.Cursos[i].TipoCurso)
+                        </td>
+                        <td>
+                            @Html.AttributeEncode(Model.Cursos.ElementAt(i).Resolucion)
+                            @Html.HiddenFor(model => model.Cursos[i].Resolucion)
+                        </td>
+                        <td>
+                            <a href="@Url.Action("DetailsHistoricoCursos", "Carrera", new { id = Model.Cursos.ElementAt(i).ID })" class="btn btn-primary btn-sm">
+                                <i class="fa fa-search"></i> Ver Detalle
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td align="left" colspan="2">
+                        <button class="btn btn-danger" type="submit"><i class="fa fa-file-pdf-o"></i> Exportar a pdf</button>
+                    </td>
+                    <td colspan="6" align="right">
+                        Página (@Model.PaginaActual.ToString() de @Model.TotalPaginas.ToString())
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-end">
+                                @if (Model.PaginaActual == 1)
+                                {
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#" tabindex="-1">Atras</a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="page-item">
+                                        @Ajax.ActionLink("Atras", "SearchHistoricoCursos", new
+                                   {
+                                       @page = Model.PaginaActual - 1,
+
+                                       @cedula = Model.paramBusqueda.Curso.Cedula,
+                                       @nombre = Model.paramBusqueda.Curso.Nombre,
+                                       @resolucion = Model.paramBusqueda.Curso.Resolucion,
+                                       @nomCurso = Model.paramBusqueda.Curso.NombreCurso,
+                                       @tipoCurso= Model.paramBusqueda.Curso.TipoCurso,
+
+                                       @diaDesde = Model.paramBusqueda.FechaDesde.Day,
+                                       @mesDesde = Model.paramBusqueda.FechaDesde.Month,
+                                       @annoDesde = Model.paramBusqueda.FechaDesde.Year,
+
+                                       @diaHasta = Model.paramBusqueda.FechaHasta.Day,
+                                       @mesHasta = Model.paramBusqueda.FechaHasta.Month,
+                                       @annoHasta = Model.paramBusqueda.FechaHasta.Year,
+
+                                       @model = Model.paramBusqueda
+                                   }, new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "dvResultadoBusqueda" }, new { @class = "page-link" })
+                                    </li>
+                                }
+                                @{ if (Model.TotalPaginas > 10)
+                                    {
+                                        var indice = Model.PaginaActual > 6 ? (Model.PaginaActual + 4 <= Model.TotalPaginas ? Model.PaginaActual - 5 : Model.PaginaActual - 5 - ((Model.PaginaActual + 4) - Model.TotalPaginas)) : 1;
+                                        var final = Model.PaginaActual > 6 ? (Model.PaginaActual + 4 >= Model.TotalPaginas ? Model.TotalPaginas : Model.PaginaActual + 4) : 10;
+
+                                        for (int i = indice; i <= final; i++)
+                                        {
+                                            <li class="page-item">
+                                                @Ajax.ActionLink(i.ToString(), "SearchHistoricoCursos", new
+                                           {
+                                               @page = i,
+
+                                               @cedula = Model.paramBusqueda.Curso.Cedula,
+                                               @nombre = Model.paramBusqueda.Curso.Nombre,
+                                               @resolucion = Model.paramBusqueda.Curso.Resolucion,
+                                               @nomCurso = Model.paramBusqueda.Curso.NombreCurso,
+                                               @tipoCurso = Model.paramBusqueda.Curso.TipoCurso,
+
+                                               @diaDesde = Model.paramBusqueda.FechaDesde.Day,
+                                               @mesDesde = Model.paramBusqueda.FechaDesde.Month,
+                                               @annoDesde = Model.paramBusqueda.FechaDesde.Year,
+
+                                               @diaHasta = Model.paramBusqueda.FechaHasta.Day,
+                                               @mesHasta = Model.paramBusqueda.FechaHasta.Month,
+                                               @annoHasta = Model.paramBusqueda.FechaHasta.Year,
+
+                                               @model = Model.paramBusqueda
+                                           }, new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "dvResultadoBusqueda" }, new { @class = "page-link" })
+                                            </li>
+                                        }
+                                        if (Model.PaginaActual + 4 < Model.TotalPaginas)
+                                        {
+                                            <li class="page-item disabled">
+                                                <a class="page-link" href="#">...</a>
+                                            </li>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        for (int i = 1; i <= Model.TotalPaginas; i++)
+                                        {
+                                            <li class="page-item ">
+                                                @Ajax.ActionLink(i.ToString(), "SearchHistoricoCursos", new
+                                           {
+                                               @page = i,
+
+                                               @cedula = Model.paramBusqueda.Curso.Cedula,
+                                               @nombre = Model.paramBusqueda.Curso.Nombre,
+                                               @resolucion = Model.paramBusqueda.Curso.Resolucion,
+                                               @nomCurso = Model.paramBusqueda.Curso.NombreCurso,
+                                               @tipoCurso = Model.paramBusqueda.Curso.TipoCurso,
+
+                                               @diaDesde = Model.paramBusqueda.FechaDesde.Day,
+                                               @mesDesde = Model.paramBusqueda.FechaDesde.Month,
+                                               @annoDesde = Model.paramBusqueda.FechaDesde.Year,
+
+                                               @diaHasta = Model.paramBusqueda.FechaHasta.Day,
+                                               @mesHasta = Model.paramBusqueda.FechaHasta.Month,
+                                               @annoHasta = Model.paramBusqueda.FechaHasta.Year,
+
+                                               @model = Model.paramBusqueda
+                                           }, new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "dvResultadoBusqueda" }, new { @class = "page-link" })
+                                            </li>
+                                        }
+                                    }
+                                }
+
+                                @if (Model.TotalPaginas == 1 || Model.PaginaActual == Model.TotalPaginas)
+                                {
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#">Siguiente</a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="page-item">
+                                        @Ajax.ActionLink("Siguiente", "SearchHistoricoCursos", new
+                                   {
+                                       @page = Model.PaginaActual + 1,
+
+                                       @cedula = Model.paramBusqueda.Curso.Cedula,
+                                       @nombre = Model.paramBusqueda.Curso.Nombre,
+                                       @resolucion = Model.paramBusqueda.Curso.Resolucion,
+                                       @nomCurso = Model.paramBusqueda.Curso.NombreCurso,
+                                       @tipoCurso = Model.paramBusqueda.Curso.TipoCurso,
+
+                                       @diaDesde = Model.paramBusqueda.FechaDesde.Day,
+                                       @mesDesde = Model.paramBusqueda.FechaDesde.Month,
+                                       @annoDesde = Model.paramBusqueda.FechaDesde.Year,
+
+                                       @diaHasta = Model.paramBusqueda.FechaHasta.Day,
+                                       @mesHasta = Model.paramBusqueda.FechaHasta.Month,
+                                       @annoHasta = Model.paramBusqueda.FechaHasta.Year,
+
+                                       @model = Model.paramBusqueda
+                                   }, new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "dvResultadoBusqueda" }, new { @class = "page-link" })
+                                    </li>
+                                }
+
+                            </ul>
+                        </nav>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <br />
+        
+    </fieldset>
+    }
+}

@@ -1,0 +1,136 @@
+﻿@model SIRH.Web.ViewModels.PerfilUsuarioVM
+<script src="~/Scripts/Pages/PerfilUsuario.js" type="text/javascript"></script>
+<div id="resultados">
+    <div class="card text-center">
+        <div class="card-header">
+            Resultados
+        </div>
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead class="thead-light">
+                    <tr>
+                        <th>
+                            Funcionario
+                        </th>
+                        <th>
+                            Cédula
+                        </th>
+                        <th>
+                            Correo electrónico
+                        </th>
+                        <th>
+                            Teléfono
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            @Model.Funcionario.Nombre @Model.Funcionario.PrimerApellido @Model.Funcionario.SegundoApellido
+                        </td>
+                        <td>
+                            @Model.Funcionario.Cedula
+                        </td>
+                        <td>
+                            @Model.Usuario.EmailOficial
+                        </td>
+                        <td>
+                            @Model.Usuario.TelefonoOficial
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            @using (Ajax.BeginForm("Actualizar", "PerfilUsuario", new AjaxOptions
+            {
+                UpdateTargetId = "resultados",
+                HttpMethod = "POST"
+            }, new { @id = "thisform" }))
+            {
+                    @Html.HiddenFor(model => model.Funcionario.Nombre);
+                    @Html.HiddenFor(model => model.Funcionario.PrimerApellido);
+                    @Html.HiddenFor(model => model.Funcionario.SegundoApellido);
+                    @Html.HiddenFor(model => model.Funcionario.Cedula);
+                    @Html.HiddenFor(model => model.Usuario.EmailOficial);
+                    @Html.HiddenFor(model => model.Usuario.TelefonoOficial);
+                    @Html.HiddenFor(model => model.Usuario.NombreUsuario);
+                <div class="row">
+                    <div class="form-group col-2"></div>
+
+                    <div class="form-group col-4">
+                        <b>@Html.LabelFor(model => model.Perfil)</b>
+                        <span>:</span>
+                        @Html.DropDownListFor(model => model.PerfilSeleccionado, Model.Perfil, "Seleccione el Perfil", new { @class = "btn btn-secondary dropdown-toggle form-control", @onchange = "update();" })
+                    </div>
+
+                    <div class="form-group col-4">
+                        <b>@Html.LabelFor(model => model.Permiso)</b>
+                        <span>:</span>
+                        @Html.DropDownListFor(model => model.PermisoSeleccionado, Model.Permiso, "Seleccione el Permiso", new { @class = "btn btn-secondary dropdown-toggle form-control" })
+                    </div>
+
+                    <div class="form-group col-2">
+                        <b></b>
+                        <span></span>
+                        <input id="btnAgregar" class="btn btn-outline-secondary" name="SubmitButton" type="submit" value="Agregar" />
+                    </div>
+                </div>
+            }
+
+
+            @if (Model.Permisos != null)
+            {
+                  
+                <table class="table table-hover">
+                    <thead class="thead-light">
+                        <tr>
+                            <th colspan="4">Permisos</th>
+                        </tr>
+                        <tr>
+                            <th>Perfil</th>
+                            <th>Permiso</th>
+                            <th>
+                                @using (Ajax.BeginForm("AsignarPermisos", "PerfilUsuario", new AjaxOptions
+                                {
+                                    UpdateTargetId = "resultados",
+                                    HttpMethod = "POST",
+                                    OnSuccess = "OnSuccess",
+                                    OnBegin = "OnBegin"
+                                }))
+                                {
+                                    @Html.HiddenFor(model => model.Funcionario.Nombre);
+                                    @Html.HiddenFor(model => model.Funcionario.PrimerApellido);
+                                    @Html.HiddenFor(model => model.Funcionario.SegundoApellido);
+                                    @Html.HiddenFor(model => model.Funcionario.Cedula);
+                                    @Html.HiddenFor(model => model.Usuario.EmailOficial);
+                                    @Html.HiddenFor(model => model.Usuario.TelefonoOficial);
+                                    @Html.HiddenFor(model => model.Usuario.NombreUsuario);
+                                    <input id="btnRegistrar" class="btn btn-outline-primary" name="SubmitButton" type="submit" value="Asignar Permisos" />
+                                }
+                                
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Permisos)
+                        {
+                            <tr>
+                                <th>@item.Perfil</th>
+                                <th>@item.NomPermiso</th>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+           
+               
+            }
+
+        </div>
+        <div class="card-footer text-muted">
+            Permisos
+        </div>
+    </div>
+</div>
+
+
+

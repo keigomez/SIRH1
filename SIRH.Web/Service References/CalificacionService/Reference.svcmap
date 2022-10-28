@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="963ca296-4ad5-4432-9acf-108480c8850f" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://sisrh.mopt.go.cr:85/CCalificacionService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CCalificacionService.xsd" MetadataType="Schema" ID="c90ccf42-51f3-4cce-9684-2ef2017f1b41" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CCalificacionService.svc?xsd=xsd2" />
+    <MetadataFile FileName="CCalificacionService.wsdl" MetadataType="Wsdl" ID="aa140fcc-6fe9-46eb-9db9-612a1a4def05" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CCalificacionService.svc?wsdl" />
+    <MetadataFile FileName="CCalificacionService1.xsd" MetadataType="Schema" ID="034ce177-21cf-49d2-820d-f2b0b7e27c70" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CCalificacionService.svc?xsd=xsd0" />
+    <MetadataFile FileName="CCalificacionService.disco" MetadataType="Disco" ID="36d08d23-cb40-4ca8-b543-680eca4480b8" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CCalificacionService.svc?disco" />
+    <MetadataFile FileName="CCalificacionService2.xsd" MetadataType="Schema" ID="f73e3546-cb85-4196-89ec-6fbca0ec1aed" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CCalificacionService.svc?xsd=xsd3" />
+    <MetadataFile FileName="CCalificacionService3.xsd" MetadataType="Schema" ID="13a483c2-34df-4789-8943-13c2dcfc5a85" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CCalificacionService.svc?xsd=xsd1" />
+    <MetadataFile FileName="CCalificacionService4.xsd" MetadataType="Schema" ID="fcc34203-5bfb-48e8-9934-3c85a6edf68a" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CCalificacionService.svc?xsd=xsd4" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

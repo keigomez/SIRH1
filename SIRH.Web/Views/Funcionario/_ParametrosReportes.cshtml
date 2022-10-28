@@ -1,0 +1,432 @@
+﻿@model SIRH.Web.Models.FuncionarioModel
+@{
+    if (Model != null)
+    {
+        if (Model.Funcionario.Count == 0)
+        {
+            <div class="card border-danger">
+                <div class="card-header"><strong>La búsqueda contiene los siguientes errores</strong></div>
+                <div class="card-body text-danger">
+                    <p>No se encontraron resultados para la búsqueda solicitada.</p>
+                </div>
+            </div>
+        }
+        else
+        {
+            using (Ajax.BeginForm("GenerarReportePorFuncionariosParam", "Funcionario", new AjaxOptions
+            {
+                HttpMethod = "POST",
+                OnBegin = "onBegin"
+            }, new { @id = "form_buscar" }))
+            {
+                @Html.HiddenFor(model => model.CedulaSearch);
+                @Html.HiddenFor(model => model.NombreSearch);
+                @Html.HiddenFor(model => model.PrimerApellidoSearch);
+                @Html.HiddenFor(model => model.SegundoApellidoSearch);
+                @Html.HiddenFor(model => model.CodPuestoSearch);
+                @Html.HiddenFor(model => model.CodClaseSearch);
+                @Html.HiddenFor(model => model.CodEspecialidadSearch);
+                @Html.HiddenFor(model => model.CodNivelSearch);
+                @Html.HiddenFor(model => model.CodDivisionSearch);
+                @Html.HiddenFor(model => model.CodDireccionSearch);
+                @Html.HiddenFor(model => model.CodDepartamentoSearch);
+                @Html.HiddenFor(model => model.CodSeccionSearch);
+                @Html.HiddenFor(model => model.CodPresupuestoSearch);
+                @Html.HiddenFor(model => model.CodCostosSearch);
+                <div class="card">
+                    <div class="card-header">
+                        Agrupar por:
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <tr>
+                                <td>
+                                    <div class="custom-control custom-radio">
+                                        @Html.RadioButtonFor(model => model.Grupo, "Ninguno", new { @class = "custom-control-input", @checked = "checked", @id = "rbNinguno" })
+                                        @*<input type="radio" class="custom-control-input" id="rbNinguno" name="radioGrupo" checked>*@
+                                        <label class="custom-control-label" for="rbNinguno">Ninguno</label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="custom-control custom-radio">
+                                        @Html.RadioButtonFor(model => model.Grupo, "División", new { @class = "custom-control-input", @id = "rbDivision" })
+                                        @*<input type="radio" class="custom-control-input" id="rbDivision" name="radioGrupo">*@
+                                        <label class="custom-control-label" for="rbDivision">División</label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="custom-control custom-radio">
+                                        @Html.RadioButtonFor(model => model.Grupo, "Dirección", new { @class = "custom-control-input", @id = "rbDireccion" })
+                                        @*<input type="radio" class="custom-control-input" id="rbDireccion" name="radioGrupo">*@
+                                        <label class="custom-control-label" for="rbDireccion">Dirección</label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="custom-control custom-radio">
+                                        @Html.RadioButtonFor(model => model.Grupo, "Departamento", new { @class = "custom-control-input", @id = "rbDepartamento" })
+                                        @*<input type="radio" class="custom-control-input" id="rbDepartamento" name="radioGrupo">*@
+                                        <label class="custom-control-label" for="rbDepartamento">Departamento</label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="custom-control custom-radio">
+                                        @Html.RadioButtonFor(model => model.Grupo, "Sección", new { @class = "custom-control-input", @id = "rbSeccion" })
+                                        @*<input type="radio" class="custom-control-input" id="rbSeccion" name="radioGrupo">*@
+                                        <label class="custom-control-label" for="rbSeccion">Sección</label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="custom-control custom-radio">
+                                        @Html.RadioButtonFor(model => model.Grupo, "Clase", new { @class = "custom-control-input", @id = "rbClase" })
+                                        @*<input type="radio" class="custom-control-input" id="rbClase" name="radioGrupo">*@
+                                        <label class="custom-control-label" for="rbClase">Clase</label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="custom-control custom-radio">
+                                        @Html.RadioButtonFor(model => model.Grupo, "Especialidad", new { @class = "custom-control-input", @id = "rbEspecialidad" })
+                                        @*<input type="radio" class="custom-control-input" id="rbEspecialidad" name="radioGrupo">*@
+                                        <label class="custom-control-label" for="rbEspecialidad">Especialidad</label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="custom-control custom-radio">
+                                        @Html.RadioButtonFor(model => model.Grupo, "Nivel Ocupacional", new { @class = "custom-control-input", @id = "rbNivel" })
+                                        @*<input type="radio" class="custom-control-input" id="rbNivel" name="radioGrupo">*@
+                                        <label class="custom-control-label" for="rbNivel">Nivel ocupacional</label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="custom-control custom-radio">
+                                        @Html.RadioButtonFor(model => model.Grupo, "Código presupuestario", new { @class = "custom-control-input", @id = "rbPresupuesto" })
+                                        @*<input type="radio" class="custom-control-input" id="rbNivel" name="radioGrupo">*@
+                                        <label class="custom-control-label" for="rbPresupuesto">Código presupuestario</label>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <br />
+                <div class="card">
+                    <div class="card-header">
+                        Datos a mostrar:
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <tr>
+                                <td>
+                                    @Html.CheckBoxFor(model => model.Parametros[0], new
+                                                       {
+                                                           @id = "chkCedula",
+                                                           @type = "checkbox",
+                                                           @checked = "checked",
+                                                           @data_toggle = "toggle",
+                                                           @data_onstyle = "light",
+                                                           @data_offstyle = "danger",
+                                                           @data_width = "70",
+                                                           @data_on = "Sí",
+                                                           @data_off = "No",
+                                                           @disabled = "disabled"
+                                                       })
+                                    @*<input type="checkbox" checked data-toggle="toggle" data-onstyle="light" data-offstyle="danger" data-width="70" data-on="Sí" data-off="No" disabled>*@
+                                    Cédula
+                                </td>
+                                <td>
+                                    @Html.CheckBoxFor(model => model.Parametros[1], new
+                                       {
+                                           @id = "chkNombre",
+                                           @type = "checkbox",
+                                           @checked = "checked",
+                                           @data_toggle = "toggle",
+                                           @data_onstyle = "light",
+                                           @data_offstyle = "danger",
+                                           @data_width = "70",
+                                           @data_on = "Sí",
+                                           @data_off = "No",
+                                           @disabled = "disabled"
+                                       })
+                                    @*<input type="checkbox" checked data-toggle="toggle" data-onstyle="light" data-offstyle="danger" data-width="70" data-on="Sí" data-off="No" disabled>*@
+                                    Nombre
+                                </td>
+                                <td>
+                                    @Html.CheckBoxFor(model => model.Parametros[2], new
+                                                               {
+                                                                   @id = "chkPuesto",
+                                                                   @type = "checkbox",
+                                                                   @checked = "checked",
+                                                                   @data_toggle = "toggle",
+                                                                   @data_onstyle = "light",
+                                                                   @data_offstyle = "danger",
+                                                                   @data_width = "70",
+                                                                   @data_on = "Sí",
+                                                                   @data_off = "No",
+                                                                   @disabled = "disabled"
+                                                               })
+                                    @*<input type="checkbox" checked data-toggle="toggle" data-onstyle="light" data-offstyle="danger" data-width="70" data-on="Sí" data-off="No" disabled>*@
+                                    # Puesto
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.CheckBoxFor(model => model.Parametros[3], new
+                                                               {
+                                                                   @id = "chkCodigo",
+                                                                   @type = "checkbox",
+                                                                   @checked = "checked",
+                                                                   @data_toggle = "toggle",
+                                                                   @data_onstyle = "success",
+                                                                   @data_offstyle = "danger",
+                                                                   @data_width = "70",
+                                                                   @data_on = "Sí",
+                                                                   @data_off = "No"
+                                                               })
+                                    @*<input type="checkbox" checked data-toggle="toggle" data-onstyle="success" data-offstyle="danger" data-width="70" data-on="Sí" data-off="No">*@
+                                    Código presupuestario
+                                </td>
+                                <td>
+                                    @Html.CheckBoxFor(model => model.Parametros[4], new
+                                                               {
+                                                                   @id = "chkDivision",
+                                                                   @type = "checkbox",
+                                                                   @checked = "checked",
+                                                                   @data_toggle = "toggle",
+                                                                   @data_onstyle = "success",
+                                                                   @data_offstyle = "danger",
+                                                                   @data_width = "70",
+                                                                   @data_on = "Sí",
+                                                                   @data_off = "No"
+                                                               })
+                                    @*<input type="checkbox" checked data-toggle="toggle" data-onstyle="success" data-offstyle="danger" data-width="70" data-on="Sí" data-off="No">*@
+                                    División
+                                </td>
+                                <td>
+                                    @Html.CheckBoxFor(model => model.Parametros[5], new
+                                                               {
+                                                                   @id = "chkDireccion",
+                                                                   @type = "checkbox",
+                                                                   @checked = "checked",
+                                                                   @data_toggle = "toggle",
+                                                                   @data_onstyle = "success",
+                                                                   @data_offstyle = "danger",
+                                                                   @data_width = "70",
+                                                                   @data_on = "Sí",
+                                                                   @data_off = "No"
+                                                               })
+                                    @*<input type="checkbox" checked data-toggle="toggle" data-onstyle="success" data-offstyle="danger" data-width="70" data-on="Sí" data-off="No">*@
+                                    Dirección
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.CheckBoxFor(model => model.Parametros[6], new
+                                                               {
+                                                                   @id = "chkDepartamento",
+                                                                   @type = "checkbox",
+                                                                   @checked = "checked",
+                                                                   @data_toggle = "toggle",
+                                                                   @data_onstyle = "success",
+                                                                   @data_offstyle = "danger",
+                                                                   @data_width = "70",
+                                                                   @data_on = "Sí",
+                                                                   @data_off = "No"
+                                                               })
+                                    @*<input type="checkbox" checked data-toggle="toggle" data-onstyle="success" data-offstyle="danger" data-width="70" data-on="Sí" data-off="No">*@
+                                    Departamento
+                                </td>
+                                <td>
+                                    @Html.CheckBoxFor(model => model.Parametros[7], new
+                                                               {
+                                                                   @id = "chkSeccion",
+                                                                   @type = "checkbox",
+                                                                   @checked = "checked",
+                                                                   @data_toggle = "toggle",
+                                                                   @data_onstyle = "success",
+                                                                   @data_offstyle = "danger",
+                                                                   @data_width = "70",
+                                                                   @data_on = "Sí",
+                                                                   @data_off = "No"
+                                                               })
+                                    @*<input type="checkbox" checked data-toggle="toggle" data-onstyle="success" data-offstyle="danger" data-width="70" data-on="Sí" data-off="No">*@
+                                    Sección
+                                </td>
+                                <td>
+                                    @Html.CheckBoxFor(model => model.Parametros[8], new
+                                                               {
+                                                                   @id = "chkClase",
+                                                                   @type = "checkbox",
+                                                                   @checked = "checked",
+                                                                   @data_toggle = "toggle",
+                                                                   @data_onstyle = "success",
+                                                                   @data_offstyle = "danger",
+                                                                   @data_width = "70",
+                                                                   @data_on = "Sí",
+                                                                   @data_off = "No"
+                                                               })
+                                    @*<input type="checkbox" checked data-toggle="toggle" data-onstyle="success" data-offstyle="danger" data-width="70" data-on="Sí" data-off="No">*@
+                                    Clase
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.CheckBoxFor(model => model.Parametros[9], new
+                                                               {
+                                                                   @id = "chkEspecialidad",
+                                                                   @type = "checkbox",
+                                                                   @checked = "checked",
+                                                                   @data_toggle = "toggle",
+                                                                   @data_onstyle = "success",
+                                                                   @data_offstyle = "danger",
+                                                                   @data_width = "70",
+                                                                   @data_on = "Sí",
+                                                                   @data_off = "No"
+                                                               })
+                                    @*<input type="checkbox" checked data-toggle="toggle" data-onstyle="success" data-offstyle="danger" data-width="70" data-on="Sí" data-off="No">*@
+                                    Especialidad
+                                </td>
+                                <td>
+                                    @Html.CheckBoxFor(model => model.Parametros[10], new
+                                                               {
+                                                                   @id = "chkFecha",
+                                                                   @type = "checkbox",
+                                                                   @data_toggle = "toggle",
+                                                                   @data_onstyle = "success",
+                                                                   @data_offstyle = "danger",
+                                                                   @data_width = "70",
+                                                                   @data_on = "Sí",
+                                                                   @data_off = "No"
+                                                               })
+                                    @*<input type="checkbox" data-toggle="toggle" data-onstyle="success" data-offstyle="danger" data-width="70" data-on="Sí" data-off="No">*@
+                                    Fecha ingreso
+                                </td>
+                                <td>
+                                    @Html.CheckBoxFor(model => model.Parametros[11], new
+                                                               {
+                                                                   @id = "chkEdad",
+                                                                   @type = "checkbox",
+                                                                   @data_toggle = "toggle",
+                                                                   @data_onstyle = "success",
+                                                                   @data_offstyle = "danger",
+                                                                   @data_width = "70",
+                                                                   @data_on = "Sí",
+                                                                   @data_off = "No"
+                                                               })
+                                    @*<input type="checkbox" data-toggle="toggle" data-onstyle="success" data-offstyle="danger" data-width="70" data-on="Sí" data-off="No">*@
+                                    Edad
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.CheckBoxFor(model => model.Parametros[12], new
+                                                               {
+                                                                   @id = "chkContrato",
+                                                                   @type = "checkbox",
+                                                                   @data_toggle = "toggle",
+                                                                   @data_onstyle = "success",
+                                                                   @data_offstyle = "danger",
+                                                                   @data_width = "70",
+                                                                   @data_on = "Sí",
+                                                                   @data_off = "No"
+                                                               })
+                                    @*<input type="checkbox" data-toggle="toggle" data-onstyle="success" data-offstyle="danger" data-width="70" data-on="Sí" data-off="No">*@
+                                    Lugar de contrato
+                                </td>
+                                <td>
+                                    @Html.CheckBoxFor(model => model.Parametros[13], new
+                                                               {
+                                                                   @id = "chkTrabajo",
+                                                                   @type = "checkbox",
+                                                                   @data_toggle = "toggle",
+                                                                   @data_onstyle = "success",
+                                                                   @data_offstyle = "danger",
+                                                                   @data_width = "70",
+                                                                   @data_on = "Sí",
+                                                                   @data_off = "No"
+                                                               })
+                                    @*<input type="checkbox" data-toggle="toggle" data-onstyle="success" data-offstyle="danger" data-width="70" data-on="Sí" data-off="No">*@
+                                    Lugar de trabajo
+                                </td>
+                                <td>
+                                    @Html.CheckBoxFor(model => model.Parametros[14], new
+                                                               {
+                                                                   @id = "chkOcupacion",
+                                                                   @type = "checkbox",
+                                                                   @data_toggle = "toggle",
+                                                                   @data_onstyle = "success",
+                                                                   @data_offstyle = "danger",
+                                                                   @data_width = "70",
+                                                                   @data_on = "Sí",
+                                                                   @data_off = "No"
+                                                               })
+                                    @*<input type="checkbox" data-toggle="toggle" data-onstyle="success" data-offstyle="danger" data-width="70" data-on="Sí" data-off="No">*@
+                                    Ocupación real
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.CheckBoxFor(model => model.Parametros[15], new
+                                                               {
+                                                                   @id = "chkNivel",
+                                                                   @type = "checkbox",
+                                                                   @data_toggle = "toggle",
+                                                                   @data_onstyle = "success",
+                                                                   @data_offstyle = "danger",
+                                                                   @data_width = "70",
+                                                                   @data_on = "Sí",
+                                                                   @data_off = "No"
+                                                               })
+                                    @*<input type="checkbox" data-toggle="toggle" data-onstyle="success" data-offstyle="danger" data-width="70" data-on="Sí" data-off="No">*@
+                                    Nivel ocupacional
+                                </td>
+                                <td>
+                                    @Html.CheckBoxFor(model => model.Parametros[16], new
+                                                               {
+                                                                   @id = "chkPolicial",
+                                                                   @type = "checkbox",
+                                                                   @data_toggle = "toggle",
+                                                                   @data_onstyle = "success",
+                                                                   @data_offstyle = "danger",
+                                                                   @data_width = "70",
+                                                                   @data_on = "Sí",
+                                                                   @data_off = "No"
+                                                               })
+                                    @*<input type="checkbox" data-toggle="toggle" data-onstyle="success" data-offstyle="danger" data-width="70" data-on="Sí" data-off="No">*@
+                                    Código policial
+                                </td>
+                                <td>
+                                    @Html.CheckBoxFor(model => model.Parametros[17], new
+                                                               {
+                                                                   @id = "chkGenero",
+                                                                   @type = "checkbox",
+                                                                   @data_toggle = "toggle",
+                                                                   @data_onstyle = "success",
+                                                                   @data_offstyle = "danger",
+                                                                   @data_width = "70",
+                                                                   @data_on = "Sí",
+                                                                   @data_off = "No"
+                                                               })
+                                    @*<input type="checkbox" data-toggle="toggle" data-onstyle="success" data-offstyle="danger" data-width="70" data-on="Sí" data-off="No">*@
+                                    Género
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+                </div>
+                <br />
+                <input id="GenerarReporte" type="submit" class="btn btn-primary" value="Generar reporte" />
+            }
+        }
+        <script type="text/javascript">
+            function onBegin() {
+                //alert("algo");
+                document.getElementById("form_buscar").submit();
+            }
+        </script>
+    }
+}
+

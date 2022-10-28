@@ -1,0 +1,104 @@
+﻿@model IEnumerable<SIRH.Web.ViewModels.FormularioCaucionVM>
+
+@{
+    ViewBag.Title = "Listado Total de Cauciones";
+    Layout = "~/Views/Shared/Cauciones.cshtml";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Cédula</th>
+            <th scope="col">Funcionario</th>
+            <th scope="col"># Puesto</th>
+            <th scope="col">Estado de Póliza</th>
+            <th scope="col">Fecha de Vencimiento</th>
+            <th scope="col">Detalle</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            string letra = "";
+            int contador = 0;
+            List<string> alfabeto = new List<string>();
+
+            foreach (var item in Model)
+            {
+                contador++;
+                letra = item.Funcionario.PrimerApellido.Substring(0, 1);
+                if (alfabeto.Contains(letra) != true)
+                {
+                    alfabeto.Add(letra);
+                    <tr style="background-color: #E5E7E9;">
+                        <td colspan="6" id="@letra.ToString()"><b>@letra.ToString()</b></td>
+                    </tr>
+                }
+                <tr>
+                    <td>
+                        @Html.Encode(item.Funcionario.Cedula)
+                    </td>
+                    <td>
+                        @item.Funcionario.PrimerApellido @item.Funcionario.SegundoApellido @item.Funcionario.Nombre
+                    </td>
+                    <td>
+                        @Html.Encode(item.Puesto.CodPuesto)
+                    </td>
+                    <td>
+                        @if (item.Caucion.IdEntidad != -1)
+                        {
+                            if (item.Caucion.DetalleEstadoPoliza == "Activa")
+                            {
+                                <p class="text-success">@Html.Encode(item.Caucion.DetalleEstadoPoliza)</p>
+                            }
+                            if (item.Caucion.DetalleEstadoPoliza == "Vencida")
+                            {
+                                <p class="text-danger">@Html.Encode(item.Caucion.DetalleEstadoPoliza)</p>
+                            }
+                            if (item.Caucion.DetalleEstadoPoliza == "Por Activar")
+                            {
+                                <p class="text-primary">@Html.Encode(item.Caucion.DetalleEstadoPoliza)</p>
+                            }
+                        }
+                        else
+                        {
+                            if (item.Notificacion != null)
+                            {
+                                <p class="text-warning">Notificado</p>
+                            }
+                            else
+                            {
+                                <p class="text-danger">Sin Póliza</p>
+                            }
+                        }
+                    </td>
+                    <td>
+                        @if (item.Caucion.IdEntidad != -1)
+                        {
+                            @Html.Encode(item.Caucion.FechaVence.ToShortDateString())
+                        }
+                    </td>
+                    <td>
+                        @if (item.Caucion.IdEntidad != -1)
+                        {
+                            @Html.ActionLink("Detalle  ", "Details", new { codigo = item.Caucion.IdEntidad }, new { @class = "btn btn-success btn-sm", @style="width=50px" })
+                        }
+                        else
+                        {
+                            if (item.Notificacion != null)
+                            {
+                                @Html.ActionLink("Detalle  ", "DetalleNotificacion", new { codigo = item.Notificacion.IdEntidad }, new { @class = "btn btn-warning btn-sm", @style = "width=50px" })
+                            }
+                            else
+                            {
+                                @Html.ActionLink("Notificar", "EnviarNotificacion", new { cedula = item.Funcionario.Cedula }, new { @class = "btn btn-danger btn-sm", @style = "width=50px" })
+                            }
+                        }
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")

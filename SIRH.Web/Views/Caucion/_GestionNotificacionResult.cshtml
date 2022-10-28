@@ -1,0 +1,55 @@
+﻿@model IList<SIRH.Web.ViewModels.NotificacionUsuarioVM>
+
+@{
+    using (Html.BeginForm("ReporteDesgloseCaucion", "Caucion", FormMethod.Post, new { @id = "thisForm" }))
+    {
+        <div class="card">
+            <div class="card-body">
+                <table class="table detalle">
+                    <thead>
+                        <tr>
+                            <th scope="col">Cédula</th>
+                            <th scope="col">Nombre destinatario</th>
+                            <th scope="col">Asunto</th>
+                            <th scope="col">Fecha de envío</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < Model.Count(); i++)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.Encode(Model.ElementAt(i).Funcionario.Cedula)
+                                    @Html.HiddenFor(model => model[i].Funcionario.Cedula)
+                                    @Html.HiddenFor(model => model[i].Funcionario.Nombre)
+                                    @Html.HiddenFor(model => model[i].Funcionario.PrimerApellido)
+                                    @Html.HiddenFor(model => model[i].Funcionario.SegundoApellido)
+                                </td>
+                                <td>
+                                    @Model.ElementAt(i).Funcionario.Nombre @Model.ElementAt(i).Funcionario.PrimerApellido @Model.ElementAt(i).Funcionario.SegundoApellido
+                                </td>
+                                <td>
+                                    @Html.Encode(Model.ElementAt(i).Notificacion.Asunto)
+                                    @Html.HiddenFor(model => model[i].Notificacion.Asunto)
+                                </td>
+                                <td>
+                                    @Html.Encode(Model.ElementAt(i).Notificacion.FechaEnvio.ToShortDateString())
+                                    @Html.HiddenFor(model => model[i].Notificacion.FechaEnvio)
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("DetalleNotificacion", "Caucion", new { codigo = Model.ElementAt(i).Notificacion.IdEntidad })" class="btn btn-primary btn-sm">
+                                        <i class="fa fa-search"></i> Ver Detalle
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <br />
+                @*<button class="btn btn-danger" type="submit"><i class="fa fa-file-pdf-o"></i> Exportar a pdf</button>*@
+            </div>
+        </div>
+    }
+    <br />
+}

@@ -1,0 +1,45 @@
+﻿@model SIRH.Web.ViewModels.FuncionarioRegistroExtrasVM
+    <div id="formulario">
+        @{
+
+            if (Model.RegistroTiempoExtra != null)
+            {
+                if (Model.RegistroTiempoExtra.Mensaje.StartsWith("EXITO"))
+                {
+                    string[] exito = Model.RegistroTiempoExtra.Mensaje.Split('/');
+                    <div class="card border-success">
+                        <div class="card-header"><strong>@(Model.Doble ? "Las jornadas dobles han sido modificadas" : "El registro de tiempo extraordinario ha sido modificado")</strong></div>
+                        <div class="card-body text-success">
+                            <div class="alert alert-success" role="alert">
+                                <h5>@(exito[1])</h5>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    string[] error = Model.RegistroTiempoExtra.Mensaje.Split('/');
+                    <div class="card border-danger">
+                        <div class="card-header"><strong>No se ha podido modificar el registro</strong></div>
+                        <div class="card-body text-danger">
+                            <div class="alert alert-danger" role="alert">
+                                <h5>@(error[1])</h5>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="card border-danger">
+                    <div class="card-header"><strong>No se ha podido modificar el registro</strong></div>
+                    <div class="card-body text-danger">
+                        <div class="alert alert-danger" role="alert">
+                            <h5>Ha ocurrio un error desconocido, contacte al administrdor</h5>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        }
+    </div>

@@ -1,0 +1,3026 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SIRHModelStoreContainer" CdmEntityContainer="SIRHEntities">
+    <EntitySetMapping Name="C_EMU_AccionPersonal">
+      <EntityTypeMapping TypeName="SIRHModel.C_EMU_AccionPersonal">
+        <MappingFragment StoreEntitySet="_EMU_AccionPersonal">
+          <ScalarProperty Name="Explicacion1" ColumnName="Explicacion1" />
+          <ScalarProperty Name="CodClase2" ColumnName="CodClase2" />
+          <ScalarProperty Name="CodSeccion2" ColumnName="CodSeccion2" />
+          <ScalarProperty Name="CodTitulo2" ColumnName="CodTitulo2" />
+          <ScalarProperty Name="CodClase1" ColumnName="CodClase1" />
+          <ScalarProperty Name="CodSeccion1" ColumnName="CodSeccion1" />
+          <ScalarProperty Name="CodTitulo1" ColumnName="CodTitulo1" />
+          <ScalarProperty Name="CodAdministrativo" ColumnName="CodAdministrativo" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NumAccion" ColumnName="NumAccion" />
+          <ScalarProperty Name="FecRige" ColumnName="FecRige" />
+          <ScalarProperty Name="FecVence" ColumnName="FecVence" />
+          <ScalarProperty Name="CodAccion" ColumnName="CodAccion" />
+          <ScalarProperty Name="Explicacion" ColumnName="Explicacion" />
+          <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+          <ScalarProperty Name="NumPuesto1" ColumnName="NumPuesto1" />
+          <ScalarProperty Name="NumPuesto2" ColumnName="NumPuesto2" />
+          <ScalarProperty Name="Categoria1" ColumnName="Categoria1" />
+          <ScalarProperty Name="Categoria2" ColumnName="Categoria2" />
+          <ScalarProperty Name="Clase1" ColumnName="Clase1" />
+          <ScalarProperty Name="Clase2" ColumnName="Clase2" />
+          <ScalarProperty Name="Salario1" ColumnName="Salario1" />
+          <ScalarProperty Name="Aumentos1" ColumnName="Aumentos1" />
+          <ScalarProperty Name="Recargo1" ColumnName="Recargo1" />
+          <ScalarProperty Name="Grupo1" ColumnName="Grupo1" />
+          <ScalarProperty Name="Prohibicion1" ColumnName="Prohibicion1" />
+          <ScalarProperty Name="Otros1" ColumnName="Otros1" />
+          <ScalarProperty Name="Salario2" ColumnName="Salario2" />
+          <ScalarProperty Name="Aumentos2" ColumnName="Aumentos2" />
+          <ScalarProperty Name="Recargo2" ColumnName="Recargo2" />
+          <ScalarProperty Name="Grupo2" ColumnName="Grupo2" />
+          <ScalarProperty Name="Prohibicion2" ColumnName="Prohibicion2" />
+          <ScalarProperty Name="Otros2" ColumnName="Otros2" />
+          <ScalarProperty Name="Disfrutado1" ColumnName="Disfrutado1" />
+          <ScalarProperty Name="Autorizado1" ColumnName="Autorizado1" />
+          <ScalarProperty Name="Disfrutado2" ColumnName="Disfrutado2" />
+          <ScalarProperty Name="Autorizado2" ColumnName="Autorizado2" />
+          <ScalarProperty Name="FK_Nombramiento" ColumnName="FK_Nombramiento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C_EMU_Calificacion">
+      <EntityTypeMapping TypeName="SIRHModel.C_EMU_Calificacion">
+        <MappingFragment StoreEntitySet="_EMU_Calificacion">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+          <ScalarProperty Name="Periodo" ColumnName="Periodo" />
+          <ScalarProperty Name="Calificacion" ColumnName="Calificacion" />
+          <ScalarProperty Name="DesCalificacion" ColumnName="DesCalificacion" />
+          <ScalarProperty Name="Nota" ColumnName="Nota" />
+          <ScalarProperty Name="DesJustificacion" ColumnName="DesJustificacion" />
+          <ScalarProperty Name="IndPolicia" ColumnName="IndPolicia" />
+          <ScalarProperty Name="IndFormulario" ColumnName="IndFormulario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C_EMU_HistoricoPlanilla_oldie">
+      <EntityTypeMapping TypeName="SIRHModel.C_EMU_HistoricoPlanilla_oldie">
+        <MappingFragment StoreEntitySet="_EMU_HistoricoPlanilla_oldie">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CEDULA" ColumnName="CEDULA" />
+          <ScalarProperty Name="CODIGO_PRESUPUESTARIO" ColumnName="CODIGO_PRESUPUESTARIO" />
+          <ScalarProperty Name="CATEGORIA" ColumnName="CATEGORIA" />
+          <ScalarProperty Name="NUMERO_PUESTO" ColumnName="NUMERO_PUESTO" />
+          <ScalarProperty Name="CLASE_PUESTO" ColumnName="CLASE_PUESTO" />
+          <ScalarProperty Name="BASE" ColumnName="BASE" />
+          <ScalarProperty Name="AUMENTOS" ColumnName="AUMENTOS" />
+          <ScalarProperty Name="GRUPO" ColumnName="GRUPO" />
+          <ScalarProperty Name="SOBRESUELDOS" ColumnName="SOBRESUELDOS" />
+          <ScalarProperty Name="PROHIBICION" ColumnName="PROHIBICION" />
+          <ScalarProperty Name="RECARGO" ColumnName="RECARGO" />
+          <ScalarProperty Name="EMBARGO" ColumnName="EMBARGO" />
+          <ScalarProperty Name="OTROS" ColumnName="OTROS" />
+          <ScalarProperty Name="PSS_SUS" ColumnName="PSS_SUS" />
+          <ScalarProperty Name="SAL_MENSUAL" ColumnName="SAL_MENSUAL" />
+          <ScalarProperty Name="TOT_SALARIO" ColumnName="TOT_SALARIO" />
+          <ScalarProperty Name="RUTA" ColumnName="RUTA" />
+          <ScalarProperty Name="FECHA_CORRIDA" ColumnName="FECHA_CORRIDA" />
+          <ScalarProperty Name="FECHA_PERIODO" ColumnName="FECHA_PERIODO" />
+          <ScalarProperty Name="NUMERO_GIRO" ColumnName="NUMERO_GIRO" />
+          <ScalarProperty Name="ZONAJE" ColumnName="ZONAJE" />
+          <ScalarProperty Name="CANT_PUNTOS" ColumnName="CANT_PUNTOS" />
+          <ScalarProperty Name="PORC_DEDICACION" ColumnName="PORC_DEDICACION" />
+          <ScalarProperty Name="PORC_PELIGROSIDAD" ColumnName="PORC_PELIGROSIDAD" />
+          <ScalarProperty Name="PORC_PROHIBICION" ColumnName="PORC_PROHIBICION" />
+          <ScalarProperty Name="PORC_QUINQUENIO" ColumnName="PORC_QUINQUENIO" />
+          <ScalarProperty Name="PORC_DISPONIBILIDAD" ColumnName="PORC_DISPONIBILIDAD" />
+          <ScalarProperty Name="PORC_GRADO_ACADEMICO" ColumnName="PORC_GRADO_ACADEMICO" />
+          <ScalarProperty Name="PORC_RIESGO_POLICIAL" ColumnName="PORC_RIESGO_POLICIAL" />
+          <ScalarProperty Name="PORC_CURSO_BASICO" ColumnName="PORC_CURSO_BASICO" />
+          <ScalarProperty Name="PORC_INSTRUCCION" ColumnName="PORC_INSTRUCCION" />
+          <ScalarProperty Name="PORC_BONIFICACION" ColumnName="PORC_BONIFICACION" />
+          <ScalarProperty Name="PORC_CONSULTA_EXTERNA" ColumnName="PORC_CONSULTA_EXTERNA" />
+          <ScalarProperty Name="DEDICACION_EXCLUSIVA" ColumnName="DEDICACION_EXCLUSIVA" />
+          <ScalarProperty Name="PELIGROSIDAD" ColumnName="PELIGROSIDAD" />
+          <ScalarProperty Name="GRADO_ACADEMICO" ColumnName="GRADO_ACADEMICO" />
+          <ScalarProperty Name="DISPONIBILIDAD" ColumnName="DISPONIBILIDAD" />
+          <ScalarProperty Name="QUINQUENIO" ColumnName="QUINQUENIO" />
+          <ScalarProperty Name="RIESGO_POLICIAL" ColumnName="RIESGO_POLICIAL" />
+          <ScalarProperty Name="CURSO_BASICO" ColumnName="CURSO_BASICO" />
+          <ScalarProperty Name="INSTRUCCION" ColumnName="INSTRUCCION" />
+          <ScalarProperty Name="CONSULTA_EXTERNA" ColumnName="CONSULTA_EXTERNA" />
+          <ScalarProperty Name="DESARRAIGO" ColumnName="DESARRAIGO" />
+          <ScalarProperty Name="BONIFICACION" ColumnName="BONIFICACION" />
+          <ScalarProperty Name="OTROS_INCENTIVOS" ColumnName="OTROS_INCENTIVOS" />
+          <ScalarProperty Name="DIVISION" ColumnName="DIVISION" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+          <ScalarProperty Name="DEPARTAMENTO" ColumnName="DEPARTAMENTO" />
+          <ScalarProperty Name="SECCION" ColumnName="SECCION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C_EMU_Vacaciones_Movimiento">
+      <EntityTypeMapping TypeName="SIRHModel.C_EMU_Vacaciones_Movimiento">
+        <MappingFragment StoreEntitySet="_EMU_Vacaciones_Movimiento">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TIPO_REG" ColumnName="TIPO_REG" />
+          <ScalarProperty Name="CEDULA" ColumnName="CEDULA" />
+          <ScalarProperty Name="TRANSACCION" ColumnName="TRANSACCION" />
+          <ScalarProperty Name="PERI_TRAN" ColumnName="PERI_TRAN" />
+          <ScalarProperty Name="DIAS" ColumnName="DIAS" />
+          <ScalarProperty Name="DOCUMENTO" ColumnName="DOCUMENTO" />
+          <ScalarProperty Name="FECHA_RIGE" ColumnName="FECHA_RIGE" />
+          <ScalarProperty Name="FECHA_VENCE" ColumnName="FECHA_VENCE" />
+          <ScalarProperty Name="FEC_ACT" ColumnName="FEC_ACT" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="CEDULA_SOLICITANTE" ColumnName="CEDULA_SOLICITANTE" />
+          <ScalarProperty Name="CEDULA_JEFATURA" ColumnName="CEDULA_JEFATURA" />
+          <ScalarProperty Name="CEDULA_REC_HUMANOS" ColumnName="CEDULA_REC_HUMANOS" />
+          <ScalarProperty Name="FEC_SOLICITUD" ColumnName="FEC_SOLICITUD" />
+          <ScalarProperty Name="TIPO_SOLICITUD" ColumnName="TIPO_SOLICITUD" />
+          <ScalarProperty Name="FECHA_ACT_K" ColumnName="FECHA_ACT_K" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C_EMU_Vacaciones_Saldo">
+      <EntityTypeMapping TypeName="SIRHModel.C_EMU_Vacaciones_Saldo">
+        <MappingFragment StoreEntitySet="_EMU_Vacaciones_Saldo">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CEDULA" ColumnName="CEDULA" />
+          <ScalarProperty Name="PERI_VACA" ColumnName="PERI_VACA" />
+          <ScalarProperty Name="SALDO" ColumnName="SALDO" />
+          <ScalarProperty Name="FRAC_VACA" ColumnName="FRAC_VACA" />
+          <ScalarProperty Name="DOCU_VACA" ColumnName="DOCU_VACA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C_ViaticoCorrido">
+      <EntityTypeMapping TypeName="SIRHModel.C_ViaticoCorrido">
+        <MappingFragment StoreEntitySet="_ViaticoCorrido">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+          <ScalarProperty Name="TipoMov" ColumnName="TipoMov" />
+          <ScalarProperty Name="Gasto" ColumnName="Gasto" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="MesProceso" ColumnName="MesProceso" />
+          <ScalarProperty Name="FecVence" ColumnName="FecVence" />
+          <ScalarProperty Name="MonActual" ColumnName="MonActual" />
+          <ScalarProperty Name="Documento" ColumnName="Documento" />
+          <ScalarProperty Name="DetalleViatico" ColumnName="DetalleViatico" />
+          <ScalarProperty Name="Programa" ColumnName="Programa" />
+          <ScalarProperty Name="NumFactura" ColumnName="NumFactura" />
+          <ScalarProperty Name="Nombramiento" ColumnName="Nombramiento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AccionPersonal">
+      <EntityTypeMapping TypeName="SIRHModel.AccionPersonal">
+        <MappingFragment StoreEntitySet="AccionPersonal">
+          <ScalarProperty Name="PK_AccionPersonal" ColumnName="PK_AccionPersonal" />
+          <ScalarProperty Name="NumAccion" ColumnName="NumAccion" />
+          <ScalarProperty Name="AnioRige" ColumnName="AnioRige" />
+          <ScalarProperty Name="FecRige" ColumnName="FecRige" />
+          <ScalarProperty Name="FecVence" ColumnName="FecVence" />
+          <ScalarProperty Name="FecRigeIntegra" ColumnName="FecRigeIntegra" />
+          <ScalarProperty Name="FecVenceIntegra" ColumnName="FecVenceIntegra" />
+          <ScalarProperty Name="FK_TipoAccionPersonal" ColumnName="FK_TipoAccionPersonal" />
+          <ScalarProperty Name="FK_Estado" ColumnName="FK_Estado" />
+          <ScalarProperty Name="FK_Nombramiento" ColumnName="FK_Nombramiento" />
+          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+          <ScalarProperty Name="CodModulo" ColumnName="CodModulo" />
+          <ScalarProperty Name="CodObjetoEntidad" ColumnName="CodObjetoEntidad" />
+          <ScalarProperty Name="IndDato" ColumnName="IndDato" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AddendumPrestamoPuesto">
+      <EntityTypeMapping TypeName="SIRHModel.AddendumPrestamoPuesto">
+        <MappingFragment StoreEntitySet="AddendumPrestamoPuesto">
+          <ScalarProperty Name="PK_AddendumPrestamoPuesto" ColumnName="PK_AddendumPrestamoPuesto" />
+          <ScalarProperty Name="FK_PrestamoPuesto" ColumnName="FK_PrestamoPuesto" />
+          <ScalarProperty Name="NumAddendum" ColumnName="NumAddendum" />
+          <ScalarProperty Name="FecRige" ColumnName="FecRige" />
+          <ScalarProperty Name="FecFin" ColumnName="FecFin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BitacoraIncidencia">
+      <EntityTypeMapping TypeName="SIRHModel.BitacoraIncidencia">
+        <MappingFragment StoreEntitySet="BitacoraIncidencia">
+          <ScalarProperty Name="PK_BitacoraIncidencia" ColumnName="PK_BitacoraIncidencia" />
+          <ScalarProperty Name="FK_Incidencia" ColumnName="FK_Incidencia" />
+          <ScalarProperty Name="FK_Funcionario" ColumnName="FK_Funcionario" />
+          <ScalarProperty Name="EstSolicitud" ColumnName="EstSolicitud" />
+          <ScalarProperty Name="FecEjecucion" ColumnName="FecEjecucion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BitacoraUsuario">
+      <EntityTypeMapping TypeName="SIRHModel.BitacoraUsuario">
+        <MappingFragment StoreEntitySet="BitacoraUsuario">
+          <ScalarProperty Name="PK_BitacoraUsuario" ColumnName="PK_BitacoraUsuario" />
+          <ScalarProperty Name="FK_Usuario" ColumnName="FK_Usuario" />
+          <ScalarProperty Name="CodAccion" ColumnName="CodAccion" />
+          <ScalarProperty Name="CodEntidad" ColumnName="CodEntidad" />
+          <ScalarProperty Name="FecEjecucion" ColumnName="FecEjecucion" />
+          <ScalarProperty Name="CodModulo" ColumnName="CodModulo" />
+          <ScalarProperty Name="CodObjetoEntidad" ColumnName="CodObjetoEntidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BoletaPrestamo">
+      <EntityTypeMapping TypeName="SIRHModel.BoletaPrestamo">
+        <MappingFragment StoreEntitySet="BoletaPrestamo">
+          <ScalarProperty Name="PK_IdBoletaPrestamo" ColumnName="PK_IdBoletaPrestamo" />
+          <ScalarProperty Name="FK_Usuario" ColumnName="FK_Usuario" />
+          <ScalarProperty Name="FK_ExpedienteFuncionario" ColumnName="FK_ExpedienteFuncionario" />
+          <ScalarProperty Name="IndTipoUsuario" ColumnName="IndTipoUsuario" />
+          <ScalarProperty Name="NumBoleta" ColumnName="NumBoleta" />
+          <ScalarProperty Name="IdCedulaSolicitante" ColumnName="IdCedulaSolicitante" />
+          <ScalarProperty Name="LugarProcedencia" ColumnName="LugarProcedencia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BorradorAccionPersonal">
+      <EntityTypeMapping TypeName="SIRHModel.BorradorAccionPersonal">
+        <MappingFragment StoreEntitySet="BorradorAccionPersonal">
+          <ScalarProperty Name="PK_Borrador" ColumnName="PK_Borrador" />
+          <ScalarProperty Name="FK_EstadoBorrador" ColumnName="FK_EstadoBorrador" />
+          <ScalarProperty Name="NumOficio" ColumnName="NumOficio" />
+          <ScalarProperty Name="UsuarioAsignado" ColumnName="UsuarioAsignado" />
+          <ScalarProperty Name="ObsJustificacion" ColumnName="ObsJustificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BotAccionIncidencia">
+      <EntityTypeMapping TypeName="SIRHModel.BotAccionIncidencia">
+        <MappingFragment StoreEntitySet="BotAccionIncidencia">
+          <ScalarProperty Name="PK_BotAccionIncidencia" ColumnName="PK_BotAccionIncidencia" />
+          <ScalarProperty Name="FK_CatalogoIncidencia" ColumnName="FK_CatalogoIncidencia" />
+          <ScalarProperty Name="urlVideo" ColumnName="urlVideo" />
+          <ScalarProperty Name="DesAccion" ColumnName="DesAccion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Calificacion">
+      <EntityTypeMapping TypeName="SIRHModel.Calificacion">
+        <MappingFragment StoreEntitySet="Calificacion">
+          <ScalarProperty Name="PK_Calificacion" ColumnName="PK_Calificacion" />
+          <ScalarProperty Name="DesCalificacion" ColumnName="DesCalificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CalificacionNombramiento">
+      <EntityTypeMapping TypeName="SIRHModel.CalificacionNombramiento">
+        <MappingFragment StoreEntitySet="CalificacionNombramiento">
+          <ScalarProperty Name="PK_CalificacionNombramiento" ColumnName="PK_CalificacionNombramiento" />
+          <ScalarProperty Name="FK_Calificacion" ColumnName="FK_Calificacion" />
+          <ScalarProperty Name="FK_Nombramiento" ColumnName="FK_Nombramiento" />
+          <ScalarProperty Name="FK_PeriodoCalificacion" ColumnName="FK_PeriodoCalificacion" />
+          <ScalarProperty Name="UsrEvaluador" ColumnName="UsrEvaluador" />
+          <ScalarProperty Name="FecCreacion" ColumnName="FecCreacion" />
+          <ScalarProperty Name="IndEstado" ColumnName="IndEstado" />
+          <ScalarProperty Name="ObsGeneral" ColumnName="ObsGeneral" />
+          <ScalarProperty Name="ObsCapacitacion" ColumnName="ObsCapacitacion" />
+          <ScalarProperty Name="ObsJustificacionCapacitacion" ColumnName="ObsJustificacionCapacitacion" />
+          <ScalarProperty Name="IdJefeInmediato" ColumnName="IdJefeInmediato" />
+          <ScalarProperty Name="IdJefeSuperior" ColumnName="IdJefeSuperior" />
+          <ScalarProperty Name="IndFormulario" ColumnName="IndFormulario" />
+          <ScalarProperty Name="IndRatificado" ColumnName="IndRatificado" />
+          <ScalarProperty Name="IndEntregado" ColumnName="IndEntregado" />
+          <ScalarProperty Name="IndConformidad" ColumnName="IndConformidad" />
+          <ScalarProperty Name="FecRatificacion" ColumnName="FecRatificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CalificacionNombramientoFuncionarios">
+      <EntityTypeMapping TypeName="SIRHModel.CalificacionNombramientoFuncionarios">
+        <MappingFragment StoreEntitySet="CalificacionNombramientoFuncionarios">
+          <ScalarProperty Name="FK_DetallePuesto" ColumnName="FK_DetallePuesto" />
+          <ScalarProperty Name="PK_CalificacionNombramiento" ColumnName="PK_CalificacionNombramiento" />
+          <ScalarProperty Name="FK_PeriodoCalificacion" ColumnName="FK_PeriodoCalificacion" />
+          <ScalarProperty Name="FK_Nombramiento" ColumnName="FK_Nombramiento" />
+          <ScalarProperty Name="FK_Puesto" ColumnName="FK_Puesto" />
+          <ScalarProperty Name="FK_Funcionario" ColumnName="FK_Funcionario" />
+          <ScalarProperty Name="FecRige" ColumnName="FecRige" />
+          <ScalarProperty Name="FecVence" ColumnName="FecVence" />
+          <ScalarProperty Name="FK_Seccion" ColumnName="FK_Seccion" />
+          <ScalarProperty Name="FK_Departamento" ColumnName="FK_Departamento" />
+          <ScalarProperty Name="FK_DireccionGeneral" ColumnName="FK_DireccionGeneral" />
+          <ScalarProperty Name="FK_Division" ColumnName="FK_Division" />
+          <ScalarProperty Name="FK_OcupacionReal" ColumnName="FK_OcupacionReal" />
+          <ScalarProperty Name="IdJefeInmediato" ColumnName="IdJefeInmediato" />
+          <ScalarProperty Name="IdJefeSuperior" ColumnName="IdJefeSuperior" />
+          <ScalarProperty Name="NumTipo" ColumnName="NumTipo" />
+          <ScalarProperty Name="ObsNoCalificacion" ColumnName="ObsNoCalificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CalificacionReglaTecnica">
+      <EntityTypeMapping TypeName="SIRHModel.CalificacionReglaTecnica">
+        <MappingFragment StoreEntitySet="CalificacionReglaTecnica">
+          <ScalarProperty Name="PK_CalificacionReglaTecnica" ColumnName="PK_CalificacionReglaTecnica" />
+          <ScalarProperty Name="FK_PeriodoCalificacion" ColumnName="FK_PeriodoCalificacion" />
+          <ScalarProperty Name="IndDireccionGeneral" ColumnName="IndDireccionGeneral" />
+          <ScalarProperty Name="IndDirector" ColumnName="IndDirector" />
+          <ScalarProperty Name="DesCorreo" ColumnName="DesCorreo" />
+          <ScalarProperty Name="NumFuncionarios" ColumnName="NumFuncionarios" />
+          <ScalarProperty Name="NumFuncionariosExcelentes" ColumnName="NumFuncionariosExcelentes" />
+          <ScalarProperty Name="IndEstado" ColumnName="IndEstado" />
+          <ScalarProperty Name="ImgDocumento" ColumnName="ImgDocumento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CambioPorAccionPersonal">
+      <EntityTypeMapping TypeName="SIRHModel.CambioPorAccionPersonal">
+        <MappingFragment StoreEntitySet="CambioPorAccionPersonal">
+          <ScalarProperty Name="PK_CambioPorAccionPersonal" ColumnName="PK_CambioPorAccionPersonal" />
+          <ScalarProperty Name="FK_Nombramiento" ColumnName="FK_Nombramiento" />
+          <ScalarProperty Name="FK_ComponenteSalarial" ColumnName="FK_ComponenteSalarial" />
+          <ScalarProperty Name="FK_AccionPersonal" ColumnName="FK_AccionPersonal" />
+          <ScalarProperty Name="ValorCambio" ColumnName="ValorCambio" />
+          <ScalarProperty Name="FK_TipoCambioPorAccionPersonal" ColumnName="FK_TipoCambioPorAccionPersonal" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Canton">
+      <EntityTypeMapping TypeName="SIRHModel.Canton">
+        <MappingFragment StoreEntitySet="Canton">
+          <ScalarProperty Name="PK_Canton" ColumnName="PK_Canton" />
+          <ScalarProperty Name="FK_Provincia" ColumnName="FK_Provincia" />
+          <ScalarProperty Name="NomCanton" ColumnName="NomCanton" />
+          <ScalarProperty Name="CodPostalCanton" ColumnName="CodPostalCanton" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CaracteristicasPuesto">
+      <EntityTypeMapping TypeName="SIRHModel.CaracteristicasPuesto">
+        <MappingFragment StoreEntitySet="CaracteristicasPuesto">
+          <ScalarProperty Name="PK_CaracteristicasPuesto" ColumnName="PK_CaracteristicasPuesto" />
+          <ScalarProperty Name="IndEscala" ColumnName="IndEscala" />
+          <ScalarProperty Name="DesCaracteristica" ColumnName="DesCaracteristica" />
+          <ScalarProperty Name="FK_Puesto" ColumnName="FK_Puesto" />
+          <ScalarProperty Name="FK_Factor" ColumnName="FK_Factor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CartasPresentacion">
+      <EntityTypeMapping TypeName="SIRHModel.CartasPresentacion">
+        <MappingFragment StoreEntitySet="CartasPresentacion">
+          <ScalarProperty Name="PK_CartasPresentacion" ColumnName="PK_CartasPresentacion" />
+          <ScalarProperty Name="NumCarta" ColumnName="NumCarta" />
+          <ScalarProperty Name="FecCarta" ColumnName="FecCarta" />
+          <ScalarProperty Name="FecRige" ColumnName="FecRige" />
+          <ScalarProperty Name="FecVence" ColumnName="FecVence" />
+          <ScalarProperty Name="FK_Nombramiento" ColumnName="FK_Nombramiento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CatalogoDeduccion">
+      <EntityTypeMapping TypeName="SIRHModel.CatalogoDeduccion">
+        <MappingFragment StoreEntitySet="CatalogoDeduccion">
+          <ScalarProperty Name="PK_CatalogoDeduccion" ColumnName="PK_CatalogoDeduccion" />
+          <ScalarProperty Name="FK_TipoDeduccion" ColumnName="FK_TipoDeduccion" />
+          <ScalarProperty Name="CodDeduccion" ColumnName="CodDeduccion" />
+          <ScalarProperty Name="DesDeduccion" ColumnName="DesDeduccion" />
+          <ScalarProperty Name="PorDeduccion" ColumnName="PorDeduccion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CatalogoDia">
+      <EntityTypeMapping TypeName="SIRHModel.CatalogoDia">
+        <MappingFragment StoreEntitySet="CatalogoDia">
+          <ScalarProperty Name="PK_CatalogoDia" ColumnName="PK_CatalogoDia" />
+          <ScalarProperty Name="FK_TipoDia" ColumnName="FK_TipoDia" />
+          <ScalarProperty Name="DesDia" ColumnName="DesDia" />
+          <ScalarProperty Name="FecDia" ColumnName="FecDia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CatalogoIncidencia">
+      <EntityTypeMapping TypeName="SIRHModel.CatalogoIncidencia">
+        <MappingFragment StoreEntitySet="CatalogoIncidencia">
+          <ScalarProperty Name="PK_CatalogoIncidencia" ColumnName="PK_CatalogoIncidencia" />
+          <ScalarProperty Name="FK_Perfil" ColumnName="FK_Perfil" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Prioridad" ColumnName="Prioridad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CatalogoPregunta">
+      <EntityTypeMapping TypeName="SIRHModel.CatalogoPregunta">
+        <MappingFragment StoreEntitySet="CatalogoPregunta">
+          <ScalarProperty Name="PK_CatalogoPregunta" ColumnName="PK_CatalogoPregunta" />
+          <ScalarProperty Name="DesPregunta" ColumnName="DesPregunta" />
+          <ScalarProperty Name="IndTipoFormulario" ColumnName="IndTipoFormulario" />
+          <ScalarProperty Name="IndEstado" ColumnName="IndEstado" />
+          <ScalarProperty Name="DesTituloP" ColumnName="DesTituloP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CatalogoRemuneracion">
+      <EntityTypeMapping TypeName="SIRHModel.CatalogoRemuneracion">
+        <MappingFragment StoreEntitySet="CatalogoRemuneracion">
+          <ScalarProperty Name="PK_CatalogoRemuneracion" ColumnName="PK_CatalogoRemuneracion" />
+          <ScalarProperty Name="PorRemuneracion" ColumnName="PorRemuneracion" />
+          <ScalarProperty Name="DesRemuneracion" ColumnName="DesRemuneracion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CatAnioAccionPersonal">
+      <EntityTypeMapping TypeName="SIRHModel.CatAnioAccionPersonal">
+        <MappingFragment StoreEntitySet="CatAnioAccionPersonal">
+          <ScalarProperty Name="AnioRige" ColumnName="AnioRige" />
+          <ScalarProperty Name="NumConsecutivo" ColumnName="NumConsecutivo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CatAnioBoletaPrestamo">
+      <EntityTypeMapping TypeName="SIRHModel.CatAnioBoletaPrestamo">
+        <MappingFragment StoreEntitySet="CatAnioBoletaPrestamo">
+          <ScalarProperty Name="AnioRige" ColumnName="AnioRige" />
+          <ScalarProperty Name="NumConsecutivo" ColumnName="NumConsecutivo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CatEstadoCivil">
+      <EntityTypeMapping TypeName="SIRHModel.CatEstadoCivil">
+        <MappingFragment StoreEntitySet="CatEstadoCivil">
+          <ScalarProperty Name="PK_CatEstadoCivil" ColumnName="PK_CatEstadoCivil" />
+          <ScalarProperty Name="DesEstadoCivil" ColumnName="DesEstadoCivil" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CatMovimientoPresupuesto">
+      <EntityTypeMapping TypeName="SIRHModel.CatMovimientoPresupuesto">
+        <MappingFragment StoreEntitySet="CatMovimientoPresupuesto">
+          <ScalarProperty Name="PK_CatMovimientoPresupuesto" ColumnName="PK_CatMovimientoPresupuesto" />
+          <ScalarProperty Name="DesMovimientoPresupuesto" ColumnName="DesMovimientoPresupuesto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CatPermiso">
+      <EntityTypeMapping TypeName="SIRHModel.CatPermiso">
+        <MappingFragment StoreEntitySet="CatPermiso">
+          <ScalarProperty Name="PK_CatPermiso" ColumnName="PK_CatPermiso" />
+          <ScalarProperty Name="FK_Perfil" ColumnName="FK_Perfil" />
+          <ScalarProperty Name="NomPermiso" ColumnName="NomPermiso" />
+          <ScalarProperty Name="DesPermiso" ColumnName="DesPermiso" />
+          <ScalarProperty Name="IndEstadoCatPermiso" ColumnName="IndEstadoCatPermiso" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Caucion">
+      <EntityTypeMapping TypeName="SIRHModel.Caucion">
+        <MappingFragment StoreEntitySet="Caucion">
+          <ScalarProperty Name="PK_Caucion" ColumnName="PK_Caucion" />
+          <ScalarProperty Name="FK_Nombramiento" ColumnName="FK_Nombramiento" />
+          <ScalarProperty Name="FK_EntidadSeguros" ColumnName="FK_EntidadSeguros" />
+          <ScalarProperty Name="FK_MontoCaucion" ColumnName="FK_MontoCaucion" />
+          <ScalarProperty Name="FecEmision" ColumnName="FecEmision" />
+          <ScalarProperty Name="FecVence" ColumnName="FecVence" />
+          <ScalarProperty Name="IndEstadoPoliza" ColumnName="IndEstadoPoliza" />
+          <ScalarProperty Name="ImgCopiaRecibo" ColumnName="ImgCopiaRecibo" />
+          <ScalarProperty Name="ObsPoliza" ColumnName="ObsPoliza" />
+          <ScalarProperty Name="NumPoliza" ColumnName="NumPoliza" />
+          <ScalarProperty Name="IndCopiaCertificada" ColumnName="IndCopiaCertificada" />
+          <ScalarProperty Name="NumOficioEntrega" ColumnName="NumOficioEntrega" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clase">
+      <EntityTypeMapping TypeName="SIRHModel.Clase">
+        <MappingFragment StoreEntitySet="Clase">
+          <ScalarProperty Name="PK_Clase" ColumnName="PK_Clase" />
+          <ScalarProperty Name="DesClase" ColumnName="DesClase" />
+          <ScalarProperty Name="IndEstadoClase" ColumnName="IndEstadoClase" />
+          <ScalarProperty Name="IndCategoria" ColumnName="IndCategoria" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ComponentePresupuestario">
+      <EntityTypeMapping TypeName="SIRHModel.ComponentePresupuestario">
+        <MappingFragment StoreEntitySet="ComponentePresupuestario">
+          <ScalarProperty Name="PK_ComponentePresupuestario" ColumnName="PK_ComponentePresupuestario" />
+          <ScalarProperty Name="FK_ObjetoGasto" ColumnName="FK_ObjetoGasto" />
+          <ScalarProperty Name="FK_Programa" ColumnName="FK_Programa" />
+          <ScalarProperty Name="AnioPresupuesto" ColumnName="AnioPresupuesto" />
+          <ScalarProperty Name="MtoComponentePresupuestario" ColumnName="MtoComponentePresupuestario" />
+          <ScalarProperty Name="FK_CatMovimientoPresupuesto" ColumnName="FK_CatMovimientoPresupuesto" />
+          <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ComponenteSalarial">
+      <EntityTypeMapping TypeName="SIRHModel.ComponenteSalarial">
+        <MappingFragment StoreEntitySet="ComponenteSalarial">
+          <ScalarProperty Name="PK_ComponenteSalarial" ColumnName="PK_ComponenteSalarial" />
+          <ScalarProperty Name="DesComponenteSalarial" ColumnName="DesComponenteSalarial" />
+          <ScalarProperty Name="TipComponenteSalarial" ColumnName="TipComponenteSalarial" />
+          <ScalarProperty Name="FK_ObjetoGasto" ColumnName="FK_ObjetoGasto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ContenidoPresupuestario">
+      <EntityTypeMapping TypeName="SIRHModel.ContenidoPresupuestario">
+        <MappingFragment StoreEntitySet="ContenidoPresupuestario">
+          <ScalarProperty Name="PK_ContenidoPresupuestario" ColumnName="PK_ContenidoPresupuestario" />
+          <ScalarProperty Name="NumResolucion" ColumnName="NumResolucion" />
+          <ScalarProperty Name="FecPago" ColumnName="FecPago" />
+          <ScalarProperty Name="FecRige" ColumnName="FecRige" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CuentaBancaria">
+      <EntityTypeMapping TypeName="SIRHModel.CuentaBancaria">
+        <MappingFragment StoreEntitySet="CuentaBancaria">
+          <ScalarProperty Name="PK_CuentaBancaria" ColumnName="PK_CuentaBancaria" />
+          <ScalarProperty Name="CtaCliente" ColumnName="CtaCliente" />
+          <ScalarProperty Name="FK_EntidadFinanciera" ColumnName="FK_EntidadFinanciera" />
+          <ScalarProperty Name="FK_DetalleContratacion" ColumnName="FK_DetalleContratacion" />
+          <ScalarProperty Name="IndEstadoCtaBancaria" ColumnName="IndEstadoCtaBancaria" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CursoCapacitacion">
+      <EntityTypeMapping TypeName="SIRHModel.CursoCapacitacion">
+        <MappingFragment StoreEntitySet="CursoCapacitacion">
+          <ScalarProperty Name="PK_CursoCapacitacion" ColumnName="PK_CursoCapacitacion" />
+          <ScalarProperty Name="IndTotalHoras" ColumnName="IndTotalHoras" />
+          <ScalarProperty Name="IndTotalPuntos" ColumnName="IndTotalPuntos" />
+          <ScalarProperty Name="DesCursoCapacitacion" ColumnName="DesCursoCapacitacion" />
+          <ScalarProperty Name="NumResolucion" ColumnName="NumResolucion" />
+          <ScalarProperty Name="FK_Modalidad" ColumnName="FK_Modalidad" />
+          <ScalarProperty Name="FK_FormacionAcademica" ColumnName="FK_FormacionAcademica" />
+          <ScalarProperty Name="FK_EntidadEducativa" ColumnName="FK_EntidadEducativa" />
+          <ScalarProperty Name="FecInicio" ColumnName="FecInicio" />
+          <ScalarProperty Name="FecFin" ColumnName="FecFin" />
+          <ScalarProperty Name="ImgTitulo" ColumnName="ImgTitulo" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CursoGrado">
+      <EntityTypeMapping TypeName="SIRHModel.CursoGrado">
+        <MappingFragment StoreEntitySet="CursoGrado">
+          <ScalarProperty Name="PK_CursoGrado" ColumnName="PK_CursoGrado" />
+          <ScalarProperty Name="DesCursoGrado" ColumnName="DesCursoGrado" />
+          <ScalarProperty Name="PorIncentivo" ColumnName="PorIncentivo" />
+          <ScalarProperty Name="FK_FormacionAcademica" ColumnName="FK_FormacionAcademica" />
+          <ScalarProperty Name="TipCursoGrado" ColumnName="TipCursoGrado" />
+          <ScalarProperty Name="FK_EntidadEducativa" ColumnName="FK_EntidadEducativa" />
+          <ScalarProperty Name="FecEmision" ColumnName="FecEmision" />
+          <ScalarProperty Name="NumResolucion" ColumnName="NumResolucion" />
+          <ScalarProperty Name="ImgTitulo" ColumnName="ImgTitulo" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Decreto">
+      <EntityTypeMapping TypeName="SIRHModel.Decreto">
+        <MappingFragment StoreEntitySet="Decreto">
+          <ScalarProperty Name="PK_Decreto" ColumnName="PK_Decreto" />
+          <ScalarProperty Name="NumDecreto" ColumnName="NumDecreto" />
+          <ScalarProperty Name="TituloDecreto" ColumnName="TituloDecreto" />
+          <ScalarProperty Name="FecDecreto" ColumnName="FecDecreto" />
+          <ScalarProperty Name="ObsDecreto" ColumnName="ObsDecreto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeduccionEfectuada">
+      <EntityTypeMapping TypeName="SIRHModel.DeduccionEfectuada">
+        <MappingFragment StoreEntitySet="DeduccionEfectuada">
+          <ScalarProperty Name="PK_DeduccionEfectuada" ColumnName="PK_DeduccionEfectuada" />
+          <ScalarProperty Name="FK_CatalogoDeduccion" ColumnName="FK_CatalogoDeduccion" />
+          <ScalarProperty Name="FK_PagoFeriado" ColumnName="FK_PagoFeriado" />
+          <ScalarProperty Name="PorEfectuado" ColumnName="PorEfectuado" />
+          <ScalarProperty Name="MtoDeduccion" ColumnName="MtoDeduccion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeduccionTemporal">
+      <EntityTypeMapping TypeName="SIRHModel.DeduccionTemporal">
+        <MappingFragment StoreEntitySet="DeduccionTemporal">
+          <ScalarProperty Name="PK_DeduccionTemporal" ColumnName="PK_DeduccionTemporal" />
+          <ScalarProperty Name="IndDias" ColumnName="IndDias" />
+          <ScalarProperty Name="IndHoras" ColumnName="IndHoras" />
+          <ScalarProperty Name="NumDocumento" ColumnName="NumDocumento" />
+          <ScalarProperty Name="IndExplicacion" ColumnName="IndExplicacion" />
+          <ScalarProperty Name="FecRige" ColumnName="FecRige" />
+          <ScalarProperty Name="FecVence" ColumnName="FecVence" />
+          <ScalarProperty Name="MtoDeduccion" ColumnName="MtoDeduccion" />
+          <ScalarProperty Name="IndMesProceso" ColumnName="IndMesProceso" />
+          <ScalarProperty Name="IndPeriodo" ColumnName="IndPeriodo" />
+          <ScalarProperty Name="FecActualizacion" ColumnName="FecActualizacion" />
+          <ScalarProperty Name="FK_TipoDeduccionTemporal" ColumnName="FK_TipoDeduccionTemporal" />
+          <ScalarProperty Name="FK_Nombramiento" ColumnName="FK_Nombramiento" />
+          <ScalarProperty Name="IndEstado" ColumnName="IndEstado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Departamento">
+      <EntityTypeMapping TypeName="SIRHModel.Departamento">
+        <MappingFragment StoreEntitySet="Departamento">
+          <ScalarProperty Name="PK_Departamento" ColumnName="PK_Departamento" />
+          <ScalarProperty Name="NomDepartamento" ColumnName="NomDepartamento" />
+          <ScalarProperty Name="IndEstadoDepartamento" ColumnName="IndEstadoDepartamento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DesgloseSalarial">
+      <EntityTypeMapping TypeName="SIRHModel.DesgloseSalarial">
+        <MappingFragment StoreEntitySet="DesgloseSalarial">
+          <ScalarProperty Name="PK_DesgloseSalarial" ColumnName="PK_DesgloseSalarial" />
+          <ScalarProperty Name="IndPeriodo" ColumnName="IndPeriodo" />
+          <ScalarProperty Name="FK_Nombramiento" ColumnName="FK_Nombramiento" />
+          <ScalarProperty Name="FecCarga" ColumnName="FecCarga" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleAcceso">
+      <EntityTypeMapping TypeName="SIRHModel.DetalleAcceso">
+        <MappingFragment StoreEntitySet="DetalleAcceso">
+          <ScalarProperty Name="PK_DetalleAcceso" ColumnName="PK_DetalleAcceso" />
+          <ScalarProperty Name="FK_Usuario" ColumnName="FK_Usuario" />
+          <ScalarProperty Name="FK_Funcionario" ColumnName="FK_Funcionario" />
+          <ScalarProperty Name="FecCreacion" ColumnName="FecCreacion" />
+          <ScalarProperty Name="IndEstadoDetalleAcceso" ColumnName="IndEstadoDetalleAcceso" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleAccionPersonal">
+      <EntityTypeMapping TypeName="SIRHModel.DetalleAccionPersonal">
+        <MappingFragment StoreEntitySet="DetalleAccionPersonal">
+          <ScalarProperty Name="PK_Detalle" ColumnName="PK_Detalle" />
+          <ScalarProperty Name="FK_AccionPersonal" ColumnName="FK_AccionPersonal" />
+          <ScalarProperty Name="FK_DetallePuesto" ColumnName="FK_DetallePuesto" />
+          <ScalarProperty Name="CodNombramiento" ColumnName="CodNombramiento" />
+          <ScalarProperty Name="CodPrograma" ColumnName="CodPrograma" />
+          <ScalarProperty Name="CodSeccion" ColumnName="CodSeccion" />
+          <ScalarProperty Name="CodEspecialidad" ColumnName="CodEspecialidad" />
+          <ScalarProperty Name="CodSubespecialidad" ColumnName="CodSubespecialidad" />
+          <ScalarProperty Name="CodDetallePuesto" ColumnName="CodDetallePuesto" />
+          <ScalarProperty Name="NumHoras" ColumnName="NumHoras" />
+          <ScalarProperty Name="NumAnualidad" ColumnName="NumAnualidad" />
+          <ScalarProperty Name="MtoRecargo" ColumnName="MtoRecargo" />
+          <ScalarProperty Name="MtoGradoGrupo" ColumnName="MtoGradoGrupo" />
+          <ScalarProperty Name="PorProhibicion" ColumnName="PorProhibicion" />
+          <ScalarProperty Name="MtoOtros" ColumnName="MtoOtros" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleAsignacionGastoTransporte">
+      <EntityTypeMapping TypeName="SIRHModel.DetalleAsignacionGastoTransporte">
+        <MappingFragment StoreEntitySet="DetalleAsignacionGastoTransporte">
+          <ScalarProperty Name="PK_DetalleAsignacionGastoTransporte" ColumnName="PK_DetalleAsignacionGastoTransporte" />
+          <ScalarProperty Name="NomRuta" ColumnName="NomRuta" />
+          <ScalarProperty Name="NomFraccionamiento" ColumnName="NomFraccionamiento" />
+          <ScalarProperty Name="MontTarifa" ColumnName="MontTarifa" />
+          <ScalarProperty Name="FK_GastoTransporte" ColumnName="FK_GastoTransporte" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleAsignacionGastoTransporteModificada">
+      <EntityTypeMapping TypeName="SIRHModel.DetalleAsignacionGastoTransporteModificada">
+        <MappingFragment StoreEntitySet="DetalleAsignacionGastoTransporteModificada">
+          <ScalarProperty Name="PK_DetalleAsignacionGastoModificada" ColumnName="PK_DetalleAsignacionGastoModificada" />
+          <ScalarProperty Name="NomRuta" ColumnName="NomRuta" />
+          <ScalarProperty Name="NomFraccionamiento" ColumnName="NomFraccionamiento" />
+          <ScalarProperty Name="MontTarifa" ColumnName="MontTarifa" />
+          <ScalarProperty Name="FK_GastoTransporte" ColumnName="FK_GastoTransporte" />
+          <ScalarProperty Name="NumGaceta" ColumnName="NumGaceta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleBoleta">
+      <EntityTypeMapping TypeName="SIRHModel.DetalleBoleta">
+        <MappingFragment StoreEntitySet="DetalleBoleta">
+          <ScalarProperty Name="PK_IdDetalleBoleta" ColumnName="PK_IdDetalleBoleta" />
+          <ScalarProperty Name="FK_IdBoletaPrestamo" ColumnName="FK_IdBoletaPrestamo" />
+          <ScalarProperty Name="FecPrestamo" ColumnName="FecPrestamo" />
+          <ScalarProperty Name="FecCaducidad" ColumnName="FecCaducidad" />
+          <ScalarProperty Name="MotivoPrestamo" ColumnName="MotivoPrestamo" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleBorradorAccionPersonal">
+      <EntityTypeMapping TypeName="SIRHModel.DetalleBorradorAccionPersonal">
+        <MappingFragment StoreEntitySet="DetalleBorradorAccionPersonal">
+          <ScalarProperty Name="PK_Detalle" ColumnName="PK_Detalle" />
+          <ScalarProperty Name="FK_Borrador" ColumnName="FK_Borrador" />
+          <ScalarProperty Name="FK_TipoAccionPersonal" ColumnName="FK_TipoAccionPersonal" />
+          <ScalarProperty Name="FK_Nombramiento" ColumnName="FK_Nombramiento" />
+          <ScalarProperty Name="FK_Programa" ColumnName="FK_Programa" />
+          <ScalarProperty Name="FK_Seccion" ColumnName="FK_Seccion" />
+          <ScalarProperty Name="FecRige" ColumnName="FecRige" />
+          <ScalarProperty Name="FecVence" ColumnName="FecVence" />
+          <ScalarProperty Name="FecRigeIntegra" ColumnName="FecRigeIntegra" />
+          <ScalarProperty Name="FecVenceIntegra" ColumnName="FecVenceIntegra" />
+          <ScalarProperty Name="CodClase" ColumnName="CodClase" />
+          <ScalarProperty Name="CodPuesto" ColumnName="CodPuesto" />
+          <ScalarProperty Name="NumHoras" ColumnName="NumHoras" />
+          <ScalarProperty Name="Disfrutado" ColumnName="Disfrutado" />
+          <ScalarProperty Name="Autorizado" ColumnName="Autorizado" />
+          <ScalarProperty Name="IndCategoria" ColumnName="IndCategoria" />
+          <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+          <ScalarProperty Name="MtoSalarioBase" ColumnName="MtoSalarioBase" />
+          <ScalarProperty Name="MtoAumentosAnuales" ColumnName="MtoAumentosAnuales" />
+          <ScalarProperty Name="MtoRecargo" ColumnName="MtoRecargo" />
+          <ScalarProperty Name="MtoGradoGrupo" ColumnName="MtoGradoGrupo" />
+          <ScalarProperty Name="PorProhibicion" ColumnName="PorProhibicion" />
+          <ScalarProperty Name="MtoOtros" ColumnName="MtoOtros" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleCalificacion">
+      <EntityTypeMapping TypeName="SIRHModel.DetalleCalificacion">
+        <MappingFragment StoreEntitySet="DetalleCalificacion">
+          <ScalarProperty Name="PK_DetalleCalificacion" ColumnName="PK_DetalleCalificacion" />
+          <ScalarProperty Name="FK_CatalogoPregunta" ColumnName="FK_CatalogoPregunta" />
+          <ScalarProperty Name="FK_CalificacionNombramiento" ColumnName="FK_CalificacionNombramiento" />
+          <ScalarProperty Name="NumNotasPregunta" ColumnName="NumNotasPregunta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleCalificacionModificada">
+      <EntityTypeMapping TypeName="SIRHModel.DetalleCalificacionModificada">
+        <MappingFragment StoreEntitySet="DetalleCalificacionModificada">
+          <ScalarProperty Name="PK_DetalleCalificacion" ColumnName="PK_DetalleCalificacion" />
+          <ScalarProperty Name="FK_CatalogoPregunta" ColumnName="FK_CatalogoPregunta" />
+          <ScalarProperty Name="FK_CalificacionNombramiento" ColumnName="FK_CalificacionNombramiento" />
+          <ScalarProperty Name="NumNotasPregunta" ColumnName="NumNotasPregunta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleCambioPedimento">
+      <EntityTypeMapping TypeName="SIRHModel.DetalleCambioPedimento">
+        <MappingFragment StoreEntitySet="DetalleCambioPedimento">
+          <ScalarProperty Name="PK_DetalleCambioPedimento" ColumnName="PK_DetalleCambioPedimento" />
+          <ScalarProperty Name="NumResolucion" ColumnName="NumResolucion" />
+          <ScalarProperty Name="FK_PedimentoPuesto" ColumnName="FK_PedimentoPuesto" />
+          <ScalarProperty Name="FecResolucion" ColumnName="FecResolucion" />
+          <ScalarProperty Name="ObsDetalleCambio" ColumnName="ObsDetalleCambio" />
+          <ScalarProperty Name="FK_EstadoPedimento" ColumnName="FK_EstadoPedimento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleContratacion">
+      <EntityTypeMapping TypeName="SIRHModel.DetalleContratacion">
+        <MappingFragment StoreEntitySet="DetalleContratacion">
+          <ScalarProperty Name="FecVacaciones" ColumnName="FecVacaciones" />
+          <ScalarProperty Name="PK_DetalleContratacion" ColumnName="PK_DetalleContratacion" />
+          <ScalarProperty Name="FK_Funcionario" ColumnName="FK_Funcionario" />
+          <ScalarProperty Name="FecIngreso" ColumnName="FecIngreso" />
+          <ScalarProperty Name="FecCese" ColumnName="FecCese" />
+          <ScalarProperty Name="NumAnualidades" ColumnName="NumAnualidades" />
+          <ScalarProperty Name="NumAnniosServicioPublico" ColumnName="NumAnniosServicioPublico" />
+          <ScalarProperty Name="FecMesAumento" ColumnName="FecMesAumento" />
+          <ScalarProperty Name="CodPolicial" ColumnName="CodPolicial" />
+          <ScalarProperty Name="MarcaAsistencia" ColumnName="MarcaAsistencia" />
+          <ScalarProperty Name="IndUbicacionReal" ColumnName="IndUbicacionReal" />
+          <ScalarProperty Name="FK_TipoJornada" ColumnName="FK_TipoJornada" />
+          <ScalarProperty Name="FecRegimenPolicial" ColumnName="FecRegimenPolicial" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleDeduccion">
+      <EntityTypeMapping TypeName="SIRHModel.DetalleDeduccion">
+        <MappingFragment StoreEntitySet="DetalleDeduccion">
+          <ScalarProperty Name="PK_DetalleDeduccion" ColumnName="PK_DetalleDeduccion" />
+          <ScalarProperty Name="FK_DesgloseSalarial" ColumnName="FK_DesgloseSalarial" />
+          <ScalarProperty Name="FK_CatalogoDeduccion" ColumnName="FK_CatalogoDeduccion" />
+          <ScalarProperty Name="MtoDeduccion" ColumnName="MtoDeduccion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleDeduccionGastoTransporte">
+      <EntityTypeMapping TypeName="SIRHModel.DetalleDeduccionGastoTransporte">
+        <MappingFragment StoreEntitySet="DetalleDeduccionGastoTransporte">
+          <ScalarProperty Name="PK_DetalleDeduccionGastoTransporte" ColumnName="PK_DetalleDeduccionGastoTransporte" />
+          <ScalarProperty Name="FK_MovimientoGastoTransporte" ColumnName="FK_MovimientoGastoTransporte" />
+          <ScalarProperty Name="DesMotivo" ColumnName="DesMotivo" />
+          <ScalarProperty Name="FecRige" ColumnName="FecRige" />
+          <ScalarProperty Name="FecVence" ColumnName="FecVence" />
+          <ScalarProperty Name="NumNoDias" ColumnName="NumNoDias" />
+          <ScalarProperty Name="MontMontoBajar" ColumnName="MontMontoBajar" />
+          <ScalarProperty Name="MontMontoRebajarConp" ColumnName="MontMontoRebajarConp" />
+          <ScalarProperty Name="TotRebajar" ColumnName="TotRebajar" />
+          <ScalarProperty Name="NumAccionPersonal" ColumnName="NumAccionPersonal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleDeduccionViaticoCorrido">
+      <EntityTypeMapping TypeName="SIRHModel.DetalleDeduccionViaticoCorrido">
+        <MappingFragment StoreEntitySet="DetalleDeduccionViaticoCorrido">
+          <ScalarProperty Name="PK_DetalleDeduccionViaticoCorrido" ColumnName="PK_DetalleDeduccionViaticoCorrido" />
+          <ScalarProperty Name="FK_MovimientoViaticoCorrido" ColumnName="FK_MovimientoViaticoCorrido" />
+          <ScalarProperty Name="DesMotivo" ColumnName="DesMotivo" />
+          <ScalarProperty Name="FecRige" ColumnName="FecRige" />
+          <ScalarProperty Name="FecVence" ColumnName="FecVence" />
+          <ScalarProperty Name="NumNoDias" ColumnName="NumNoDias" />
+          <ScalarProperty Name="MontMontoBajar" ColumnName="MontMontoBajar" />
+          <ScalarProperty Name="MontMontoRebajarConp" ColumnName="MontMontoRebajarConp" />
+          <ScalarProperty Name="TotRebajar" ColumnName="TotRebajar" />
+          <ScalarProperty Name="NumAccionPersonal" ColumnName="NumAccionPersonal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleDesgloseSalarial">
+      <EntityTypeMapping TypeName="SIRHModel.DetalleDesgloseSalarial">
+        <MappingFragment StoreEntitySet="DetalleDesgloseSalarial">
+          <ScalarProperty Name="PK_DetalleDesgloceSalarial" ColumnName="PK_DetalleDesgloceSalarial" />
+          <ScalarProperty Name="FK_DesgloseSalarial" ColumnName="FK_DesgloseSalarial" />
+          <ScalarProperty Name="FK_ComponenteSalarial" ColumnName="FK_ComponenteSalarial" />
+          <ScalarProperty Name="MtoComponenteSalarial" ColumnName="MtoComponenteSalarial" />
+          <ScalarProperty Name="MtoPagocomponenteSalarial" ColumnName="MtoPagocomponenteSalarial" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleEliminacionViaticoCorridoGastoTransporte">
+      <EntityTypeMapping TypeName="SIRHModel.DetalleEliminacionViaticoCorridoGastoTransporte">
+        <MappingFragment StoreEntitySet="DetalleEliminacionViaticoCorridoGastoTransporte">
+          <ScalarProperty Name="PK_DetalleEliminacionViaticoCorrido" ColumnName="PK_DetalleEliminacionViaticoCorrido" />
+          <ScalarProperty Name="FK_MovimientoViaticoCorrido" ColumnName="FK_MovimientoViaticoCorrido" />
+          <ScalarProperty Name="ObsJustificacion" ColumnName="ObsJustificacion" />
+          <ScalarProperty Name="FecInicio" ColumnName="FecInicio" />
+          <ScalarProperty Name="FecFinal" ColumnName="FecFinal" />
+          <ScalarProperty Name="FK_MovimientoGastoTransporte" ColumnName="FK_MovimientoGastoTransporte" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleIncapacidad">
+      <EntityTypeMapping TypeName="SIRHModel.DetalleIncapacidad">
+        <MappingFragment StoreEntitySet="DetalleIncapacidad">
+          <ScalarProperty Name="PK_Detalle" ColumnName="PK_Detalle" />
+          <ScalarProperty Name="FK_RegistroIncapacidad" ColumnName="FK_RegistroIncapacidad" />
+          <ScalarProperty Name="FecDia" ColumnName="FecDia" />
+          <ScalarProperty Name="PorSubsidio" ColumnName="PorSubsidio" />
+          <ScalarProperty Name="MtoSubsidio" ColumnName="MtoSubsidio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetallePagoGastoTransporte">
+      <EntityTypeMapping TypeName="SIRHModel.DetallePagoGastoTransporte">
+        <MappingFragment StoreEntitySet="DetallePagoGastoTransporte">
+          <ScalarProperty Name="PK_DetallePago" ColumnName="PK_DetallePago" />
+          <ScalarProperty Name="FK_PagoGastoTransporte" ColumnName="FK_PagoGastoTransporte" />
+          <ScalarProperty Name="FK_TipoDetallePagoGasto" ColumnName="FK_TipoDetallePagoGasto" />
+          <ScalarProperty Name="FecDiaPago" ColumnName="FecDiaPago" />
+          <ScalarProperty Name="MonPago" ColumnName="MonPago" />
+          <ScalarProperty Name="CodEntidad" ColumnName="CodEntidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetallePagoViaticoCorrido">
+      <EntityTypeMapping TypeName="SIRHModel.DetallePagoViaticoCorrido">
+        <MappingFragment StoreEntitySet="DetallePagoViaticoCorrido">
+          <ScalarProperty Name="PK_DetallePago" ColumnName="PK_DetallePago" />
+          <ScalarProperty Name="FK_PagoViaticoCorrido" ColumnName="FK_PagoViaticoCorrido" />
+          <ScalarProperty Name="FK_TipoDetallePagoViatico" ColumnName="FK_TipoDetallePagoViatico" />
+          <ScalarProperty Name="FecDiaPago" ColumnName="FecDiaPago" />
+          <ScalarProperty Name="MonPago" ColumnName="MonPago" />
+          <ScalarProperty Name="CodEntidad" ColumnName="CodEntidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetallePagoViaticoRetroactivo">
+      <EntityTypeMapping TypeName="SIRHModel.DetallePagoViaticoRetroactivo">
+        <MappingFragment StoreEntitySet="DetallePagoViaticoRetroactivo">
+          <ScalarProperty Name="PK_DetallePago" ColumnName="PK_DetallePago" />
+          <ScalarProperty Name="FK_PagoViaticoRetroactivo" ColumnName="FK_PagoViaticoRetroactivo" />
+          <ScalarProperty Name="FK_TipoDetallePagoViatico" ColumnName="FK_TipoDetallePagoViatico" />
+          <ScalarProperty Name="FecDiaPago" ColumnName="FecDiaPago" />
+          <ScalarProperty Name="MonPago" ColumnName="MonPago" />
+          <ScalarProperty Name="CodEntidad" ColumnName="CodEntidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetallePuesto">
+      <EntityTypeMapping TypeName="SIRHModel.DetallePuesto">
+        <MappingFragment StoreEntitySet="DetallePuesto">
+          <ScalarProperty Name="FK_Nombramiento" ColumnName="FK_Nombramiento" />
+          <ScalarProperty Name="PK_DetallePuesto" ColumnName="PK_DetallePuesto" />
+          <ScalarProperty Name="FK_SubEspecialidad" ColumnName="FK_SubEspecialidad" />
+          <ScalarProperty Name="FK_OcupacionReal" ColumnName="FK_OcupacionReal" />
+          <ScalarProperty Name="FK_Puesto" ColumnName="FK_Puesto" />
+          <ScalarProperty Name="FK_Especialidad" ColumnName="FK_Especialidad" />
+          <ScalarProperty Name="FK_Clase" ColumnName="FK_Clase" />
+          <ScalarProperty Name="FK_TipoPuesto" ColumnName="FK_TipoPuesto" />
+          <ScalarProperty Name="FK_ContenidoPresupuestario" ColumnName="FK_ContenidoPresupuestario" />
+          <ScalarProperty Name="IndEstadoDetallePuesto" ColumnName="IndEstadoDetallePuesto" />
+          <ScalarProperty Name="FecRige" ColumnName="FecRige" />
+          <ScalarProperty Name="FK_Escala" ColumnName="FK_Escala" />
+          <ScalarProperty Name="PorProhibicion" ColumnName="PorProhibicion" />
+          <ScalarProperty Name="PorDedicacion" ColumnName="PorDedicacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleTiempoExtra">
+      <EntityTypeMapping TypeName="SIRHModel.DetalleTiempoExtra">
+        <MappingFragment StoreEntitySet="DetalleTiempoExtra">
+          <ScalarProperty Name="PK_DetalleTiempoExtra" ColumnName="PK_DetalleTiempoExtra" />
+          <ScalarProperty Name="FecRegistro" ColumnName="FecRegistro" />
+          <ScalarProperty Name="FecInicio" ColumnName="FecInicio" />
+          <ScalarProperty Name="FecFin" ColumnName="FecFin" />
+          <ScalarProperty Name="IndHoraInicio" ColumnName="IndHoraInicio" />
+          <ScalarProperty Name="IndHoraFin" ColumnName="IndHoraFin" />
+          <ScalarProperty Name="FK_TipoExtra" ColumnName="FK_TipoExtra" />
+          <ScalarProperty Name="FK_RegistroTiempoExtra" ColumnName="FK_RegistroTiempoExtra" />
+          <ScalarProperty Name="IndEstado" ColumnName="IndEstado" />
+          <ScalarProperty Name="MtoH0" ColumnName="MtoH0" />
+          <ScalarProperty Name="MtoH1" ColumnName="MtoH1" />
+          <ScalarProperty Name="MtoH2" ColumnName="MtoH2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DiaPagado">
+      <EntityTypeMapping TypeName="SIRHModel.DiaPagado">
+        <MappingFragment StoreEntitySet="DiaPagado">
+          <ScalarProperty Name="PK_DiaPagado" ColumnName="PK_DiaPagado" />
+          <ScalarProperty Name="FK_PagoFeriado" ColumnName="FK_PagoFeriado" />
+          <ScalarProperty Name="FK_CatalogoDia" ColumnName="FK_CatalogoDia" />
+          <ScalarProperty Name="CntHora" ColumnName="CntHora" />
+          <ScalarProperty Name="MtoSalarioHora" ColumnName="MtoSalarioHora" />
+          <ScalarProperty Name="MtoTotal" ColumnName="MtoTotal" />
+          <ScalarProperty Name="AnioPago" ColumnName="AnioPago" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Direccion">
+      <EntityTypeMapping TypeName="SIRHModel.Direccion">
+        <MappingFragment StoreEntitySet="Direccion">
+          <ScalarProperty Name="PK_Direccion" ColumnName="PK_Direccion" />
+          <ScalarProperty Name="FK_Distrito" ColumnName="FK_Distrito" />
+          <ScalarProperty Name="FK_Funcionario" ColumnName="FK_Funcionario" />
+          <ScalarProperty Name="DirExacta" ColumnName="DirExacta" />
+          <ScalarProperty Name="IndEstadoDireccion" ColumnName="IndEstadoDireccion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DireccionGeneral">
+      <EntityTypeMapping TypeName="SIRHModel.DireccionGeneral">
+        <MappingFragment StoreEntitySet="DireccionGeneral">
+          <ScalarProperty Name="PK_DireccionGeneral" ColumnName="PK_DireccionGeneral" />
+          <ScalarProperty Name="NomDireccion" ColumnName="NomDireccion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Distrito">
+      <EntityTypeMapping TypeName="SIRHModel.Distrito">
+        <MappingFragment StoreEntitySet="Distrito">
+          <ScalarProperty Name="PK_Distrito" ColumnName="PK_Distrito" />
+          <ScalarProperty Name="FK_Canton" ColumnName="FK_Canton" />
+          <ScalarProperty Name="NomDistrito" ColumnName="NomDistrito" />
+          <ScalarProperty Name="CodPostalDistrito" ColumnName="CodPostalDistrito" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Division">
+      <EntityTypeMapping TypeName="SIRHModel.Division">
+        <MappingFragment StoreEntitySet="Division">
+          <ScalarProperty Name="PK_Division" ColumnName="PK_Division" />
+          <ScalarProperty Name="NomDivision" ColumnName="NomDivision" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EntidadAdscrita">
+      <EntityTypeMapping TypeName="SIRHModel.EntidadAdscrita">
+        <MappingFragment StoreEntitySet="EntidadAdscrita">
+          <ScalarProperty Name="PK_EntidadAdscrita" ColumnName="PK_EntidadAdscrita" />
+          <ScalarProperty Name="NomEntidad" ColumnName="NomEntidad" />
+          <ScalarProperty Name="TipEntidad" ColumnName="TipEntidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EntidadEducativa">
+      <EntityTypeMapping TypeName="SIRHModel.EntidadEducativa">
+        <MappingFragment StoreEntitySet="EntidadEducativa">
+          <ScalarProperty Name="PK_EntidadEducativa" ColumnName="PK_EntidadEducativa" />
+          <ScalarProperty Name="NomEntidad" ColumnName="NomEntidad" />
+          <ScalarProperty Name="TipEntidad" ColumnName="TipEntidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EntidadFinanciera">
+      <EntityTypeMapping TypeName="SIRHModel.EntidadFinanciera">
+        <MappingFragment StoreEntitySet="EntidadFinanciera">
+          <ScalarProperty Name="PK_EntidadFinanciera" ColumnName="PK_EntidadFinanciera" />
+          <ScalarProperty Name="NomEntidad" ColumnName="NomEntidad" />
+          <ScalarProperty Name="CodEntidad" ColumnName="CodEntidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EntidadGubernamental">
+      <EntityTypeMapping TypeName="SIRHModel.EntidadGubernamental">
+        <MappingFragment StoreEntitySet="EntidadGubernamental">
+          <ScalarProperty Name="PK_EntidadGubernamental" ColumnName="PK_EntidadGubernamental" />
+          <ScalarProperty Name="NomEntidad" ColumnName="NomEntidad" />
+          <ScalarProperty Name="TipEntidad" ColumnName="TipEntidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EntidadMedica">
+      <EntityTypeMapping TypeName="SIRHModel.EntidadMedica">
+        <MappingFragment StoreEntitySet="EntidadMedica">
+          <ScalarProperty Name="PK_EntidadMedica" ColumnName="PK_EntidadMedica" />
+          <ScalarProperty Name="DesEntidad" ColumnName="DesEntidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EntidadSeguros">
+      <EntityTypeMapping TypeName="SIRHModel.EntidadSeguros">
+        <MappingFragment StoreEntitySet="EntidadSeguros">
+          <ScalarProperty Name="PK_EntidadSeguros" ColumnName="PK_EntidadSeguros" />
+          <ScalarProperty Name="NomEntidadSeguros" ColumnName="NomEntidadSeguros" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EscalaSalarial">
+      <EntityTypeMapping TypeName="SIRHModel.EscalaSalarial">
+        <MappingFragment StoreEntitySet="EscalaSalarial">
+          <ScalarProperty Name="PK_Escala" ColumnName="PK_Escala" />
+          <ScalarProperty Name="IndCategoria" ColumnName="IndCategoria" />
+          <ScalarProperty Name="MtoSalarioBase" ColumnName="MtoSalarioBase" />
+          <ScalarProperty Name="MtoAumento" ColumnName="MtoAumento" />
+          <ScalarProperty Name="FK_Periodo" ColumnName="FK_Periodo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Especialidad">
+      <EntityTypeMapping TypeName="SIRHModel.Especialidad">
+        <MappingFragment StoreEntitySet="Especialidad">
+          <ScalarProperty Name="PK_Especialidad" ColumnName="PK_Especialidad" />
+          <ScalarProperty Name="DesEspecialidad" ColumnName="DesEspecialidad" />
+          <ScalarProperty Name="IndEstadoEspecialidad" ColumnName="IndEstadoEspecialidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EstadoBorrador">
+      <EntityTypeMapping TypeName="SIRHModel.EstadoBorrador">
+        <MappingFragment StoreEntitySet="EstadoBorrador">
+          <ScalarProperty Name="PK_EstadoBorrador" ColumnName="PK_EstadoBorrador" />
+          <ScalarProperty Name="DesEstadoBorrador" ColumnName="DesEstadoBorrador" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EstadoDesarraigo">
+      <EntityTypeMapping TypeName="SIRHModel.EstadoDesarraigo">
+        <MappingFragment StoreEntitySet="EstadoDesarraigo">
+          <ScalarProperty Name="PK_EstadoDesarraigo" ColumnName="PK_EstadoDesarraigo" />
+          <ScalarProperty Name="NomEstadoDesarraigo" ColumnName="NomEstadoDesarraigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EstadoFuncionario">
+      <EntityTypeMapping TypeName="SIRHModel.EstadoFuncionario">
+        <MappingFragment StoreEntitySet="EstadoFuncionario">
+          <ScalarProperty Name="PK_EstadoFuncionario" ColumnName="PK_EstadoFuncionario" />
+          <ScalarProperty Name="DesEstadoFuncionario" ColumnName="DesEstadoFuncionario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EstadoGastoTransporte">
+      <EntityTypeMapping TypeName="SIRHModel.EstadoGastoTransporte">
+        <MappingFragment StoreEntitySet="EstadoGastoTransporte">
+          <ScalarProperty Name="PK_EstadoGastosTransporte" ColumnName="PK_EstadoGastosTransporte" />
+          <ScalarProperty Name="NomEstado" ColumnName="NomEstado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EstadoMovimientoPuesto">
+      <EntityTypeMapping TypeName="SIRHModel.EstadoMovimientoPuesto">
+        <MappingFragment StoreEntitySet="EstadoMovimientoPuesto">
+          <ScalarProperty Name="PK_EstadoMovimientoPuesto" ColumnName="PK_EstadoMovimientoPuesto" />
+          <ScalarProperty Name="NomEstado" ColumnName="NomEstado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EstadoNombramiento">
+      <EntityTypeMapping TypeName="SIRHModel.EstadoNombramiento">
+        <MappingFragment StoreEntitySet="EstadoNombramiento">
+          <ScalarProperty Name="PK_EstadoNombramiento" ColumnName="PK_EstadoNombramiento" />
+          <ScalarProperty Name="DesEstado" ColumnName="DesEstado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EstadoPedimento">
+      <EntityTypeMapping TypeName="SIRHModel.EstadoPedimento">
+        <MappingFragment StoreEntitySet="EstadoPedimento">
+          <ScalarProperty Name="PK_EstadoPedimento" ColumnName="PK_EstadoPedimento" />
+          <ScalarProperty Name="DesEstadoPedimento" ColumnName="DesEstadoPedimento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EstadoPuesto">
+      <EntityTypeMapping TypeName="SIRHModel.EstadoPuesto">
+        <MappingFragment StoreEntitySet="EstadoPuesto">
+          <ScalarProperty Name="PK_EstadoPuesto" ColumnName="PK_EstadoPuesto" />
+          <ScalarProperty Name="DesEstadoPuesto" ColumnName="DesEstadoPuesto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EstadoTipoJornada">
+      <EntityTypeMapping TypeName="SIRHModel.EstadoTipoJornada">
+        <MappingFragment StoreEntitySet="EstadoTipoJornada">
+          <ScalarProperty Name="PK_EstadoTipoJornada" ColumnName="PK_EstadoTipoJornada" />
+          <ScalarProperty Name="NomEstadoTipoJornada" ColumnName="NomEstadoTipoJornada" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EstadoTramite">
+      <EntityTypeMapping TypeName="SIRHModel.EstadoTramite">
+        <MappingFragment StoreEntitySet="EstadoTramite">
+          <ScalarProperty Name="PK_EstadoTramite" ColumnName="PK_EstadoTramite" />
+          <ScalarProperty Name="DesEstado" ColumnName="DesEstado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EstadoViaticoCorrido">
+      <EntityTypeMapping TypeName="SIRHModel.EstadoViaticoCorrido">
+        <MappingFragment StoreEntitySet="EstadoViaticoCorrido">
+          <ScalarProperty Name="PK_EstadoViaticoCorrido" ColumnName="PK_EstadoViaticoCorrido" />
+          <ScalarProperty Name="NomEstado" ColumnName="NomEstado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EstudioPuesto">
+      <EntityTypeMapping TypeName="SIRHModel.EstudioPuesto">
+        <MappingFragment StoreEntitySet="EstudioPuesto">
+          <ScalarProperty Name="PK_EstudioPuesto" ColumnName="PK_EstudioPuesto" />
+          <ScalarProperty Name="NumOficio" ColumnName="NumOficio" />
+          <ScalarProperty Name="NumResolucion" ColumnName="NumResolucion" />
+          <ScalarProperty Name="FecResolucion" ColumnName="FecResolucion" />
+          <ScalarProperty Name="FK_Puesto" ColumnName="FK_Puesto" />
+          <ScalarProperty Name="ObsEstudioPuesto" ColumnName="ObsEstudioPuesto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExpedienteFuncionario">
+      <EntityTypeMapping TypeName="SIRHModel.ExpedienteFuncionario">
+        <MappingFragment StoreEntitySet="ExpedienteFuncionario">
+          <ScalarProperty Name="PK_IdExpedienteFuncionario" ColumnName="PK_IdExpedienteFuncionario" />
+          <ScalarProperty Name="FK_Funcionario" ColumnName="FK_Funcionario" />
+          <ScalarProperty Name="FecCreacion" ColumnName="FecCreacion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="FecTrasladoArchivoCentral" ColumnName="FecTrasladoArchivoCentral" />
+          <ScalarProperty Name="numExpediente" ColumnName="numExpediente" />
+          <ScalarProperty Name="numExpedienteEnArchivo" ColumnName="numExpedienteEnArchivo" />
+          <ScalarProperty Name="numCaja" ColumnName="numCaja" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExperienciaProfesional">
+      <EntityTypeMapping TypeName="SIRHModel.ExperienciaProfesional">
+        <MappingFragment StoreEntitySet="ExperienciaProfesional">
+          <ScalarProperty Name="PK_ExperienciaProfesional" ColumnName="PK_ExperienciaProfesional" />
+          <ScalarProperty Name="FecRegistro" ColumnName="FecRegistro" />
+          <ScalarProperty Name="IndPuntosAsignados" ColumnName="IndPuntosAsignados" />
+          <ScalarProperty Name="TipExperiencia" ColumnName="TipExperiencia" />
+          <ScalarProperty Name="ObsExperienciaProfesional" ColumnName="ObsExperienciaProfesional" />
+          <ScalarProperty Name="FK_FormacionAcademica" ColumnName="FK_FormacionAcademica" />
+          <ScalarProperty Name="NumResolucion" ColumnName="NumResolucion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Factor">
+      <EntityTypeMapping TypeName="SIRHModel.Factor">
+        <MappingFragment StoreEntitySet="Factor">
+          <ScalarProperty Name="PK_Factor" ColumnName="PK_Factor" />
+          <ScalarProperty Name="FK_TituloFactor" ColumnName="FK_TituloFactor" />
+          <ScalarProperty Name="DesFactor" ColumnName="DesFactor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Folio">
+      <EntityTypeMapping TypeName="SIRHModel.Folio">
+        <MappingFragment StoreEntitySet="Folio">
+          <ScalarProperty Name="PK_IdFolio" ColumnName="PK_IdFolio" />
+          <ScalarProperty Name="FK_IdTomo" ColumnName="FK_IdTomo" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="FecCreacion" ColumnName="FecCreacion" />
+          <ScalarProperty Name="NumFolio" ColumnName="NumFolio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FormacionAcademica">
+      <EntityTypeMapping TypeName="SIRHModel.FormacionAcademica">
+        <MappingFragment StoreEntitySet="FormacionAcademica">
+          <ScalarProperty Name="PK_FormacionAcademica" ColumnName="PK_FormacionAcademica" />
+          <ScalarProperty Name="FK_Funcionario" ColumnName="FK_Funcionario" />
+          <ScalarProperty Name="FecRegistro" ColumnName="FecRegistro" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Funcionario">
+      <EntityTypeMapping TypeName="SIRHModel.Funcionario">
+        <MappingFragment StoreEntitySet="Funcionario">
+          <ScalarProperty Name="PK_Funcionario" ColumnName="PK_Funcionario" />
+          <ScalarProperty Name="FK_EstadoFuncionario" ColumnName="FK_EstadoFuncionario" />
+          <ScalarProperty Name="IdCedulaFuncionario" ColumnName="IdCedulaFuncionario" />
+          <ScalarProperty Name="NomFuncionario" ColumnName="NomFuncionario" />
+          <ScalarProperty Name="NomPrimerApellido" ColumnName="NomPrimerApellido" />
+          <ScalarProperty Name="NomSegundoApellido" ColumnName="NomSegundoApellido" />
+          <ScalarProperty Name="FecNacimiento" ColumnName="FecNacimiento" />
+          <ScalarProperty Name="IndSexo" ColumnName="IndSexo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GastoTransporte">
+      <EntityTypeMapping TypeName="SIRHModel.GastoTransporte">
+        <MappingFragment StoreEntitySet="GastoTransporte">
+          <ScalarProperty Name="ImgDocumento" ColumnName="ImgDocumento" />
+          <ScalarProperty Name="PK_GastosTransporte" ColumnName="PK_GastosTransporte" />
+          <ScalarProperty Name="FK_Nombramiento" ColumnName="FK_Nombramiento" />
+          <ScalarProperty Name="FK_EstadoGastosTransporte" ColumnName="FK_EstadoGastosTransporte" />
+          <ScalarProperty Name="MontGastosTransporte" ColumnName="MontGastosTransporte" />
+          <ScalarProperty Name="ObsGastosTransporte" ColumnName="ObsGastosTransporte" />
+          <ScalarProperty Name="FecInicGastosTransporte" ColumnName="FecInicGastosTransporte" />
+          <ScalarProperty Name="FecFinGastosTransporte" ColumnName="FecFinGastosTransporte" />
+          <ScalarProperty Name="HojaIndividualizada" ColumnName="HojaIndividualizada" />
+          <ScalarProperty Name="FK_Presupuesto" ColumnName="FK_Presupuesto" />
+          <ScalarProperty Name="FecRegistro" ColumnName="FecRegistro" />
+          <ScalarProperty Name="FecContrato" ColumnName="FecContrato" />
+          <ScalarProperty Name="NumDocumento" ColumnName="NumDocumento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GastoTransporteReintegroDias">
+      <EntityTypeMapping TypeName="SIRHModel.GastoTransporteReintegroDias">
+        <MappingFragment StoreEntitySet="GastoTransporteReintegroDias">
+          <ScalarProperty Name="PK_Reintegro" ColumnName="PK_Reintegro" />
+          <ScalarProperty Name="FK_GastoTransporte" ColumnName="FK_GastoTransporte" />
+          <ScalarProperty Name="FecDia" ColumnName="FecDia" />
+          <ScalarProperty Name="MonReintegro" ColumnName="MonReintegro" />
+          <ScalarProperty Name="ObsMotivo" ColumnName="ObsMotivo" />
+          <ScalarProperty Name="IndEstado" ColumnName="IndEstado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HistorialEstadoCivil">
+      <EntityTypeMapping TypeName="SIRHModel.HistorialEstadoCivil">
+        <MappingFragment StoreEntitySet="HistorialEstadoCivil">
+          <ScalarProperty Name="PK_HistorialEstadoCivil" ColumnName="PK_HistorialEstadoCivil" />
+          <ScalarProperty Name="FK_CatEstadoCivil" ColumnName="FK_CatEstadoCivil" />
+          <ScalarProperty Name="FK_Funcionario" ColumnName="FK_Funcionario" />
+          <ScalarProperty Name="FecInicio" ColumnName="FecInicio" />
+          <ScalarProperty Name="FecFin" ColumnName="FecFin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Incidencia">
+      <EntityTypeMapping TypeName="SIRHModel.Incidencia">
+        <MappingFragment StoreEntitySet="Incidencia">
+          <ScalarProperty Name="IndImpacto" ColumnName="IndImpacto" />
+          <ScalarProperty Name="PK_Incidencia" ColumnName="PK_Incidencia" />
+          <ScalarProperty Name="FK_FuncionarioEmisor" ColumnName="FK_FuncionarioEmisor" />
+          <ScalarProperty Name="FK_FuncionarioUIRH" ColumnName="FK_FuncionarioUIRH" />
+          <ScalarProperty Name="FK_CatalogoIncidencia" ColumnName="FK_CatalogoIncidencia" />
+          <ScalarProperty Name="EstIncidencia" ColumnName="EstIncidencia" />
+          <ScalarProperty Name="IndIPOrigen" ColumnName="IndIPOrigen" />
+          <ScalarProperty Name="DesError" ColumnName="DesError" />
+          <ScalarProperty Name="DesJustificacion" ColumnName="DesJustificacion" />
+          <ScalarProperty Name="ImgError" ColumnName="ImgError" />
+          <ScalarProperty Name="FecInicio" ColumnName="FecInicio" />
+          <ScalarProperty Name="FecFin" ColumnName="FecFin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InformacionContacto">
+      <EntityTypeMapping TypeName="SIRHModel.InformacionContacto">
+        <MappingFragment StoreEntitySet="InformacionContacto">
+          <ScalarProperty Name="PK_InformacionContacto" ColumnName="PK_InformacionContacto" />
+          <ScalarProperty Name="FK_TipoContacto" ColumnName="FK_TipoContacto" />
+          <ScalarProperty Name="FK_Funcionario" ColumnName="FK_Funcionario" />
+          <ScalarProperty Name="DesContenido" ColumnName="DesContenido" />
+          <ScalarProperty Name="DesAdicional" ColumnName="DesAdicional" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Modalidad">
+      <EntityTypeMapping TypeName="SIRHModel.Modalidad">
+        <MappingFragment StoreEntitySet="Modalidad">
+          <ScalarProperty Name="PK_Modalidad" ColumnName="PK_Modalidad" />
+          <ScalarProperty Name="DesModalidad" ColumnName="DesModalidad" />
+          <ScalarProperty Name="IndTopePuntos" ColumnName="IndTopePuntos" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MontoCaucion">
+      <EntityTypeMapping TypeName="SIRHModel.MontoCaucion">
+        <MappingFragment StoreEntitySet="MontoCaucion">
+          <ScalarProperty Name="PK_MontoCaucion" ColumnName="PK_MontoCaucion" />
+          <ScalarProperty Name="IndNivel" ColumnName="IndNivel" />
+          <ScalarProperty Name="MtoColones" ColumnName="MtoColones" />
+          <ScalarProperty Name="DesMontoCaucion" ColumnName="DesMontoCaucion" />
+          <ScalarProperty Name="FecRige" ColumnName="FecRige" />
+          <ScalarProperty Name="DesJustificacion" ColumnName="DesJustificacion" />
+          <ScalarProperty Name="IndEstadoMonto" ColumnName="IndEstadoMonto" />
+          <ScalarProperty Name="DesJustificacionInactivo" ColumnName="DesJustificacionInactivo" />
+          <ScalarProperty Name="FecVencimiento" ColumnName="FecVencimiento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MotivoMovimiento">
+      <EntityTypeMapping TypeName="SIRHModel.MotivoMovimiento">
+        <MappingFragment StoreEntitySet="MotivoMovimiento">
+          <ScalarProperty Name="PK_MotivoMovimiento" ColumnName="PK_MotivoMovimiento" />
+          <ScalarProperty Name="DesMotivo" ColumnName="DesMotivo" />
+          <ScalarProperty Name="IndEstadoMotivoMovimiento" ColumnName="IndEstadoMotivoMovimiento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MotivoPedimento">
+      <EntityTypeMapping TypeName="SIRHModel.MotivoPedimento">
+        <MappingFragment StoreEntitySet="MotivoPedimento">
+          <ScalarProperty Name="PK_MotivoPedimento" ColumnName="PK_MotivoPedimento" />
+          <ScalarProperty Name="DesMotivoPedimento" ColumnName="DesMotivoPedimento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MovimientoBorradorAccionPersonal">
+      <EntityTypeMapping TypeName="SIRHModel.MovimientoBorradorAccionPersonal">
+        <MappingFragment StoreEntitySet="MovimientoBorradorAccionPersonal">
+          <ScalarProperty Name="PK_MovimientoBorrador" ColumnName="PK_MovimientoBorrador" />
+          <ScalarProperty Name="FK_Borrador" ColumnName="FK_Borrador" />
+          <ScalarProperty Name="FecMovimiento" ColumnName="FecMovimiento" />
+          <ScalarProperty Name="CodMovimiento" ColumnName="CodMovimiento" />
+          <ScalarProperty Name="UsuarioEnvia" ColumnName="UsuarioEnvia" />
+          <ScalarProperty Name="UsuarioRecibe" ColumnName="UsuarioRecibe" />
+          <ScalarProperty Name="ObsMovimiento" ColumnName="ObsMovimiento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MovimientoGastoTransporte">
+      <EntityTypeMapping TypeName="SIRHModel.MovimientoGastoTransporte">
+        <MappingFragment StoreEntitySet="MovimientoGastoTransporte">
+          <ScalarProperty Name="PK_MovimientoGastosTransporte" ColumnName="PK_MovimientoGastosTransporte" />
+          <ScalarProperty Name="FK_GastosTransporte" ColumnName="FK_GastosTransporte" />
+          <ScalarProperty Name="FecMovimiento" ColumnName="FecMovimiento" />
+          <ScalarProperty Name="ObsObservacion" ColumnName="ObsObservacion" />
+          <ScalarProperty Name="NumTipo" ColumnName="NumTipo" />
+          <ScalarProperty Name="IndEstado" ColumnName="IndEstado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MovimientoPuesto">
+      <EntityTypeMapping TypeName="SIRHModel.MovimientoPuesto">
+        <MappingFragment StoreEntitySet="MovimientoPuesto">
+          <ScalarProperty Name="PK_MovimientoPuesto" ColumnName="PK_MovimientoPuesto" />
+          <ScalarProperty Name="CodOficio" ColumnName="CodOficio" />
+          <ScalarProperty Name="FecMovimiento" ColumnName="FecMovimiento" />
+          <ScalarProperty Name="FK_MotivoMovimiento" ColumnName="FK_MotivoMovimiento" />
+          <ScalarProperty Name="FK_Puesto" ColumnName="FK_Puesto" />
+          <ScalarProperty Name="FK_EstadoMovimientoPuesto" ColumnName="FK_EstadoMovimientoPuesto" />
+          <ScalarProperty Name="FecVence" ColumnName="FecVence" />
+          <ScalarProperty Name="ObsMovimientoPuesto" ColumnName="ObsMovimientoPuesto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MovimientoViaticoCorrido">
+      <EntityTypeMapping TypeName="SIRHModel.MovimientoViaticoCorrido">
+        <MappingFragment StoreEntitySet="MovimientoViaticoCorrido">
+          <ScalarProperty Name="PK_MovimientoViaticoCorrido" ColumnName="PK_MovimientoViaticoCorrido" />
+          <ScalarProperty Name="FK_ViaticoCorrido" ColumnName="FK_ViaticoCorrido" />
+          <ScalarProperty Name="FecMovimiento" ColumnName="FecMovimiento" />
+          <ScalarProperty Name="ObsObservacion" ColumnName="ObsObservacion" />
+          <ScalarProperty Name="NumTipo" ColumnName="NumTipo" />
+          <ScalarProperty Name="IndEstado" ColumnName="IndEstado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Nombramiento">
+      <EntityTypeMapping TypeName="SIRHModel.Nombramiento">
+        <MappingFragment StoreEntitySet="Nombramiento">
+          <ScalarProperty Name="PK_Nombramiento" ColumnName="PK_Nombramiento" />
+          <ScalarProperty Name="FK_EstadoNombramiento" ColumnName="FK_EstadoNombramiento" />
+          <ScalarProperty Name="FK_Puesto" ColumnName="FK_Puesto" />
+          <ScalarProperty Name="FK_Funcionario" ColumnName="FK_Funcionario" />
+          <ScalarProperty Name="FecRige" ColumnName="FecRige" />
+          <ScalarProperty Name="FecVence" ColumnName="FecVence" />
+          <ScalarProperty Name="FecNombramiento" ColumnName="FecNombramiento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ObjetoGasto">
+      <EntityTypeMapping TypeName="SIRHModel.ObjetoGasto">
+        <MappingFragment StoreEntitySet="ObjetoGasto">
+          <ScalarProperty Name="PK_ObjetoGasto" ColumnName="PK_ObjetoGasto" />
+          <ScalarProperty Name="FK_Partida" ColumnName="FK_Partida" />
+          <ScalarProperty Name="FK_SubPartida" ColumnName="FK_SubPartida" />
+          <ScalarProperty Name="CodObjetoGasto" ColumnName="CodObjetoGasto" />
+          <ScalarProperty Name="DesObjetoGasto" ColumnName="DesObjetoGasto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OcupacionReal">
+      <EntityTypeMapping TypeName="SIRHModel.OcupacionReal">
+        <MappingFragment StoreEntitySet="OcupacionReal">
+          <ScalarProperty Name="PK_OcupacionReal" ColumnName="PK_OcupacionReal" />
+          <ScalarProperty Name="DesOcupacionReal" ColumnName="DesOcupacionReal" />
+          <ScalarProperty Name="IndEstadoOcupacionReal" ColumnName="IndEstadoOcupacionReal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PagoExtraordinario">
+      <EntityTypeMapping TypeName="SIRHModel.PagoExtraordinario">
+        <MappingFragment StoreEntitySet="PagoExtraordinario">
+          <ScalarProperty Name="PK_PagoExtraordinario" ColumnName="PK_PagoExtraordinario" />
+          <ScalarProperty Name="FK_Funcionario" ColumnName="FK_Funcionario" />
+          <ScalarProperty Name="FecTramite" ColumnName="FecTramite" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PagoFeriado">
+      <EntityTypeMapping TypeName="SIRHModel.PagoFeriado">
+        <MappingFragment StoreEntitySet="PagoFeriado">
+          <ScalarProperty Name="PK_PagoFeriado" ColumnName="PK_PagoFeriado" />
+          <ScalarProperty Name="FK_PagoExtraordinario" ColumnName="FK_PagoExtraordinario" />
+          <ScalarProperty Name="MtoSalarioBruto" ColumnName="MtoSalarioBruto" />
+          <ScalarProperty Name="MtoSubtotalDia" ColumnName="MtoSubtotalDia" />
+          <ScalarProperty Name="MtoSalarioEscolar" ColumnName="MtoSalarioEscolar" />
+          <ScalarProperty Name="MtoDiferenciaLiquida" ColumnName="MtoDiferenciaLiquida" />
+          <ScalarProperty Name="MtoAguinaldoProporcional" ColumnName="MtoAguinaldoProporcional" />
+          <ScalarProperty Name="MtoDeduccionPatronal" ColumnName="MtoDeduccionPatronal" />
+          <ScalarProperty Name="MtoDeduccionObrero" ColumnName="MtoDeduccionObrero" />
+          <ScalarProperty Name="MtoTotal" ColumnName="MtoTotal" />
+          <ScalarProperty Name="ObsTramite" ColumnName="ObsTramite" />
+          <ScalarProperty Name="FK_EstadoTramite" ColumnName="FK_EstadoTramite" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PagoGastoTransporte">
+      <EntityTypeMapping TypeName="SIRHModel.PagoGastoTransporte">
+        <MappingFragment StoreEntitySet="PagoGastoTransporte">
+          <ScalarProperty Name="PK_PagoGastoTransporte" ColumnName="PK_PagoGastoTransporte" />
+          <ScalarProperty Name="FK_GastosTransporte" ColumnName="FK_GastosTransporte" />
+          <ScalarProperty Name="IndEstado" ColumnName="IndEstado" />
+          <ScalarProperty Name="FecPago" ColumnName="FecPago" />
+          <ScalarProperty Name="MonPago" ColumnName="MonPago" />
+          <ScalarProperty Name="HojaIndividualizada" ColumnName="HojaIndividualizada" />
+          <ScalarProperty Name="NumBoleta" ColumnName="NumBoleta" />
+          <ScalarProperty Name="ReservaRecurso" ColumnName="ReservaRecurso" />
+          <ScalarProperty Name="FecRegistro" ColumnName="FecRegistro" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PagoPrestacion">
+      <EntityTypeMapping TypeName="SIRHModel.PagoPrestacion">
+        <MappingFragment StoreEntitySet="PagoPrestacion">
+          <ScalarProperty Name="PK_PagoPrestacion" ColumnName="PK_PagoPrestacion" />
+          <ScalarProperty Name="MtoTotal" ColumnName="MtoTotal" />
+          <ScalarProperty Name="MtoCesantia" ColumnName="MtoCesantia" />
+          <ScalarProperty Name="MtoVacaciones" ColumnName="MtoVacaciones" />
+          <ScalarProperty Name="MtoQuincenal" ColumnName="MtoQuincenal" />
+          <ScalarProperty Name="MtoDiario" ColumnName="MtoDiario" />
+          <ScalarProperty Name="MtoEscolar" ColumnName="MtoEscolar" />
+          <ScalarProperty Name="MtoExtras" ColumnName="MtoExtras" />
+          <ScalarProperty Name="FecPago" ColumnName="FecPago" />
+          <ScalarProperty Name="IndEstado" ColumnName="IndEstado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PagoViaticoCorrido">
+      <EntityTypeMapping TypeName="SIRHModel.PagoViaticoCorrido">
+        <MappingFragment StoreEntitySet="PagoViaticoCorrido">
+          <ScalarProperty Name="PK_PagoViaticoCorrido" ColumnName="PK_PagoViaticoCorrido" />
+          <ScalarProperty Name="FK_ViaticoCorrido" ColumnName="FK_ViaticoCorrido" />
+          <ScalarProperty Name="IndEstado" ColumnName="IndEstado" />
+          <ScalarProperty Name="FecPago" ColumnName="FecPago" />
+          <ScalarProperty Name="MonPago" ColumnName="MonPago" />
+          <ScalarProperty Name="HojaIndividualizada" ColumnName="HojaIndividualizada" />
+          <ScalarProperty Name="NumBoleta" ColumnName="NumBoleta" />
+          <ScalarProperty Name="ReservaRecurso" ColumnName="ReservaRecurso" />
+          <ScalarProperty Name="FecRegistro" ColumnName="FecRegistro" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PagoViaticoRetroactivo">
+      <EntityTypeMapping TypeName="SIRHModel.PagoViaticoRetroactivo">
+        <MappingFragment StoreEntitySet="PagoViaticoRetroactivo">
+          <ScalarProperty Name="PK_PagoViaticoRetroactivo" ColumnName="PK_PagoViaticoRetroactivo" />
+          <ScalarProperty Name="FK_PagoViaticoCorrido" ColumnName="FK_PagoViaticoCorrido" />
+          <ScalarProperty Name="FecPago" ColumnName="FecPago" />
+          <ScalarProperty Name="MonPago" ColumnName="MonPago" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Partida">
+      <EntityTypeMapping TypeName="SIRHModel.Partida">
+        <MappingFragment StoreEntitySet="Partida">
+          <ScalarProperty Name="PK_Partida" ColumnName="PK_Partida" />
+          <ScalarProperty Name="CodPartida" ColumnName="CodPartida" />
+          <ScalarProperty Name="DesPartida" ColumnName="DesPartida" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PedimentoPuesto">
+      <EntityTypeMapping TypeName="SIRHModel.PedimentoPuesto">
+        <MappingFragment StoreEntitySet="PedimentoPuesto">
+          <ScalarProperty Name="PK_PedimentoPuesto" ColumnName="PK_PedimentoPuesto" />
+          <ScalarProperty Name="NumPedimento" ColumnName="NumPedimento" />
+          <ScalarProperty Name="FK_Puesto" ColumnName="FK_Puesto" />
+          <ScalarProperty Name="FK_Motivo" ColumnName="FK_Motivo" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="ResolucionPermanente" ColumnName="ResolucionPermanente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Perfil">
+      <EntityTypeMapping TypeName="SIRHModel.Perfil">
+        <MappingFragment StoreEntitySet="Perfil">
+          <ScalarProperty Name="PK_Perfil" ColumnName="PK_Perfil" />
+          <ScalarProperty Name="NomPerfil" ColumnName="NomPerfil" />
+          <ScalarProperty Name="DesPerfil" ColumnName="DesPerfil" />
+          <ScalarProperty Name="IndEstadoPerfil" ColumnName="IndEstadoPerfil" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PerfilAcceso">
+      <EntityTypeMapping TypeName="SIRHModel.PerfilAcceso">
+        <MappingFragment StoreEntitySet="PerfilAcceso">
+          <ScalarProperty Name="PK_PerfilAcceso" ColumnName="PK_PerfilAcceso" />
+          <ScalarProperty Name="FK_DetalleAcceso" ColumnName="FK_DetalleAcceso" />
+          <ScalarProperty Name="FecAsignacion" ColumnName="FecAsignacion" />
+          <ScalarProperty Name="FK_CatPermiso" ColumnName="FK_CatPermiso" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PeriodoCalificacion">
+      <EntityTypeMapping TypeName="SIRHModel.PeriodoCalificacion">
+        <MappingFragment StoreEntitySet="PeriodoCalificacion">
+          <ScalarProperty Name="PK_PeriodoCalificacion" ColumnName="PK_PeriodoCalificacion" />
+          <ScalarProperty Name="FecRige" ColumnName="FecRige" />
+          <ScalarProperty Name="FecVence" ColumnName="FecVence" />
+          <ScalarProperty Name="FecRigeReglaTecnica" ColumnName="FecRigeReglaTecnica" />
+          <ScalarProperty Name="FecVenceReglaTecnica" ColumnName="FecVenceReglaTecnica" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PeriodoEscalaSalarial">
+      <EntityTypeMapping TypeName="SIRHModel.PeriodoEscalaSalarial">
+        <MappingFragment StoreEntitySet="PeriodoEscalaSalarial">
+          <ScalarProperty Name="PK_Periodo" ColumnName="PK_Periodo" />
+          <ScalarProperty Name="FecInicial" ColumnName="FecInicial" />
+          <ScalarProperty Name="FecCierre" ColumnName="FecCierre" />
+          <ScalarProperty Name="NumResolucion" ColumnName="NumResolucion" />
+          <ScalarProperty Name="MtoPuntoCarrera" ColumnName="MtoPuntoCarrera" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PeriodoVacaciones">
+      <EntityTypeMapping TypeName="SIRHModel.PeriodoVacaciones">
+        <MappingFragment StoreEntitySet="PeriodoVacaciones">
+          <ScalarProperty Name="PK_PeriodoVacaciones" ColumnName="PK_PeriodoVacaciones" />
+          <ScalarProperty Name="IndDiasDerecho" ColumnName="IndDiasDerecho" />
+          <ScalarProperty Name="FecCarga" ColumnName="FecCarga" />
+          <ScalarProperty Name="IndPeriodo" ColumnName="IndPeriodo" />
+          <ScalarProperty Name="IndEstado" ColumnName="IndEstado" />
+          <ScalarProperty Name="FK_Nombramiento" ColumnName="FK_Nombramiento" />
+          <ScalarProperty Name="IndSaldo" ColumnName="IndSaldo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrestacionLegal">
+      <EntityTypeMapping TypeName="SIRHModel.PrestacionLegal">
+        <MappingFragment StoreEntitySet="PrestacionLegal">
+          <ScalarProperty Name="PK_PrestacionLegal" ColumnName="PK_PrestacionLegal" />
+          <ScalarProperty Name="FK_Nombramiento" ColumnName="FK_Nombramiento" />
+          <ScalarProperty Name="FK_TipoPrestacion" ColumnName="FK_TipoPrestacion" />
+          <ScalarProperty Name="FecCreacion" ColumnName="FecCreacion" />
+          <ScalarProperty Name="IndEstado" ColumnName="IndEstado" />
+          <ScalarProperty Name="NumPrestacion" ColumnName="NumPrestacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrestamoPuesto">
+      <EntityTypeMapping TypeName="SIRHModel.PrestamoPuesto">
+        <MappingFragment StoreEntitySet="PrestamoPuesto">
+          <ScalarProperty Name="PK_PrestamoPuesto" ColumnName="PK_PrestamoPuesto" />
+          <ScalarProperty Name="FK_EntidadAdscrita" ColumnName="FK_EntidadAdscrita" />
+          <ScalarProperty Name="FK_EntidadGubernamental" ColumnName="FK_EntidadGubernamental" />
+          <ScalarProperty Name="FK_UbicacionAdministrativa" ColumnName="FK_UbicacionAdministrativa" />
+          <ScalarProperty Name="FecTraslado" ColumnName="FecTraslado" />
+          <ScalarProperty Name="NumResolucion" ColumnName="NumResolucion" />
+          <ScalarProperty Name="FK_Puesto" ColumnName="FK_Puesto" />
+          <ScalarProperty Name="NumOficioRescision" ColumnName="NumOficioRescision" />
+          <ScalarProperty Name="FecFinConvenio" ColumnName="FecFinConvenio" />
+          <ScalarProperty Name="NumRescision" ColumnName="NumRescision" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Presupuesto">
+      <EntityTypeMapping TypeName="SIRHModel.Presupuesto">
+        <MappingFragment StoreEntitySet="Presupuesto">
+          <ScalarProperty Name="PK_Presupuesto" ColumnName="PK_Presupuesto" />
+          <ScalarProperty Name="FK_Programa" ColumnName="FK_Programa" />
+          <ScalarProperty Name="IdPresupuesto" ColumnName="IdPresupuesto" />
+          <ScalarProperty Name="CodArea" ColumnName="CodArea" />
+          <ScalarProperty Name="CodActividad" ColumnName="CodActividad" />
+          <ScalarProperty Name="IdUnidadPresupuestaria" ColumnName="IdUnidadPresupuestaria" />
+          <ScalarProperty Name="IdDireccionPresupuestaria" ColumnName="IdDireccionPresupuestaria" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Programa">
+      <EntityTypeMapping TypeName="SIRHModel.Programa">
+        <MappingFragment StoreEntitySet="Programa">
+          <ScalarProperty Name="PK_Programa" ColumnName="PK_Programa" />
+          <ScalarProperty Name="DesPrograma" ColumnName="DesPrograma" />
+          <ScalarProperty Name="IndEstadoPrograma" ColumnName="IndEstadoPrograma" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Provincia">
+      <EntityTypeMapping TypeName="SIRHModel.Provincia">
+        <MappingFragment StoreEntitySet="Provincia">
+          <ScalarProperty Name="PK_Provincia" ColumnName="PK_Provincia" />
+          <ScalarProperty Name="NomProvincia" ColumnName="NomProvincia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Puesto">
+      <EntityTypeMapping TypeName="SIRHModel.Puesto">
+        <MappingFragment StoreEntitySet="Puesto">
+          <ScalarProperty Name="PK_Puesto" ColumnName="PK_Puesto" />
+          <ScalarProperty Name="FK_UbicacionAdministrativa" ColumnName="FK_UbicacionAdministrativa" />
+          <ScalarProperty Name="FK_EstadoPuesto" ColumnName="FK_EstadoPuesto" />
+          <ScalarProperty Name="CodPuesto" ColumnName="CodPuesto" />
+          <ScalarProperty Name="IndPuestoConfianza" ColumnName="IndPuestoConfianza" />
+          <ScalarProperty Name="ObsPuesto" ColumnName="ObsPuesto" />
+          <ScalarProperty Name="IndNivelOcupacional" ColumnName="IndNivelOcupacional" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RegistroIncapacidad">
+      <EntityTypeMapping TypeName="SIRHModel.RegistroIncapacidad">
+        <MappingFragment StoreEntitySet="RegistroIncapacidad">
+          <ScalarProperty Name="PK_RegistroIncapacidad" ColumnName="PK_RegistroIncapacidad" />
+          <ScalarProperty Name="FK_TipoIncapacidad" ColumnName="FK_TipoIncapacidad" />
+          <ScalarProperty Name="FK_Nombramiento" ColumnName="FK_Nombramiento" />
+          <ScalarProperty Name="FecRige" ColumnName="FecRige" />
+          <ScalarProperty Name="FecVence" ColumnName="FecVence" />
+          <ScalarProperty Name="ObsIncapacidad" ColumnName="ObsIncapacidad" />
+          <ScalarProperty Name="CodIncapacidad" ColumnName="CodIncapacidad" />
+          <ScalarProperty Name="IndEstadoIncapacidad" ColumnName="IndEstadoIncapacidad" />
+          <ScalarProperty Name="MtoSalario" ColumnName="MtoSalario" />
+          <ScalarProperty Name="IndProrroga" ColumnName="IndProrroga" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RegistroPrestacionReal">
+      <EntityTypeMapping TypeName="SIRHModel.RegistroPrestacionReal">
+        <MappingFragment StoreEntitySet="RegistroPrestacionReal">
+          <ScalarProperty Name="PK_RegistroPagoReal" ColumnName="PK_RegistroPagoReal" />
+          <ScalarProperty Name="MtoTotalReal" ColumnName="MtoTotalReal" />
+          <ScalarProperty Name="MtoVacaciones" ColumnName="MtoVacaciones" />
+          <ScalarProperty Name="MtoCesantiaReal" ColumnName="MtoCesantiaReal" />
+          <ScalarProperty Name="MtoQuincenalReal" ColumnName="MtoQuincenalReal" />
+          <ScalarProperty Name="MtoEscolarReal" ColumnName="MtoEscolarReal" />
+          <ScalarProperty Name="MtoExtrasReal" ColumnName="MtoExtrasReal" />
+          <ScalarProperty Name="ObsRegistroPagoReal" ColumnName="ObsRegistroPagoReal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RegistroTiempoExtra">
+      <EntityTypeMapping TypeName="SIRHModel.RegistroTiempoExtra">
+        <MappingFragment StoreEntitySet="RegistroTiempoExtra">
+          <ScalarProperty Name="ObsEstadoDoble" ColumnName="ObsEstadoDoble" />
+          <ScalarProperty Name="IndActividad" ColumnName="IndActividad" />
+          <ScalarProperty Name="IndArea" ColumnName="IndArea" />
+          <ScalarProperty Name="ObsEstado" ColumnName="ObsEstado" />
+          <ScalarProperty Name="PK_RegistroTiempoExtra" ColumnName="PK_RegistroTiempoExtra" />
+          <ScalarProperty Name="FecEmision" ColumnName="FecEmision" />
+          <ScalarProperty Name="IndPeriodo" ColumnName="IndPeriodo" />
+          <ScalarProperty Name="FecPago" ColumnName="FecPago" />
+          <ScalarProperty Name="FK_DesgloseSalarialQ1" ColumnName="FK_DesgloseSalarialQ1" />
+          <ScalarProperty Name="FK_DesgloseSalarialQ2" ColumnName="FK_DesgloseSalarialQ2" />
+          <ScalarProperty Name="FK_Clase" ColumnName="FK_Clase" />
+          <ScalarProperty Name="FK_Presupuesto" ColumnName="FK_Presupuesto" />
+          <ScalarProperty Name="IndEstadoExtra" ColumnName="IndEstadoExtra" />
+          <ScalarProperty Name="NumOficioJustificacion" ColumnName="NumOficioJustificacion" />
+          <ScalarProperty Name="Justificacion" ColumnName="Justificacion" />
+          <ScalarProperty Name="ArchivoJustificacion" ColumnName="ArchivoJustificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RegistroVacaciones">
+      <EntityTypeMapping TypeName="SIRHModel.RegistroVacaciones">
+        <MappingFragment StoreEntitySet="RegistroVacaciones">
+          <ScalarProperty Name="PK_RegistroVacaciones" ColumnName="PK_RegistroVacaciones" />
+          <ScalarProperty Name="FecInicio" ColumnName="FecInicio" />
+          <ScalarProperty Name="FecFin" ColumnName="FecFin" />
+          <ScalarProperty Name="IndEstado" ColumnName="IndEstado" />
+          <ScalarProperty Name="FK_PeriodoVacaciones" ColumnName="FK_PeriodoVacaciones" />
+          <ScalarProperty Name="IndTipoTransaccion" ColumnName="IndTipoTransaccion" />
+          <ScalarProperty Name="CntDias" ColumnName="CntDias" />
+          <ScalarProperty Name="NumTransaccion" ColumnName="NumTransaccion" />
+          <ScalarProperty Name="FecActualizacion" ColumnName="FecActualizacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReintegroVacaciones">
+      <EntityTypeMapping TypeName="SIRHModel.ReintegroVacaciones">
+        <MappingFragment StoreEntitySet="ReintegroVacaciones">
+          <ScalarProperty Name="PK_ReintegroVacaciones" ColumnName="PK_ReintegroVacaciones" />
+          <ScalarProperty Name="FK_RegistroVacaciones" ColumnName="FK_RegistroVacaciones" />
+          <ScalarProperty Name="FecInicio" ColumnName="FecInicio" />
+          <ScalarProperty Name="FecFin" ColumnName="FecFin" />
+          <ScalarProperty Name="IndMotivo" ColumnName="IndMotivo" />
+          <ScalarProperty Name="ObsReintegro" ColumnName="ObsReintegro" />
+          <ScalarProperty Name="NumSolicitudReintegro" ColumnName="NumSolicitudReintegro" />
+          <ScalarProperty Name="CntDias" ColumnName="CntDias" />
+          <ScalarProperty Name="FecActualizacion" ColumnName="FecActualizacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RelPuestoUbicacion">
+      <EntityTypeMapping TypeName="SIRHModel.RelPuestoUbicacion">
+        <MappingFragment StoreEntitySet="RelPuestoUbicacion">
+          <ScalarProperty Name="PK_RelPuestoUbicacion" ColumnName="PK_RelPuestoUbicacion" />
+          <ScalarProperty Name="FK_UbicacionPuesto" ColumnName="FK_UbicacionPuesto" />
+          <ScalarProperty Name="FK_Puesto" ColumnName="FK_Puesto" />
+          <ScalarProperty Name="FecCreacion" ColumnName="FecCreacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RemuneracionEfectuadaPF">
+      <EntityTypeMapping TypeName="SIRHModel.RemuneracionEfectuadaPF">
+        <MappingFragment StoreEntitySet="RemuneracionEfectuadaPF">
+          <ScalarProperty Name="PK_RemuneracionEfectuadaPF" ColumnName="PK_RemuneracionEfectuadaPF" />
+          <ScalarProperty Name="FK_PagoFeriado" ColumnName="FK_PagoFeriado" />
+          <ScalarProperty Name="FK_CatalogoRemuneracion" ColumnName="FK_CatalogoRemuneracion" />
+          <ScalarProperty Name="PorEfectuado" ColumnName="PorEfectuado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rescision">
+      <EntityTypeMapping TypeName="SIRHModel.Rescision">
+        <MappingFragment StoreEntitySet="Rescision">
+          <ScalarProperty Name="PK_Rescision" ColumnName="PK_Rescision" />
+          <ScalarProperty Name="NumRescision" ColumnName="NumRescision" />
+          <ScalarProperty Name="FecRescision" ColumnName="FecRescision" />
+          <ScalarProperty Name="NumOficio" ColumnName="NumOficio" />
+          <ScalarProperty Name="FecOficio" ColumnName="FecOficio" />
+          <ScalarProperty Name="FK_PrestamoPuesto" ColumnName="FK_PrestamoPuesto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ResolucionPedimento">
+      <EntityTypeMapping TypeName="SIRHModel.ResolucionPedimento">
+        <MappingFragment StoreEntitySet="ResolucionPedimento">
+          <ScalarProperty Name="PK_ResolucionPedimento" ColumnName="PK_ResolucionPedimento" />
+          <ScalarProperty Name="NumResolucion" ColumnName="NumResolucion" />
+          <ScalarProperty Name="FecResolucion" ColumnName="FecResolucion" />
+          <ScalarProperty Name="ObsResolucion" ColumnName="ObsResolucion" />
+          <ScalarProperty Name="FK_PedimentoPuesto" ColumnName="FK_PedimentoPuesto" />
+          <ScalarProperty Name="FK_TipoResolucionPedimento" ColumnName="FK_TipoResolucionPedimento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Seccion">
+      <EntityTypeMapping TypeName="SIRHModel.Seccion">
+        <MappingFragment StoreEntitySet="Seccion">
+          <ScalarProperty Name="PK_Seccion" ColumnName="PK_Seccion" />
+          <ScalarProperty Name="NomSeccion" ColumnName="NomSeccion" />
+          <ScalarProperty Name="IndEstadoSeccion" ColumnName="IndEstadoSeccion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubEspecialidad">
+      <EntityTypeMapping TypeName="SIRHModel.SubEspecialidad">
+        <MappingFragment StoreEntitySet="SubEspecialidad">
+          <ScalarProperty Name="PK_SubEspecialidad" ColumnName="PK_SubEspecialidad" />
+          <ScalarProperty Name="DesSubEspecialidad" ColumnName="DesSubEspecialidad" />
+          <ScalarProperty Name="IndEstadoSubEspecialidad" ColumnName="IndEstadoSubEspecialidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubPartida">
+      <EntityTypeMapping TypeName="SIRHModel.SubPartida">
+        <MappingFragment StoreEntitySet="SubPartida">
+          <ScalarProperty Name="PK_SubPartida" ColumnName="PK_SubPartida" />
+          <ScalarProperty Name="FK_Partida" ColumnName="FK_Partida" />
+          <ScalarProperty Name="CodSubPartida" ColumnName="CodSubPartida" />
+          <ScalarProperty Name="DesSubPartida" ColumnName="DesSubPartida" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="SIRHModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TareasPuesto">
+      <EntityTypeMapping TypeName="SIRHModel.TareasPuesto">
+        <MappingFragment StoreEntitySet="TareasPuesto">
+          <ScalarProperty Name="PK_TareasPuesto" ColumnName="PK_TareasPuesto" />
+          <ScalarProperty Name="DesQueHace" ColumnName="DesQueHace" />
+          <ScalarProperty Name="DesComoLoHace" ColumnName="DesComoLoHace" />
+          <ScalarProperty Name="IndFrecuencia" ColumnName="IndFrecuencia" />
+          <ScalarProperty Name="FK_Puesto" ColumnName="FK_Puesto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoAccionPersonal">
+      <EntityTypeMapping TypeName="SIRHModel.TipoAccionPersonal">
+        <MappingFragment StoreEntitySet="TipoAccionPersonal">
+          <ScalarProperty Name="PK_TipoAccionPersonal" ColumnName="PK_TipoAccionPersonal" />
+          <ScalarProperty Name="DesTipoAccion" ColumnName="DesTipoAccion" />
+          <ScalarProperty Name="CodMotivoMovimientoPuesto" ColumnName="CodMotivoMovimientoPuesto" />
+          <ScalarProperty Name="IndCategoria" ColumnName="IndCategoria" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoCambioPorAccionPersonal">
+      <EntityTypeMapping TypeName="SIRHModel.TipoCambioPorAccionPersonal">
+        <MappingFragment StoreEntitySet="TipoCambioPorAccionPersonal">
+          <ScalarProperty Name="PK_TipoCambioPorAccionPersonal" ColumnName="PK_TipoCambioPorAccionPersonal" />
+          <ScalarProperty Name="DesTipoCambioPorAccionPersonal" ColumnName="DesTipoCambioPorAccionPersonal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoContacto">
+      <EntityTypeMapping TypeName="SIRHModel.TipoContacto">
+        <MappingFragment StoreEntitySet="TipoContacto">
+          <ScalarProperty Name="PK_TipoContacto" ColumnName="PK_TipoContacto" />
+          <ScalarProperty Name="DesTipoContacto" ColumnName="DesTipoContacto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoDeduccion">
+      <EntityTypeMapping TypeName="SIRHModel.TipoDeduccion">
+        <MappingFragment StoreEntitySet="TipoDeduccion">
+          <ScalarProperty Name="PK_TipoDeduccion" ColumnName="PK_TipoDeduccion" />
+          <ScalarProperty Name="DesTipDeduccion" ColumnName="DesTipDeduccion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoDetalleGastoTransporte">
+      <EntityTypeMapping TypeName="SIRHModel.TipoDetalleGastoTransporte">
+        <MappingFragment StoreEntitySet="TipoDetalleGastoTransporte">
+          <ScalarProperty Name="PK_TipoDetallePagoGasto" ColumnName="PK_TipoDetallePagoGasto" />
+          <ScalarProperty Name="DesTipoDetalle" ColumnName="DesTipoDetalle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoDetallePagoViatico">
+      <EntityTypeMapping TypeName="SIRHModel.TipoDetallePagoViatico">
+        <MappingFragment StoreEntitySet="TipoDetallePagoViatico">
+          <ScalarProperty Name="PK_TipoDetallePagoViatico" ColumnName="PK_TipoDetallePagoViatico" />
+          <ScalarProperty Name="DesTipoDetalle" ColumnName="DesTipoDetalle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoDia">
+      <EntityTypeMapping TypeName="SIRHModel.TipoDia">
+        <MappingFragment StoreEntitySet="TipoDia">
+          <ScalarProperty Name="PK_TipoDia" ColumnName="PK_TipoDia" />
+          <ScalarProperty Name="DesTipoDia" ColumnName="DesTipoDia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoExtra">
+      <EntityTypeMapping TypeName="SIRHModel.TipoExtra">
+        <MappingFragment StoreEntitySet="TipoExtra">
+          <ScalarProperty Name="PK_TipoExtra" ColumnName="PK_TipoExtra" />
+          <ScalarProperty Name="DesTipExtra" ColumnName="DesTipExtra" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoIncapacidad">
+      <EntityTypeMapping TypeName="SIRHModel.TipoIncapacidad">
+        <MappingFragment StoreEntitySet="TipoIncapacidad">
+          <ScalarProperty Name="PK_TipoIncapacidad" ColumnName="PK_TipoIncapacidad" />
+          <ScalarProperty Name="DesIncapacidad" ColumnName="DesIncapacidad" />
+          <ScalarProperty Name="FK_EntidadMedica" ColumnName="FK_EntidadMedica" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoJornada">
+      <EntityTypeMapping TypeName="SIRHModel.TipoJornada">
+        <MappingFragment StoreEntitySet="TipoJornada">
+          <ScalarProperty Name="PK_TipoJornada" ColumnName="PK_TipoJornada" />
+          <ScalarProperty Name="DesTipoJornada" ColumnName="DesTipoJornada" />
+          <ScalarProperty Name="IndInicio" ColumnName="IndInicio" />
+          <ScalarProperty Name="IndFin" ColumnName="IndFin" />
+          <ScalarProperty Name="IndAcumulativa" ColumnName="IndAcumulativa" />
+          <ScalarProperty Name="IndDiaLibre" ColumnName="IndDiaLibre" />
+          <ScalarProperty Name="FK_EstadoTipoJornada" ColumnName="FK_EstadoTipoJornada" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoPrestacion">
+      <EntityTypeMapping TypeName="SIRHModel.TipoPrestacion">
+        <MappingFragment StoreEntitySet="TipoPrestacion">
+          <ScalarProperty Name="PK_TipoPrestacion" ColumnName="PK_TipoPrestacion" />
+          <ScalarProperty Name="DesPrestacion" ColumnName="DesPrestacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoPuesto">
+      <EntityTypeMapping TypeName="SIRHModel.TipoPuesto">
+        <MappingFragment StoreEntitySet="TipoPuesto">
+          <ScalarProperty Name="PK_TipoPuesto" ColumnName="PK_TipoPuesto" />
+          <ScalarProperty Name="DesTipoPuesto" ColumnName="DesTipoPuesto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoResolucionPedimento">
+      <EntityTypeMapping TypeName="SIRHModel.TipoResolucionPedimento">
+        <MappingFragment StoreEntitySet="TipoResolucionPedimento">
+          <ScalarProperty Name="PK_TipoResolucionPedimento" ColumnName="PK_TipoResolucionPedimento" />
+          <ScalarProperty Name="DesTipoResolucionPedimento" ColumnName="DesTipoResolucionPedimento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoUbicacion">
+      <EntityTypeMapping TypeName="SIRHModel.TipoUbicacion">
+        <MappingFragment StoreEntitySet="TipoUbicacion">
+          <ScalarProperty Name="PK_TipoUbicacion" ColumnName="PK_TipoUbicacion" />
+          <ScalarProperty Name="DesTipoUbicacion" ColumnName="DesTipoUbicacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TituloFactor">
+      <EntityTypeMapping TypeName="SIRHModel.TituloFactor">
+        <MappingFragment StoreEntitySet="TituloFactor">
+          <ScalarProperty Name="PK_TituloFactor" ColumnName="PK_TituloFactor" />
+          <ScalarProperty Name="DesTitulo" ColumnName="DesTitulo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tomo">
+      <EntityTypeMapping TypeName="SIRHModel.Tomo">
+        <MappingFragment StoreEntitySet="Tomo">
+          <ScalarProperty Name="PK_IdTomo" ColumnName="PK_IdTomo" />
+          <ScalarProperty Name="FK_ExpedienteFuncionario" ColumnName="FK_ExpedienteFuncionario" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="FecCreacion" ColumnName="FecCreacion" />
+          <ScalarProperty Name="NumTomo" ColumnName="NumTomo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UbicacionAdministrativa">
+      <EntityTypeMapping TypeName="SIRHModel.UbicacionAdministrativa">
+        <MappingFragment StoreEntitySet="UbicacionAdministrativa">
+          <ScalarProperty Name="PK_UbicacionAdministrativa" ColumnName="PK_UbicacionAdministrativa" />
+          <ScalarProperty Name="FK_Presupuesto" ColumnName="FK_Presupuesto" />
+          <ScalarProperty Name="FK_Seccion" ColumnName="FK_Seccion" />
+          <ScalarProperty Name="FK_Departamento" ColumnName="FK_Departamento" />
+          <ScalarProperty Name="FK_DireccionGeneral" ColumnName="FK_DireccionGeneral" />
+          <ScalarProperty Name="FK_Division" ColumnName="FK_Division" />
+          <ScalarProperty Name="DesObservaciones" ColumnName="DesObservaciones" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UbicacionAsueto">
+      <EntityTypeMapping TypeName="SIRHModel.UbicacionAsueto">
+        <MappingFragment StoreEntitySet="UbicacionAsueto">
+          <ScalarProperty Name="PK_UbicacionAsueto" ColumnName="PK_UbicacionAsueto" />
+          <ScalarProperty Name="FK_CatalogoDia" ColumnName="FK_CatalogoDia" />
+          <ScalarProperty Name="FK_Canton" ColumnName="FK_Canton" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UbicacionPuesto">
+      <EntityTypeMapping TypeName="SIRHModel.UbicacionPuesto">
+        <MappingFragment StoreEntitySet="UbicacionPuesto">
+          <ScalarProperty Name="PK_UbicacionPuesto" ColumnName="PK_UbicacionPuesto" />
+          <ScalarProperty Name="FK_TipoUbicacion" ColumnName="FK_TipoUbicacion" />
+          <ScalarProperty Name="FK_Distrito" ColumnName="FK_Distrito" />
+          <ScalarProperty Name="ObsUbicacionPuesto" ColumnName="ObsUbicacionPuesto" />
+          <ScalarProperty Name="IndEstadoUbicacionPuesto" ColumnName="IndEstadoUbicacionPuesto" />
+          <ScalarProperty Name="FecCambioUbicacion" ColumnName="FecCambioUbicacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuario">
+      <EntityTypeMapping TypeName="SIRHModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="PK_Usuario" ColumnName="PK_Usuario" />
+          <ScalarProperty Name="NomUsuario" ColumnName="NomUsuario" />
+          <ScalarProperty Name="TelOficial" ColumnName="TelOficial" />
+          <ScalarProperty Name="EmlOficial" ColumnName="EmlOficial" />
+          <ScalarProperty Name="IndEstadoUsuario" ColumnName="IndEstadoUsuario" />
+          <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ViaticoCorrido">
+      <EntityTypeMapping TypeName="SIRHModel.ViaticoCorrido">
+        <MappingFragment StoreEntitySet="ViaticoCorrido">
+          <ScalarProperty Name="ImgDocumento" ColumnName="ImgDocumento" />
+          <ScalarProperty Name="IndCabinas" ColumnName="IndCabinas" />
+          <ScalarProperty Name="PK_ViaticoCorrido" ColumnName="PK_ViaticoCorrido" />
+          <ScalarProperty Name="FK_Nombramiento" ColumnName="FK_Nombramiento" />
+          <ScalarProperty Name="FK_EstadoViaticoCorrido" ColumnName="FK_EstadoViaticoCorrido" />
+          <ScalarProperty Name="FK_Presupuesto" ColumnName="FK_Presupuesto" />
+          <ScalarProperty Name="MontViaticoCorrido" ColumnName="MontViaticoCorrido" />
+          <ScalarProperty Name="ObsViaticoCorrido" ColumnName="ObsViaticoCorrido" />
+          <ScalarProperty Name="FecInicViaticoCorrido" ColumnName="FecInicViaticoCorrido" />
+          <ScalarProperty Name="FecFinViaticoCorrido" ColumnName="FecFinViaticoCorrido" />
+          <ScalarProperty Name="DesSeñas" ColumnName="DesSeñas" />
+          <ScalarProperty Name="NumTelDomicilio" ColumnName="NumTelDomicilio" />
+          <ScalarProperty Name="FK_Distrito" ColumnName="FK_Distrito" />
+          <ScalarProperty Name="ObsLugarPernocte" ColumnName="ObsLugarPernocte" />
+          <ScalarProperty Name="ObsLugarHospedaje" ColumnName="ObsLugarHospedaje" />
+          <ScalarProperty Name="FecRegistro" ColumnName="FecRegistro" />
+          <ScalarProperty Name="FecContrato" ColumnName="FecContrato" />
+          <ScalarProperty Name="NumDocumento" ColumnName="NumDocumento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ViaticoCorridoReintegroDias">
+      <EntityTypeMapping TypeName="SIRHModel.ViaticoCorridoReintegroDias">
+        <MappingFragment StoreEntitySet="ViaticoCorridoReintegroDias">
+          <ScalarProperty Name="PK_Reintegro" ColumnName="PK_Reintegro" />
+          <ScalarProperty Name="FK_ViaticoCorrido" ColumnName="FK_ViaticoCorrido" />
+          <ScalarProperty Name="FecDia" ColumnName="FecDia" />
+          <ScalarProperty Name="MonReintegro" ColumnName="MonReintegro" />
+          <ScalarProperty Name="ObsMotivo" ColumnName="ObsMotivo" />
+          <ScalarProperty Name="IndEstado" ColumnName="IndEstado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C_Componentes">
+      <EntityTypeMapping TypeName="SIRHModel.C_Componentes">
+        <MappingFragment StoreEntitySet="_Componentes">
+          <ScalarProperty Name="rubro" ColumnName="rubro" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C_EMU_EXFUNCIONARIOS">
+      <EntityTypeMapping TypeName="SIRHModel.C_EMU_EXFUNCIONARIOS">
+        <MappingFragment StoreEntitySet="_EMU_EXFUNCIONARIOS">
+          <ScalarProperty Name="ISN_ADPEF03M" ColumnName="ISN_ADPEF03M" />
+          <ScalarProperty Name="ULTIMO_PERIODO" ColumnName="ULTIMO_PERIODO" />
+          <ScalarProperty Name="ESTADO_FUNC" ColumnName="ESTADO_FUNC" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="CEDULA" ColumnName="CEDULA" />
+          <ScalarProperty Name="PRIMER_APELLIDO" ColumnName="PRIMER_APELLIDO" />
+          <ScalarProperty Name="SEGUNDO_APELLIDO" ColumnName="SEGUNDO_APELLIDO" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="PUESTO_PROPIEDAD" ColumnName="PUESTO_PROPIEDAD" />
+          <ScalarProperty Name="PROGRAMA" ColumnName="PROGRAMA" />
+          <ScalarProperty Name="PROVINCIA_D" ColumnName="PROVINCIA_D" />
+          <ScalarProperty Name="CANTON_D" ColumnName="CANTON_D" />
+          <ScalarProperty Name="DISTRITO" ColumnName="DISTRITO" />
+          <ScalarProperty Name="PROVINCIA_C" ColumnName="PROVINCIA_C" />
+          <ScalarProperty Name="CANTON_C" ColumnName="CANTON_C" />
+          <ScalarProperty Name="DISTRITO_C" ColumnName="DISTRITO_C" />
+          <ScalarProperty Name="SENAS" ColumnName="SENAS" />
+          <ScalarProperty Name="PROVINCIA_T" ColumnName="PROVINCIA_T" />
+          <ScalarProperty Name="CANTON_T" ColumnName="CANTON_T" />
+          <ScalarProperty Name="DISTRITO_T" ColumnName="DISTRITO_T" />
+          <ScalarProperty Name="TITULO_P" ColumnName="TITULO_P" />
+          <ScalarProperty Name="FILLER_P" ColumnName="FILLER_P" />
+          <ScalarProperty Name="DIRECCION_P" ColumnName="DIRECCION_P" />
+          <ScalarProperty Name="CLASE_PUESTO" ColumnName="CLASE_PUESTO" />
+          <ScalarProperty Name="UBIC_REAL" ColumnName="UBIC_REAL" />
+          <ScalarProperty Name="FECHA_INGRESO" ColumnName="FECHA_INGRESO" />
+          <ScalarProperty Name="FECHA_CESE" ColumnName="FECHA_CESE" />
+          <ScalarProperty Name="FECHA_CUMPLE" ColumnName="FECHA_CUMPLE" />
+          <ScalarProperty Name="SEXO" ColumnName="SEXO" />
+          <ScalarProperty Name="ESTADO_CIVIL" ColumnName="ESTADO_CIVIL" />
+          <ScalarProperty Name="DIVISION" ColumnName="DIVISION" />
+          <ScalarProperty Name="SUBDIVISION" ColumnName="SUBDIVISION" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+          <ScalarProperty Name="DEPARTAMENTO" ColumnName="DEPARTAMENTO" />
+          <ScalarProperty Name="SECCION" ColumnName="SECCION" />
+          <ScalarProperty Name="MES_AUMENTO" ColumnName="MES_AUMENTO" />
+          <ScalarProperty Name="OCUP_REAL" ColumnName="OCUP_REAL" />
+          <ScalarProperty Name="CATEGORIA" ColumnName="CATEGORIA" />
+          <ScalarProperty Name="SAL_MENSUAL" ColumnName="SAL_MENSUAL" />
+          <ScalarProperty Name="PORC_PROH" ColumnName="PORC_PROH" />
+          <ScalarProperty Name="PUNTOS" ColumnName="PUNTOS" />
+          <ScalarProperty Name="NUMERO_EXPEDIENTE" ColumnName="NUMERO_EXPEDIENTE" />
+          <ScalarProperty Name="NIVEL_OCUPACIONAL" ColumnName="NIVEL_OCUPACIONAL" />
+          <ScalarProperty Name="DESARRAIGO" ColumnName="DESARRAIGO" />
+          <ScalarProperty Name="ANO_VACA" ColumnName="ANO_VACA" />
+          <ScalarProperty Name="MES_VACA" ColumnName="MES_VACA" />
+          <ScalarProperty Name="DIA_VACA" ColumnName="DIA_VACA" />
+          <ScalarProperty Name="CODIGO_INSPECTORES" ColumnName="CODIGO_INSPECTORES" />
+          <ScalarProperty Name="PASOS_DISF" ColumnName="PASOS_DISF" />
+          <ScalarProperty Name="FECHA_POLICIAL" ColumnName="FECHA_POLICIAL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C_EMU_HistoricoPlanilla">
+      <EntityTypeMapping TypeName="SIRHModel.C_EMU_HistoricoPlanilla">
+        <MappingFragment StoreEntitySet="_EMU_HistoricoPlanilla">
+          <ScalarProperty Name="cedula" ColumnName="cedula" />
+          <ScalarProperty Name="codigo_presupuestario" ColumnName="codigo_presupuestario" />
+          <ScalarProperty Name="categoria" ColumnName="categoria" />
+          <ScalarProperty Name="numero_puesto" ColumnName="numero_puesto" />
+          <ScalarProperty Name="clase_puesto" ColumnName="clase_puesto" />
+          <ScalarProperty Name="disfrutado" ColumnName="disfrutado" />
+          <ScalarProperty Name="codigo_pension" ColumnName="codigo_pension" />
+          <ScalarProperty Name="base" ColumnName="base" />
+          <ScalarProperty Name="aumentos" ColumnName="aumentos" />
+          <ScalarProperty Name="grupo" ColumnName="grupo" />
+          <ScalarProperty Name="sobresueldos" ColumnName="sobresueldos" />
+          <ScalarProperty Name="prohibicion" ColumnName="prohibicion" />
+          <ScalarProperty Name="sal_mensual" ColumnName="sal_mensual" />
+          <ScalarProperty Name="tot_salario" ColumnName="tot_salario" />
+          <ScalarProperty Name="ruta" ColumnName="ruta" />
+          <ScalarProperty Name="fecha_corrida" ColumnName="fecha_corrida" />
+          <ScalarProperty Name="fecha_periodo" ColumnName="fecha_periodo" />
+          <ScalarProperty Name="cedula_nueva" ColumnName="cedula_nueva" />
+          <ScalarProperty Name="cant_puntos" ColumnName="cant_puntos" />
+          <ScalarProperty Name="porc_dedicacion_exclusiva" ColumnName="porc_dedicacion_exclusiva" />
+          <ScalarProperty Name="porc_peligrosidad" ColumnName="porc_peligrosidad" />
+          <ScalarProperty Name="porc_prohibicion" ColumnName="porc_prohibicion" />
+          <ScalarProperty Name="porc_quinquenio" ColumnName="porc_quinquenio" />
+          <ScalarProperty Name="porc_disponibilidad" ColumnName="porc_disponibilidad" />
+          <ScalarProperty Name="porc_grado_academico" ColumnName="porc_grado_academico" />
+          <ScalarProperty Name="porc_riesgo_policial" ColumnName="porc_riesgo_policial" />
+          <ScalarProperty Name="porc_curso_basico" ColumnName="porc_curso_basico" />
+          <ScalarProperty Name="porc_instruccion_policial" ColumnName="porc_instruccion_policial" />
+          <ScalarProperty Name="porc_bonificacion" ColumnName="porc_bonificacion" />
+          <ScalarProperty Name="porc_consulta_externa" ColumnName="porc_consulta_externa" />
+          <ScalarProperty Name="dedicacion_exclusiva" ColumnName="dedicacion_exclusiva" />
+          <ScalarProperty Name="peligrosidad" ColumnName="peligrosidad" />
+          <ScalarProperty Name="quinquenio" ColumnName="quinquenio" />
+          <ScalarProperty Name="disponibilidad" ColumnName="disponibilidad" />
+          <ScalarProperty Name="grado_academico" ColumnName="grado_academico" />
+          <ScalarProperty Name="riesgo_policial" ColumnName="riesgo_policial" />
+          <ScalarProperty Name="curso_basico" ColumnName="curso_basico" />
+          <ScalarProperty Name="instruccion_policial" ColumnName="instruccion_policial" />
+          <ScalarProperty Name="bonificacion" ColumnName="bonificacion" />
+          <ScalarProperty Name="consulta_externa" ColumnName="consulta_externa" />
+          <ScalarProperty Name="desarraigo" ColumnName="desarraigo" />
+          <ScalarProperty Name="otros_incentivos" ColumnName="otros_incentivos" />
+          <ScalarProperty Name="division" ColumnName="division" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="departamento" ColumnName="departamento" />
+          <ScalarProperty Name="seccion" ColumnName="seccion" />
+          <ScalarProperty Name="programa" ColumnName="programa" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C_InicioPlanilla">
+      <EntityTypeMapping TypeName="SIRHModel.C_InicioPlanilla">
+        <MappingFragment StoreEntitySet="_InicioPlanilla">
+          <ScalarProperty Name="cedula" ColumnName="cedula" />
+          <ScalarProperty Name="codigo_presupuestario" ColumnName="codigo_presupuestario" />
+          <ScalarProperty Name="categoria" ColumnName="categoria" />
+          <ScalarProperty Name="numero_puesto" ColumnName="numero_puesto" />
+          <ScalarProperty Name="clase_puesto" ColumnName="clase_puesto" />
+          <ScalarProperty Name="disfrutado" ColumnName="disfrutado" />
+          <ScalarProperty Name="codigo_pension" ColumnName="codigo_pension" />
+          <ScalarProperty Name="base" ColumnName="base" />
+          <ScalarProperty Name="aumentos" ColumnName="aumentos" />
+          <ScalarProperty Name="grupo" ColumnName="grupo" />
+          <ScalarProperty Name="sobresueldos" ColumnName="sobresueldos" />
+          <ScalarProperty Name="prohibicion" ColumnName="prohibicion" />
+          <ScalarProperty Name="sal_mensual" ColumnName="sal_mensual" />
+          <ScalarProperty Name="tot_salario" ColumnName="tot_salario" />
+          <ScalarProperty Name="ruta" ColumnName="ruta" />
+          <ScalarProperty Name="fecha_corrida" ColumnName="fecha_corrida" />
+          <ScalarProperty Name="fecha_periodo" ColumnName="fecha_periodo" />
+          <ScalarProperty Name="cedula_nueva" ColumnName="cedula_nueva" />
+          <ScalarProperty Name="cant_puntos" ColumnName="cant_puntos" />
+          <ScalarProperty Name="porc_dedicacion_exclusiva" ColumnName="porc_dedicacion_exclusiva" />
+          <ScalarProperty Name="porc_peligrosidad" ColumnName="porc_peligrosidad" />
+          <ScalarProperty Name="porc_prohibicion" ColumnName="porc_prohibicion" />
+          <ScalarProperty Name="porc_quinquenio" ColumnName="porc_quinquenio" />
+          <ScalarProperty Name="porc_disponibilidad" ColumnName="porc_disponibilidad" />
+          <ScalarProperty Name="porc_grado_academico" ColumnName="porc_grado_academico" />
+          <ScalarProperty Name="porc_riesgo_policial" ColumnName="porc_riesgo_policial" />
+          <ScalarProperty Name="porc_curso_basico" ColumnName="porc_curso_basico" />
+          <ScalarProperty Name="porc_instruccion_policial" ColumnName="porc_instruccion_policial" />
+          <ScalarProperty Name="porc_bonificacion" ColumnName="porc_bonificacion" />
+          <ScalarProperty Name="porc_consulta_externa" ColumnName="porc_consulta_externa" />
+          <ScalarProperty Name="dedicacion_exclusiva" ColumnName="dedicacion_exclusiva" />
+          <ScalarProperty Name="peligrosidad" ColumnName="peligrosidad" />
+          <ScalarProperty Name="quinquenio" ColumnName="quinquenio" />
+          <ScalarProperty Name="disponibilidad" ColumnName="disponibilidad" />
+          <ScalarProperty Name="grado_academico" ColumnName="grado_academico" />
+          <ScalarProperty Name="riesgo_policial" ColumnName="riesgo_policial" />
+          <ScalarProperty Name="curso_basico" ColumnName="curso_basico" />
+          <ScalarProperty Name="instruccion_policial" ColumnName="instruccion_policial" />
+          <ScalarProperty Name="bonificacion" ColumnName="bonificacion" />
+          <ScalarProperty Name="consulta_externa" ColumnName="consulta_externa" />
+          <ScalarProperty Name="desarraigo" ColumnName="desarraigo" />
+          <ScalarProperty Name="otros_incentivos" ColumnName="otros_incentivos" />
+          <ScalarProperty Name="division" ColumnName="division" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="departamento" ColumnName="departamento" />
+          <ScalarProperty Name="seccion" ColumnName="seccion" />
+          <ScalarProperty Name="programa" ColumnName="programa" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PK_Funcionario" ColumnName="PK_Funcionario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C_Planilla_Anterior">
+      <EntityTypeMapping TypeName="SIRHModel.C_Planilla_Anterior">
+        <MappingFragment StoreEntitySet="_Planilla_Anterior">
+          <ScalarProperty Name="cedula" ColumnName="cedula" />
+          <ScalarProperty Name="codigo_presupuestario" ColumnName="codigo_presupuestario" />
+          <ScalarProperty Name="categoria" ColumnName="categoria" />
+          <ScalarProperty Name="numero_puesto" ColumnName="numero_puesto" />
+          <ScalarProperty Name="clase_puesto" ColumnName="clase_puesto" />
+          <ScalarProperty Name="disfrutado" ColumnName="disfrutado" />
+          <ScalarProperty Name="codigo_pension" ColumnName="codigo_pension" />
+          <ScalarProperty Name="base" ColumnName="base" />
+          <ScalarProperty Name="aumentos" ColumnName="aumentos" />
+          <ScalarProperty Name="grupo" ColumnName="grupo" />
+          <ScalarProperty Name="sobresueldos" ColumnName="sobresueldos" />
+          <ScalarProperty Name="prohibicion" ColumnName="prohibicion" />
+          <ScalarProperty Name="sal_mensual" ColumnName="sal_mensual" />
+          <ScalarProperty Name="tot_salario" ColumnName="tot_salario" />
+          <ScalarProperty Name="ruta" ColumnName="ruta" />
+          <ScalarProperty Name="fecha_corrida" ColumnName="fecha_corrida" />
+          <ScalarProperty Name="fecha_periodo" ColumnName="fecha_periodo" />
+          <ScalarProperty Name="cedula_nueva" ColumnName="cedula_nueva" />
+          <ScalarProperty Name="cant_puntos" ColumnName="cant_puntos" />
+          <ScalarProperty Name="porc_dedicacion_exclusiva" ColumnName="porc_dedicacion_exclusiva" />
+          <ScalarProperty Name="porc_peligrosidad" ColumnName="porc_peligrosidad" />
+          <ScalarProperty Name="porc_prohibicion" ColumnName="porc_prohibicion" />
+          <ScalarProperty Name="porc_quinquenio" ColumnName="porc_quinquenio" />
+          <ScalarProperty Name="porc_disponibilidad" ColumnName="porc_disponibilidad" />
+          <ScalarProperty Name="porc_grado_academico" ColumnName="porc_grado_academico" />
+          <ScalarProperty Name="porc_riesgo_policial" ColumnName="porc_riesgo_policial" />
+          <ScalarProperty Name="porc_curso_basico" ColumnName="porc_curso_basico" />
+          <ScalarProperty Name="porc_instruccion_policial" ColumnName="porc_instruccion_policial" />
+          <ScalarProperty Name="porc_bonificacion" ColumnName="porc_bonificacion" />
+          <ScalarProperty Name="porc_consulta_externa" ColumnName="porc_consulta_externa" />
+          <ScalarProperty Name="dedicacion_exclusiva" ColumnName="dedicacion_exclusiva" />
+          <ScalarProperty Name="peligrosidad" ColumnName="peligrosidad" />
+          <ScalarProperty Name="quinquenio" ColumnName="quinquenio" />
+          <ScalarProperty Name="disponibilidad" ColumnName="disponibilidad" />
+          <ScalarProperty Name="grado_academico" ColumnName="grado_academico" />
+          <ScalarProperty Name="riesgo_policial" ColumnName="riesgo_policial" />
+          <ScalarProperty Name="curso_basico" ColumnName="curso_basico" />
+          <ScalarProperty Name="instruccion_policial" ColumnName="instruccion_policial" />
+          <ScalarProperty Name="bonificacion" ColumnName="bonificacion" />
+          <ScalarProperty Name="consulta_externa" ColumnName="consulta_externa" />
+          <ScalarProperty Name="desarraigo" ColumnName="desarraigo" />
+          <ScalarProperty Name="otros_incentivos" ColumnName="otros_incentivos" />
+          <ScalarProperty Name="division" ColumnName="division" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="departamento" ColumnName="departamento" />
+          <ScalarProperty Name="seccion" ColumnName="seccion" />
+          <ScalarProperty Name="programa" ColumnName="programa" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C_planillacargar">
+      <EntityTypeMapping TypeName="SIRHModel.C_planillacargar">
+        <MappingFragment StoreEntitySet="_planillacargar">
+          <ScalarProperty Name="idnuevo" ColumnName="idnuevo" />
+          <ScalarProperty Name="cedula" ColumnName="cedula" />
+          <ScalarProperty Name="codigo_presupuestario" ColumnName="codigo_presupuestario" />
+          <ScalarProperty Name="categoria" ColumnName="categoria" />
+          <ScalarProperty Name="numero_puesto" ColumnName="numero_puesto" />
+          <ScalarProperty Name="clase_puesto" ColumnName="clase_puesto" />
+          <ScalarProperty Name="disfrutado" ColumnName="disfrutado" />
+          <ScalarProperty Name="codigo_pension" ColumnName="codigo_pension" />
+          <ScalarProperty Name="base" ColumnName="base" />
+          <ScalarProperty Name="aumentos" ColumnName="aumentos" />
+          <ScalarProperty Name="grupo" ColumnName="grupo" />
+          <ScalarProperty Name="sobresueldos" ColumnName="sobresueldos" />
+          <ScalarProperty Name="prohibicion" ColumnName="prohibicion" />
+          <ScalarProperty Name="sal_mensual" ColumnName="sal_mensual" />
+          <ScalarProperty Name="tot_salario" ColumnName="tot_salario" />
+          <ScalarProperty Name="ruta" ColumnName="ruta" />
+          <ScalarProperty Name="fecha_corrida" ColumnName="fecha_corrida" />
+          <ScalarProperty Name="fecha_periodo" ColumnName="fecha_periodo" />
+          <ScalarProperty Name="cedula_nueva" ColumnName="cedula_nueva" />
+          <ScalarProperty Name="cant_puntos" ColumnName="cant_puntos" />
+          <ScalarProperty Name="porc_dedicacion_exclusiva" ColumnName="porc_dedicacion_exclusiva" />
+          <ScalarProperty Name="porc_peligrosidad" ColumnName="porc_peligrosidad" />
+          <ScalarProperty Name="porc_prohibicion" ColumnName="porc_prohibicion" />
+          <ScalarProperty Name="porc_quinquenio" ColumnName="porc_quinquenio" />
+          <ScalarProperty Name="porc_disponibilidad" ColumnName="porc_disponibilidad" />
+          <ScalarProperty Name="porc_grado_academico" ColumnName="porc_grado_academico" />
+          <ScalarProperty Name="porc_riesgo_policial" ColumnName="porc_riesgo_policial" />
+          <ScalarProperty Name="porc_curso_basico" ColumnName="porc_curso_basico" />
+          <ScalarProperty Name="porc_instruccion_policial" ColumnName="porc_instruccion_policial" />
+          <ScalarProperty Name="porc_bonificacion" ColumnName="porc_bonificacion" />
+          <ScalarProperty Name="porc_consulta_externa" ColumnName="porc_consulta_externa" />
+          <ScalarProperty Name="dedicacion_exclusiva" ColumnName="dedicacion_exclusiva" />
+          <ScalarProperty Name="peligrosidad" ColumnName="peligrosidad" />
+          <ScalarProperty Name="quinquenio" ColumnName="quinquenio" />
+          <ScalarProperty Name="disponibilidad" ColumnName="disponibilidad" />
+          <ScalarProperty Name="grado_academico" ColumnName="grado_academico" />
+          <ScalarProperty Name="riesgo_policial" ColumnName="riesgo_policial" />
+          <ScalarProperty Name="curso_basico" ColumnName="curso_basico" />
+          <ScalarProperty Name="instruccion_policial" ColumnName="instruccion_policial" />
+          <ScalarProperty Name="bonificacion" ColumnName="bonificacion" />
+          <ScalarProperty Name="consulta_externa" ColumnName="consulta_externa" />
+          <ScalarProperty Name="desarraigo" ColumnName="desarraigo" />
+          <ScalarProperty Name="otros_incentivos" ColumnName="otros_incentivos" />
+          <ScalarProperty Name="division" ColumnName="division" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="departamento" ColumnName="departamento" />
+          <ScalarProperty Name="seccion" ColumnName="seccion" />
+          <ScalarProperty Name="programa" ColumnName="programa" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PK_Funcionario" ColumnName="PK_Funcionario" />
+          <ScalarProperty Name="PK_Nombramiento" ColumnName="PK_Nombramiento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DecretoComponentePresupuestario">
+      <EntityTypeMapping TypeName="SIRHModel.DecretoComponentePresupuestario">
+        <MappingFragment StoreEntitySet="DecretoComponentePresupuestario">
+          <ScalarProperty Name="FK_Decreto" ColumnName="FK_Decreto" />
+          <ScalarProperty Name="FK_ComponentePresupuestario" ColumnName="FK_ComponentePresupuestario" />
+          <ScalarProperty Name="TipCambio" ColumnName="TipCambio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mes">
+      <EntityTypeMapping TypeName="SIRHModel.Mes">
+        <MappingFragment StoreEntitySet="Mes">
+          <ScalarProperty Name="PK_Mes" ColumnName="PK_Mes" />
+          <ScalarProperty Name="NomMes" ColumnName="NomMes" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SeleccionarObjectID" FunctionName="SIRHModel.Store.SeleccionarObjectID" />
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="SIRHModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="SIRHModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="SIRHModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="SIRHModel.Store.sp_helpdiagramdefinition" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="SIRHModel.Store.sp_helpdiagrams" />
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="SIRHModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="SIRHModel.Store.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="USP_ACCION_PERSONAL_AUTOMATICA" FunctionName="SIRHModel.Store.USP_ACCION_PERSONAL_AUTOMATICA" />
+    <FunctionImportMapping FunctionImportName="USP_ANULAR_ACCION_PERSONAL" FunctionName="SIRHModel.Store.USP_ANULAR_ACCION_PERSONAL" />
+    <FunctionImportMapping FunctionImportName="USP_GENERAR_LISTA_CALIFICACION_FUNCIONARIOS" FunctionName="SIRHModel.Store.USP_GENERAR_LISTA_CALIFICACION_FUNCIONARIOS" />
+    <FunctionImportMapping FunctionImportName="USP_GENERAR_LISTA_CALIFICACION_REGLA_TECNICA" FunctionName="SIRHModel.Store.USP_GENERAR_LISTA_CALIFICACION_REGLA_TECNICA" />
+    <FunctionImportMapping FunctionImportName="USP_GENERAR_PLANILLA" FunctionName="SIRHModel.Store.USP_GENERAR_PLANILLA" />
+    <FunctionImportMapping FunctionImportName="USP_INSERTAR_ACCION_PERSONAL" FunctionName="SIRHModel.Store.USP_INSERTAR_ACCION_PERSONAL" />
+    <FunctionImportMapping FunctionImportName="USP_INSERTAR_ACCION_PERSONAL_DETALLE" FunctionName="SIRHModel.Store.USP_INSERTAR_ACCION_PERSONAL_DETALLE" />
+    <FunctionImportMapping FunctionImportName="USP_LISTAR_FUNCIONARIOS_CALIFICACION" FunctionName="SIRHModel.Store.USP_LISTAR_FUNCIONARIOS_CALIFICACION">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SIRHModel.USP_LISTAR_FUNCIONARIOS_CALIFICACION_Result">
+          <ScalarProperty Name="PK_CalificacionNombramiento" ColumnName="PK_CalificacionNombramiento" />
+          <ScalarProperty Name="FK_PeriodoCalificacion" ColumnName="FK_PeriodoCalificacion" />
+          <ScalarProperty Name="FK_Nombramiento" ColumnName="FK_Nombramiento" />
+          <ScalarProperty Name="FK_Puesto" ColumnName="FK_Puesto" />
+          <ScalarProperty Name="FK_Funcionario" ColumnName="FK_Funcionario" />
+          <ScalarProperty Name="FecRige" ColumnName="FecRige" />
+          <ScalarProperty Name="FecVence" ColumnName="FecVence" />
+          <ScalarProperty Name="FK_Seccion" ColumnName="FK_Seccion" />
+          <ScalarProperty Name="FK_Departamento" ColumnName="FK_Departamento" />
+          <ScalarProperty Name="FK_DireccionGeneral" ColumnName="FK_DireccionGeneral" />
+          <ScalarProperty Name="FK_Division" ColumnName="FK_Division" />
+          <ScalarProperty Name="FK_OcupacionReal" ColumnName="FK_OcupacionReal" />
+          <ScalarProperty Name="IdJefeInmediato" ColumnName="IdJefeInmediato" />
+          <ScalarProperty Name="IdJefeSuperior" ColumnName="IdJefeSuperior" />
+          <ScalarProperty Name="NumTipo" ColumnName="NumTipo" />
+          <ScalarProperty Name="ObsNoCalificacion" ColumnName="ObsNoCalificacion" />
+          <ScalarProperty Name="IdCedulaFuncionario" ColumnName="IdCedulaFuncionario" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="IdCedulaJefeInmediato" ColumnName="IdCedulaJefeInmediato" />
+          <ScalarProperty Name="NombreJefeInmediato" ColumnName="NombreJefeInmediato" />
+          <ScalarProperty Name="IdCedulaJefeSuperior" ColumnName="IdCedulaJefeSuperior" />
+          <ScalarProperty Name="NombreJefeSuperior" ColumnName="NombreJefeSuperior" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_LISTAR_FUNCIONARIOS_CALIFICACION_JEFATURA" FunctionName="SIRHModel.Store.USP_LISTAR_FUNCIONARIOS_CALIFICACION_JEFATURA" />
+    <FunctionImportMapping FunctionImportName="USP_LISTAR_FUNCIONARIOS_JEFATURA" FunctionName="SIRHModel.Store.USP_LISTAR_FUNCIONARIOS_JEFATURA">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SIRHModel.USP_LISTAR_FUNCIONARIOS_JEFATURA_Result">
+          <ScalarProperty Name="PK_Funcionario" ColumnName="PK_Funcionario" />
+          <ScalarProperty Name="IdCedulaFuncionario" ColumnName="IdCedulaFuncionario" />
+          <ScalarProperty Name="NomFuncionario" ColumnName="NomFuncionario" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_OBTENER_ACCION_PERSONAL_PRORROGA" FunctionName="SIRHModel.Store.USP_OBTENER_ACCION_PERSONAL_PRORROGA">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SIRHModel.USP_OBTENER_ACCION_PERSONAL_PRORROGA_Result">
+          <ScalarProperty Name="PK_AccionPersonal" ColumnName="PK_AccionPersonal" />
+          <ScalarProperty Name="NumAccion" ColumnName="NumAccion" />
+          <ScalarProperty Name="CodObjetoEntidad" ColumnName="CodObjetoEntidad" />
+          <ScalarProperty Name="FecRige" ColumnName="FecRige" />
+          <ScalarProperty Name="FecVence" ColumnName="FecVence" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_OBTENER_DATOS_CALIFICACION" FunctionName="SIRHModel.Store.USP_OBTENER_DATOS_CALIFICACION">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SIRHModel.USP_OBTENER_DATOS_CALIFICACION_Result">
+          <ScalarProperty Name="Periodo" ColumnName="Periodo" />
+          <ScalarProperty Name="Institucion" ColumnName="Institucion" />
+          <ScalarProperty Name="TotalPuestos" ColumnName="TotalPuestos" />
+          <ScalarProperty Name="TotalPropiedad" ColumnName="TotalPropiedad" />
+          <ScalarProperty Name="TotalInterino" ColumnName="TotalInterino" />
+          <ScalarProperty Name="FueraRSC" ColumnName="FueraRSC" />
+          <ScalarProperty Name="PuestosExcluidos" ColumnName="PuestosExcluidos" />
+          <ScalarProperty Name="PuestosConfianza" ColumnName="PuestosConfianza" />
+          <ScalarProperty Name="PuestosExceptuados" ColumnName="PuestosExceptuados" />
+          <ScalarProperty Name="PuestosOposicion" ColumnName="PuestosOposicion" />
+          <ScalarProperty Name="PuestosOtros" ColumnName="PuestosOtros" />
+          <ScalarProperty Name="Evaluados" ColumnName="Evaluados" />
+          <ScalarProperty Name="NoEvaluados" ColumnName="NoEvaluados" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_OBTENER_JEFATURA_FUNCIONARIO" FunctionName="SIRHModel.Store.USP_OBTENER_JEFATURA_FUNCIONARIO">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SIRHModel.USP_OBTENER_JEFATURA_FUNCIONARIO_Result">
+          <ScalarProperty Name="PK_JefeInmediato" ColumnName="PK_JefeInmediato" />
+          <ScalarProperty Name="IdCedulaJefeInmediato" ColumnName="IdCedulaJefeInmediato" />
+          <ScalarProperty Name="NombreJefeInmediato" ColumnName="NombreJefeInmediato" />
+          <ScalarProperty Name="PK_Jefe" ColumnName="PK_Jefe" />
+          <ScalarProperty Name="IdCedulaJefeSuperior" ColumnName="IdCedulaJefeSuperior" />
+          <ScalarProperty Name="NombreJefeSuperior" ColumnName="NombreJefeSuperior" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_OBTENER_RESULTADOS_CALIFICACION" FunctionName="SIRHModel.Store.USP_OBTENER_RESULTADOS_CALIFICACION">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SIRHModel.USP_OBTENER_RESULTADOS_CALIFICACION_Result">
+          <ScalarProperty Name="IndFormulario" ColumnName="IndFormulario" />
+          <ScalarProperty Name="Estratos" ColumnName="Estratos" />
+          <ScalarProperty Name="Excelente" ColumnName="Excelente" />
+          <ScalarProperty Name="PorExc" ColumnName="PorExc" />
+          <ScalarProperty Name="MuyBueno" ColumnName="MuyBueno" />
+          <ScalarProperty Name="PorMB" ColumnName="PorMB" />
+          <ScalarProperty Name="Bueno" ColumnName="Bueno" />
+          <ScalarProperty Name="PorBue" ColumnName="PorBue" />
+          <ScalarProperty Name="Regular" ColumnName="Regular" />
+          <ScalarProperty Name="PorReg" ColumnName="PorReg" />
+          <ScalarProperty Name="Deficiente" ColumnName="Deficiente" />
+          <ScalarProperty Name="PorDef" ColumnName="PorDef" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_VALIDAR_FECHA_RIGE" FunctionName="SIRHModel.Store.USP_VALIDAR_FECHA_RIGE" />
+    <EntitySetMapping Name="CatDiaViaticoGasto">
+      <EntityTypeMapping TypeName="SIRHModel.CatDiaViaticoGasto">
+        <MappingFragment StoreEntitySet="CatDiaViaticoGasto">
+          <ScalarProperty Name="IndGasto" ColumnName="IndGasto" />
+          <ScalarProperty Name="IndViatico" ColumnName="IndViatico" />
+          <ScalarProperty Name="IndRebajo" ColumnName="IndRebajo" />
+          <ScalarProperty Name="FecDia" ColumnName="FecDia" />
+          <ScalarProperty Name="DesDia" ColumnName="DesDia" />
+          <ScalarProperty Name="FK_TipoDia" ColumnName="FK_TipoDia" />
+          <ScalarProperty Name="PK_CatalogoDia" ColumnName="PK_CatalogoDia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoDeduccionTemporal">
+      <EntityTypeMapping TypeName="SIRHModel.TipoDeduccionTemporal">
+        <MappingFragment StoreEntitySet="TipoDeduccionTemporal">
+          <ScalarProperty Name="IndConSalario" ColumnName="IndConSalario" />
+          <ScalarProperty Name="IndEstado" ColumnName="IndEstado" />
+          <ScalarProperty Name="DesTipoDeduccionTemporal" ColumnName="DesTipoDeduccionTemporal" />
+          <ScalarProperty Name="PK_TipoDeduccionTemporal" ColumnName="PK_TipoDeduccionTemporal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NotificacionUsuario">
+      <EntityTypeMapping TypeName="SIRHModel.NotificacionUsuario">
+        <MappingFragment StoreEntitySet="NotificacionUsuario">
+          <ScalarProperty Name="IndAsunto" ColumnName="IndAsunto" />
+          <ScalarProperty Name="FK_UsuarioDestino" ColumnName="FK_UsuarioDestino" />
+          <ScalarProperty Name="IndFuncionario" ColumnName="IndFuncionario" />
+          <ScalarProperty Name="CodModulo" ColumnName="CodModulo" />
+          <ScalarProperty Name="EmlDestino" ColumnName="EmlDestino" />
+          <ScalarProperty Name="DesContenido" ColumnName="DesContenido" />
+          <ScalarProperty Name="FecEnvio" ColumnName="FecEnvio" />
+          <ScalarProperty Name="FK_Usuario" ColumnName="FK_Usuario" />
+          <ScalarProperty Name="PK_NotificacionUsuario" ColumnName="PK_NotificacionUsuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleAccionPersonalAnterior">
+      <EntityTypeMapping TypeName="SIRHModel.DetalleAccionPersonalAnterior">
+        <MappingFragment StoreEntitySet="DetalleAccionPersonalAnterior">
+          <ScalarProperty Name="MtoComponenteAnt" ColumnName="MtoComponenteAnt" />
+          <ScalarProperty Name="MtoComponente" ColumnName="MtoComponente" />
+          <ScalarProperty Name="CodComponente" ColumnName="CodComponente" />
+          <ScalarProperty Name="NumAnualidadAcumuladaAnt" ColumnName="NumAnualidadAcumuladaAnt" />
+          <ScalarProperty Name="NumAnualidadAcumulada" ColumnName="NumAnualidadAcumulada" />
+          <ScalarProperty Name="NumAnualidadAnt" ColumnName="NumAnualidadAnt" />
+          <ScalarProperty Name="NumAnualidad" ColumnName="NumAnualidad" />
+          <ScalarProperty Name="CodUbicacionAdminitrativaAnt" ColumnName="CodUbicacionAdminitrativaAnt" />
+          <ScalarProperty Name="CodUbicacionAdminitrativa" ColumnName="CodUbicacionAdminitrativa" />
+          <ScalarProperty Name="CodDetallePuestoAnt" ColumnName="CodDetallePuestoAnt" />
+          <ScalarProperty Name="CodDetallePuesto" ColumnName="CodDetallePuesto" />
+          <ScalarProperty Name="CodNombramientoAnt" ColumnName="CodNombramientoAnt" />
+          <ScalarProperty Name="CodNombramiento" ColumnName="CodNombramiento" />
+          <ScalarProperty Name="FK_AccionPersonal" ColumnName="FK_AccionPersonal" />
+          <ScalarProperty Name="PK_Detalle" ColumnName="PK_Detalle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetallePrestacion">
+      <EntityTypeMapping TypeName="SIRHModel.DetallePrestacion">
+        <MappingFragment StoreEntitySet="DetallePrestacion">
+          <ScalarProperty Name="CntDiasVacaciones" ColumnName="CntDiasVacaciones" />
+          <ScalarProperty Name="CntDiasProporcionales" ColumnName="CntDiasProporcionales" />
+          <ScalarProperty Name="FK_Usuario" ColumnName="FK_Usuario" />
+          <ScalarProperty Name="DesPuestoJefatura" ColumnName="DesPuestoJefatura" />
+          <ScalarProperty Name="NomJefe" ColumnName="NomJefe" />
+          <ScalarProperty Name="FK_AccionCese" ColumnName="FK_AccionCese" />
+          <ScalarProperty Name="FK_AccionIngreso" ColumnName="FK_AccionIngreso" />
+          <ScalarProperty Name="FK_PrestacionLegal" ColumnName="FK_PrestacionLegal" />
+          <ScalarProperty Name="FK_Seccion" ColumnName="FK_Seccion" />
+          <ScalarProperty Name="FK_Departamento" ColumnName="FK_Departamento" />
+          <ScalarProperty Name="FK_DireccionGeneral" ColumnName="FK_DireccionGeneral" />
+          <ScalarProperty Name="FK_Division" ColumnName="FK_Division" />
+          <ScalarProperty Name="FK_Presupuesto" ColumnName="FK_Presupuesto" />
+          <ScalarProperty Name="PK_DetallePrestacion" ColumnName="PK_DetallePrestacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ActividadResultadoCargo">
+      <EntityTypeMapping TypeName="SIRHModel.ActividadResultadoCargo">
+        <MappingFragment StoreEntitySet="ActividadResultadoCargo">
+          <ScalarProperty Name="FK_ResultadoCargo" ColumnName="FK_ResultadoCargo" />
+          <ScalarProperty Name="DesActividadResultadoCargo" ColumnName="DesActividadResultadoCargo" />
+          <ScalarProperty Name="PK_ActividadResultadoCargo" ColumnName="PK_ActividadResultadoCargo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CalificacionCapacitacion">
+      <EntityTypeMapping TypeName="SIRHModel.CalificacionCapacitacion">
+        <MappingFragment StoreEntitySet="CalificacionCapacitacion">
+          <ScalarProperty Name="IndEstado" ColumnName="IndEstado" />
+          <ScalarProperty Name="DesLineaEstrategica" ColumnName="DesLineaEstrategica" />
+          <ScalarProperty Name="FK_TipoPP" ColumnName="FK_TipoPP" />
+          <ScalarProperty Name="DesObjetivos" ColumnName="DesObjetivos" />
+          <ScalarProperty Name="DesTemas" ColumnName="DesTemas" />
+          <ScalarProperty Name="DesCapacitacion" ColumnName="DesCapacitacion" />
+          <ScalarProperty Name="FK_CalificacionNombramiento" ColumnName="FK_CalificacionNombramiento" />
+          <ScalarProperty Name="PK_CalificacionCapacitacion" ColumnName="PK_CalificacionCapacitacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CalificacionObservaciones">
+      <EntityTypeMapping TypeName="SIRHModel.CalificacionObservaciones">
+        <MappingFragment StoreEntitySet="CalificacionObservaciones">
+          <ScalarProperty Name="FecRegistro" ColumnName="FecRegistro" />
+          <ScalarProperty Name="IndEstado" ColumnName="IndEstado" />
+          <ScalarProperty Name="DesObservacion" ColumnName="DesObservacion" />
+          <ScalarProperty Name="FK_CalificacionNombramiento" ColumnName="FK_CalificacionNombramiento" />
+          <ScalarProperty Name="PK_Observacion" ColumnName="PK_Observacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cargo">
+      <EntityTypeMapping TypeName="SIRHModel.Cargo">
+        <MappingFragment StoreEntitySet="Cargo">
+          <ScalarProperty Name="DesProposito" ColumnName="DesProposito" />
+          <ScalarProperty Name="IndJefaturaSuperiorInmediata" ColumnName="IndJefaturaSuperiorInmediata" />
+          <ScalarProperty Name="IndJefaturaInmediata" ColumnName="IndJefaturaInmediata" />
+          <ScalarProperty Name="NomCargo" ColumnName="NomCargo" />
+          <ScalarProperty Name="DesProcesoTrabajo" ColumnName="DesProcesoTrabajo" />
+          <ScalarProperty Name="IndSeccion" ColumnName="IndSeccion" />
+          <ScalarProperty Name="IndSubespecialidad" ColumnName="IndSubespecialidad" />
+          <ScalarProperty Name="IndEspecialidad" ColumnName="IndEspecialidad" />
+          <ScalarProperty Name="IndClase" ColumnName="IndClase" />
+          <ScalarProperty Name="PK_Cargo" ColumnName="PK_Cargo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CatOrdenMovimiento">
+      <EntityTypeMapping TypeName="SIRHModel.CatOrdenMovimiento">
+        <MappingFragment StoreEntitySet="CatOrdenMovimiento">
+          <ScalarProperty Name="NumConsecutivo" ColumnName="NumConsecutivo" />
+          <ScalarProperty Name="AnioRige" ColumnName="AnioRige" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CompetenciaTransversalCargo">
+      <EntityTypeMapping TypeName="SIRHModel.CompetenciaTransversalCargo">
+        <MappingFragment StoreEntitySet="CompetenciaTransversalCargo">
+          <ScalarProperty Name="FK_Cargo" ColumnName="FK_Cargo" />
+          <ScalarProperty Name="IntNivelDominio" ColumnName="IntNivelDominio" />
+          <ScalarProperty Name="IndTipoCompetencia" ColumnName="IndTipoCompetencia" />
+          <ScalarProperty Name="PK_CompetenciaTransversalCargo" ColumnName="PK_CompetenciaTransversalCargo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ComportamientoGrupoOcupacional">
+      <EntityTypeMapping TypeName="SIRHModel.ComportamientoGrupoOcupacional">
+        <MappingFragment StoreEntitySet="ComportamientoGrupoOcupacional">
+          <ScalarProperty Name="FK_CompetenciaGrupoOcupacional" ColumnName="FK_CompetenciaGrupoOcupacional" />
+          <ScalarProperty Name="DesComportamiento" ColumnName="DesComportamiento" />
+          <ScalarProperty Name="PK_ComportamientoGrupoOcupacional" ColumnName="PK_ComportamientoGrupoOcupacional" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ComportamientoTransversal">
+      <EntityTypeMapping TypeName="SIRHModel.ComportamientoTransversal">
+        <MappingFragment StoreEntitySet="ComportamientoTransversal">
+          <ScalarProperty Name="FK_CompetenciaTransversalCargo" ColumnName="FK_CompetenciaTransversalCargo" />
+          <ScalarProperty Name="DesComportamientoTransversal" ColumnName="DesComportamientoTransversal" />
+          <ScalarProperty Name="PK_ComportamientoTransversal" ColumnName="PK_ComportamientoTransversal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetallePrestacionAfiliacion">
+      <EntityTypeMapping TypeName="SIRHModel.DetallePrestacionAfiliacion">
+        <MappingFragment StoreEntitySet="DetallePrestacionAfiliacion">
+          <ScalarProperty Name="MtoAfiliacion" ColumnName="MtoAfiliacion" />
+          <ScalarProperty Name="DesAfiliacion" ColumnName="DesAfiliacion" />
+          <ScalarProperty Name="FK_Prestacion" ColumnName="FK_Prestacion" />
+          <ScalarProperty Name="PK_Detalle" ColumnName="PK_Detalle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetallePrestacionCuadro">
+      <EntityTypeMapping TypeName="SIRHModel.DetallePrestacionCuadro">
+        <MappingFragment StoreEntitySet="DetallePrestacionCuadro">
+          <ScalarProperty Name="MtoEscolar" ColumnName="MtoEscolar" />
+          <ScalarProperty Name="MtoTotal" ColumnName="MtoTotal" />
+          <ScalarProperty Name="MtoFeriados" ColumnName="MtoFeriados" />
+          <ScalarProperty Name="MtoExtras" ColumnName="MtoExtras" />
+          <ScalarProperty Name="MtoVacaciones" ColumnName="MtoVacaciones" />
+          <ScalarProperty Name="MtoSalario" ColumnName="MtoSalario" />
+          <ScalarProperty Name="FecPeriodo" ColumnName="FecPeriodo" />
+          <ScalarProperty Name="FK_Tipo" ColumnName="FK_Tipo" />
+          <ScalarProperty Name="FK_Prestacion" ColumnName="FK_Prestacion" />
+          <ScalarProperty Name="PK_DetalleCuadro" ColumnName="PK_DetalleCuadro" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EstadoOrdenMovimiento">
+      <EntityTypeMapping TypeName="SIRHModel.EstadoOrdenMovimiento">
+        <MappingFragment StoreEntitySet="EstadoOrdenMovimiento">
+          <ScalarProperty Name="DesEstado" ColumnName="DesEstado" />
+          <ScalarProperty Name="PK_Estado" ColumnName="PK_Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EvidenciaComportamientoTransversal">
+      <EntityTypeMapping TypeName="SIRHModel.EvidenciaComportamientoTransversal">
+        <MappingFragment StoreEntitySet="EvidenciaComportamientoTransversal">
+          <ScalarProperty Name="FK_ComportamientoTransversal" ColumnName="FK_ComportamientoTransversal" />
+          <ScalarProperty Name="DesEvidencia" ColumnName="DesEvidencia" />
+          <ScalarProperty Name="PK_EvidenciaComportamientoTransversal" ColumnName="PK_EvidenciaComportamientoTransversal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EvidenciaGrupoOcupacional">
+      <EntityTypeMapping TypeName="SIRHModel.EvidenciaGrupoOcupacional">
+        <MappingFragment StoreEntitySet="EvidenciaGrupoOcupacional">
+          <ScalarProperty Name="FK_ComportamientoGrupoOcupacional" ColumnName="FK_ComportamientoGrupoOcupacional" />
+          <ScalarProperty Name="DesEvidencia" ColumnName="DesEvidencia" />
+          <ScalarProperty Name="PK_EvidenciaGrupoOcupacional" ColumnName="PK_EvidenciaGrupoOcupacional" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FactorClasificacionCargo">
+      <EntityTypeMapping TypeName="SIRHModel.FactorClasificacionCargo">
+        <MappingFragment StoreEntitySet="FactorClasificacionCargo">
+          <ScalarProperty Name="FK_Cargo" ColumnName="FK_Cargo" />
+          <ScalarProperty Name="DesActivosEquiposInsumos" ColumnName="DesActivosEquiposInsumos" />
+          <ScalarProperty Name="DesRelacionesTrabajo" ColumnName="DesRelacionesTrabajo" />
+          <ScalarProperty Name="DesImpactoGestion" ColumnName="DesImpactoGestion" />
+          <ScalarProperty Name="DesModalidadTrabajo" ColumnName="DesModalidadTrabajo" />
+          <ScalarProperty Name="DesCondiciones" ColumnName="DesCondiciones" />
+          <ScalarProperty Name="DesAmbiente" ColumnName="DesAmbiente" />
+          <ScalarProperty Name="DesLugares" ColumnName="DesLugares" />
+          <ScalarProperty Name="DesSupervisionEjercida" ColumnName="DesSupervisionEjercida" />
+          <ScalarProperty Name="DesIndependencia" ColumnName="DesIndependencia" />
+          <ScalarProperty Name="PK_FactorClasificacion" ColumnName="PK_FactorClasificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrdenMovimientoDeclaracion">
+      <EntityTypeMapping TypeName="SIRHModel.OrdenMovimientoDeclaracion">
+        <MappingFragment StoreEntitySet="OrdenMovimientoDeclaracion">
+          <ScalarProperty Name="DesColegiatura" ColumnName="DesColegiatura" />
+          <ScalarProperty Name="DesLicencia" ColumnName="DesLicencia" />
+          <ScalarProperty Name="DesCapacitacion" ColumnName="DesCapacitacion" />
+          <ScalarProperty Name="DesExperiencia" ColumnName="DesExperiencia" />
+          <ScalarProperty Name="DesCondicionAcademica" ColumnName="DesCondicionAcademica" />
+          <ScalarProperty Name="FecDeclaracion" ColumnName="FecDeclaracion" />
+          <ScalarProperty Name="FK_OrdenMovimiento" ColumnName="FK_OrdenMovimiento" />
+          <ScalarProperty Name="PK_Declaracion" ColumnName="PK_Declaracion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RequerimientoEspecificoCargo">
+      <EntityTypeMapping TypeName="SIRHModel.RequerimientoEspecificoCargo">
+        <MappingFragment StoreEntitySet="RequerimientoEspecificoCargo">
+          <ScalarProperty Name="FK_Cargo" ColumnName="FK_Cargo" />
+          <ScalarProperty Name="DesConocimientos" ColumnName="DesConocimientos" />
+          <ScalarProperty Name="DesRequisitosEspecificos" ColumnName="DesRequisitosEspecificos" />
+          <ScalarProperty Name="PK_RequerimientoEspecificoCargo" ColumnName="PK_RequerimientoEspecificoCargo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ResultadoCargo">
+      <EntityTypeMapping TypeName="SIRHModel.ResultadoCargo">
+        <MappingFragment StoreEntitySet="ResultadoCargo">
+          <ScalarProperty Name="FK_Cargo" ColumnName="FK_Cargo" />
+          <ScalarProperty Name="DesResultadoCargo" ColumnName="DesResultadoCargo" />
+          <ScalarProperty Name="PK_ResultadoCargo" ColumnName="PK_ResultadoCargo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoPoliticaPublica">
+      <EntityTypeMapping TypeName="SIRHModel.TipoPoliticaPublica">
+        <MappingFragment StoreEntitySet="TipoPoliticaPublica">
+          <ScalarProperty Name="DesSiglas" ColumnName="DesSiglas" />
+          <ScalarProperty Name="DesTipoPP" ColumnName="DesTipoPP" />
+          <ScalarProperty Name="PK_TipoPP" ColumnName="PK_TipoPP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoPrestacionCuadro">
+      <EntityTypeMapping TypeName="SIRHModel.TipoPrestacionCuadro">
+        <MappingFragment StoreEntitySet="TipoPrestacionCuadro">
+          <ScalarProperty Name="DesPrestacion" ColumnName="DesPrestacion" />
+          <ScalarProperty Name="PK_TipoCuadro" ColumnName="PK_TipoCuadro" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CompetenciaGrupoOcupacional">
+      <EntityTypeMapping TypeName="SIRHModel.CompetenciaGrupoOcupacional">
+        <MappingFragment StoreEntitySet="CompetenciaGrupoOcupacional">
+          <ScalarProperty Name="FK_Cargo" ColumnName="FK_Cargo" />
+          <ScalarProperty Name="NomCompetencia" ColumnName="NomCompetencia" />
+          <ScalarProperty Name="IndNivel" ColumnName="IndNivel" />
+          <ScalarProperty Name="PK_CompetenciaGrupoOcupacional" ColumnName="PK_CompetenciaGrupoOcupacional" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ListaNombramientosActivos">
+      <EntityTypeMapping TypeName="SIRHModel.ListaNombramientosActivos">
+        <MappingFragment StoreEntitySet="ListaNombramientosActivos">
+          <ScalarProperty Name="IndPropiedad" ColumnName="IndPropiedad" />
+          <ScalarProperty Name="PK_DetallePuesto" ColumnName="PK_DetallePuesto" />
+          <ScalarProperty Name="PK_Division" ColumnName="PK_Division" />
+          <ScalarProperty Name="PK_Direccion" ColumnName="PK_Direccion" />
+          <ScalarProperty Name="PK_Departamento" ColumnName="PK_Departamento" />
+          <ScalarProperty Name="PK_Seccion" ColumnName="PK_Seccion" />
+          <ScalarProperty Name="PK_Funcionario" ColumnName="PK_Funcionario" />
+          <ScalarProperty Name="PK_Puesto" ColumnName="PK_Puesto" />
+          <ScalarProperty Name="PK_Nombramiento" ColumnName="PK_Nombramiento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="USP_LISTAR_NOMBRAMIENTOS_ACTIVOS" FunctionName="SIRHModel.Store.USP_LISTAR_NOMBRAMIENTOS_ACTIVOS" />
+    <EntitySetMapping Name="CalificacionEncargado">
+      <EntityTypeMapping TypeName="SIRHModel.CalificacionEncargado">
+        <MappingFragment StoreEntitySet="CalificacionEncargado">
+          <ScalarProperty Name="IndEstado" ColumnName="IndEstado" />
+          <ScalarProperty Name="FK_Funcionario" ColumnName="FK_Funcionario" />
+          <ScalarProperty Name="FK_Seccion" ColumnName="FK_Seccion" />
+          <ScalarProperty Name="PK_CalificacionEncargado" ColumnName="PK_CalificacionEncargado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CatMetaEstado">
+      <EntityTypeMapping TypeName="SIRHModel.CatMetaEstado">
+        <MappingFragment StoreEntitySet="CatMetaEstado">
+          <ScalarProperty Name="DesEstado" ColumnName="DesEstado" />
+          <ScalarProperty Name="PK_Estado" ColumnName="PK_Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CatMetaPrioridad">
+      <EntityTypeMapping TypeName="SIRHModel.CatMetaPrioridad">
+        <MappingFragment StoreEntitySet="CatMetaPrioridad">
+          <ScalarProperty Name="DesPrioridad" ColumnName="DesPrioridad" />
+          <ScalarProperty Name="PK_Prioridad" ColumnName="PK_Prioridad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MetaIndividualEvidencia">
+      <EntityTypeMapping TypeName="SIRHModel.MetaIndividualEvidencia">
+        <MappingFragment StoreEntitySet="MetaIndividualEvidencia">
+          <ScalarProperty Name="DesObservaciones" ColumnName="DesObservaciones" />
+          <ScalarProperty Name="DocAdjunto" ColumnName="DocAdjunto" />
+          <ScalarProperty Name="DesEnlace" ColumnName="DesEnlace" />
+          <ScalarProperty Name="FecRegistro" ColumnName="FecRegistro" />
+          <ScalarProperty Name="IndEstado" ColumnName="IndEstado" />
+          <ScalarProperty Name="DesEvidencia" ColumnName="DesEvidencia" />
+          <ScalarProperty Name="FK_Meta" ColumnName="FK_Meta" />
+          <ScalarProperty Name="PK_Evidencia" ColumnName="PK_Evidencia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MetaIndividualInforme">
+      <EntityTypeMapping TypeName="SIRHModel.MetaIndividualInforme">
+        <MappingFragment StoreEntitySet="MetaIndividualInforme">
+          <ScalarProperty Name="DesObservaciones" ColumnName="DesObservaciones" />
+          <ScalarProperty Name="IndEstado" ColumnName="IndEstado" />
+          <ScalarProperty Name="IndCompleto" ColumnName="IndCompleto" />
+          <ScalarProperty Name="DesInforme" ColumnName="DesInforme" />
+          <ScalarProperty Name="NumIndicador" ColumnName="NumIndicador" />
+          <ScalarProperty Name="FecMes" ColumnName="FecMes" />
+          <ScalarProperty Name="FK_Meta" ColumnName="FK_Meta" />
+          <ScalarProperty Name="PK_Informe" ColumnName="PK_Informe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MetaObjetivoCalificacion">
+      <EntityTypeMapping TypeName="SIRHModel.MetaObjetivoCalificacion">
+        <MappingFragment StoreEntitySet="MetaObjetivoCalificacion">
+          <ScalarProperty Name="DesMetaAnual" ColumnName="DesMetaAnual" />
+          <ScalarProperty Name="DesDimension" ColumnName="DesDimension" />
+          <ScalarProperty Name="DesIndicador" ColumnName="DesIndicador" />
+          <ScalarProperty Name="DesTipoIndicador" ColumnName="DesTipoIndicador" />
+          <ScalarProperty Name="DesNotasTecnicas" ColumnName="DesNotasTecnicas" />
+          <ScalarProperty Name="DesSupuestos" ColumnName="DesSupuestos" />
+          <ScalarProperty Name="DesFuenteDatos" ColumnName="DesFuenteDatos" />
+          <ScalarProperty Name="DesProductoEspecifico" ColumnName="DesProductoEspecifico" />
+          <ScalarProperty Name="IndEstado" ColumnName="IndEstado" />
+          <ScalarProperty Name="TipMeta" ColumnName="TipMeta" />
+          <ScalarProperty Name="FecFinalizacion" ColumnName="FecFinalizacion" />
+          <ScalarProperty Name="FecInicio" ColumnName="FecInicio" />
+          <ScalarProperty Name="DesMeta" ColumnName="DesMeta" />
+          <ScalarProperty Name="FK_ObjetivoCalificacion" ColumnName="FK_ObjetivoCalificacion" />
+          <ScalarProperty Name="PK_Meta" ColumnName="PK_Meta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ObjetivoCalificacion">
+      <EntityTypeMapping TypeName="SIRHModel.ObjetivoCalificacion">
+        <MappingFragment StoreEntitySet="ObjetivoCalificacion">
+          <ScalarProperty Name="IndEstado" ColumnName="IndEstado" />
+          <ScalarProperty Name="DesProductoPrograma" ColumnName="DesProductoPrograma" />
+          <ScalarProperty Name="DesActividadPresupuestaria" ColumnName="DesActividadPresupuestaria" />
+          <ScalarProperty Name="FK_Seccion" ColumnName="FK_Seccion" />
+          <ScalarProperty Name="FK_PeriodoCalificacion" ColumnName="FK_PeriodoCalificacion" />
+          <ScalarProperty Name="DesObjetivo" ColumnName="DesObjetivo" />
+          <ScalarProperty Name="PK_ObjetivoCalificacion" ColumnName="PK_ObjetivoCalificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ActividadFuncionario">
+      <EntityTypeMapping TypeName="SIRHModel.ActividadFuncionario">
+        <MappingFragment StoreEntitySet="ActividadFuncionario">
+          <ScalarProperty Name="IndTeletrabajo" ColumnName="IndTeletrabajo" />
+          <ScalarProperty Name="DesObservacion" ColumnName="DesObservacion" />
+          <ScalarProperty Name="DesEvidencia" ColumnName="DesEvidencia" />
+          <ScalarProperty Name="FecRegistro" ColumnName="FecRegistro" />
+          <ScalarProperty Name="FecHasta" ColumnName="FecHasta" />
+          <ScalarProperty Name="FecDesde" ColumnName="FecDesde" />
+          <ScalarProperty Name="IndEstado" ColumnName="IndEstado" />
+          <ScalarProperty Name="DesActividad" ColumnName="DesActividad" />
+          <ScalarProperty Name="FK_Funcionario" ColumnName="FK_Funcionario" />
+          <ScalarProperty Name="PK_Actividad" ColumnName="PK_Actividad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ContratoArrendamiento">
+      <EntityTypeMapping TypeName="SIRHModel.ContratoArrendamiento">
+        <MappingFragment StoreEntitySet="ContratoArrendamiento">
+          <ScalarProperty Name="CodContrato" ColumnName="CodContrato" />
+          <ScalarProperty Name="MonContrato" ColumnName="MonContrato" />
+          <ScalarProperty Name="EmisorContrato" ColumnName="EmisorContrato" />
+          <ScalarProperty Name="FecFinal" ColumnName="FecFinal" />
+          <ScalarProperty Name="FecInicial" ColumnName="FecInicial" />
+          <ScalarProperty Name="FK_Desarraigo" ColumnName="FK_Desarraigo" />
+          <ScalarProperty Name="FK_ViaticoCorrido" ColumnName="FK_ViaticoCorrido" />
+          <ScalarProperty Name="PK_ContratoArrendamiento" ColumnName="PK_ContratoArrendamiento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleDesarraigoEliminacion">
+      <EntityTypeMapping TypeName="SIRHModel.DetalleDesarraigoEliminacion">
+        <MappingFragment StoreEntitySet="DetalleDesarraigoEliminacion">
+          <ScalarProperty Name="FecRegistro" ColumnName="FecRegistro" />
+          <ScalarProperty Name="ObsEliminacion" ColumnName="ObsEliminacion" />
+          <ScalarProperty Name="FecEliminacion" ColumnName="FecEliminacion" />
+          <ScalarProperty Name="FK_Estado" ColumnName="FK_Estado" />
+          <ScalarProperty Name="FK_Desarraigo" ColumnName="FK_Desarraigo" />
+          <ScalarProperty Name="PK_Detalle" ColumnName="PK_Detalle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FacturaDesarraigo">
+      <EntityTypeMapping TypeName="SIRHModel.FacturaDesarraigo">
+        <MappingFragment StoreEntitySet="FacturaDesarraigo">
+          <ScalarProperty Name="ObsConcepto" ColumnName="ObsConcepto" />
+          <ScalarProperty Name="CodFactura" ColumnName="CodFactura" />
+          <ScalarProperty Name="MonFactura" ColumnName="MonFactura" />
+          <ScalarProperty Name="EmisorFactura" ColumnName="EmisorFactura" />
+          <ScalarProperty Name="FecFacturacion" ColumnName="FecFacturacion" />
+          <ScalarProperty Name="FK_ViaticoCorrido" ColumnName="FK_ViaticoCorrido" />
+          <ScalarProperty Name="FK_Desarraigo" ColumnName="FK_Desarraigo" />
+          <ScalarProperty Name="PK_FacturaDesarraigo" ColumnName="PK_FacturaDesarraigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MetaIndividualCalificacion">
+      <EntityTypeMapping TypeName="SIRHModel.MetaIndividualCalificacion">
+        <MappingFragment StoreEntitySet="MetaIndividualCalificacion">
+          <ScalarProperty Name="PorPeso" ColumnName="PorPeso" />
+          <ScalarProperty Name="IdJefeInmediato" ColumnName="IdJefeInmediato" />
+          <ScalarProperty Name="DesObservaciones" ColumnName="DesObservaciones" />
+          <ScalarProperty Name="IndEsTeletrabajable" ColumnName="IndEsTeletrabajable" />
+          <ScalarProperty Name="DesResultadoProduccion" ColumnName="DesResultadoProduccion" />
+          <ScalarProperty Name="NumIndicador" ColumnName="NumIndicador" />
+          <ScalarProperty Name="FK_TipoIndicador" ColumnName="FK_TipoIndicador" />
+          <ScalarProperty Name="DesIndicadorMensual" ColumnName="DesIndicadorMensual" />
+          <ScalarProperty Name="FecRegistro" ColumnName="FecRegistro" />
+          <ScalarProperty Name="FecFinalizado" ColumnName="FecFinalizado" />
+          <ScalarProperty Name="FecHasta" ColumnName="FecHasta" />
+          <ScalarProperty Name="FecDesde" ColumnName="FecDesde" />
+          <ScalarProperty Name="DesMeta" ColumnName="DesMeta" />
+          <ScalarProperty Name="FK_MetaObjetivo" ColumnName="FK_MetaObjetivo" />
+          <ScalarProperty Name="FK_Estado" ColumnName="FK_Estado" />
+          <ScalarProperty Name="FK_Prioridad" ColumnName="FK_Prioridad" />
+          <ScalarProperty Name="FK_Funcionario" ColumnName="FK_Funcionario" />
+          <ScalarProperty Name="FK_PeriodoCalificacion" ColumnName="FK_PeriodoCalificacion" />
+          <ScalarProperty Name="PK_Meta" ColumnName="PK_Meta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoIndicadorMeta">
+      <EntityTypeMapping TypeName="SIRHModel.TipoIndicadorMeta">
+        <MappingFragment StoreEntitySet="TipoIndicadorMeta">
+          <ScalarProperty Name="DesTipoIndicador" ColumnName="DesTipoIndicador" />
+          <ScalarProperty Name="PK_TipoIndicador" ColumnName="PK_TipoIndicador" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Desarraigo">
+      <EntityTypeMapping TypeName="SIRHModel.Desarraigo">
+        <MappingFragment StoreEntitySet="Desarraigo">
+          <ScalarProperty Name="NumAccionEliminado" ColumnName="NumAccionEliminado" />
+          <ScalarProperty Name="NumAccionAprobado" ColumnName="NumAccionAprobado" />
+          <ScalarProperty Name="IdAprobadoPor" ColumnName="IdAprobadoPor" />
+          <ScalarProperty Name="IdRevisadoPor" ColumnName="IdRevisadoPor" />
+          <ScalarProperty Name="IdAnalizadoPor" ColumnName="IdAnalizadoPor" />
+          <ScalarProperty Name="IdRegistradoPor" ColumnName="IdRegistradoPor" />
+          <ScalarProperty Name="DesPernocte" ColumnName="DesPernocte" />
+          <ScalarProperty Name="FK_DistritoPernocte" ColumnName="FK_DistritoPernocte" />
+          <ScalarProperty Name="DesNomProyecto" ColumnName="DesNomProyecto" />
+          <ScalarProperty Name="IdJefe" ColumnName="IdJefe" />
+          <ScalarProperty Name="ImgDocumento" ColumnName="ImgDocumento" />
+          <ScalarProperty Name="ObsEstado" ColumnName="ObsEstado" />
+          <ScalarProperty Name="ObsDesarraigo" ColumnName="ObsDesarraigo" />
+          <ScalarProperty Name="MonSalario" ColumnName="MonSalario" />
+          <ScalarProperty Name="MonDesarraigo" ColumnName="MonDesarraigo" />
+          <ScalarProperty Name="FecRegistro" ColumnName="FecRegistro" />
+          <ScalarProperty Name="FecFinDesarraigo" ColumnName="FecFinDesarraigo" />
+          <ScalarProperty Name="FecInicDesarraigo" ColumnName="FecInicDesarraigo" />
+          <ScalarProperty Name="NumContrato" ColumnName="NumContrato" />
+          <ScalarProperty Name="FK_Presupuesto" ColumnName="FK_Presupuesto" />
+          <ScalarProperty Name="FK_Departamento" ColumnName="FK_Departamento" />
+          <ScalarProperty Name="FK_Seccion" ColumnName="FK_Seccion" />
+          <ScalarProperty Name="FK_DistritoTrabajo" ColumnName="FK_DistritoTrabajo" />
+          <ScalarProperty Name="FK_DistritoContrato" ColumnName="FK_DistritoContrato" />
+          <ScalarProperty Name="FK_EstadoDesarraigo" ColumnName="FK_EstadoDesarraigo" />
+          <ScalarProperty Name="FK_Nombramiento" ColumnName="FK_Nombramiento" />
+          <ScalarProperty Name="PK_Desarraigo" ColumnName="PK_Desarraigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetallePuestoRubro">
+      <EntityTypeMapping TypeName="SIRHModel.DetallePuestoRubro">
+        <MappingFragment StoreEntitySet="DetallePuestoRubro">
+          <ScalarProperty Name="FecVence" ColumnName="FecVence" />
+          <ScalarProperty Name="FecRige" ColumnName="FecRige" />
+          <ScalarProperty Name="PorValor" ColumnName="PorValor" />
+          <ScalarProperty Name="FK_ComponenteSalarial" ColumnName="FK_ComponenteSalarial" />
+          <ScalarProperty Name="FK_DetallePuesto" ColumnName="FK_DetallePuesto" />
+          <ScalarProperty Name="PK_DetallePuestoRubro" ColumnName="PK_DetallePuestoRubro" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrdenMovimiento">
+      <EntityTypeMapping TypeName="SIRHModel.OrdenMovimiento">
+        <MappingFragment StoreEntitySet="OrdenMovimiento">
+          <ScalarProperty Name="IdFuncionarioJefatura" ColumnName="IdFuncionarioJefatura" />
+          <ScalarProperty Name="IdFuncionarioRevision" ColumnName="IdFuncionarioRevision" />
+          <ScalarProperty Name="IdFuncionarioResponsable" ColumnName="IdFuncionarioResponsable" />
+          <ScalarProperty Name="DesPartidaPresupuestaria" ColumnName="DesPartidaPresupuestaria" />
+          <ScalarProperty Name="DesObservacionesEstado" ColumnName="DesObservacionesEstado" />
+          <ScalarProperty Name="DesObservaciones" ColumnName="DesObservaciones" />
+          <ScalarProperty Name="IdMotivoMovimiento" ColumnName="IdMotivoMovimiento" />
+          <ScalarProperty Name="FecVence" ColumnName="FecVence" />
+          <ScalarProperty Name="FecRige" ColumnName="FecRige" />
+          <ScalarProperty Name="IdFuncionarioSustituido" ColumnName="IdFuncionarioSustituido" />
+          <ScalarProperty Name="CuentaCliente" ColumnName="CuentaCliente" />
+          <ScalarProperty Name="NumOrden" ColumnName="NumOrden" />
+          <ScalarProperty Name="FK_Estado" ColumnName="FK_Estado" />
+          <ScalarProperty Name="FK_TipoMovimiento" ColumnName="FK_TipoMovimiento" />
+          <ScalarProperty Name="FK_Pedimento" ColumnName="FK_Pedimento" />
+          <ScalarProperty Name="FK_DetallePuesto" ColumnName="FK_DetallePuesto" />
+          <ScalarProperty Name="FK_Funcionario" ColumnName="FK_Funcionario" />
+          <ScalarProperty Name="PK_OrdenMovimiento" ColumnName="PK_OrdenMovimiento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

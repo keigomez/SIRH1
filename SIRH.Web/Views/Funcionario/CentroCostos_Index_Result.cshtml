@@ -1,0 +1,40 @@
+﻿@model SIRH.Web.Models.CentroCostosModel
+
+@{
+    if (Model != null)
+    {
+        if (Model.CentrosCostosList.Count() < 1)
+        {
+            <div class="alert alert-danger" role="alert">
+                No se encontraron resultados para la búsqueda solicitada.
+            </div>
+        }
+        else
+        {
+            <div class="card">
+                <div class="card-header">
+                    Resultados
+                </div>
+                <div class="card-body">
+                    @Html.DropDownListFor(model => model.CodigoCostos,
+                    Model.CentrosCostosList as SelectList, "Seleccione una opción",
+                    new { @id = "codigocostosseleccionado", @class = "form-control" })
+                </div>
+                <div class="card-footer">
+                    <button type="button" class="btn btn-secondary" onclick="return CargarDatoSelect()">Aceptar</button>
+                </div>
+            </div>
+            <script>
+                function CargarDatoSelect() {
+                    var opcion = $("#codigocostosseleccionado option:selected").text();
+                    if (opcion == 'Seleccione una opción') {
+                        $('#buscar-costos').modal('hide');
+                    } else {
+                        CargarDato(opcion, 'costos');
+                    }
+                }
+            </script>
+        }
+    }
+}
+

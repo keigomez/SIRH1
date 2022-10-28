@@ -1,0 +1,53 @@
+﻿@model SIRH.Web.ViewModels.FormularioPagoFeriadoVM
+
+@{
+    ViewBag.Title = "Registrar trámite de pago";
+    Layout = "~/Views/Shared/PagoFeriado.cshtml";
+}
+
+@using (Ajax.BeginForm("Create", "PagoFeriado", new AjaxOptions
+{
+    HttpMethod = "Post",
+    UpdateTargetId = "dvResultadoBusqueda",
+    InsertionMode = InsertionMode.Replace,
+    OnComplete = "CompleteCargarFuncionario",
+    OnBegin = "BeginCargarFuncionario"
+}))
+{
+    <div class="jumbotron">
+        <center>
+            <h3 class="display-4">Registrar trámite de pago</h3>
+            <br />
+            <div class="card">
+                <div class="card-header text-left">
+                    <strong>Buscar Funcionario</strong>
+                </div>
+
+                <div class="card-body">
+
+                    <div class="form-group">
+                        @Html.TextBoxFor(model => model.Funcionario.Cedula, new { @class = "form-control", @placeholder = "Cédula", style = "width: 280px;" })
+                        @Html.ValidationMessageFor(model => model.Funcionario.Cedula)
+                    </div>
+                    <input id="btnBuscar" name="SubmitButton" class="btn btn-primary" type="submit" value="Buscar" />
+                    <div id="preloader" class="loader" style="display: none"></div>
+
+                </div>
+            </div>
+
+        </center>
+    </div>
+
+    <br />
+}
+
+
+<div id="dvResultadoBusqueda"></div>
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+<script src="~/Scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/FormularioCaucion.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/FormularioPagoFeriado.js"></script>
+<script src="~/Scripts/Pages/AsuetoIndex.js"></script>

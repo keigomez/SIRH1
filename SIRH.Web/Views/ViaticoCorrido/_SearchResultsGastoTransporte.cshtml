@@ -1,0 +1,139 @@
+﻿@model  IList<SIRH.Web.ViewModels.FormularioGastoTransporteVM> 
+
+@{ 
+    using (Html.BeginForm("ReporteBusquedaGastoTransporte","ViaticoCorrido", FormMethod.Post, new { @id = "thisForm" }))
+    {
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th>#Registro</th>
+                    <th>Cédula</th>
+                    <th>Nombre</th>
+                    <th>#Puesto</th>
+                    <th>Estado</th>
+                    <th>Fecha del <br /> GastoTransporte</th>
+                    <th>Lugar de <br /> Contrato</th>
+                    <th>
+                        <!-- boton de notificar por correo-->
+                    </th>
+                    <th>
+                        <!-- boton de editar-->
+                    </th>
+                    <th>
+                        <!-- boton de mostrar detalles-->
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @Html.Hidden("filtro", @ViewData["Filtro"].ToString())
+                @foreach (var item in Model)
+                {
+                   <!--data-->
+                       
+                        <!--Se mantienen los datos para no volver a hacer la busqueda-->
+                       
+                    
+                        @Html.HiddenFor(model => item.NumCartaPresentacion) 
+                        @Html.HiddenFor(model => item.Funcionario.Nombre)
+                        @Html.HiddenFor(model => item.Funcionario.Cedula)
+                        @Html.HiddenFor(model => item.Funcionario.PrimerApellido)
+                        @Html.HiddenFor(model => item.Funcionario.SegundoApellido)
+                        @Html.HiddenFor(model => item.Funcionario.Nombre)
+                        @Html.HiddenFor(model => item.GastoTransporte.EstadoGastoTransporteDTO.NomEstadoDTO)
+                        @Html.HiddenFor(model => item.GastoTransporte.CodigoGastoTransporte)
+                        @Html.HiddenFor(model => item.GastoTransporte.MontGastoTransporteDTO)
+                        @Html.HiddenFor(model => item.GastoTransporte.FecInicioDTO)
+                        @Html.HiddenFor(model => item.GastoTransporte.FecFinDTO)
+                        @Html.HiddenFor(model => item.GastoTransporte.IdEntidad)
+                        @Html.HiddenFor(model => item.GastoTransporte.ObsGastoTransporteDTO)
+                        @Html.HiddenFor(model => item.UbicacionTrabajo.Distrito.Canton.Provincia.NomProvincia)
+                        @Html.HiddenFor(model => item.UbicacionTrabajo.Distrito.Canton.NomCanton)
+                        @Html.HiddenFor(model => item.UbicacionTrabajo.Distrito.NomDistrito)
+                        @Html.HiddenFor(model => item.UbicacionContrato.Distrito.Canton.Provincia.NomProvincia)
+                        @Html.HiddenFor(model => item.UbicacionContrato.Distrito.Canton.NomCanton)
+                        @Html.HiddenFor(model => item.UbicacionContrato.Distrito.NomDistrito)
+                        @Html.HiddenFor(model => item.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                        @Html.HiddenFor(model => item.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                        @Html.HiddenFor(model => item.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                        @Html.HiddenFor(model => item.Puesto.CodPuesto)
+                        @Html.HiddenFor(model => item.DetallePuesto.Clase.DesClase)
+                        @Html.HiddenFor(model => item.DetallePuesto.Especialidad.DesEspecialidad)
+                        @Html.HiddenFor(model => item.DetallePuesto.OcupacionReal.DesOcupacionReal)
+                   
+                    <tr>
+                        <td>
+                            @Html.AttributeEncode(item.GastoTransporte.CodigoGastoTransporte)
+                        </td>
+                        <td>
+                            @Html.AttributeEncode(item.Funcionario.Cedula)
+                        </td>
+                        <td>
+                            @item.Funcionario.Nombre  @item.Funcionario.PrimerApellido @item.Funcionario.SegundoApellido
+                        </td>
+                        <td>
+                            @Html.AttributeEncode(item.Puesto.CodPuesto)
+                        </td>
+                        <td>
+                            @Html.AttributeEncode(item.GastoTransporte.EstadoGastoTransporteDTO.NomEstadoDTO)
+                        </td>
+                        <td>
+                            @Html.AttributeEncode(item.GastoTransporte.FecInicioDTO.ToString("dd/MM/yyyy"))
+                        </td>
+                        <td>
+                            @Html.AttributeEncode(item.GastoTransporte.FecFinDTO.ToString("dd/MM/yyyy"))
+                        </td>
+
+                        <td>
+                            @if (item.GastoTransporte.EstadoGastoTransporteDTO.NomEstadoDTO == "Espera")
+                            { 
+                            <div class="link_notify">
+                                @Html.ActionLink("Notificar", "NotifyByEmail", new {codigo = item.GastoTransporte.CodigoGastoTransporte,cedula = item.Funcionario.Cedula,
+                               username = System.Security.Principal.WindowsIdentity.GetCurrent().Name, nameFunc = item.Funcionario.Nombre + " " + item.Funcionario.PrimerApellido + " " + item.Funcionario.SegundoApellido}, new { @class = "btn btn-outline-primary" })
+                            </div>
+                            }
+                            @if (item.GastoTransporte.EstadoGastoTransporteDTO.NomEstadoDTO == "Vencido")
+                            { 
+                            <div class="link_return">@Html.ActionLink("Ir a Anular", "Nullify", new { @codigo = item.GastoTransporte.IdEntidad }, new { @class = "btn btn-outline-primary" })</div>
+                            }
+                        </td>
+
+                        <td>
+                            @if (item.GastoTransporte.EstadoGastoTransporteDTO.NomEstadoDTO == "Espera")
+                            { 
+                            <div class="link_edit">@Html.ActionLink("Editar", "Edit", new { codigo = item.GastoTransporte.IdEntidad }, new { @class = "btn btn-outline-primary" })</div>
+                            }
+                        </td>
+
+                        <td>
+                            <div class="link_view">@Html.ActionLink("Ver Detalle", "DetailsGastoTransporte", new { codigo = item.GastoTransporte.IdEntidad ,accion = "Detalle"},new { @class="btn btn-outline-primary"})</div>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td colspan="7"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="7"></td>
+                    </tr>
+
+
+                }
+            </tbody>
+        </table>
+        <div class="row">
+            @*<div class="form-group col-4">
+                <div class="link_pdf"><a href="#" class="btn btn-outline-primary" id="submit_link" onclick="return ExportarAPdf();">Exportar resultados a PDF</a></div>
+                
+            </div>*@
+            <div class="form-group col-4">
+                <div>
+                    <p>
+                        @Html.ActionLink("Crear Nueva", "Create", null, new { @class = "btn btn-outline-primary" })
+                    </p>
+                </div>
+            </div>
+        </div>
+    }
+    
+   
+}

@@ -1,0 +1,167 @@
+﻿@model SIRH.Web.ViewModels.FormularioPlanillaVM
+
+@{
+    ViewBag.Title = "Detalle del movimiento de presupuesto";
+    Layout = "~/Views/Shared/Planilla.cshtml";
+}
+
+<blockquote><h3>Detalle del movimiento</h3></blockquote>
+<br />
+@if (Request.QueryString["accion"] == "guardar")
+{
+    if (Model.Error == null)
+    {
+        <div class="alert alert-success" role="alert">
+            <i class="fa fa-check-circle d-inline" style="font-size:48px;"></i>
+            <h4 class="d-inline"> El movimiento de presupuesto se ha guardado correctamente.</h4>
+        </div>
+        <br />
+
+        <div class="card">
+            <h5 class="card-header">Detalles</h5>
+            <div class="card-body">
+                <div>Se ha almacenado el movimiento de presupuesto # <b>@Html.Encode(Model.ComponentePresupuestario.IdEntidad)</b></div>
+                <br /><div>Correspondiente al año: <b>@Html.Encode(Model.ComponentePresupuestario.AnioPresupuesto)</b></div>
+                <br /><div>Para el programa: <b>@Html.Encode(Model.ComponentePresupuestario.Programa.IdEntidad) - @Html.Encode(Model.ComponentePresupuestario.Programa.DesPrograma)</b></div>
+                <br /><div>Para el objeto de gasto: <b> @Html.Encode(Model.ComponentePresupuestario.ObjetoGasto.Partida.CodPartida) - @Html.Encode(Model.ComponentePresupuestario.ObjetoGasto.SubPartida.CodSubPartida) - @Html.Encode(Model.ComponentePresupuestario.ObjetoGasto.CodObjGasto)- @Html.AttributeEncode(Model.ComponentePresupuestario.ObjetoGasto.DesObjGasto)</b></div>
+                <br /><div>Del tipo:<b> @Html.AttributeEncode(Model.ComponentePresupuestario.TipoMovimiento.DesMovimientoPresupuesto) </b></div>
+                <br /><div>Por un monto de <b>₡ @Html.Encode(String.Format("{0:N}", Model.ComponentePresupuestario.MontoComponente))</b></div>
+                <br /><div>Con detalle: <b> @Html.Encode(Model.ComponentePresupuestario.Detalle)</b></div>
+                </div>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-danger" role="alert">
+            <i class="fa fa-times-circle d-inline" style="font-size:48px;"></i>
+            <h4 class="d-inline"> Ocurrió un error al momento de guardar la incapacidad.</h4>
+        </div>
+        <br />
+
+        <div class="card">
+            <h5 class="card-header">Detalles</h5>
+            <div class="card-body">
+                <div>La incapacidad no pudo ser guardada debido al siguiente error: </div>
+                <br /><div><b>@Html.Encode(Model.Error.MensajeError)</b></div>
+                <br /><div>Si conoce la causa de este error, por favor revise los datos que intentó almacenar e intentelo de nuevo.</div>
+                <br /><div>De lo contrario le invitamos a ponerse en contacto con nuestro equipo de soporte, mediante el sistema de <a href="http://sisrh.mopt.go.cr:83/" target="_blank">Ayuda y Soporte</a></div>
+            </div>
+        </div>
+    }
+}
+else
+{
+    if (Request.QueryString["accion"] == "modificar")
+    {
+        if (Model.Error == null)
+        {
+            <div class="alert alert-primary" role="alert">
+                <i class="fa fa-exclamation-circle d-inline" style="font-size:48px;"></i>
+                <h4 class="d-inline"> El movimiento de presupuesto se ha anulado.</h4>
+            </div>
+            <br />
+            <div class="card">
+                <h5 class="card-header">Detalles</h5>
+                <div class="card-body">
+                    <div>Se ha anulado el movimiento de presupuesto # <b>@Html.Encode(Model.ComponentePresupuestario.IdEntidad)</b></div>
+                    <br /><div>Correspondiente al año: <b>@Html.Encode(Model.ComponentePresupuestario.AnioPresupuesto)</b></div>
+                    <br /><div>Para el programa: <b>@Html.Encode(Model.ComponentePresupuestario.Programa.IdEntidad) - @Html.Encode(Model.ComponentePresupuestario.Programa.DesPrograma)</b></div>
+                    <br /><div>Para el objeto de gasto: <b> @Html.Encode(Model.ComponentePresupuestario.ObjetoGasto.Partida.CodPartida) - @Html.Encode(Model.ComponentePresupuestario.ObjetoGasto.SubPartida.CodSubPartida) - @Html.Encode(Model.ComponentePresupuestario.ObjetoGasto.CodObjGasto)- @Html.AttributeEncode(Model.ComponentePresupuestario.ObjetoGasto.DesObjGasto)</b></div>
+                    <br /><div>Del tipo:<b> @Html.AttributeEncode(Model.ComponentePresupuestario.TipoMovimiento.DesMovimientoPresupuesto) </b></div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-danger" role="alert">
+                <i class="fa fa-times-circle d-inline" style="font-size:48px;"></i>
+                <h4 class="d-inline"> Ocurrió un error al momento de anular el movimiento de presupuesto.</h4>
+            </div>
+            <br />
+
+            <div class="card">
+                <h5 class="card-header">Detalles</h5>
+                <div class="card-body">
+                    <div>El movimiento de presupuesto no pudo ser anulado debido al siguiente error: </div>
+                    <br /><div><b>@Html.Encode(Model.Error.MensajeError)</b></div>
+                    <br /><div>Si conoce la causa de este error, por favor revise los datos que intentó almacenar e intentelo de nuevo.</div>
+                    <br /><div>De lo contrario le invitamos a ponerse en contacto con nuestro equipo de soporte, mediante el sistema de <a href="http://sisrh.mopt.go.cr:83/" target="_blank">Ayuda y Soporte</a></div>
+                </div>
+            </div>
+        }
+    }
+
+    else
+    {
+        using (Html.BeginForm("ReporteDetalleMovimiento", "Planilla", FormMethod.Post, new { @id = "thisForm" }))
+    {
+        <div class="card">
+            <div class="card-header text-left">
+                <b>Movimiento  # @Model.ComponentePresupuestario.IdEntidad</b>
+            </div>
+            <div class="card-body">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <span>
+                            <b>Año: </b> @Model.ComponentePresupuestario.AnioPresupuesto
+                            @Html.HiddenFor(model => model.ComponentePresupuestario.AnioPresupuesto)
+                        </span>
+                    </li>
+                    <li class="list-group-item">
+                        <span>
+                            <b>@Html.LabelFor(model => model.ComponentePresupuestario.Programa.DesPrograma): </b> @Model.ComponentePresupuestario.Programa.IdEntidad - @Model.ComponentePresupuestario.Programa.DesPrograma
+                            @Html.HiddenFor(model => model.ComponentePresupuestario.Programa.IdEntidad)
+                            @Html.HiddenFor(model => model.ComponentePresupuestario.Programa.DesPrograma)
+                        </span>
+                    </li>
+                    <li class="list-group-item">
+                        <span>
+                            <b>@Html.LabelFor(model => model.ComponentePresupuestario.ObjetoGasto.CodObjGasto): </b> @Html.Encode(Model.ComponentePresupuestario.ObjetoGasto.Partida.CodPartida) @Html.Encode(Model.ComponentePresupuestario.ObjetoGasto.SubPartida.CodSubPartida) @Html.Encode(Model.ComponentePresupuestario.ObjetoGasto.CodObjGasto) - @Html.AttributeEncode(Model.ComponentePresupuestario.ObjetoGasto.DesObjGasto)
+                            @Html.HiddenFor(model => model.ComponentePresupuestario.ObjetoGasto.IdEntidad)
+                            @Html.HiddenFor(model => model.ComponentePresupuestario.ObjetoGasto.CodObjGasto)
+                            @Html.HiddenFor(model => model.ComponentePresupuestario.ObjetoGasto.DesObjGasto)
+                            @Html.HiddenFor(model => model.ComponentePresupuestario.ObjetoGasto.Partida.CodPartida)
+                            @Html.HiddenFor(model => model.ComponentePresupuestario.ObjetoGasto.SubPartida.CodSubPartida)
+                        </span>
+
+                    </li>
+                    <li class="list-group-item">
+                        <span>
+                            <b>@Html.LabelFor(model => model.ComponentePresupuestario.TipoMovimiento.DesMovimientoPresupuesto): </b>@Model.ComponentePresupuestario.TipoMovimiento.DesMovimientoPresupuesto
+                            @Html.HiddenFor(model => model.ComponentePresupuestario.TipoMovimiento.IdEntidad)
+                            @Html.HiddenFor(model => model.ComponentePresupuestario.TipoMovimiento.DesMovimientoPresupuesto)
+                        </span>
+                    </li>
+                    <li class="list-group-item">
+                        <span>
+                            <b>@Html.LabelFor(model => model.ComponentePresupuestario.MontoComponente): </b>@Html.Encode(Model.ComponentePresupuestario.MontoComponente.ToString("#,##0.00"))
+                            @Html.HiddenFor(model => model.ComponentePresupuestario.MontoComponente)
+                        </span>
+                    </li>
+                    <li class="list-group-item">
+                        <span>
+                            <b>@Html.LabelFor(model => model.ComponentePresupuestario.Detalle): </b>@Model.ComponentePresupuestario.Detalle
+                            @Html.HiddenFor(model => model.ComponentePresupuestario.Detalle)
+                        </span>
+                    </li>
+                </ul>
+                <br />
+
+                <button class="btn btn-danger" type="submit"><i class="fa fa-file-pdf-o"></i> Exportar a PDF</button>
+                @if (Model.ComponentePresupuestario.IdEntidad == 0)
+                {
+                    <a href="@Url.Action("Edit", "Planilla", new { @codigo = Model.ComponentePresupuestario.IdEntidad })" class="btn btn-warning">
+                        <i class="fa fa-pencil-square-o"></i> Editar
+                    </a>
+                }
+            </div>
+        </div>
+    }
+    }
+}
+<br />
+
+<a href="javascript:history.back()" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Regresar</a>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")

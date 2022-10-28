@@ -1,0 +1,145 @@
+﻿
+@model SIRH.Web.ViewModels.BusquedaMontosVM
+@{
+    ViewBag.Title = "Editar monto de caución";
+    Layout = "~/Views/Shared/Cauciones.cshtml";
+}
+
+<link rel="stylesheet" href="~/Content/datetimepicker.css">
+
+<blockquote><h3>Editar monto de caución</h3></blockquote>
+
+@using (Ajax.BeginForm("Edit", "MontoCaucion", new { id = Int32.Parse(Request.Url.Segments.Last()) }, new AjaxOptions
+{
+    HttpMethod = "Post",
+    UpdateTargetId = "dvResultadoBusqueda",
+    InsertionMode = InsertionMode.Replace,
+    OnComplete = "CompleteEditarMontoCaucion",
+    OnBegin = "BeginEditarMontoCaucion"
+}))
+{
+    @Html.ValidationSummary(true)
+    if (Model.Error != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            <i class="fa fa-times-circle d-inline" style="font-size:48px;"></i>
+            <h4 class="d-inline"> Ocurrió un error al cargar el monto de caución.</h4>
+        </div>
+        <br />
+
+        <div class="card">
+            <h5 class="card-header">Detalles</h5>
+            <div class="card-body">
+                <div>El monto de caución no se pudo cargar debido al siguiente error: </div>
+                <br /><div><b>@Model.Error.MensajeError</b></div>
+                <br /><div>Si conoce la causa de este error, por favor revise los datos que intentó almacenar e intentelo de nuevo.</div>
+                <br /><div>De lo contrario le invitamos a ponerse en contacto con nuestro equipo de soporte, mediante el sistema de <a href="http://sisrh.mopt.go.cr:83/" target="_blank">Ayuda y Soporte</a></div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="card">
+            <div class="card-header"><b>Monto para @Html.Encode(Model.MontoCaucion.Descripcion)</b></div>
+            @Html.HiddenFor(model => model.MontoCaucion.Descripcion)
+            <div class="card-body">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <span>
+                            <strong>@Html.LabelFor(model => model.MontoCaucion.Nivel): </strong>@Html.Encode(Model.MontoCaucion.Nivel)
+                            @Html.HiddenFor(model => model.MontoCaucion.Nivel)
+                        </span>
+                    </li>
+                    <li class="list-group-item">
+                        <span>
+                            <strong>@Html.LabelFor(model => model.MontoCaucion.Descripcion): </strong>@Html.Encode(Model.MontoCaucion.Descripcion)
+                        </span>
+                    </li>
+                    <li class="list-group-item">
+                        <span>
+                            <strong>@Html.LabelFor(model => model.MontoCaucion.MontoColones): </strong>₡ @Model.MontoCaucion.MontoColones.ToString("#,#.00#;(#,#.00#)")
+                            @Html.HiddenFor(model => model.MontoCaucion.MontoColones)
+                        </span>
+                    </li>
+                    <li class="list-group-item">
+                        <span>
+                            <strong>@Html.LabelFor(model => model.MontoCaucion.FechaRige): </strong>@Model.MontoCaucion.FechaRige.ToShortDateString()
+                            @Html.HiddenFor(model => model.MontoCaucion.FechaRige)
+                        </span>
+                    </li>
+                    <li class="list-group-item">
+                        <span>
+                            <strong>@Html.LabelFor(model => model.MontoCaucion.Justificacion): </strong>@Model.MontoCaucion.Justificacion
+                            @Html.HiddenFor(model => model.MontoCaucion.Justificacion)
+                        </span>
+                    </li>
+                    <li class="list-group-item">
+                        <span>
+                            <strong>@Html.LabelFor(model => model.MontoCaucion.DetalleEstadoMonto): </strong>@Model.MontoCaucion.DetalleEstadoMonto
+                            @Html.HiddenFor(model => model.MontoCaucion.DetalleEstadoMonto)
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <br />
+
+        <div class="alert alert-warning" role="alert">
+            <i class="fa fa-exclamation-circle d-inline" style="font-size:48px;"></i>
+            <h4 class="d-inline"> ¡Atención! Usted está apunto de declarar inactivo el presente nivel de caución.</h4>
+        </div>
+
+            <div class="card">
+                <div class="card-body">
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.MontoCaucion.FechaInactiva, new { @for = "FechaInactiva", @class = "col-sm-2 col-form-label" })
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(model => model.MontoCaucion.FechaInactiva, new { @id = "FechaInactiva", @class = "form-control", @readonly = "readonly" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.MontoCaucion.JustificacionInactiva, new { @for = "JustificacionInactiva", @class = "col-2 col-form-label" })
+                        <div class="col-10">
+                            @Html.TextAreaFor(model => model.MontoCaucion.JustificacionInactiva, new { @id = "JustificacionInactiva", @class = "form-control", @rows = 5 })
+                        </div>
+                    </div>
+                    <br />
+                    <input id="btnGuardar" name="SubmitButton" type="submit" value="Anular Nivel" class="btn btn-primary float-right" />
+                    <div id="preloader" class="loader float-right" style="display: none"></div>
+                </div>
+            </div>
+
+            <br />
+
+            <div id="dvResultadoBusqueda"></div>
+            @*if (!Html.ViewData.ModelState.IsValid)
+            {
+                <div class="card border-danger">
+                    <div class="card-header"><strong>El formulario contiene los siguientes errores:</strong></div>
+                    <div class="card-body text-danger">
+                        @foreach (var modelError in Html.ViewData.ModelState.SelectMany(keyValuePair => keyValuePair.Value.Errors))
+                        {
+                            <div class="alert alert-danger" role="alert">
+                                <h5>@modelError.ErrorMessage</h5>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }*@
+    }
+}
+
+<br />
+<a href="javascript:history.back()" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Regresar</a>
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+<script src="~/Scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/EditMontoCaucion.js" type="text/javascript"></script>
+
+<script src="~/Scripts/datetimepicker.js" type="text/javascript"></script>
+<script src="~/Scripts/datetimepicker-es.js" type="text/javascript"></script>

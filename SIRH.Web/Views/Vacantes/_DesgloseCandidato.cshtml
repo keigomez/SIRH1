@@ -1,0 +1,122 @@
+﻿@model SIRH.Web.ViewModels.PerfilFuncionarioVM
+
+@{ 
+    if (Model != null)
+    {
+        using (Ajax.BeginForm("DetalleCandidato", new AjaxOptions
+        {
+            HttpMethod = "POST",
+            UpdateTargetId = "formulario",
+            OnBegin = "BeginGuardarCandidato",
+            OnComplete = "CompleteGuardarCandidato",
+            OnSuccess = "SuccessGuardarCandidato",
+            OnFailure = "SuccessGuardarCandidato"
+        }))
+        {
+            Html.ValidationSummary(true);
+            <table class="table table-hover">
+                <thead class="thead-light">
+                    <tr>
+                        <th colspan="6">Información del oferente</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>@Html.LabelFor(model => model.Funcionario.Cedula)</b></td>
+                        <td>@Html.DisplayFor(model => model.Funcionario.Cedula)</td>
+                        <td><b>@Html.LabelFor(model => model.Funcionario.Nombre)</b></td>
+                        <td>@Model.Funcionario.Nombre @Model.Funcionario.PrimerApellido @Model.Funcionario.SegundoApellido</td>
+                        <td><b>@Html.LabelFor(model => model.Funcionario.Sexo)</b></td>
+                        <td>@Html.DisplayFor(model => model.Funcionario.Sexo)</td>
+                    </tr>
+                    <tr>
+                        <td><b>@Html.LabelFor(model => model.Funcionario.FechaNacimiento)</b></td>
+                        <td>@Html.DisplayFor(model => model.Funcionario.FechaNacimiento)</td>
+                        <td><b></b></td>
+                        <td></td>
+                        <td><b></b></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table class="table table-hover">
+                <thead class="thead-light">
+                    <tr>
+                        <th colspan="6">Información de contacto</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        @for (int i = 0; i < Model.InformacionContacto.Count; i++)
+                        {
+                            if ((i + 1) % 3 == 0)
+                            {
+                                @:</tr>                                
+                                @:<tr>
+                                @:<td><b>@Html.DisplayFor(model => model.InformacionContacto[i].TipoContacto.DesTipoContacto)</b></td>
+                                @:<td>@Html.DisplayFor(model => model.InformacionContacto[i].DesContenido)</td>
+                            }
+                            else
+                            {
+                                @:<td><b>@Html.DisplayFor(model => model.InformacionContacto[i].TipoContacto.DesTipoContacto)</b></td>
+                                @:<td>@Html.DisplayFor(model => model.InformacionContacto[i].DesContenido)</td>
+                            }
+                        }
+                   </tr>
+                </tbody>
+            </table>
+
+            <table class="table table-hover">
+                <thead class="thead-light">
+                    <tr>
+                        <th colspan="6">Información del oferente</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>@Html.LabelFor(model => model.Direccion.Distrito.Canton.Provincia)</b></td>
+                        <td>@Html.DisplayFor(model => model.Direccion.Distrito.Canton.Provincia.NomProvincia)</td>
+                        <td><b>@Html.LabelFor(model => model.Direccion.Distrito.Canton)</b></td>
+                        <td>@Model.Direccion.Distrito.Canton.NomCanton</td>
+                        <td><b>@Html.LabelFor(model => model.Direccion.Distrito)</b></td>
+                        <td>@Html.DisplayFor(model => model.Direccion.Distrito.NomDistrito)</td>
+                    </tr>
+                    <tr>
+                        <td><b>@Html.LabelFor(model => model.Direccion.DirExacta)</b></td>
+                        <td>@Html.DisplayFor(model => model.Direccion.DirExacta)</td>
+                        <td><b></b></td>
+                        <td></td>
+                        <td><b></b></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="form-group col-3">
+                            @*<input class="btn btn-outline-secondary" id="btnAtestados" name="SubmitButton" type="submit" value="Ver Atestados" />*@
+                            @Html.ActionLink("Registrar Candidato", "RegistrarCandidato", null, new { @class= "btn btn-outline-secondary" } )
+                        </div>
+                        <div class="form-group col-3">
+                            @Html.ActionLink("Agregar a Pedimento", "AsignarCandidatoPedimento",new { @cedula = Model.Funcionario.Cedula }, new { @class = "btn btn-outline-secondary" })
+                            @*<input class="btn btn-outline-secondary" id="btnGuardar" name="SubmitButton" type="submit" value="Agregar a Pedimento" />*@
+                        </div>
+                        <div class="form-group col-3">
+                            @Html.ActionLink("Nombrar en Puesto", "NombrarCandidato", new { @cedula = Model.Funcionario.Cedula }, new { @class = "btn btn-outline-secondary" })
+                            @*<input class="btn btn-outline-secondary" id="btnGuardarContinuar" name="SubmitButton" type="submit" value="Nombrar en Puesto" />*@
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-6">
+                            <div id="preloader" class="loader" hidden></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+}
+

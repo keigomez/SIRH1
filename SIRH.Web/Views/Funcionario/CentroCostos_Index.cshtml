@@ -1,0 +1,35 @@
+﻿@model SIRH.Web.Models.CentroCostosModel
+
+@{
+    using (Ajax.BeginForm("CentroCostos_Index", "Funcionario", new AjaxOptions { UpdateTargetId = "target-costos", HttpMethod = "POST", OnSuccess = "successDataCostos", OnBegin = "beginDataCostos" }))
+    {
+        <div class="card">
+            <div class="card-header">
+                Parámetros de búsqueda:
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="form-group col-10">
+                        <label for="codigocostos">Código Centro Costos</label>
+                        @Html.TextBox("codigocostos", String.Empty, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-8">
+                        <input class="btn btn-secondary" type="submit" value="Buscar" id="btnBuscaCostos" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-5">
+                        <div id="progressbarcostos" class="loader" hidden></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    <div id="error-costos" class="alert alert-danger" role="alert" hidden></div>
+    <br />
+    <div id="target-costos"></div>
+
+}
+

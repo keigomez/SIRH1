@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/BorradorAccionPersonal.cshtml";
+}
+
+<center>
+    <h2>Módulo de Administración de Borradores Acción de Personal</h2>
+    <h3>Bienvenido(a), @Session["Nombre_Completo"]</h3>
+</center>
+<div class="jumbotron">
+    <center>
+        <p class="textoprincipal">
+            Para iniciar, seleccione alguna de las opciones del menú a su izquierda.
+            <br />En este módulo, usted puede:
+        </p>
+        <div class="row justify-content-center">
+
+
+            @{
+
+                if (Convert.ToBoolean(Session["Administrador_Global"])
+                || Convert.ToBoolean(Session["Administrador_Caucion"]))
+                {
+
+                    <div class="col-md-2">
+                        <img alt="" src="../../Content/Images/new.png" /><br /><p>Agregar Borrador</p>
+                    </div>
+
+                    <div class="col-md-2">
+                        <img alt="" src="../../Content/Images/edit_page.png" /><br /><p>Editar Borrador</p>
+                    </div>
+                    <div class="col-md-2">
+                        <img alt="" src="../../Content/Images/table_add.png" /><br /><p>Agregar Montos</p>
+                    </div>
+                    <div class="col-md-2">
+                        <img alt="" src="../../Content/Images/table_edit.png" /><br /><p>Editar Montos</p>
+                    </div>
+                    <div class="col-md-2">
+                        <img alt="" src="../../Content/Images/look.png" /><br /><p>Consultar Información</p>
+                    </div>
+                    <div class="col-md-2">
+                        <img alt="" src="../../Content/Images/pdf_download.png" /><br /><p>Ver Archivos</p>
+                    </div>
+
+                }
+                else
+                {
+                    if (Convert.ToBoolean(Session["Permiso_Caucion_Operativo"]))
+                    {
+                        <div class="col-md-2">
+                            <img alt="" src="../../Content/Images/new.png" /><br /><p>Agregar Borrador</p>
+                        </div>
+
+                        <div class="col-md-2">
+                            <img alt="" src="../../Content/Images/edit_page.png" /><br /><p>Editar Borrador</p>
+                        </div>
+                        <div class="col-md-2">
+                            <img alt="" src="../../Content/Images/look.png" /><br /><p>Consultar Información</p>
+                        </div>
+                        <div class="col-md-2">
+                            <img alt="" src="../../Content/Images/pdf_download.png" /><br /><p>Ver Archivos</p>
+                        </div>
+                    }
+                    else
+                    {
+
+                        <div class="col-md-2">
+                            <img alt="" src="../../Content/Images/look.png" /><br /><p>Consultar Información</p>
+                        </div>
+                        <div class="col-md-2">
+                            <img alt="" src="../../Content/Images/pdf_download.png" /><br /><p>Ver Archivos</p>
+                        </div>
+                    }
+                }
+
+
+            }
+        </div>
+
+
+
+    </center>
+
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+<script src="~/scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+
+

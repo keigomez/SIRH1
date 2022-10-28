@@ -1,0 +1,76 @@
+﻿@model SIRH.Web.ViewModels.BusquedaPagoFeriadoVM
+
+@{
+    if (Model != null)
+    {
+        using (Html.BeginForm("ReporteDetalleBusqueda", "PagoFeriado", FormMethod.Post, new { @id = "thisForm" }))
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Cédula</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Estado del trámite</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.Funcionarios.Count(); i++) {
+                        <tr>
+                            <td>
+                                @Html.Encode(Model.PagosFeriado[i].IdEntidad)
+                                @Html.HiddenFor(model => model.PagosFeriado[i].IdEntidad)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.PagosExtraordinarios[i].FechaTramite)
+                                @Html.HiddenFor(model => model.PagosExtraordinarios[i].FechaTramite)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Funcionarios[i].Cedula)
+                                @Html.HiddenFor(model =>model.Funcionarios[i].Cedula)                                
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Funcionarios[i].PrimerApellido)
+                                @Html.DisplayFor(model => model.Funcionarios[i].SegundoApellido)
+                                @Html.DisplayFor(model => model.Funcionarios[i].Nombre)
+                            </td>
+                            @Html.HiddenFor(model => model.Funcionarios[i].Nombre)
+                            @Html.HiddenFor(model => model.Funcionarios[i].PrimerApellido)
+                            @Html.HiddenFor(model=> model.Funcionarios[i].SegundoApellido)
+                            <td>
+                                @Html.DisplayFor(model => model.EstadosTramite[i].DescripcionEstado)
+                                @Html.HiddenFor(model=> model.EstadosTramite[i].DescripcionEstado)
+                            </td>
+                            @if (Model.EstadosTramite.ElementAt(i).IdEntidad != 2)
+                            {
+                                <td>
+                                    <a href="@Url.Action("Edit", "PagoFeriado", new { codigo= Model.PagosFeriado.ElementAt(i).IdEntidad })" class="btn btn-warning btn-sm">
+                                        <i class="fa fa-edit"></i> Editar
+                                    </a>
+                                </td>
+
+                            }
+                            <td>
+                                <a href="@Url.Action("Details", "PagoFeriado", new { codigo = Model.PagosFeriado.ElementAt(i).IdEntidad, accion = "search" })" class="btn btn-primary btn-sm">
+                                    <i class="fa fa-search"></i> Ver Detalle
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            @Html.HiddenFor(model => model.Funcionario.Cedula)
+            @Html.HiddenFor(model => model.Consecutivo)
+            @Html.HiddenFor(model => model.FechaTramiteDesde)
+            @Html.HiddenFor(model => model.FechaTramitenHasta)
+            @Html.HiddenFor(model => model.EstadoSeleccionado)
+            @Html.HiddenFor(model => model.DiaAsuetoSeleccionado)
+            @Html.HiddenFor(model => model.DiaSeleccionado)
+        <br />
+            <button class="btn btn-danger" type="submit"><i class="fa fa-file-pdf-o"></i> Exportar a PDF</button>
+        }
+    }
+}

@@ -1,0 +1,82 @@
+﻿@model SIRH.Web.ViewModels.DetalleVacacionesVM
+
+@{
+    ViewBag.Title = "BuscarHistorial";
+    Layout = "~/Views/Shared/Vacaciones.cshtml";
+}
+
+@*<link href="~/Content/datetimepicker.css" rel="stylesheet" />*@
+<h2>Historial de vacaciones - Emulación</h2>
+<div class="alert alert-info">Este historial es solamente para exfuncionarios del Ministerio cuya fecha de salida sea anterior a junio de 2021</div>
+
+@{
+    Html.EnableClientValidation();
+    using (Html.BeginForm(Ajax.BeginForm("BuscarHistorial", "Vacaciones", new AjaxOptions
+    {
+        UpdateTargetId = "dvResultadoBusqueda",
+        HttpMethod = "POST",
+        OnSuccess = "SuccessCargarPeriodo",
+        OnComplete = "CompleteCargarPeriodo",
+        OnBegin = "BeginCargarPeriodo"
+    })))
+    {
+        <div class="card">
+            <div class="card-header">Digite la cédula del funcionario</div>
+            <div class="card-body">
+                <center>
+                    <div class="row">
+
+                        <form class="form-inline">
+                            <div class="col-2">
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Funcionario.Cedula)
+                                </div>
+
+
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    @Html.TextBoxFor(model => model.Funcionario.Cedula, new { @class = "form-control", style = "margin-bottom:10px;", @maxlength = "10" })
+
+                                    @Html.ValidationMessageFor(model => model.Funcionario.Cedula)
+                                </div>
+
+                            </div>
+                            <div class="col-2">
+                                <button class="btn btn-primary " id="btnBuscar" name="SubmitButton" type="submit" value="Buscar">
+                                    <i class="fa fa-search"></i>
+                                    Buscar
+                                </button>
+                            </div>
+                        </form>
+
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-10">
+                            <center>
+                                <div id="preloader" class="loader" hidden></div>
+                            </center>
+                        </div>
+
+
+                    </div>
+                </center>
+            </div>
+        </div>
+    }
+    <br />
+    <div id="dvResultadoBusqueda"></div>
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+<script src="~/Scripts/sidebar.js" type="text/javascript"></script>
+<script src="~/scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/PeriodoVacaciones.js" type="text/javascript"></script>
+@*<script src="~/Scripts/datetimepicker.js" type="text/javascript"></script>
+<script src="~/Scripts/datetimepicker-es.js" type="text/javascript"></script>*@
+

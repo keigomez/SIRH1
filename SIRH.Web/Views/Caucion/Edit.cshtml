@@ -1,0 +1,131 @@
+﻿@model SIRH.Web.ViewModels.FormularioCaucionVM
+
+@{
+    ViewBag.Title = "Anular Caución";
+    Layout = "~/Views/Shared/Cauciones.cshtml";
+}
+
+<blockquote><h3>Modificar Póliza (Anular)</h3></blockquote>
+@{
+    if (Model.Error != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            <i class="fa fa-times-circle d-inline" style="font-size:48px;"></i>
+            <h4 class="d-inline"> Ocurrió un error al momento de cargar la póliza.</h4>
+        </div>
+        <br />
+
+        <div class="card">
+            <h5 class="card-header">Detalles</h5>
+            <div class="card-body">
+                <div>La póliza de caución no pudo ser cargada debido al siguiente error: </div>
+                <br /><div><b>@Html.AttributeEncode(Model.Error.MensajeError)</b></div>
+                <br /><div>Si conoce la causa de este error, por favor intentelo de nuevo.</div>
+                <br /><div>De lo contrario le invitamos a ponerse en contacto con nuestro equipo de soporte, mediante el sistema de <a href="http://sisrh.mopt.go.cr:83/" target="_blank">Ayuda y Soporte</a></div>
+            </div>
+        </div>
+    }
+    else {
+        using (Ajax.BeginForm("Edit", "Caucion", new { codigo = Int32.Parse(Request.QueryString["codigo"]) } ,new AjaxOptions
+        {
+            HttpMethod = "Post",
+            UpdateTargetId = "dvResultadoBusqueda",
+            InsertionMode = InsertionMode.Replace,
+            OnComplete = "CompleteEditarCaucion",
+            OnBegin = "BeginEditarCaucion"
+        }))
+        {
+            @Html.ValidationSummary(true)
+            <div class="card">
+                <div class="card-header text-left">
+                    <b>Póliza # @Model.Caucion.NumeroPoliza</b>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <span>
+                                <b>Funcionario: </b>@Model.Funcionario.Cedula - @Model.Funcionario.Nombre @Model.Funcionario.PrimerApellido @Model.Funcionario.SegundoApellido
+                                @Html.HiddenFor(model => model.Funcionario.Cedula)
+                                @Html.HiddenFor(model => model.Funcionario.Nombre)
+                                @Html.HiddenFor(model => model.Funcionario.PrimerApellido)
+                                @Html.HiddenFor(model => model.Funcionario.SegundoApellido)
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>
+                                <b>@Html.LabelFor(model => model.Caucion.NumeroPoliza): </b> @Model.Caucion.NumeroPoliza
+                                @Html.HiddenFor(model => model.Caucion.NumeroPoliza)
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>
+                                <b>@Html.LabelFor(model => model.AseguradoraSeleccionada): </b>@Model.EntidadSeguros.NombreEntidad
+                                @Html.HiddenFor(model => model.EntidadSeguros.NombreEntidad)
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>
+                                <b>@Html.LabelFor(model => model.Caucion.FechaEmision): </b>@Html.AttributeEncode(Model.Caucion.FechaEmision.ToShortDateString())
+                                @Html.HiddenFor(model => model.Caucion.FechaEmision)
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>
+                                <b>@Html.LabelFor(model => model.Caucion.FechaVence): </b>@Html.AttributeEncode(Model.Caucion.FechaVence.ToShortDateString())
+                                @Html.HiddenFor(model => model.Caucion.FechaVence)
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>
+                                <b>@Html.LabelFor(model => model.MontoSeleccionado): </b>@Model.MontoCaucion.Descripcion - ₡ @Html.AttributeEncode(Model.MontoCaucion.MontoColones.ToString("#,##0.00"))
+                                @Html.HiddenFor(model => model.MontoCaucion.Nivel)
+                                @Html.HiddenFor(model => model.MontoCaucion.Descripcion)
+                                @Html.HiddenFor(model => model.MontoCaucion.MontoColones)
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span>
+                                <b>@Html.LabelFor(model => model.Caucion.DetalleEstadoPoliza): </b>@Model.Caucion.DetalleEstadoPoliza
+                                @Html.HiddenFor(model => model.Caucion.DetalleEstadoPoliza)
+                            </span>
+                        </li>
+                    </ul>
+                    <br />
+
+                </div>
+            </div>
+
+            <br />
+
+            <div class="alert alert-warning" role="alert">
+                <i class="fa fa-exclamation-circle d-inline" style="font-size:48px;"></i>
+                <h4 class="d-inline"> ¡Atención! Usted está apunto de anular la póliza # <b>@Model.Caucion.NumeroPoliza</b>.</h4>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-group row">
+                        <b class="col-2 col-form-label">@Html.LabelFor(model => model.Caucion.ObservacionesPoliza, new { @for = "ObservacionesPoliza" })</b>
+                        <div class="col-10">
+                            @Html.TextAreaFor(model => model.Caucion.ObservacionesPoliza, new { @id = "ObservacionesPoliza", @class = "form-control", @rows = 5 })
+                        </div>
+                    </div>         
+                    <br />
+                    <input id="btnEditar" name="SubmitButton" type="submit" value="Anular Póliza" class="btn btn-warning float-right" />
+                    <div id="preloader" class="loader float-right" style="display: none"></div>
+                </div>
+            </div>
+        }
+    }
+}
+
+<br />
+<div id="dvResultadoBusqueda"></div>
+<br />
+<a href="javascript:history.back()" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Regresar</a>
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+<script src="~/Scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/EditCaucion.js"></script>

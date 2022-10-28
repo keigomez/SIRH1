@@ -1,0 +1,22 @@
+﻿@model SIRH.Web.ViewModels.FormularioCalificacionVM
+
+@if (Model.Error == null)
+{
+    <div class="modal-body" style="margin-top:-16px;">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-body">
+                    @if (Model.ReglasTecnicas.Count > 0)
+                    {
+                        <b>@Html.LabelFor(model => model.ReglasTecnicas[0].ImagenDocumento):</b>
+                        <br />
+                        <iframe src="@Url.Action("GetImage", new { id = Model.ReglasTecnicas[0].IdEntidad })" height = "500" width = "100%"></iframe>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")

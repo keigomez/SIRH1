@@ -1,0 +1,56 @@
+﻿@model SIRH.Web.ViewModels.FormularioMarcasAsistenciaVM
+@{ 
+    using (Ajax.BeginForm("DiaFeriado_Index", "MarcasAsistencia", new AjaxOptions { UpdateTargetId = "target-clase", HttpMethod = "POST" })) {
+        <table id="dispositivos2" class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th colspan="2">
+                        Dispositivos registrados
+                    </th>
+                </tr>
+               
+                <tr>
+                    <th>
+                        <b>
+                            @Html.LabelFor(model => model.Dispositivo.Descripcion)
+                        </b>
+                    </th>
+                    <th>
+                        <b>
+                            @Html.LabelFor(model => model.Dispositivo.Ubicacion)
+                        </b>
+                    </th>
+                    <th>
+                        -
+                    </th>
+              </tr>
+           
+            </thead>
+            <tbody>
+                
+                @for (int i = 0; i < Model.ListaDispositivos.Count; i++)
+                {
+                    <tr>
+                        <td>
+                            @Model.ListaDispositivos[i].Descripcion
+                        </td>
+                        <td>
+                            @Model.ListaDispositivos[i].Ubicacion
+                        </td>
+                        <td>
+                            @Html.ActionLink("Agregar", "", "Create", null,
+                           new {@class="btn btn-outline-primary",@id= Model.ListaDispositivos[i].IdEntidad ,
+                               onclick = "return CargarDato('" +  Model.ListaDispositivos[i].Descripcion +"','"+  Model.ListaDispositivos[i].Ubicacion +"','"+  Model.Funcionario.Cedula +"','"+  Model.Funcionario.Nombre +"','"+ Model.Funcionario.PrimerApellido+"','"+ Model.Funcionario.SegundoApellido +"','"+Model.ListaDispositivos[i].IdEntidad +"');" }) 
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        //@Session["dispositivos"] = @Model.ListaDispositivos;
+    }
+
+    <div id="error-clase" style="color: Red">
+    </div>
+    <div id="target-clase">
+    </div>
+}

@@ -1,0 +1,41 @@
+﻿@model SIRH.Web.Models.DireccionGeneralModel
+@{
+    using (Ajax.BeginForm("Direccion_Index", "UbicacionPuesto", new AjaxOptions { UpdateTargetId = "target-direccion", HttpMethod = "POST", OnSuccess = "successDataDireccion", OnBegin = "beginDataDireccion" }))
+    {
+        <div class="card">
+            <div class="card-header">
+                Parámetros de búsqueda:
+            </div>
+            <div class="card-body">
+               <div class="row">
+                   <div class="form-group col-6">
+                       @Html.Label("Código de dirección")
+                       <span>:</span>
+                       @Html.TextBox("codigodireccion", String.Empty, new { @onkeypress="return IsNumeric(event,'direccion', 'código de dirección')", @class="form-control" })
+                   </div>
+               </div>
+               <div class="row">
+                   <div class="form-group col-6">
+                       @Html.Label("Nombre de dirección")
+                       <span>:</span>
+                       @Html.TextBox("nomdireccion",String.Empty, new { @class="form-control" })
+                   </div>
+               </div>
+               <div class="row">
+                   <div class="form-group col-8">
+                       <input class="btn btn-primary" type="submit" value="Buscar" id="btnBuscaDireccion" />
+                   </div>
+               </div>
+               <div class="row">
+                   <div class="form-group col-5">
+                       <div id="progressbardireccion" class="loader" hidden></div>
+                   </div>
+               </div> 
+                
+            </div>
+        </div>
+    }
+    <div id="error-direccion" class="alert alert-danger" role="alert" hidden></div>
+    <div id="target-direccion"></div>
+
+}

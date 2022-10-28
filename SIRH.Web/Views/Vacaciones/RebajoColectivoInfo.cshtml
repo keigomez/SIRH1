@@ -1,0 +1,90 @@
+﻿@model SIRH.Web.ViewModels.RebajoColectivoVM
+@{
+    ViewBag.Title = "RebajoColectivoInfo";
+    Layout = "~/Views/Shared/Vacaciones.cshtml";
+}
+@{
+    using (Ajax.BeginForm("RebajoColectivo", "Vacaciones", new AjaxOptions
+    {
+        UpdateTargetId = "dvResultadoBusqueda",
+        HttpMethod = "POST",
+        OnComplete = "CompleteInfo",
+        OnBegin = "BeginCargarInfo"
+    }))
+    {
+        <h1>
+
+            <span style="color: darkblue">Rebajo colectivo realializado exitosamente!</span>
+            <br>
+        </h1>
+
+        <div class="card">
+            <div class="card-header">
+                <strong>Información del rebajo colectivo</strong>
+            </div>
+            <div class="card-body">
+                <table class="table table-hover">
+                    <tr>
+                        <td>
+                            <strong>@Html.LabelFor(model => model.Registro.NumeroTransaccion): </strong>@Html.DisplayFor(model => model.Registro.NumeroTransaccion)
+                            @Html.HiddenFor(model => model.Registro.NumeroTransaccion)
+                        </td>
+                        <td>
+                            <strong>@Html.LabelFor(model => model.Registro.FechaRige): </strong>@Model.Registro.FechaRige.ToShortDateString()
+                            @Html.HiddenFor(model => model.Registro.FechaRige)
+                        </td>
+                        <td>
+                            <strong>@Html.LabelFor(model => model.Registro.FechaVence): </strong>@Model.Registro.FechaVence.ToShortDateString()
+                            @Html.HiddenFor(model => model.Registro.FechaVence)
+                        </td>
+                        <td>
+                            <strong>@Html.LabelFor(model => model.Registro.Dias): </strong>@Html.DisplayFor(model => model.Registro.Dias)
+                            @Html.HiddenFor(model => model.Registro.Dias)
+                        </td>
+                        @if (Model.seleccionPolicial && Model.seleccionSeguridad)
+                        {
+                            <td>
+                                <strong>Funcionarios excluidos: </strong> Funcionarios de seguridad||Funcionarios policiales
+                            </td>
+                        }
+                        else
+                           if (Model.seleccionPolicial || Model.seleccionSeguridad)
+                        {
+
+                            if (Model.seleccionPolicial)
+                            {
+                                <td>
+                                    <strong>Funcionarios excluidos: </strong> Funcionarios policiales
+                                </td>
+                            }
+                            else
+                            if (Model.seleccionSeguridad)
+                            {
+                                <td>
+                                    <strong>Funcionarios excluidos: </strong> Funcionarios de seguridad
+                                </td>
+
+                            }
+                        }
+                        else
+                        {
+                            <td>
+                                <strong>Funcionarios excluidos: </strong> Ningun funcionario fue excluido
+                            </td>
+                        }
+
+                    </tr>
+                </table>
+            </div>
+            <a class="btn btn-primary" href="javascript:history.back()" id="A5"><i class="fa fa-arrow-circle-left"></i> Regresar</a>
+            <button type="button" id="btnAnular" class="btn btn-danger " value="Anular" name="SubmitButton">
+                <i class="fa fa-calendar-minus-o"></i>
+                Anular
+            </button>
+            <button type="button" id="btnInconsistencias" class="btn btn-primary " name="SubmitButton" value="Inconsistencias">
+                <i class="fa fa-calendar-minus-o"></i>
+                Inconsistencias
+            </button>
+        </div>
+    }
+}

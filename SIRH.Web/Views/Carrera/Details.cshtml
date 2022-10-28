@@ -1,0 +1,342 @@
+﻿@model SIRH.Web.ViewModels.FuncionarioCarreraVM
+
+@{
+    ViewBag.Title = "Detalle de Curso";
+    Layout = "~/Views/Shared/Carrera.cshtml";
+}
+
+<blockquote><h3>Detalle de Curso</h3></blockquote>
+
+@{
+    if (Request.QueryString["accion"] == "guardar")
+    {
+        if (Model.Error == null)
+        {
+            if (Model.CursoCapacitacion != null)
+            {
+                <div class="alert alert-success" role="alert">
+                    <i class="fa fa-check-circle d-inline" style="font-size:48px;"></i>
+                    <h4 class="d-inline"> El curso de capacitación por @Html.AttributeEncode(Model.CursoCapacitacion.Modalidad.Descripcion), se ha guardado correctamente.</h4>
+                </div>
+                <br />
+
+                <div class="card">
+                    <h5 class="card-header">Detalles</h5>
+                    <div class="card-body">
+                        <div>Se ha almacenado el curso de capacitación: <b>@Html.AttributeEncode(Model.CursoCapacitacion.DescripcionCapacitacion)</b> para el funcionario: </div>
+                        <br /><div><b>@Html.AttributeEncode(Model.Funcionario.Cedula) - @Html.AttributeEncode(Model.Funcionario.Nombre) @Html.AttributeEncode(Model.Funcionario.PrimerApellido) @Html.AttributeEncode(Model.Funcionario.SegundoApellido)</b></div>
+                        <br /><div>Correspondiente al periodo: <b>@Html.AttributeEncode(Model.CursoCapacitacion.FechaInicio.ToShortDateString()) - @Html.AttributeEncode(Model.CursoCapacitacion.FechaFinal.ToShortDateString()) </b>, el cual genera un total de <b>@Html.AttributeEncode(Model.CursoCapacitacion.TotalPuntos) puntos.</b></div>
+                        <br /><div>Por un total de: @Html.AttributeEncode(Model.CursoCapacitacion.TotalHoras) horas.</div>
+                        <br /><div>Emitido por: @Html.AttributeEncode(Model.CursoCapacitacion.EntidadEducativa.DescripcionEntidad)</div>
+                    </div>
+                </div>
+                <br />
+
+                <a href="javascript:history.back()" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Regresar</a>
+            }
+            else
+            {
+                <div class="alert alert-success" role="alert">
+                    <i class="fa fa-check-circle d-inline" style="font-size:48px;"></i>
+                    <h4 class="d-inline"> El curso de grado se ha guardado correctamente.</h4>
+                </div>
+                <br />
+
+                <div class="card">
+                    <h5 class="card-header">Detalles</h5>
+                    <div class="card-body">
+                        <div>Se ha almacenado el curso de grado: <b>@Html.AttributeEncode(Model.CursoGrado.CursoGrado)</b> para el funcionario: </div>
+                        <br /><div><b>@Html.AttributeEncode(Model.Funcionario.Cedula) - @Html.AttributeEncode(Model.Funcionario.Nombre) @Html.AttributeEncode(Model.Funcionario.PrimerApellido) @Html.AttributeEncode(Model.Funcionario.SegundoApellido)</b></div>
+                        <br /><div>Emitido el: <b>@Html.AttributeEncode(Model.CursoGrado.FechaEmision.ToShortDateString())</b>, el cual genera un total de <b>@Html.AttributeEncode(Model.CursoGrado.Incentivo) puntos.</b></div>
+                        <br /><div>En el grado de: @Html.AttributeEncode(Model.CursoGrado.TipoGrado)</div>
+                        <br /><div>Emitido por: @Html.AttributeEncode(Model.CursoGrado.EntidadEducativa.DescripcionEntidad)</div>
+                    </div>
+                </div>
+                <br />
+
+                <a href="javascript:history.back()" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Regresar</a>
+            }
+        }
+        else
+        {
+            <div class="alert alert-danger" role="alert">
+                <i class="fa fa-times-circle d-inline" style="font-size:48px;"></i>
+                <h4 class="d-inline"> Ocurrió un error al momento de guardar el curso.</h4>
+            </div>
+            <br />
+
+            <div class="card">
+                <h5 class="card-header">Detalles</h5>
+                <div class="card-body">
+                    <div>El curso no pudo ser guardado debido al siguiente error: </div>
+                    <br /><div><b>@Html.AttributeEncode(Model.Error.MensajeError)</b></div>
+                    <br /><div>Si conoce la causa de este error, por favor revise los datos que intentó almacenar e intentelo de nuevo.</div>
+                    <br /><div>De lo contrario le invitamos a ponerse en contacto con nuestro equipo de soporte, mediante el sistema de <a href="http://sisrh.mopt.go.cr:83/" target="_blank">Ayuda y Soporte</a></div>
+                </div>
+            </div>
+            <br />
+
+            <a href="javascript:history.back()" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Regresar</a>
+        }
+    }
+    else if (Request.QueryString["accion"] == "anular")
+    {
+        if (Model.Error == null)
+        {
+            if (Model.CursoCapacitacion != null)
+            {
+                <div class="alert alert-success" role="alert">
+                    <i class="fa fa-check-circle d-inline" style="font-size:48px;"></i>
+                    <h4 class="d-inline"> El curso de capacitación por @Html.AttributeEncode(Model.CursoCapacitacion.Modalidad.Descripcion), se ha anulado correctamente.</h4>
+                </div>
+                <br />
+
+                <div class="card">
+                    <h5 class="card-header">Detalles</h5>
+                    <div class="card-body">
+                        <div>Se ha anulado el curso de capacitación: <b>@Html.AttributeEncode(Model.CursoCapacitacion.DescripcionCapacitacion)</b> para el funcionario: </div>
+                        <br /><div><b>@Html.AttributeEncode(Model.Funcionario.Cedula) - @Html.AttributeEncode(Model.Funcionario.Nombre) @Html.AttributeEncode(Model.Funcionario.PrimerApellido) @Html.AttributeEncode(Model.Funcionario.SegundoApellido)</b></div>
+                        <br /><div>Correspondiente al periodo: <b>@Html.AttributeEncode(Model.CursoCapacitacion.FechaInicio.ToShortDateString()) - @Html.AttributeEncode(Model.CursoCapacitacion.FechaFinal.ToShortDateString()) </b>, el cual genera un total de <b>@Html.AttributeEncode(Model.CursoCapacitacion.TotalPuntos) puntos.</b></div>
+                        <br /><div>Por un total de: @Html.AttributeEncode(Model.CursoCapacitacion.TotalHoras) horas.</div>
+                        <br /><div>Emitido por: @Html.AttributeEncode(Model.CursoCapacitacion.EntidadEducativa.DescripcionEntidad)</div>
+                    </div>
+                </div>
+
+                <br />
+
+                <a href="javascript:history.back()" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Regresar</a>
+            }
+            else
+            {
+                <div class="alert alert-success" role="alert">
+                    <i class="fa fa-check-circle d-inline" style="font-size:48px;"></i>
+                    <h4 class="d-inline"> El curso de grado se ha anulado correctamente.</h4>
+                </div>
+                    <br />
+
+                    <div class="card">
+                        <h5 class="card-header">Detalles</h5>
+                        <div class="card-body">
+                            <div>Se ha anulado el curso de grado: <b>@Html.AttributeEncode(Model.CursoGrado.CursoGrado)</b> para el funcionario: </div>
+                            <br /><div><b>@Html.AttributeEncode(Model.Funcionario.Cedula) - @Html.AttributeEncode(Model.Funcionario.Nombre) @Html.AttributeEncode(Model.Funcionario.PrimerApellido) @Html.AttributeEncode(Model.Funcionario.SegundoApellido)</b></div>
+                            <br /><div>Emitido el: <b>@Html.AttributeEncode(Model.CursoGrado.FechaEmision.ToShortDateString())</b>, el cual genera un total de <b>@Html.AttributeEncode(Model.CursoGrado.Incentivo) puntos.</b></div>
+                            <br /><div>En el grado de: @Html.AttributeEncode(Model.CursoGrado.TipoGrado).</div>
+                            <br /><div>Emitido por: @Html.AttributeEncode(Model.CursoGrado.EntidadEducativa.DescripcionEntidad)</div>
+                        </div>
+                    </div>
+
+                    <br />
+
+                    <a href="javascript:history.back()" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Regresar</a>
+            }
+        }
+        else
+        {
+            <div class="alert alert-danger" role="alert">
+                <i class="fa fa-times-circle d-inline" style="font-size:48px;"></i>
+                <h4 class="d-inline"> Ocurrió un error al momento de anular el curso.</h4>
+            </div>
+                <br />
+
+                <div class="card">
+                    <h5 class="card-header">Detalles</h5>
+                    <div class="card-body">
+                        <div>El curso no pudo ser anulado debido al siguiente error: </div>
+                        <br /><div><b>@Html.AttributeEncode(Model.Error.MensajeError)</b></div>
+                        <br /><div>Si conoce la causa de este error, por favor revise los datos que intentó almacenar e intentelo de nuevo.</div>
+                        <br /><div>De lo contrario le invitamos a ponerse en contacto con nuestro equipo de soporte, mediante el sistema de <a href="http://sisrh.mopt.go.cr:83/" target="_blank">Ayuda y Soporte</a></div>
+                    </div>
+                </div>
+                <br />
+                <a href="javascript:history.back()" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Regresar</a>
+        }
+    }
+    else if (Request.QueryString["accion"] == "modificar")
+    {
+        if (Model.Error == null)
+        {
+            if (Model.CursoCapacitacion != null)
+            {
+                <div class="alert alert-success" role="alert">
+                    <i class="fa fa-check-circle d-inline" style="font-size:48px;"></i>
+                    <h4 class="d-inline"> El curso de capacitación se ha editado correctamente.</h4>
+                </div>
+                <br />
+
+                <div class="card">
+                    <h5 class="card-header">Detalles</h5>
+                    <div class="card-body">
+                        <div>Se ha editado el curso de capacitación: <b>@Html.AttributeEncode(Model.CursoCapacitacion.DescripcionCapacitacion)</b> para el funcionario: </div>
+                        <br /><div><b>@Html.AttributeEncode(Model.Funcionario.Cedula) - @Html.AttributeEncode(Model.Funcionario.Nombre) @Html.AttributeEncode(Model.Funcionario.PrimerApellido) @Html.AttributeEncode(Model.Funcionario.SegundoApellido)</b></div>
+                        <br /><div>Correspondiente al periodo: <b>@Html.AttributeEncode(Model.CursoCapacitacion.FechaInicio.ToShortDateString()) - @Html.AttributeEncode(Model.CursoCapacitacion.FechaFinal.ToShortDateString()) </b>, el cual genera un total de <b>@Html.AttributeEncode(Model.CursoCapacitacion.TotalPuntos) puntos.</b></div>
+                        <br /><div>Por un total de: @Html.AttributeEncode(Model.CursoCapacitacion.TotalHoras) horas.</div>
+                        <br /><div>Emitido por: @Html.AttributeEncode(Model.CursoCapacitacion.EntidadEducativa.DescripcionEntidad)</div>
+                    </div>
+                </div>
+                <br />
+
+                <a href="javascript:history.back()" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Regresar</a>
+            }
+            else
+            {
+                <div class="alert alert-success" role="alert">
+                    <i class="fa fa-check-circle d-inline" style="font-size:48px;"></i>
+                    <h4 class="d-inline"> El curso de grado se ha editado correctamente.</h4>
+                </div>
+                <br />
+
+                    <div class="card">
+                        <h5 class="card-header">Detalles</h5>
+                        <div class="card-body">
+                            <div>Se ha editado el curso de grado: <b>@Html.AttributeEncode(Model.CursoGrado.CursoGrado)</b> para el funcionario: </div>
+                            <br /><div><b>@Html.AttributeEncode(Model.Funcionario.Cedula) - @Html.AttributeEncode(Model.Funcionario.Nombre) @Html.AttributeEncode(Model.Funcionario.PrimerApellido) @Html.AttributeEncode(Model.Funcionario.SegundoApellido)</b></div>
+                            <br /><div>Emitido el: <b>@Html.AttributeEncode(Model.CursoGrado.FechaEmision.ToShortDateString())</b>, el cual genera un total de <b>@Html.AttributeEncode(Model.CursoGrado.Incentivo) puntos.</b></div>
+                            <br /><div>En el grado de: @Html.AttributeEncode(Model.CursoGrado.TipoGrado).</div>
+                            <br /><div>Emitido por: @Html.AttributeEncode(Model.CursoGrado.EntidadEducativa.DescripcionEntidad)</div>
+                        </div>
+                    </div>
+                    <br />
+
+                    <a href="javascript:history.back()" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Regresar</a>
+            }
+        }
+        else
+        {
+            <div class="alert alert-danger" role="alert">
+                <i class="fa fa-times-circle d-inline" style="font-size:48px;"></i>
+                <h4 class="d-inline"> Ocurrió un error al momento de anular el curso.</h4>
+            </div>
+            <br />
+
+                <div class="card">
+                    <h5 class="card-header">Detalles</h5>
+                    <div class="card-body">
+                        <div>El curso no pudo ser anulado debido al siguiente error: </div>
+                        <br /><div><b>@Html.AttributeEncode(Model.Error.MensajeError)</b></div>
+                        <br /><div>Si conoce la causa de este error, por favor revise los datos que intentó almacenar e intentelo de nuevo.</div>
+                        <br /><div>De lo contrario le invitamos a ponerse en contacto con nuestro equipo de soporte, mediante el sistema de <a href="http://sisrh.mopt.go.cr:83/" target="_blank">Ayuda y Soporte</a></div>
+                    </div>
+                </div>
+                <br />
+                <a href="javascript:history.back()" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Regresar</a>
+        }
+    }
+    else
+    {
+        if (Model.CursoCapacitacion != null)
+        {
+                <div class="card">
+                    <h5 class="card-header"><b>Curso: </b>@Model.CursoCapacitacion.DescripcionCapacitacion</h5>
+                    <div class="card-body">
+                        @using (Html.BeginForm("ReporteDetalleCarrera", "Carrera", FormMethod.Post, new { @id = "thisForm" }))
+                        {
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <b>Funcionario: </b>@Model.Funcionario.Cedula - @Model.Funcionario.Nombre @Model.Funcionario.PrimerApellido @Model.Funcionario.SegundoApellido
+                                    @Html.HiddenFor(model => model.Funcionario.Cedula)
+                                    @Html.HiddenFor(model => model.Funcionario.Nombre)
+                                    @Html.HiddenFor(model => model.Funcionario.PrimerApellido)
+                                    @Html.HiddenFor(model => model.Funcionario.SegundoApellido)
+                                </li>
+                                <li class="list-group-item">
+                                    <b>@Html.LabelFor(model => model.CursoCapacitacion.EntidadEducativa.DescripcionEntidad): </b>@Html.DisplayFor(model => model.CursoCapacitacion.EntidadEducativa.DescripcionEntidad)
+                                    @Html.HiddenFor(model => model.CursoCapacitacion.EntidadEducativa.DescripcionEntidad)
+                                </li>
+                                <li class="list-group-item">
+                                    <b>@Html.LabelFor(model => model.CursoCapacitacion.FechaInicio): </b>@Html.DisplayFor(model => model.CursoCapacitacion.FechaInicio)
+                                    @Html.HiddenFor(model => model.CursoCapacitacion.FechaInicio)
+                                </li>
+                                <li class="list-group-item">
+                                    <b>@Html.LabelFor(model => model.CursoCapacitacion.FechaFinal): </b>@Model.CursoCapacitacion.FechaFinal.ToShortDateString()
+                                    @Html.HiddenFor(model => model.CursoCapacitacion.FechaFinal)
+                                </li>
+                                <li class="list-group-item">
+                                    <b>@Html.LabelFor(model => model.CursoCapacitacion.Modalidad.Descripcion): </b>@Html.DisplayFor(model => model.CursoCapacitacion.Modalidad.Descripcion)
+                                    @Html.HiddenFor(model => model.CursoCapacitacion.Modalidad.Descripcion)
+                                </li>
+                                <li class="list-group-item">
+                                    <b>@Html.LabelFor(model => model.CursoCapacitacion.Resolucion): </b>@Html.DisplayFor(model => model.CursoCapacitacion.Resolucion)
+                                    @Html.HiddenFor(model => model.CursoCapacitacion.Resolucion)
+                                </li>
+                                <li class="list-group-item">
+                                    <b>@Html.LabelFor(model => model.CursoCapacitacion.TotalPuntos): </b>@Html.DisplayFor(model => model.CursoCapacitacion.TotalPuntos)
+                                    @Html.HiddenFor(model => model.CursoCapacitacion.TotalPuntos)
+                                </li>
+                                <li class="list-group-item">
+                                    <b>@Html.LabelFor(model => model.CursoCapacitacion.TotalHoras): </b>@Html.DisplayFor(model => model.CursoCapacitacion.TotalHoras)
+                                    @Html.HiddenFor(model => model.CursoCapacitacion.TotalHoras)
+                                </li>
+                                @if (Model.CursoCapacitacion.ImagenTitulo != null)
+                                {
+                                    <li class="list-group-item">
+                                        <b>@Html.LabelFor(model => model.CursoCapacitacion.ImagenTitulo):</b>
+                                        <br />
+                                        <iframe src="@Url.Action("GetImage", new { id=Convert.ToInt32(Request.QueryString["codigo"]), tipo=Convert.ToInt32(Request.QueryString["tipo"])})" height="500" width="500"></iframe>
+                                    </li>
+                                }
+                            </ul>
+                            <br />
+                            <button class="btn btn-danger" type="submit"><i class="fa fa-file-pdf-o"></i> Exportar a PDF</button>
+                        }
+                    </div>
+                </div>
+        }
+        else
+        {
+                <div class="card">
+                    <h5 class="card-header">Curso: @Model.CursoGrado.CursoGrado</h5>
+                    <div class="card-body">
+                        @using (Html.BeginForm("ReporteDetalleCarrera", "Carrera", FormMethod.Post, new { @id = "thisForm" }))
+                        {
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <b>Funcionario: </b>@Model.Funcionario.Cedula - @Model.Funcionario.Nombre @Model.Funcionario.PrimerApellido @Model.Funcionario.SegundoApellido
+                                    @Html.HiddenFor(model => model.Funcionario.Cedula)
+                                    @Html.HiddenFor(model => model.Funcionario.Nombre)
+                                    @Html.HiddenFor(model => model.Funcionario.PrimerApellido)
+                                    @Html.HiddenFor(model => model.Funcionario.SegundoApellido)
+                                </li>
+                                <li class="list-group-item">
+                                    <b>@Html.LabelFor(model => model.CursoGrado.EntidadEducativa.DescripcionEntidad): </b>@Html.DisplayFor(model => model.CursoGrado.EntidadEducativa.DescripcionEntidad)
+                                    @Html.HiddenFor(model => model.CursoGrado.EntidadEducativa.DescripcionEntidad)
+                                </li>
+                                <li class="list-group-item">
+                                    <b>@Html.LabelFor(model => model.CursoGrado.FechaEmision): </b>@Model.CursoGrado.FechaEmision.ToShortDateString()
+                                    @Html.HiddenFor(model => model.CursoGrado.FechaEmision)
+                                </li>
+                                <li class="list-group-item">
+                                    <b>@Html.LabelFor(model => model.CursoGrado.Incentivo): </b>@Html.DisplayFor(model => model.CursoGrado.Incentivo)
+                                    @Html.HiddenFor(model => model.CursoGrado.Incentivo)
+                                </li>
+                                <li class="list-group-item">
+                                    <b>@Html.LabelFor(model => model.CursoGrado.TipoGrado): </b>@Html.DisplayFor(model => model.CursoSeleccionado)
+                                    @Html.HiddenFor(model => model.CursoSeleccionado)
+                                </li>
+                                <li class="list-group-item">
+                                    <b>@Html.LabelFor(model => model.CursoGrado.Resolucion): </b>@Html.DisplayFor(model => model.CursoGrado.Resolucion)
+                                    @Html.HiddenFor(model => model.CursoGrado.Resolucion)
+                                </li>
+                                @if (Model.CursoGrado.ImagenTitulo != null)
+                                {
+                                    <li class="list-group-item">
+                                        <b>@Html.LabelFor(model => model.CursoGrado.ImagenTitulo):</b>
+                                        <br />
+                                        <iframe src="@Url.Action("GetImage", new { id=Convert.ToInt32(Request.QueryString["codigo"]), tipo=Convert.ToInt32(Request.QueryString["tipo"])})" height="500" width="500"></iframe>
+                                    </li>
+                                }
+                            </ul>
+                            <br />
+                            <button class="btn btn-danger" type="submit"><i class="fa fa-file-pdf-o"></i> Exportar a PDF</button>
+                        }
+                    </div>
+                </div>
+        }
+            <br />
+            <a href="javascript:history.back()" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Regresar</a>
+    }
+
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+<script src="~/Scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>

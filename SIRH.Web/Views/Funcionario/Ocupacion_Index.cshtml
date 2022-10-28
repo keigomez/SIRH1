@@ -1,0 +1,40 @@
+﻿@model SIRH.Web.Models.OcupacionModel
+@{
+    using (Ajax.BeginForm("Ocupacion_Index", "Puesto", new AjaxOptions { UpdateTargetId = "target-ocupacion", HttpMethod = "POST", OnSuccess = "successDataOcupacion", OnBegin = "beginDataOcupacion" }))
+    {
+        <div class="card">
+            <h5 class="card-header">Parámetros de búsqueda:</h5>
+            <div class="card-body">
+                <div class="row">
+                    <div class="form-group col-7">
+                        @Html.Label("Código de ocupación real")
+                        <span>:</span>
+                        @Html.TextBox("codigoOcupacion", String.Empty, new { @class = "form-control", @onkeypress = "return IsNumeric(event, 'ocupacion', 'código de ocupación real')" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-7">
+                        @Html.Label("Nombre de ocupación real")
+                        <span>:</span>
+                        @Html.TextBox("nomOcupacion", String.Empty, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-3">
+                        <input type="submit" value="Buscar" id="btnBuscaOcupacion" class="btn btn-primary" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-3">
+                        <div id="progressbarocupacion" classs="loader" hidden></div>
+                    </div>
+                </div>
+
+                <div id="error-ocupacion" class="alert alert-danger" role="alert" hidden></div>
+
+            </div>
+        </div>
+    }
+
+    <div id="target-ocupacion"></div>
+}     

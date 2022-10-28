@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Inicio";
+    Layout = "~/Views/Shared/Home.cshtml";
+}
+
+@model SIRH.Web.Models.FuncionarioModel
+
+<link rel="stylesheet" href="~/Content/sidebar.css">
+
+<div class="jumbotron">
+    <center>
+        <h1 class="display-4">Bienvenido</h1>
+        <hr class="my-4">
+        <center>
+            Este es el nuevo Sistema Integrado de Recursos Humanos (SIRH). Para iniciar, seleccione una opción en el menú a la izquierda o bien en el enlace
+            de su perfil (arriba a la derecha junto al ícono de usuario <i class="fa fa-user"></i>) puede explorar las opciones a su disposición.<br /><br />
+            Adjunto encontrará un video explicativo sobre el uso de las funciones básicas del sistema.
+        </center>
+        <br />
+            <div class="card">
+                <div class="card-header" >
+                    <strong><i class="fa fa-envelope"></i>Manual de inicio</strong>
+                </div>
+                <div class="card-body">
+                    <video width="800" height="400" controls="controls">
+                        <source src="~/Content/Images/ManualInicio.mp4" type="video/mp4" />
+                    </video>
+                </div>
+            </div>
+        <br />
+    </center>
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+<script src="~/scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script src="~/scripts/home.js" type="text/javascript"></script>
+
+

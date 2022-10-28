@@ -1,0 +1,47 @@
+﻿@model SIRH.Web.ViewModels.FormularioFacturaDesarraigoVM
+@{
+    <form id="AgregarFacturaForm">
+        @Html.ValidationSummary(true)
+        <div class="card">
+            <div class="card-header">
+                Agregar Factura
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FechaFacturacion)
+                    <span>:</span>
+                    <div class="start_date input-group mb-4">
+                        @Html.TextBoxFor(model => model.FechaFacturacion, new { @id = "fechaFacturacionPopUp", @class = "form-control start_date", @readonly = "readonly", @placeholder = "Fecha de Facturación" })
+                        @Html.ValidationMessageFor(model => model.FechaFacturacion)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CodigoFactura)
+                    <span>:</span>
+                    @Html.TextBoxFor(model => model.CodigoFactura, new { @id = "codigoFacturaPopUp", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.CodigoFactura)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EmisorFactura)
+                    <span>:</span>
+                    @Html.TextBoxFor(model => model.EmisorFactura, new { @id = "emisorFacturaPopUp", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.EmisorFactura)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MontoFactura)
+                    <span>:</span>
+                    <b>₡</b>
+                    @Html.TextBoxFor(model => model.MontoFactura, new { @id = "montoFacturaPopUp", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.MontoFactura)
+                </div>
+                 <div class="form-group">
+                    @Html.LabelFor(model => model.ConceptoFactura)
+                    <span>:</span>
+                    <b>₡</b>
+                    @Html.TextBoxFor(model => model.ConceptoFactura, new { @id = "conceptoFacturaPopUp", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ConceptoFactura)
+                </div>
+            </div>
+        </div>
+    </form>
+}

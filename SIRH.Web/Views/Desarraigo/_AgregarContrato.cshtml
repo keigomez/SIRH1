@@ -1,0 +1,59 @@
+﻿@model SIRH.Web.ViewModels.FormularioContratoArrendamientoVM
+@{
+    <form id="AgregarContratoForm">
+        <div class="card">
+            <div class="card-header">
+                Agregar Contrato
+            </div>
+            <div class="card-body">
+                @Html.ValidationSummary(true)
+                <div class="form-group">
+                    @Html.Label("Fecha del Contrato")
+                    <span>:</span>
+                    <div class="start_date input-group mb-4">
+                        @Html.TextBoxFor(model => model.FechaInicioContrato, new { @id = "fechaContratoIPopUp", @class = "form-control start_date", @readonly = "readonly", @placeholder = "Fecha de Inicio" })
+                        @Html.ValidationMessageFor(model => model.FechaInicioContrato)
+
+                    </div>
+                    <div class="end_date input-group mb-4">
+                        @Html.TextBoxFor(model => model.FechaFinalContrato, new { @id = "fechaContratoFPopUp", @class = "form-control start_date", @readonly = "readonly", @placeholder = "Fecha de Finalización" })
+                        @Html.ValidationMessageFor(model => model.FechaFinalContrato)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CodigoContrato)
+                    <span>:</span>
+                    @Html.TextBoxFor(model => model.CodigoContrato, new { @id = "codigoContratoPopUp", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.CodigoContrato)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EmisorContrato)
+                    <span>:</span>
+                    @Html.TextBoxFor(model => model.EmisorContrato, new { @id = "emisorContratoPopUp", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.EmisorContrato)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MontoContrato)
+                    <span>:</span>
+                    <b>₡</b>
+                    @Html.TextBoxFor(model => model.MontoContrato, new { @id = "montoContratoPopUp", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.MontoContrato)
+                </div>
+                <div id="Errores_Contrato" class="card-header border-danger" style="display:none">
+                    <div role="alert" id="FechaInicioContrato_validationMessage" style="display:none">
+                    </div>
+                    <div role="alert" id="FechaFinalContrato_validationMessage" style="display:none">
+                    </div>
+                    <div role="alert" id="CodigoContrato_validationMessage" style="display:none">
+                    </div>
+                    <div role="alert" id="EmisorContrato_validationMessage" style="display:none">
+                    </div>
+                    <div role="alert" id="MontoContrato_validationMessage" style="display:none">
+                    </div>
+                    <div role="alert" id="CodigoContratoRepetido_validationMessage" style="display:none">
+                    </div>
+                </div>
+                </div>
+            </div>
+    </form>
+}

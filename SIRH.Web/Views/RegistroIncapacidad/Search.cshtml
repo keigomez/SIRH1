@@ -1,0 +1,113 @@
+﻿@model SIRH.Web.ViewModels.BusquedaIncapacidadVM
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/RegistroIncapacidad.cshtml";
+}
+<link href="~/Content/datetimepicker.css" rel="stylesheet" />
+@*<center><h2>Acción de Personal</h2></center>*@
+
+@using (Ajax.BeginForm("Search", "RegistroIncapacidad", new AjaxOptions
+{
+    UpdateTargetId = "dvResultadoBusqueda",
+    HttpMethod = "POST",
+    OnComplete = "CompleteSearch",
+    OnBegin = "BeginSearch"
+}))
+
+{
+    <div class="jumbotron">
+        <center>
+            <h3 class="card-header">Buscar Incapacidades</h3>
+            <br />
+            <div class="card-body">
+                <div class="form-group row">
+                    <div class="form-group col-3">
+                        @Html.LabelFor(model => model.Funcionario.Cedula)
+                        <span>:</span>
+                        @Html.TextBoxFor(model => model.Funcionario.Cedula, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Funcionario.Cedula)
+                    </div>
+                    <div class="form-group col-3">
+                        @Html.LabelFor(model => model.RegistroIncapacidad.CodIncapacidad)
+                        <span>:</span>
+                        @Html.TextBoxFor(model => model.RegistroIncapacidad.CodIncapacidad, new { @class = "form-control" })
+                    </div>
+                @*</div>
+                <div class="form-group row">*@
+                    <div class="form-group col-3">
+                        @Html.LabelFor(model => model.EntidadSeleccionada)
+                        <span>:</span>
+                        @Html.DropDownListFor(model => model.EntidadSeleccionada, Model.Entidades, "Seleccionar Entidad", new { @class = "btn btn-secondary dropdown-toggle form-control" })
+                    </div>
+                    <div class="form-group col-3">
+                        @Html.LabelFor(model => model.TipoSeleccionado)
+                        <span>:</span>
+                        @Html.DropDownListFor(model => model.TipoSeleccionado, Model.Tipos, "Seleccionar Tipo", new { @class = "btn btn-secondary dropdown-toggle form-control" })
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="form-group col-3">
+                        @Html.LabelFor(model => model.FechaEmisionDesde)
+                        <span>:</span>
+                        <div>
+                            @Html.TextBoxFor(model => model.FechaEmisionDesde, new { @id = "FecEmisionDesde", @class = "form-control",  @readonly = "readonly" })
+                        </div>
+                    </div>
+                    <div class="form-group col-3">
+                        @Html.LabelFor(model => model.FechaEmisionHasta)
+                        <span>:</span>
+                        @Html.TextBoxFor(model => model.FechaEmisionHasta, new { @id = "FecEmisionHasta", @class = "form-control", @readonly = "readonly" })
+                    </div>               
+                @*</div>
+                <div class="form-group row">*@
+                    <div class="form-group col-3">
+                        @Html.LabelFor(model => model.FechaVenceDesde)
+                        <span>:</span>
+                        @Html.TextBoxFor(model => model.FechaVenceDesde, new { @id = "FecVenceDesde", @class = "form-control", @readonly = "readonly" })
+                    </div>
+                    <div class="form-group col-3">
+                        @Html.LabelFor(model => model.FechaVenceHasta)
+                        <span>:</span>
+                        @Html.TextBoxFor(model => model.FechaVenceHasta, new { @id = "FecVenceHasta", @class = "form-control", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="form-group col-3">
+                        @Html.LabelFor(model => model.FechaBitacoraDesde)
+                        <span>:</span>
+                        @Html.TextBoxFor(model => model.FechaBitacoraDesde, new { @id = "FecBitacoraDesde", @class = "form-control", @readonly = "readonly" })
+                    </div>
+                    <div class="form-group col-3">
+                        @Html.LabelFor(model => model.FechaBitacoraHasta)
+                        <span>:</span>
+                        @Html.TextBoxFor(model => model.FechaBitacoraHasta, new { @id = "FecBitacoraHasta", @class = "form-control", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-4">
+                        <input id="btnBuscar" class="btn btn-secondary" name="SubmitButton" type="submit" value="Buscar" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-4">
+                        <div id="progressbar" class="loader" hidden></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-4">
+                        @Html.HiddenFor(model => model.RegistroIncapacidad.IdEntidad)
+                    </div>
+                </div>
+            </div>
+        </center>
+    </div>
+}
+<div id="dvResultadoBusqueda"> </div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+<script src="~/scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/SearchCaucion.js" type="text/javascript"></script>
+
+<script src="~/Scripts/datetimepicker.js" type="text/javascript"></script>
+<script src="~/Scripts/datetimepicker-es.js" type="text/javascript"></script>

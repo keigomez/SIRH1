@@ -1,0 +1,36 @@
+﻿@model SIRH.Web.ViewModels.FormularioGastoTransporteVM
+@{
+
+    <form id="AgregarRutasForm">
+        @Html.ValidationSummary(true)
+        <div class="card">
+            <div class="card-header">
+                Agregar Ruta
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label>N° Ruta</label>
+                    <span>:</span>
+                    <div class="form-group">
+                        @Html.TextBoxFor(model => model.Rutas[0].NomRutaDTO, new { @id = "NoRuta", @class = "form-control"})
+                        @Html.ValidationMessageFor(model => model.Rutas[0].NomRutaDTO)
+                        @Html.HiddenFor(model => model.Rutas[0].NomRutaDTO)
+                    </div>
+                    <label>Nombre de Fraccionamiento:</label>        
+                    @Html.TextBoxFor(model => model.Rutas[0].NomFraccionamientoDTO, new { @id = "Fraccionamiento", @class = "form-control"})
+                    @Html.ValidationMessageFor(model => model.Rutas[0].NomFraccionamientoDTO)
+                    @Html.HiddenFor(model => model.Rutas[0].NomFraccionamientoDTO)
+                </div>
+                <div class="form-group">
+                    <label>Tarifas</label>
+                    <span>:</span>
+                    @Html.TextBoxFor(model => model.Rutas[0].MontTarifa, new { @id = "tarifas", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Rutas[0].MontTarifa)
+                    @Html.HiddenFor(model => model.Rutas[0].MontTarifa)
+                </div>
+            </div>
+        </div>
+    </form>
+}
+<script src="~/Scripts/Pages/PruebaVC.js"></script>
+

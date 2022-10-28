@@ -1,0 +1,21 @@
+﻿@model SIRH.Web.ViewModels.FormularioViaticoCorridoVM
+@{
+    ViewBag.Title = "DetailsViaticoCorrido";
+    Layout = "~/Views/Shared/ViaticoCorrido.cshtml";
+}
+<div class="jumbotron">
+    @if (Model.Mensaje == "Exito")
+    {
+    <div class="alert alert-success" role="alert">
+        <i class="fa fa-check-circle d-inline" style="font-size:48px;"></i>
+        <h4 class="d-inline"> !Anulado Correctamente¡.</h4>
+    </div>
+    }
+    else
+    {
+        <div class="alert alert-danger" role="alert">
+            <i class="fa fa-times-circle d-inline" style="font-size:48px;"></i>
+            <h4 class="d-inline"> Ocurrió un error al momento de Anular.</h4>
+        </div>
+    }
+</div>

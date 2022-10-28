@@ -1,0 +1,845 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EmpresasDataDB1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AccesoDirecto">
+    <Key>
+      <PropertyRef Name="IdAccesoDirecto" />
+    </Key>
+    <Property Name="IdAccesoDirecto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdEmpresa" Type="Int32" Nullable="false" />
+    <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Ubicacion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdOpcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Opcion" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Aplicacion" Type="Int32" Nullable="false" />
+    <Property Name="IdGrupo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Grupo" Type="Int32" Nullable="false" />
+    <Property Name="Icono" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AutorizaAusencias">
+    <Key>
+      <PropertyRef Name="IdAusencias" />
+    </Key>
+    <Property Name="IdAusencias" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CodigoEmpleado" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdJustificacion" Type="Int32" Nullable="false" />
+    <Property Name="CodigoEmpleadoAutoriza" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FechaInicio" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FechaFinal" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Dia" Type="Int32" Nullable="false" />
+    <Property Name="Hora" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Minuto" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Tipo" Type="Int32" Nullable="false" />
+    <Property Name="Congoce" Type="Int32" Nullable="false" />
+    <Property Name="HoraSalida" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="HoraEntrada" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CodigoEmpleadoAutoriza2" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BitacoraHorarioRotativo">
+    <Key>
+      <PropertyRef Name="IdBitacoraHorario" />
+    </Key>
+    <Property Name="IdBitacoraHorario" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CodigoEmpleado" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdHorario" Type="Int32" Nullable="false" />
+    <Property Name="FechaInicio" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FechaFinal" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="BitacoraPrograma">
+    <Key>
+      <PropertyRef Name="IdBitacora" />
+    </Key>
+    <Property Name="IdBitacora" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Hora" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Evento" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CartasEmpleado">
+    <Key>
+      <PropertyRef Name="IdCartaEmpleado" />
+      <PropertyRef Name="CodigoEmpleado" />
+    </Key>
+    <Property Name="IdCartaEmpleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CodigoEmpleado" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TipoCarta" Type="Int16" Nullable="false" />
+    <Property Name="IdMachote" Type="Int32" Nullable="false" />
+    <Property Name="NombreMachote" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Firma" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EstatusImpresion" Type="Int16" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Clasificacion">
+    <Key>
+      <PropertyRef Name="IdClasificacion" />
+    </Key>
+    <Property Name="IdClasificacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Departamentos">
+    <Key>
+      <PropertyRef Name="IdDepartamento" />
+    </Key>
+    <Property Name="IdDepartamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CodigoDepartamento" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CodigoEnPunto" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DiasAsueto">
+    <Key>
+      <PropertyRef Name="IdAsueto" />
+    </Key>
+    <Property Name="IdAsueto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TipoAsueto" Type="Int32" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Jornada" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="FechaInicio" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FechaFinal" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="Empleado">
+    <Key>
+      <PropertyRef Name="CodigoEmpleado" />
+    </Key>
+    <Property Name="CodigoEmpleado" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TipoDocumento" Type="Int32" Nullable="false" />
+    <Property Name="NoDocumento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CodigoAcceso" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Apellido1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Apellido2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ApellidoCasada" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Sexo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Edad" Type="Int16" Nullable="false" />
+    <Property Name="EstadoCivil" Type="Int16" Nullable="false" />
+    <Property Name="FechaInicioLabores" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Area" Type="Int32" Nullable="false" />
+    <Property Name="Puesto" Type="Int32" Nullable="false" />
+    <Property Name="TipoHorario" Type="Int16" Nullable="false" />
+    <Property Name="PoliticaEmpresa" Type="Int16" Nullable="false" />
+    <Property Name="PeriodoNominal" Type="Int16" Nullable="false" />
+    <Property Name="Extras" Type="Int16" Nullable="false" />
+    <Property Name="Supervisor" Type="Int16" Nullable="false" />
+    <Property Name="Estatus" Type="Int16" Nullable="false" />
+    <Property Name="MotivoBaja" Type="Int16" Nullable="false" />
+    <Property Name="FechaBaja" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Permanente" Type="Int16" Nullable="false" />
+    <Property Name="Fotografia" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="MarcaSoloTExtra" Type="Int16" Nullable="false" />
+    <Property Name="NoRotacionesDescanso" Type="Int32" Nullable="false" />
+    <Property Name="NoDiasDescanso" Type="Int32" Nullable="false" />
+    <Property Name="NoRotacion" Type="Int32" Nullable="false" />
+    <Property Name="SeguroSocial" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="IdTributaria" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Salario" Type="Decimal" Precision="24" Scale="2" Nullable="false" />
+    <Property Name="FianzaPoliza" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Probidad" Type="String" MaxLength="15" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Identificacion1" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Identificacion2" Type="String" MaxLength="15" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="PuestoNominal" Type="String" MaxLength="150" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="PreparacionAcademica" Type="String" MaxLength="150" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Colegiado" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Direccion" Type="String" MaxLength="200" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Telefono" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="PartidaPresupuesto" Type="String" MaxLength="30" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Banco" Type="String" MaxLength="150" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="CuentaBanco" Type="String" MaxLength="150" FixedLength="true" Unicode="false" />
+    <Property Name="Planilla" Type="Int32" Nullable="false" />
+    <Property Name="Clasificacion" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmpleadoDispositivo">
+    <Key>
+      <PropertyRef Name="CodigoEmpleado" />
+      <PropertyRef Name="IdDispositivo" />
+    </Key>
+    <Property Name="CodigoEmpleado" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdDispositivo" Type="Int32" Nullable="false" />
+    <Property Name="CodigoAcceso" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmpleadoHorario">
+    <Key>
+      <PropertyRef Name="IdHorarioEmpleado" />
+      <PropertyRef Name="IdCodigoEmpleado" />
+    </Key>
+    <Property Name="IdHorarioEmpleado" Type="Int32" Nullable="false" />
+    <Property Name="IdCodigoEmpleado" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdHorario" Type="Int32" Nullable="false" />
+    <Property Name="FechaInicioHorario" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TipoHorario" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="CantidadTiempo" Type="Int32" Nullable="false" />
+    <Property Name="TipoTiempo" Type="Int16" Nullable="false" />
+    <Property Name="FechaInicio" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FechaFinal" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Estatus" Type="Int16" Nullable="false" />
+    <Property Name="NoCantidadTiempo" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EntradaSalida">
+    <Key>
+      <PropertyRef Name="IdEntradaSalida" />
+    </Key>
+    <Property Name="IdEntradaSalida" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdJornada" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdHorario" Type="Int32" Nullable="false" />
+    <Property Name="IdDiaSemana" Type="Int32" Nullable="false" />
+    <Property Name="CodigoEmpleado" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TipoOperacion" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="TagOperacion" Type="Int32" Nullable="false" />
+    <Property Name="FaltaMarca" Type="Int32" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Hora" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FormaCaptura" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="IdJustificacion" Type="Int32" Nullable="false" />
+    <Property Name="IdSupervisor" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UsuarioOpera" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Discrepancia" Type="Int16" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HorarioCampana">
+    <Key>
+      <PropertyRef Name="IdHorario" />
+    </Key>
+    <Property Name="IdHorario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Hora" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Duracion" Type="Int16" Nullable="false" />
+    <Property Name="Lunes" Type="Int16" Nullable="false" />
+    <Property Name="Martes" Type="Int16" Nullable="false" />
+    <Property Name="Miercoles" Type="Int16" Nullable="false" />
+    <Property Name="Jueves" Type="Int16" Nullable="false" />
+    <Property Name="Viernes" Type="Int16" Nullable="false" />
+    <Property Name="Sabado" Type="Int16" Nullable="false" />
+    <Property Name="Domingo" Type="Int16" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HorarioDT">
+    <Key>
+      <PropertyRef Name="IdDia" />
+      <PropertyRef Name="IdCorrelaHorarioDia" />
+      <PropertyRef Name="IdHorario" />
+    </Key>
+    <Property Name="IdDia" Type="Int32" Nullable="false" />
+    <Property Name="IdCorrelaHorarioDia" Type="Int32" Nullable="false" />
+    <Property Name="IdHorario" Type="Int32" Nullable="false" />
+    <Property Name="SalidaDiaSig" Type="Int32" Nullable="false" />
+    <Property Name="HoraEntrada" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ToleranciaAHoraE" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ToleranciaDHoraE" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="HoraSalida" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ToleranciaAHoraS" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ToleranciaDHoraS" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Almuerzo" Type="Int16" Nullable="false" />
+    <Property Name="TiempoAlmuerzo" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="HoraITAlmuerzo" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="HoraFTAlmuerzo" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="SalidaMatutino" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EntradaMatutino" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="SalidaVespertino" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EntradaVespertino" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IniciaHorasExtras" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IniciaHorasSimples" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IniciaHorasDobles" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="HorarioHD">
+    <Key>
+      <PropertyRef Name="IdHorario" />
+    </Key>
+    <Property Name="IdHorario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreHorario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TiempoMaxDentroOf" Type="Int32" Nullable="false" />
+    <Property Name="CodigoEnPunto" Type="Int32" Nullable="false" />
+    <Property Name="DescansoMatituno" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DescansoVespertino" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MarcaAlimentacion" Type="Int16" Nullable="false" />
+    <Property Name="PosicionTurno1" Type="Int32" Nullable="false" />
+    <Property Name="PosicionTurno2" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HorarioRango">
+    <Key>
+      <PropertyRef Name="IdHorario" />
+      <PropertyRef Name="IdDia" />
+    </Key>
+    <Property Name="IdHorario" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="IdDia" Type="Int32" Nullable="false" />
+    <Property Name="Rango" Type="Boolean" Nullable="false" />
+    <Property Name="EntradaJornadaA" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EntradaJornadaD" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="SalidaMatutinoA" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="SalidaMatutinoD" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EntradaMatutinoA" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EntradaMatutinoD" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="SalidaAlmuerzoA" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="SalidaAlmuerzoD" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EntradaAlmuerzoA" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EntradaAlmuerzoD" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="SalidaVespertinoA" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="SalidaVespertinoD" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EntradaVespertinoA" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EntradaVespertinoD" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="SalidaJornadaA" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="SalidaJornadaD" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="Incidencias">
+    <Key>
+      <PropertyRef Name="IdIncidencias" />
+    </Key>
+    <Property Name="IdIncidencias" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Justificaciones">
+    <Key>
+      <PropertyRef Name="IdJustificacion" />
+    </Key>
+    <Property Name="IdJustificacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CodigoMigracion" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MotivoBaja">
+    <Key>
+      <PropertyRef Name="IdBaja" />
+    </Key>
+    <Property Name="IdBaja" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Opciones">
+    <Key>
+      <PropertyRef Name="IdOpcion" />
+    </Key>
+    <Property Name="IdOpcion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Codigo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Parent" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Menu" Type="Int32" Nullable="false" />
+    <Property Name="Nuevo" Type="Int32" Nullable="false" />
+    <Property Name="Editar" Type="Int32" Nullable="false" />
+    <Property Name="Borrar" Type="Int32" Nullable="false" />
+    <Property Name="Generar" Type="Int32" Nullable="false" />
+    <Property Name="Confirmacion" Type="Int32" Nullable="false" />
+    <Property Name="Formulario" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdLunch" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Planillas">
+    <Key>
+      <PropertyRef Name="IdPlanilla" />
+    </Key>
+    <Property Name="IdPlanilla" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PreAutorizaHorasExtras">
+    <Key>
+      <PropertyRef Name="IdAutorizacion" />
+    </Key>
+    <Property Name="IdAutorizacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CodigoEmpleado" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MotivoHoraExtra" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Autoriza" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FechaInicio" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FechaFinal" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="HoraInicio" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="HoraFinal" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Procesado" Type="Int16" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Puesto">
+    <Key>
+      <PropertyRef Name="IdPuesto" />
+    </Key>
+    <Property Name="IdPuesto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdDepto" Type="Int32" Nullable="false" />
+    <Property Name="Codigo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CodigoMigracion" Type="Int32" Nullable="false" />
+    <Property Name="CodigoEnPunto" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Seguridad">
+    <Key>
+      <PropertyRef Name="IdSeguridad" />
+    </Key>
+    <Property Name="IdSeguridad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdOpcion" Type="Int32" Nullable="false" />
+    <Property Name="Nuevo" Type="Int32" Nullable="false" />
+    <Property Name="Editar" Type="Int32" Nullable="false" />
+    <Property Name="Borrar" Type="Int32" Nullable="false" />
+    <Property Name="Generar" Type="Int32" Nullable="false" />
+    <Property Name="Confirmacion" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SeguridadDatos">
+    <Key>
+      <PropertyRef Name="IdSeguridad" />
+    </Key>
+    <Property Name="IdSeguridad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdEmpresa" Type="Int32" Nullable="false" />
+    <Property Name="IdDepartamento" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TablasDT">
+    <Key>
+      <PropertyRef Name="IdCampo" />
+    </Key>
+    <Property Name="IdCampo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdTabla" Type="Int32" Nullable="false" />
+    <Property Name="CorrelaTabla" Type="Int32" Nullable="false" />
+    <Property Name="NombreCampo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TipoDato" Type="Int32" Nullable="false" />
+    <Property Name="Longitud" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Nulo" Type="Int16" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TablasHD">
+    <Key>
+      <PropertyRef Name="IdTabla" />
+    </Key>
+    <Property Name="IdTabla" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreTabla" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TipoJustificaciones">
+    <Key>
+      <PropertyRef Name="IdTipoJustificacion" />
+    </Key>
+    <Property Name="IdTipoJustificacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UsuariosSys">
+    <Key>
+      <PropertyRef Name="IdUsuario" />
+    </Key>
+    <Property Name="IdUsuario" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ZonaTiempoDT">
+    <Key>
+      <PropertyRef Name="IdZonaTiempo" />
+      <PropertyRef Name="Intervalo" />
+    </Key>
+    <Property Name="IdZonaTiempo" Type="Int32" Nullable="false" />
+    <Property Name="Intervalo" Type="Int16" Nullable="false" />
+    <Property Name="HoraInicial" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="HoraFinal" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Lunes" Type="Int16" Nullable="false" />
+    <Property Name="Martes" Type="Int16" Nullable="false" />
+    <Property Name="Miercoles" Type="Int16" Nullable="false" />
+    <Property Name="Jueves" Type="Int16" Nullable="false" />
+    <Property Name="Viernes" Type="Int16" Nullable="false" />
+    <Property Name="Sabado" Type="Int16" Nullable="false" />
+    <Property Name="Domingo" Type="Int16" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ZonaTiempoHD">
+    <Key>
+      <PropertyRef Name="IdZonaTiempo" />
+    </Key>
+    <Property Name="IdZonaTiempo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AutorizaHorasExtras">
+    <Key>
+      <PropertyRef Name="IdAutorizacion" />
+      <PropertyRef Name="CodigoEmpleado" />
+      <PropertyRef Name="MotivoHoraExtra" />
+      <PropertyRef Name="Autoriza" />
+      <PropertyRef Name="FechaInicio" />
+      <PropertyRef Name="FechaFinal" />
+      <PropertyRef Name="tothein" />
+      <PropertyRef Name="totheout" />
+      <PropertyRef Name="tothe" />
+      <PropertyRef Name="tothesimples" />
+      <PropertyRef Name="tothedobles" />
+      <PropertyRef Name="tothemixtas" />
+      <PropertyRef Name="totheinreal" />
+      <PropertyRef Name="totheoutreal" />
+      <PropertyRef Name="tothereal" />
+      <PropertyRef Name="tothesimplesreal" />
+      <PropertyRef Name="tothedoblesreal" />
+      <PropertyRef Name="tothemixtasreal" />
+      <PropertyRef Name="usuario" />
+      <PropertyRef Name="fechaingreso" />
+    </Key>
+    <Property Name="IdAutorizacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CodigoEmpleado" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MotivoHoraExtra" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Autoriza" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FechaInicio" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FechaFinal" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="tothein" Type="Int32" Nullable="false" />
+    <Property Name="totheout" Type="Int32" Nullable="false" />
+    <Property Name="tothe" Type="Int32" Nullable="false" />
+    <Property Name="tothesimples" Type="Int32" Nullable="false" />
+    <Property Name="tothedobles" Type="Int32" Nullable="false" />
+    <Property Name="tothemixtas" Type="Int32" Nullable="false" />
+    <Property Name="totheinreal" Type="Int32" Nullable="false" />
+    <Property Name="totheoutreal" Type="Int32" Nullable="false" />
+    <Property Name="tothereal" Type="Int32" Nullable="false" />
+    <Property Name="tothesimplesreal" Type="Int32" Nullable="false" />
+    <Property Name="tothedoblesreal" Type="Int32" Nullable="false" />
+    <Property Name="tothemixtasreal" Type="Int32" Nullable="false" />
+    <Property Name="usuario" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="fechaingreso" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="CambioHorario">
+    <Key>
+      <PropertyRef Name="IdCambio" />
+      <PropertyRef Name="CodigoEmpleado" />
+      <PropertyRef Name="Fecha" />
+      <PropertyRef Name="Hora" />
+    </Key>
+    <Property Name="IdCambio" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CodigoEmpleado" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Hora" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="EntradaSalidaBlanco">
+    <Key>
+      <PropertyRef Name="IdEntradaSalida" />
+      <PropertyRef Name="IdJornada" />
+      <PropertyRef Name="IdHorario" />
+      <PropertyRef Name="IdDiaSemana" />
+      <PropertyRef Name="CodigoEmpleado" />
+      <PropertyRef Name="TipoOperacion" />
+      <PropertyRef Name="TagOperacion" />
+      <PropertyRef Name="FaltaMarca" />
+      <PropertyRef Name="Fecha" />
+      <PropertyRef Name="Hora" />
+      <PropertyRef Name="FormaCaptura" />
+      <PropertyRef Name="IdJustificacion" />
+      <PropertyRef Name="IdSupervisor" />
+      <PropertyRef Name="UsuarioOpera" />
+      <PropertyRef Name="Discrepancia" />
+    </Key>
+    <Property Name="IdEntradaSalida" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdJornada" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdHorario" Type="Int32" Nullable="false" />
+    <Property Name="IdDiaSemana" Type="Int32" Nullable="false" />
+    <Property Name="CodigoEmpleado" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TipoOperacion" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="TagOperacion" Type="Int32" Nullable="false" />
+    <Property Name="FaltaMarca" Type="Int32" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Hora" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FormaCaptura" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="IdJustificacion" Type="Int32" Nullable="false" />
+    <Property Name="IdSupervisor" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UsuarioOpera" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Discrepancia" Type="Int16" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MachoteCartas">
+    <Key>
+      <PropertyRef Name="IdMachote" />
+      <PropertyRef Name="TipoCarta" />
+      <PropertyRef Name="NombreMachote" />
+      <PropertyRef Name="CuerpodelMachote" />
+      <PropertyRef Name="Pais" />
+    </Key>
+    <Property Name="IdMachote" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TipoCarta" Type="Int16" Nullable="false" />
+    <Property Name="NombreMachote" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CuerpodelMachote" Type="String" MaxLength="1400" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Pais" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="preEntradaSalida">
+    <Key>
+      <PropertyRef Name="IdEntradaSalida" />
+      <PropertyRef Name="IdJornada" />
+      <PropertyRef Name="IdHorario" />
+      <PropertyRef Name="IdDiaSemana" />
+      <PropertyRef Name="CodigoEmpleado" />
+      <PropertyRef Name="TipoOperacion" />
+      <PropertyRef Name="Fecha" />
+      <PropertyRef Name="Hora" />
+      <PropertyRef Name="FormaCaptura" />
+      <PropertyRef Name="IdJustificacion" />
+      <PropertyRef Name="IdSupervisor" />
+      <PropertyRef Name="UsuarioOpera" />
+      <PropertyRef Name="Discrepancia" />
+    </Key>
+    <Property Name="IdEntradaSalida" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdJornada" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdHorario" Type="Int32" Nullable="false" />
+    <Property Name="IdDiaSemana" Type="Int32" Nullable="false" />
+    <Property Name="CodigoEmpleado" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TipoOperacion" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Hora" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FormaCaptura" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="IdJustificacion" Type="Int32" Nullable="false" />
+    <Property Name="IdSupervisor" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UsuarioOpera" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Discrepancia" Type="Int16" Nullable="false" />
+  </EntityType>
+  <EntityType Name="preparaMarcas">
+    <Key>
+      <PropertyRef Name="IdMarcacion" />
+      <PropertyRef Name="IdDispositivo" />
+      <PropertyRef Name="CodigoEmpleado" />
+      <PropertyRef Name="Fecha" />
+      <PropertyRef Name="Hora" />
+      <PropertyRef Name="Procesado" />
+    </Key>
+    <Property Name="IdMarcacion" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdDispositivo" Type="Int16" Nullable="false" />
+    <Property Name="CodigoEmpleado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Hora" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Procesado" Type="Int16" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RepAusencias">
+    <Key>
+      <PropertyRef Name="CodigoEmpleado" />
+      <PropertyRef Name="Fecha" />
+      <PropertyRef Name="IdJustificacion" />
+      <PropertyRef Name="CodigoEmpleadoAuto" />
+    </Key>
+    <Property Name="CodigoEmpleado" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IdJustificacion" Type="Int32" Nullable="false" />
+    <Property Name="CodigoEmpleadoAuto" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RepEntradaSalida">
+    <Key>
+      <PropertyRef Name="CodigoEmpleado" />
+      <PropertyRef Name="Fecha" />
+      <PropertyRef Name="EntradaJornada1" />
+      <PropertyRef Name="SalidaJornada1" />
+      <PropertyRef Name="EntradaJornada2" />
+      <PropertyRef Name="SalidaJornada2" />
+      <PropertyRef Name="EntradaJornada3" />
+      <PropertyRef Name="SalidaJornada3" />
+      <PropertyRef Name="EntradaJornada4" />
+      <PropertyRef Name="SalidaJornada4" />
+      <PropertyRef Name="TotalHorasDia" />
+      <PropertyRef Name="Discrepancia" />
+    </Key>
+    <Property Name="CodigoEmpleado" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EntradaJornada1" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="SalidaJornada1" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EntradaJornada2" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="SalidaJornada2" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EntradaJornada3" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="SalidaJornada3" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EntradaJornada4" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="SalidaJornada4" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TotalHorasDia" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Discrepancia" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="RepEntradaTarde">
+    <Key>
+      <PropertyRef Name="CodigoEmpleado" />
+      <PropertyRef Name="Fecha" />
+      <PropertyRef Name="HrEntradaJornada1" />
+      <PropertyRef Name="EntradaJornada1" />
+      <PropertyRef Name="MinTarde1" />
+      <PropertyRef Name="HrEntradaJornada2" />
+      <PropertyRef Name="EntradaJornada2" />
+      <PropertyRef Name="MinTarde2" />
+      <PropertyRef Name="HrEntradaJornada3" />
+      <PropertyRef Name="EntradaJornada3" />
+      <PropertyRef Name="MinTarde3" />
+      <PropertyRef Name="HrEntradaJornada4" />
+      <PropertyRef Name="EntradaJornada4" />
+      <PropertyRef Name="MinTarde4" />
+      <PropertyRef Name="TotalMinEntTarde" />
+    </Key>
+    <Property Name="CodigoEmpleado" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="HrEntradaJornada1" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EntradaJornada1" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="MinTarde1" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="HrEntradaJornada2" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EntradaJornada2" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="MinTarde2" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="HrEntradaJornada3" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EntradaJornada3" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="MinTarde3" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="HrEntradaJornada4" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EntradaJornada4" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="MinTarde4" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TotalMinEntTarde" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="RepHoraExtra">
+    <Key>
+      <PropertyRef Name="CodigoEmpleado" />
+      <PropertyRef Name="Fecha" />
+      <PropertyRef Name="HoraEntradaJ1" />
+      <PropertyRef Name="HoraSalidaJ1" />
+      <PropertyRef Name="HoraEntradaJ2" />
+      <PropertyRef Name="HoraSalidaJ2" />
+      <PropertyRef Name="HoraEntradaJ3" />
+      <PropertyRef Name="HoraSalidaJ3" />
+      <PropertyRef Name="HoraEntradaJ4" />
+      <PropertyRef Name="HoraSalidaJ4" />
+      <PropertyRef Name="HoraExtraNormal" />
+      <PropertyRef Name="HoraExtraNormalNoLaboral" />
+      <PropertyRef Name="HoraExtraDiaFeriado" />
+    </Key>
+    <Property Name="CodigoEmpleado" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="HoraEntradaJ1" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="HoraSalidaJ1" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="HoraEntradaJ2" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="HoraSalidaJ2" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="HoraEntradaJ3" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="HoraSalidaJ3" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="HoraEntradaJ4" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="HoraSalidaJ4" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="HoraExtraNormal" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="HoraExtraNormalNoLaboral" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="HoraExtraDiaFeriado" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="RepIncidenciasGen">
+    <Key>
+      <PropertyRef Name="CodigoEmpleado" />
+      <PropertyRef Name="TipoEntradaSalida" />
+      <PropertyRef Name="Fecha" />
+      <PropertyRef Name="Hora" />
+    </Key>
+    <Property Name="CodigoEmpleado" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TipoEntradaSalida" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Hora" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="RepMarcasReloj">
+    <Key>
+      <PropertyRef Name="CodigoEmpleado" />
+      <PropertyRef Name="CodigoAcceso" />
+      <PropertyRef Name="NombreEmpleado" />
+      <PropertyRef Name="IdDepto" />
+      <PropertyRef Name="NombreDepto" />
+      <PropertyRef Name="IdPuesto" />
+      <PropertyRef Name="NombrePuesto" />
+      <PropertyRef Name="Fecha" />
+      <PropertyRef Name="Hora" />
+    </Key>
+    <Property Name="CodigoEmpleado" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CodigoAcceso" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NombreEmpleado" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdDepto" Type="Int32" Nullable="false" />
+    <Property Name="NombreDepto" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdPuesto" Type="Int32" Nullable="false" />
+    <Property Name="NombrePuesto" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Hora" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="RepMovNomina">
+    <Key>
+      <PropertyRef Name="CodigoEmpleado" />
+      <PropertyRef Name="IdJornada" />
+      <PropertyRef Name="TotalJornada" />
+      <PropertyRef Name="TotalTEDiaNormal" />
+      <PropertyRef Name="TotalTEDiaDescanso" />
+      <PropertyRef Name="TotalTEDiaAsueto" />
+      <PropertyRef Name="TotalFaltas" />
+    </Key>
+    <Property Name="CodigoEmpleado" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdJornada" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TotalJornada" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="TotalTEDiaNormal" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="TotalTEDiaDescanso" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="TotalTEDiaAsueto" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="TotalFaltas" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RepSalidaAnticipada">
+    <Key>
+      <PropertyRef Name="CodigoEmpleado" />
+      <PropertyRef Name="Fecha" />
+      <PropertyRef Name="HoraSalidaJornada1" />
+      <PropertyRef Name="MinAntiJornada1" />
+      <PropertyRef Name="HoraSalidaJornada2" />
+      <PropertyRef Name="MinAntiJornada2" />
+      <PropertyRef Name="HoraSalidaJornada3" />
+      <PropertyRef Name="MinAntiJornada3" />
+      <PropertyRef Name="HoraSalidaJornada4" />
+      <PropertyRef Name="MinAntiJornada4" />
+      <PropertyRef Name="TotalMinAnticipados" />
+    </Key>
+    <Property Name="CodigoEmpleado" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="HoraSalidaJornada1" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="MinAntiJornada1" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="HoraSalidaJornada2" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="MinAntiJornada2" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="HoraSalidaJornada3" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="MinAntiJornada3" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="HoraSalidaJornada4" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="MinAntiJornada4" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TotalMinAnticipados" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="Tbl_MarcasRelojes">
+    <Key>
+      <PropertyRef Name="Fecha" />
+      <PropertyRef Name="Dispositivo" />
+      <PropertyRef Name="CodEmpleado" />
+      <PropertyRef Name="CodBiometrica" />
+      <PropertyRef Name="Nombre" />
+      <PropertyRef Name="hr" />
+      <PropertyRef Name="mi" />
+      <PropertyRef Name="sg" />
+      <PropertyRef Name="Depto" />
+      <PropertyRef Name="Puesto" />
+    </Key>
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Dispositivo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CodEmpleado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CodBiometrica" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="hr" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="mi" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="sg" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Depto" Type="String" MaxLength="100" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Puesto" Type="String" MaxLength="100" FixedLength="true" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="EmpresasDataDB1Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AccesoDirecto" EntityType="Self.AccesoDirecto" />
+    <EntitySet Name="AutorizaAusencias" EntityType="Self.AutorizaAusencias" />
+    <EntitySet Name="BitacoraHorarioRotativo" EntityType="Self.BitacoraHorarioRotativo" />
+    <EntitySet Name="BitacoraPrograma" EntityType="Self.BitacoraPrograma" />
+    <EntitySet Name="CartasEmpleado" EntityType="Self.CartasEmpleado" />
+    <EntitySet Name="Clasificacion" EntityType="Self.Clasificacion" />
+    <EntitySet Name="Departamentos" EntityType="Self.Departamentos" />
+    <EntitySet Name="DiasAsueto" EntityType="Self.DiasAsueto" />
+    <EntitySet Name="Empleado" EntityType="Self.Empleado" />
+    <EntitySet Name="EmpleadoDispositivo" EntityType="Self.EmpleadoDispositivo" />
+    <EntitySet Name="EmpleadoHorario" EntityType="Self.EmpleadoHorario" />
+    <EntitySet Name="EntradaSalida" EntityType="Self.EntradaSalida" />
+    <EntitySet Name="HorarioCampana" EntityType="Self.HorarioCampana" />
+    <EntitySet Name="HorarioDT" EntityType="Self.HorarioDT" />
+    <EntitySet Name="HorarioHD" EntityType="Self.HorarioHD" />
+    <EntitySet Name="HorarioRango" EntityType="Self.HorarioRango" />
+    <EntitySet Name="Incidencias" EntityType="Self.Incidencias" />
+    <EntitySet Name="Justificaciones" EntityType="Self.Justificaciones" />
+    <EntitySet Name="MotivoBaja" EntityType="Self.MotivoBaja" />
+    <EntitySet Name="Opciones" EntityType="Self.Opciones" />
+    <EntitySet Name="Planillas" EntityType="Self.Planillas" />
+    <EntitySet Name="PreAutorizaHorasExtras" EntityType="Self.PreAutorizaHorasExtras" />
+    <EntitySet Name="Puesto" EntityType="Self.Puesto" />
+    <EntitySet Name="Seguridad" EntityType="Self.Seguridad" />
+    <EntitySet Name="SeguridadDatos" EntityType="Self.SeguridadDatos" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="TablasDT" EntityType="Self.TablasDT" />
+    <EntitySet Name="TablasHD" EntityType="Self.TablasHD" />
+    <EntitySet Name="TipoJustificaciones" EntityType="Self.TipoJustificaciones" />
+    <EntitySet Name="UsuariosSys" EntityType="Self.UsuariosSys" />
+    <EntitySet Name="ZonaTiempoDT" EntityType="Self.ZonaTiempoDT" />
+    <EntitySet Name="ZonaTiempoHD" EntityType="Self.ZonaTiempoHD" />
+    <EntitySet Name="AutorizaHorasExtras" EntityType="Self.AutorizaHorasExtras" />
+    <EntitySet Name="CambioHorario" EntityType="Self.CambioHorario" />
+    <EntitySet Name="EntradaSalidaBlanco" EntityType="Self.EntradaSalidaBlanco" />
+    <EntitySet Name="MachoteCartas" EntityType="Self.MachoteCartas" />
+    <EntitySet Name="preEntradaSalida" EntityType="Self.preEntradaSalida" />
+    <EntitySet Name="preparaMarcas" EntityType="Self.preparaMarcas" />
+    <EntitySet Name="RepAusencias" EntityType="Self.RepAusencias" />
+    <EntitySet Name="RepEntradaSalida" EntityType="Self.RepEntradaSalida" />
+    <EntitySet Name="RepEntradaTarde" EntityType="Self.RepEntradaTarde" />
+    <EntitySet Name="RepHoraExtra" EntityType="Self.RepHoraExtra" />
+    <EntitySet Name="RepIncidenciasGen" EntityType="Self.RepIncidenciasGen" />
+    <EntitySet Name="RepMarcasReloj" EntityType="Self.RepMarcasReloj" />
+    <EntitySet Name="RepMovNomina" EntityType="Self.RepMovNomina" />
+    <EntitySet Name="RepSalidaAnticipada" EntityType="Self.RepSalidaAnticipada" />
+    <EntitySet Name="Tbl_MarcasRelojes" EntityType="Self.Tbl_MarcasRelojes" />
+  </EntityContainer>
+</Schema>

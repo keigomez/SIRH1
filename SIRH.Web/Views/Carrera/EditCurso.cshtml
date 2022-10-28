@@ -1,0 +1,262 @@
+﻿@model SIRH.Web.ViewModels.FuncionarioCarreraVM
+
+@{
+    ViewBag.Title = "Editar Curso";
+    Layout = "~/Views/Shared/Carrera.cshtml";
+}
+
+
+@{
+    if (Model.Error != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            <i class="fa fa-times-circle d-inline" style="font-size:48px;"></i>
+            <h4 class="d-inline"> Ocurrió un error al momento de cargar el curso.</h4>
+        </div>
+        <br />
+
+        <div class="card">
+            <h5 class="card-header">Detalles</h5>
+            <div class="card-body">
+                <div>El curso no pudo ser cargado debido al siguiente error: </div>
+                <br /><div><b>@Html.AttributeEncode(Model.Error.MensajeError)</b></div>
+                <br /><div>Si conoce la causa de este error, por favor intentelo de nuevo.</div>
+                <br /><div>De lo contrario le invitamos a ponerse en contacto con nuestro equipo de soporte, mediante el sistema de <a href="http://sisrh.mopt.go.cr:83/" target="_blank">Ayuda y Soporte</a></div>
+            </div>
+        </div>
+    }
+    else
+    {
+        if (Model.CursoCapacitacion != null)
+        {
+            using (Ajax.BeginForm("EditCurso", "Carrera", new { id = Int32.Parse(Request.Url.Segments.Last()) }, new AjaxOptions
+            {
+                HttpMethod = "POST",
+                UpdateTargetId = "resultado",
+                OnBegin = "BeginEditarCurso",
+                OnComplete = "CompleteEditarCurso",
+            }, new { enctype = "multipart/form-data" }))
+            {
+                @Html.ValidationSummary(true)
+                <blockquote><h3>Modificar Curso Capacitación</h3></blockquote>
+
+                <div class="card">
+                    <div class="card-header text-left">
+                        <b>Curso: @Model.CursoCapacitacion.DescripcionCapacitacion</b>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <span>
+                                    <b>Funcionario: </b>@Model.Funcionario.Cedula - @Model.Funcionario.Nombre @Model.Funcionario.PrimerApellido @Model.Funcionario.SegundoApellido
+                                    @Html.HiddenFor(model => model.Funcionario.Cedula)
+                                    @Html.HiddenFor(model => model.Funcionario.Nombre)
+                                    @Html.HiddenFor(model => model.Funcionario.PrimerApellido)
+                                    @Html.HiddenFor(model => model.Funcionario.SegundoApellido)
+                                </span>
+                            </li>
+                            <li class="list-group-item">
+                                <span>
+                                    <b>@Html.LabelFor(model => model.CursoCapacitacion.EntidadEducativa.DescripcionEntidad): </b> @Html.DisplayFor(model => model.CursoCapacitacion.EntidadEducativa.DescripcionEntidad)
+                                    @Html.HiddenFor(model => model.CursoCapacitacion.EntidadEducativa.DescripcionEntidad)
+                                </span>
+                            </li>
+                            <li class="list-group-item">
+                                <span>
+                                    <b>@Html.LabelFor(model => model.CursoCapacitacion.FechaInicio): </b>@Html.DisplayFor(model => model.CursoCapacitacion.FechaInicio)
+                                    @Html.HiddenFor(model => model.CursoCapacitacion.FechaInicio)
+                                </span>
+                            </li>
+                            <li class="list-group-item">
+                                <span>
+                                    <b>@Html.LabelFor(model => model.CursoCapacitacion.FechaFinal): </b>@Model.CursoCapacitacion.FechaFinal.ToShortDateString()
+                                    @Html.HiddenFor(model => model.CursoCapacitacion.FechaFinal)
+                                </span>
+                            </li>
+                            <li class="list-group-item">
+                                <span>
+                                    <b>@Html.LabelFor(model => model.CursoCapacitacion.Modalidad.Descripcion): </b>@Html.DisplayFor(model => model.CursoCapacitacion.Modalidad.Descripcion)
+                                    @Html.HiddenFor(model => model.CursoCapacitacion.Modalidad.Descripcion)
+                                </span>
+                            </li>
+                            <li class="list-group-item">
+                                <span>
+                                    <b>@Html.LabelFor(model => model.CursoCapacitacion.Resolucion): </b>@Html.DisplayFor(model => model.CursoCapacitacion.Resolucion)
+                                </span>
+                            </li>
+                            <li class="list-group-item">
+                                <span>
+                                    <b>@Html.LabelFor(model => model.CursoCapacitacion.TotalPuntos): </b>@Html.DisplayFor(model => model.CursoCapacitacion.TotalPuntos)
+                                    @Html.HiddenFor(model => model.CursoCapacitacion.TotalPuntos)
+                                </span>
+                            </li>
+                            <li class="list-group-item">
+                                <span>
+                                    <b>@Html.LabelFor(model => model.CursoCapacitacion.TotalHoras): </b>@Html.DisplayFor(model => model.CursoCapacitacion.TotalHoras)
+                                    @Html.HiddenFor(model => model.CursoCapacitacion.TotalHoras)
+                                </span>
+                            </li>
+                            @if (Model.CursoCapacitacion.ImagenTitulo != null)
+                            {
+                                <li class="list-group-item">
+                                    <span>
+                                        <b>@Html.LabelFor(model => model.CursoCapacitacion.ImagenTitulo):</b>
+                                        <a href="@Url.Action("GetImage", new { id = Int32.Parse(Request.Url.Segments.Last()), tipo = Convert.ToInt32(Request.QueryString["tipo"]) })" target="_blank">Ver titulo</a>
+                                    </span>
+                                </li>
+                            }
+                        </ul>
+                        @Html.HiddenFor(model => model.CursoCapacitacion.DescripcionCapacitacion)
+                        <br />
+
+                    </div>
+                </div>
+
+                <br />
+
+                <div class="alert alert-warning" role="alert">
+                    <i class="fa fa-exclamation-circle d-inline" style="font-size:48px;"></i>
+                    <h4 class="d-inline"> ¡Atención! Solo puede editar el Número de resolución y el PDF del título.</h4>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.CursoCapacitacion.Resolucion, new { @for = "Resolucion", @class = "col-sm-3 col-form-label" })
+                            <div class="col-sm-5">
+                                @Html.TextBoxFor(model => model.CursoCapacitacion.Resolucion, new { @id = "Resolucion", @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.CursoCapacitacion.ImagenTitulo, new { @for = "ImagenTitulo", @class = "col-sm-3 col-form-label" })
+                            <div class="col-sm-5">
+                                <div class="custom-file">
+                                    @Html.TextBoxFor(model => model.File, new { id = "ImagenTitulo", @class = "custom-file-input form-control", type = "file", accept = "application/pdf" })
+                                    <label class="custom-file-label" for="ImagenTitulo">Seleccionar PDF</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <br />
+                        <input id="btnEditar" name="SubmitButton" type="submit" value="Guardar Cambios" class="btn btn-primary float-right" />
+                        <div id="preloader" class="loader float-right" style="display: none"></div>
+                    </div>
+                </div>
+            }
+            <br />
+            <div id="resultado"></div>
+        }
+        else
+        {
+            using (Ajax.BeginForm("EditCurso", "Carrera", new { id = Int32.Parse(Request.Url.Segments.Last()) }, new AjaxOptions
+            {
+                HttpMethod = "POST",
+                UpdateTargetId = "resultado",
+                OnBegin = "BeginEditarCurso",
+                OnComplete = "CompleteEditarCurso",
+            }, new { enctype = "multipart/form-data" }))
+            {
+                @Html.ValidationSummary(true)
+                <blockquote><h3>Modificar Curso Grado</h3></blockquote>
+                <div class="card">
+                    <div class="card-header text-left">
+                        <b>Curso: @Model.CursoGrado.CursoGrado</b>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <span>
+                                    <b>Funcionario: </b>@Model.Funcionario.Cedula - @Model.Funcionario.Nombre @Model.Funcionario.PrimerApellido @Model.Funcionario.SegundoApellido
+                                    @Html.HiddenFor(model => model.Funcionario.Cedula)
+                                    @Html.HiddenFor(model => model.Funcionario.Nombre)
+                                    @Html.HiddenFor(model => model.Funcionario.PrimerApellido)
+                                    @Html.HiddenFor(model => model.Funcionario.SegundoApellido)
+                                </span>
+                            </li>
+                            <li class="list-group-item">
+                                <span>
+                                    <b>@Html.LabelFor(model => model.CursoGrado.EntidadEducativa.DescripcionEntidad): </b> @Html.DisplayFor(model => model.CursoGrado.EntidadEducativa.DescripcionEntidad)
+                                    @Html.HiddenFor(model => model.CursoGrado.EntidadEducativa.DescripcionEntidad)
+                                </span>
+                            </li>
+                            <li class="list-group-item">
+                                <span>
+                                    <b>@Html.LabelFor(model => model.CursoGrado.FechaEmision): </b>@Model.CursoGrado.FechaEmision.ToShortDateString()
+                                    @Html.HiddenFor(model => model.CursoGrado.FechaEmision)
+                                </span>
+                            </li>
+                            <li class="list-group-item">
+                                <span>
+                                    <b>@Html.LabelFor(model => model.CursoGrado.Incentivo): </b>@Html.DisplayFor(model => model.CursoGrado.Incentivo)
+                                    @Html.HiddenFor(model => model.CursoGrado.Incentivo)
+                                </span>
+                            </li>
+                            <li class="list-group-item">
+                                <span>
+                                    <b>@Html.LabelFor(model => model.CursoGrado.TipoGrado): </b>@Html.DisplayFor(model => model.CursoGrado.TipoGrado)
+                                    @Html.DisplayFor(model => model.CursoGrado.TipoGrado)
+                                </span>
+                            </li>
+                            <li class="list-group-item">
+                                <span>
+                                    <b>@Html.LabelFor(model => model.CursoGrado.Resolucion): </b>@Html.DisplayFor(model => model.CursoGrado.Resolucion)
+                                </span>
+                            </li>
+                            @if (Model.CursoGrado.ImagenTitulo != null)
+                            {
+                                <li class="list-group-item">
+                                    <span>
+                                        <b>@Html.LabelFor(model => model.CursoGrado.ImagenTitulo):</b>
+                                        <a href="@Url.Action("GetImage", new { id = Int32.Parse(Request.Url.Segments.Last()), tipo = Convert.ToInt32(Request.QueryString["tipo"]) })">Ver titulo</a>
+                                    </span>
+                                </li>
+                            }
+                            @Html.HiddenFor(model => model.CursoGrado.CursoGrado)
+                        </ul>
+                        <br />
+
+                    </div>
+                </div>
+
+                <br />
+
+                <div class="alert alert-warning" role="alert">
+                    <i class="fa fa-exclamation-circle d-inline" style="font-size:48px;"></i>
+                    <h4 class="d-inline"> ¡Atención! Solo puede editar el Número de resolución y el PDF del título.</h4>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.CursoGrado.Resolucion, new { @for = "Resolucion", @class = "col-sm-3 col-form-label" })
+                            <div class="col-sm-5">
+                                @Html.TextBoxFor(model => model.CursoGrado.Resolucion, new { @id = "Resolucion", @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.CursoGrado.ImagenTitulo, new { @for = "ImagenTitulo", @class = "col-sm-3 col-form-label" })
+                            <div class="col-sm-5">
+                                <div class="custom-file">
+                                    @Html.TextBoxFor(model => model.File, new { id = "ImagenTitulo", @class = "custom-file-input form-control", type = "file", accept = "application/pdf" })
+                                    <label class="custom-file-label" for="ImagenTitulo">Seleccionar PDF</label>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <input id="btnEditar" name="SubmitButton" type="submit" value="Guardar Cambios" class="btn btn-primary float-right" />
+                        <div id="preloader" class="loader float-right" style="display: none"></div>
+                    </div>
+                </div>
+            }
+            <br />
+            <div id="resultado"></div>
+        }
+    }
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+<script src="~/Scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/FormularioEditarCurso.js"></script>

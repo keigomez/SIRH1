@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="1d0ce667-7dc5-4792-b3e0-ac615736c2d5" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://sisrh.mopt.go.cr:85/CTipoAccionPersonalService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CTipoAccionPersonalService.disco" MetadataType="Disco" ID="11d66394-ac42-49db-9208-d8987228d274" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CTipoAccionPersonalService.svc?disco" />
+    <MetadataFile FileName="CTipoAccionPersonalService.xsd" MetadataType="Schema" ID="c8509abe-1851-48a1-80e2-09c20b0e5953" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CTipoAccionPersonalService.svc?xsd=xsd0" />
+    <MetadataFile FileName="CTipoAccionPersonalService1.xsd" MetadataType="Schema" ID="dcb1f4b1-ab4f-4ec3-ae24-1d44c1dd95b3" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CTipoAccionPersonalService.svc?xsd=xsd1" />
+    <MetadataFile FileName="CTipoAccionPersonalService2.xsd" MetadataType="Schema" ID="e96f36ce-715d-4467-81f6-021b04c3e404" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CTipoAccionPersonalService.svc?xsd=xsd2" />
+    <MetadataFile FileName="CTipoAccionPersonalService3.xsd" MetadataType="Schema" ID="484fbd6d-83ed-4716-8788-efd5df4e7521" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CTipoAccionPersonalService.svc?xsd=xsd3" />
+    <MetadataFile FileName="CTipoAccionPersonalService.wsdl" MetadataType="Wsdl" ID="a5119c00-e1f7-4fce-9f55-dcbd1876896f" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CTipoAccionPersonalService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

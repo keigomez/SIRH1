@@ -1,0 +1,245 @@
+﻿@model SIRH.Web.ViewModels.BusquedaExtrasVM
+
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/TiempoExtra.cshtml";
+}
+
+@*<link rel="stylesheet" href="~/Content/datetimepicker.css">*@
+<script src="~/Content/bootstrap-datepicker/js/jquery-3.4.1.slim.min.js"></script>
+<link id="bsdp-css" href="~/Content/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+
+@using (Ajax.BeginForm("Search", "RegistroTiempoExtra", new AjaxOptions
+{
+    UpdateTargetId = "target",
+    HttpMethod = "GET",
+    OnBegin = "Begin('btnBuscar','preloader')",
+    OnComplete = "Complete('btnBuscar','preloader')"
+}))
+{
+    <div class="jumbotron">
+        <center>
+            <h3 class="display-4">Buscar datos de tiempo extra</h3>
+        </center>
+        <br />
+        <div class="card">
+            <div class="card-header text-left">
+                <strong>Parámetros de búsqueda</strong>
+            </div>
+
+            <div class="card-body">
+                <div class="form-group row">
+
+                    <div class="col-sm-6">
+                        @Html.LabelFor(model => model.Cedula, new { @for = "cedula", @class = "col-form-label" })
+                        @Html.TextBox("cedula", String.Empty, new { @id = "cedula", @class = "form-control", @maxlength = "10" })
+                    </div>
+                    <div class="col-sm-3">
+                        @Html.LabelFor(model => model.FechaDesde, new { @for = "fechaDesde", @class = "col-form-label" }) <button class="btn btn-outline-primary" type="button" id="clean-fechaDesde" onclick="resetDate('fechaDesde')"><i class="fa fa-remove"></i></button>
+                        @Html.TextBox("fechaDesde", String.Empty, new { @id = "fechaDesde", @class = "form-control", @readonly = "readonly" })
+                    </div>
+                    <div class="col-sm-3">
+                        @Html.LabelFor(model => model.FechaHasta, new { @for = "fechaHasta", @class = "col-form-label" }) <button class="btn btn-outline-primary" type="button" id="clean-fechaHasta" onclick="resetDate('fechaHasta')"><i class="fa fa-remove"></i></button>
+                        @Html.TextBox("fechaHasta", String.Empty, new { @id = "fechaHasta", @class = "form-control", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                        @{
+                            List<string> listaDoble = new List<string>();
+                            listaDoble.Add("Tiempo Extraordinario");
+                            listaDoble.Add("Jornada Doble");
+                            var dobles = new SelectList(listaDoble);
+                        }
+                        @Html.Label("Tipo de extra", new { @for = "pagoDoble", @class = "col-form-label" })
+                        @Html.DropDownList("pagoDoble", dobles as SelectList, null, new { @id = "pagoDoble", @class = "form-control" })
+                    </div>
+                    <div class="col-sm-6">
+                        @{
+                            List<string> listaEstados = new List<string>();
+                            listaEstados.Add("Todos");
+                            listaEstados.Add("Activo");
+                            listaEstados.Add("Anulado");
+                            listaEstados.Add("Aprobado");
+                            listaEstados.Add("Rechazado");
+                            listaEstados.Add("Cerrado");
+                            var estados = new SelectList(listaEstados);
+                        }
+                        @Html.Label("Estado", new { @id = "idEstado", @for = "estado", @class = "col-form-label" })
+                        @Html.DropDownList("estado", estados as SelectList, "Seleccione una opción", new { @id = "estado", @class = "form-control" })
+                    </div>
+                </div>
+                <div id="accordion">
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h5 class="mb-0 text-center">
+                                <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                    + Añadir parámetros de ubicación
+                                </a>
+                            </h5>
+                        </div>
+                        <div id="collapseOne" class="collapse multi-collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                            <div class="card-body text-left">
+                                <div class="row">
+                                    <div class="form-group col-6">
+                                        @Html.LabelFor(model => model.CodDivision, new { @for = "coddivision", @class = "col-form-label" })
+                                        <span>:</span>
+                                        <button class="btn btn-outline-primary" type="button" id="dialog-division"><i class="fa fa-search"></i></button>
+                                        <button class="btn btn-outline-primary" type="button" id="clean-division"><i class="fa fa-remove"></i></button>
+                                        @Html.TextBox("coddivision", String.Empty, new { @id = "coddivision", @readonly = "readonly", @class = "form-control" })
+                                    </div>
+                                    <div class="form-group col-6">
+                                        @Html.LabelFor(model => model.CodDireccion, new { @for = "coddireccion", @class = "col-form-label" })
+                                        <span>:</span>
+                                        <button class="btn btn-outline-primary" type="button" id="dialog-direccion"><i class="fa fa-search"></i></button>
+                                        <button class="btn btn-outline-primary" type="button" id="clean-direccion"><i class="fa fa-remove"></i></button>
+                                        @Html.TextBox("coddireccion", String.Empty, new { @id = "coddireccion", @readonly = "readonly", @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-6">
+                                        @Html.LabelFor(model => model.CodDepartamento, new { @for = "coddepartamento", @class = "col-form-label" })
+                                        <span>:</span>
+                                        <button class="btn btn-outline-primary" type="button" id="dialog-departamento"><i class="fa fa-search"></i></button>
+                                        <button class="btn btn-outline-primary" type="button" id="clean-departamento"><i class="fa fa-remove"></i></button>
+                                        @Html.TextBox("coddepartamento", String.Empty, new { @id = "coddepartamento", @readonly = "readonly", @class = "form-control" })
+                                    </div>
+                                    <div class="form-group col-6">
+                                        @Html.LabelFor(model => model.CodSeccion, new { @for = "codseccion", @class = "col-form-label" })
+                                        <span>:</span>
+                                        <button class="btn btn-outline-primary" type="button" id="dialog-seccion"><i class="fa fa-search"></i></button>
+                                        <button class="btn btn-outline-primary" type="button" id="clean-seccion"><i class="fa fa-remove"></i></button>
+                                        @Html.TextBox("codseccion", String.Empty, new { @id = "codseccion", @readonly = "readonly", @class = "form-control" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <center><input id="btnBuscar" name="SubmitButton" type="submit" value="Buscar" class="btn btn-primary" /></center>
+                <center><div id="preloader" class="loader" style="display: none"></div></center>
+
+            </div>
+            </div>
+
+
+    </div>
+    <br />
+}
+
+<!-- parametros ubicación de puesto -->
+
+<div class="modal fade" id="buscar-division" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Búsqueda por División</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @{Html.RenderPartial("Division_Index"); }
+            </div>
+            <div class="modal-footer">
+                <button id="CacelarCalculoPopUp" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                @*<button id="CalcularPopUp" type="button" class="btn btn-primary">Calcular</button>*@
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="buscar-direccion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Búsqueda por Dirección General</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @{Html.RenderPartial("Direccion_Index"); }
+            </div>
+            <div class="modal-footer">
+                <button id="CacelarCalculoPopUp" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                @*<button id="CalcularPopUp" type="button" class="btn btn-primary">Calcular</button>*@
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="buscar-departamento" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Búsqueda por Departamento</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @{Html.RenderPartial("Departamento_Index"); }
+            </div>
+            <div class="modal-footer">
+                <button id="CacelarCalculoPopUp" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                @*<button id="CalcularPopUp" type="button" class="btn btn-primary">Calcular</button>*@
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="buscar-seccion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Búsqueda por Sección</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @{Html.RenderPartial("Seccion_Index");}
+            </div>
+            <div class="modal-footer">
+                <button id="CacelarCalculoPopUp" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                @*<button id="CalcularPopUp" type="button" class="btn btn-primary">Calcular</button>*@
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="target">
+    
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+<script type="text/javascript" src="~/Scripts/funciones-dialogos.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script src="~/Scripts/Pages/SearchTiempoExtra.js" type="text/javascript"></script>
+@*<script src="~/Scripts/datetimepicker.js" type="text/javascript"></script>
+<script src="~/Scripts/datetimepicker-es.js" type="text/javascript"></script>*@
+<script src="~/Content/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script src="~/Content/bootstrap-datepicker/locales/bootstrap-datepicker.es.min.js" charset="UTF-8"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#fechaDesde').val('');
+        $('#fechaDesde').datepicker(
+        {
+            language: "es",
+            autoclose: true
+        });
+
+        $('#fechaHasta').val('');
+        $('#fechaHasta').datepicker(
+        {
+            language: "es",
+            autoclose: true
+        });
+    });
+</script>

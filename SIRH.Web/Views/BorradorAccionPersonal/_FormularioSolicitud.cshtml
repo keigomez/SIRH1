@@ -1,0 +1,153 @@
+﻿@model SIRH.Web.ViewModels.FormularioBorradorAccionPersonalVM
+
+<script type="text/javascript" src="~/Scripts/funciones-dialogos.js"></script>
+<script type="text/javascript" src="~/Scripts/funciones-generales.js"></script>
+
+@{ 
+    if (Model != null)
+    {
+        using (Ajax.BeginForm("Solicitud", new AjaxOptions
+        {
+            HttpMethod = "POST",
+            UpdateTargetId = "detalle",
+            OnBegin = "BeginGuardarBorrador",
+            OnComplete = "CompleteGuardarBorrador",
+            OnSuccess = "SuccessGuardarBorrador",
+            OnFailure = "SuccessGuardarBorrador"
+        }))
+        {
+            Html.ValidationSummary(true);
+            <div id="formulario">
+                <div id="tabs">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a id="tab1" class="nav-link active" href="#tabs-1" data-toggle="tab" role="tab" aria-controls="tabs-1" aria-selected="true">Datos Funcionario</a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="tab2" class="nav-link" href="#tabs-2" data-toggle="tab" role="tab" aria-controls="tabs-2" aria-selected="false">Datos Borrador</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div id="tabs-1" class="tab-pane fade show active" role="tabpanel" aria-labelledby="tab1">
+                            <table class="table table-hover">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th colspan="6">Información del Funcionario</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><b>@Html.LabelFor(model => model.Funcionario.Cedula)</b></td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.Funcionario.Cedula)
+                                            @Html.HiddenFor(model => model.Funcionario.Cedula)
+                                        <td><b>@Html.LabelFor(model => model.Funcionario.Nombre)</b></td>
+                                        <td>
+                                            @Model.Funcionario.Nombre @Model.Funcionario.PrimerApellido @Model.Funcionario.SegundoApellido
+                                            @Html.HiddenFor(model => model.Funcionario.Nombre)
+                                            @Html.HiddenFor(model => model.Funcionario.PrimerApellido)
+                                            @Html.HiddenFor(model => model.Funcionario.SegundoApellido)
+                                        </td>
+                                        <td><b>@Html.LabelFor(model => model.Puesto.CodPuesto)</b></td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.Puesto.CodPuesto)
+                                            @Html.HiddenFor(model => model.Puesto.CodPuesto)
+                                        </td>
+                                    </tr>
+                                    <tr>
+
+                                        <td><b>@Html.LabelFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)</b></td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)
+                                            @Html.HiddenFor(model => model.DetallePuesto.Especialidad.DesEspecialidad)
+                                        </td>
+                                        <td><b>@Html.LabelFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal)</b></td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal)
+                                            @Html.HiddenFor(model => model.DetallePuesto.OcupacionReal.DesOcupacionReal)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)</b></td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                                            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Division.NomDivision)
+                                        </td>
+                                        <td><b>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)</b></td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                                            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.DireccionGeneral.NomDireccion)
+                                        </td>
+                                        <td><b>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)</b></td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                                            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Departamento.NomDepartamento)
+                                        </td>
+                                    </tr>
+                                    <tr>
+
+                                        <td><b>@Html.LabelFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto)</b></td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto)
+                                            @Html.HiddenFor(model => model.Puesto.UbicacionAdministrativa.Presupuesto.CodigoPresupuesto)
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="tabs-2" class="tab-pane fade" role="tabpanel" aria-labelledby="tab2">
+                            <div class="card">
+                                <h5 class="card-header">Datos del Borrador de Acción de Personal</h5>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="form-group col-4">
+                                            @Html.LabelFor(model => model.Borrador.NumOficio)
+                                            <span>:</span>
+                                            @Html.TextBoxFor(model => model.Borrador.NumOficio, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.Borrador.NumOficio)
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-5">
+                                            @Html.LabelFor(model => model.UsuarioAsignado)
+                                            <span>:</span>
+                                            @Html.DropDownListFor(model => model.UsuarioAsignado, Model.Usuarios, "Seleccione una opción", new { @class = "btn btn-secondary dropdown-toggle" })
+                                            @Html.ValidationMessageFor(model => model.UsuarioAsignado)
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-6">
+                                            <b>
+                                                @Html.LabelFor(model => model.Borrador.ObsJustificacion)
+                                                <span>:</span>
+                                            </b>
+                                            @Html.TextAreaFor(model => model.Borrador.ObsJustificacion, new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-4">
+                                            <input id="btnGuardar" class="btn btn-secondary" name="SubmitButton" type="submit" value="Guardar Solicitud" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-4">
+                                            <div id="progressbarGuardar" class="loader" hidden></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+
+            </div>
+            <div id="detalle">
+                
+            </div>
+        }
+    }
+}

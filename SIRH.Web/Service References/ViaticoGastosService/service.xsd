@@ -1,0 +1,1123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/SIRH.DTO" />
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:element name="ObtenerEliminacion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codigo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tipo" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerEliminacionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ObtenerEliminacionResult" nillable="true" type="q1:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerDeduccionViaticoCorrido">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codigo" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerDeduccionViaticoCorridoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ObtenerDeduccionViaticoCorridoResult" nillable="true" type="q2:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarMovimientoViaticoCorrido">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="funcionario" nillable="true" type="q3:CFuncionarioDTO" />
+        <xs:element minOccurs="0" name="codigo" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarMovimientoViaticoCorridoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="BuscarMovimientoViaticoCorridoResult" nillable="true" type="q4:ArrayOfArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerMovimientoViaticoCorrido">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codigo" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerMovimientoViaticoCorridoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ObtenerMovimientoViaticoCorridoResult" nillable="true" type="q5:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AnularMovimientoViaticoCorrido">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="mViaticoC" nillable="true" type="q6:CMovimientoViaticoCorridoDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AnularMovimientoViaticoCorridoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="AnularMovimientoViaticoCorridoResult" nillable="true" type="q7:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AgregarDetalleDedcuccionViaticoCorrido">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="detalleDVC" nillable="true" type="q8:ArrayOfCDetalleDeduccionViaticoCorridoDTO" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="movimientoVC" nillable="true" type="q9:CMovimientoViaticoCorridoDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AgregarDetalleDedcuccionViaticoCorridoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="AgregarDetalleDedcuccionViaticoCorridoResult" nillable="true" type="q10:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarRegistroIncapacidad">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cedula" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarRegistroIncapacidadResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ListarRegistroIncapacidadResult" nillable="true" type="q11:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AgregarDetalleEliminacionViaticoCorrido">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="detalleEVC" nillable="true" type="q12:CDetalleEliminacionViaticoCorridoGastoTransporteDTO" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="movimientoVC" nillable="true" type="q13:CMovimientoViaticoCorridoDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AgregarDetalleEliminacionViaticoCorridoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="AgregarDetalleEliminacionViaticoCorridoResult" nillable="true" type="q14:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarCartaPresentacionCedula">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="funcionario" nillable="true" type="q15:CFuncionarioDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarCartaPresentacionCedulaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="BuscarCartaPresentacionCedulaResult" nillable="true" type="q16:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerViaticoCorridoActual">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cedula" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerViaticoCorridoActualResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ObtenerViaticoCorridoActualResult" nillable="true" type="q17:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AgregarMovimientoViaticoCorridoEliminacion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="movimientoVC" nillable="true" type="q18:CMovimientoViaticoCorridoDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AgregarMovimientoViaticoCorridoEliminacionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="AgregarMovimientoViaticoCorridoEliminacionResult" nillable="true" type="q19:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CargarDistritoId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idDistrito" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CargarDistritoIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="CargarDistritoIdResult" nillable="true" type="q20:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActualizarVencimientoViaticoCorrido">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="fecha" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActualizarVencimientoViaticoCorridoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ActualizarVencimientoViaticoCorridoResult" nillable="true" type="q21:ArrayOfArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AgregarContratoArrendamientoViaticoCorrido">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="viaticoC" nillable="true" type="q22:CViaticoCorridoDTO" />
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="contrato" nillable="true" type="q23:CContratoArrendamientoDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AgregarContratoArrendamientoViaticoCorridoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="AgregarContratoArrendamientoViaticoCorridoResult" nillable="true" type="q24:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AgregarViaticoCorrido">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="carta" nillable="true" type="q25:CCartaPresentacionDTO" />
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="funcionario" nillable="true" type="q26:CFuncionarioDTO" />
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="viaticoC" nillable="true" type="q27:CViaticoCorridoDTO" />
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="facturas" nillable="true" type="q28:ArrayOfCFacturaDesarraigoDTO" />
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="contrato" nillable="true" type="q29:ArrayOfCContratoArrendamientoDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AgregarViaticoCorridoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="AgregarViaticoCorridoResult" nillable="true" type="q30:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AgregarFacturaViaticoCorrido">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="viaticoC" nillable="true" type="q31:CViaticoCorridoDTO" />
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="factura" nillable="true" type="q32:CFacturaDesarraigoDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AgregarFacturaViaticoCorridoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="AgregarFacturaViaticoCorridoResult" nillable="true" type="q33:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AnularViaticoCorrido">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="viaticoC" nillable="true" type="q34:CViaticoCorridoDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AnularViaticoCorridoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="AnularViaticoCorridoResult" nillable="true" type="q35:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarViaticoCorrido">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="funcionario" nillable="true" type="q36:CFuncionarioDTO" />
+        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="viaticoC" nillable="true" type="q37:CViaticoCorridoDTO" />
+        <xs:element xmlns:q38="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="fechasEmision" nillable="true" type="q38:ArrayOfdateTime" />
+        <xs:element xmlns:q39="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="fechasVencimiento" nillable="true" type="q39:ArrayOfdateTime" />
+        <xs:element xmlns:q40="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="lugarContrato" nillable="true" type="q40:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarViaticoCorridoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="BuscarViaticoCorridoResult" nillable="true" type="q41:ArrayOfArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarFuncionarioCedula">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cedula" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarFuncionarioCedulaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="BuscarFuncionarioCedulaResult" nillable="true" type="q42:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CargarCantones">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CargarCantonesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="CargarCantonesResult" nillable="true" type="q43:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CargarDistritos">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CargarDistritosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="CargarDistritosResult" nillable="true" type="q44:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CargarProvincias">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CargarProvinciasResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="CargarProvinciasResult" nillable="true" type="q45:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLocalizacion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cantones" type="xs:boolean" />
+        <xs:element minOccurs="0" name="distritos" type="xs:boolean" />
+        <xs:element minOccurs="0" name="provincias" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLocalizacionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q46="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="GetLocalizacionResult" nillable="true" type="q46:ArrayOfArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarPagoMesesAnteriores">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cedula" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarPagoMesesAnterioresResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q47="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ListarPagoMesesAnterioresResult" nillable="true" type="q47:ArrayOfArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarPagosViaticoCorrido">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="mes" type="xs:int" />
+        <xs:element minOccurs="0" name="anio" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarPagosViaticoCorridoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q48="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ListarPagosViaticoCorridoResult" nillable="true" type="q48:ArrayOfArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarViaticoCorrido">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarViaticoCorridoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q49="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ListarViaticoCorridoResult" nillable="true" type="q49:ArrayOfArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarViaticoCorridoPago">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="mes" type="xs:int" />
+        <xs:element minOccurs="0" name="anio" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarViaticoCorridoPagoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q50="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ListarViaticoCorridoPagoResult" nillable="true" type="q50:ArrayOfArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarEstadosViaticoCorrido">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarEstadosViaticoCorridoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q51="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ListarEstadosViaticoCorridoResult" nillable="true" type="q51:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModificarViaticoCorrido">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q52="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="viaticoC" nillable="true" type="q52:CViaticoCorridoDTO" />
+        <xs:element xmlns:q53="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="facturas" nillable="true" type="q53:ArrayOfCFacturaDesarraigoDTO" />
+        <xs:element xmlns:q54="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="contrato" nillable="true" type="q54:ArrayOfCContratoArrendamientoDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModificarViaticoCorridoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q55="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ModificarViaticoCorridoResult" nillable="true" type="q55:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerContratosArrendamientosViaticoCorrido">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q56="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="viaticoC" nillable="true" type="q56:CViaticoCorridoDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerContratosArrendamientosViaticoCorridoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q57="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ObtenerContratosArrendamientosViaticoCorridoResult" nillable="true" type="q57:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerViaticoCorrido">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codigo" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerViaticoCorridoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q58="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ObtenerViaticoCorridoResult" nillable="true" type="q58:ArrayOfArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerDiasRebajar">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q59="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="funcionario" nillable="true" type="q59:CFuncionarioDTO" />
+        <xs:element xmlns:q60="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="viatico" nillable="true" type="q60:CViaticoCorridoDTO" />
+        <xs:element minOccurs="0" name="mes" type="xs:int" />
+        <xs:element minOccurs="0" name="anio" type="xs:int" />
+        <xs:element minOccurs="0" name="montoDia" type="xs:decimal" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerDiasRebajarResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q61="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ObtenerDiasRebajarResult" nillable="true" type="q61:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerDiasPagar">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q62="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="viatico" nillable="true" type="q62:CViaticoCorridoDTO" />
+        <xs:element minOccurs="0" name="mes" type="xs:int" />
+        <xs:element minOccurs="0" name="anio" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerDiasPagarResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q63="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ObtenerDiasPagarResult" nillable="true" type="q63:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerFacturasViaticoCorrido">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q64="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ViaticoC" nillable="true" type="q64:CViaticoCorridoDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerFacturasViaticoCorridoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q65="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ObtenerFacturasViaticoCorridoResult" nillable="true" type="q65:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerCorreosElectronicos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codigo" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerCorreosElectronicosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q66="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ObtenerCorreosElectronicosResult" nillable="true" type="q66:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerMontoRetroactivo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q67="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="carta" nillable="true" type="q67:CCartaPresentacionDTO" />
+        <xs:element xmlns:q68="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="fecha" nillable="true" type="q68:ArrayOfdateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerMontoRetroactivoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q69="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ObtenerMontoRetroactivoResult" nillable="true" type="q69:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AgregarPagoViaticoCorrido">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q70="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="pago" nillable="true" type="q70:CPagoViaticoCorridoDTO" />
+        <xs:element xmlns:q71="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="detalles" nillable="true" type="q71:ArrayOfCDetallePagoViaticoCorridoDTO" />
+        <xs:element xmlns:q72="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="funcionario" nillable="true" type="q72:CFuncionarioDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AgregarPagoViaticoCorridoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q73="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="AgregarPagoViaticoCorridoResult" nillable="true" type="q73:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AsignarReservaRecurso">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q74="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="pago" nillable="true" type="q74:CPagoViaticoCorridoDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AsignarReservaRecursoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q75="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="AsignarReservaRecursoResult" nillable="true" type="q75:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AnularPagoViaticoCorrido">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q76="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="pago" nillable="true" type="q76:CPagoViaticoCorridoDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AnularPagoViaticoCorridoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q77="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="AnularPagoViaticoCorridoResult" nillable="true" type="q77:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerPagoViaticoCorrido">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codigo" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerPagoViaticoCorridoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q78="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ObtenerPagoViaticoCorridoResult" nillable="true" type="q78:ArrayOfArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AgregarReintegro">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q79="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="lista" nillable="true" type="q79:ArrayOfCViaticoCorridoReintegroDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AgregarReintegroResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q80="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="AgregarReintegroResult" nillable="true" type="q80:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarAsignacion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codigo" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarAsignacionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q81="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ListarAsignacionResult" nillable="true" type="q81:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarAsignacionModificada">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codigo" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarAsignacionModificadaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q82="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ListarAsignacionModificadaResult" nillable="true" type="q82:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerDeduccionGastoTransporte">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codigo" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerDeduccionGastoTransporteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q83="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ObtenerDeduccionGastoTransporteResult" nillable="true" type="q83:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerDiasRebajarGT">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q84="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="funcionario" nillable="true" type="q84:CFuncionarioDTO" />
+        <xs:element xmlns:q85="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="gasto" nillable="true" type="q85:CGastoTransporteDTO" />
+        <xs:element minOccurs="0" name="mes" type="xs:int" />
+        <xs:element minOccurs="0" name="anio" type="xs:int" />
+        <xs:element minOccurs="0" name="montoDia" type="xs:decimal" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerDiasRebajarGTResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q86="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ObtenerDiasRebajarGTResult" nillable="true" type="q86:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerDiasPagarGT">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q87="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="gasto" nillable="true" type="q87:CGastoTransporteDTO" />
+        <xs:element minOccurs="0" name="mes" type="xs:int" />
+        <xs:element minOccurs="0" name="anio" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerDiasPagarGTResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q88="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ObtenerDiasPagarGTResult" nillable="true" type="q88:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarMovimientoGastoTransporte">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q89="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="funcionario" nillable="true" type="q89:CFuncionarioDTO" />
+        <xs:element minOccurs="0" name="codigo" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarMovimientoGastoTransporteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q90="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="BuscarMovimientoGastoTransporteResult" nillable="true" type="q90:ArrayOfArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerMovimientoGastoTransporte">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codigo" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerMovimientoGastoTransporteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q91="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ObtenerMovimientoGastoTransporteResult" nillable="true" type="q91:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AnularMovimientoGastoTransporte">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q92="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="mGastoT" nillable="true" type="q92:CMovimientoGastoTransporteDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AnularMovimientoGastoTransporteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q93="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="AnularMovimientoGastoTransporteResult" nillable="true" type="q93:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarPagoMesesAnterioresGastoTransporte">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cedula" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarPagoMesesAnterioresGastoTransporteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q94="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ListarPagoMesesAnterioresGastoTransporteResult" nillable="true" type="q94:ArrayOfArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarPagosGastoTransporte">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="mes" type="xs:int" />
+        <xs:element minOccurs="0" name="anio" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarPagosGastoTransporteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q95="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ListarPagosGastoTransporteResult" nillable="true" type="q95:ArrayOfArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AsignarReservaRecursoGT">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q96="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="pago" nillable="true" type="q96:CPagoGastoTransporteDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AsignarReservaRecursoGTResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q97="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="AsignarReservaRecursoGTResult" nillable="true" type="q97:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerGastoTransporteActual">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cedula" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerGastoTransporteActualResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q98="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ObtenerGastoTransporteActualResult" nillable="true" type="q98:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerGastosTransporte">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codigo" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerGastosTransporteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q99="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ObtenerGastosTransporteResult" nillable="true" type="q99:ArrayOfArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AgregarDetalleDedcuccionGastoTransporte">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q100="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="detalleDGT" nillable="true" type="q100:ArrayOfCDetalleDeduccionGastoTransporteDTO" />
+        <xs:element xmlns:q101="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="movimientoGT" nillable="true" type="q101:CMovimientoGastoTransporteDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AgregarDetalleDedcuccionGastoTransporteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q102="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="AgregarDetalleDedcuccionGastoTransporteResult" nillable="true" type="q102:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AgregarDetalleEliminacionGastoTransporte">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q103="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="detalleEVC" nillable="true" type="q103:CDetalleEliminacionViaticoCorridoGastoTransporteDTO" />
+        <xs:element xmlns:q104="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="movimientoGT" nillable="true" type="q104:CMovimientoGastoTransporteDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AgregarDetalleEliminacionGastoTransporteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q105="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="AgregarDetalleEliminacionGastoTransporteResult" nillable="true" type="q105:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActualizarVencimientoGastoTransporte">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="fecha" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActualizarVencimientoGastoTransporteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q106="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ActualizarVencimientoGastoTransporteResult" nillable="true" type="q106:ArrayOfArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AgregarGastoTransporte">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q107="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="carta" nillable="true" type="q107:CCartaPresentacionDTO" />
+        <xs:element xmlns:q108="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="funcionario" nillable="true" type="q108:CFuncionarioDTO" />
+        <xs:element xmlns:q109="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="gastoT" nillable="true" type="q109:CGastoTransporteDTO" />
+        <xs:element xmlns:q110="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="detalleAGT" nillable="true" type="q110:ArrayOfCDetalleAsignacionGastoTransporteDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AgregarGastoTransporteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q111="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="AgregarGastoTransporteResult" nillable="true" type="q111:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AgregarDetalleAsignModificada">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q112="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="detalleAsigModif" nillable="true" type="q112:ArrayOfCDetalleAsignacionGastoTransporteModificadaDTO" />
+        <xs:element minOccurs="0" name="idgasto" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AgregarDetalleAsignModificadaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q113="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="AgregarDetalleAsignModificadaResult" nillable="true" type="q113:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AnularGastoTransporte">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q114="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="gastoT" nillable="true" type="q114:CGastoTransporteDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AnularGastoTransporteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q115="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="AnularGastoTransporteResult" nillable="true" type="q115:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarGastoTransporte">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q116="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="funcionario" nillable="true" type="q116:CFuncionarioDTO" />
+        <xs:element xmlns:q117="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="gastoT" nillable="true" type="q117:CGastoTransporteDTO" />
+        <xs:element xmlns:q118="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="fechasEmision" nillable="true" type="q118:ArrayOfdateTime" />
+        <xs:element xmlns:q119="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="fechasVencimiento" nillable="true" type="q119:ArrayOfdateTime" />
+        <xs:element xmlns:q120="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="lugarContrato" nillable="true" type="q120:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarGastoTransporteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q121="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="BuscarGastoTransporteResult" nillable="true" type="q121:ArrayOfArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarGastoTransporte">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarGastoTransporteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q122="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ListarGastoTransporteResult" nillable="true" type="q122:ArrayOfArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarGastoTransportePago">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="mes" type="xs:int" />
+        <xs:element minOccurs="0" name="anio" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarGastoTransportePagoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q123="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ListarGastoTransportePagoResult" nillable="true" type="q123:ArrayOfArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarEstadosGastoTransporte">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarEstadosGastoTransporteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q124="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ListarEstadosGastoTransporteResult" nillable="true" type="q124:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModificarGastoTransporte">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q125="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="gastoT" nillable="true" type="q125:CGastoTransporteDTO" />
+        <xs:element xmlns:q126="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="contrato" nillable="true" type="q126:ArrayOfCContratoArrendamientoDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModificarGastoTransporteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q127="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ModificarGastoTransporteResult" nillable="true" type="q127:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModificarMontoGastoTrans">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idgasto" type="xs:int" />
+        <xs:element minOccurs="0" name="newMonto" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModificarMontoGastoTransResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q128="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ModificarMontoGastoTransResult" nillable="true" type="q128:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AgregarPagoGastoTransporte">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q129="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="pago" nillable="true" type="q129:CPagoGastoTransporteDTO" />
+        <xs:element xmlns:q130="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="detalles" nillable="true" type="q130:ArrayOfCDetallePagoGastoTrasporteDTO" />
+        <xs:element xmlns:q131="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="funcionario" nillable="true" type="q131:CFuncionarioDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AgregarPagoGastoTransporteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q132="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="AgregarPagoGastoTransporteResult" nillable="true" type="q132:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AnularPagoGastoTransporte">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q133="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="pago" nillable="true" type="q133:CPagoGastoTransporteDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AnularPagoGastoTransporteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q134="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="AnularPagoGastoTransporteResult" nillable="true" type="q134:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerPagoGastoTransporte">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codigo" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerPagoGastoTransporteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q135="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ObtenerPagoGastoTransporteResult" nillable="true" type="q135:ArrayOfArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AgregarReintegroGT">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q136="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="lista" nillable="true" type="q136:ArrayOfCGastoTransporteReintegroDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AgregarReintegroGTResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q137="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="AgregarReintegroGTResult" nillable="true" type="q137:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModificarFecContratoNumDocGT">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idgasto" type="xs:int" />
+        <xs:element minOccurs="0" name="feccontrato" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="numdocumento" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModificarFecContratoNumDocGTResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q138="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ModificarFecContratoNumDocGTResult" nillable="true" type="q138:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModificarPagoReservaRecursoGT">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idPago" type="xs:int" />
+        <xs:element minOccurs="0" name="reserva" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModificarPagoReservaRecursoGTResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q139="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ModificarPagoReservaRecursoGTResult" nillable="true" type="q139:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModificarFecContratoNumDocVC">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idviatico" type="xs:int" />
+        <xs:element minOccurs="0" name="feccontrato" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="numdocumento" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModificarFecContratoNumDocVCResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q140="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ModificarFecContratoNumDocVCResult" nillable="true" type="q140:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModificarPagoReservaRecursoVC">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idPago" type="xs:int" />
+        <xs:element minOccurs="0" name="reserva" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModificarPagoReservaRecursoVCResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q141="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ModificarPagoReservaRecursoVCResult" nillable="true" type="q141:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarTipoDia">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarTipoDiaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q142="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ListarTipoDiaResult" nillable="true" type="q142:ArrayOfArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AgregarCatalogoDia">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q143="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="registro" nillable="true" type="q143:CCatDiaViaticoGastoDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AgregarCatalogoDiaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q144="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="AgregarCatalogoDiaResult" nillable="true" type="q144:CBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarCatalogoDia">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarCatalogoDiaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q145="http://schemas.datacontract.org/2004/07/SIRH.DTO" minOccurs="0" name="ListarCatalogoDiaResult" nillable="true" type="q145:ArrayOfCBaseDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

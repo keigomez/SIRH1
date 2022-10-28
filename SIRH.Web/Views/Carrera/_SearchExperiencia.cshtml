@@ -1,0 +1,167 @@
+﻿@model SIRH.Web.ViewModels.BusquedaExperienciaVM
+
+<blockquote><h3>Detalle de experiencia de funcionario</h3></blockquote>
+
+@using (Html.BeginForm("ReporteExperienciaFuncionario", "Carrera", FormMethod.Post, new { @id = "thisForm" }))
+{
+
+    <div class="card">
+        <h5 class="card-header">
+            <i class="fa fa-user"></i>
+            <b>Detalle de funcionario</b>
+        </h5>
+        <div class="card-body">
+
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <b>Nombre: </b> @Html.AttributeEncode(Model.Funcionario.Nombre + Model.Funcionario.PrimerApellido + Model.Funcionario.SegundoApellido)
+                    @Html.HiddenFor(model => model.Funcionario.Nombre)
+                    @Html.HiddenFor(model => model.Funcionario.PrimerApellido)
+                    @Html.HiddenFor(model => model.Funcionario.SegundoApellido)
+                </li>
+                <li class="list-group-item">
+                    <b>Cédula: </b>@Model.Funcionario.Cedula
+                    @Html.HiddenFor(model => model.Funcionario.Cedula)
+                </li>
+                <li class="list-group-item">
+                    <b>Puesto: </b>@Model.Puesto.CodPuesto
+                    @Html.HiddenFor(model => model.Puesto.CodPuesto)
+                </li>
+                @if (Model.Detalle.CodigoPolicial > 0)
+                {
+                <li class="list-group-item">
+                    <b>Código policial: </b>@Model.Detalle.CodigoPolicial
+                    @Html.HiddenFor(model => model.Detalle.CodigoPolicial)
+                </li>
+                }
+            </ul>
+
+        </div>
+    </div>
+
+    <br />
+
+    <div class="card">
+        <h5 class="card-header">
+            <i class="fa fa-table"></i>
+            <b>Detalle de horas y puntos</b>
+        </h5>
+        <div class="card-body">
+
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td><b>Total de puntos: </b>@Model.Puntos.TotalPuntos</td>
+                        <td><b>Valor del punto: </b>@Model.Periodo.MontoPuntoCarrera</td>
+                        <td></td>
+                        @Html.HiddenFor(model => model.Puntos.TotalPuntos)
+                        @Html.HiddenFor(model => model.Periodo.MontoPuntoCarrera)
+                    </tr>
+                    <tr class="card-header"><td colspan="3"></td></tr>
+                    <tr>
+                        <td><b>Horas de aprovechamiento: </b>@Model.Puntos.HorasAprovechamiento</td>
+                        <td><b>Horas excedente de aprovechamiento: </b>@Model.Puntos.HorasExcAprovechamiento</td>
+                        <td><b>Puntos de aprovechamiento: </b>@Model.Puntos.PuntosAprovechamiento</td>
+                        @Html.HiddenFor(model => model.Puntos.HorasAprovechamiento)
+                        @Html.HiddenFor(model => model.Puntos.HorasExcAprovechamiento)
+                        @Html.HiddenFor(model => model.Puntos.PuntosAprovechamiento)
+                    </tr>
+                    <tr>
+                        <td colspan="3"><b>Cursos de aprovechamiento: </b>@Model.Puntos.CursosAprovechamiento</td>
+                        @Html.HiddenFor(model => model.Puntos.CursosAprovechamiento)
+                    </tr>
+                    <tr class="card-header"><td colspan="3"></td></tr>
+                    <tr>
+                        <td><b>Horas de aprovechamiento (Ley 9635): </b>@Model.Puntos.HorasAprovechamientoLey</td>
+                        <td><b>Horas excedente de aprovechamiento (Ley 9635): </b>@Model.Puntos.HorasExcAprovechamientoLey</td>
+                        <td><b>Puntos de aprovechamiento (Ley 9635): </b>@Model.Puntos.PuntosAprovechamientoLey</td>
+                        @Html.HiddenFor(model => model.Puntos.HorasAprovechamientoLey)
+                        @Html.HiddenFor(model => model.Puntos.HorasExcAprovechamientoLey)
+                        @Html.HiddenFor(model => model.Puntos.PuntosAprovechamientoLey)
+                    </tr>
+                    <tr>
+                        <td colspan="3"><b>Cursos de aprovechamiento (Ley 9635): </b>@Model.Puntos.CursosAprovechamientoLey</td>
+                        @Html.HiddenFor(model => model.Puntos.CursosAprovechamientoLey)
+                    </tr>
+                    <tr class="card-header"><td colspan="3"></td></tr>
+                    <tr>
+                        <td><b>Horas de participación: </b>@Model.Puntos.HorasParticipacion</td>
+                        <td><b>Horas excedente de participación: </b>@Model.Puntos.HorasExcParticipacion</td>
+                        <td><b>Puntos de participación: </b>@Model.Puntos.PuntosParticipacion</td>
+                        @Html.HiddenFor(model => model.Puntos.HorasParticipacion)
+                        @Html.HiddenFor(model => model.Puntos.HorasExcParticipacion)
+                        @Html.HiddenFor(model => model.Puntos.PuntosParticipacion)
+                    </tr>
+                    <tr>
+                        <td colspan="3"><b>Cursos de participación: </b>@Model.Puntos.CursosParticipacion</td>
+                        @Html.HiddenFor(model => model.Puntos.CursosParticipacion)
+                    </tr>
+                    <tr class="card-header"><td colspan="3"></td></tr>
+                    <tr>
+                        <td><b>Horas de participación (Ley 9635): </b>@Model.Puntos.HorasParticipacionLey</td>
+                        <td><b>Horas excedente de participación (Ley 9635): </b>@Model.Puntos.HorasExcParticipacionLey</td>
+                        <td><b>Puntos de participación (Ley 9635): </b>@Model.Puntos.PuntosParticipacionLey</td>
+                        @Html.HiddenFor(model => model.Puntos.HorasExcParticipacionLey)
+                        @Html.HiddenFor(model => model.Puntos.HorasExcParticipacionLey)
+                        @Html.HiddenFor(model => model.Puntos.PuntosParticipacionLey)
+                    </tr>
+                    <tr>
+                        <td colspan="3"><b>Cursos de participación (Ley 9635): </b>@Model.Puntos.CursosParticipacionLey</td>
+                        @Html.HiddenFor(model => model.Puntos.CursosParticipacionLey)
+                    </tr>
+                    <tr class="card-header"><td colspan="3"></td></tr>
+                    <tr>
+                        <td><b>Horas de instrucción: </b>@Model.Puntos.HorasInstruccion</td>
+                        <td><b>Puntos de instrucción: </b>@Model.Puntos.PuntosInstruccion</td>
+                        <td><b>Cursos de instrucción: </b>@Model.Puntos.CursosInstruccion</td>
+                        @Html.HiddenFor(model => model.Puntos.HorasInstruccion)
+                        @Html.HiddenFor(model => model.Puntos.PuntosInstruccion)
+                        @Html.HiddenFor(model => model.Puntos.CursosInstruccion)
+                    </tr>
+                    <tr class="card-header"><td colspan="3"></td></tr>
+                    <tr>
+                        <td><b>Puntos de grado: </b>@Model.Puntos.PuntosGrado</td>
+                        <td><b>Puntos adicionales: </b>@Model.Puntos.PuntosAdicionales</td>
+                        <td></td>
+                        @Html.HiddenFor(model => model.Puntos.PuntosGrado)
+                        @Html.HiddenFor(model => model.Puntos.PuntosAdicionales)
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <br />
+
+    <div class="card">
+        <h5 class="card-header">
+            <i class="fa fa-plus-circle"></i>
+            <b>Detalles Adicionales</b>
+        </h5>
+        <div class="card-body">
+
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td colspan="3"><b>Calificación de Servicio: </b>@Model.Calificacion.DesCalificacion</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"><b>Grado: </b>@Model.Puntos.Grado</td>
+                    </tr>
+                    @Html.HiddenFor(model => model.Calificacion.DesCalificacion)
+                    @Html.HiddenFor(model => model.Puntos.Grado)
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+    <br />
+
+    <button class="btn btn-danger" type="submit"><i class="fa fa-file-pdf-o"></i> Exportar a PDF</button>
+}
+
+@Scripts.Render("~/bundles/jquery")
+<script src="~/Scripts/popper.min.js"></script>
+@Scripts.Render("~/bundles/bootstrap")
+<script src="~/Scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>

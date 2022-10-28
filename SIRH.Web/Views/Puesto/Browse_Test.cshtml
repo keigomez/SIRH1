@@ -1,0 +1,105 @@
+﻿@model SIRH.Web.Models.MovimientoPuestoModel
+
+@{
+                
+    using (Html.BeginForm(Ajax.BeginForm("Vacante_Save", "Vacantes", new AjaxOptions
+    {
+        HttpMethod = "POST"
+    })))
+    {
+    <div class="card">
+        <div class="card-header">
+            Datos del Movimiento
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="form-group col-6">
+                    @Html.LabelFor(model => model.MovimientoPuesto.CodOficio)
+                    <span>:</span>
+                    @Html.TextBoxFor(model => model.MovimientoPuesto.CodOficio, new { @id = "NumeroOficio", @class = "form-control" })
+                    @Html.HiddenFor(model => model.MovimientoPuesto.CodOficio)
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-6">
+                    @Html.LabelFor(model => model.MovimientoPuesto.FecMovimiento)
+                    <span>:</span>
+                    @Html.TextBoxFor(model => model.MovimientoPuesto.FecMovimiento, new { @id = "FechaMovimiento", @class = "form-control", @readonly = "readonly" })
+                    @Html.HiddenFor(model => model.MovimientoPuesto.FecMovimiento)
+                </div>
+            </div>
+            <div class="row" id="divFechaVencimiento">
+                <div class="form-group col-6">
+                    @Html.LabelFor(model => model.MovimientoPuesto.FechaVencimiento)
+                    <span>:</span>
+                    @Html.TextBoxFor(model => model.MovimientoPuesto.FechaVencimiento, new { @id = "FecVencimiento", @class = "form-control", @readonly = "readonly" })
+                    @Html.HiddenFor(model => model.MovimientoPuesto.FechaVencimiento)
+                </div>
+            </div>
+            <div class="row" id="divMovimientoPuesto">
+                <div class="form-group col-6">
+                    @Html.LabelFor(model => model.MovimientoPuesto.MotivoMovimiento.DesMotivo)
+                    <span>:</span>
+                    @Html.DropDownListFor(model => model.MotivoSeleccionado, Model.MotivosMovimiento, "Seleccione...", new { @id = "MotivoVacante", @onchange = "return checkMotivo(this);", @class = "form-control" })
+                    @Html.HiddenFor(model => model.MotivoSeleccionado, new { @id = "setMotivo" })
+                </div>
+            </div>
+            <div class="row" id="divExplicacion">
+                <div class="form-group col-12">
+                    @Html.LabelFor(model => model.MovimientoPuesto.Explicacion)
+                    <span>:</span>
+                    @Html.TextAreaFor(model => model.MovimientoPuesto.Explicacion, new { @class = "form-control", @rows = 3, @cols = 12 })
+                    @Html.HiddenFor(model => model.MovimientoPuesto.Explicacion)
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-muted">
+            <div class="row">
+                <div class="form-group col-10">
+                    <input class="btn btn-secondary" type="button" id="busca" value="Validar"  onclick="return validarVacante();"/>
+                </div>
+                @Html.HiddenFor(model => model.MovimientoPuesto.Puesto.CodPuesto)
+                @Html.HiddenFor(model => model.Funcionario.Cedula)  
+                @Html.HiddenFor(model => model.Funcionario.Nombre)
+                @Html.HiddenFor(model => model.Funcionario.PrimerApellido)
+                @Html.HiddenFor(model => model.Funcionario.SegundoApellido)
+                @Html.HiddenFor(model => model.Oficio)            
+                @Html.HiddenFor(model => model.Nombramiento.IdEntidad)       
+            </div>
+            <div class="row">
+                <div class="form-group col-8">
+                    <div id="progressbar" class="loader" hidden></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="error" class="alert alert-danger" role="alert" hidden></div>
+
+    <div id="errorRegistro" class="alert alert-danger" role="alert" > </div>
+    <div id="successRegistro">
+        <table>
+            <tr>
+                <td><strong>Validación exitosa.</strong></td>
+            </tr>
+            <tr>
+                <td>¿Está seguro que desea modificar el estado del puesto N° <strong>@Model.MovimientoPuesto.Puesto.CodPuesto</strong>?</td>
+            </tr>
+            <tr>
+                <td><div id="NotaVacante"  class="alert alert-warning">@Model.MovimientoPuesto.CodOficio @Model.MovimientoPuesto.FecMovimiento</div></td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <input class="btn btn-secondary" type="submit" id="Submit1" value="Sí" />
+                    @*<input class="btn btn-secondary" type="submit" value="Sí" id="Submit1" />*@
+                    <input class="btn btn-secondary" type="button" id="Button1" value="No" onclick="return LimpiarForm();" />
+                </td>
+            </tr>
+        </table>
+    </div>
+}
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+

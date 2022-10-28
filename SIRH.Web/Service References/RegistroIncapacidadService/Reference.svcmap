@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="c4283b0b-a9d3-48a0-9997-e7e2dc6fc3eb" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://sisrh.mopt.go.cr:85/CRegistroIncapacidadService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CRegistroIncapacidadService.wsdl" MetadataType="Wsdl" ID="04941f15-1854-40ac-bd1e-2ed6cc583831" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CRegistroIncapacidadService.svc?wsdl" />
+    <MetadataFile FileName="CRegistroIncapacidadService4.xsd" MetadataType="Schema" ID="5203ef5e-fd17-408b-b073-7d1a1fcb4e90" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CRegistroIncapacidadService.svc?xsd=xsd4" />
+    <MetadataFile FileName="CRegistroIncapacidadService.xsd" MetadataType="Schema" ID="54f953b6-9199-4e4c-b776-f6281773211f" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CRegistroIncapacidadService.svc?xsd=xsd2" />
+    <MetadataFile FileName="CRegistroIncapacidadService1.xsd" MetadataType="Schema" ID="7e33ff4d-a2db-443e-8db0-9f6456a60c6c" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CRegistroIncapacidadService.svc?xsd=xsd1" />
+    <MetadataFile FileName="CRegistroIncapacidadService2.xsd" MetadataType="Schema" ID="6ec71110-864f-4781-8a10-a6c9b8d948a6" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CRegistroIncapacidadService.svc?xsd=xsd3" />
+    <MetadataFile FileName="CRegistroIncapacidadService3.xsd" MetadataType="Schema" ID="7213cb8b-6bec-4897-87c6-46db5b8496e7" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CRegistroIncapacidadService.svc?xsd=xsd0" />
+    <MetadataFile FileName="CRegistroIncapacidadService.disco" MetadataType="Disco" ID="b8b5faaa-2ccb-454c-81f2-c41de4f7edd1" SourceId="1" SourceUrl="http://sisrh.mopt.go.cr:85/CRegistroIncapacidadService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

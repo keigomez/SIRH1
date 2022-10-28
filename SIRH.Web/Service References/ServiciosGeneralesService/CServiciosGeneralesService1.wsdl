@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://sisrh.mopt.go.cr:85" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:i0="http://sisrh.mopt.go.cr:85/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://sisrh.mopt.go.cr:85" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:import namespace="http://sisrh.mopt.go.cr:85/" location="http://sisrh.mopt.go.cr:85/CServiciosGeneralesService.svc?wsdl" />
+  <wsdl:types />
+  <wsdl:binding name="BasicHttpBinding_ICServiciosGeneralesService" type="i0:ICServiciosGeneralesService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ConsultaFuncionario">
+      <soap:operation soapAction="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaFuncionario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaFuncionarioClase">
+      <soap:operation soapAction="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaFuncionarioClase" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaFuncionarioPolicial">
+      <soap:operation soapAction="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaFuncionarioPolicial" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaFuncionarioPolicialCedula">
+      <soap:operation soapAction="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaFuncionarioPolicialCedula" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaFuncionarioNombre">
+      <soap:operation soapAction="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaFuncionarioNombre" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaFuncionariosDireccion">
+      <soap:operation soapAction="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaFuncionariosDireccion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaFuncionariosOcupacionReal">
+      <soap:operation soapAction="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaFuncionariosOcupacionReal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaJefaturaDependencia">
+      <soap:operation soapAction="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaJefaturaDependencia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaExFuncionarios">
+      <soap:operation soapAction="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaExFuncionarios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaFuncionarioCalificaciones">
+      <soap:operation soapAction="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaFuncionarioCalificaciones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaFuncionarioAccionPersonal">
+      <soap:operation soapAction="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaFuncionarioAccionPersonal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaFuncionarioPermisoSinSalario">
+      <soap:operation soapAction="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaFuncionarioPermisoSinSalario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaFuncionarioPermisoVacaciones">
+      <soap:operation soapAction="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaFuncionarioPermisoVacaciones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaViaticoCorrido">
+      <soap:operation soapAction="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaViaticoCorrido" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarViaticoCorrido">
+      <soap:operation soapAction="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ActualizarViaticoCorrido" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaVacaciones">
+      <soap:operation soapAction="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaVacaciones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaSaldoVacaciones">
+      <soap:operation soapAction="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaSaldoVacaciones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarFuncionariosActivos">
+      <soap:operation soapAction="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ListarFuncionariosActivos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarFuncionariosTotal">
+      <soap:operation soapAction="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ListarFuncionariosTotal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaFuncionarioPago">
+      <soap:operation soapAction="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaFuncionarioPago" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaFuncionarioPuntosCarrera">
+      <soap:operation soapAction="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaFuncionarioPuntosCarrera" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaldosVacacionesFraccionamiento">
+      <soap:operation soapAction="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/SaldosVacacionesFraccionamiento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GuardarRegistroVacaciones">
+      <soap:operation soapAction="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/GuardarRegistroVacaciones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarPeriodoVacaciones">
+      <soap:operation soapAction="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/RegistrarPeriodoVacaciones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarReintegroVacaciones">
+      <soap:operation soapAction="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/RegistrarReintegroVacaciones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaEstadoVacaciones">
+      <soap:operation soapAction="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/ConsultaEstadoVacaciones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GuardarEnvioCorreos">
+      <soap:operation soapAction="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/GuardarEnvioCorreos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerificarCorreosEnviados">
+      <soap:operation soapAction="http://sisrh.mopt.go.cr:85/ICServiciosGeneralesService/VerificarCorreosEnviados" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+</wsdl:definitions>

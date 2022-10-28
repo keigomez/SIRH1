@@ -1,0 +1,252 @@
+﻿@model SIRH.Web.ViewModels.PerfilUsuarioVM
+
+@{
+    ViewBag.Title = "Perfil";
+    Layout = "~/Views/Shared/Home.cshtml";
+}
+
+<center>
+    <h4>Bienvenido(a), @Model.Funcionario.Nombre</h4>
+    <div class="textoprincipal">
+        Este es su perfil de usuario en el SIRH
+    </div>
+</center>
+<br />
+<div class="jumbotron">
+    <div class="card">
+        <div class="card-header">
+            <i class="fa fa-user"></i> Sus datos personales
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="form-group col-10">
+                    <b>@Html.LabelFor(model => model.Funcionario.Nombre)</b>
+                    <span>:</span>
+                    @Html.AttributeEncode(Model.Funcionario.Nombre + " " + Model.Funcionario.PrimerApellido + " " + Model.Funcionario.SegundoApellido)
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-10">
+                    <b>@Html.LabelFor(model => model.Funcionario.Cedula)</b>
+                    <span>:</span>
+                    @Html.AttributeEncode(Model.Funcionario.Cedula)
+                </div>
+            </div>
+            @if (!String.IsNullOrEmpty(Model.Usuario.EmailOficial))
+            {
+                <div class="row">
+                    <div class="form-group col-10">
+                        <b>@Html.LabelFor(model => model.Usuario.EmailOficial)</b>
+                        <span>:</span>
+                        @Html.AttributeEncode(Model.Usuario.EmailOficial)
+                    </div>
+                </div>
+            }
+            
+            @if (!String.IsNullOrEmpty(Model.Usuario.TelefonoOficial))
+            {
+                <div class="row">
+                    <div class="form-group col-10">
+                        <b>@Html.LabelFor(model => model.Usuario.TelefonoOficial)</b>
+                        <span>:</span>
+                        @Html.AttributeEncode(Model.Usuario.TelefonoOficial)
+                    </div>
+                </div>
+            }
+            
+        </div>
+    </div>
+    <br />
+    <div class="card">
+        <div class="card-header">
+            <i class="fa fa-tv"></i> Sus módulos de trabajo
+        </div>
+        <div class="card-body">
+            <div class="row justify-content-center">
+                
+                @foreach (var item in Model.Perfiles)
+                {
+                    if (item.IdEntidad != 1)
+                    {
+                        <div class="col-md-3 col-lg-3">
+                            <center>
+                                <br />
+                                <img alt="" src="../../Content/Images/look.png" /><br />
+                                <a href="../@item.Mensaje/Index" class="btn btn-outline-secondary btn-sm">@item.NomPerfil</a>
+                                <br />
+                            </center>
+                        </div>
+                    }
+                    else
+                    {
+                        string[] modulos = item.Mensaje.Split(',');
+                        Array.Sort(modulos, StringComparer.InvariantCulture);
+                        foreach (var itemModulo in modulos)
+                        {
+                            string dato = itemModulo.ToString();
+                            <div class="col-md-3 col-lg-3">
+                                <center>
+                                    <br />
+                                    <img alt="" src="../../Content/Images/look.png" /><br />
+                                    <a href="../@dato/Index" class="btn btn-outline-secondary btn-sm">@dato</a>
+                                    <br />
+                                </center>
+                            </div>
+                        }
+                    }
+                }
+                @*@{
+                    foreach (var item in Model.Perfiles)
+                    {
+                        switch (item.IdEntidad)
+                        {
+                            case 1:
+                                <div class="col-md-2">
+                                    <center>
+                                        <img alt="" src="../../Content/Images/look.png" /><br />
+                                        @Html.ActionLink("Usuarios", "Perfil", "PerfilUsuario", new { @username = Model.Usuario.NombreUsuario }, new { @class= "btn btn-outline-secondary btn-sm" })
+                                    </center>
+                                </div>
+                                <div class="col-md-2">
+                                    <center>
+                                        <img alt="" src="../../Content/Images/look.png" /><br />
+                                        @Html.ActionLink("Cauciones", "Index", "Caucion", null, new { @class= "btn btn-outline-secondary btn-sm" })
+                                    </center>
+                                </div>
+                                <div class="col-md-2">
+                                    <center>
+                                        <img alt="" src="../../Content/Images/look.png" /><br />
+                                        @Html.ActionLink("Desarraigos", "Index", "Desarraigo", null, new { @class= "btn btn-outline-secondary btn-sm" })
+                                    </center>
+                                </div>
+                                <div class="col-md-2">
+                                    <center>
+                                        <img alt="" src="../../Content/Images/look.png" /><br />
+                                        @Html.ActionLink("Pago Feriado", "Index", "PagoFeriado", null, new { @class= "btn btn-outline-secondary btn-sm" })
+                                    </center>
+                                </div>
+                                <div class="col-md-2">
+                                    <center>
+                                        <img alt="" src="../../Content/Images/look.png" /><br />
+                                        @Html.ActionLink("Marcas", "Index", "MarcasAsistencia", null, new { @class= "btn btn-outline-secondary btn-sm" })
+                                    </center>
+                                </div>
+                                <div class="col-md-2">
+                                    <center>
+                                        <img alt="" src="../../Content/Images/look.png" /><br />
+                                        @Html.ActionLink("Borrador", "Index", "BorradorAccionPersonal", null, new { @class= "btn btn-outline-secondary btn-sm" })
+                                    </center>
+                                </div>
+                                <div class="col-md-2">
+                                    <center>
+                                        <img alt="" src="../../Content/Images/look.png" /><br />
+                                        @Html.ActionLink("Carrera", "Index", "Carrera", null, new { @class= "btn btn-outline-secondary btn-sm" })
+                                    </center>
+                                </div>
+                                <div class="col-md-2">
+                                    <center>
+                                        <img alt="" src="../../Content/Images/look.png" /><br />
+                                        @Html.ActionLink("Vacantes", "Index", "Vacantes", null, new { @class= "btn btn-outline-secondary btn-sm" })
+                                    </center>
+                                </div>
+                                <div class="col-md-2">
+                                    <center>
+                                        <img alt="" src="../../Content/Images/look.png" /><br />
+                                        @Html.ActionLink("Evaluación", "Index", "Calificacion", null, new { @class= "btn btn-outline-secondary btn-sm" })
+                                    </center>
+                                </div>
+
+                                break;
+                            case 2:
+                                <div class="col-md-2">
+                                    <p>No posee permisos para acceder a los módulos correspondientes</p>
+                                </div>
+                                break;
+                            case 3:
+                                <div class="col-md-2">
+                                    <center>
+                                        <img alt="" src="../../Content/Images/look.png" /><br />
+                                        @Html.ActionLink("Usuarios", "Perfil", "PerfilUsuario", new { @username = Model.Usuario.NombreUsuario }, new { @class = "btn btn-outline-secondary btn-sm" })
+                                    </center>
+                                </div>
+                                break;
+                            case 4:
+                                <div class="col-md-2">
+                                    <center>
+                                        <img alt="" src="../../Content/Images/look.png" /><br />
+                                        @Html.ActionLink("Cauciones", "Index", "Caucion", null, new { @class= "btn btn-outline-secondary btn-sm" })
+                                    </center>
+                                </div>
+                                break;
+                            case 5:
+                                <div class="col-md-2">
+                                    <center>
+                                        <img alt="" src="../../Content/Images/look.png" /><br />
+                                        @Html.ActionLink("Desarraigos", "Index", "Desarraigo", null, new { @class= "btn btn-outline-secondary btn-sm" })
+                                    </center>
+                                </div>
+                                break;
+                            case 6:
+                                <div class="col-md-2">
+                                    <center>
+                                        <img alt="" src="../../Content/Images/look.png" /><br />
+                                        @Html.ActionLink("Pago Feriado", "Index", "PagoFeriado", null, new { @class= "btn btn-outline-secondary btn-sm" })
+                                    </center>
+                                </div>
+                                break;
+                            case 7:
+                                <div class="col-md-2">
+                                    <center>
+                                        <img alt="" src="../../Content/Images/look.png" /><br />
+                                        @Html.ActionLink("Marcas Asistencia", "Index", "MarcasAsistencia", null, new { @class= "btn btn-outline-secondary btn-sm" })
+                                    </center>
+                                </div>
+                                break;
+                            case 8:
+                                <div class="col-md-2">
+                                    <center>
+                                        <img alt="" src="../../Content/Images/look.png" /><br />
+                                        @Html.ActionLink("Borrador Acción Personal", "Index", "BorradorAccionPersonal", null, new { @class= "btn btn-outline-secondary btn-sm" })
+                                    </center>
+                                </div>
+                                break;
+                            case 9:
+                                <div class="col-md-2">
+                                    <center>
+                                        <img alt="" src="../../Content/Images/look.png" /><br />
+                                        @Html.ActionLink("Carrera", "Index", "Carrera", null, new { @class= "btn btn-outline-secondary btn-sm" })
+                                    </center>
+                                </div>
+                                break;
+                            case 10:
+                                <div class="col-md-2">
+                                    <center>
+                                        <img alt="" src="../../Content/Images/look.png" /><br />
+                                        @Html.ActionLink("Vacantes", "Index", "Vacantes", null, new { @class= "btn btn-outline-secondary btn-sm" })
+                                    </center>
+                                </div>
+                                break;
+                            case 11:
+                                <div class="col-md-2">
+                                    <center>
+                                        <img alt="" src="../../Content/Images/look.png" /><br />
+                                        @Html.ActionLink("Evaluación al Desempeño", "Index", "Calificacion", null, new { @class= "btn btn-outline-secondary btn-sm" })
+                                    </center>
+                                </div>
+                                break;
+                        }
+                    }
+                }*@
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+<script src="~/Scripts/sidebar.js" type="text/javascript"></script>
+<script src="~/scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+
